@@ -29,4 +29,3 @@ class ASRModel(ABC):
     def transcribe(self, audio_path:str)->Transcription:
         pass
 
-
