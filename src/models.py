@@ -41,13 +41,14 @@ class Whisper(ASRModel):
     def load(self):
         self.model = AutoModelForSpeechSeq2Seq.from_pretrained(self.model_name)
         self.model.to(self.device)
-        self.processor = AutoProcessor.from_pretrained(self.model_name)
+        self.processor = AutoProcessor.from_pretrained(self.model_name, torch_dtype=torch.float32)
 
     def transcribe(self, audio: np.ndarray, sample_rate: int):
         if sample_rate != 16000:
             audio = librosa.resample(audio, orig_sr=sample_rate, target_sr=16000)
-        features = self.processor(audio, sampling_rate=16000, return_tensors="pt").input_features.to(self.device)
+        features = self.processor(audio, sampling_rate=16000, return_tensors="pt").input_features.to(self.device).to(self.model.dtype)
         tokens=self.model.generate(features, return_dict_in_generate=True, output_scores=True)
         decoded_text = self.processor.batch_decode(tokens.sequences, skip_special_tokens=True)[0]
         return Transcription(segments=[], text=decoded_text, model_name=self.model_name)
     
+# class Wav2Vec2(ASRModel):
