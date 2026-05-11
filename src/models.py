@@ -13,7 +13,7 @@ class Segment:
 @dataclass
 class Transcription:
     segments: list[Segment]
-    transcript: str
+    text: str
     model_name: str
 
 class ASRModel(ABC):

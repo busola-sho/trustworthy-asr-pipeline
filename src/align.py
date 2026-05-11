@@ -21,6 +21,9 @@ class AlignedTranscript:
 
 def align(transcripts:list[Transcription]):
     
-        
+    #just take the 2, split them, and pass into sequence matcher as is
+    matcher=difflib.SequenceMatcher(None, transcripts[0], transcripts[1])
+    # for opcode in matcher.get_opcodes():
+
     pass
 
