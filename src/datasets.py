@@ -23,14 +23,14 @@ class Dataset(ABC):
     def load(self)->Generator[Sample, None, None]:
         pass
 
-class CommonVoice(Dataset):
+class CommonVoiceScots(Dataset): # A specific conversational scots dataset
     def __init__(self, path="data/common-voice-scots"):
         super().__init__(name="common_voice", dataset_path=path)
 
     def load(self):
         audio_dir = Path(self.data_path) / "audios"
         label_path = Path(self.data_path) / "ss-corpus-sco.tsv"
-        df=pd.read_csv(label_path)
+        df=pd.read_csv(label_path, sep="\t")
 
         for _, row in df.iterrows():
             audio_path=audio_dir/row["audio_file"]
@@ -39,7 +39,7 @@ class CommonVoice(Dataset):
             sample=Sample(audio=audio_array,sample_rate=sample_rate,label=label)
             yield sample
 
-class EnglishDialectsScots(Dataset):
+class EnglishDialectsScots(Dataset): # A scottish read dataset
     def __init__(self):
         super().__init__(name="english_dialects_scots")
     
@@ -54,3 +54,17 @@ class EnglishDialectsScots(Dataset):
             label=row['text']
             sample=Sample(audio=audio_array,sample_rate=sample_rate,label=label)
             yield sample
+
+class EdAcc(Dataset): # A more general accent-diverse dataset
+    def __init__(self):
+        super().__init__(name="edinburgh_international_accents")
+    
+    def load(self):
+        edacc = load_dataset("edinburghcstr/edacc", split="test", streaming=True)
+        for row in edacc:
+            audio_array = row['audio']['array']
+            sample_rate = row['audio']['sampling_rate']
+            label=row['text']
+            sample=Sample(audio=audio_array,sample_rate=sample_rate,label=label)
+            yield sample
+
