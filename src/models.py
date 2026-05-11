@@ -2,6 +2,9 @@ from abc import ABC, abstractmethod
 from dataclasses import dataclass
 from typing import Optional
 import torch
+from transformers import AutoModelForSpeechSeq2Seq, AutoProcessor
+import numpy as np
+import librosa
 
 @dataclass
 class Segment:
@@ -26,7 +29,25 @@ class ASRModel(ABC):
         pass
 
     @abstractmethod
-    def transcribe(self, audio_path:str)->Transcription:
+    def transcribe(self, audio: np.ndarray, sample_rate: int)->Transcription:
         pass
 
+class Whisper(ASRModel):
+    def __init__(self, model_name="openai/whisper-large-v3"):
+        super().__init__(model_name, None)
+        self.model=None
+        self.processor=None
+    
+    def load(self):
+        self.model = AutoModelForSpeechSeq2Seq.from_pretrained(self.model_name)
+        self.model.to(self.device)
+        self.processor = AutoProcessor.from_pretrained(self.model_name)
 
+    def transcribe(self, audio: np.ndarray, sample_rate: int):
+        if sample_rate != 16000:
+            audio = librosa.resample(audio, orig_sr=sample_rate, target_sr=16000)
+        features = self.processor(audio, sampling_rate=16000, return_tensors="pt").input_features.to(self.device)
+        tokens=self.model.generate(features, return_dict_in_generate=True, output_scores=True)
+        decoded_text = self.processor.batch_decode(tokens.sequences, skip_special_tokens=True)[0]
+        return Transcription(segments=[], text=decoded_text, model_name=self.model_name)
+    

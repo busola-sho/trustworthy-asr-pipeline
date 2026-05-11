@@ -67,4 +67,3 @@ class EdAcc(Dataset): # A more general accent-diverse dataset
             label=row['text']
             sample=Sample(audio=audio_array,sample_rate=sample_rate,label=label)
             yield sample
-
