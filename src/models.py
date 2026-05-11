@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 from dataclasses import dataclass
 from typing import Optional
 import torch
-from transformers import AutoModelForSpeechSeq2Seq, AutoProcessor
+from transformers import AutoModelForSpeechSeq2Seq, AutoProcessor, Wav2Vec2ForCTC
 import numpy as np
 import librosa
 
@@ -51,4 +51,25 @@ class Whisper(ASRModel):
         decoded_text = self.processor.batch_decode(tokens.sequences, skip_special_tokens=True)[0]
         return Transcription(segments=[], text=decoded_text, model_name=self.model_name)
     
-# class Wav2Vec2(ASRModel):
+class Wav2Vec2(ASRModel):
+    def __init__(self, model_name="facebook/wav2vec2-large-960h-lv60-self"):
+        super().__init__(model_name, None)
+        self.model=None
+        self.processor=None
+
+    def load(self):
+        self.model = Wav2Vec2ForCTC.from_pretrained(self.model_name)
+        self.model.to(self.device)
+        self.processor = AutoProcessor.from_pretrained(self.model_name, torch_dtype=torch.float32)
+
+    def transcribe(self, audio, sample_rate):
+        if sample_rate != 16000:
+            audio = librosa.resample(audio, orig_sr=sample_rate, target_sr=16000)
+        inputs = self.processor(audio, sampling_rate=16000, return_tensors="pt").to(self.device)
+
+        with torch.no_grad():
+            logits = self.model(**inputs).logits
+
+        predicted_ids = torch.argmax(logits, dim=-1)
+        transcript = self.processor.batch_decode(predicted_ids)[0]
+        return Transcription(segments=[], text=transcript, model_name=self.model_name)
