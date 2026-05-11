@@ -5,7 +5,8 @@ from typing import Optional, Generator
 import librosa
 from pathlib import Path
 import pandas as pd
-
+from datasets import load_dataset
+from itertools import chain
 
 @dataclass
 class Sample:
@@ -35,5 +36,21 @@ class CommonVoice(Dataset):
             audio_path=audio_dir/row["audio_file"]
             label=row["transcription"]
             audio_array, sample_rate = librosa.load(audio_path,sr=None)
+            sample=Sample(audio=audio_array,sample_rate=sample_rate,label=label)
+            yield sample
+
+class EnglishDialectsScots(Dataset):
+    def __init__(self):
+        super().__init__(name="english_dialects_scots")
+    
+    def load(self):
+        dataset_f = load_dataset("ylacombe/english_dialects", "scottish_female", split="train", streaming=True)
+        dataset_m = load_dataset("ylacombe/english_dialects", "scottish_male", split="train", streaming=True)
+        combined = chain(dataset_f, dataset_m)
+
+        for row in combined:
+            audio_array = row['audio']['array']
+            sample_rate = row['audio']['sampling_rate']
+            label=row['text']
             sample=Sample(audio=audio_array,sample_rate=sample_rate,label=label)
             yield sample
