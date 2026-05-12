@@ -97,3 +97,29 @@ class Parakeet(ASRModel):
         transcript = self.processor.batch_decode(outputs)[0]
         return Transcription(segments=[], text=transcript, model_name=self.model_name) 
 
+class CanaryQwen(ASRModel):
+    def __init__(self, model_name="nvidia/canary-qwen-2.5b"):\
+        super().__init__(model_name, None)
+    
+    def load(self):
+        self.model = SALM.from_pretrained(self.model_name).bfloat16().eval().to(self.device)
+
+    def transcribe(self, audio, sample_rate):
+        audio = self._resample(audio, sample_rate)
+        with tempfile.NamedTemporaryFile(suffix='.wav', delete=False) as f:
+            tmp_path = f.name
+        sf.write(tmp_path, audio, 16000)
+
+        answer_ids = self.model.generate(
+            prompts=[[{
+                "role": "user", 
+                "content": f"Transcribe the following: {self.model.audio_locator_tag}",
+                "audio": [tmp_path]
+            }]],
+            max_new_tokens=128,
+        )
+
+        transcript = self.model.tokenizer.ids_to_text(answer_ids[0].cpu())
+        os.remove(tmp_path)
+        return Transcription(segments=[], text=transcript, model_name=self.model_name)
+
