@@ -1,7 +1,7 @@
-from src.models import Whisper, Wav2Vec2
+from src.models import Whisper, Wav2Vec2, Parakeet
 from src.datasets import EnglishDialectsScots
 
-model = Wav2Vec2()
+model = Parakeet()
 model.load()
 
 dataset = EnglishDialectsScots()
