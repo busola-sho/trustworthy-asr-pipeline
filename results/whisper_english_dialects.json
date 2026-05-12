@@ -1,0 +1,33 @@
+{
+  "model": "openai/whisper-large-v3",
+  "dataset": "english_dialects_scots",
+  "corpus_wer": 0.1836734693877551,
+  "num_samples": 5,
+  "samples": [
+    {
+      "ref": "Choose the voice your assistant will use to talk to you",
+      "hyp": " Choose the voice your assistant will use to talk to you.",
+      "sample_WER": 0.09090909090909091
+    },
+    {
+      "ref": "You have messages from Jessica",
+      "hyp": " You have the messages from Jessica.",
+      "sample_WER": 0.4
+    },
+    {
+      "ref": "You will no longer be able to start or receive duo calls on this device",
+      "hyp": " You will no longer be able to start or receive dual calls on this device.",
+      "sample_WER": 0.13333333333333333
+    },
+    {
+      "ref": "It is ten degrees with drizzle in Broxburn",
+      "hyp": " It's ten degrees with drizzle in Broxburn.",
+      "sample_WER": 0.375
+    },
+    {
+      "ref": "Rihanna pulls out of the garage and onto the street",
+      "hyp": " Rihanna pulls out of the garage and onto the street.",
+      "sample_WER": 0.1
+    }
+  ]
+}

@@ -4,12 +4,14 @@ from src.datasets import Dataset
 import json
 
 
-def run_benchmark(model: ASRModel, dataset: Dataset, output_path: str) -> dict:
+def run_benchmark(model: ASRModel, dataset: Dataset, output_path: str, max_samples: int = None) -> dict:
     all_refs=[]
     all_hyps=[]
     results=[]
 
-    for sample in dataset.load():
+    for i, sample in enumerate(dataset.load()):
+        if max_samples and i >= max_samples:
+            break
         transcript=model.transcribe(sample.audio, sample.sample_rate)
         sample_wer=wer(sample.label.lower(),transcript.text.lower())
         results.append(
