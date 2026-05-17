@@ -56,10 +56,33 @@ class Whisper(ASRModel):
 
     def transcribe(self, audio: np.ndarray, sample_rate: int):
         audio = self._resample(audio, sample_rate)
-        features = self.processor(audio, sampling_rate=16000, return_tensors="pt").input_features.to(self.device).to(self.model.dtype)
-        tokens=self.model.generate(features, return_dict_in_generate=True, output_scores=True)
-        decoded_text = self.processor.batch_decode(tokens.sequences, skip_special_tokens=True)[0]
-        return Transcription(segments=[], text=decoded_text, model_name=self.model_name)
+        
+        chunk_length = 30 * 16000  # 30 seconds at 16kHz
+        chunks = [audio[i:i+chunk_length] for i in range(0, len(audio), chunk_length)]
+        
+        full_transcript = ""
+        for chunk in chunks:
+            features = self.processor(
+                chunk, sampling_rate=16000, return_tensors="pt"
+            ).input_features.to(self.device).to(self.model.dtype)
+            
+            tokens = self.model.generate(
+                features,
+                return_dict_in_generate=True,
+                output_scores=True,
+                language="en"
+            )
+            
+            decoded = self.processor.batch_decode(
+                tokens.sequences, skip_special_tokens=True
+            )[0]
+            full_transcript += " " + decoded
+        
+        return Transcription(
+            segments=[], 
+            text=full_transcript.strip(), 
+            model_name=self.model_name
+        )
     
 class Wav2Vec2(ASRModel):
     def __init__(self, model_name="facebook/wav2vec2-large-960h-lv60-self"):

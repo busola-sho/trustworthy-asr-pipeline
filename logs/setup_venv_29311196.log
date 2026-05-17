@@ -1,0 +1,8 @@
+Loading python/3.11.0-icl
+  ERROR: python/3.11.0-icl cannot be loaded due to a conflict.
+    HINT: Might try "module unload python/3.11.9/gcc/abrhyqg7" first.
+/var/spool/slurm/slurmd/job29311196/slurm_script: line 15: 1296103 Illegal instruction     python -m venv .venv_ampere
+/var/spool/slurm/slurmd/job29311196/slurm_script: line 16: .venv_ampere/bin/activate: No such file or directory
+/var/spool/slurm/slurmd/job29311196/slurm_script: line 17: 1296104 Illegal instruction     pip install --upgrade pip
+/var/spool/slurm/slurmd/job29311196/slurm_script: line 18: 1296105 Illegal instruction     pip install torch torchaudio --index-url https://download.pytorch.org/whl/cu121
+/var/spool/slurm/slurmd/job29311196/slurm_script: line 19: 1296106 Illegal instruction     pip install transformers datasets librosa soundfile jiwer pandas numpy

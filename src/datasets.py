@@ -30,7 +30,7 @@ class CommonVoiceScots(Dataset): # A specific conversational scots dataset
     def load(self):
         audio_dir = Path(self.data_path) / "audios"
         label_path = Path(self.data_path) / "ss-corpus-sco.tsv"
-        df=pd.read_csv(label_path, sep="\t")
+        df=pd.read_csv(label_path, sep="\t").dropna(subset=["transcription"])
 
         for _, row in df.iterrows():
             audio_path=audio_dir/row["audio_file"]

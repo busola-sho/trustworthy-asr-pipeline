@@ -3,13 +3,14 @@
 #SBATCH -A MLMI-ors36-SL2-GPU
 #SBATCH --nodes=1
 #SBATCH --gres=gpu:4
-#SBATCH --time=04:00:00
+#SBATCH --time=02:30:00
 #SBATCH -p ampere
 #SBATCH --output=logs/benchmark_whisper_edacc_%j.log
 
-source /rds/user/ors36/hpc-work/trustworthy-asr-pipeline/.venv/bin/activate
+module purge
 module load ffmpeg/6.0
-module load python/3.11.9/gcc/abrhyqg7
+
+source /rds/user/ors36/hpc-work/trustworthy-asr-pipeline/.venv_ampere/bin/activate
 
 export PYTHONPATH=/rds/user/ors36/hpc-work/trustworthy-asr-pipeline
 

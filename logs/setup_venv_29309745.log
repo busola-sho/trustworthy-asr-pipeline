@@ -1,0 +1,6 @@
+/var/spool/slurm/slurmd/job29309745/slurm_script: line 14: 430237 Illegal instruction     python -m venv .venv_ampere
+/var/spool/slurm/slurmd/job29309745/slurm_script: line 15: .venv_ampere/bin/activate: No such file or directory
+/var/spool/slurm/slurmd/job29309745/slurm_script: line 17: 430238 Illegal instruction     pip install --upgrade pip
+/var/spool/slurm/slurmd/job29309745/slurm_script: line 18: 430239 Illegal instruction     pip install torch torchaudio --index-url https://download.pytorch.org/whl/cu121
+/var/spool/slurm/slurmd/job29309745/slurm_script: line 19: 430240 Illegal instruction     pip install transformers datasets librosa soundfile jiwer pandas numpy
+/var/spool/slurm/slurmd/job29309745/slurm_script: line 20: 430241 Illegal instruction     pip install "nemo_toolkit[asr] @ git+https://github.com/NVIDIA/NeMo.git"

@@ -1,13 +1,12 @@
 import argparse
 from src.benchmark import run_benchmark
-from src.models import Whisper, Wav2Vec2, Parakeet, CanaryQwen
+from src.models import Whisper, Wav2Vec2, Parakeet
 from src.datasets import EnglishDialectsScots, CommonVoiceScots, EdAcc
 
 MODELS = {
     "whisper": Whisper,
     "wav2vec2": Wav2Vec2,
-    "parakeet": Parakeet,
-    "canary": CanaryQwen,
+    "parakeet": Parakeet
 }
 
 DATASETS = {

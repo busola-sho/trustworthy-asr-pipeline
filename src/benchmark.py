@@ -3,6 +3,12 @@ from src.models import ASRModel
 from src.datasets import Dataset
 import json
 
+def normalise(text: str) -> str:
+    text = text.lower()
+    text = text.replace('\u2018', "'").replace('\u2019', "'")
+    text = text.replace('\u201c', '"').replace('\u201d', '"')
+    text = text.replace('\u2013', '-').replace('\u2014', '-')
+    return text
 
 def run_benchmark(model: ASRModel, dataset: Dataset, output_path: str, max_samples: int = None) -> dict:
     all_refs=[]
@@ -13,7 +19,7 @@ def run_benchmark(model: ASRModel, dataset: Dataset, output_path: str, max_sampl
         if max_samples and i >= max_samples:
             break
         transcript=model.transcribe(sample.audio, sample.sample_rate)
-        sample_wer=wer(sample.label.lower(),transcript.text.lower())
+        sample_wer = wer(normalise(sample.label), normalise(transcript.text))
         results.append(
             {
                 "ref": sample.label,
@@ -21,8 +27,8 @@ def run_benchmark(model: ASRModel, dataset: Dataset, output_path: str, max_sampl
                 "sample_WER": sample_wer,
             }
         )
-        all_refs.append(sample.label.lower())
-        all_hyps.append(transcript.text.lower())
+        all_refs.append(normalise(sample.label))
+        all_hyps.append(normalise(transcript.text))
 
     corpus_wer = wer(all_refs,all_hyps)
     count= len(all_hyps) if len(all_hyps)==len(all_refs) else -1
