@@ -1,0 +1,124 @@
+Loading weights:   0%|          | 0/1259 [00:00<?, ?it/s]Loading weights:  26%|██▌       | 327/1259 [00:00<00:00, 3238.11it/s]Loading weights:  52%|█████▏    | 651/1259 [00:00<00:00, 3226.83it/s]Loading weights:  77%|███████▋  | 974/1259 [00:00<00:00, 3119.97it/s]Loading weights: 100%|██████████| 1259/1259 [00:00<00:00, 3057.37it/s]
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Traceback (most recent call last):
+  File "/rds/user/ors36/hpc-work/trustworthy-asr-pipeline/scripts/run_benchmark.py", line 30, in <module>
+    results = run_benchmark(model, dataset, output_path, max_samples=args.max_samples)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/rds/user/ors36/hpc-work/trustworthy-asr-pipeline/src/benchmark.py", line 18, in run_benchmark
+    for i, sample in enumerate(dataset.load()):
+  File "/rds/user/ors36/hpc-work/trustworthy-asr-pipeline/src/datasets.py", line 51, in load
+    for row in combined:
+  File "/rds/user/ors36/hpc-work/trustworthy-asr-pipeline/.venv_ampere/lib64/python3.11/site-packages/datasets/iterable_dataset.py", line 2690, in __iter__
+    for key, example in ex_iterable:
+  File "/rds/user/ors36/hpc-work/trustworthy-asr-pipeline/.venv_ampere/lib64/python3.11/site-packages/datasets/iterable_dataset.py", line 2228, in __iter__
+    batch = formatter.format_batch(pa_table)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/rds/user/ors36/hpc-work/trustworthy-asr-pipeline/.venv_ampere/lib64/python3.11/site-packages/datasets/formatting/formatting.py", line 472, in format_batch
+    batch = self.python_features_decoder.decode_batch(batch)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/rds/user/ors36/hpc-work/trustworthy-asr-pipeline/.venv_ampere/lib64/python3.11/site-packages/datasets/formatting/formatting.py", line 234, in decode_batch
+    return self.features.decode_batch(batch, token_per_repo_id=self.token_per_repo_id) if self.features else batch
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/rds/user/ors36/hpc-work/trustworthy-asr-pipeline/.venv_ampere/lib64/python3.11/site-packages/datasets/features/features.py", line 2253, in decode_batch
+    [
+  File "/rds/user/ors36/hpc-work/trustworthy-asr-pipeline/.venv_ampere/lib64/python3.11/site-packages/datasets/features/features.py", line 2254, in <listcomp>
+    decode_nested_example(self[column_name], value, token_per_repo_id=token_per_repo_id)
+  File "/rds/user/ors36/hpc-work/trustworthy-asr-pipeline/.venv_ampere/lib64/python3.11/site-packages/datasets/features/features.py", line 1508, in decode_nested_example
+    return schema.decode_example(obj, token_per_repo_id=token_per_repo_id) if obj is not None else None
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/rds/user/ors36/hpc-work/trustworthy-asr-pipeline/.venv_ampere/lib64/python3.11/site-packages/datasets/features/audio.py", line 184, in decode_example
+    from ._torchcodec import AudioDecoder
+  File "/rds/user/ors36/hpc-work/trustworthy-asr-pipeline/.venv_ampere/lib64/python3.11/site-packages/datasets/features/_torchcodec.py", line 2, in <module>
+    from torchcodec.decoders import AudioDecoder as _AudioDecoder
+  File "/rds/user/ors36/hpc-work/trustworthy-asr-pipeline/.venv_ampere/lib64/python3.11/site-packages/torchcodec/__init__.py", line 12, in <module>
+    from . import decoders, encoders, samplers, transforms  # noqa
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/rds/user/ors36/hpc-work/trustworthy-asr-pipeline/.venv_ampere/lib64/python3.11/site-packages/torchcodec/decoders/__init__.py", line 7, in <module>
+    from .._core import AudioStreamMetadata, VideoStreamMetadata
+  File "/rds/user/ors36/hpc-work/trustworthy-asr-pipeline/.venv_ampere/lib64/python3.11/site-packages/torchcodec/_core/__init__.py", line 8, in <module>
+    from ._metadata import (
+  File "/rds/user/ors36/hpc-work/trustworthy-asr-pipeline/.venv_ampere/lib64/python3.11/site-packages/torchcodec/_core/_metadata.py", line 15, in <module>
+    from torchcodec._core.ops import (
+  File "/rds/user/ors36/hpc-work/trustworthy-asr-pipeline/.venv_ampere/lib64/python3.11/site-packages/torchcodec/_core/ops.py", line 38, in <module>
+    load_torchcodec_shared_libraries()
+  File "/rds/user/ors36/hpc-work/trustworthy-asr-pipeline/.venv_ampere/lib64/python3.11/site-packages/torchcodec/_internally_replaced_utils.py", line 111, in load_torchcodec_shared_libraries
+    raise RuntimeError(
+RuntimeError: Could not load libtorchcodec. Likely causes:
+          1. FFmpeg is not properly installed in your environment. We support
+             versions 4, 5, 6, 7, and 8, and we attempt to load libtorchcodec
+             for each of those versions. Errors for versions not installed on
+             your system are expected; only the error for your installed FFmpeg
+             version is relevant. On Windows, ensure you've installed the
+             "full-shared" version which ships DLLs.
+          2. The PyTorch version (2.5.1+cu121) is not compatible with
+             this version of TorchCodec. Refer to the version compatibility
+             table:
+             https://github.com/pytorch/torchcodec?tab=readme-ov-file#installing-torchcodec.
+          3. Another runtime dependency; see exceptions below.
+
+        The following exceptions were raised as we tried to load libtorchcodec:
+        
+[start of libtorchcodec loading traceback]
+FFmpeg version 8:
+Traceback (most recent call last):
+  File "/rds/user/ors36/hpc-work/trustworthy-asr-pipeline/.venv_ampere/lib64/python3.11/site-packages/torchcodec/_internally_replaced_utils.py", line 93, in load_torchcodec_shared_libraries
+    torch.ops.load_library(core_library_path)
+  File "/rds/user/ors36/hpc-work/trustworthy-asr-pipeline/.venv_ampere/lib64/python3.11/site-packages/torch/_ops.py", line 1350, in load_library
+    ctypes.CDLL(path)
+  File "/usr/lib64/python3.11/ctypes/__init__.py", line 376, in __init__
+    self._handle = _dlopen(self._name, mode)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+OSError: libavutil.so.60: cannot open shared object file: No such file or directory
+
+FFmpeg version 7:
+Traceback (most recent call last):
+  File "/rds/user/ors36/hpc-work/trustworthy-asr-pipeline/.venv_ampere/lib64/python3.11/site-packages/torchcodec/_internally_replaced_utils.py", line 93, in load_torchcodec_shared_libraries
+    torch.ops.load_library(core_library_path)
+  File "/rds/user/ors36/hpc-work/trustworthy-asr-pipeline/.venv_ampere/lib64/python3.11/site-packages/torch/_ops.py", line 1350, in load_library
+    ctypes.CDLL(path)
+  File "/usr/lib64/python3.11/ctypes/__init__.py", line 376, in __init__
+    self._handle = _dlopen(self._name, mode)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+OSError: libavutil.so.59: cannot open shared object file: No such file or directory
+
+FFmpeg version 6:
+Traceback (most recent call last):
+  File "/rds/user/ors36/hpc-work/trustworthy-asr-pipeline/.venv_ampere/lib64/python3.11/site-packages/torchcodec/_internally_replaced_utils.py", line 93, in load_torchcodec_shared_libraries
+    torch.ops.load_library(core_library_path)
+  File "/rds/user/ors36/hpc-work/trustworthy-asr-pipeline/.venv_ampere/lib64/python3.11/site-packages/torch/_ops.py", line 1350, in load_library
+    ctypes.CDLL(path)
+  File "/usr/lib64/python3.11/ctypes/__init__.py", line 376, in __init__
+    self._handle = _dlopen(self._name, mode)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+OSError: libavutil.so.58: cannot open shared object file: No such file or directory
+
+FFmpeg version 5:
+Traceback (most recent call last):
+  File "/rds/user/ors36/hpc-work/trustworthy-asr-pipeline/.venv_ampere/lib64/python3.11/site-packages/torchcodec/_internally_replaced_utils.py", line 93, in load_torchcodec_shared_libraries
+    torch.ops.load_library(core_library_path)
+  File "/rds/user/ors36/hpc-work/trustworthy-asr-pipeline/.venv_ampere/lib64/python3.11/site-packages/torch/_ops.py", line 1350, in load_library
+    ctypes.CDLL(path)
+  File "/usr/lib64/python3.11/ctypes/__init__.py", line 376, in __init__
+    self._handle = _dlopen(self._name, mode)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+OSError: libavutil.so.57: cannot open shared object file: No such file or directory
+
+FFmpeg version 4:
+Traceback (most recent call last):
+  File "/rds/user/ors36/hpc-work/trustworthy-asr-pipeline/.venv_ampere/lib64/python3.11/site-packages/torchcodec/_internally_replaced_utils.py", line 93, in load_torchcodec_shared_libraries
+    torch.ops.load_library(core_library_path)
+  File "/rds/user/ors36/hpc-work/trustworthy-asr-pipeline/.venv_ampere/lib64/python3.11/site-packages/torch/_ops.py", line 1350, in load_library
+    ctypes.CDLL(path)
+  File "/usr/lib64/python3.11/ctypes/__init__.py", line 376, in __init__
+    self._handle = _dlopen(self._name, mode)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+OSError: libavutil.so.56: cannot open shared object file: No such file or directory
+[end of libtorchcodec loading traceback].
+Fatal Python error: PyGILState_Release: thread state 0x153090004ca0 must be current when releasing
+Python runtime state: finalizing (tstate=0x0000153b86a8ab78)
+
+Thread 0x0000153b86cd7740 (most recent call first):
+  <no Python frame>
+
+Extension modules: rapidfuzz._feature_detector_cpp, rapidfuzz.distance._initialize_cpp, rapidfuzz.distance.metrics_cpp_avx2, rapidfuzz.fuzz_cpp_avx2, rapidfuzz.process_cpp_impl, rapidfuzz.utils_cpp, numpy._core._multiarray_umath, numpy.linalg._umath_linalg, torch._C, torch._C._dynamo.autograd_compiler, torch._C._dynamo.eval_frame, torch._C._dynamo.guards, torch._C._dynamo.utils, torch._C._fft, torch._C._linalg, torch._C._nested, torch._C._nn, torch._C._sparse, torch._C._special, regex._regex, yaml._yaml, markupsafe._speedups, sklearn.__check_build._check_build, _cyutility, scipy._cyutility, scipy._lib._ccallback_c, charset_normalizer.md, charset_normalizer.cd, numpy.random._common, numpy.random.bit_generator, numpy.random._bounded_integers, numpy.random._pcg64, numpy.random._generator, numpy.random._mt19937, numpy.random._philox, numpy.random._sfc64, numpy.random.mtrand, scipy.sparse._sparsetools, _csparsetools, scipy.sparse._csparsetools, scipy.special._ufuncs_cxx, scipy.special._ellip_harm_2, scipy.special._special_ufuncs, scipy.special._gufuncs, scipy.special._ufuncs, scipy.special._specfun, scipy.special._comb, scipy.linalg._fblas, scipy.linalg._flapack, scipy.linalg.cython_lapack, scipy.linalg._cythonized_array_utils, scipy.linalg._solve_toeplitz, scipy.linalg._batched_linalg, scipy.linalg._decomp_lu_cython, scipy.linalg._matfuncs_schur_sqrtm, scipy.linalg._matfuncs_expm, scipy.linalg._linalg_pythran, scipy.linalg.cython_blas, scipy.linalg._decomp_update, scipy.sparse.linalg._dsolve._superlu, scipy.sparse.linalg._eigen.arpack._arpacklib, scipy.sparse.linalg._propack, scipy.spatial._ckdtree, scipy._lib.messagestream, scipy.spatial._qhull, scipy.spatial._voronoi, scipy.spatial._hausdorff, scipy.spatial._distance_wrap, scipy.spatial.transform._rotation_cy, scipy.spatial.transform._rigid_transform_cy, scipy.optimize._group_columns, scipy.optimize._trlib._trlib, scipy.optimize._lbfgsb, _moduleTNC, scipy.optimize._moduleTNC, scipy.optimize._slsqplib, scipy.optimize._minpack, scipy.optimize._lsq.givens_elimination, scipy.optimize._zeros, scipy._lib._uarray._uarray, scipy.linalg._decomp_interpolative, scipy.optimize._bglu_dense, scipy.optimize._lsap, scipy.optimize._direct, scipy.integrate._odepack, scipy.integrate._quadpack, scipy.integrate._vode, scipy.integrate._dop, scipy.interpolate._fitpack, scipy.interpolate._dfitpack, scipy.interpolate._dierckx, scipy.interpolate._ppoly, scipy.interpolate._interpnd, scipy.interpolate._rbfinterp_pythran, scipy.interpolate._rgi_cython, scipy.special.cython_special, scipy.stats._stats, scipy.stats._biasedurn, scipy.stats._stats_pythran, scipy.stats._levy_stable.levyst, scipy.stats._ansari_swilk_statistics, scipy.sparse.csgraph._tools, scipy.sparse.csgraph._shortest_path, scipy.sparse.csgraph._traversal, scipy.sparse.csgraph._min_spanning_tree, scipy.sparse.csgraph._flow, scipy.sparse.csgraph._matching, scipy.sparse.csgraph._reordering, scipy.stats._sobol, scipy.stats._qmc_cy, scipy.stats._rcont.rcont, scipy.stats._qmvnt_cy, scipy.ndimage._nd_image, scipy.ndimage._rank_filter_1d, _ni_label, scipy.ndimage._ni_label, pyarrow.lib, pandas._libs._cyutility, pandas._libs.tslibs.ccalendar, pandas._libs.tslibs.np_datetime, pandas._libs.tslibs.dtypes, pandas._libs.tslibs.base, pandas._libs.tslibs.nattype, pandas._libs.tslibs.timezones, pandas._libs.properties, pandas._libs.tslibs.fields, pandas._libs.tslibs.timedeltas, pandas._libs.tslibs.tzconversion, pandas._libs.tslibs.timestamps, pandas._libs.tslibs.offsets, pandas._libs.tslibs.strptime, pandas._libs.tslibs.parsing, pandas._libs.tslibs.conversion, pandas._libs.tslibs.period, pandas._libs.tslibs.vectorized, pandas._libs.ops_dispatch, pandas._libs.missing, pandas._libs.hashtable, pandas._libs.algos, pandas._libs.interval, pandas._libs.lib, pyarrow._compute, pandas._libs.ops, pandas._libs.hashing, pandas._libs.arrays, pandas._libs.tslib, pandas._libs.sparse, pandas._libs.internals, pandas._libs.indexing, pandas._libs.index, pandas._libs.writers, pandas._libs.join, pandas._libs.window.aggregations, pandas._libs.window.indexers, pandas._libs.reshape, pandas._libs.groupby, pandas._libs.json, pandas._libs.parsers, pandas._libs.testing, sklearn._cyutility, sklearn.utils._isfinite, sklearn.utils.sparsefuncs_fast, sklearn.utils.murmurhash, sklearn.utils._openmp_helpers, sklearn.metrics.cluster._expected_mutual_info_fast, sklearn.metrics._dist_metrics, sklearn.metrics._pairwise_distances_reduction._datasets_pair, sklearn.utils._cython_blas, sklearn.metrics._pairwise_distances_reduction._base, sklearn.metrics._pairwise_distances_reduction._middle_term_computer, sklearn.utils._heap, sklearn.utils._sorting, sklearn.metrics._pairwise_distances_reduction._argkmin, sklearn.metrics._pairwise_distances_reduction._argkmin_classmode, sklearn.utils._vector_sentinel, sklearn.metrics._pairwise_distances_reduction._radius_neighbors, sklearn.metrics._pairwise_distances_reduction._radius_neighbors_classmode, sklearn.metrics._pairwise_fast, sklearn.preprocessing._csr_polynomial_expansion, sklearn.preprocessing._target_encoder_fast, _cffi_backend, pyarrow._acero, pyarrow._fs, pyarrow._csv, pyarrow._json, pyarrow._substrait, pyarrow._dataset, pyarrow._dataset_orc, pyarrow._parquet, pyarrow._azurefs, pyarrow._hdfs, pyarrow._gcsfs, pyarrow._s3fs, pyarrow._parquet_encryption, pyarrow._dataset_parquet_encryption, pyarrow._dataset_parquet, requests.packages.charset_normalizer.md, requests.packages.chardet.md, requests.packages.charset_normalizer.cd, requests.packages.chardet.cd, multidict._multidict, yarl._quoting_c, propcache._helpers_c, aiohttp._http_writer, aiohttp._http_parser, aiohttp._websocket.mask, aiohttp._websocket.reader_c, frozenlist._frozenlist, xxhash._xxhash, scipy.io.matlab._mio_utils, scipy.io.matlab._streams, scipy.io.matlab._mio5_utils (total: 212)
+/var/spool/slurm/slurmd/job29471275/slurm_script: line 16: 540992 Aborted                 python scripts/run_benchmark.py --model whisper --dataset english_dialects

@@ -2,12 +2,14 @@ from jiwer import wer
 from src.models import ASRModel
 from src.datasets import Dataset
 import json
+import re
 
 def normalise(text: str) -> str:
     text = text.lower()
     text = text.replace('\u2018', "'").replace('\u2019', "'")
     text = text.replace('\u201c', '"').replace('\u201d', '"')
     text = text.replace('\u2013', '-').replace('\u2014', '-')
+    text = re.sub(r"[^\w\s']", '', text)
     return text
 
 def run_benchmark(model: ASRModel, dataset: Dataset, output_path: str, max_samples: int = None) -> dict:
