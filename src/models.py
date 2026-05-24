@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 from dataclasses import dataclass
 from typing import Optional
 import torch
-from transformers import AutoModelForSpeechSeq2Seq, AutoProcessor, Wav2Vec2ForCTC, AutoModelForCTC
+from transformers import AutoModelForSpeechSeq2Seq, AutoProcessor, Wav2Vec2ForCTC, AutoModelForCTC, WavLMForCTC, HubertForCTC
 import numpy as np
 import librosa
 # from nemo.collections.speechlm2.models import SALM
@@ -26,7 +26,11 @@ class Transcription:
 class ASRModel(ABC):
     def __init__(self, model_name:str , device:Optional[str]=None):
         self.model_name=model_name
-        self.device= device if device else ("cuda" if torch.cuda.is_available() else "cpu")
+        self.device = device if device else (
+            "cuda" if torch.cuda.is_available() else 
+            "mps" if torch.backends.mps.is_available() else 
+            "cpu"
+        )
         self.model=None
         self.processor=None
 
@@ -120,29 +124,70 @@ class Parakeet(ASRModel):
         transcript = self.processor.batch_decode(outputs)[0]
         return Transcription(segments=[], text=transcript, model_name=self.model_name) 
 
-# class CanaryQwen(ASRModel):
-#     def __init__(self, model_name="nvidia/canary-qwen-2.5b"):\
-#         super().__init__(model_name, None)
-    
-#     def load(self):
-#         self.model = SALM.from_pretrained(self.model_name).bfloat16().eval().to(self.device)
+class WavLM(ASRModel):
+    def __init__(self, model_name = "patrickvonplaten/wavlm-libri-clean-100h-large"):
+        super().__init__(model_name, None)
 
-#     def transcribe(self, audio, sample_rate):
-#         audio = self._resample(audio, sample_rate)
-#         with tempfile.NamedTemporaryFile(suffix='.wav', delete=False) as f:
-#             tmp_path = f.name
-#         sf.write(tmp_path, audio, 16000)
+    def load(self):
+        self.processor = AutoProcessor.from_pretrained(self.model_name)
+        self.model = WavLMForCTC.from_pretrained(
+            self.model_name,
+            torch_dtype=torch.float32
+        ).to(self.device)
 
-#         answer_ids = self.model.generate(
-#             prompts=[[{
-#                 "role": "user", 
-#                 "content": f"Transcribe the following: {self.model.audio_locator_tag}",
-#                 "audio": [tmp_path]
-#             }]],
-#             max_new_tokens=128,
-#         )
+    def transcribe(self, audio: np.ndarray, sample_rate: int) -> Transcription:
+        audio = self._resample(audio, sample_rate)
+        inputs = self.processor(
+            audio, sampling_rate=16000, return_tensors="pt"
+        )
+        inputs = {k: v.to(self.device) for k, v in inputs.items()}
 
-#         transcript = self.model.tokenizer.ids_to_text(answer_ids[0].cpu())
-#         os.remove(tmp_path)
-#         return Transcription(segments=[], text=transcript, model_name=self.model_name)
+        with torch.no_grad():
+            logits = self.model(**inputs).logits
 
+        predicted_ids = torch.argmax(logits, dim=-1)
+        transcript = self.processor.batch_decode(predicted_ids)[0]
+        return Transcription(segments=[], text=transcript, model_name=self.model_name)
+
+class HuBERT(ASRModel):
+    def __init__(self, model_name="facebook/hubert-large-ls960-ft"):
+        super().__init__(model_name, None)
+
+    def load(self):
+        self.processor = AutoProcessor.from_pretrained(self.model_name)
+        self.model = HubertForCTC.from_pretrained(
+            self.model_name,
+            torch_dtype=torch.float32
+        ).to(self.device)
+
+    def transcribe(self, audio: np.ndarray, sample_rate: int) -> Transcription:
+        audio = self._resample(audio, sample_rate)
+        inputs = self.processor(
+            audio, sampling_rate=16000, return_tensors="pt"
+        )
+        inputs = {k: v.to(self.device) for k, v in inputs.items()}
+
+        with torch.no_grad():
+            logits = self.model(**inputs).logits
+
+        predicted_ids = torch.argmax(logits, dim=-1)
+        transcript = self.processor.batch_decode(predicted_ids)[0]
+        return Transcription(segments=[], text=transcript, model_name=self.model_name)
+
+class Qwen3ASR(ASRModel):
+    def __init__(self, model_name="Qwen/Qwen3-ASR-1.7B"):
+        super().__init__(model_name, None)
+        self._qwen_model = None
+
+    def load(self):
+        from qwen_asr import Qwen3ASRModel
+        self._qwen_model = Qwen3ASRModel.from_pretrained(
+            self.model_name,
+            torch_dtype=torch.float32
+        )
+
+    def transcribe(self, audio: np.ndarray, sample_rate: int) -> Transcription:
+        audio = self._resample(audio, sample_rate)
+        results = self._qwen_model.transcribe((audio, 16000), language="English")
+        transcript = results[0].text
+        return Transcription(segments=[], text=transcript, model_name=self.model_name)

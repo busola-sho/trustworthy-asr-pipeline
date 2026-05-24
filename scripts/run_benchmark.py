@@ -1,12 +1,17 @@
 import argparse
 from src.benchmark import run_benchmark
-from src.models import Whisper, Wav2Vec2, Parakeet
+from src.models import Whisper, Wav2Vec2, Parakeet, WavLM, HuBERT, Qwen3ASR
 from src.datasets import EnglishDialectsScots, CommonVoiceScots, EdAcc
+from datetime import datetime
+
 
 MODELS = {
     "whisper": Whisper,
     "wav2vec2": Wav2Vec2,
-    "parakeet": Parakeet
+    "parakeet": Parakeet,
+    "wavlm": WavLM,
+    "hubert": HuBERT,
+    "qwen": Qwen3ASR
 }
 
 DATASETS = {
@@ -25,7 +30,9 @@ model = MODELS[args.model]()
 model.load()
 
 dataset = DATASETS[args.dataset]()
-output_path = f"results/{args.model}_{args.dataset}.json"
+timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+output_path = f"benchmarks/{args.model}_{args.dataset}_{timestamp}.json"
+# output_path = f"results/{args.model}_{args.dataset}.json"
 
 results = run_benchmark(model, dataset, output_path, max_samples=args.max_samples)
 print(results)
