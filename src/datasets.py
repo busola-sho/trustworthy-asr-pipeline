@@ -59,11 +59,22 @@ class EdAcc(Dataset): # A more general accent-diverse dataset
     def __init__(self):
         super().__init__(name="edinburgh_international_accents")
     
+    # def load(self):
+    #     edacc = load_dataset("edinburghcstr/edacc", split="test", streaming=True)
+    #     for row in edacc:
+    #         audio_array = row['audio']['array']
+    #         sample_rate = row['audio']['sampling_rate']
+    #         label=row['text']
+    #         sample=Sample(audio=audio_array,sample_rate=sample_rate,label=label)
+    #         yield sample
     def load(self):
-        edacc = load_dataset("edinburghcstr/edacc", split="test", streaming=True)
-        for row in edacc:
+        dataset = load_dataset("edinburghcstr/edacc", split="test", streaming=True)
+        for row in dataset:
+            if row.get("accent") != "Scottish English":
+                continue
+            if row.get("text", "").startswith("IGNORE"):
+                continue
             audio_array = row['audio']['array']
             sample_rate = row['audio']['sampling_rate']
-            label=row['text']
-            sample=Sample(audio=audio_array,sample_rate=sample_rate,label=label)
-            yield sample
+            label = row['text']
+            yield Sample(audio=audio_array, sample_rate=sample_rate, label=label)

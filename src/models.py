@@ -117,12 +117,31 @@ class Parakeet(ASRModel):
         self.model.to(self.device)
         self.processor = AutoProcessor.from_pretrained(self.model_name)
 
-    def transcribe(self, audio, sample_rate):
+    # def transcribe(self, audio, sample_rate):
+    #     audio = self._resample(audio, sample_rate)
+    #     inputs = self.processor(audio, sampling_rate=16000, return_tensors="pt").to(self.device)
+    #     outputs = self.model.generate(**inputs)
+    #     transcript = self.processor.batch_decode(outputs)[0]
+    #     return Transcription(segments=[], text=transcript, model_name=self.model_name) 
+    
+    def transcribe(self, audio: np.ndarray, sample_rate: int) -> Transcription:
         audio = self._resample(audio, sample_rate)
-        inputs = self.processor(audio, sampling_rate=16000, return_tensors="pt").to(self.device)
-        outputs = self.model.generate(**inputs)
-        transcript = self.processor.batch_decode(outputs)[0]
-        return Transcription(segments=[], text=transcript, model_name=self.model_name) 
+        
+        chunk_length = 30 * 16000  # 30 seconds at 16kHz
+        chunks = [audio[i:i+chunk_length] for i in range(0, len(audio), chunk_length)]
+        
+        full_transcript = ""
+        for chunk in chunks:
+            inputs = self.processor(chunk, sampling_rate=16000, return_tensors="pt")
+            inputs = {k: v.to(self.device).to(self.model.dtype) for k, v in inputs.items()}
+            
+            with torch.no_grad():
+                outputs = self.model.generate(**inputs)
+            
+            transcript = self.processor.batch_decode(outputs, skip_special_tokens=True)[0]
+            full_transcript += " " + transcript
+        
+        return Transcription(segments=[], text=full_transcript.strip(), model_name=self.model_name)
 
 class WavLM(ASRModel):
     def __init__(self, model_name = "patrickvonplaten/wavlm-libri-clean-100h-large"):
