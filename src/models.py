@@ -97,17 +97,26 @@ class Wav2Vec2(ASRModel):
         self.model.to(self.device)
         self.processor = AutoProcessor.from_pretrained(self.model_name)
 
-    def transcribe(self, audio, sample_rate):
+    def transcribe(self, audio: np.ndarray, sample_rate: int) -> Transcription:
         audio = self._resample(audio, sample_rate)
-        inputs = self.processor(audio, sampling_rate=16000, return_tensors="pt").to(self.device)
-
-        with torch.no_grad():
-            logits = self.model(**inputs).logits
-
-        predicted_ids = torch.argmax(logits, dim=-1)
-        transcript = self.processor.batch_decode(predicted_ids)[0]
-        return Transcription(segments=[], text=transcript, model_name=self.model_name)
-
+        
+        chunk_length = 30 * 16000
+        chunks = [audio[i:i+chunk_length] for i in range(0, len(audio), chunk_length)]
+        
+        full_transcript = ""
+        for chunk in chunks:
+            inputs = self.processor(chunk, sampling_rate=16000, return_tensors="pt")
+            inputs = {k: v.to(self.device) for k, v in inputs.items()}
+            
+            with torch.no_grad():
+                logits = self.model(**inputs).logits
+            
+            predicted_ids = torch.argmax(logits, dim=-1)
+            transcript = self.processor.batch_decode(predicted_ids)[0]
+            full_transcript += " " + transcript
+        
+        return Transcription(segments=[], text=full_transcript.strip(), model_name=self.model_name)
+        
 class Parakeet(ASRModel):
     def __init__(self, model_name="nvidia/parakeet-ctc-1.1b"):
         super().__init__(model_name, None)

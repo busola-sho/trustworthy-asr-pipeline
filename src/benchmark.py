@@ -52,13 +52,33 @@ def alteration_eval(hyp:str, ref:str, sample_wer:float) -> bool:
     result = completion.choices[0].message.content.strip().lower()
     return result == "true"
 
-def run_benchmark(model: ASRModel, dataset: Dataset, output_path: str, max_samples: int = None) -> dict:
-    all_refs=[]
-    all_hyps=[]
-    results=[]
-    meaning_altering_count=0
-    for i, sample in enumerate(dataset.load()):
+# def run_benchmark(model: ASRModel, dataset: Dataset, output_path: str, max_samples: int = None) -> dict:
+#     all_refs=[]
+#     all_hyps=[]
+#     results=[]
+#     meaning_altering_count=0
+#     for i, sample in enumerate(dataset.load()):
         
+#         if max_samples and i >= max_samples:
+#             break
+def run_benchmark(model: ASRModel, dataset: Dataset, output_path: str, max_samples: int = None, start_from: int = 0) -> dict:
+    # load existing results if resuming
+    if start_from > 0 and os.path.exists(output_path):
+        with open(output_path) as f:
+            existing = json.load(f)
+        results = existing.get("samples", [])
+        meaning_altering_count = sum(1 for s in results if s.get("meaning_altering"))
+        all_refs = [normalise(s["ref"]) for s in results if isinstance(s["ref"], str)]
+        all_hyps = [normalise(s["hyp"]) for s in results]
+    else:
+        results = []
+        meaning_altering_count = 0
+        all_refs = []
+        all_hyps = []
+
+    for i, sample in enumerate(dataset.load()):
+        if i < start_from:
+            continue
         if max_samples and i >= max_samples:
             break
         transcript=model.transcribe(sample.audio, sample.sample_rate)
