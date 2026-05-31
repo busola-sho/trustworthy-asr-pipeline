@@ -62,7 +62,7 @@ def alteration_eval(hyp:str, ref:str, sample_wer:float) -> bool:
 #         if max_samples and i >= max_samples:
 #             break
 def run_benchmark(model: ASRModel, dataset: Dataset, output_path: str, max_samples: int = None, start_from: int = 0) -> dict:
-    # load existing results if resuming
+
     if start_from > 0 and os.path.exists(output_path):
         with open(output_path) as f:
             existing = json.load(f)
