@@ -1,16 +1,14 @@
 """
-run_naive_combination.py
+run_naive_combination_v2.py
 
-Naive combination baseline: for each audio clip, pass all 4 model hypotheses
-to a judge (GPT-4o or Qwen) and ask it to produce the single best transcript.
-Then compute WER and MAR on that output.
-
-This is the baseline your full alignment/re-ranking pipeline needs to beat.
+Naive combination baseline with separate selector and judge models.
+Supports any combination of gpt4o, qwen, llama for each role.
 
 Usage:
-    python scripts/run_naive_combination.py --dataset commonvoice --judge gpt4o
-    python scripts/run_naive_combination.py --dataset all --judge qwen
-    python scripts/run_naive_combination.py --dataset all --judge gpt4o --max-samples 50
+    python scripts/run_naive_combination_v2.py --dataset commonvoice --selector llama --judge qwen
+    python scripts/run_naive_combination_v2.py --dataset edacc --selector qwen --judge llama
+    python scripts/run_naive_combination_v2.py --dataset all --selector llama --judge qwen
+    python scripts/run_naive_combination_v2.py --dry-run --selector llama --judge qwen
 """
 
 import json
@@ -19,7 +17,6 @@ import re
 import argparse
 import time
 from jiwer import wer
-from openai import OpenAI
 from ollama import Client
 from dotenv import load_dotenv
 
@@ -30,6 +27,11 @@ load_dotenv()
 BENCHMARKS_DIR = "benchmarks"
 OUTPUT_DIR     = "benchmarks"
 OLLAMA_HOST    = "http://localhost:11434"
+
+OLLAMA_MODELS = {
+    "qwen":  "qwen2.5:7b",
+    "llama": "llama3.1:8b",
+}
 
 CANONICAL_FILES = {
     ("qwen",     "commonvoice"):      "qwen_commonvoice_20260524_153426.json",
@@ -46,9 +48,10 @@ CANONICAL_FILES = {
     ("wav2vec2", "english_dialects"): "wav2vec2_english_dialects_20260526_073439.json",
 }
 
-MODELS   = ["qwen", "whisper", "parakeet", "wav2vec2"]
-DATASETS = ["commonvoice", "english_dialects", "edacc"]
+ASR_MODELS = ["qwen", "whisper", "parakeet", "wav2vec2"]
+DATASETS   = ["commonvoice", "english_dialects", "edacc"]
 
+# ── Prompts ────────────────────────────────────────────────────────────────────
 
 SELECTION_PROMPT = """You are given four ASR hypotheses of the same spoken audio.
 
@@ -61,7 +64,6 @@ You may select one hypothesis verbatim or make minimal edits to combine the best
 
 Return only the final transcript, nothing else."""
 
-# Best prompt from calibration (Prompt 2)
 MAR_PROMPT = """You are evaluating ASR transcripts for a policing context. Given a reference and hypothesis transcript of the same audio, determine if the hypothesis contains meaning-altering errors that would cause a police officer to misunderstand what was said.
 
 Ignore: capitalisation, punctuation, contractions, dialect normalisation (e.g. "didnae"→"didn't", "oot"→"out"), filler words.
@@ -96,75 +98,8 @@ def normalise(text: str) -> str:
     text = re.sub(r"[^\w\s']", '', text)
     return text
 
-# ── Judge calls ────────────────────────────────────────────────────────────────
-
-def select_best_gpt4o(client, ref, hyps):
-    hyp_block = "\n".join([f"Hypothesis {i+1}: {h}" for i, h in enumerate(hyps)])
-    try:
-        completion = client.chat.completions.create(
-            model="gpt-4o",
-            messages=[
-                {"role": "system", "content": SELECTION_PROMPT},
-                {"role": "user",   "content": hyp_block},
-            ],
-        )
-        return completion.choices[0].message.content.strip()
-    except Exception as e:
-        print(f"  ERROR (selection gpt4o): {e}")
-        return None
-
-def select_best_qwen(client, ref, hyps):
-    hyp_block = "\n".join([f"Hypothesis {i+1}: {h}" for i, h in enumerate(hyps)])
-    try:
-        response = client.chat(
-            model="qwen2.5:7b",
-            messages=[
-                {"role": "system", "content": SELECTION_PROMPT},
-                {"role": "user",   "content": hyp_block},
-            ],
-            options={"temperature": 0},
-        )
-        return response.message.content.strip()
-    except Exception as e:
-        print(f"  ERROR (selection qwen): {e}")
-        return None
-
-def mar_eval_gpt4o(client, ref, hyp, sample_wer):
-    if sample_wer == 0:
-        return False
-    try:
-        completion = client.chat.completions.create(
-            model="gpt-4o",
-            messages=[
-                {"role": "system", "content": MAR_PROMPT},
-                {"role": "user",   "content": f"Reference: {ref}\nHypothesis: {hyp}"},
-            ],
-        )
-        result = completion.choices[0].message.content.strip().lower()
-        return parse_verdict(result)
-    except Exception as e:
-        print(f"  ERROR (MAR gpt4o): {e}")
-        return None
-
-def mar_eval_qwen(client, ref, hyp, sample_wer):
-    if sample_wer == 0:
-        return False
-    try:
-        response = client.chat(
-            model="qwen2.5:7b",
-            messages=[
-                {"role": "system", "content": MAR_PROMPT},
-                {"role": "user",   "content": f"Reference: {ref}\nHypothesis: {hyp}"},
-            ],
-            options={"temperature": 0},
-        )
-        result = response.message.content.strip().lower()
-        return parse_verdict(result)
-    except Exception as e:
-        print(f"  ERROR (MAR qwen): {e}")
-        return None
-
-def parse_verdict(result):
+def parse_verdict(result: str):
+    result = result.strip().lower()
     if result.startswith("true"):
         return True
     elif result.startswith("false"):
@@ -173,111 +108,133 @@ def parse_verdict(result):
         return True
     elif "false" in result and "true" not in result:
         return False
+    print(f"  WARNING: could not parse verdict: '{result[:80]}'")
     return None
 
-# ── Main ───────────────────────────────────────────────────────────────────────
+# ── Ollama calls ───────────────────────────────────────────────────────────────
 
-def run_dataset(dataset, judge, openai_client, ollama_client, max_samples=None):
-    print(f"\n── {dataset} ({judge}) ──────────────────────────────────────")
+def ollama_select(client, model_name, hyps):
+    hyp_block = "\n".join([f"Hypothesis {i+1}: {h}" for i, h in enumerate(hyps)])
+    try:
+        response = client.chat(
+            model=model_name,
+            messages=[
+                {"role": "system", "content": SELECTION_PROMPT},
+                {"role": "user",   "content": hyp_block},
+            ],
+            options={"temperature": 0},
+        )
+        return response.message.content.strip()
+    except Exception as e:
+        print(f"  ERROR (select/{model_name}): {e}")
+        return None
 
-    # load all 4 model files
+def ollama_mar(client, model_name, ref, hyp, sample_wer):
+    if sample_wer == 0:
+        return False
+    try:
+        response = client.chat(
+            model=model_name,
+            messages=[
+                {"role": "system", "content": MAR_PROMPT},
+                {"role": "user",   "content": f"Reference: {ref}\nHypothesis: {hyp}"},
+            ],
+            options={"temperature": 0},
+        )
+        return parse_verdict(response.message.content)
+    except Exception as e:
+        print(f"  ERROR (mar/{model_name}): {e}")
+        return None
+
+# ── Main runner ────────────────────────────────────────────────────────────────
+
+def run_dataset(dataset, selector_key, judge_key, client, max_samples=None):
+    selector_model = OLLAMA_MODELS[selector_key]
+    judge_model    = OLLAMA_MODELS[judge_key]
+
+    print(f"\n── {dataset} | selector={selector_key} judge={judge_key} ──────────")
+
+    # load all 4 ASR model files
     model_samples = {}
-    for model in MODELS:
-        path = os.path.join(BENCHMARKS_DIR, CANONICAL_FILES[(model, dataset)])
+    for m in ASR_MODELS:
+        path = os.path.join(BENCHMARKS_DIR, CANONICAL_FILES[(m, dataset)])
         with open(path) as f:
-            data = json.load(f)
-        model_samples[model] = data["samples"]
+            model_samples[m] = json.load(f)["samples"]
 
     n = len(model_samples["qwen"])
     if max_samples:
         n = min(n, max_samples)
 
-    output_path = os.path.join(OUTPUT_DIR, f"naive_{dataset}_{judge}.json")
+    output_path = os.path.join(
+        OUTPUT_DIR,
+        f"naive_{dataset}_{selector_key}sel_{judge_key}jud.json"
+    )
 
     # resume support
     if os.path.exists(output_path):
         with open(output_path) as f:
             existing = json.load(f)
-        results = existing.get("samples", [])
+        results    = existing.get("samples", [])
         start_from = len(results)
         print(f"Resuming from sample {start_from}")
     else:
-        results = []
+        results    = []
         start_from = 0
-
-    ma_count = sum(1 for r in results if r.get("meaning_altering"))
 
     for i in range(start_from, n):
         ref  = model_samples["qwen"][i]["ref"]
 
-        # skip IGNORE segments
         if "IGNORE_TIME_SEGMENT_IN_SCORING" in ref:
-            results.append({
-                "ref": ref, "hyp": None,
-                "meaning_altering": None, "sample_WER": None,
-                "skipped": True
-            })
+            results.append({"ref": ref, "hyp": None, "meaning_altering": None,
+                            "sample_WER": None, "skipped": True})
             continue
 
-        hyps = [model_samples[m][i]["hyp"] for m in MODELS]
+        hyps = [model_samples[m][i]["hyp"] for m in ASR_MODELS]
 
-        # step 1: select best transcript
-        if judge == "gpt4o":
-            best_hyp = select_best_gpt4o(openai_client, ref, hyps)
-            time.sleep(0.3)
-        else:
-            best_hyp = select_best_qwen(ollama_client, ref, hyps)
-            time.sleep(0.1)
+        # step 1: select
+        best_hyp = ollama_select(client, selector_model, hyps)
+        time.sleep(0.1)
 
         if best_hyp is None:
-            results.append({
-                "ref": ref, "hyp": None,
-                "meaning_altering": None, "sample_WER": None,
-                "error": True
-            })
+            results.append({"ref": ref, "hyp": None, "meaning_altering": None,
+                            "sample_WER": None, "error": True})
             continue
 
-        # step 2: compute WER
+        # step 2: WER
         sample_wer = wer(normalise(ref), normalise(best_hyp))
 
-        # step 3: MAR eval using same judge
-        if judge == "gpt4o":
-            ma = mar_eval_gpt4o(openai_client, ref, best_hyp, sample_wer)
-            time.sleep(0.3)
-        else:
-            ma = mar_eval_qwen(ollama_client, ref, best_hyp, sample_wer)
-            time.sleep(0.1)
-
-        if ma:
-            ma_count += 1
+        # step 3: MAR
+        ma = ollama_mar(client, judge_model, ref, best_hyp, sample_wer)
+        time.sleep(0.1)
 
         results.append({
             "ref":              ref,
             "hyp":              best_hyp,
-            "source_hyps":      {m: model_samples[m][i]["hyp"] for m in MODELS},
+            "source_hyps":      {m: model_samples[m][i]["hyp"] for m in ASR_MODELS},
             "meaning_altering": ma,
             "sample_WER":       sample_wer,
         })
 
-        # save after every sample
-        valid = [r for r in results if not r.get("skipped") and not r.get("error") and r.get("sample_WER") is not None]
         with open(output_path, "w") as f:
-            json.dump({"progress": len(results), "samples": results}, f, indent=2, ensure_ascii=False)
+            json.dump({"progress": len(results), "samples": results}, f,
+                      indent=2, ensure_ascii=False)
 
         if (i + 1) % 10 == 0:
             print(f"  {i+1}/{n} done")
 
     # final metrics
-    valid = [r for r in results if not r.get("skipped") and not r.get("error") and r.get("sample_WER") is not None]
-    all_refs = [normalise(r["ref"]) for r in valid]
-    all_hyps = [normalise(r["hyp"]) for r in valid]
+    valid      = [r for r in results if not r.get("skipped") and not r.get("error")
+                  and r.get("sample_WER") is not None]
+    all_refs   = [normalise(r["ref"]) for r in valid]
+    all_hyps   = [normalise(r["hyp"]) for r in valid]
     corpus_wer = wer(all_refs, all_hyps) if all_refs else None
-    mar = sum(1 for r in valid if r.get("meaning_altering")) / len(valid) if valid else None
+    mar        = sum(1 for r in valid if r.get("meaning_altering")) / len(valid) if valid else None
 
     output = {
-        "judge":                  judge,
+        "selector":               selector_key,
+        "judge":                  judge_key,
         "dataset":                dataset,
-        "models_combined":        MODELS,
+        "models_combined":        ASR_MODELS,
         "corpus_wer":             corpus_wer,
         "meaning_alteration_rate": mar,
         "num_samples":            len(valid),
@@ -289,46 +246,62 @@ def run_dataset(dataset, judge, openai_client, ollama_client, max_samples=None):
 
     print(f"  WER: {corpus_wer:.4f}  MAR: {mar:.4f}  ({len(valid)} samples)")
     print(f"  Saved to {output_path}")
-    return {"dataset": dataset, "judge": judge, "wer": corpus_wer, "mar": mar, "n": len(valid)}
+    return {"dataset": dataset, "selector": selector_key, "judge": judge_key,
+            "wer": corpus_wer, "mar": mar, "n": len(valid)}
+
+# ── Entry point ────────────────────────────────────────────────────────────────
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--dataset",     default="all", help="commonvoice, english_dialects, edacc, or all")
-    parser.add_argument("--judge",       default="gpt4o", choices=["gpt4o", "qwen"])
-    parser.add_argument("--max-samples", type=int, default=None, help="Limit samples per dataset (for testing)")
+    parser.add_argument("--dataset",     default="all",
+                        help="commonvoice, edacc, english_dialects, or all")
+    parser.add_argument("--selector",    default="llama", choices=["qwen", "llama"],
+                        help="Model used to select/construct best transcript")
+    parser.add_argument("--judge",       default="qwen",  choices=["qwen", "llama"],
+                        help="Model used to evaluate meaning alteration")
+    parser.add_argument("--max-samples", type=int, default=None)
     parser.add_argument("--dry-run",     action="store_true")
     args = parser.parse_args()
 
     datasets = DATASETS if args.dataset == "all" else [args.dataset]
 
-    # initialise clients
-    openai_client = OpenAI(api_key=os.getenv('OPENAI_API_KEY')) if args.judge == "gpt4o" else None
-    ollama_client = Client(host=OLLAMA_HOST) if args.judge == "qwen" else None
-
     if args.dry_run:
-        print(f"[DRY RUN] judge={args.judge} datasets={datasets} max_samples={args.max_samples}")
-        # load first sample to show what it'll do
+        print(f"[DRY RUN] selector={args.selector} judge={args.judge} datasets={datasets}")
         path = os.path.join(BENCHMARKS_DIR, CANONICAL_FILES[("qwen", datasets[0])])
         with open(path) as f:
             data = json.load(f)
         s = data["samples"][0]
-        print(f"\nSample 0 ref: {s['ref'][:80]}")
-        for m in MODELS:
+        print(f"Sample 0 ref: {s['ref'][:80]}")
+        for m in ASR_MODELS:
             p = os.path.join(BENCHMARKS_DIR, CANONICAL_FILES[(m, datasets[0])])
             with open(p) as f:
                 d = json.load(f)
             print(f"  {m}: {d['samples'][0]['hyp'][:80]}")
         return
 
+    client = Client(host=OLLAMA_HOST)
+    try:
+        available = [m.model for m in client.list().models]
+        print(f"Ollama models available: {available}\n")
+        for key in [args.selector, args.judge]:
+            model_name = OLLAMA_MODELS[key]
+            if not any(model_name in m for m in available):
+                print(f"ERROR: {model_name} not pulled. Run: ollama pull {model_name}")
+                return
+    except Exception as e:
+        print(f"ERROR: could not connect to Ollama — run: ollama serve\n{e}")
+        return
+
     summary = []
     for dataset in datasets:
-        result = run_dataset(dataset, args.judge, openai_client, ollama_client, args.max_samples)
+        result = run_dataset(dataset, args.selector, args.judge, client, args.max_samples)
         summary.append(result)
 
     print("\n── Summary ────────────────────────────────────────────────")
-    print(f"{'Dataset':<20} {'Judge':<10} {'WER':>8} {'MAR':>8} {'N':>6}")
+    print(f"{'Dataset':<20} {'Selector':<10} {'Judge':<10} {'WER':>8} {'MAR':>8} {'N':>6}")
     for r in summary:
-        print(f"{r['dataset']:<20} {r['judge']:<10} {r['wer']:>8.4f} {r['mar']:>8.4f} {r['n']:>6}")
+        print(f"{r['dataset']:<20} {r['selector']:<10} {r['judge']:<10} "
+              f"{r['wer']:>8.4f} {r['mar']:>8.4f} {r['n']:>6}")
 
 if __name__ == "__main__":
     main()
