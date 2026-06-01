@@ -1,0 +1,90 @@
+======================================================
+Job ID:    29946599
+Array ID:  1
+Model:     wav2vec2
+Started:   Sun May 31 22:24:44 BST 2026
+======================================================
+Running LibriSpeech test-clean verification for wav2vec2...
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+
+============================================================
+Model: wav2vec2
+Dataset: LibriSpeech test-clean
+============================================================
+Loading wav2vec2...
+Loading weights:   0%|          | 0/423 [00:00<?, ?it/s]Loading weights: 100%|██████████| 423/423 [00:00<00:00, 35677.90it/s]
+[transformers] [1mWav2Vec2ForCTC LOAD REPORT[0m from: facebook/wav2vec2-large-960h-lv60-self
+Key                        | Status  | 
+---------------------------+---------+-
+wav2vec2.masked_spec_embed | MISSING | 
+
+Notes:
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+Model loaded.
+Loading LibriSpeech test-clean...
+Dataset loaded.
+  50 samples | running WER: 1.75%
+  100 samples | running WER: 1.55%
+  150 samples | running WER: 1.58%
+  200 samples | running WER: 1.63%
+  250 samples | running WER: 1.73%
+  300 samples | running WER: 1.70%
+  350 samples | running WER: 1.84%
+  400 samples | running WER: 1.82%
+  450 samples | running WER: 1.83%
+  500 samples | running WER: 1.89%
+  550 samples | running WER: 1.85%
+  600 samples | running WER: 1.92%
+  650 samples | running WER: 1.90%
+  700 samples | running WER: 1.87%
+  750 samples | running WER: 1.87%
+  800 samples | running WER: 1.91%
+  850 samples | running WER: 1.86%
+  900 samples | running WER: 1.85%
+  950 samples | running WER: 1.86%
+  1000 samples | running WER: 1.89%
+  1050 samples | running WER: 1.89%
+  1100 samples | running WER: 1.84%
+  1150 samples | running WER: 1.80%
+  1200 samples | running WER: 1.79%
+  1250 samples | running WER: 1.76%
+  1300 samples | running WER: 1.74%
+  1350 samples | running WER: 1.77%
+  1400 samples | running WER: 1.77%
+  1450 samples | running WER: 1.76%
+  1500 samples | running WER: 1.75%
+  1550 samples | running WER: 1.73%
+  1600 samples | running WER: 1.71%
+  1650 samples | running WER: 1.72%
+  1700 samples | running WER: 1.75%
+  1750 samples | running WER: 1.76%
+  1800 samples | running WER: 1.74%
+  1850 samples | running WER: 1.72%
+  1900 samples | running WER: 1.74%
+  1950 samples | running WER: 1.74%
+  2000 samples | running WER: 1.76%
+  2050 samples | running WER: 1.74%
+  2100 samples | running WER: 1.75%
+  2150 samples | running WER: 1.79%
+  2200 samples | running WER: 1.80%
+  2250 samples | running WER: 1.83%
+  2300 samples | running WER: 1.86%
+  2350 samples | running WER: 1.92%
+  2400 samples | running WER: 1.92%
+  2450 samples | running WER: 1.89%
+  2500 samples | running WER: 1.87%
+  2550 samples | running WER: 1.87%
+  2600 samples | running WER: 1.88%
+
+Results:
+  Corpus WER:    1.87%
+  Published WER: 1.8%
+  Gap:           0.07pp
+  Saved to:      benchmarks/librispeech_wav2vec2_20260531_222505.json
+
+============================================================
+SUMMARY
+============================================================
+Model           Our WER  Published      Gap      N
+wav2vec2          1.87%       1.8%    0.07pp   2620
+Finished: Sun May 31 22:28:10 BST 2026

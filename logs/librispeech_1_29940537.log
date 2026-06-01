@@ -1,0 +1,41 @@
+======================================================
+Job ID:    29940537
+Array ID:  1
+Model:     wav2vec2
+Started:   Sun May 31 21:49:06 BST 2026
+======================================================
+Running LibriSpeech test-clean verification for wav2vec2...
+
+============================================================
+Model: wav2vec2
+Dataset: LibriSpeech test-clean
+============================================================
+Loading wav2vec2...
+Traceback (most recent call last):
+  File "/rds/user/ors36/hpc-work/trustworthy-asr-pipeline/scripts/run_librispeech_benchmark.py", line 193, in <module>
+    main()
+  File "/rds/user/ors36/hpc-work/trustworthy-asr-pipeline/scripts/run_librispeech_benchmark.py", line 179, in main
+    result = run_model(model_key, args.max_samples)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/rds/user/ors36/hpc-work/trustworthy-asr-pipeline/scripts/run_librispeech_benchmark.py", line 79, in run_model
+    model.load()
+  File "/rds/user/ors36/hpc-work/trustworthy-asr-pipeline/src/models.py", line 96, in load
+    self.model = AutoModelForCTC.from_pretrained(self.model_name, dtype=torch.float32)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/rds/user/ors36/hpc-work/trustworthy-asr-pipeline/.venv_librispeech/lib64/python3.11/site-packages/transformers/models/auto/auto_factory.py", line 405, in from_pretrained
+    return model_class.from_pretrained(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/rds/user/ors36/hpc-work/trustworthy-asr-pipeline/.venv_librispeech/lib64/python3.11/site-packages/transformers/modeling_utils.py", line 4296, in from_pretrained
+    loading_info, disk_offload_index = cls._load_pretrained_model(model, state_dict, checkpoint_files, load_config)
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/rds/user/ors36/hpc-work/trustworthy-asr-pipeline/.venv_librispeech/lib64/python3.11/site-packages/transformers/modeling_utils.py", line 4422, in _load_pretrained_model
+    merged_state_dict.update(load_state_dict(ckpt_file, disable_mmap=load_config.disable_mmap))
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/rds/user/ors36/hpc-work/trustworthy-asr-pipeline/.venv_librispeech/lib64/python3.11/site-packages/transformers/modeling_utils.py", line 374, in load_state_dict
+    check_torch_load_is_safe()
+  File "/rds/user/ors36/hpc-work/trustworthy-asr-pipeline/.venv_librispeech/lib64/python3.11/site-packages/transformers/utils/import_utils.py", line 1384, in check_torch_load_is_safe
+    raise ValueError(
+ValueError: Due to a serious vulnerability issue in `torch.load`, even with `weights_only=True`, we now require users to upgrade torch to at least v2.6 in order to use the function. This version restriction does not apply when loading files with safetensors.
+See the vulnerability report here https://nvd.nist.gov/vuln/detail/CVE-2025-32434
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Finished: Sun May 31 21:49:56 BST 2026

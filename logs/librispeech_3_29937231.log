@@ -1,0 +1,25 @@
+======================================================
+Job ID:    29937231
+Array ID:  3
+Model:     qwen3asr
+Started:   Sun May 31 20:38:22 BST 2026
+======================================================
+Running LibriSpeech test-clean verification for qwen3asr...
+
+============================================================
+Model: qwen3asr
+Dataset: LibriSpeech test-clean
+============================================================
+Loading qwen3asr...
+Traceback (most recent call last):
+  File "/rds/user/ors36/hpc-work/trustworthy-asr-pipeline/scripts/run_librispeech_benchmark.py", line 190, in <module>
+    main()
+  File "/rds/user/ors36/hpc-work/trustworthy-asr-pipeline/scripts/run_librispeech_benchmark.py", line 176, in main
+    result = run_model(model_key, args.max_samples)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/rds/user/ors36/hpc-work/trustworthy-asr-pipeline/scripts/run_librispeech_benchmark.py", line 76, in run_model
+    model.load()
+  File "/rds/user/ors36/hpc-work/trustworthy-asr-pipeline/src/models.py", line 211, in load
+    from qwen_asr import Qwen3ASRModel
+ModuleNotFoundError: No module named 'qwen_asr'
+Finished: Sun May 31 20:38:41 BST 2026
