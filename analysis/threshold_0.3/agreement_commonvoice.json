@@ -1,0 +1,154 @@
+{
+  "dataset": "commonvoice",
+  "threshold": 0.3,
+  "n_clips": 680,
+  "combination_table": [
+    {
+      "combination": "Qwen3-ASR + Whisper + Parakeet",
+      "models": [
+        "parakeet",
+        "qwen",
+        "whisper"
+      ],
+      "count": 299,
+      "pct": 44.0
+    },
+    {
+      "combination": "All 4 correct",
+      "models": [
+        "parakeet",
+        "qwen",
+        "wav2vec2",
+        "whisper"
+      ],
+      "count": 270,
+      "pct": 39.7
+    },
+    {
+      "combination": "None correct",
+      "models": [],
+      "count": 35,
+      "pct": 5.1
+    },
+    {
+      "combination": "Qwen3-ASR + Parakeet",
+      "models": [
+        "parakeet",
+        "qwen"
+      ],
+      "count": 20,
+      "pct": 2.9
+    },
+    {
+      "combination": "Qwen3-ASR + Whisper",
+      "models": [
+        "qwen",
+        "whisper"
+      ],
+      "count": 16,
+      "pct": 2.4
+    },
+    {
+      "combination": "Qwen3-ASR",
+      "models": [
+        "qwen"
+      ],
+      "count": 15,
+      "pct": 2.2
+    },
+    {
+      "combination": "Whisper + Parakeet",
+      "models": [
+        "parakeet",
+        "whisper"
+      ],
+      "count": 10,
+      "pct": 1.5
+    },
+    {
+      "combination": "Whisper",
+      "models": [
+        "whisper"
+      ],
+      "count": 8,
+      "pct": 1.2
+    },
+    {
+      "combination": "Parakeet",
+      "models": [
+        "parakeet"
+      ],
+      "count": 4,
+      "pct": 0.6
+    },
+    {
+      "combination": "Qwen3-ASR + Parakeet + wav2vec2",
+      "models": [
+        "parakeet",
+        "qwen",
+        "wav2vec2"
+      ],
+      "count": 2,
+      "pct": 0.3
+    },
+    {
+      "combination": "Qwen3-ASR + Whisper + wav2vec2",
+      "models": [
+        "qwen",
+        "wav2vec2",
+        "whisper"
+      ],
+      "count": 1,
+      "pct": 0.1
+    }
+  ],
+  "n_correct_dist": {
+    "0": {
+      "count": 35,
+      "pct": 5.1
+    },
+    "1": {
+      "count": 27,
+      "pct": 4.0
+    },
+    "2": {
+      "count": 46,
+      "pct": 6.8
+    },
+    "3": {
+      "count": 302,
+      "pct": 44.4
+    },
+    "4": {
+      "count": 270,
+      "pct": 39.7
+    }
+  },
+  "model_stats": {
+    "qwen": {
+      "clips_correct": 623,
+      "pct_correct": 91.6,
+      "clips_best_wer": 364,
+      "pct_best_wer": 53.5
+    },
+    "whisper": {
+      "clips_correct": 604,
+      "pct_correct": 88.8,
+      "clips_best_wer": 177,
+      "pct_best_wer": 26.0
+    },
+    "parakeet": {
+      "clips_correct": 605,
+      "pct_correct": 89.0,
+      "clips_best_wer": 138,
+      "pct_best_wer": 20.3
+    },
+    "wav2vec2": {
+      "clips_correct": 273,
+      "pct_correct": 40.1,
+      "clips_best_wer": 1,
+      "pct_best_wer": 0.1
+    }
+  },
+  "complementarity_pct": 46.5
+}

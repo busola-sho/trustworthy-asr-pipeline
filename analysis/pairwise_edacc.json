@@ -1,0 +1,100 @@
+{
+  "dataset": "edacc",
+  "n_valid": 198,
+  "disagreement_rates": {
+    "qwen_vs_whisper": {
+      "model_a": "qwen",
+      "model_b": "whisper",
+      "disagreement_rate": 0.4392,
+      "disagreements": 1059,
+      "total_positions": 2411
+    },
+    "qwen_vs_parakeet": {
+      "model_a": "qwen",
+      "model_b": "parakeet",
+      "disagreement_rate": 0.6367,
+      "disagreements": 1535,
+      "total_positions": 2411
+    },
+    "qwen_vs_wav2vec2": {
+      "model_a": "qwen",
+      "model_b": "wav2vec2",
+      "disagreement_rate": 0.9453,
+      "disagreements": 2279,
+      "total_positions": 2411
+    },
+    "whisper_vs_parakeet": {
+      "model_a": "whisper",
+      "model_b": "parakeet",
+      "disagreement_rate": 0.6827,
+      "disagreements": 1646,
+      "total_positions": 2411
+    },
+    "whisper_vs_wav2vec2": {
+      "model_a": "whisper",
+      "model_b": "wav2vec2",
+      "disagreement_rate": 0.9461,
+      "disagreements": 2281,
+      "total_positions": 2411
+    },
+    "parakeet_vs_wav2vec2": {
+      "model_a": "parakeet",
+      "model_b": "wav2vec2",
+      "disagreement_rate": 0.9585,
+      "disagreements": 2311,
+      "total_positions": 2411
+    }
+  },
+  "matrix": {
+    "qwen": {
+      "qwen": 0.0,
+      "whisper": 0.4392,
+      "parakeet": 0.6367,
+      "wav2vec2": 0.9453
+    },
+    "whisper": {
+      "qwen": 0.4392,
+      "whisper": 0.0,
+      "parakeet": 0.6827,
+      "wav2vec2": 0.9461
+    },
+    "parakeet": {
+      "qwen": 0.6367,
+      "whisper": 0.6827,
+      "parakeet": 0.0,
+      "wav2vec2": 0.9585
+    },
+    "wav2vec2": {
+      "qwen": 0.9453,
+      "whisper": 0.9461,
+      "parakeet": 0.9585,
+      "wav2vec2": 0.0
+    }
+  },
+  "ranked_pairs": [
+    [
+      "parakeet_vs_wav2vec2",
+      0.9585
+    ],
+    [
+      "whisper_vs_wav2vec2",
+      0.9461
+    ],
+    [
+      "qwen_vs_wav2vec2",
+      0.9453
+    ],
+    [
+      "whisper_vs_parakeet",
+      0.6827
+    ],
+    [
+      "qwen_vs_parakeet",
+      0.6367
+    ],
+    [
+      "qwen_vs_whisper",
+      0.4392
+    ]
+  ]
+}

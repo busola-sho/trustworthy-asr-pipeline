@@ -1,0 +1,163 @@
+{
+  "dataset": "edacc",
+  "threshold": 0.2,
+  "n_clips": 198,
+  "combination_table": [
+    {
+      "combination": "None correct",
+      "models": [],
+      "count": 62,
+      "pct": 31.3
+    },
+    {
+      "combination": "Qwen3-ASR + Whisper + Parakeet",
+      "models": [
+        "parakeet",
+        "qwen",
+        "whisper"
+      ],
+      "count": 46,
+      "pct": 23.2
+    },
+    {
+      "combination": "Qwen3-ASR + Whisper",
+      "models": [
+        "qwen",
+        "whisper"
+      ],
+      "count": 32,
+      "pct": 16.2
+    },
+    {
+      "combination": "All 4 correct",
+      "models": [
+        "parakeet",
+        "qwen",
+        "wav2vec2",
+        "whisper"
+      ],
+      "count": 20,
+      "pct": 10.1
+    },
+    {
+      "combination": "Qwen3-ASR",
+      "models": [
+        "qwen"
+      ],
+      "count": 15,
+      "pct": 7.6
+    },
+    {
+      "combination": "Qwen3-ASR + Parakeet",
+      "models": [
+        "parakeet",
+        "qwen"
+      ],
+      "count": 8,
+      "pct": 4.0
+    },
+    {
+      "combination": "Qwen3-ASR + Parakeet + wav2vec2",
+      "models": [
+        "parakeet",
+        "qwen",
+        "wav2vec2"
+      ],
+      "count": 4,
+      "pct": 2.0
+    },
+    {
+      "combination": "Whisper",
+      "models": [
+        "whisper"
+      ],
+      "count": 4,
+      "pct": 2.0
+    },
+    {
+      "combination": "Parakeet",
+      "models": [
+        "parakeet"
+      ],
+      "count": 3,
+      "pct": 1.5
+    },
+    {
+      "combination": "Whisper + Parakeet",
+      "models": [
+        "parakeet",
+        "whisper"
+      ],
+      "count": 2,
+      "pct": 1.0
+    },
+    {
+      "combination": "Parakeet + wav2vec2",
+      "models": [
+        "parakeet",
+        "wav2vec2"
+      ],
+      "count": 1,
+      "pct": 0.5
+    },
+    {
+      "combination": "Qwen3-ASR + Whisper + wav2vec2",
+      "models": [
+        "qwen",
+        "wav2vec2",
+        "whisper"
+      ],
+      "count": 1,
+      "pct": 0.5
+    }
+  ],
+  "n_correct_dist": {
+    "0": {
+      "count": 62,
+      "pct": 31.3
+    },
+    "1": {
+      "count": 22,
+      "pct": 11.1
+    },
+    "2": {
+      "count": 43,
+      "pct": 21.7
+    },
+    "3": {
+      "count": 51,
+      "pct": 25.8
+    },
+    "4": {
+      "count": 20,
+      "pct": 10.1
+    }
+  },
+  "model_stats": {
+    "qwen": {
+      "clips_correct": 126,
+      "pct_correct": 63.6,
+      "clips_best_wer": 162,
+      "pct_best_wer": 81.8
+    },
+    "whisper": {
+      "clips_correct": 105,
+      "pct_correct": 53.0,
+      "clips_best_wer": 22,
+      "pct_best_wer": 11.1
+    },
+    "parakeet": {
+      "clips_correct": 84,
+      "pct_correct": 42.4,
+      "clips_best_wer": 13,
+      "pct_best_wer": 6.6
+    },
+    "wav2vec2": {
+      "clips_correct": 26,
+      "pct_correct": 13.1,
+      "clips_best_wer": 1,
+      "pct_best_wer": 0.5
+    }
+  },
+  "complementarity_pct": 18.2
+}

@@ -1,0 +1,354 @@
+{
+  "dataset": "edacc",
+  "n_valid": 198,
+  "pairs": {
+    "qwen_vs_whisper": {
+      "model_a": "qwen",
+      "model_b": "whisper",
+      "label_a": "Qwen3-ASR",
+      "label_b": "Whisper",
+      "by_category": {
+        "dialect": {
+          "qwen_wins": 0,
+          "whisper_wins": 0,
+          "both_wrong": 0,
+          "both_right": 0,
+          "total_disagree": 0,
+          "qwen_win_rate": 0,
+          "whisper_win_rate": 0,
+          "both_wrong_rate": 0
+        },
+        "number": {
+          "qwen_wins": 0,
+          "whisper_wins": 0,
+          "both_wrong": 0,
+          "both_right": 0,
+          "total_disagree": 0,
+          "qwen_win_rate": 0,
+          "whisper_win_rate": 0,
+          "both_wrong_rate": 0
+        },
+        "named_entity": {
+          "qwen_wins": 0,
+          "whisper_wins": 0,
+          "both_wrong": 0,
+          "both_right": 0,
+          "total_disagree": 0,
+          "qwen_win_rate": 0,
+          "whisper_win_rate": 0,
+          "both_wrong_rate": 0
+        },
+        "function": {
+          "qwen_wins": 5,
+          "whisper_wins": 4,
+          "both_wrong": 949,
+          "both_right": 59,
+          "total_disagree": 9,
+          "qwen_win_rate": 0.556,
+          "whisper_win_rate": 0.444,
+          "both_wrong_rate": 0.991
+        },
+        "content": {
+          "qwen_wins": 3,
+          "whisper_wins": 0,
+          "both_wrong": 1386,
+          "both_right": 5,
+          "total_disagree": 3,
+          "qwen_win_rate": 1.0,
+          "whisper_win_rate": 0.0,
+          "both_wrong_rate": 0.998
+        }
+      }
+    },
+    "qwen_vs_parakeet": {
+      "model_a": "qwen",
+      "model_b": "parakeet",
+      "label_a": "Qwen3-ASR",
+      "label_b": "Parakeet",
+      "by_category": {
+        "dialect": {
+          "qwen_wins": 0,
+          "parakeet_wins": 0,
+          "both_wrong": 0,
+          "both_right": 0,
+          "total_disagree": 0,
+          "qwen_win_rate": 0,
+          "parakeet_win_rate": 0,
+          "both_wrong_rate": 0
+        },
+        "number": {
+          "qwen_wins": 0,
+          "parakeet_wins": 0,
+          "both_wrong": 0,
+          "both_right": 0,
+          "total_disagree": 0,
+          "qwen_win_rate": 0,
+          "parakeet_win_rate": 0,
+          "both_wrong_rate": 0
+        },
+        "named_entity": {
+          "qwen_wins": 0,
+          "parakeet_wins": 0,
+          "both_wrong": 0,
+          "both_right": 0,
+          "total_disagree": 0,
+          "qwen_win_rate": 0,
+          "parakeet_win_rate": 0,
+          "both_wrong_rate": 0
+        },
+        "function": {
+          "qwen_wins": 64,
+          "parakeet_wins": 0,
+          "both_wrong": 953,
+          "both_right": 0,
+          "total_disagree": 64,
+          "qwen_win_rate": 1.0,
+          "parakeet_win_rate": 0.0,
+          "both_wrong_rate": 0.937
+        },
+        "content": {
+          "qwen_wins": 8,
+          "parakeet_wins": 0,
+          "both_wrong": 1386,
+          "both_right": 0,
+          "total_disagree": 8,
+          "qwen_win_rate": 1.0,
+          "parakeet_win_rate": 0.0,
+          "both_wrong_rate": 0.994
+        }
+      }
+    },
+    "qwen_vs_wav2vec2": {
+      "model_a": "qwen",
+      "model_b": "wav2vec2",
+      "label_a": "Qwen3-ASR",
+      "label_b": "wav2vec2",
+      "by_category": {
+        "dialect": {
+          "qwen_wins": 0,
+          "wav2vec2_wins": 0,
+          "both_wrong": 0,
+          "both_right": 0,
+          "total_disagree": 0,
+          "qwen_win_rate": 0,
+          "wav2vec2_win_rate": 0,
+          "both_wrong_rate": 0
+        },
+        "number": {
+          "qwen_wins": 0,
+          "wav2vec2_wins": 0,
+          "both_wrong": 0,
+          "both_right": 0,
+          "total_disagree": 0,
+          "qwen_win_rate": 0,
+          "wav2vec2_win_rate": 0,
+          "both_wrong_rate": 0
+        },
+        "named_entity": {
+          "qwen_wins": 0,
+          "wav2vec2_wins": 0,
+          "both_wrong": 0,
+          "both_right": 0,
+          "total_disagree": 0,
+          "qwen_win_rate": 0,
+          "wav2vec2_win_rate": 0,
+          "both_wrong_rate": 0
+        },
+        "function": {
+          "qwen_wins": 19,
+          "wav2vec2_wins": 604,
+          "both_wrong": 349,
+          "both_right": 45,
+          "total_disagree": 623,
+          "qwen_win_rate": 0.03,
+          "wav2vec2_win_rate": 0.97,
+          "both_wrong_rate": 0.359
+        },
+        "content": {
+          "qwen_wins": 6,
+          "wav2vec2_wins": 779,
+          "both_wrong": 607,
+          "both_right": 2,
+          "total_disagree": 785,
+          "qwen_win_rate": 0.008,
+          "wav2vec2_win_rate": 0.992,
+          "both_wrong_rate": 0.436
+        }
+      }
+    },
+    "whisper_vs_parakeet": {
+      "model_a": "whisper",
+      "model_b": "parakeet",
+      "label_a": "Whisper",
+      "label_b": "Parakeet",
+      "by_category": {
+        "dialect": {
+          "whisper_wins": 0,
+          "parakeet_wins": 0,
+          "both_wrong": 0,
+          "both_right": 0,
+          "total_disagree": 0,
+          "whisper_win_rate": 0,
+          "parakeet_win_rate": 0,
+          "both_wrong_rate": 0
+        },
+        "number": {
+          "whisper_wins": 0,
+          "parakeet_wins": 0,
+          "both_wrong": 0,
+          "both_right": 0,
+          "total_disagree": 0,
+          "whisper_win_rate": 0,
+          "parakeet_win_rate": 0,
+          "both_wrong_rate": 0
+        },
+        "named_entity": {
+          "whisper_wins": 0,
+          "parakeet_wins": 0,
+          "both_wrong": 0,
+          "both_right": 0,
+          "total_disagree": 0,
+          "whisper_win_rate": 0,
+          "parakeet_win_rate": 0,
+          "both_wrong_rate": 0
+        },
+        "function": {
+          "whisper_wins": 63,
+          "parakeet_wins": 0,
+          "both_wrong": 954,
+          "both_right": 0,
+          "total_disagree": 63,
+          "whisper_win_rate": 1.0,
+          "parakeet_win_rate": 0.0,
+          "both_wrong_rate": 0.938
+        },
+        "content": {
+          "whisper_wins": 5,
+          "parakeet_wins": 0,
+          "both_wrong": 1389,
+          "both_right": 0,
+          "total_disagree": 5,
+          "whisper_win_rate": 1.0,
+          "parakeet_win_rate": 0.0,
+          "both_wrong_rate": 0.996
+        }
+      }
+    },
+    "whisper_vs_wav2vec2": {
+      "model_a": "whisper",
+      "model_b": "wav2vec2",
+      "label_a": "Whisper",
+      "label_b": "wav2vec2",
+      "by_category": {
+        "dialect": {
+          "whisper_wins": 0,
+          "wav2vec2_wins": 0,
+          "both_wrong": 0,
+          "both_right": 0,
+          "total_disagree": 0,
+          "whisper_win_rate": 0,
+          "wav2vec2_win_rate": 0,
+          "both_wrong_rate": 0
+        },
+        "number": {
+          "whisper_wins": 0,
+          "wav2vec2_wins": 0,
+          "both_wrong": 0,
+          "both_right": 0,
+          "total_disagree": 0,
+          "whisper_win_rate": 0,
+          "wav2vec2_win_rate": 0,
+          "both_wrong_rate": 0
+        },
+        "named_entity": {
+          "whisper_wins": 0,
+          "wav2vec2_wins": 0,
+          "both_wrong": 0,
+          "both_right": 0,
+          "total_disagree": 0,
+          "whisper_win_rate": 0,
+          "wav2vec2_win_rate": 0,
+          "both_wrong_rate": 0
+        },
+        "function": {
+          "whisper_wins": 19,
+          "wav2vec2_wins": 605,
+          "both_wrong": 349,
+          "both_right": 44,
+          "total_disagree": 624,
+          "whisper_win_rate": 0.03,
+          "wav2vec2_win_rate": 0.97,
+          "both_wrong_rate": 0.359
+        },
+        "content": {
+          "whisper_wins": 5,
+          "wav2vec2_wins": 781,
+          "both_wrong": 608,
+          "both_right": 0,
+          "total_disagree": 786,
+          "whisper_win_rate": 0.006,
+          "wav2vec2_win_rate": 0.994,
+          "both_wrong_rate": 0.436
+        }
+      }
+    },
+    "parakeet_vs_wav2vec2": {
+      "model_a": "parakeet",
+      "model_b": "wav2vec2",
+      "label_a": "Parakeet",
+      "label_b": "wav2vec2",
+      "by_category": {
+        "dialect": {
+          "parakeet_wins": 0,
+          "wav2vec2_wins": 0,
+          "both_wrong": 0,
+          "both_right": 0,
+          "total_disagree": 0,
+          "parakeet_win_rate": 0,
+          "wav2vec2_win_rate": 0,
+          "both_wrong_rate": 0
+        },
+        "number": {
+          "parakeet_wins": 0,
+          "wav2vec2_wins": 0,
+          "both_wrong": 0,
+          "both_right": 0,
+          "total_disagree": 0,
+          "parakeet_win_rate": 0,
+          "wav2vec2_win_rate": 0,
+          "both_wrong_rate": 0
+        },
+        "named_entity": {
+          "parakeet_wins": 0,
+          "wav2vec2_wins": 0,
+          "both_wrong": 0,
+          "both_right": 0,
+          "total_disagree": 0,
+          "parakeet_win_rate": 0,
+          "wav2vec2_win_rate": 0,
+          "both_wrong_rate": 0
+        },
+        "function": {
+          "parakeet_wins": 0,
+          "wav2vec2_wins": 649,
+          "both_wrong": 368,
+          "both_right": 0,
+          "total_disagree": 649,
+          "parakeet_win_rate": 0.0,
+          "wav2vec2_win_rate": 1.0,
+          "both_wrong_rate": 0.362
+        },
+        "content": {
+          "parakeet_wins": 0,
+          "wav2vec2_wins": 781,
+          "both_wrong": 613,
+          "both_right": 0,
+          "total_disagree": 781,
+          "parakeet_win_rate": 0.0,
+          "wav2vec2_win_rate": 1.0,
+          "both_wrong_rate": 0.44
+        }
+      }
+    }
+  }
+}

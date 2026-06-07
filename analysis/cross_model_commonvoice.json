@@ -1,0 +1,168 @@
+{
+  "dataset": "commonvoice",
+  "n_valid": 680,
+  "total_words": 102373,
+  "wer": {
+    "qwen": 0.3268,
+    "whisper": 0.3277,
+    "parakeet": 0.3906,
+    "wav2vec2": 0.9711
+  },
+  "best_model": "qwen",
+  "oracle_wer": 0.2198,
+  "oracle_gap_pp": 10.7,
+  "unique_saves": {
+    "qwen": 4023,
+    "whisper": 2793,
+    "parakeet": 3422,
+    "wav2vec2": 59
+  },
+  "overlap": {
+    "qwen": {
+      "qwen": 0.3268,
+      "whisper": 0.2538,
+      "parakeet": 0.2485,
+      "wav2vec2": 0.3254
+    },
+    "whisper": {
+      "qwen": 0.2538,
+      "whisper": 0.3277,
+      "parakeet": 0.2614,
+      "wav2vec2": 0.3254
+    },
+    "parakeet": {
+      "qwen": 0.2485,
+      "whisper": 0.2614,
+      "parakeet": 0.3906,
+      "wav2vec2": 0.3617
+    },
+    "wav2vec2": {
+      "qwen": 0.3254,
+      "whisper": 0.3254,
+      "parakeet": 0.3617,
+      "wav2vec2": 0.9711
+    }
+  },
+  "top_shared_errors": {
+    "and": 1537,
+    "eh,": 1530,
+    "i": 1380,
+    "the": 704,
+    "it’s": 689,
+    "um,": 664,
+    "a": 552,
+    "it": 550,
+    "so": 535,
+    "but": 510,
+    "that": 495,
+    "eh": 494,
+    "i’m": 491,
+    "you": 479,
+    "of": 475,
+    "that’s": 467,
+    "to": 463,
+    "like": 435,
+    "i’ve": 388,
+    "no": 366,
+    "in": 352,
+    "my": 323,
+    "a’": 302,
+    "know,": 291,
+    "aboot": 255,
+    "we": 243,
+    "so,": 239,
+    "‘cause": 221,
+    "with": 209,
+    "yeah,": 205
+  },
+  "category_error_rates": {
+    "qwen": {
+      "function": {
+        "error_rate": 0.2159,
+        "errors": 10059,
+        "total": 46590
+      },
+      "content": {
+        "error_rate": 0.4026,
+        "errors": 21683,
+        "total": 53861
+      },
+      "dialect": {
+        "error_rate": 0.8932,
+        "errors": 1715,
+        "total": 1920
+      },
+      "number": {
+        "error_rate": 1.0,
+        "errors": 2,
+        "total": 2
+      }
+    },
+    "whisper": {
+      "function": {
+        "error_rate": 0.2124,
+        "errors": 9894,
+        "total": 46590
+      },
+      "content": {
+        "error_rate": 0.408,
+        "errors": 21973,
+        "total": 53861
+      },
+      "dialect": {
+        "error_rate": 0.874,
+        "errors": 1678,
+        "total": 1920
+      },
+      "number": {
+        "error_rate": 1.0,
+        "errors": 2,
+        "total": 2
+      }
+    },
+    "parakeet": {
+      "function": {
+        "error_rate": 0.2827,
+        "errors": 13173,
+        "total": 46590
+      },
+      "content": {
+        "error_rate": 0.4636,
+        "errors": 24972,
+        "total": 53861
+      },
+      "dialect": {
+        "error_rate": 0.9568,
+        "errors": 1837,
+        "total": 1920
+      },
+      "number": {
+        "error_rate": 1.0,
+        "errors": 2,
+        "total": 2
+      }
+    },
+    "wav2vec2": {
+      "function": {
+        "error_rate": 0.9367,
+        "errors": 43642,
+        "total": 46590
+      },
+      "content": {
+        "error_rate": 0.9999,
+        "errors": 53855,
+        "total": 53861
+      },
+      "dialect": {
+        "error_rate": 1.0,
+        "errors": 1920,
+        "total": 1920
+      },
+      "number": {
+        "error_rate": 1.0,
+        "errors": 2,
+        "total": 2
+      }
+    }
+  }
+}

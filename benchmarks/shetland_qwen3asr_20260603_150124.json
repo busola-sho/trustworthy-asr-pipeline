@@ -1,0 +1,710 @@
+{
+  "model": "qwen3asr",
+  "model_name": "Qwen/Qwen3-ASR-1.7B",
+  "dataset": "shetland",
+  "corpus_wer": 0.12256669069935111,
+  "meaning_alteration_rate": 0.91,
+  "num_samples": 100,
+  "samples": [
+    {
+      "clip_id": "s1_001",
+      "ref": "Have you got everything? You got your gloves and your homework and... What do you think this is? A fashion choice? It was Norse Mythology this week. Right, don't be cheeky, you. Don't pretend like you're organised. We're 15 minutes late already.",
+      "hyp": "Have you got everything? You got your gloves and your homework and. What do you think this is a fashion choice? It was Norse mythology this week. Don't be cheeky, you. Don't pretend like you're organised. We're 15 minutes late already.",
+      "sample_WER": 0.023809523809523808,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s1_002",
+      "ref": "Morning. Morning, Billy. Morning, Craig. Anything? Robert Eunson's in the cells. Drunk in the Market Square at three this morning singing King Of The Road. You'd think he'd have found another song by now. You got any news from the Up Helly Aa Committee? Aye, it's just in. Guizer Jarl thinks it'll be the best festival we've ever had. Oh! I heard a rumour there's gonna be a Lady Gaga squad this year? You know anything? Well, you see, I do. But then, if I told you about it, then I'd have to kill you.",
+      "hyp": "Morning, morning Billy, morning Craig. Anything? Robert Unson's in the cells. Drunk in the Market Square at three this morning, singing King of the Road. It's the third. I've found another song, you know. Any news for the Pearly Ear Committee? That's just in. Guys at Yard think it'll be the best festival we've ever had. Oh, I heard the rumor there's gonna be a Lady Gaga squad this year. You know anything? Well, you see, I do. But then, if I told you about it, then I'd have to kill you.",
+      "sample_WER": 0.21052631578947367,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s1_003",
+      "ref": "It kicks off as usual at 9:45. The Jarl Squad march along the esplanade to the Ferry Terminal, where the official photographs will be taken. Lights out at 19:00. Set fire to the galley at eight. Then drink will be taken. Hi, Duncan. You come to hand yourself in? Or are you looking to sublet the cells and rent them out to tourists? That's not a bad idea. No, I'm checking you still need an engine for your boat. I think I might have found one for you. And will there be a finders' fee involved in this? Course, what am I, a charity?",
+      "hyp": "Kicks off as usual at 9:45. Your squad march along the esplanade to the ferry terminal, where the official photographs will be taken. Lights out at 1900. Set flat to the galley to eat. Then drink will be taken. Hi, Duncan. You coming to hand yourself in? You looking to sublet the cells and rent them out to tourists? Well, that's not a bad idea. No. Checking. You still need an engine for your boat. I can might find one for you. And will there be a finder's fee involved in this? Of course. What am I, a charity?",
+      "sample_WER": 0.16346153846153846,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s1_004",
+      "ref": "I don't understand. She's been shot. She's dead. Okay, what I want you to do is I want you to phone Billy on the landline and give him all the details. I'm going to get the inter-island ferry to Bressay and I'll be there in 20 minutes, okay? Okay.",
+      "hyp": "I don't understand. She's been shot. She's dead. Okay. What I want you to do is I want you to phone Billy on the landline and give him all the details. I'm going to get the inter-island ferry to Bressy and I'll be there in 20 minutes. Okay? Okay.",
+      "sample_WER": 0.02040816326530612,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s1_005",
+      "ref": "Are there any signs of a break-in at the croft? There is some broken glass. Do you know if the neighbours heard anything? I called my cousin Ronald. His croft's just up the road. He passed by late last night, but didn't hear a thing. Neither did Auntie Jackie and she's just over the ridge. Could it have been an accident, do you think? A shotgun blast up close? No. Did Mima own a gun? She keeps it in the hall cupboard.",
+      "hyp": "Any sign of a break in the cloth? There is some broken glass. You know the neighbours heard anything? I called my cousin Ronald, his craft's just up the road. He passed by late last night, but he didn't hear a thing. Neither did Auntie Jackie, and she's just over the ridge. Could it have been an accident? Do you think? Shotgun blast up close, no. May I own a gun? She keeps it in the hall cupboard.",
+      "sample_WER": 0.15853658536585366,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s1_006",
+      "ref": "What's the signal like up here? Comes and goes. You'll need to go up the hill. Okay, this is what I want you to do. I want you to phone the hospital in Lerwick. Use the landline. But try not to contaminate anything. And get them to send an ambulance over here. After that, I want you to tape off this area, set up a common approach path and put up a windshield. Do you think you can handle that? Yeah. Can I cover her up? No",
+      "hyp": "What's the signal like up here? It comes and goes. You need to go up the hill. Okay. This is what I want you to do. I want you to phone the hospital and let them use the landline, but try not to contaminate anything and get them to send an ambulance over here. After that, I want you to tape off this area, set up a common approach path, and put up a windshield. You think you can handle that? Yeah. Can I cover it up? No.",
+      "sample_WER": 0.08045977011494253,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s1_007",
+      "ref": "Gun hasn't been fired for years. Did Mima own this place? Yeah. Does cousin Ronald have a claim? No. He's related on my mother's side. Ah, so it'll come to your dad? Yeah. And where is he now? At home. I told him not to come down. It did not feel right breaking the news like that on the mobile, but I was worried about contamination. No, no, you did the right thing.",
+      "hyp": "Cousin hasn't been filed for years. Did Maimo own this place? Yeah. Does cousin Ronald ever claim? No. He's related on my mother's side. Also, come to your dad. Yeah. And where's he now? At home. I told him not to come down. Didn't not feel right breaking the news like that on the mobile. I was worried about contamination. No, no, you did the right thing.",
+      "sample_WER": 0.1780821917808219,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s1_008",
+      "ref": "Right, take as many as you can, the body, the surrounding area, and inside the croft, and then, e-mail them to Inverness. Do you think you can manage that? Course. Are you sure? Cos your eyes look like pissholes in the snow. Sorry. Late night, I thought I was off-duty. We're never off-duty here. Have you still not got that yet?",
+      "hyp": "Take as many as you can. The body, surrounding area, and inside the croft, and then email them to Edinburgh Nest. Do you think you can manage that? Of course. You sure? Because your eyes look like piss holes in the snow. Sorry, late night. I thought I was off duty. We're never off duty here. You still not got that yet.",
+      "sample_WER": 0.22950819672131148,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s1_009",
+      "ref": "No? I'm sorry for your loss. You must be stunned. But I'm going to have to ask you a few questions. You passed by the croft last night? Aye. I was just on my way home. He was drinking over in Lerwick. Like he does every night. Look, I'm no' long back from sea. I don't know what to do with myself. Now, get off my back! For goodness' sake! All right? These days, the deep-sea ships only do two or three long trips a year. Ronald can explain.",
+      "hyp": "No. Sorry for your loss. Must be stunned. But I'm going to have to ask you a few questions. You passed by the craft last night. Aye. I was just on my way home. He was drinking over a lirik, like he does every night. Look, I'm no long back for sea. I don't know what to do with myself. Now get off my back! For God's sake! All right. These days, the deep sea ships only do two or three long trips a year. Ronald can explain.",
+      "sample_WER": 0.11235955056179775,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s1_010",
+      "ref": "I'd been over at the main island. I got the last ferry back and I had a wee nightcap at the ceilidh. What about you, Anna, did you see anybody about? The baby was sleeping. I took the opportunity to join him. Jackie, Ronald's mum was here. That was earlier. How long did Jackie stay? Half an hour. She wanted to tell us about a piece of bone she found at the dig. She was actually quite excited. Is that the dig at Mima's? Uh-huh.",
+      "hyp": "I've been over at the main island. I got the last ferry back, and I had a wee nightcap at the Kaily. But you, Anna, you seen the baby? The baby was sleeping. Took the opportunity to join him. Jackie Reynolds' mum was here. That was earlier. How long did Jackie stay? Half an hour. She wanted to tell us about a piece of bone she found at the dig. She was actually quite excited. Had to take it, Maimus. Hmm.",
+      "sample_WER": 0.2,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s1_011",
+      "ref": "Has the gun been fired recently? Aye, I went out shooting rabbits after I got home. Do you often go out lamping with a drink in you? I didn't go anywhere near Mima's croft. I'll need to take the gun. Now. If you don't mind.",
+      "hyp": "Has the gang been fired recently? I haven't liked shooting rabbits after I get home. You often go out lamping and drinking. I didn't go anywhere near Maimuscroft. I need to take the gun. No. If you don't mind.",
+      "sample_WER": 0.3333333333333333,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s1_012",
+      "ref": "Yes. The other day. It was pouring down. Mima always liked that jacket. I said she could keep it. And that was the last time you saw her? No. No, I was with her last night. What time? I left the ceilidh about nine. I stopped in and had a quick drink with her.",
+      "hyp": "Yes. The other day, it was pouring down. My mum was like that jacket. I said she could keep it. And that was the last time we saw her. No. No one was with her last night. With whom? I left the Killy about nine. I stopped in and had a quick drink with her.",
+      "sample_WER": 0.16666666666666666,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s1_013",
+      "ref": "Mima was a bit funny at the dig earlier. Sophie and I were working in the trench with Jackie, she'd volunteered to help. Jackie Haldane, is that Ronald's mother? That's right. Mima turned up with some tea just as Jackie found a piece of bone. I was hoping it was a fragment of pottery, but it was a pars orbital. A human skull. Mima seemed upset when she saw it.",
+      "hyp": "Mama was a bit funny at the dig earlier. Sophie and I were working in the trench with Jackie. She volunteered to help. Jackie Aldine's at Rosebud. That's right. Mama turned up with some tea just as Jackie found a piece of bone. I was hoping it was a fragment of pottery, but it was a parzival. Human skull. Mama seemed upset when she saw it.",
+      "sample_WER": 0.17142857142857143,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s1_014",
+      "ref": "She wasn't an easy woman. She could start an argument in an empty room. But she was my mother. She did not deserve to die like that. No. Can you shed any light on what happened? Did you hear a gunshot? No. I wasn't sure if you were in. I called by.",
+      "hyp": "She wasn't an easy woman. You start an argument in an empty room, but she was my mother. Did not deserve to die like that. No. You shed any light on him? He had a gunshot. I wasn't sure if you were in. I called by.",
+      "sample_WER": 0.19230769230769232,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s1_015",
+      "ref": "Sandy, you've got some leave due. I want you to stay with your dad. Cos he needs you. I want to help. Well, you can. Get him to check that nothing was taken from the croft, cos we need to be sure. I'm capable of more than that if you'll give me a chance. I know you are, but it's difficult. You can't investigate your own family.",
+      "hyp": "Sandy, you got some lead, do? I want you to stay with your dad, 'cause he needs you. I want to help. Well, you can. Get him to take the dust was taken from the craft, 'cause we need to be sure. I'm capable of more than that, if you'll give me a chance. I know you are, but it's difficult. You can't investigate your own family.",
+      "sample_WER": 0.13432835820895522,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s1_016",
+      "ref": "Mum was right, cooking is all about timing, and you don't have any. It'll be ready in two minutes. It's only pasta, the place looks like a bomb's hit it. One minute. I don't know why you don't just let me cook. Cos I like cooking. Well, that may be, but you're rubbish at it. Pasta should be served al dente. Oh, is that right? Well, you can have yours al fresco, if you like. Can I go over to Maureen's after? Erm... No. Why? Cos it's late, it's getting dark. And there's a killer on the loose?",
+      "hyp": "Mom was right. Cooking's all about timing, and you don't have any. We're ready in two minutes. It's only pasta. The place looks like a bomb's hit it. One minute. I don't know why you don't just let me cook. 'Cause I like cooking. Well, that may be, but you're rubbish at it. Pasta should be served al dente. Oh, is that right? Well, you can have yours al fresco if you like. Can I go over to Molly's after? Uh, no. Why? 'Cause it's late. It's getting dark. And there's a killer on the loose.",
+      "sample_WER": 0.09183673469387756,
+      "qwen_verdict_p2": false
+    },
+    {
+      "clip_id": "s1_017",
+      "ref": "Looks like hard work. Was. We're not sure yet if Mima's family will let us continue digging here. Can I ask about the brace? It's just you don't really look like a detective? And you don't look like an archaeologist. She isn't, she's a student. Don't let the brace fool you. They fast-track the brainy ones like me.",
+      "hyp": "Looks like hard work, was. We're not sure yet if Mima's family will let us continue digging here. Can I ask about the brace? It's just you don't really look like a detective, and you don't look like an archaeologist. She isn't. She's a student. Don't let the brace fool you. They fast track the brainy ones like me.",
+      "sample_WER": 0.034482758620689655,
+      "qwen_verdict_p2": false
+    },
+    {
+      "clip_id": "s1_018",
+      "ref": "Is there anything missing? Only tales from other people about my father. Mima never... Never talked about him. He worked on the Shetland Bus during the war. Is that right? Local boats were used to transport saboteurs into Norway under the noses of the Germans. Across the North Sea in the dead of winter. Aye, brave men.",
+      "hyp": "Is there anything missing? Only tales from other people about my father. Name I never, never talked about. He worked in a shipbuilding bus during the war. All right. Local boats were used to transport saboteurs into Norway under the noses of the Germans across the North Sea in the dead of winter. Aye, brave man.",
+      "sample_WER": 0.15789473684210525,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s1_019",
+      "ref": "Is this where you found the skull? Just over there. We were hoping we could date it 15th century. That would fit with Professor Berglund's theory. We've already found silver coins from that period. Hopefully, it shouldn't be too long before you can start work again. No, no more digging. This is sacred ground now. What?! Because of the skull? That could have been there for centuries. No matter. No more digging. Whoever was buried here will rest in peace.",
+      "hyp": "Is this where you found the skull? Just over there. We're hoping we could date it 15th century. That would fit with Professor Berglund's theory. We've already found silver coins in that period. Well, hopefully it's not too long before you can start work again. No, no more digging. This is sacred ground now. What? Because of the skull? That could have been there for centuries. No matter. No more digging. Whoever was buried here will rest in peace.",
+      "sample_WER": 0.0875,
+      "qwen_verdict_p2": false
+    },
+    {
+      "clip_id": "s1_020",
+      "ref": "Hi, Tosh. You recovered? You were giving it laldy the other night. DC Macintosh, if you don't mind, Drew. It's not like it's your business any more, is it? All right. Aye, fair enough. Do you have a Paul Berglund staying? The Professor who's running the dig at Mima Wilson's? You just missed him. He was going to catch the mainland ferry. He said he'd be back in a day or so. University business, I think. Can you describe him for me? Scandinavian-looking. Wearing a Gore-Tex waterproof.",
+      "hyp": "Hi, Josh. You recovered? You were giving it loudly the other night. DC Macintosh, if you don't mind, Drew. It's not like it's your business anymore, is it? All right. Aye, fair enough. Do you have a Paul Berglund staying? The professor who's running the dig at Mima Wilson's. You just missed him. He was going to catch the mainland ferry. Said he'd be back in a day or so. University business, I think. You describe him for me. Scandinavian looking. Wearing a Gore-Tex waterproof.",
+      "sample_WER": 0.09195402298850575,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s1_021",
+      "ref": "Berglund was on the ferry that just left. Okay, get McCabe to radio Aberdeen, I want him back on the next one. And the harbour master doesn't remember seeing Joseph get on the Bressay ferry. Okay, we're going to have to go through the CCTV, cos I need to know if he was in Lerwick or not. List of people with a licence to hold a shotgun. The Haldanes are on it, Andrew and Ronald. Joseph Wilson. Sandy. Half the islands. And the other half are phoning me wanting to know what happened. Vicky at the museum is still trying to carbon-date the skull fragment.",
+      "hyp": "Berglund was on the ferry that just left. Okay, get my cable to Radio Aberdeen. I want him back in the next one. And the harbourmaster doesn't remember seeing Joseph get on the Brese ferry. Okay, we're going to have to go through the CCTV because I need to know if he was in Lannick or not. List of people with a license to hold a shotgun. The Howdens are on it. Andrew and Ronald, Joseph Wilson, Sandy. Half the island, and the other half are following me, wanting to know what happened. Vicky at the museum is still trying to carbon date the skull fragment.",
+      "sample_WER": 0.13333333333333333,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s1_022",
+      "ref": "Hattie. She said that Mima was troubled by the discovery of the human skull. Did she say anything to you about it? Hattie tends to blow things out of proportion. She's an emotional girl. You know her well, then? No, I've just gleaned the fact that she's quite neurotic. After Mima was found dead, you took a ferry to the mainland. What was the big rush? He said, threateningly. Funding meeting.",
+      "hyp": "Hattie, he said that Maima was troubled by the discovery of the human skull. Did she say anything to you about it? Hattie tends to blow things out of proportion. She's an emotional girl. You know her well, then? No, I've just gleaned the fact that she's quite neurotic. After Maima was found dead, you took a ferry to the mainland. It was a big rush, he said threateningly. Funding meeting.",
+      "sample_WER": 0.07042253521126761,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s1_023",
+      "ref": "And you can corroborate that? Of course! Sorry, am I a suspect? Well, according to Hattie, this dig was quite important to you. Mima could have closed it down. Like I said, Hattie exaggerates. I didn't get that impression. It seems we've taken an instant dislike to each other. That's unfortunate. Not for me. I'd really appreciate it if you'd let me know in advance the next time you plan to leave Shetland.",
+      "hyp": "You can corroborate that. Of course. Sorry. Am I a suspect? Well, according to Hattie, this dig was quite important to you. Maima could have closed it down. Well, like I said, Hattie exaggerates. I didn't get that impression. It seems we've taken an instant dislike to each other. That's unfortunate. Not for me. I'd really appreciate it if you'd let me know in advance the next time you plan to leave, Shelan.",
+      "sample_WER": 0.0547945205479452,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s1_024",
+      "ref": "He was found by the road, unconscious. Nothing on CCTV. Blind spot. Okay. You must have some idea who did this to you? It was dark and I was... Well, I'd had a few. They didn't rob you, then? I don't think so, no. Do you think it might have something to do with Mima? No. No, nothing. How can you be so sure? Why would it? Because people blame you. Mum! Look, I told you not to come. I'm fine.",
+      "hyp": "He was found by the road, unconscious. Nothing on CCTV. Blind spot. Okay. Well, you must have some idea who did this to you. It was dark, and I was. I'd had a few. They didn't rob you then. I don't think so, no. You think it may have something to do with Mima? No. No, nothing. How can you be so sure? Why would it? Because people blame you. Mum, look, I told you not to come. I'm fine.",
+      "sample_WER": 0.04938271604938271,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s1_025",
+      "ref": "I was rubbish at history. I mean, King James VI and King James I were the same person? That's just confusing. Having said that, Rocky II and Rocky IV are the same film. Uh-huh. Jimmy Perez? Hi, Vicky, thanks for seeing us. You interested in the Shetland Bus? Uh-huh. That's ironic. You weren't when you were at school. I was his teacher.",
+      "hyp": "I was rubbish at history. I mean, King James the Sixth and King James the First were the same person. That's just confusing. Having said that, Rocky Two and Rocky Four are the same film. Uh huh. Same pair. Hi, Ricky. Thanks for seeing us. You interested in Shetland, boss? Mm. That's ironic. You learned when you were at school. I was his teacher.",
+      "sample_WER": 0.24193548387096775,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s1_026",
+      "ref": "Is that a young Mima Wilson? It is indeed. And that's Mima's husband? Jerry Wilson. With Andrew Haldane. Best young sailors of their generation. Oh, so Mima's husband and Jackie's father worked together? Alongside Norwegian sailors. Between 1940 and '45, they took spies, supplies, and large sums of money across to Norway. Sometimes they'd bring back refugees. To take the Shetland Bus became a synonym for escaping the Nazis.",
+      "hyp": "Is that a young Maima Wilson? It is indeed. And that's that's Maima's husband, Jacky Wilson, with Andrew Haldane, best young sailors of the generation. Oh, so Maima's husband and Jacky's father worked together. Alongside Norwegian sailors, between 1940 and 45, they took spies, supplies and large sums of money across to Norway. Sometimes they bring back refugees. To take the Shetland bus became a synonym for escaping the Nazis.",
+      "sample_WER": 0.13043478260869565,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s1_027",
+      "ref": "She was right, though. We don't need men these days, anyway. You know, the man that hurt you... it just means he's not the right one. Are you sure you're a policeman? I can still roll over the bonnet of a car if I need to. I take it you met the right person. You telling me she's never hurt you? Not deliberately.",
+      "hyp": "He was right though. Don't need men these days anyway. You know the man that hurt you just means he's not the right one. You sure you're the policeman? Just roll over the bonnet of a car if I need to. Think you met the right person. Tell him he's never hurt you. Not deliberately.",
+      "sample_WER": 0.23809523809523808,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s1_028",
+      "ref": "I heard about Ronald. How is he? He'll be all right. He never saw who attacked him, so there's not really much I can do about it. I don't want to have to ask you this, but where were you last night? He was here, with me. Yeah? If you're thinking it was me who had a go at Ronald, think again. Cos if it had been me, he would not be getting out of hospital. Now, look. I know folk are saying that Ronald accidentally shot your mother, but it might not be the case, so I want you to ignore those rumours, okay? Mmm... They don't remember you getting the Bressay ferry the night Mima died.",
+      "hyp": "Heard about Ronald? How was he? I'd be all right. Didn't ever saw him attacked. I was literally not checking you about it. Don't want to have to ask you this, but where were you last night? He was here with me. Yeah. You're thinking it was me, Edward Ronald? Think again. Because if it had been me, he would not be getting out of hospital. Now look. And old folk are saying that Ronald accidentally shot your mother, but it might not be the case. So I want you to ignore those rumours, okay? Mm. They don't remember you getting the bressy ferry the night Mima died.",
+      "sample_WER": 0.22033898305084745,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s1_029",
+      "ref": "Do you have the ticket? I threw it away. Someone must have seen you. You were telling me about the Shetland Bus. You never mentioned that Ronald's grandfather and your father sailed together. Were your father and Mima married then? Childhood sweethearts.",
+      "hyp": "Do you have the ticket? I threw it away. Someone must have seen you. You were telling me about the sailing bus. You ever mentioned that Ronald's grandfather and your father sailed together? Were your father and Maima married then? Childhood sweethearts.",
+      "sample_WER": 0.07142857142857142,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s1_030",
+      "ref": "Cos they say that there was a Norwegian who was killed on the island, a traitor. Did Mima ever mention anything about that? Like I said, she never spoke much about those years. Because there's a photograph of Mima with some young Norwegian lad at the museum. And I just wondered that... maybe that's why she was upset about the skull. Cos maybe she thought it was somebody she knew. And if that was the case... then, she'd be even more loath to sell up, wouldn't she? Who said anything about selling up?",
+      "hyp": "Because they say that there was a Norwegian who was killed in the islands, a traitor. Did Maima ever mention anything about that? Well, I guess she never spoke much about those years. Yeah, because there's a photograph of Maima with some young Norwegian lad in the museum, and I just wondered maybe that's why she was upset with the skull, because maybe she thought it was somebody she knew. And if that was the case, then she'd be even more loath to sell it, wouldn't she? Who said anything about selling it?",
+      "sample_WER": 0.15053763440860216,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s1_031",
+      "ref": "We know that Mima Wilson was killed around 11 PM. And we know that the killer wanted to make it look like a burglary. Hattie James was the last person to see Mima alive. Paul Berglund had a lot riding on the dig. He stood to get major funding if they got results. So is it possible that Mima was going to shut them down after they discovered the skull? Or that she was going to sell the land? Is that a strong enough motive to kill her?",
+      "hyp": "We know that Maima Wilson was killed around 11pm, and we know that the killer wanted to make it look like a burglary. Archie James was the last person to see Maima alive. Paul Berland had a lot riding on the dig. He stood to get major funding if they get results. So, is it possible that Maima was going to shut them down after they discovered the skull, or that she was going to sell the land? Is that strong enough motive to kill her?",
+      "sample_WER": 0.10227272727272728,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s1_032",
+      "ref": "Ronald Haldane. He could have shot Mima, either deliberately or accidentally. But if he did it deliberately, then, why? He wouldn't gain from her death. If he did it by accident, he could have panicked and tried to make it look like a burglary. Yeah, you see, that's possible. Is your dog a member of the magic circle, by any chance? Cos he's very good at making those biscuits disappear. Okay, okay, I'll buy some more. What, are we done with the dog and the biscuits? Sure.",
+      "hyp": "Ronald Howdie, he could have shot Maima either deliberately or accidentally. But if he did it deliberately, then then why? He wouldn't gain from her death. If he did it by accident, make it up. Panicked, tried to make it look like a burglary. Yeah, you see, that's possible. Is your dog a member of the magic circle by any chance? Is he very good at making those biscuits disappear? Okay, okay. I'll buy some more. What are we doing? We're talking the biscuits. So.",
+      "sample_WER": 0.1724137931034483,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s1_033",
+      "ref": "What are you doing here? We're looking for Hattie. I haven't seen her since last night. She's been weird since Mima was killed. Do you have a number for her parents? Her mum's name's Gwen, she lives in Glasgow. That's all I know. We don't really go in for girlie heart-to-hearts. Well, do you know where she might have gone? What, you don't know, you don't care? I can't tell. You know, Mima's death has affected us all, it's not just Hattie. I'm getting the first ferry back to civilisation. No, you're not. Not unless I say so.",
+      "hyp": "What are you doing here? We're looking for Hattie. I haven't seen her since last night. She's been weird since Mima was killed. Do you have a number for her parents? Her mum's name's Gwen. She lives in Glasgow. That's all I know. We don't really go in for girly heart to hearts. Well, do you know where she might have gone? What? You don't know? You don't care? I can't tell. You know, Mima's death has affected us all. It's not just Hattie. I'm getting the first ferry back to civilization. No, you're not. Unless I say so.",
+      "sample_WER": 0.061224489795918366,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s1_034",
+      "ref": "Billy. Has Hattie James been in contact or left any messages? No. Okay. Okay, listen, we may have a missing person. Inform the Coastguard Section Manager and radio the station at Brae and let Willie know. I want us to check the CCTV. Cos I don't want to call out Search And Rescue if Hattie's sitting in a pub in Lerwick crying into her beer. And tell Sandy his leave's over. Cos if I've got to put a search party together we're going to need him. Oh, and get me the number for Hattie's mother, it's Gwen. Okay.",
+      "hyp": "Billy, has Hattie James been in contact? Or left any messages? No. Okay. Okay, listen. We may have a missing person. Inform the Coast Guard section manager and radio the station at Bray and let Willie know. I want us to check the CCTV, because I don't want to call out search and rescue if Hattie's sitting in a pub and letting cry in their beer. And tell Sandy, his leave's over. As if I'm going to put a search party together, I'm going to need him. Oh, and get me the number for Hattie's mother. It's Gwen.",
+      "sample_WER": 0.14285714285714285,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s1_035",
+      "ref": "Hello. Gwen James? Sorry, who's this? This is Detective Perez, from the Shetland Constabulary. There's no cause for concern, Mrs James, I just wondered if you'd heard from your daughter Hattie recently? Is everything all right? She's not in any trouble, is she? No, no. Is she... Is she likely to hide herself away if she's upset about something? Why? Don't worry, Mrs James. If she does get in contact with you, can you please let me know? Aye.",
+      "hyp": "Hello. Gwen James. Sorry, who's this? This is Detective Perez from the Cetlin Constabulary. There's no cause for concern, Mrs. James. I just wondered if you'd heard from your daughter Hattie recently. Is everything all right? She's not in any trouble, is she? No, no. Is she? Is she likely to hide herself away if she's upset with something? Why? Don't worry, Mrs. James. If she does get in contact with you, can you please let me know? I.",
+      "sample_WER": 0.0379746835443038,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s1_036",
+      "ref": "Did Hattie ask permission to work at the dig? No, I didn't know she was here. I was over at my croft all night. Well, I have to ask you this. Were you alone? Uh-huh. Alone. I just want to know what happened to my mother and this girl, I don't need accusations.",
+      "hyp": "Had he asked permission to work at the dig? No, I didn't know she was here. I was over at McRoth all night. Well, I have to ask you this: Were you alone? Alone? There's no one to know what happened to my mother and the Skerril. I don't need accusations.",
+      "sample_WER": 0.20754716981132076,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s1_037",
+      "ref": "You might want to take a look at it before we whisk it down to Inverness. All the equipment's initialed, so stuff doesn't get mixed up. \"PB.\" And I'm guessing it's not Pierce Brosnan. Paul Berglund. Check these for prints as quick as you can. As far as I'm concerned, this is a suspicious death. Tape off the area and get Sandy to block the access road. It'll keep him busy. I'm going to head back to the main island.",
+      "hyp": "You might want to take a look at it before we whisk it down to Inverness. All the equipment's initialled so stuff doesn't get mixed up. PB. And I'm guessing it's not Pierce Brosnan. All bad. Check these for prints as quick as you can. As far as I'm concerned, this is a suspicious death. Tape off the area and get Sandy block the access road. It'll keep them busy. I'm going to head back to Main Island.",
+      "sample_WER": 0.075,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s1_038",
+      "ref": "But, from the photos, she reckons blood loss, wounds probably self-inflicted. I'm just-- I'm not sure. I mean, see... The bruise on the arm, it could be someone held her. And she's got another one on the back of her head. She could have cracked it when she passed out. And these cuts? No reason why they couldn't be defensive. Self-harmer? Her mother said she'd suffered from depression, didn't she? The lab got back. The only prints on the knife are Hattie's.",
+      "hyp": "But from the photos, she reckons blood loss. Wounds probably self-inflicted. I'm just, I'm not sure. I mean, see, the bruise in her arm, that could be someone held her. And she's got another one in the back of her head. She kind of cracked it when she passed out. And these cuts, no reason why they couldn't be defensive. Self-harm? Her mother said she suffered from depression, didn't she? The lab got back the only prints on the knife are Hattie's.",
+      "sample_WER": 0.0975609756097561,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s1_039",
+      "ref": "What? On a knife that numerous people must have used? That-- That doesn't make sense! I mean, what if... the prints were wiped and then, the knife was put back into Hattie's hand after she was killed. Nah... Jimmy, this feels like suicide. Mima's death could have pushed her over the edge. Hello. Yes, he's just here, hang on. Who is it? Duncan.",
+      "hyp": "What? And a knife that numerous people must have used? That that that doesn't make sense. I mean, what if the prints were wiped and then the knife was put back into Hattie's hand after she was killed? Nah, Jimmy, this feels like suicide. Mima's death could have pushed her over the edge. Hello? Yeah, he's just here. What? Duncan.",
+      "sample_WER": 0.12698412698412698,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s1_040",
+      "ref": "What would you say if I told you I just picked up that great wee engine for your boat? I was going to call you. Sounds ominous, go on. Well, I was just thinking, you know, because I can't think of one single person on these islands that you haven't done business with, because everybody likes you and everybody respects you... Where is this going? I'm thinking of requesting a banning order for Up Helly Aa. On what grounds? Public safety. I do not have the manpower. The festival will police itself. I've got two unsolved murders on my hands and I'm supposed to switch off all the streetlights in Lerwick. No CCTV. I'm supposed to open all the church halls. And there's tourists jamming all the roads. Now, what do I do if something happens? What do you want me to do about it? I'm not on the Island Council. But you know just about everybody that is. So I'm thinking, you know, if you back me up, then, we might have a chance.",
+      "hyp": "What would you say if I told you I just picked up that great wee engine for your boat? I was going to call you. Sounds ominous. Go on. Well, I was just thinking, you know, because I can't think of one single person in these islands that you haven't done business with because everybody likes you and everybody respects you. Where is this going? I'm thinking of requesting a banning order for up here. On what crimes? Public safety. I I I do not have the manpower. First of all, police itself. I've got two unsolved murders in my hands, and I'm supposed to switch off all the street lights in Larrick. And no CCTV. I'm supposed to open all the church halls, and there's tourists jamming all the roads. Now, what do I do if something happens? What do you want me to do about it, huh? I'm not on the island council. But you know just about everybody that is. So I'm thinking, you know, if you back me up, then we might have a chance.",
+      "sample_WER": 0.08571428571428572,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s1_041",
+      "ref": "Have you heard? Yes. What a waste, such a talented girl. I've never understood suicide. The knife found by her body had the initials \"PB\" engraved on it. The knife was used to slash her wrists. Any reason why she might use your knife specifically? Was it symbolic, is that what you mean? She was upset about a love affair and I just wondered... Professor, student, it happens. Yeah, I get the drift, Inspector. Mm-hm. But I want to make one thing clear, there was nothing going on between Hattie and myself. If there's a reason she took her life... it wasn't me.",
+      "hyp": "Have you heard? Yes. What a waste! Such a talented girl. I've never understood suicide. The knife found by her body had the initials P.B. engraved on it. A knife was used to slash her wrists. Any reason why she might use your knife specifically? Was it symbolic? Is that what you mean? Well, she was upset by a love affair, and I just wondered. Professor, student, it happens. Yeah, I get the drift, Inspector. But I want to make one thing clear. There was nothing going on between Hattie and myself. If there's a reason she took her life, it wasn't me.",
+      "sample_WER": 0.038834951456310676,
+      "qwen_verdict_p2": false
+    },
+    {
+      "clip_id": "s1_042",
+      "ref": "There's talk of a failed love affair a few years ago. Does she mention anything about that? No, Berglund comes up a lot in her posts. Thanks. Having had one or two fruitless crushes on older men, I'd say she was a bit in love with him. You think? And he's always messaging her. He said they hardly knew each other. Not sure about that. Check out her photos. Not only did he know her, I've a feeling it was in the biblical sense, as well. Professor Berglund's been telling porky pies.",
+      "hyp": "There's talk of failed love affair a few years ago. Has she mentioned anything about that? No. Berglund comes up a lot in her posts. Thanks. Having had one or two fruitless crushes on older men, I'd say she was a bit in love with him. Think. And he's always messaging her. But he said they hadn't seen each other. Not sure about that. Check out her photos. Not only did he know her. I have a feeling it was in the biblical sense as well. Professor Berglund's been telling porky pies.",
+      "sample_WER": 0.09782608695652174,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s1_043",
+      "ref": "You told me that you'd never worked with Hattie before this project. So who's that, your twin brother? She was volunteering on a dig I was supervising. I thought you might misinterpret the situation. Try me. We had a brief fling. I was away from my family. Hattie was beautiful and available. What I didn't realize was how needy she could be. Were you still sleeping with her at the time? No. You think it's significant she used my knife to kill herself. You're wrong. I didn't say she killed herself, Professor.",
+      "hyp": "You told me that you'd never worked with Heidi before this project. So who's that? Your twin brother? She was volunteering on a dig I was supervising. I thought you might misinterpret the situation. Training. We had a brief fling. I was away from my family. Heidi was beautiful and available. But I didn't realise how needy she could be. Were you still sleeping with Heidi? No. You think it's significant she used my knife to kill herself? You're wrong. I didn't say she killed herself, Professor.",
+      "sample_WER": 0.11956521739130435,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s1_044",
+      "ref": "Was Hattie threatening to tell the university about your affair? 'Cause sleeping with a student is a no-no. I mean, you would lose your funding overnight if that got out. It was over. It was! I don't know why you're looking at her. She's young enough to be your daughter, man. Hattie did all these. They're all objects that were found at the dig. Except for that one. Freya... the protector of lovers. Well, you better hope she's looking out for you two, 'cause you're going to need her.",
+      "hyp": "Was Hattie threatening to tell the university about your affair? 'Cause sleeping with the students? No, no. I mean, you would lose your funding overnight if that got out. It was, Oliver. It was. I know what you're looking at her for. She's young enough to be your daughter, man. Hattie did all these. They're all objects that were found at the dig, except for that one. Freya, the protector of lovers. Well, you better hope she's looking out for you two, 'cause you're going to need her.",
+      "sample_WER": 0.10112359550561797,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s1_045",
+      "ref": "What's the score with the drawing of the pendant? Why's it with the stuff from the dig? Because Hattie thought it belonged there. Yeah. I knew I'd seen it before. What? The Norwegian, Per Lungstad, he's wearing the pendant that Mima gave Hattie. You think Mima and this Norwegian spy were lovers? Well, he gave her a pendant, the Norse goddess of love, and she kept it for 70 years. Yeah. Drew never gave me anything like that.",
+      "hyp": "What's the score with the join of the pendant? Why is it with the stuff from the dead? Because Hattie thought it belonged there. Yep. I knew had seen it before. The Norwegian had lost it. He's wearing the pendant that Mima gave Hattie. You think Mima and this Norwegian spy were lovers? Well, he gave her a pendant. The Norse goddess of love. He kept it for seventy years. Yeah. Drew never gave me anything like that.",
+      "sample_WER": 0.16666666666666666,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s1_046",
+      "ref": "Gwen James wants to know when she can take her daughter's body back home. I told her not for a few days. Okay. I got an email from the war museum in Bergen. It's the list of the Norwegian agents lost during the Shetland Bus operations. Look, Per Lungstad. It seems to me he was a bit of a hero. He did far more trips than any other sailor. How did he die? It was reported he drowned during a crossing. They never found a body. They moved a lot of money between Britain and Norway via the bus. Does it say if he had any money on him? About 100,000 Norwegian Krone when he disappeared. I'm guessing you could get quite a lot of pickled herring for that back then.",
+      "hyp": "Quinn James wants to know once you can take a daughter's body back home. I told him off for a few days. Okay. I got an email from the War Museum in Bergen. It's the list of the Norwegian agents lost during the Shetland bus operations. Look, Per Lundstad. It seems to me he was a bit of a hero. He led far more trips than any other sailor. How did he die? It was reported he drowned during a crossing. They never found a body. Now they moved a lot of money between Britain and Norway via the bus. Does it save any money on it? About a hundred thousand Norwegian kroner when he disappeared. I'm guessing you could get quite a lot of pickled herring for that back then.",
+      "sample_WER": 0.13740458015267176,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s1_047",
+      "ref": "Shouldn't you be looking after the croft? I need to do something more, especially now my father is a suspect. What do you mean? His name is on your incident board. Do you really think my father could kill his own mother. If he did, he wouldn't be beating up cousin Ronald for the same crime, would he? Who said he beat up Ronald? Crossed your mind though, didn't it? Look, I'm not arguing with you about this, okay? My dad needs to know what happened. It's eating him alive. I can see it in his eyes. I'm worried about him. If it helps, I'll go over and see him tomorrow. Tell him how the investigation is going. Put his mind at ease. How's that? Now, go home.",
+      "hyp": "You'll be looking after the Croft. I need to do something more, especially now my father's a suspect. What do you mean? His name's on your incident board. Do you really think my father could kill his own mother? If he did, he wouldn't be beating up cousin Ronald for the same crime, would he? He said he beat up Ronald. Crossed your mind though, didn't it? I'm not arguing with you about this, okay? My dad needs to know what happened. It's eating him alive. I can see it in his eyes, and I'm worried about him. If it helps, I'll go over and see him tomorrow. Tell him how the investigation's going. How's Mindy? Is how's that? To go home.",
+      "sample_WER": 0.1328125,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s1_048",
+      "ref": "He did happen to mention your domestic situation. I'm not here to judge you. It can't have been easy moving all the way up here... just to find yourself on your own for weeks on end while your man's out at sea. And then, when he does show his face, it's always at the end of a bottle. Now, with the baby, it's a difficult situation. I'm not surprised you feel neglected. Along comes a man like Paul Berglund. If I was in your situation, I would probably have a go at him myself. The problem I have is that Mima Wilson must have known about your affair, because it would have been hard for her to miss it. And then, the question I have to ask myself is: what part, if any, that played in her death?",
+      "hyp": "You didn't happen to mention your domestic situation. I'm not here to judge you. It can't have been easy moving all the way up here, just to find yourself on your own for weeks on end while your man's out at sea, and then when he does show his face, it's always at the end of a bomb. Now with the baby, it's a difficult situation. I'm surprised you feel neglected. Long comes a man like old Bergoin. Now, if that was in your situation, I'd probably have a go on myself. The problem I have is that Mike Wilson must have known about your affair because it would have been hard for him to miss it. And then the question that I have to ask myself is what part, if any, that played in her death?",
+      "sample_WER": 0.11594202898550725,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s1_049",
+      "ref": "She knew an unhappy marriage when she saw one. Meaning? It was clear she never married again because she was so unhappy with Jerry Wilson. She almost seemed relieved he died young. Now... you know that if it does turn out that Mima threatened to reveal your affair, it gives you a motive for murder. There's a lot of money at stake. I don't care about the Haldane money. I never have. You know, I wish Mima had told Ronald about us. I would've thanked her.",
+      "hyp": "She knew an unhappy marriage when she saw one. Meaning? It's clear she never married again because she was so unhappy with Jerry Wilson. She almost seemed relieved he died young. Now, you know that if it does turn out that Maima threatened to reveal your affair to give you a motive for murder, there's a lot of money at stake. I don't care about the healthy and money. I never have. I wish Maima had told Ronald about us. I would have thanked her.",
+      "sample_WER": 0.13953488372093023,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s1_050",
+      "ref": "So, how long have you been taking illegal bets? You know me. I'm always looking for a new project. It was just a bit of fun. How much does Ronald owe you? Three grand. You should have told me. Well, as you just pointed out, it is slightly illegal. Yeah, but do you not see my point? Ronald's got a motive now. He needs money, he needs it quick. He could've gone to Mima's to rob her. Why would he? Jackie'll bail him out. And what if she said no? I hope you don't think I had him duffed up.",
+      "hyp": "So how long have you been taking illegal bets? You know me, I'm always looking for a new project. Oh, it was just a bit of fun. Well, how much does Ronald owe you? Eight grand. You should have told me. Well, as you've just pointed out, it's slightly illegal. Yeah, but do you not see my point? Ronald's got a motive now. He needs money. He needs it quick. He could have gone and made Mr. Roberts. Why would he? Jackie'll bail him out. I'm positive he said no. I hope you don't think I had him doffed up.",
+      "sample_WER": 0.18,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s1_051",
+      "ref": "Truth be told, there's a queue from here to Aberdeen waiting to take a swing at him. Your days as a bookie are over. Okay? Is everything all right with Cassie? Eh? Aye, she's fine. I was wondering... how she feels about me and Mary starting a new family? I mean, has she said anything to you? No, she likes Mary. Oh, but me, not so much. No, eh-- Ah. I'm sure she resents me for walking out when she was a baby. Well, I know she does. She feels rejected. That's natural. But she needs us both. You did the right thing coming back.",
+      "hyp": "Truth be told, there's a queue for here at Aberdeen waiting to take a swing at him. Your days as a bookie are over. Okay. Is everything all right with Cassie? Eh, aye, she's fine. I was wondering how she feels about me and Mary starting a new family. Did she say anything to you? No, she likes Mary. Oh, but me know so much. No, no, I'm sure she resents me for walking out when she was a baby. Well, I know she does. She feels rejected. That's natural. But she needs us both. You did the right thing coming back.",
+      "sample_WER": 0.08571428571428572,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s1_052",
+      "ref": "Come on! Any chance of a bacon roll? It's no bed and breakfast, Ronald. And if I was you, I would stop drinking. You're a better man sober. So do you think I killed Mima? Some people are capable of anything with a drink in them. Now, gone, get away home.",
+      "hyp": "Come on. Any chance of a bacon roll? It's no bed and breakfast, Ronald. If I was you, I would stop drinking. You're a better man sober. Said you think I killed him? Some people are capable of anything with a drink in them. Now go on, get away home.",
+      "sample_WER": 0.11764705882352941,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s1_053",
+      "ref": "She said that Jerry found out about her and Per. He was in a rage. He told her that he'd given Per 24 hours to get off the island. And what about the money? The money that Per had on him to take to Norway. I... I don't know. When did she tell you this? When? The day she died.",
+      "hyp": "She said that she did a cherry and found out about Harun Per. He was in a rage. Told them that he'd given Per 24 hours to get off the island. It was all about the money. The money that Per had on him to take to Norway. I don't know. But when did she tell you this? When? When she died.",
+      "sample_WER": 0.26666666666666666,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s1_054",
+      "ref": "Why didn't you tell me this? This is nobody's business but mine. But you must have been angry... after being lied to for all those years. Are you telling me you didn't lose your temper? I did not harm my mother. Well, then, where were you the night she died? Because you weren't in Lerwick. I need to know, Joseph. I need to know you didn't do this. I was out on my boat. All night. I couldn't tell you, 'cause I've already been out 15 days fishing. That's my quota for the month. You're saying you lied to me because you were black landing?",
+      "hyp": "Why didn't you tell me this? It's just nobody's business but mine. But you must have been angry after being lied to for all those years. You tell me you didn't lose your temper. I did not harm my mother. Well then, where were you the night she died? Because you were in Llandrek. Well, I need to know, Joseph. I need to know you didn't do this. I was out my boat all night. I couldn't tell you. I've already been out fifteen days fishing. That's my quota for the month. You say you lied to me because you were blackmailed.",
+      "sample_WER": 0.13333333333333333,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s1_055",
+      "ref": "The Scalloway men repaired the boats. But when the navy wanted crew, they came to us. We were just boys, but the best sailors on the islands. And you moved men and supplies back and forth? Aye. And money? Aye. What about the Norwegian... who was passing information to the Germans? What about him? He got some of our boys captured. The Germans executed them.",
+      "hyp": "The scullery men repaired the boats, but when the navy wanted crew, they came to us. We were just boys, but the best sailors on the islands. And you moved men and supplies back and forth. Aye. And money. Aye. What about the Norwegian, who was passing information to the Germans? What about him? We got some of our boys captured. The Germans executed them.",
+      "sample_WER": 0.03076923076923077,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s1_056",
+      "ref": "No, you wouldn't. 'Cause that's not true. Is it? Per Lungstad wasn't a traitor. Mima was having an affair with him, wasn't she? Well, if she was, it's a secret she's taken with her to the grave. I wouldn't be too sure about that, Andrew. You know what I think? I think Jerry killed Per in a jealous rage. And I think you helped him to dump the body, maybe even helped to kill him. Not true!",
+      "hyp": "No, you wouldn't, because that's not true, is it? Per Longstad wasn't a traitor. Mima was having an affair with him, wasn't she? Well, if she was, it's a secret she's taken with her to the grave. I wouldn't be too sure about that, Andrew. You know what I think? I think Jerry killed Per in a jealous rage, and I think you helped him to dump the body, maybe even helped to kill him. Not true.",
+      "sample_WER": 0.025974025974025976,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s1_057",
+      "ref": "And Jerry, what happened to Jerry? What happened to him? We were fishing. The weather turned. A wave washed him over. I tried to hold onto him. But I lost my grip. And what about the money Per had on him? After Jerry was gone, that was all yours, wasn't it? You used it to buy your first fishing boat. You were 19. And look at you now, eh? The proud owner of the Cassandra, worth what, ten million? Your fortune is built on stolen money. Even if that was true... who would care about it now? Mima.",
+      "hyp": "Jerry. What happened to Jerry? What happened to him? We were fishing. The weather turned. The wave washed him over. I tried to hold on to him, but I lost my grip. And what was the money Pear had on him? After Jerry was gone, that was all yours, wasn't it? Used it to buy your first fishing boat. You were nineteen, and look at you now, eh? Proud owner of the Cassandra, worth what? Ten million? Your fortune's built on stolen money. Even if that were true, who would care about it now, Mima?",
+      "sample_WER": 0.12244897959183673,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s1_058",
+      "ref": "She saw her lover had been murdered and one of the men that killed him lived in the big house across the hill. What did she do, did she threaten to ruin you? 'Cause all she had to do was pick up a phone. You couldn't silence her on your own, so you got somebody else to do it for you. Was it Ronald? Leave him alone! Can't you see he's struggling?",
+      "hyp": "She thought her lover had been murdered, and one of the men that killed him lived in a big house across the hill. What did she do? Did she threaten to ruin you? Because all she had to do was pick up a phone. You couldn't silence her on your own, so you got somebody else to do it for you, was it, Ronald? Leave him alone. Can't you see he's struggling?",
+      "sample_WER": 0.041666666666666664,
+      "qwen_verdict_p2": false
+    },
+    {
+      "clip_id": "s1_059",
+      "ref": "Why are you doing this to us? Ronald had nothing to do with Mima's death, nothing. You can't be sure of that, Jackie. It was a robbery. Some incomer. You said yourself they smashed a window, pulled out the phone! The answer to Mima's death lies in the past. And you and your father know it.",
+      "hyp": "Why are you doing this to us? Ronald had nothing to do with Mima's death. Nothing. You can't be sure of that, Jackie. Was a robbery? Some intruder? You said yourself, they smashed a window, pulled out a phone. The answer to Mima's death lies in the past, and you and your father know it.",
+      "sample_WER": 0.05357142857142857,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s1_060",
+      "ref": "What did Jimmy Perez want? Hm? All these years, you've sat up here, looking down on us, haven't you? Well, now, you're gonna tell me the truth. What did Perez want?! He thinks Ronald killed your mother!",
+      "hyp": "What did Jimmy Perez want? All those years you've sat up here, looking down on us, haven't you? I know you're going to tell me the truth. What did Perez want? He thinks Ronald killed your mother.",
+      "sample_WER": 0.16216216216216217,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s1_061",
+      "ref": "Put the knife down! He's getting what he deserves. Joseph, put down the knife. Put it down! Don't make things any worse than they already are! I'm not letting him get away with it! I'm going to mark him, mark him for life... so everyone, everyone, will remember what he did. He didn't kill Mima. He'd nothing to do with it! Did he, Jackie? Go on! Tell him who killed Mima. Tell him! Tell him!",
+      "hyp": "Put the knife down. He's getting what he deserves. Joseph, put down the knife. Put it down. Don't make things any worse than they already are. Not let them get away with it. I'm going to mark him. Mark him for life. To everyone, everyone. Well, remember what he did. He didn't kill Mima. He had nothing to do with it. Did he, Jackie? Go on. Tell them who killed Mima. Tell them. Tell them.",
+      "sample_WER": 0.13333333333333333,
+      "qwen_verdict_p2": false
+    },
+    {
+      "clip_id": "s1_062",
+      "ref": "Mima called. She was angry. She said my father would die in prison. Made crazy accusations about the past, about where our money came from. I didn't know what she was on about. But when I looked into my father's eyes, I knew it was all true. I had to protect him. Don't you see? We'd lose everything. Dad would have to go into some care home. I couldn't let Mima do that to us. I couldn't.",
+      "hyp": "Mama called. She was angry. She said my father would die in prison. Made crazy accusations about the past, about where our money came from. I didn't know what she was on about. But when I looked into my father's eyes, I knew it was all true. I had to protect him. Did you see? Would lose everything. Dad would have to go into some care home. I couldn't let Mama do that to us. I couldn't.",
+      "sample_WER": 0.05194805194805195,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s1_063",
+      "ref": "And Hattie? Hattie came to see me... and she said Mima's lover was buried near the croft. I couldn't let her find the body. I followed her. I didn't want to hurt anyone. But I had to put an end to this. You have to protect your family. You know that, Joseph. Family comes first. We are family.",
+      "hyp": "And Hattie. Hattie came to see me. She said my mislover was buried near the cross. Could let her find the body. I followed her. I didn't want to hurt anyone, but I had to put an end to this. I have to protect your family. You know that, Joseph. Family comes first. We are family.",
+      "sample_WER": 0.1206896551724138,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s2_001",
+      "ref": "Something was bringing the birds. So, you thought you'd go have a look. She was dead. Why didn't you phone the police? I don't have a phone. You could have called on a neighbour. My neighbours don't speak to me. What time was this? Five. I dinnae sleep so well in the simmer dim.",
+      "hyp": "Something was breaking the box, so you thought you'd go have a look. She was dead. So why didn't you phone the police? I don't have a phone. You get a call from a neighbour. My neighbours don't speak to me. What time was this? Five. Adena sleeps away in the summer dim.",
+      "sample_WER": 0.24074074074074073,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s2_002",
+      "ref": "This is yesterday? Sunday? Aye. She knew I had a cake. She was hungry. She'd been walking all night. Did she say why or where she'd been? No. How long did she stay? An hour. She said she was going home to sleep. Sorry to disturb, but... you're needed.",
+      "hyp": "This is yesterday, Sunday. She knew I had cake. She was hungry. She'd been walking all night. She said, Why? Where she been? Why won't she stay? I knew her. She said she was going home to sleep. Sorry to disturb, but you needed.",
+      "sample_WER": 0.2857142857142857,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s2_003",
+      "ref": "Where were you last night? Here. In my bed. OK. I'm going to want to speak to you again, Mr. Bain... so don't go anywhere without letting us know, all right? Where would I go? It's not my day for Lerwick. He knew her. She visited him yesterday. And he saw the body this morning. He said that? He wasn't trying to hide it. He said he saw her at 5 a.m. He doesn't sleep so well this time of year. Who does? It's never dark enough for long enough. You just wish someone would turn the bloody light off. From her pockets. No phone? They've done what they can, but there's water everywhere. Plus, there's a primary school up there. We should move her as soon as we can. OK. I'll get onto Aberdeen.",
+      "hyp": "Where are you last night? Here, in my bed. Okay. I'm gonna want to speak to you again, Mr. Bain. So don't go anywhere without letting us know, all right? Where would I go? It's not my day if I let it. He knew her. He visited him yesterday, and he saw the body this morning. He said that. Wasn't trying to hide it. He saw it at 5:00 a.m. Doesn't he sleep so well this time of year? Who does? It's never dark enough for long enough. He just wished someone would turn the bloody light off. From my pocket. On the phone. They've done what they can, but there's water everywhere. Plus, there's a primary school up there. We should move as soon as we can. Yeah, okay. I'll go to Aberdeem.",
+      "sample_WER": 0.2074074074074074,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s2_004",
+      "ref": "We haven't managed to reach Catherine's father yet. Can you tell me who she stays with when he's offshore? No-one. Catherine only came to live with Euan a year ago when her mother died. He'd lived on his own for years. She was always at boarding school. I don't think heavy-duty parenting would have suited either of them. Doesn't mean they weren't fond of each other. Someone mentioned the \"teacher's lassie\". Do you know who that would be? Yeah, that would be Sally Henry. Her mother, Margaret, is the teacher at the primary. She and Catherine were friends.",
+      "hyp": "We haven't managed to reach Catherine's father yet. Can you tell me who she stays with when he's offshore? No one. Catherine only came to live with you a year ago when her mother died. He'd lived on his own for years. She was always at boarding school. I don't think heavy duty parenting would have suited either of them. Doesn't mean they weren't fond of each other. And somebody mentioned the teacher's last name. Do you know who that would be? Yeah, that would be Sally Henry. Her mother Margaret is the teacher at the primary. She and Catherine are friends.",
+      "sample_WER": 0.10204081632653061,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s2_005",
+      "ref": "A terrible shock for everyone. Though maybe not a surprise. She liked to provoke a response, that one. I am sorry. I have to ask you this. Where were you last night, Sally? And you, Mrs. Henry. Where do you think? Asleep in our beds. Do you know what Catherine was up to at the weekend? Of course, you can't blame the children. Left to their own devices, drinking themselves stupid in Lerwick every weekend. I tell you what, Sally, why don't you and me go for a walk and we'll get out of your mother's way? But I've made coffee. That's OK, we'll take it with us.",
+      "hyp": "A terrible shock for everyone. Though maybe not a surprise. She liked to provoke a response, that one. I'm sorry, I have to ask this. Where were you last night, Sally? And you, Mrs. Henry? Where do you think? Sleeping in our beds. Do you know what Catherine was up to the weekend? Of course, you can't blame the children. Left to their own devices, drinking themselves stupid and erratic every weekend. I tell you what, Sally. Why don't you and me go for a walk and work out your mother's ways? But I made coffee. That's okay. Take it with us.",
+      "sample_WER": 0.12962962962962962,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s2_006",
+      "ref": "You know, whatever you say to me... stays with me. Your parents don't get to hear it. She didn't always tell me what she was doing. I'm not allowed out so much. She didn't like to rub it in. What about Saturday night, when you went calling on Magnus Bain? Catherine thought it would be a dare to knock on his door. And after that? Went home.",
+      "hyp": "You know, whatever you say to me stays with me. Your parents don't get to hear it. Didn't always tell me what she was doing. Not allowed out so much. Didn't like to rub it in. So what about Saturday night when you went calling on Magnus Bane? Catherine thought it would be a dare to knock on his door. And after that? Went home.",
+      "sample_WER": 0.07462686567164178,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s2_007",
+      "ref": "Like I said, she didn't always tell me what she was doing. What about Sunday? Yesterday. Did you see her then? She called. Late afternoon. I couldn't come out cos I had homework. A good friend, eh? Never had a friend like her before. Did Catherine have a boyfriend? No. Did she have a girlfriend? No. Was anybody after her? We used to joke about Mr. Scott. He was always looking at her in class. A teacher? She thought he was ridiculous.",
+      "hyp": "Like I said, she didn't always tell me what she was doing. Well, there's Sandy. Yesterday, you see her then? She called. Late afternoon. Couldn't come out 'cause I had homework. A good friend. Never had a friend like her before. Catherine have a boyfriend? No. Have a girlfriend? No. Is anybody after her? Used to joke about Mr. Scott, 'cause I was looking at her in class. Teacher? She thought he was ridiculous.",
+      "sample_WER": 0.1951219512195122,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s2_008",
+      "ref": "Perez isn't a Shetland name. No. Er... They say they came over with a shipwreck from the Armada. And a Spanish sailor fell in love with a girl from Fair Isle. You don't look very Spanish. No, I think...! I think I probably take after her. What did your mum mean when she said that Catherine liked to provoke people? Catherine thought respect was something adults had to earn. She wasn't always polite. What, to your mum? To anyone.",
+      "hyp": "Perez isn't a Shetland name. No. They say they came over with a shipwreck from the Amada, and a Spanish sailor fell in love with a girl from Sarah. You don't look very Spanish. No, I think I think I probably take after her. What did your mum mean when she said that Catherine liked to provoke people? Catherine thought respect was something adults had to earn. She wasn't always polite. What? Your mum? Anyone?",
+      "sample_WER": 0.0759493670886076,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s2_009",
+      "ref": "Keep trying. We need to search his house, and I want him to get this from us. I don't want him to get it from Facebook. Yeah. Boss... I've been getting phone calls from my friend Reg Gilbert, Mr. Media, about a possible serial killer on Shetland. I don't know what you're talking about. For Christ's sake, Jimmy! You're my most senior detective. You should be briefing me about this, not the other way round. I'm sorry, can we go outside?",
+      "hyp": "Keep trying, because we need to search his house, and I want him to get this from us. I don't want him to get it from Facebook. Yeah. I've been getting phone calls from my friend Red Gilbert, Mr. Media, about a possible serial killer on Shetland. I don't know what you're talking about. Oh, for Christ's sake, Jimmy! You're my most senior detective. You should be briefing me about this, not the other way round. I'm sorry. Can we go outside?",
+      "sample_WER": 0.04938271604938271,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s2_010",
+      "ref": "You know why giving up extends your life? Cos every bloody hour takes about three days to pass. 19 years ago, a child called Catriona Bruce went missing from Ravenswick. Same village? They never found her body. The team sent from Inverness concluded there was no foul play and that she probably fell from the cliff where she was seen playing. But after today... Reg is just digging at the moment. He's fishing for a story, he's looking for a link. If there's any chance he's going to find one, I want to know about it. OK? This is the same address. What?",
+      "hyp": "You know what giving up extends your life because every bloody hour takes about three days to pass. Nineteen years ago, a child called Katrina Bruce went missing from Ravenswick. Same village. They never found her body. The team sent from Inverness concluded there was no foul play and that she probably fell from the cliff where she was seen playing. But after today, Edge is just digging at the moment. He's fishing for a story. He's looking for a link. If there's any chance he's going to find one, I want to know about it. Okay? Just say, Magnus. What?",
+      "sample_WER": 0.10679611650485436,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s2_011",
+      "ref": "I've never known a girl be killed and that not be one of the rumours. Which is depressing enough. But in this case I can absolutely promise you it's pure speculation. Time of death was between midnight last night and four o'clock this morning. She was killed where she was found, strangled with her own scarf. Any sign of sexual assault? No.",
+      "hyp": "I have never known a girl be killed, and that not be one of the remarks, which is depressing enough. In this case, I can absolutely promise you, it's pure speculation. Time of death was between midnight last night and four o'clock this morning. She was killed where she was found, strangled with her own scarf. Any sign of sexual assault? No.",
+      "sample_WER": 0.06451612903225806,
+      "qwen_verdict_p2": false
+    },
+    {
+      "clip_id": "s2_012",
+      "ref": "Anything else? Hm! I'm just a GP. Anything else can wait for the pathologist in Aberdeen. Who's going to tell me the exact same thing you will, only in three days' time. Cora... There were scratch marks on her neck and skin tissue under her fingernails. My guess is they'll find it's her own. Because she was trying to get her fingers under the scarf to pull it away. But no defensive injuries. So either they took her completely by surprise. What, at this time of year? It's light all night. Or she knew them well enough to let them get very close.",
+      "hyp": "Anything else? I'm just a GP. Anything else can wait for the pathologist in Aberdeen. Who's going to tell me the exact same thing you will, only in three days' time. Cora. There were scratch marks on her neck and skin tissue under her fingernails. My guess is they'll find it's her own. Because she was trying to get her fingers under the scarf to pull it away. But no defensive injuries. So either they took her completely by surprise. This time of year, it's light all night. Or she knew them well enough to let them get very close.",
+      "sample_WER": 0.02912621359223301,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s2_013",
+      "ref": "Even if the team from the mainland got it wrong and Catriona was abducted, she was a child and her body was never found. Catherine was ten years older and her body was left in an open space, in full view. Different victim profiles, different modus operandi, let alone the 19 years between them. I really... I can't see the same hand in both. What about the fact that they were from the same village, lived in the same house? Even their names are similar. That's a coincidence that the tabloids love, but it's not a link. What worries me is that people are going to start talking about this, and before you know it, people are looking for freaks and monsters and forgetting what they actually saw. OK. We issue a statement. Despite certain similarities, the police believe there is no connection between the death of... Et cetera, et cetera. Yeah.",
+      "hyp": "You know, even if the team from the mainland got it wrong, Infatina was abducted. She was a child, and her body was never found. Catherine was ten years older, and her body was left in an open space. It fools you. Different victim profiles, different modus operandi, let alone the nineteen years between them. I really, I can't see the same hand in both. What about the fact that they were from the same village, lived in the same house? Even the names are similar. That physical instance that the tabloids loved, but it's not linked. You know, what worries me is that people are going to start talking about this, and before you know it, people are looking for freaks and monsters, and they're forgetting about what they actually saw. Okay. We issue a statement. Despite certain similarities, the police believe there is no connection between the deaths of etc. etc.",
+      "sample_WER": 0.16447368421052633,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s2_014",
+      "ref": "Saturday night. Midsummer. Catherine and her friend Sally go to a beach party and then call in on Magnus Bain. Sally goes home, Catherine goes on to spend the night away from home, presumably in Lerwick, because the next morning, Sunday, she gets off the Lerwick bus and she bumps into Magnus again, then goes back to his house for cake. Teatime on Sunday, she drops in on Jess Collins. And we know from the door-to-door that she's seen several times after that. The last sighting is 8.30, when she pops into a neighbour's house for milk. The whole family saw her.",
+      "hyp": "Saturday night, midsummer. Catherine and her friend Sally go to a beach party, and then call in on Magnus Bain. Sally goes home. Catherine goes on to spend the night away from home, presumably in Leric, because the next morning, Sunday, she gets off the Leric bus and she bumps into Magnus again, and goes back to his house for cake. Tea time on Sunday, she drops in on Jess Callan. And we know from door to door that she's seen several times after that. The last sighting is 8:30 when she pops into a neighbour's house for milk. The whole family saw her.",
+      "sample_WER": 0.08823529411764706,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s2_015",
+      "ref": "She's killed... here. Between 12 midnight and 4 a.m. I'm seeing the name Magnus Bain a lot. He saw the body and said nothing. Plus, he's pretty odd. Yeah, pretty odd isn't enough to make us have a look at someone. Plus, he says his neighbours don't talk to him. Did we check up on that? Well, it's not just them avoiding him. He's pretty much a recluse. I can see him not reporting it. You know him? Only by reputation. Like Tosh says - odd. If she knew her killer, do you think she'd arranged to meet them? Maybe she was already with them. Boss? That was Aberdeen about the footprints you photographed.",
+      "hyp": "She's killed here between twelve midnight and four a.m. Was he in the name Magnus being a lot? He saw the body and said nothing. Plus he's pretty odd. Yeah, pretty odd isn't enough to make us have a look at someone. Plus he says his neighbours don't talk to him. Did we check up on them? Well it's not just them avoiding him. He's pretty much a recluse. I can see him not reporting it. Do you know him? Only by reputation. Like Tosh says. Odd. If she knew her killer, do you think she'd arrange to meet them? See maybe she was already with them. Boss, that was Aberdeen right there. Who can she phone that?",
+      "sample_WER": 0.1504424778761062,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s2_016",
+      "ref": "You all knew Catherine. And maybe some of you know, or knew, things about her that she would rather have kept private. But we need to know who she was with and what she was doing in the 24 hours leading up to her death. Whenever someone dies, and especially in circumstances like this, there's always rumours about what may or may not have happened. And they don't help. Cos all they do is make people scared. And I don't want you to be scared.",
+      "hyp": "You all knew Catherine, and maybe some of you know or knew things about her that she would rather have kept private. But we need to know who she was with and what she was doing in the 24 hours leading up to her death. Whenever someone dies, especially in circumstances like this, there's always rumours about what may or may not have happened, and they don't help, as all they do is make people scared. And I don't want to be scared.",
+      "sample_WER": 0.03529411764705882,
+      "qwen_verdict_p2": false
+    },
+    {
+      "clip_id": "s2_017",
+      "ref": "Can I talk to you? What's up? I taught her film and photography as part of her Media Studies. I was also her registration teacher. What was she like? Bright. Challenging. She could be hard work. But she was also receptive and interested and engaged. They're not all like that, believe me. Was she popular? Admired, certainly. But perhaps a bit too spiky for real popularity. A satirical eye and an impressive line in contempt, even by 17-year-old standards. It doesn't necessarily endear you to your contemporaries. No. Or your teachers, I would imagine. Oh, Catherine and I understood each other very well.",
+      "hyp": "Can I talk to you? What? I taught her film and photography as part of my media studies. I was also her registration teacher. And what was she like? Bright. Challenging. She could be hard work, but she was also receptive, and interested, and engaged. They're not all like that, believe me. She popular? Admired? Certainly. But perhaps a bit too spiky for real popularity. A satirical eye and an impressive line in contempt, even by seventeen-year-old standards. It doesn't necessarily endear you to your contemporaries. No, your teachers always imagined. No. Now Catherine and I understood each other very well.",
+      "sample_WER": 0.10679611650485436,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s2_018",
+      "ref": "Did you ever see her outside of school? Not by arrangement, if that's what you're suggesting. By accident, then? It's almost impossible to avoid, if you live in Lerwick. I'm thinking of moving to Bressay and learning to row. What brought you to Shetland in the first place? I wanted to be somewhere where there was scope to make a real difference. You know... hearts and minds. Honest to God, it was like a confessional in there. The broken hearts and sexual health of an entire generation, in detail. I tell you, if Cassie ever brings home a boy called Peanuts, be very afraid.",
+      "hyp": "Do you ever see her outside of school? Not by arrangement, if that's what you're suggesting. By accident, then? It's almost impossible to avoid if you live in Lerrick. I'm thinking moving to Bressie and learning to row. Or bright to Shetland in the first place. I wanted to be somewhere where there's scope to make a real difference. You know, hearts and minds. Honest to God, it was like a confessional in there. Broken hearts and sexual health of an entire generation in detail. I tell you, if Cassie ever brings home a boy called Peanuts, be very afraid.",
+      "sample_WER": 0.09615384615384616,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s2_019",
+      "ref": "She was definitely an outsider, but I got the impression it was choice. They were all going on about how she made a point of not using social media. Pretty self-conscious about wanting to stand out from the crowd. Did anyone mention anything about a teacher called Hugo Scott? Not to me. OK, well, do a wee bit of digging, would you? See if there's anything we should be interested in. OK.",
+      "hyp": "Well, she was definitely an outsider, but I got the impression it was choice. They were all going on about how she made a point of not using social media, pretty self conscious about wanting to stand out from the crowd. Did anybody mention anything about a teacher called Hugo Scott? Not to me. Okay, we'll do a wee bit digging, would you? See if there's anything we should be interested in. Okay.",
+      "sample_WER": 0.1111111111111111,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s2_020",
+      "ref": "Boss! You had a visitor while you were out. Alan Isbister. The Walsay Playboy? He had to go over to the pier in his Very Expensive Car for a Very Important Meeting, but he said he'd call in again on his way back. Apparently, it's about the case.",
+      "hyp": "Boss, you had a visitor while you were out. Alan Ayres, Mister. The Wolsey Playboy. He had to go over to the pier in his very expensive car for a very important meeting, but he said he'd call in again on his way back. Partly, it's about the case.",
+      "sample_WER": 0.08333333333333333,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s2_021",
+      "ref": "Inspector Perez. I told your man I'd call back. He's my sergeant! He's not my butler. And the next time you've got information relating to a crime, you give it to whoever's on the desk, do you understand? Hey! I'm just trying to do my good citizen thing here, OK? Well, get on with it. So, I always throw a midsummer party. Usually starts when all the others are finishing. Stop the hangover starting, keep drinking. Catherine Ross was there. I didn't... I didn't know her. I just recognised her face from the news. Who brought her along? I mean, I just get the booze in, throw open the doors and let the party take care of itself.",
+      "hyp": "Inspector Price. I told you I'm not coming back. He's my sergeant. He's not my butler. And the next time you've got information relating to a crime, you give it to whoever's on the desk. Do you understand? I'm just trying to do my good citizen thing here. Okay. Well, go on then. Sure. I always throw a midsummer party. Usually starts when all the others are finishing. Stop the hangover, start and keep drinking. Catherine Ross was there. I didn't. I didn't know her. I just recognised her face from the news. Who brought her along? I mean, I just get the booze in, throw open the doors and let the party take care of itself.",
+      "sample_WER": 0.11016949152542373,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s2_022",
+      "ref": "She was just part of the crowd. I hardly noticed her, you know. And you're, what, 30? And she was 17. That didn't make her stand out? It was an open house. There was probably a couple of 70-year-olds there too. Where is this open house? My place on the main island. The Haa. You stay on the main island till I tell you different. This is a list of everyone that he remembers. What about the ones he doesn't remember? Well, treat it as a starting point. Where was Catherine? Who was she with? What was she doing? You know Isbister's got a reputation? I mean, I fancied 17-year-olds when I was 17. But you're supposed to grow out of it.",
+      "hyp": "She was just part of the crowd. Hardly noticed them, you know. And you're what, thirty? And she's seventeen. And how did they make her stand out? It was an open house. Probably a couple of seventeen-year-olds there too. Where is this open house? My place on the main island. The Ha? You stay on the main island till I tell you different. This is a list of everyone he remembers. What about the ones he doesn't remember? Well, treat it as a starting point. Where was Catherine? Who was she with? What was the? You know, I suppose it's got an reputation. I mean, I fancied seventeen-year-olds when I was seventeen, but you're supposed to grow out of it.",
+      "sample_WER": 0.18032786885245902,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s2_023",
+      "ref": "His dad's the big man who made the family fortune with the pelagic trawler. Plus, his mother never wanted him out of her sight. I thought the Isbisters were in haulage. You see trucks everywhere. The trawling's the real business. This is half the bloody island. Why wasn't I invited?",
+      "hyp": "His dad's the big man who made the family fortune with the pelagic trawler. Plus, his mother never wanted to move out of sight. I thought the icebusters were in Holland. You see trucks everywhere. The trawling's the real business. This is half the bloody island. I wasn't invited.",
+      "sample_WER": 0.14,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s2_024",
+      "ref": "You know, when we found Catherine's body, she didn't have her house keys or her phone. We don't usually lock the doors, but her phone? She never went anywhere without it. Maybe if she left in a rush. The officer that searched the house couldn't find it there either. You think someone took it? It's like a mugging that went wrong? No, it doesn't look like that.",
+      "hyp": "You know, when we found Catherine's body, she didn't have her house keys or her phone. We don't usually lock the doors. Or her phone. She never went anywhere without it. Maybe she she left in a rush. The officer that searched the house couldn't find it there either. What? You think someone took it? It's like a mugging that went wrong. No, it doesn't look like that.",
+      "sample_WER": 0.04477611940298507,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s2_025",
+      "ref": "17 is young... to be living alone. Is that a question? No. I mean, it's a lot of freedom, nobody asking where you're going, what you're doing, when are you going to be home. Do you know what she did with it? She went out. Not so much. She liked her own company. You know, I went to that school. From Fair Isle. It was right cliquey. Hard, being on the outside.",
+      "hyp": "Seventeen, it's young to be living alone. Not a question. No, I mean it's a lot of freedom. You know, nobody asking where you're going, what you're doing, when you're going to be home. Do you know what she did with it? She went out. Not so much. She liked her own company. You know, I went to that school. It's a fairisle. It's very cliquey. It's hard being on the outside.",
+      "sample_WER": 0.20833333333333334,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s2_026",
+      "ref": "Hello, Jess. I'm a wee bit worried about Euan. What will the neighbours say? Two male visitors in one night. Practically a knocking shop. I'm sorry, I didn't mean to interrupt your evening. Oh, no! Duncan just dropped by to see how I was getting on. Thank you. Hi. Hi. How do you two know each other, then? Well, my ex and Jimmy were together for a long time before she passed on, the result of which is that we now share a very lovely and very strong-willed daughter. I'm her father, Jimmy's her dad. Yeah. I should be getting back to her. Good night. Here. Could you just hold that? I just want to have a word.",
+      "hyp": "Hello Jess, I'm a wee bit worried about you and. What will the neighbours say? Two male visitors in one night? Right to clear a knocking shop. I'm sorry, I didn't mean to interrupt your evening. Oh no no no, Duncan just dropped by to see how I was getting on. Thank you. Bye. Bye. How do you two know each other then? Well, um, my ex and Jimmy were together for a long time before she passed on. The result of which is that we now share a very lovely and very strong-willed daughter, Amma. Father Jimmy's a dad. Yeah. I should be getting back to her. Bye. Here, could you just hold that? Just one other one.",
+      "sample_WER": 0.17796610169491525,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s2_027",
+      "ref": "How would you like it if I told you to stop washing? I smell better after I've washed. Wet dog stinks. Tosh! This is a briefing. Brief us. I looked into Hugo Scott. Nice shiny teaching record. No previous anything. As for tracing and eliminating everyone in Ravenswick the night Catherine was killed, most of them were in bed so verifiable alibis are proving a bit of a problem. OK. How about Alan Isbister's party guests? Still working our way through. Nothing from any of them so far. There's a lot of talk round about Magnus Bain. I'm not having this investigation being driven by public opinion.",
+      "hyp": "How would you like it if I told you to stop washing? I smell better after I've washed. Wet dogs stink. Tosh. This is a briefing. Brief us. I looked into Hugo Scott. Nice, shiny teaching record, no previous anything. As for tracing and eliminating everyone in Ravenswick the night Catherine was killed, most of them were in bed, so verifiable alibi's are proving a bit of a problem. Okay. How about Allenize Bister's party guests? Still working my way through. Nothing for any of them so far. Does. Well, talk round about Magnus Bain. I'm not having this investigation being driven by public opinion.",
+      "sample_WER": 0.11214953271028037,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s2_028",
+      "ref": "Probably him being so weird. Catherine liked freaks and misfits. Why did she like you, then? Because you don't strike me as either of those two things. Maybe being a teacher's kid is OK if your parent is popular. If they're not, it's pretty much the definition of both. So, you're going to talk to Magnus Bain. Better late than never, I suppose. Mrs. Henry, is there something you think I should know? I mean, something concrete. People used to think they were doing a kindness letting their children talk to him. More innocent back then.",
+      "hyp": "Probably him being so weird. Catherine liked freaks and misfits. Why'd she like you then? Because you don't strike me as either of those two things. Maybe being a teacher's kid is okay if your parent is popular. If they're not, it's pretty much the definition of both. So, you're going to talk to Magnus Bain. As late as never, I suppose. Mrs. Henry, is there something you think I should know? I mean, something concrete. People used to think they were doing a kindness letting their children talk to him. More innocent back then.",
+      "sample_WER": 0.052083333333333336,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s2_029",
+      "ref": "We know better these days. Don't we? Mm. OK. Thanks for your time. Where's my dad? On the hill. What's wrong with that? Environmental officer, it's his job. You know what? Whatever he's doing and whoever he's doing it with, I don't blame him!",
+      "hyp": "We know better these days, don't we? Okay, thank you. Thank you. Where's my dad? On the hill. What's wrong with that? Environmental officer, it's his job. You know what? Whatever he's doing, and whoever he's doing it with, I don't blame him.",
+      "sample_WER": 0.13636363636363635,
+      "qwen_verdict_p2": false
+    },
+    {
+      "clip_id": "s2_030",
+      "ref": "Who's the wee girl? Agnes. She's my sister. She's dead. Is that your mother? There's no milk. It's my day for Lerwick, but I couldn't get out. You know why they came, don't you, Magnus? They think you had something to do with Catherine's death. No! What did you do after she'd gone? TV. What did you watch? There was some lad fishing off a boat.",
+      "hyp": "Where's my girl? Agnes. She's with her sister. She's dead. Is that your mother? There's no moke. My day fell out. I couldn't get out. You know why they came, don't you, Magnus? 'Cause they think it's something to do with Catherine's death. No. What did you do after she'd gone? TV. Did you watch? Some lad fishing off a boat.",
+      "sample_WER": 0.24242424242424243,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s2_031",
+      "ref": "Did anyone see you between Catherine leaving here on Sunday morning and me calling in on you the next day? Anyone who could say where you were? OK. Now, what I'd like to do... ..is I'd like to take your fingerprints. And a sample of your DNA. You don't have to do either of those things.",
+      "hyp": "Did anyone see you between Catherine leaving here on Sunday morning and me calling in on you the next day? Anyone who could say where you were? Okay. Now, what I'd like to do is I'd like to take the fingerprints and a sample of DNA. You don't have to do either of those things.",
+      "sample_WER": 0.05357142857142857,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s2_032",
+      "ref": "I'd asked them to come back this term with a pitch for their end-of-year project. It could have been something to do with that. Do you have any idea how it was taken? Surely the subject would know. The subject isn't technologically minded. Er... Catherine liked retro. She wanted a Hasselblad, but she couldn't afford one. What's a Hasselblad? It's a camera that gives you this square format. They're expensive. Catherine got an app on her phone instead. What? That was taken on a phone?",
+      "hyp": "I'd asked them to come back this term with a pitch for their end of year project. Could have been something to do with that. Do you have any idea how it was taken? Surely the subject would know. Subject isn't technologically minded. Catherine liked retro. She wanted a Hasselblad, but she couldn't afford one. It's a Hasselblad. It's a camera that gives you the square format. They're expensive. Catherine got an app on her phone instead. That was taken on a phone.",
+      "sample_WER": 0.10588235294117647,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s2_033",
+      "ref": "So, she'd have had to have taken it, gone home, downloaded it and then printed it off? Well, she could have printed it straight from her phone, but looking at it, I'd say she did some work on it first - you know, crunching the blacks. It's very Don McCullin. And it's very Catherine.",
+      "hyp": "So she'd have had to have taken it, gone home, downloaded it, and then printed off. Well, she could have printed it straight from her phone. But looking at it, I'd say she did some work in it first. Yeah, crunching the blacks. It's very Don McCullin. Yeah, it's very Catherine.",
+      "sample_WER": 0.09433962264150944,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s2_034",
+      "ref": "Catherine Ross took a photograph of Magnus Bain on her phone on the day she died. So, can we get on to Aberdeen, and see if they can get a timing for when she downloaded it onto her laptop? Sure. What happened in Ravenswick? Fingerprinting and a DNA sample. And, apparently, this isn't the first time Magnus has been fingerprinted. So, can you see if we've got anything on record for that? Got it. Alibi? He doesn't have an alibi! The man's a recluse. He doesn't see anybody from one week's end to the next unless it's his day for bloody Lerwick. But he has no motive. There is nothing tying him to this except talk, and talk can be generated.",
+      "hyp": "Ross took a photograph of Magan Spain with a phone on the day she died. So can we get onto Aberdeen and see if they can get a timing for when she downloaded it onto her laptop? Sure. What happened in Ravenswick? Fingerprinting and a DNA sample. And apparently this isn't the first time that Magan has been fingerprinted. So can see if we've got anything on record for that. Got it. Alibi? He doesn't have an alibi. The man's a recluse. He doesn't see anybody from one week's end to the next unless it's his gay for bloody lederic. But he has no motive. There is nothing tying him to this except talk, and talk can be generated.",
+      "sample_WER": 0.09917355371900827,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s2_035",
+      "ref": "What if somebody wants us to be looking at him? What if it's misdirection? Like who? I don't know. Somebody with enough money to buy all the rumour-mongering they want. Sorry, Tosh. Right. What have I missed? The pathology report came through. Nothing new. Basically, it's exactly what Cora said. And Forensics got back about the fibre under Catherine's nail. It's hemp, from a rug. What kind of rug? \"Antique and most probably of Turkish origin.\" Apparently they can tell from the dye. Uh-huh?",
+      "hyp": "What somebody wants us to be looking at him. What's Mr. Jackson? Like who? I don't know. Somebody with enough money to buy all the rummaging they want. Sorry, George. Right. Over this. The pathology report came through. Nothing new. Basically, it's exactly what Cora said. And forensic got back about the fibre under Catherine's nail. It's hemp from a rug. Kind of rug. Antique and most probably Turkish origin. Apparently, they can tell from the dye. Uh huh.",
+      "sample_WER": 0.19047619047619047,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s2_036",
+      "ref": "You said to me that you'd never arranged to meet Catherine outside of school. Is that right? Yeah, that's right. So, she never came to this flat? Why would she? Nice rug. That Turkish? Yes. Very distinctive. Very distinctive patterns. Very distinctive dyes, apparently. Catherine bit her nails, did you notice that about her? Maybe nerves, I don't know. Anyway, makes them ragged.",
+      "hyp": "You said to me that you've never arranged to meet Catherine at those schools. Is that right? Yeah, that's right. She never came to this flat. Why would she? Nice rug. Turkish. Yes. Yeah, very distinctive. Very distinctive patterns. Very distinctive dyes. Apparently. Catherine bit her nails. Did you notice that about her? Maybe nerves. I don't know. Anyway, makes them ragged.",
+      "sample_WER": 0.1111111111111111,
+      "qwen_verdict_p2": true
+    },
+    {
+      "clip_id": "s2_037",
+      "ref": "OK, I want a solicitor. Yeah, I think that's a good idea. \"Very Don McCullin.\" Hm? What does that mean? You can look at a beautiful photograph taken with insight and care and you look at it like you've seen it all before, like there's nothing new in the world for you at all. All the things you said about Catherine, that she was interested, receptive and engaged. That wasn't about her, was it? It was about you. It was about how she responded to you. She came in to borrow a DVD. That's all. And she got a fibre from your rug caught underneath her nail how, exactly? We... We talked.",
+      "hyp": "Okay, I want to slit it. Yeah, I think that's a good idea. Very Don McCullin. Hm? What does that mean? You can look at a beautiful photograph taken with insight and care, and you look at it like you've seen it all before, like there's nothing new in the world for you at all. All the things you said about Catherine, that she was interested, receptive and engaged, that wasn't about her, was it? It was about you. It was about how she responded to you. She came in to borrow a DVD. That's all. And she got a fibre from your rug caught underneath her nail. How exactly? We talked.",
+      "sample_WER": 0.044642857142857144,
+      "qwen_verdict_p2": true
+    }
+  ]
+}
