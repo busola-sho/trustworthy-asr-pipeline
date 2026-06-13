@@ -11,64 +11,61 @@ from itertools import chain
 @dataclass
 class Sample:
     audio: np.ndarray
-    sample_rate:int
+    sample_rate: int
     label: str
 
+
 class Dataset(ABC):
-    def __init__(self, name:str, dataset_path:Optional[str]=None):
-        self.name=name
-        self.data_path=dataset_path
-    
+    def __init__(self, name: str, dataset_path: Optional[str] = None):
+        self.name = name
+        self.data_path = dataset_path
+
     @abstractmethod
-    def load(self)->Generator[Sample, None, None]:
+    def load(self) -> Generator[Sample, None, None]:
         pass
 
-class CommonVoiceScots(Dataset): # A specific conversational scots dataset
+
+class CommonVoiceScots(Dataset):
     def __init__(self, path="data/common-voice-scots"):
         super().__init__(name="common_voice", dataset_path=path)
 
     def load(self):
         audio_dir = Path(self.data_path) / "audios"
         label_path = Path(self.data_path) / "ss-corpus-sco.tsv"
-        df=pd.read_csv(label_path, sep="\t").dropna(subset=["transcription"])
+        df = pd.read_csv(label_path, sep="\t").dropna(subset=["transcription"])
 
         for _, row in df.iterrows():
-            audio_path=audio_dir/row["audio_file"]
-            label=row["transcription"]
-            audio_array, sample_rate = librosa.load(audio_path,sr=None)
-            sample=Sample(audio=audio_array,sample_rate=sample_rate,label=label)
-            yield sample
+            audio_path = audio_dir / row["audio_file"]
+            label = row["transcription"]
+            audio_array, sample_rate = librosa.load(audio_path, sr=None)
+            yield Sample(audio=audio_array, sample_rate=sample_rate, label=label)
 
-class EnglishDialectsScots(Dataset): # A scottish read dataset
+
+class EnglishDialectsScots(Dataset):
     def __init__(self):
         super().__init__(name="english_dialects_scots")
-    
+
     def load(self):
-        dataset_f = load_dataset("ylacombe/english_dialects", "scottish_female", split="train", streaming=True)
-        dataset_m = load_dataset("ylacombe/english_dialects", "scottish_male", split="train", streaming=True)
+        # cached on first download, reads from disk after that
+        dataset_f = load_dataset("ylacombe/english_dialects", "scottish_female", split="train")
+        dataset_m = load_dataset("ylacombe/english_dialects", "scottish_male", split="train")
         combined = chain(dataset_f, dataset_m)
 
         for row in combined:
             audio_array = row['audio']['array']
             sample_rate = row['audio']['sampling_rate']
-            label=row['text']
-            sample=Sample(audio=audio_array,sample_rate=sample_rate,label=label)
-            yield sample
+            label = row['text']
+            yield Sample(audio=audio_array, sample_rate=sample_rate, label=label)
 
-class EdAcc(Dataset): # A more general accent-diverse dataset
+
+class EdAcc(Dataset):
     def __init__(self):
         super().__init__(name="edinburgh_international_accents")
-    
-    # def load(self):
-    #     edacc = load_dataset("edinburghcstr/edacc", split="test", streaming=True)
-    #     for row in edacc:
-    #         audio_array = row['audio']['array']
-    #         sample_rate = row['audio']['sampling_rate']
-    #         label=row['text']
-    #         sample=Sample(audio=audio_array,sample_rate=sample_rate,label=label)
-    #         yield sample
+
     def load(self):
-        dataset = load_dataset("edinburghcstr/edacc", split="test", streaming=True)
+        # cached on first download, reads from disk after that
+        dataset = load_dataset("edinburghcstr/edacc", split="test")
+
         for row in dataset:
             if row.get("accent") != "Scottish English":
                 continue

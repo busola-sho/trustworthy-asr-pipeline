@@ -1,15 +1,21 @@
+"""
+src/benchmark.py
+
+Runs an ASRModel on a Dataset and saves transcripts + per-word confidence scores.
+No judge here — judging is done separately in evaluation/judge/.
+
+Usage (via run_benchmark.py):
+    python scripts/benchmarking/inference/run_benchmark.py --model whisper --dataset commonvoice --max_samples 150
+"""
+
 from jiwer import wer
 from src.models import ASRModel
 from src.datasets import Dataset
 import json
 import re
 import os
-from openai import OpenAI
-from dotenv import load_dotenv
+from typing import Optional
 
-MODEL = "gpt-4o"
-load_dotenv()
-client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
 
 def normalise(text: str) -> str:
     text = text.lower()
@@ -17,106 +23,103 @@ def normalise(text: str) -> str:
     text = text.replace('\u201c', '"').replace('\u201d', '"')
     text = text.replace('\u2013', '-').replace('\u2014', '-')
     text = re.sub(r"[^\w\s']", '', text)
-    return text
+    return text.strip()
 
-def alteration_eval(hyp:str, ref:str, sample_wer:float) -> bool:
-    if sample_wer==0:
-        return False
-    
-    completion = client.chat.completions.create( 
-        model=MODEL, 
-        messages=[ 
-        {"role": "system", "content": """You are evaluating automatic speech recognition transcripts for a policing context.
 
-        You will be given a reference transcript and a hypothesis transcript of the same spoken audio.
+def run_benchmark(
+    model: ASRModel,
+    dataset: Dataset,
+    output_path: str,
+    max_samples: Optional[int] = None,
+    start_from: int = 0,
+    subset_indices: Optional[list] = None,
+) -> dict:
+    """
+    Run model on dataset, saving transcripts + per-word confidence scores.
 
-        Your task is to determine if the hypothesis contains any meaning-altering errors — that is, errors that would cause a police officer or legal professional to misunderstand what was said.
+    Args:
+        model:           loaded ASRModel instance
+        dataset:         Dataset instance
+        output_path:     path to save JSON output
+        max_samples:     stop after this many samples (ignored if subset_indices given)
+        start_from:      resume from this sample index
+        subset_indices:  if given, only process these specific indices
+    """
 
-        Ignore differences in:
-        - Capitalisation
-        - Punctuation
-        - Contractions (e.g. "I've" vs "I have")
-        - Dialect variations (e.g. "aboot" vs "about", "didnae" vs "didn't")
-        - Filler words
-
-        Flag as meaning-altering only if:
-        - A word is substituted with a different word that changes the factual content
-        - A word is missing or added that changes who did what
-        - A name, place, or number is transcribed incorrectly
-
-        Only flag as meaning-altering if a factual error would mislead a police officer or legal professional. 
-        Minor rewording, paraphrasing, or omission of filler words should not be flagged.
-
-        Reply with only: true or false"""},
-        {"role": "user", "content": f"Reference: {ref}\nHypothesis: {hyp}"}])
-    result = completion.choices[0].message.content.strip().lower()
-    return result == "true"
-
-# def run_benchmark(model: ASRModel, dataset: Dataset, output_path: str, max_samples: int = None) -> dict:
-#     all_refs=[]
-#     all_hyps=[]
-#     results=[]
-#     meaning_altering_count=0
-#     for i, sample in enumerate(dataset.load()):
-        
-#         if max_samples and i >= max_samples:
-#             break
-def run_benchmark(model: ASRModel, dataset: Dataset, output_path: str, max_samples: int = None, start_from: int = 0) -> dict:
-
+    # resume support
     if start_from > 0 and os.path.exists(output_path):
         with open(output_path) as f:
             existing = json.load(f)
         results = existing.get("samples", [])
-        meaning_altering_count = sum(1 for s in results if s.get("meaning_altering"))
-        all_refs = [normalise(s["ref"]) for s in results if isinstance(s["ref"], str)]
-        all_hyps = [normalise(s["hyp"]) for s in results]
+        all_refs = [normalise(s["ref"]) for s in results if isinstance(s.get("ref"), str)]
+        all_hyps = [normalise(s["hyp"]) for s in results if isinstance(s.get("hyp"), str)]
     else:
         results = []
-        meaning_altering_count = 0
         all_refs = []
         all_hyps = []
 
+    subset_set = set(subset_indices) if subset_indices is not None else None
+
     for i, sample in enumerate(dataset.load()):
+        # skip if not in subset
+        if subset_set is not None and i not in subset_set:
+            continue
+
+        # skip already processed
         if i < start_from:
             continue
-        if max_samples and i >= max_samples:
-            break
-        transcript=model.transcribe(sample.audio, sample.sample_rate)
-        sample_wer = wer(normalise(sample.label), normalise(transcript.text))
-        # Call alteration_eval here
-        meaning_altering = alteration_eval(transcript.text, sample.label, sample_wer)
 
-        if meaning_altering:
-            meaning_altering_count += 1
-        
-        results.append(
+        # stop at max_samples (only applies when no subset given)
+        if subset_set is None and max_samples and len(results) >= max_samples:
+            break
+
+        transcript = model.transcribe(sample.audio, sample.sample_rate)
+        sample_wer = wer(normalise(sample.label), normalise(transcript.text))
+
+        # serialise per-word confidence segments
+        segments_data = [
             {
-                "ref": sample.label,
-                "hyp": transcript.text,
-                "meaning_altering": meaning_altering,
-                "sample_WER": sample_wer,
+                "word":       seg.word,
+                "confidence": round(seg.confidence, 6),
+                "start":      seg.start,
+                "end":        seg.end,
             }
-        )
+            for seg in transcript.segments
+        ] if transcript.segments else []
+
+        results.append({
+            "sample_index": i,
+            "ref":          sample.label,
+            "hyp":          transcript.text,
+            "sample_WER":   sample_wer,
+            "segments":     segments_data,
+        })
+
         all_refs.append(normalise(sample.label))
         all_hyps.append(normalise(transcript.text))
-        # write progress after every sample
+
+        # save progress every sample
         with open(output_path, "w") as f:
             json.dump({"progress": len(results), "samples": results}, f, indent=2)
 
-    corpus_wer = wer(all_refs,all_hyps)
-    count= len(all_hyps) if len(all_hyps)==len(all_refs) else -1
+    corpus_wer = wer(all_refs, all_hyps) if all_refs else 0.0
+    count = len(results)
 
     output = {
-        "model": model.model_name,
-        "dataset": dataset.name,
+        "model":      model.model_name,
+        "dataset":    dataset.name,
         "corpus_wer": corpus_wer,
         "num_samples": count,
-        "meaning_alteration_rate": meaning_altering_count / len(results) if results else 0,
-        "samples": results
+        "subset_indices": subset_indices,
+        "samples":    results,
     }
 
     with open(output_path, "w") as f:
         json.dump(output, f, indent=2)
-    
-    return {"model":model.model_name, "dataset":dataset.name, "num_of_samples":count, "WER":corpus_wer, "meaning_alteration_rate": meaning_altering_count / len(results) if results else 0}
 
+    return {
+        "model":      model.model_name,
+        "dataset":    dataset.name,
+        "num_samples": count,
+        "WER":        corpus_wer,
+    }
