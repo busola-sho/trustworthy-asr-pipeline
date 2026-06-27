@@ -24,7 +24,6 @@ class Dataset(ABC):
     def load(self) -> Generator[Sample, None, None]:
         pass
 
-
 class CommonVoiceScots(Dataset):
     def __init__(self, path="data/common-voice-scots"):
         super().__init__(name="common_voice", dataset_path=path)

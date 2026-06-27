@@ -1,29 +1,10 @@
-"""
-src/benchmark.py
-
-Runs an ASRModel on a Dataset and saves transcripts + per-word confidence scores.
-No judge here — judging is done separately in evaluation/judge/.
-
-Usage (via run_benchmark.py):
-    python scripts/benchmarking/inference/run_benchmark.py --model whisper --dataset commonvoice --max_samples 150
-"""
-
 from jiwer import wer
 from src.models import ASRModel
 from src.datasets import Dataset
+from src.judge import normalise
 import json
-import re
 import os
 from typing import Optional
-
-
-def normalise(text: str) -> str:
-    text = text.lower()
-    text = text.replace('\u2018', "'").replace('\u2019', "'")
-    text = text.replace('\u201c', '"').replace('\u201d', '"')
-    text = text.replace('\u2013', '-').replace('\u2014', '-')
-    text = re.sub(r"[^\w\s']", '', text)
-    return text.strip()
 
 
 def run_benchmark(
