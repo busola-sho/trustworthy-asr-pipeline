@@ -30,6 +30,7 @@ N_SUBSET = 150
 DATASET_SIZES = {
     "commonvoice":      680,
     "edacc":            198,
+    "shetland":         100,
     "english_dialects": 2543,
     "shetland":         100,
 }
@@ -72,7 +73,14 @@ SUBSET_FILES = {
     ("parakeet", "edacc"):            "parakeet_edacc_sub150.json",
     ("parakeet", "english_dialects"): "parakeet_english_dialects_sub150.json",
     ("parakeet", "shetland"):         "parakeet_shetland_sub100.json",
-}
+    
+    ("qwen",     "commonvoice"):      "qwen3asr_commonvoice_sub150.json",
+    ("qwen",     "edacc"):            "qwen3asr_edacc_sub150.json",
+    ("whisper",  "shetland"):          "shetland/whisper_shetland_sub100.json",
+    ("parakeet", "shetland"):          "shetland/parakeet_shetland_sub100.json",
+    ("qwen",     "shetland"):          "shetland/qwen3asr_shetland_sub100.json",
+    ("qwen",     "english_dialects"): "qwen3asr_english_dialects_sub150.json",
+    }
 
 # ── Ollama model names ─────────────────────────────────────────────────────────
 

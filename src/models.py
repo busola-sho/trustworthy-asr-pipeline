@@ -276,6 +276,8 @@ class Wav2Vec2(ASRModel):
 class Parakeet(ASRModel):
     def __init__(self, model_name="nvidia/parakeet-ctc-1.1b"):
         super().__init__(model_name, None)
+        # Force CPU — MPS produces NaN logits for certain audio on Apple Silicon
+        self.device = torch.device("cpu")
 
     def load(self):
         self.model = AutoModelForCTC.from_pretrained(
@@ -362,21 +364,137 @@ class HuBERT(ASRModel):
 
 # ── Qwen3ASR ───────────────────────────────────────────────────────────────────
 
+# class Qwen3ASR(ASRModel):
+#     def __init__(self, model_name="Qwen/Qwen3-ASR-1.7B"):
+#         super().__init__(model_name, None)
+#         self._qwen_model = None
+
+#     def load(self):
+#         from qwen_asr import Qwen3ASRModel
+#         self._qwen_model = Qwen3ASRModel.from_pretrained(
+#             self.model_name,
+#             torch_dtype=torch.float32,
+#         )
+
+#     def transcribe(self, audio: np.ndarray, sample_rate: int) -> Transcription:
+#         audio = self._resample(audio, sample_rate)
+#         results = self._qwen_model.transcribe((audio, 16000), language="English")
+#         transcript = results[0].text
+#         # confidence not available from qwen_asr — segments left empty
+#         return Transcription(segments=[], text=transcript, model_name=self.model_name)
+
 class Qwen3ASR(ASRModel):
+    """
+    Qwen3-ASR with word-level confidence extraction via token logprobs.
+    Subclasses Qwen3ASRModel internally to override _infer_asr_transformers
+    and capture output_scores from generate(), then aggregates to word level.
+    """
+
     def __init__(self, model_name="Qwen/Qwen3-ASR-1.7B"):
         super().__init__(model_name, None)
         self._qwen_model = None
 
     def load(self):
         from qwen_asr import Qwen3ASRModel
+        import torch as _torch
         self._qwen_model = Qwen3ASRModel.from_pretrained(
             self.model_name,
-            torch_dtype=torch.float32,
+            torch_dtype=_torch.float32,
         )
 
-    def transcribe(self, audio: np.ndarray, sample_rate: int) -> Transcription:
+    def transcribe(self, audio: np.ndarray, sample_rate: int, context: str = "") -> Transcription:
+        import torch as _torch
+        import torch.nn.functional as F
+
         audio = self._resample(audio, sample_rate)
-        results = self._qwen_model.transcribe((audio, 16000), language="English")
-        transcript = results[0].text
-        # confidence not available from qwen_asr — segments left empty
-        return Transcription(segments=[], text=transcript, model_name=self.model_name)
+        qwen = self._qwen_model
+
+        from qwen_asr.inference.utils import (
+            normalize_audios, split_audio_into_chunks, SAMPLE_RATE,
+            MAX_ASR_INPUT_SECONDS, normalize_language_name, validate_language,
+        )
+
+        wavs  = normalize_audios((audio, 16000))
+        lang  = normalize_language_name("English")
+        text_prompt = qwen._build_text_prompt(context=context, force_language=lang)
+
+        all_segments: list = []
+        full_text = ""
+
+        parts = split_audio_into_chunks(
+            wav=wavs[0], sr=SAMPLE_RATE, max_chunk_sec=MAX_ASR_INPUT_SECONDS
+        )
+
+        for chunk_wav, _ in parts:
+            inputs = qwen.processor(
+                text=[text_prompt], audio=[chunk_wav],
+                return_tensors="pt", padding=True,
+            )
+            inputs = inputs.to(qwen.model.device).to(qwen.model.dtype)
+            prompt_len = inputs["input_ids"].shape[1]
+
+            with _torch.no_grad():
+                gen_out = qwen.model.generate(
+                    **inputs,
+                    max_new_tokens=qwen.max_new_tokens,
+                    output_scores=True,
+                )
+
+
+            generated_ids = gen_out.sequences[0, prompt_len:]
+            chunk_text = qwen.processor.batch_decode(
+                [generated_ids], skip_special_tokens=True,
+                clean_up_tokenization_spaces=False,
+            )[0]
+            full_text += chunk_text
+
+            if not gen_out.scores:
+                continue
+
+            # stack scores: list of (1, vocab) → (gen_len, vocab)
+            scores_stacked = _torch.stack([s[0] for s in gen_out.scores], dim=0)
+            token_probs    = F.softmax(scores_stacked.float(), dim=-1)
+
+            # aggregate tokens → words using tokenizer word boundaries
+            tokenizer = qwen.processor.tokenizer
+            current_toks, current_confs = [], []
+
+            for t_idx, tok_id in enumerate(generated_ids):
+                tok_id_int = tok_id.item()
+                if tok_id_int == tokenizer.eos_token_id:
+                    break
+                tok_str = tokenizer.decode([tok_id_int])
+                conf    = token_probs[t_idx, tok_id_int].item()
+
+                if tok_str.startswith(" ") and current_toks:
+                    word = tokenizer.decode(current_toks, skip_special_tokens=True).strip()
+                    if word:
+                        geo_mean = float(np.exp(
+                            np.mean(np.log(np.clip(current_confs, 1e-9, 1.0)))
+                        ))
+                        all_segments.append(Segment(
+                            word=word, start=None, end=None,
+                            confidence=round(geo_mean, 6),
+                        ))
+                    current_toks, current_confs = [tok_id_int], [conf]
+                else:
+                    current_toks.append(tok_id_int)
+                    current_confs.append(conf)
+
+            # flush last word
+            if current_toks:
+                word = tokenizer.decode(current_toks, skip_special_tokens=True).strip()
+                if word:
+                    geo_mean = float(np.exp(
+                        np.mean(np.log(np.clip(current_confs, 1e-9, 1.0)))
+                    ))
+                    all_segments.append(Segment(
+                        word=word, start=None, end=None,
+                        confidence=round(geo_mean, 6),
+                    ))
+
+        return Transcription(
+            segments=all_segments,
+            text=full_text.strip(),
+            model_name=self.model_name,
+        )

@@ -7,6 +7,7 @@ from pathlib import Path
 import pandas as pd
 from datasets import load_dataset
 from itertools import chain
+import os
 
 @dataclass
 class Sample:
@@ -74,3 +75,43 @@ class EdAcc(Dataset):
             sample_rate = row['audio']['sampling_rate']
             label = row['text']
             yield Sample(audio=audio_array, sample_rate=sample_rate, label=label)
+
+class Shetland(Dataset):
+    """
+    Shetland dialect dataset from data/shetland/.
+    Audio files in data/shetland/audios/
+    Transcripts in data/shetland/shetland.xlsx
+    
+    Columns used: audio_file, transcript
+    """
+    def __init__(self, path="data/shetland"):
+        super().__init__(name="shetland")
+        self.path       = path
+        self.audio_dir  = os.path.join(path, "audios")
+        self.excel_path = os.path.join(path, "shetland.xlsx")
+
+    def load(self):
+        import pandas as pd
+        import librosa
+
+        df = pd.read_excel(self.excel_path)
+        df = df.dropna(subset=["transcript"])
+
+        for _, row in df.iterrows():
+            audio_file = str(row["audio_file"]).strip()
+            transcript = str(row["transcript"]).strip()
+
+            if not transcript or transcript == "nan":
+                continue
+
+            audio_path = os.path.join(self.audio_dir, audio_file)
+            if not os.path.exists(audio_path):
+                continue
+
+            audio_array, sample_rate = librosa.load(audio_path, sr=None, mono=True)
+
+            yield Sample(
+                audio=audio_array,
+                sample_rate=sample_rate,
+                label=transcript,
+            )

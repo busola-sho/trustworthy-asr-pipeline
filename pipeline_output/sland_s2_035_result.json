@@ -1,0 +1,336 @@
+{
+  "audio_path": "data/shetland/audios/sland_s2_035.m4a",
+  "timestamp": "2026-07-01T07:25:54.966332",
+  "pipeline_config": {
+    "use_diarisation": true,
+    "use_auditor": true,
+    "use_dialect": true,
+    "asr_models": [
+      "qwen",
+      "whisper",
+      "parakeet"
+    ]
+  },
+  "speakers": [
+    {
+      "speaker": "SPEAKER_01",
+      "start": 1.702,
+      "end": 4.621,
+      "transcript": "What if somebody wants us to be looking at him? What if he's misdirected?",
+      "utterance_confidence": 0.5333,
+      "flagged_sentences": [
+        1
+      ],
+      "sentence_results": [
+        {
+          "sentence_idx": 0,
+          "transcript": "What if somebody wants us to be looking at him?",
+          "sentence_confidence": 0.8667,
+          "n_disagreements": 1,
+          "n_risky": 1,
+          "llm_intervened": true,
+          "flagged": false
+        },
+        {
+          "sentence_idx": 1,
+          "transcript": "What if he's misdirected?",
+          "sentence_confidence": 0.2,
+          "n_disagreements": 5,
+          "n_risky": 5,
+          "llm_intervened": true,
+          "flagged": true
+        }
+      ],
+      "model_transcripts": {
+        "qwen": {
+          "hyp": "What if somebody wants us to be looking at him? What if he's misdirected?"
+        },
+        "whisper": {
+          "hyp": "What if somebody wants us to be looking at him? What if it's Mr. Datchney?"
+        },
+        "parakeet": {
+          "hyp": "what somebody wants us to be looking at him what's mr re actction"
+        }
+      }
+    },
+    {
+      "speaker": "SPEAKER_01",
+      "start": 7.962,
+      "end": 8.553,
+      "transcript": "I don't know.",
+      "utterance_confidence": 1.0,
+      "flagged_sentences": [],
+      "sentence_results": [
+        {
+          "sentence_idx": 0,
+          "transcript": "I don't know.",
+          "sentence_confidence": 1.0,
+          "n_disagreements": 0,
+          "n_risky": 0,
+          "llm_intervened": false,
+          "flagged": false
+        }
+      ],
+      "model_transcripts": {
+        "qwen": {
+          "hyp": "I don't know."
+        },
+        "whisper": {
+          "hyp": "I don't know."
+        },
+        "parakeet": {
+          "hyp": "i don't know"
+        }
+      }
+    },
+    {
+      "speaker": "SPEAKER_01",
+      "start": 11.354,
+      "end": 15.218,
+      "transcript": "Somebody with enough money to buy all the rumour mongering they want.",
+      "utterance_confidence": 0.7444,
+      "flagged_sentences": [],
+      "sentence_results": [
+        {
+          "sentence_idx": 0,
+          "transcript": "Somebody with enough money to buy all the rumour mongering they want.",
+          "sentence_confidence": 0.7444,
+          "n_disagreements": 3,
+          "n_risky": 3,
+          "llm_intervened": true,
+          "flagged": false
+        }
+      ],
+      "model_transcripts": {
+        "qwen": {
+          "hyp": "Somebody with enough money to buy all the rumour mongering they want."
+        },
+        "whisper": {
+          "hyp": "Somebody with enough money to buy all the rumour mongering they want."
+        },
+        "parakeet": {
+          "hyp": "somebody with enough money to buy all the rumourred munonger and they want"
+        }
+      }
+    },
+    {
+      "speaker": "SPEAKER_01",
+      "start": 17.26,
+      "end": 17.817,
+      "transcript": "the time.",
+      "utterance_confidence": 0.1333,
+      "flagged_sentences": [
+        0
+      ],
+      "sentence_results": [
+        {
+          "sentence_idx": 0,
+          "transcript": "the time.",
+          "sentence_confidence": 0.1333,
+          "n_disagreements": 3,
+          "n_risky": 3,
+          "llm_intervened": true,
+          "flagged": true
+        }
+      ],
+      "model_transcripts": {
+        "qwen": {
+          "hyp": "All the time."
+        },
+        "whisper": {
+          "hyp": "Sorry, Torch."
+        },
+        "parakeet": {
+          "hyp": "by caution"
+        }
+      }
+    },
+    {
+      "speaker": "SPEAKER_01",
+      "start": 20.433,
+      "end": 21.074,
+      "transcript": "of the mis",
+      "utterance_confidence": 0.1333,
+      "flagged_sentences": [
+        0
+      ],
+      "sentence_results": [
+        {
+          "sentence_idx": 0,
+          "transcript": "of the mis",
+          "sentence_confidence": 0.1333,
+          "n_disagreements": 3,
+          "n_risky": 3,
+          "llm_intervened": true,
+          "flagged": true
+        }
+      ],
+      "model_transcripts": {
+        "qwen": {
+          "hyp": "Mr."
+        },
+        "whisper": {
+          "hyp": "I'll be missed."
+        },
+        "parakeet": {
+          "hyp": "of the mis"
+        }
+      }
+    },
+    {
+      "speaker": "SPEAKER_00",
+      "start": 21.395,
+      "end": 31.03,
+      "transcript": "The pathology report came through. Nothing new. Basically, it's exactly what Cora said. And forensics got back about the fibre under Catherine's nail. It's hemp from a rug.",
+      "utterance_confidence": 1.0,
+      "flagged_sentences": [],
+      "sentence_results": [
+        {
+          "sentence_idx": 0,
+          "transcript": "The pathology report came through.",
+          "sentence_confidence": 1.0,
+          "n_disagreements": 0,
+          "n_risky": 0,
+          "llm_intervened": false,
+          "flagged": false
+        },
+        {
+          "sentence_idx": 1,
+          "transcript": "Nothing new.",
+          "sentence_confidence": 1.0,
+          "n_disagreements": 0,
+          "n_risky": 0,
+          "llm_intervened": false,
+          "flagged": false
+        },
+        {
+          "sentence_idx": 2,
+          "transcript": "Basically, it's exactly what Cora said.",
+          "sentence_confidence": 1.0,
+          "n_disagreements": 0,
+          "n_risky": 0,
+          "llm_intervened": false,
+          "flagged": false
+        },
+        {
+          "sentence_idx": 3,
+          "transcript": "And forensics got back about the fibre under Catherine's nail.",
+          "sentence_confidence": 1.0,
+          "n_disagreements": 0,
+          "n_risky": 0,
+          "llm_intervened": false,
+          "flagged": false
+        },
+        {
+          "sentence_idx": 4,
+          "transcript": "It's hemp from a rug.",
+          "sentence_confidence": 1.0,
+          "n_disagreements": 0,
+          "n_risky": 0,
+          "llm_intervened": false,
+          "flagged": false
+        }
+      ],
+      "model_transcripts": {
+        "qwen": {
+          "hyp": "The pathology report came through. Nothing new. Basically, it's exactly what Cora said. And forensics got back about the fibre under Catherine's nail. It's hemp from a rug."
+        },
+        "whisper": {
+          "hyp": "The pathology report came through. Nothing new. Basically, it's exactly what Cora said. And forensics got back about the fibre under Catherine's nail. It's hemp from a rug."
+        },
+        "parakeet": {
+          "hyp": "the pathology report came through nothing new basically it's exactly what cora said and forensics got back about the fibre under catherine's nail it's hemp from a rug"
+        }
+      }
+    },
+    {
+      "speaker": "SPEAKER_01",
+      "start": 31.688,
+      "end": 32.212,
+      "transcript": "Kind of rug.",
+      "utterance_confidence": 0.2444,
+      "flagged_sentences": [
+        0
+      ],
+      "sentence_results": [
+        {
+          "sentence_idx": 0,
+          "transcript": "Kind of rug.",
+          "sentence_confidence": 0.2444,
+          "n_disagreements": 3,
+          "n_risky": 3,
+          "llm_intervened": true,
+          "flagged": true
+        }
+      ],
+      "model_transcripts": {
+        "qwen": {
+          "hyp": "Kind of rug."
+        },
+        "whisper": {
+          "hyp": "Can you look?"
+        },
+        "parakeet": {
+          "hyp": "ten a rug"
+        }
+      }
+    },
+    {
+      "speaker": "SPEAKER_00",
+      "start": 32.414,
+      "end": 36.802,
+      "transcript": "Antique and most probably of Turkish origin. Apparently, they can tell from the dye.",
+      "utterance_confidence": 1.0,
+      "flagged_sentences": [],
+      "sentence_results": [
+        {
+          "sentence_idx": 0,
+          "transcript": "Antique and most probably of Turkish origin.",
+          "sentence_confidence": 1.0,
+          "n_disagreements": 0,
+          "n_risky": 0,
+          "llm_intervened": false,
+          "flagged": false
+        },
+        {
+          "sentence_idx": 1,
+          "transcript": "Apparently, they can tell from the dye.",
+          "sentence_confidence": 1.0,
+          "n_disagreements": 0,
+          "n_risky": 0,
+          "llm_intervened": false,
+          "flagged": false
+        }
+      ],
+      "model_transcripts": {
+        "qwen": {
+          "hyp": "Antique and most probably of Turkish origin. Apparently, they can tell from the dye."
+        },
+        "whisper": {
+          "hyp": "Antique and most probably of Turkish origin. Apparently they can tell from the dye."
+        },
+        "parakeet": {
+          "hyp": "antique and most probably of turkish origin apparently they can tell from the dye"
+        }
+      }
+    }
+  ],
+  "full_transcript": "SPEAKER_01: What if somebody wants us to be looking at him? What if he's misdirected?\nSPEAKER_01: I don't know.\nSPEAKER_01: Somebody with enough money to buy all the rumour mongering they want.\nSPEAKER_01: the time.\nSPEAKER_01: of the mis\nSPEAKER_00: The pathology report came through. Nothing new. Basically, it's exactly what Cora said. And forensics got back about the fibre under Catherine's nail. It's hemp from a rug.\nSPEAKER_01: Kind of rug.\nSPEAKER_00: Antique and most probably of Turkish origin. Apparently, they can tell from the dye.",
+  "ner_flags": [
+    {
+      "text": "Cora",
+      "label": "PERSON",
+      "label_description": "Person name",
+      "start_char": 256,
+      "end_char": 260
+    },
+    {
+      "text": "Catherine",
+      "label": "PERSON",
+      "label_description": "Person name",
+      "start_char": 312,
+      "end_char": 321
+    }
+  ],
+  "processing_time_s": 1412.5
+}

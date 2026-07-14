@@ -1,0 +1,1 @@
+Just naive combo with whisper and parakeet's confidence scores.

@@ -1,0 +1,1 @@
+Here I tried to incorporate parakeet and whisper's confidence scores with manual error profiles. Helped a little.

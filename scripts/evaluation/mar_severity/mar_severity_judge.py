@@ -227,6 +227,22 @@ SOURCE_FILES = {
     ("shetland", "naive"):      "results/combinations_v2judge/naive_shetland_qwensel_p3_qwenjud_sub150.json",
     ("shetland", "context_v1"): "results/combinations_v2judge/context/context_shetland_qwen_sub150.json",
     ("shetland", "context_v2"): "results/combinations_v2judge/context_v2/context_v2_shetland_qwen_sub150.json",
+
+    ("commonvoice", "context_v2_whisperx"): "results/combinations_v2judge/context_v2_whisperx/context_v2_commonvoice_qwen_sub150.json",
+    ("edacc",       "context_v2_whisperx"): "results/combinations_v2judge/context_v2_whisperx/context_v2_edacc_qwen_sub150.json",
+    ("english_dialects", "context_v2_whisperx"): "results/combinations_v2judge/context_v2_whisperx/context_v2_english_dialects_qwen_sub150.json",
+
+    ("commonvoice", "rover_auditor"): "results/combinations_v2judge/rover/rover_commonvoice_sub150.json",
+    ("edacc",       "rover_auditor"): "results/combinations_v2judge/rover/rover_edacc_sub150.json",
+    ("english_dialects", "rover_auditor"): "results/combinations_v2judge/rover/rover_english_dialects_sub150.json",
+
+    ("commonvoice", "rover_no_auditor"): "results/combinations_v2judge/rover/rover_commonvoice_sub150_no_resolver.json",
+    ("edacc",       "rover_no_auditor"): "results/combinations_v2judge/rover/rover_edacc_sub150_no_resolver.json",
+    ("english_dialects", "rover_no_auditor"): "results/combinations_v2judge/rover/rover_english_dialects_sub150_no_resolver.json",
+
+    ("commonvoice", "whisperx_baseline"): "results/benchmarks/subsets/whisperx_commonvoice_sub150.json",
+    ("edacc",       "whisperx_baseline"): "results/benchmarks/subsets/whisperx_edacc_sub150.json",
+    ("english_dialects", "whisperx_baseline"): "results/benchmarks/subsets/whisperx_english_dialects_sub150.json"
 }
 
 # confidence-variant sources need a threshold value to build the path —
@@ -260,8 +276,9 @@ def main():
     parser.add_argument("--dataset", required=True,
                         choices=["commonvoice", "edacc", "english_dialects", "shetland"])
     parser.add_argument("--source",  required=True,
-                        choices=["baseline", "naive", "context_v1", "context_v2",
-                                 "context_v1_confidence", "context_v2_confidence", "naive_confidence"])
+                    choices=["baseline", "naive", "context_v1", "context_v2",
+                             "context_v1_confidence", "context_v2_confidence", "naive_confidence",
+                             "context_v2_whisperx", "rover_auditor", "whisperx_baseline", "rover_no_auditor" ])
     parser.add_argument("--selector", default="qwen",
                         help="Selector model used (for resolving confidence-variant filenames)")
     parser.add_argument("--threshold", type=float, default=None,

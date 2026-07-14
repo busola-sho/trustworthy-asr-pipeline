@@ -1,0 +1,1 @@
+Here I tried to incorporate parakeet and whisper's confidence scores with the eval suite. Helped a little.

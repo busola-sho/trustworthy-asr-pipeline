@@ -38,7 +38,7 @@ Hypothesis: My neighbour Maria MacTaggart said she heard the noise around midnig
 This refers to the same person and the same claim — the spelling differs but no meaning changed.
 Answer: false
 
-IMPORTANT: After any reasoning, your FINAL line must be ONLY the single word true or false."""
+IMPORTANT: Reply with ONLY the single word true or false. No explanation, no reasoning, no other text."""
 
 # ── Severity prompt (0-4 scale, named entities excluded) ──────────────────────
 
@@ -194,3 +194,170 @@ def check_model_available(client: Client, model: str = JUDGE_MODEL) -> bool:
         return any(model in m for m in available)
     except Exception:
         return False
+
+# This is the new function to add to src/judge.py after ollama_mar()
+
+SCOTTISH_ANNOTATIONS = {
+    "couldnae": "could not", "cannae": "cannot", "cannae": "cannot",
+    "wisnae": "wasn't", "wasnae": "wasn't", "isnae": "isn't",
+    "dinnae": "don't", "didnae": "didn't", "wouldnae": "wouldn't",
+    "shouldnae": "shouldn't", "hasnae": "hasn't", "havnae": "haven't",
+    "willnae": "won't", "arenae": "aren't", "werenae": "weren't",
+    "nae": "no/not", "naw": "no",
+    "oot": "out", "tae": "to", "fae": "from",
+    "wee": "small/little", "aye": "yes", "ken": "know",
+    "braw": "good", "doon": "down", "hoose": "house",
+    "wi": "with", "mair": "more", "hae": "have",
+    "dae": "do", "gie": "give", "tak": "take",
+}
+
+
+def annotate_scottish(text: str) -> str:
+    """Annotate Scottish dialect words inline with their standard English meaning."""
+    import re
+    words = re.split(r'(\s+)', text)
+    result = []
+    for token in words:
+        clean = token.lower().strip(".,!?;:'\"")
+        if clean in SCOTTISH_ANNOTATIONS:
+            result.append(f"{token} [={SCOTTISH_ANNOTATIONS[clean]}]")
+        else:
+            result.append(token)
+    return "".join(result)
+
+
+SENTENCE_MAR_PROMPT = """You are evaluating one sentence from an ASR hypothesis transcript of a Scottish English police interview.
+
+The hypothesis transcript is a full transcription of the same audio as the reference transcript.
+The sentence you are evaluating is ONE PART of that full hypothesis transcript.
+
+FULL REFERENCE TRANSCRIPT (Scottish dialect words annotated with their standard English meaning in [=...]):
+{ref_annotated}
+
+ONE SENTENCE FROM THE HYPOTHESIS TRANSCRIPT:
+{hyp_sentence}
+
+Your task:
+1. Find the part of the reference transcript that this hypothesis sentence is trying to transcribe
+2. Check whether the CORE FACTUAL MEANING has been altered
+
+Answer TRUE if the meaning changed — e.g. a negation was lost, a wrong name/place/number was used.
+Answer FALSE if the meaning is preserved.
+
+The following are NOT errors — answer FALSE if the only differences are:
+- Dialect normalisation: wisnae→wasn't, couldnae→could not, oot→out, wee→small etc.
+- Filler words removed: um, uh, eh, you know, I mean, like, right
+- False starts removed: words ending in - (e.g. "gr-", "th-", "s-")
+- Repetitions reduced: "so so wrong" → "so wrong"
+- Cleaner phrasing of the same content
+- Named entity spelling variation (Mhairi→Maria)
+- The hypothesis sentence is shorter than the reference — content may appear in other sentences
+
+Answer TRUE ONLY if a core factual claim is wrong — wrong negation, wrong name/place/number, fabricated content.
+
+Reply with ONLY the single word: true or false"""
+
+
+def ollama_sentence_mar(
+    client,
+    ref_full: str,
+    hyp_sentence: str,
+    model: str = JUDGE_MODEL,
+    sleep: float = 0.05,
+) -> bool:
+    """
+    Sentence-level MAR verdict.
+
+    Evaluates one hypothesis sentence against the full reference transcript.
+    Scottish dialect words in the reference are annotated with their standard
+    English meaning to help the judge recognise dialect normalisation as correct.
+
+    Args:
+        client:        Ollama client
+        ref_full:      full reference transcript (ground truth)
+        hyp_sentence:  single hypothesis sentence to evaluate
+        model:         Ollama model name
+        sleep:         sleep after call
+
+    Returns:
+        True  = meaning-altering error in this sentence
+        False = sentence is accurate
+        None  = judge call failed
+    """
+    if not hyp_sentence or not hyp_sentence.strip():
+        return False
+
+    ref_annotated = annotate_scottish(ref_full)
+
+    prompt = SENTENCE_MAR_PROMPT.format(
+        ref_annotated=ref_annotated,
+        hyp_sentence=hyp_sentence,
+    )
+
+    try:
+        response = client.chat(
+            model=model,
+            messages=[{"role": "user", "content": prompt}],
+            options={"temperature": 0},
+        )
+        time.sleep(sleep)
+        return parse_verdict(response.message.content)
+    except Exception as e:
+        print(f"  ERROR (sentence MAR judge): {e}")
+        return None
+
+SENTENCE_SEVERITY_PROMPT = """You are evaluating one sentence from an ASR hypothesis transcript of a Scottish English police interview.
+
+The hypothesis transcript is a full transcription of the same audio as the reference transcript.
+The sentence you are evaluating is ONE PART of that full hypothesis transcript.
+
+FULL REFERENCE TRANSCRIPT (Scottish dialect words annotated with their standard English meaning in [=...]):
+{ref_annotated}
+
+ONE SENTENCE FROM THE HYPOTHESIS TRANSCRIPT:
+{hyp_sentence}
+
+Your task:
+1. Find the part of the reference transcript that this hypothesis sentence is trying to transcribe
+2. Rate the SEVERITY of any meaning-altering error on a scale of 0-4
+
+SCALE:
+0 = Meaning preserved. Only surface-level differences, such as filler removal, dialect normalisation, cleaner phrasing, or harmless spelling variation.
+1 = Negligible error. A minor difference is present, but the intended meaning remains clear.
+2 = Moderate ambiguity. Meaning has become less certain or slightly shifted, but can still be recovered from context.
+3 = Major factual distortion. A central fact changes, such as the person, place, number, date, action, timing, or responsibility.
+4 = Critical contradiction or fabrication. A consequential claim is reversed, removed, or invented, such as lost negation, reversed responsibility, or hallucinated content.
+
+The hypothesis sentence is always shorter than the full reference — this is expected.
+
+Reply with ONLY the single digit: 0, 1, 2, 3, or 4"""
+
+
+def ollama_sentence_severity(
+    client,
+    ref_full: str,
+    hyp_sentence: str,
+    model: str = JUDGE_MODEL,
+    sleep: float = 0.05,
+):
+    if not hyp_sentence or not hyp_sentence.strip():
+        return 0
+
+    ref_annotated = annotate_scottish(ref_full)
+
+    prompt = SENTENCE_SEVERITY_PROMPT.format(
+        ref_annotated=ref_annotated,
+        hyp_sentence=hyp_sentence,
+    )
+
+    try:
+        response = client.chat(
+            model=model,
+            messages=[{"role": "user", "content": prompt}],
+            options={"temperature": 0},
+        )
+        time.sleep(sleep)
+        return parse_severity(response.message.content)
+    except Exception as e:
+        print(f"  ERROR (sentence severity judge): {e}")
+        return None

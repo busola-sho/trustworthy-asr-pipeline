@@ -1,8 +1,9 @@
 {
   "selector": "qwen",
-  "approach": "context_aware_v2_confidence",
+  "approach": "context_v2_confidence",
   "dataset": "edacc",
   "confidence_threshold": 0.8,
+  "auto_rules_used": "- NAMED ENTITIES (PEOPLE'S NAMES, PLACE NAMES, ORGANISATIONS): the qwen3asr transcript is empirically more reliable on named entities (people's names, place names, organisations) (26.3% pooled error rate across all datasets, n=468, vs 27.6% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it.\n- NEGATIONS: the qwen3asr transcript is empirically more reliable on negations (12.6% pooled error rate across all datasets, n=420, vs 16.0% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it. Note: in some cases parakeet, qwen3asr, wav2vec2, whisper perform near-identically on negations with no clear winner — in those cases, do not default to qwen3asr automatically; use contextual judgement instead.\n- SCOTTISH DIALECT WORDS: the qwen3asr transcript is empirically more reliable on Scottish dialect words (30.9% pooled error rate across all datasets, n=2401, vs 33.1% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it.",
   "subset_indices": [
     0,
     1,
@@ -155,9 +156,8 @@
     196,
     197
   ],
-  "auto_rules_used": "- NAMED ENTITIES (PEOPLE'S NAMES, PLACE NAMES, ORGANISATIONS): the qwen3asr transcript is empirically more reliable on named entities (people's names, place names, organisations) (26.3% pooled error rate across all datasets, n=468, vs 27.6% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it.\n- NEGATIONS: the qwen3asr transcript is empirically more reliable on negations (12.6% pooled error rate across all datasets, n=420, vs 16.0% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it. Note: in some cases parakeet, qwen3asr, wav2vec2, whisper perform near-identically on negations with no clear winner — in those cases, do not default to qwen3asr automatically; use contextual judgement to decide between the agreeing transcripts instead.\n- SCOTTISH DIALECT WORDS: the qwen3asr transcript is empirically more reliable on Scottish dialect words (30.9% pooled error rate across all datasets, n=2401, vs 33.1% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it.",
-  "corpus_wer": 0.1888633754305396,
-  "meaning_alteration_rate": 0.24666666666666667,
+  "corpus_wer": 0.19001148105625718,
+  "meaning_alteration_rate": 0.28,
   "num_samples": 150,
   "samples": [
     {
@@ -318,14 +318,14 @@
     },
     {
       "ref": "THAT WOULD NOT GO WELL UM SIMILAR TO THE SIMILARLY TO THAT I PLAYED LOTS OF SHARKS AND FISHES IN UM LIKE",
-      "hyp": "That would not go well. Similarly to that, I played lots of sharks and fishes, and um like.",
+      "hyp": "That would not go well. Um, similar to that. Similarly to that, I played lots of sharks and fishes, and um like.",
       "qwen_base": "That would not go well. Um, similar to that. Similarly to that, I played lots of sharks and fishes, and like.",
       "whisper_hyp_flagged": "[LOW-CONF: That] would not go well. [LOW-CONF: Similar] to that, [LOW-CONF: I] [LOW-CONF: played] lots of [LOW-CONF: Sharks] and Fishes [LOW-CONF: in] [LOW-CONF: like]",
       "parakeet_hyp_flagged": "that would not go well similar to that [LOW-CONF: similarly] [LOW-CONF: to] that i play [LOW-CONF: less] [LOW-CONF: with] sharks and fishes and um [LOW-CONF: like]",
       "n_flagged_whisper": 7,
       "n_flagged_parakeet": 5,
-      "sample_WER": 0.22727272727272727,
-      "qwen_verdict_p2": false,
+      "sample_WER": 0.09090909090909091,
+      "qwen_verdict_p2": true,
       "dataset_index": 20
     },
     {
@@ -366,7 +366,7 @@
     },
     {
       "ref": "WE'D UH THE IDEA IT'S ESSENTIALLY THE SAME AS BULLDOG YOU HAVE TO TRY AND RUN TO THE END OF THE FIELD THERE'S ONE PERSON WHO'S THIS SHARK OR MAYBE TWO PEOPLE AND THEY CAN MOVE ANY DIRECTION AND IF THEY TAKE YOU YOU BECOME SEAWEED AND YOU CAN'T MOVE YOUR FEET BUT YOU CAN LIKE LEAN OUT TO CATCH PEOPLE",
-      "hyp": "The idea is it's essentially the same as bulldog. You have to run on the end of the field. There's one person who's the shark or maybe two people and they can move any direction. And if they take you, you become seaweed and you can't move your feet. You can like lean out to catch people.",
+      "hyp": "The idea is it's essentially the same as bulldog. You have to run on the end of the field. There's one person who's the shark or maybe two people and they can move any direction. And if they take you, you become seaweed, and you can't move your feet. You can like lean out to catch people.",
       "qwen_base": "The idea is it's essentially the same as bouldo. You have to run on the end of the field. There's one person who's the shark, or maybe two people, and they can move any direction. And if they take you, you become seaweed, and you can't move your feet. You can like lean out to catch people.",
       "whisper_hyp_flagged": "[LOW-CONF: The] idea is [LOW-CONF: it's] essentially the same as [LOW-CONF: bulldog.] You have to [LOW-CONF: drown] [LOW-CONF: one] [LOW-CONF: day] in the field. There's one person who's [LOW-CONF: the] shark or maybe two people [LOW-CONF: and] they can move any [LOW-CONF: direction.] And if they take you, you become seaweed and you can't move your feet. You can like lean out to catch [LOW-CONF: people.]",
       "parakeet_hyp_flagged": "the idea is [LOW-CONF: it's] essentially the same as [LOW-CONF: bulldog] [LOW-CONF: you] have to drown [LOW-CONF: at] [LOW-CONF: the] end [LOW-CONF: of] the field there's one person who's the [LOW-CONF: shark] or maybe two people and they can move any direction and if they take [LOW-CONF: you] you [LOW-CONF: become] seaweed and you can't move your feet you can like [LOW-CONF: lean] out [LOW-CONF: to] catch people",
@@ -378,13 +378,13 @@
     },
     {
       "ref": "RIGHT",
-      "hyp": "Right.",
+      "hyp": "that",
       "qwen_base": "Right.",
       "whisper_hyp_flagged": "[LOW-CONF: Right.]",
       "parakeet_hyp_flagged": "that",
       "n_flagged_whisper": 1,
       "n_flagged_parakeet": 0,
-      "sample_WER": 0.0,
+      "sample_WER": 1.0,
       "qwen_verdict_p2": false,
       "dataset_index": 25
     },
@@ -438,19 +438,19 @@
     },
     {
       "ref": "AND WAS THAT A TACKLE TO THE GROUND TYPE THING AS WELL",
-      "hyp": "And was that tackle to the ground type thing as well?",
+      "hyp": "And what that tackle to the ground type thing as well?",
       "qwen_base": "And was that tackle to the ground type thing as well?",
       "whisper_hyp_flagged": "And [LOW-CONF: was] that [LOW-CONF: tackle] to the ground type thing as well?",
       "parakeet_hyp_flagged": "[LOW-CONF: and] [LOW-CONF: what] [LOW-CONF: that] tackle to the ground [LOW-CONF: type] thing as well",
       "n_flagged_whisper": 2,
       "n_flagged_parakeet": 4,
-      "sample_WER": 0.08333333333333333,
-      "qwen_verdict_p2": false,
+      "sample_WER": 0.16666666666666666,
+      "qwen_verdict_p2": true,
       "dataset_index": 31
     },
     {
       "ref": "<OVERLAP>",
-      "hyp": "we.",
+      "hyp": "We.",
       "qwen_base": "we.",
       "whisper_hyp_flagged": "[LOW-CONF: We]",
       "parakeet_hyp_flagged": "",
@@ -522,7 +522,7 @@
     },
     {
       "ref": "IT'S A LOT SAFER",
-      "hyp": "So what's it's safer?",
+      "hyp": "So it's safer?",
       "qwen_base": "So what's safer?",
       "whisper_hyp_flagged": "[LOW-CONF: So] [LOW-CONF: it's] safer.",
       "parakeet_hyp_flagged": "[LOW-CONF: thought] [LOW-CONF: sefret]",
@@ -534,7 +534,7 @@
     },
     {
       "ref": "UM NO MOSTLY IN IN SECONDARY SCHOOL I DIDN'T PLAY",
-      "hyp": "No, mostly in secondary school. Was there any?",
+      "hyp": "No, mostly in secondary school. Is there any?",
       "qwen_base": "No, mostly in secondary school. Is there any?",
       "whisper_hyp_flagged": "[LOW-CONF: No,] mostly in secondary school. [LOW-CONF: Was] there any [LOW-CONF: bulletproof?]",
       "parakeet_hyp_flagged": "no mostly in secondary school so any [LOW-CONF: ball]",
@@ -594,13 +594,13 @@
     },
     {
       "ref": "YEAH",
-      "hyp": "Yeah.",
+      "hyp": "in",
       "qwen_base": "Yeah.",
       "whisper_hyp_flagged": "[LOW-CONF: Yeah.]",
       "parakeet_hyp_flagged": "in",
       "n_flagged_whisper": 1,
       "n_flagged_parakeet": 0,
-      "sample_WER": 0.0,
+      "sample_WER": 1.0,
       "qwen_verdict_p2": false,
       "dataset_index": 51
     },
@@ -834,14 +834,14 @@
     },
     {
       "ref": "VERY VERY GOOD",
-      "hyp": "Very, very good.",
+      "hyp": "Very, thank you.",
       "qwen_base": "Very, very good.",
       "whisper_hyp_flagged": "[LOW-CONF: Very,] very good.",
       "parakeet_hyp_flagged": "m [LOW-CONF: thank] you",
       "n_flagged_whisper": 1,
       "n_flagged_parakeet": 1,
-      "sample_WER": 0.0,
-      "qwen_verdict_p2": false,
+      "sample_WER": 0.6666666666666666,
+      "qwen_verdict_p2": true,
       "dataset_index": 81
     },
     {
@@ -906,7 +906,7 @@
     },
     {
       "ref": "OH MY GOODNESS BEN TEN IS SUCH A GREAT SHOW THERE'S NO WAY YOU HAVEN'T SEEN THAT",
-      "hyp": "Oh my goodness! Ben intends such a great show. There's no way you haven't seen it.",
+      "hyp": "Oh my goodness! Ben tends such a great show. There's no way you haven't seen it.",
       "qwen_base": "Oh my goodness! Ben tends such a great show. There's no way you haven't seen that.",
       "whisper_hyp_flagged": "Oh my [LOW-CONF: goodness,] [LOW-CONF: the] [LOW-CONF: N10] [LOW-CONF: is] such a great show. There's no way you haven't seen [LOW-CONF: it.]",
       "parakeet_hyp_flagged": "oh my goodness that intends such a [LOW-CONF: great] show there's no way you [LOW-CONF: haven't] seen that",
@@ -930,14 +930,14 @@
     },
     {
       "ref": "IT'S SO GOOD THE KID CAN",
-      "hyp": "It's so good. The kid can.",
+      "hyp": "It's so good. The kid can't.",
       "qwen_base": "It's so good. The kid can.",
       "whisper_hyp_flagged": "It's so good.",
       "parakeet_hyp_flagged": "it's so good the kid can",
       "n_flagged_whisper": 0,
       "n_flagged_parakeet": 0,
-      "sample_WER": 0.0,
-      "qwen_verdict_p2": false,
+      "sample_WER": 0.16666666666666666,
+      "qwen_verdict_p2": true,
       "dataset_index": 90
     },
     {
@@ -978,13 +978,13 @@
     },
     {
       "ref": "HE CAN HE CAN PRESS HIS WATCH AND THEN TURN INTO ANY OF THESE TEN HEROES BUT IT'S LIKE I THINK IT'S RANDOM AT LEAST IT'S RANDOM IN THE FIRST SERIES WELL IT'S RANDOM AT SOME PART AND THEY'RE ALL REALLY COOL ONES AND THEY HAD LOTS OF SPIN OFF GAMES BASED ON IT WHICH WERE ALL REALLY FUN TO PLAY I WAS A BIG BEN TEN FAN I CAN'T BELIEVE YOU DIDN'T WATCH BEN TEN PEPPA PIG OR IS THAT TOO YOUNG FOR YOU TO EVEN REMEMBER",
-      "hyp": "He can press his watch and then turn into any of these ten heroes, but it's like I think it's random. At least it's random in the first series or it's random at some part. And they're all really cool ones, and they did lots of spinoff games based on it, which were all really fun to play. I was a big Ben 10 fan. I can't even watch Ben 10. Peppa Pig, or is that too young for you to remember?",
+      "hyp": "He can press his watch and then turn into any of these ten heroes, but it's like I think it's random. At least it's random in the first series or it's random at some part. And they're all really cool ones, and they did lots of spinoff games based on it, which were all really fun to play. I was a big Ben 10 fan. I can't even watch Ben 10. Peppa Pig, or is that too young? Have you even remember",
       "qwen_base": "He can he can press his watch and then turn into any of these ten heroes, but it's like I think it's random. At least it's random in the first series, or it's random at some part. And they're all really cool ones, and they did lots of spinoff games based on it, which were all really fun to play. I was a big Ben 10 fan. I can't even watch Ben 10. Peppa Pig, or is that you're too young? Have you even remember",
       "whisper_hyp_flagged": "[LOW-CONF: He] can [LOW-CONF: press] his watch and then turn into any of these [LOW-CONF: 10] [LOW-CONF: heroes.] But it's like, I think it's random. At least it's random in the first series. Or it's random [LOW-CONF: at] some part. And they're all really cool ones. [LOW-CONF: Lots] of spin-off games based on [LOW-CONF: it,] which are all really fun to play. I was a big Ben 10 fan. I can't believe [LOW-CONF: I] [LOW-CONF: haven't] watched Ben 10. Peppa [LOW-CONF: Pig?] Or is that too young for you to [LOW-CONF: remember?] [LOW-CONF: Peppa] [LOW-CONF: Pig.]",
       "parakeet_hyp_flagged": "can [LOW-CONF: he] can press his watch and then turn into any of these ten heroes but it's like i [LOW-CONF: think] it's random at [LOW-CONF: least] it's random in the first series or it's random at some [LOW-CONF: part] and they're all really cool ones [LOW-CONF: and] they [LOW-CONF: lots] [LOW-CONF: of] spin offff [LOW-CONF: games] based on it which are [LOW-CONF: all] really fun to [LOW-CONF: play] that's [LOW-CONF: the] [LOW-CONF: big] bent [LOW-CONF: ten] [LOW-CONF: f] [LOW-CONF: that] [LOW-CONF: can't] [LOW-CONF: even] [LOW-CONF: worse] [LOW-CONF: ben] [LOW-CONF: ten] [LOW-CONF: peppa] [LOW-CONF: big] [LOW-CONF: or] is that too young pepp [LOW-CONF: you] [LOW-CONF: don't] [LOW-CONF: remember]",
       "n_flagged_whisper": 13,
       "n_flagged_parakeet": 26,
-      "sample_WER": 0.13636363636363635,
+      "sample_WER": 0.14772727272727273,
       "qwen_verdict_p2": false,
       "dataset_index": 94
     },
@@ -1122,13 +1122,13 @@
     },
     {
       "ref": "<LAUGH> WHAT DID I EVEN DO AS A KID I CAN'T REMEMBER I DIDN'T WATCH TV I DIDN'T READ BOOKS I LITERALLY THINK I JUST STAYED OUTSIDE",
-      "hyp": "What did I even do as a kid? I don't remember. Didn't watch TV. Didn't read books. I literally think I just stayed outside.",
+      "hyp": "What did I even do as a kid? I don't remember. I didn't watch TV. I didn't read books. I literally think I just stayed outside.",
       "qwen_base": "What did I even do as a kid? I don't remember. Didn't watch TV. Didn't read books. I literally think I just stayed outside.",
       "whisper_hyp_flagged": "[LOW-CONF: What] did I even do as a kid? I [LOW-CONF: don't] remember. [LOW-CONF: I] didn't watch [LOW-CONF: TV.] I didn't read books. I literally think I just stayed outside.",
       "parakeet_hyp_flagged": "what [LOW-CONF: did] i even do as a kid i don't remember [LOW-CONF: never] [LOW-CONF: watch] tv didn't read [LOW-CONF: books] i [LOW-CONF: literally] think i [LOW-CONF: just] stayed outside",
       "n_flagged_whisper": 4,
       "n_flagged_parakeet": 6,
-      "sample_WER": 0.14814814814814814,
+      "sample_WER": 0.07407407407407407,
       "qwen_verdict_p2": false,
       "dataset_index": 109
     },
@@ -1158,7 +1158,7 @@
     },
     {
       "ref": "ATE WORMS",
-      "hyp": "eight words",
+      "hyp": "Eightorns words.",
       "qwen_base": "Eight words.",
       "whisper_hyp_flagged": "[LOW-CONF: eight] words.",
       "parakeet_hyp_flagged": "eightorns",
@@ -1242,14 +1242,14 @@
     },
     {
       "ref": "I'D ASK WHAT THAT'S ABOUT BUT I THINK IT'S PRETTY INTUITIVE",
-      "hyp": "I ask what that's about, but I think it's pretty intuitive.",
+      "hyp": "I ask what it's about, but I think it's pretty intuitive.",
       "qwen_base": "I ask what that's about, but I think it's pretty intuitive.",
       "whisper_hyp_flagged": "I'd ask what [LOW-CONF: that's] about, but I think it's pretty intuitive.",
       "parakeet_hyp_flagged": "[LOW-CONF: i] [LOW-CONF: ask] what that's about but [LOW-CONF: i] think [LOW-CONF: it's] pretty intuitive",
       "n_flagged_whisper": 1,
       "n_flagged_parakeet": 4,
-      "sample_WER": 0.09090909090909091,
-      "qwen_verdict_p2": false,
+      "sample_WER": 0.18181818181818182,
+      "qwen_verdict_p2": true,
       "dataset_index": 120
     },
     {
@@ -1290,19 +1290,19 @@
     },
     {
       "ref": "JUST BY SNIFFING THE CLOUDS",
-      "hyp": "Just by sniffing the clients.",
+      "hyp": "Just by sniffing the clouds.",
       "qwen_base": "Just by sniffing the clients.",
       "whisper_hyp_flagged": "just by sniffing the cleanse.",
       "parakeet_hyp_flagged": "just by sniffing [LOW-CONF: the] clouds",
       "n_flagged_whisper": 0,
       "n_flagged_parakeet": 1,
-      "sample_WER": 0.2,
-      "qwen_verdict_p2": true,
+      "sample_WER": 0.0,
+      "qwen_verdict_p2": false,
       "dataset_index": 125
     },
     {
       "ref": "OH AT LEAST <DTMF> WAS A METEOROLOGIST IN SCHOOL ONE OF THE GEOLOGY TEACHERS",
-      "hyp": "Oh, Jim Collar was a meteorologist in school. One of the geology teachers.",
+      "hyp": "Oh, Jim Collar was a meteorologist in school. one of the geology teachers.",
       "qwen_base": "Oh, Roger McAller was a meteorologist in school. One of the geology teachers.",
       "whisper_hyp_flagged": "[LOW-CONF: Oh,] [LOW-CONF: well,] [LOW-CONF: Jim] [LOW-CONF: Collar] was a meteorologist in [LOW-CONF: school,] one of the geology teachers.",
       "parakeet_hyp_flagged": "whatard [LOW-CONF: mccallar] [LOW-CONF: was] a [LOW-CONF: meteorologist] in [LOW-CONF: the] school one of the meteology teachers",
@@ -1338,13 +1338,13 @@
     },
     {
       "ref": "OR GRAPES YEAH ROAST DINNERS BUT WITH GRAPES",
-      "hyp": "it wasn't like great.",
+      "hyp": "Everything was a new slut, but great.",
       "qwen_base": "Everything is like great.",
       "whisper_hyp_flagged": "[LOW-CONF: It] [LOW-CONF: was] [LOW-CONF: a] [LOW-CONF: new] [LOW-CONF: slut,] but great.",
       "parakeet_hyp_flagged": "it wasn't [LOW-CONF: just] [LOW-CONF: like] [LOW-CONF: a] [LOW-CONF: great]",
       "n_flagged_whisper": 5,
       "n_flagged_parakeet": 4,
-      "sample_WER": 1.0,
+      "sample_WER": 0.875,
       "qwen_verdict_p2": false,
       "dataset_index": 133
     },
@@ -1434,19 +1434,19 @@
     },
     {
       "ref": "YEAH IT'S IT'S PERFECT ALL YOU NEED SO GOOD AND I CAN UH AND I DO KNOW HOW TO MAKE IT I DO STILL LIKE EATING IT I MAKE IT EVERY COUPLE OF WEEKS I'D SAY WHICH IS FAIRLY OFTEN FOR A STUDENT LIFESTYLE TO HAVE A ROAST EVERY FEW WEEKS I'M THINKING OF TRYING IT WITH LAMBS I THINK IT'D BE QUITE NICE",
-      "hyp": "Yeah, it's perfect. All you need. So good. And I do know how to make it. I do still like eating it. I make it every couple weeks, I'd say, which is fairly often for a student lifestyle to have a roast every few weeks. I'm thinking of trying it with lambs. I think it'd be quite nice.",
+      "hyp": "Yeah, it's perfect. All you need, so good. And I can know how to make it. I do still like eating it. I make it every couple weeks, I'd say, which is fairly often for a student lifestyle to have a roast every few weeks. I'm thinking of trying it with lambs. I think it be quite nice.",
       "qwen_base": "Yeah, it's it's perfect. All you need, so good. And I can, and I do know how to make it. I do still like eating it. I make it every couple weeks, I'd say, which is fairly often for a student lifestyle to have a roast every few weeks. I'm thinking of trying it with lambs. I think it'd be quite nice.",
       "whisper_hyp_flagged": "[LOW-CONF: Yeah,] it's [LOW-CONF: perfect.] All you need. So good. And I [LOW-CONF: do] know how to make it. I do still like eating it. I make it every couple [LOW-CONF: of] weeks, I'd say, which is fairly often for a student lifestyle to have a roast every few weeks. I'm thinking of trying it with lambs. I think [LOW-CONF: it'd] be quite nice.",
       "parakeet_hyp_flagged": "yeah it's perfect all you [LOW-CONF: need] [LOW-CONF: so] good and i [LOW-CONF: can] [LOW-CONF: and] i [LOW-CONF: do] know how to make it i do still like eating it i [LOW-CONF: make] it every couple [LOW-CONF: weeks] i'd say which is fairly often for a student lifestyle to have a roast every few weeks i'm thinking of trying it with lambs [LOW-CONF: i] [LOW-CONF: think] [LOW-CONF: it'] [LOW-CONF: be] quite nice",
       "n_flagged_whisper": 5,
       "n_flagged_parakeet": 11,
-      "sample_WER": 0.09375,
+      "sample_WER": 0.109375,
       "qwen_verdict_p2": false,
       "dataset_index": 142
     },
     {
       "ref": "WITH LAMB ISN'T LAMB VERY EXPENSIVE",
-      "hyp": "With lamb, isn't land fairly expensive?",
+      "hyp": "With land, isn't lamb fairly expensive?",
       "qwen_base": "With lamb, isn't lamb fairly expensive?",
       "whisper_hyp_flagged": "[LOW-CONF: But] [LOW-CONF: for] [LOW-CONF: one,] isn't [LOW-CONF: land] [LOW-CONF: fairly] expensive?",
       "parakeet_hyp_flagged": "[LOW-CONF: the] [LOW-CONF: flam] isn't [LOW-CONF: longf] expensive",
@@ -1530,19 +1530,19 @@
     },
     {
       "ref": "AND IT DOES INCLUDE ARTHUR'S SEAT AND SO",
-      "hyp": "And that it does include Arthur C.",
+      "hyp": "And that it does include Arthur's Seed.",
       "qwen_base": "And that it does include Arthur C.",
       "whisper_hyp_flagged": "[LOW-CONF: But] it does include [LOW-CONF: Arthur's] [LOW-CONF: Seed.]",
       "parakeet_hyp_flagged": "[LOW-CONF: that] [LOW-CONF: does] [LOW-CONF: include] autor [LOW-CONF: c]",
       "n_flagged_whisper": 3,
       "n_flagged_parakeet": 4,
-      "sample_WER": 0.625,
-      "qwen_verdict_p2": false,
+      "sample_WER": 0.5,
+      "qwen_verdict_p2": true,
       "dataset_index": 151
     },
     {
       "ref": "YOU CAN GET ANYTHING REALLY",
-      "hyp": "you can get anything you really want.",
+      "hyp": "You can get anything you really want.",
       "qwen_base": "You can get anything you really.",
       "whisper_hyp_flagged": "[LOW-CONF: You] can get anything [LOW-CONF: you] really [LOW-CONF: want.]",
       "parakeet_hyp_flagged": "you can get anything every",
@@ -1566,13 +1566,13 @@
     },
     {
       "ref": "WITHIN A TWENTY MINUTE WALK IT'S A SHAME THOUGH THAT'S UH AND EVEN LIKE IKEA'S AND WHATNOT TWENTY MINUTE BUS AWAY NOT TOO MUCH OF A",
-      "hyp": "Within a twenty-minute walk. It's a shame though that it's there, and even like IKEAs and whatnot, twenty-minute bus away. Not too much of a",
+      "hyp": "Within a twenty-minute walk. It's a shame though that it's there, and even like IKEAs and whatnot, 20 minute bus away. Not too much of a",
       "qwen_base": "Within a twenty-minute walk. It's a shame though that it's there, and even like, IKEAs and whatnot, twenty-minute bus away. Not too much of a",
       "whisper_hyp_flagged": "[LOW-CONF: within] a 20 [LOW-CONF: minute] walk [LOW-CONF: it's] a shame though that [LOW-CONF: it's] there and even like [LOW-CONF: Ikea's] and [LOW-CONF: whatnot] 20 minute bus away not too much of a",
       "parakeet_hyp_flagged": "within [LOW-CONF: a] twenty minute [LOW-CONF: walk] it's a shame though that it's [LOW-CONF: there] and even like ikeas [LOW-CONF: and] whatnot [LOW-CONF: twenty] minute [LOW-CONF: bus] away not too much of a",
       "n_flagged_whisper": 6,
       "n_flagged_parakeet": 6,
-      "sample_WER": 0.3076923076923077,
+      "sample_WER": 0.2692307692307692,
       "qwen_verdict_p2": false,
       "dataset_index": 154
     },
@@ -1590,7 +1590,7 @@
     },
     {
       "ref": "UH HMM",
-      "hyp": "Uh.",
+      "hyp": "Uh,",
       "qwen_base": "Uh.",
       "whisper_hyp_flagged": "[LOW-CONF: Um,]",
       "parakeet_hyp_flagged": "okay",
@@ -1602,13 +1602,13 @@
     },
     {
       "ref": "FOR ME IT'S UM THE SCENT LIKE THE SMELLS",
-      "hyp": "for me it's the scent like the smells",
+      "hyp": "For me, it's the scents like the smells.",
       "qwen_base": "For me, it's um the scent, like the smells.",
       "whisper_hyp_flagged": "[LOW-CONF: For] [LOW-CONF: me,] it's the [LOW-CONF: scent,] like the [LOW-CONF: smells.]",
       "parakeet_hyp_flagged": "for me it's the scents like the smells",
       "n_flagged_whisper": 4,
       "n_flagged_parakeet": 0,
-      "sample_WER": 0.1111111111111111,
+      "sample_WER": 0.2222222222222222,
       "qwen_verdict_p2": false,
       "dataset_index": 158
     },
@@ -1686,13 +1686,13 @@
     },
     {
       "ref": "THAT IS TRUE",
-      "hyp": "Yeah, true.",
+      "hyp": "Yeah, think for.",
       "qwen_base": "Yeah, true.",
       "whisper_hyp_flagged": "[LOW-CONF: Yeah,] [LOW-CONF: true.]",
       "parakeet_hyp_flagged": "[LOW-CONF: i] [LOW-CONF: think] [LOW-CONF: for]",
       "n_flagged_whisper": 2,
       "n_flagged_parakeet": 3,
-      "sample_WER": 0.6666666666666666,
+      "sample_WER": 1.0,
       "qwen_verdict_p2": false,
       "dataset_index": 168
     },
@@ -1746,7 +1746,7 @@
     },
     {
       "ref": "IT WOULD BE DEFINITELY ONE OF THOSE THINGS I'VE ONLY LIKE SEEN OR HEARD OF PROBABLY OR AMERICA BUT AMERICA'S QUITE YOU KNOW I COULDN'T SEE THAT BEING INCREDIBLY DIFFERENT I COULD SEE JAPAN AND A LOT OF STUFF I WOULD NOT BE USED TO STUFF THAT I'D BE LIKE OH THIS IS INTERESTING AND NEW WHERE IT'D BE COMPLETELY NORMAL TO PEOPLE WHO LIVE THERE",
-      "hyp": "It would definitely be one of those things I've only seen or heard of probably or America, but America's quite you know. I couldn't see that being incredibly different. I could see Japan having a lot of stuff I would not be used to, stuff that I'd be like, oh, this is interesting and new. Where it'd be completely normal to people who live there.",
+      "hyp": "It would definitely be one of those things I've only seen or heard of probably or America but America's quite you know I couldn't see that being incredibly different I could see Japan having a lot of stuff I would not be used to stuff that I'd be like oh this is interesting and new where it'd be completely normal to people who live there",
       "qwen_base": "It would definitely be one of those things I've only like seen or heard of, probably or America, but America's quite you know. I couldn't see that being incredibly different. I could see Japan having a lot of stuff I would not be used to, stuff that I'd be like, oh, this is interesting and new. Where it'd be completely normal to people who live there.",
       "whisper_hyp_flagged": "[LOW-CONF: Definitely] one of those things I've only [LOW-CONF: seen] or heard [LOW-CONF: of.] [LOW-CONF: Probably,] or America. But [LOW-CONF: America's] quite, you [LOW-CONF: know,] I couldn't see that being incredibly different. I could see Japan [LOW-CONF: and] a lot of stuff I would not be used [LOW-CONF: to,] stuff that I'd be like, oh, this is interesting and [LOW-CONF: new,] where it'd be completely normal to people who live there.",
       "parakeet_hyp_flagged": "it would definitely be [LOW-CONF: one] of those things i've only seen or heard of probably or america but america's [LOW-CONF: quite] you [LOW-CONF: know] [LOW-CONF: i] couldn't see that being incredibly different i [LOW-CONF: could] see japan having [LOW-CONF: a] lot of stuff i [LOW-CONF: would] not be used to [LOW-CONF: stuff] that i'd [LOW-CONF: be] like [LOW-CONF: oh] this is interesting and new where it' [LOW-CONF: be] completely [LOW-CONF: normal] to people who live there",

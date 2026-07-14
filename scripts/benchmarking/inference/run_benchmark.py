@@ -23,7 +23,7 @@ from datetime import datetime
 
 from src.benchmark import run_benchmark
 from src.models import Whisper, Wav2Vec2, Parakeet, Qwen3ASR
-from src.datasets import EnglishDialectsScots, CommonVoiceScots, EdAcc
+from src.datasets import EnglishDialectsScots, CommonVoiceScots, EdAcc, Shetland
 
 MODELS = {
     "whisper":   Whisper,
@@ -36,12 +36,14 @@ DATASETS = {
     "english_dialects": EnglishDialectsScots,
     "commonvoice":      CommonVoiceScots,
     "edacc":            EdAcc,
+    "shetland":         Shetland,
 }
 
 DATASET_SIZES = {
     "commonvoice":      680,
     "english_dialects": 2543,
     "edacc":            198,
+    "shetland":         100,
 }
 
 parser = argparse.ArgumentParser()
