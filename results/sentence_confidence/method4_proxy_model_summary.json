@@ -1,0 +1,52 @@
+{
+  "method": "proxy_model_lodo",
+  "model": "Ridge Regression",
+  "features": [
+    "verbalized_conf",
+    "crossmodel_mean",
+    "acoustic_mean"
+  ],
+  "design": "leave-one-dataset-out + shetland held-out",
+  "results": {
+    "commonvoice": {
+      "spearman": 0.3678,
+      "pvalue": 0.0,
+      "best_alpha": 100.0,
+      "coefs": {
+        "verbalized_conf": -0.12507207051021382,
+        "crossmodel_mean": -0.24122691864916393,
+        "acoustic_mean": -0.27516188941323
+      }
+    },
+    "edacc": {
+      "spearman": 0.2756,
+      "pvalue": 0.0,
+      "best_alpha": 100.0,
+      "coefs": {
+        "verbalized_conf": -0.22204237690958833,
+        "crossmodel_mean": -0.16820100189550233,
+        "acoustic_mean": -0.19911431561501522
+      }
+    },
+    "english_dialects": {
+      "spearman": 0.165,
+      "pvalue": 0.0365,
+      "best_alpha": 100.0,
+      "coefs": {
+        "verbalized_conf": -0.1868231614195077,
+        "crossmodel_mean": -0.16871448857305066,
+        "acoustic_mean": -0.1322532865208973
+      }
+    },
+    "shetland": {
+      "spearman": 0.2843,
+      "pvalue": 0.0,
+      "best_alpha": 10.0,
+      "coefs": {
+        "verbalized_conf": -0.24333233978849297,
+        "crossmodel_mean": -0.2079903758627889,
+        "acoustic_mean": -0.18144739862628512
+      }
+    }
+  }
+}

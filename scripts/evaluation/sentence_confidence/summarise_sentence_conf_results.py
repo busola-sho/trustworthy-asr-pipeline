@@ -24,6 +24,9 @@ def load_results(results_dir: str) -> list:
             continue
         if "method" not in data:
             continue
+        # skip summary files that don't have per-dataset eval results
+        if "results" in data and "labels_file" not in data:
+            continue
         results.append(data)
     return results
 

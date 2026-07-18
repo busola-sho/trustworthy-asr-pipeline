@@ -84,7 +84,9 @@ def run(combo_path: str, output_path: str, rerun: bool = False):
             if key in done:
                 continue
 
-            hyp_sentence = sc.get("sentence", "").strip()
+            hyp_sentence    = sc.get("sentence", "").strip()
+            verbalized_conf = sc.get("confidence")
+            verbalized_score = sc.get("score")
             if not hyp_sentence:
                 continue
 
@@ -92,11 +94,13 @@ def run(combo_path: str, output_path: str, rerun: bool = False):
             severity    = ollama_sentence_severity(client, ref, hyp_sentence)
 
             rows.append({
-                "dataset_index": dataset_index,
-                "sent_pos":      sent_pos,
-                "hyp_sentence":  hyp_sentence,
-                "mar_verdict":   mar_verdict,
-                "severity":      severity,
+                "dataset_index":   dataset_index,
+                "sent_pos":        sent_pos,
+                "hyp_sentence":    hyp_sentence,
+                "verbalized_conf": verbalized_conf,
+                "verbalized_score": verbalized_score,
+                "mar_verdict":     mar_verdict,
+                "severity":        severity,
             })
             done.add(key)
             new_rows += 1
