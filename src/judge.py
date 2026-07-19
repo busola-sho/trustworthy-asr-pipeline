@@ -82,10 +82,22 @@ Answer: 0
 IMPORTANT: Reply with ONLY the single digit 0, 1, 2, 3, or 4. No explanation, no reasoning, no other text."""
 
 
+def is_tag_only(text: str) -> bool:
+    """True if the text contains nothing but bracketed annotation tags
+    (e.g. <OVERLAP>, <NOISE>, <LAUGH>) and whitespace — i.e. no real
+    reference content exists to score a hypothesis against."""
+    return len(re.sub(r"<[^>]+>", "", text).strip()) == 0
+    
 # ── Text normalisation ─────────────────────────────────────────────────────────
 
 def normalise(text: str) -> str:
-    """Lowercase and strip punctuation for WER computation."""
+    """Lowercase and strip punctuation for WER computation.
+    Also strips bracketed annotation tags (e.g. <OVERLAP>, <NOISE>, <LAUGH>,
+    <INAUDIBLE>) BEFORE punctuation stripping — otherwise the brackets are
+    removed but the word inside (e.g. "overlap") survives as a literal
+    reference token the ASR model can never correctly produce, silently
+    inflating WER wherever these transcription-convention tags appear."""
+    text = re.sub(r"<[^>]+>", "", text)
     text = text.lower()
     text = text.replace('\u2018', "'").replace('\u2019', "'")
     text = text.replace('\u201c', '"').replace('\u201d', '"')
@@ -195,10 +207,9 @@ def check_model_available(client: Client, model: str = JUDGE_MODEL) -> bool:
     except Exception:
         return False
 
-# This is the new function to add to src/judge.py after ollama_mar()
 
 SCOTTISH_ANNOTATIONS = {
-    "couldnae": "could not", "cannae": "cannot", "cannae": "cannot",
+    "couldnae": "could not", "cannae": "cannot",
     "wisnae": "wasn't", "wasnae": "wasn't", "isnae": "isn't",
     "dinnae": "don't", "didnae": "didn't", "wouldnae": "wouldn't",
     "shouldnae": "shouldn't", "hasnae": "hasn't", "havnae": "haven't",
@@ -214,7 +225,6 @@ SCOTTISH_ANNOTATIONS = {
 
 def annotate_scottish(text: str) -> str:
     """Annotate Scottish dialect words inline with their standard English meaning."""
-    import re
     words = re.split(r'(\s+)', text)
     result = []
     for token in words:

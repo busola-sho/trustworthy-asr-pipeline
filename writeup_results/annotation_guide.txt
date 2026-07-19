@@ -1,0 +1,164 @@
+SEVERITY ANNOTATION GUIDE
+=========================
+
+You are comparing a REFERENCE (the true, human-verified transcript) to
+a HYPOTHESIS (what the speech-to-text system produced). For each pair,
+give a severity score from 0 to 4 describing how much the ASR error(s)
+changed the meaning of the sentence. Base your judgement only on the
+reference-hypothesis pair given to you -- do not assume outside context
+that isn't in the sentence.
+
+
+SEVERITY SCALE
+--------------
+
+0 - No meaning change.
+Only the surface changed: casing, punctuation, filler words, dialect
+spelling, or a spelling variant of a name that's still clearly
+recognizable as the same name.
+
+1 - Trivial error.
+Words are garbled or reworded, but you can tell exactly what was meant
+just from this sentence -- no outside knowledge needed. This includes
+nonsense words that don't match any real alternative (example: "Japer"
+for "Jaipur"). Even if the words used are real words, if they don't add
+up to a believable different meaning (example: "seeing her goggle"),
+treat it the same as nonsense -- still a 1.
+IMPORTANT: if you are not fully confident what was meant, it is NOT a
+1. Move to 2 instead.
+
+2 - Ambiguous change.
+You need to think about it, guess, or you're left unsure what was
+meant. This also covers small linking words changing (example: "in"
+becoming "and") in a way that changes how two things relate to each
+other, not just what they individually are. It also applies when the
+same word gets garbled differently more than once in one sentence --
+don't assume it's fine just because you can eventually guess the
+answer; if it took real work to get there, it's a 2. Also covers total,
+unrecoverable loss of a detail (the content is just gone, not just
+unclear) -- write "totally garbled" in your note. This always stays at
+2 even when the lost detail was important, since 3 and 4 both require
+a clear meaning change to actually be asserted, and garbling that bad
+can't assert anything clearly.
+
+3 - Clear factual error.
+A real, different, believable thing was substituted in place of the
+correct one -- a different real name, place, number, time, or action
+(examples: "Joan" instead of "John," "Shannon" instead of "Schengen").
+There is no real doubt about what is now being claimed -- it's simply a
+different, wrong, but plausible fact.
+
+4 - Critical change.
+The core point of the sentence is reversed, invented, or completely
+changed. This includes an obvious "not" being added or removed, but
+ALSO includes smaller word swaps that flip the meaning without using
+the word "not" at all (examples: "this" becoming "there," "I can't
+believe you didn't" becoming "I can't even") -- including tense
+changes that flip whether something happened, is happening, or hasn't
+happened yet, when the swap is consequential and nothing else in the
+sentence corrects it. Nothing in the sentence warns the reader that
+this changed. Also covers made-up content filling in for a part the
+human transcriber marked as inaudible or unclear (e.g. tagged as
+[inc]) -- there is nothing to check that content against, so treat it
+as critical (4) by default, not by normal recovery rules.
+
+NOT SCORED AT ALL: if the reference is only a tag with no real words in
+it at all (example: <OVERLAP> by itself, nothing else), skip it. There
+is nothing to compare, so it doesn't get a 0-4 score.
+
+
+ADDITIONAL NOTE: TOTALLY GARBLED
+---------------------------------
+
+When an error involves total, unrecoverable loss of a material detail
+(the specific content is simply gone, not just uncertain), write
+"totally garbled" in the human note field alongside your severity
+score.
+
+This always caps at severity 2, and this is a hard rule, not a
+judgement call: severity 3 and 4 both require a CLEAR meaning change to
+be asserted -- a wrong-but-plausible fact (3), or a confidently wrong
+claim with nothing to flag it (4). Total garbling can't assert
+anything clearly, hidden or otherwise, so it structurally cannot reach
+3 or 4, no matter how much material content is lost. The risk profile
+is different too: a reader facing obviously broken text knows to go
+back to the source; a reader facing a fluent false claim does not.
+
+Example: reference gives a specific detail ("a twelve hunner BMW"),
+hypothesis is unintelligible nonsense in that spot with no recoverable
+trace of the original content. Severity: 2. Note: "totally garbled."
+
+
+ERROR TYPES
+-----------
+
+For each pair, also note the MAIN type of error present (pick one, even
+if more than one small thing changed -- pick whichever one is driving
+your severity score).
+
+1. Acceptable variation
+   The hypothesis differs from the reference only in ways that don't
+   change meaning at all: capitalization, punctuation, filler words
+   (um, eh), dialect spelling normalised to standard English, or a
+   name spelled slightly differently but still clearly the same name.
+   Usually severity 0.
+
+2. Surface-form error
+   Words are garbled, misheard, or reworded, but the meaning is still
+   clearly recoverable just from this sentence. Usually a nonsense
+   string standing in for a real word or name, with no real competing
+   alternative meaning. Usually severity 0-1.
+
+3. Content substitution
+   A CONTENT-BEARING word is replaced by a different one -- this means
+   things like names, numbers, times, places, amounts, or actions.
+   This does NOT include small linking/connector words like "and," "or,"
+   "in," "of," "on" -- those go under error type 4 below, even though
+   they are also technically "substitutions." Usually severity 1-4,
+   depending on whether the substitute is real/plausible (higher) or
+   nonsense (lower).
+
+4. Addition, omission, or structural error
+   Words, clauses, or claims are added, dropped, reordered, or the
+   relationship between two parts of the sentence is changed. This
+   INCLUDES linking/connector word changes (and/or/in/of/on) that
+   change how two things relate to each other (example: "leisure
+   activities ON work time" becoming "leisure activities AND work
+   time" -- changes one benefit into two vague ones). Usually severity
+   1-4.
+
+5. Polarity or modality error
+   Negation, certainty, possibility, or TENSE is changed -- for example
+   "did" becoming "did not," or "may have" becoming "did," or present
+   tense becoming past tense in a way that changes whether something is
+   ongoing, finished, or hadn't happened yet. This ALSO covers cases
+   where the meaning flips without literally changing a negation word,
+   through a different kind of word swap entirely (example: "this"
+   becoming "there," changing what a sentence is actually claiming).
+   WATCH FOR: a dialect word normalised to standard English in the
+   WRONG tense (example: "dinnae" [present: don't] rendered as "didn't"
+   [past]) -- this looks like the free, no-penalty dialect normalising
+   under type 1 above, but it isn't, since the tense changed too, not
+   just the spelling. Usually severity 1-4 depending on materiality,
+   often 4 if the flip is complete and nothing in the sentence
+   corrects it.
+
+
+QUESTIONS TO THINK THROUGH (don't score these separately -- just reason
+through them to help you land on one final severity score):
+
+1. Materiality -- Does this error matter? Does it affect identity,
+   action, object, time, place, amount, or the order of events?
+
+2. Directionality -- Does the hypothesis just say the same thing
+   differently, or does it actually change what happened, who did it,
+   or whether it happened at all?
+
+3. Recoverability -- Can you confidently tell what was meant from just
+   this reference-hypothesis pair, without guessing or assuming extra
+   context you weren't given?
+
+4. Misleading plausibility -- Would a reader likely believe the wrong
+   version as true, or would they notice something is off and question
+   it? A fluent, believable wrong answer is more dangerous than an
+   obviously broken one.

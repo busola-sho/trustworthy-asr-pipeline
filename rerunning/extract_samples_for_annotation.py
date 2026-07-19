@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """
 extract_samples_for_annotation.py
 
@@ -27,10 +28,14 @@ Usage:
 import json
 import argparse
 import random
+import re
 from pathlib import Path
 from collections import defaultdict
 
 VERDICT_KEY_SUBSTR = "verdict"
+
+# Matches bracketed annotation tags like <OVERLAP>, <NOISE>, <LAUGH>, <INAUDIBLE>, <UNK>
+TAG_PATTERN = re.compile(r"<[^>]+>")
 
 
 def find_verdict_keys(sample: dict) -> list:
@@ -43,6 +48,17 @@ def is_flagged_error(sample: dict, verdict_keys: list) -> bool:
     annotation anyway, so over-sampling candidates costs less than
     under-sampling real errors."""
     return any(bool(sample.get(k)) for k in verdict_keys)
+
+
+def is_tag_only_ref(ref: str) -> bool:
+    """True if the reference contains NO real lexical content once bracketed
+    annotation tags (e.g. <OVERLAP>, <NOISE>, <INAUDIBLE>) are stripped out.
+    These refs have nothing comparable for severity scoring — there's no
+    ground-truth propositional content to check the hypothesis against.
+    A ref like '<LAUGH> what did I even do' is NOT tag-only (real content
+    remains after stripping); a ref like '<OVERLAP>' alone IS tag-only."""
+    stripped = TAG_PATTERN.sub("", ref).strip()
+    return len(stripped) == 0
 
 
 def load_benchmark_file(path: Path) -> list:
@@ -109,6 +125,25 @@ def main():
     all_records = []
     for f in selected_files:
         all_records.extend(load_benchmark_file(f))
+
+    # --- Exclude reference-only special-tag rows (e.g. ref == "<OVERLAP>").
+    # These have no comparable ground-truth content for severity scoring —
+    # the human transcriber themselves gave up on that segment, so there's
+    # no "correct meaning" for the hypothesis to be checked against.
+    tag_only_counts = defaultdict(int)
+    kept_records = []
+    for r in all_records:
+        if is_tag_only_ref(r["ref"]):
+            tag_only_counts[r["dataset"]] += 1
+        else:
+            kept_records.append(r)
+
+    if tag_only_counts:
+        print("\nExcluded reference-only special-tag rows (no comparable content):")
+        for dataset, count in sorted(tag_only_counts.items()):
+            print(f"  {dataset}: {count}")
+
+    all_records = kept_records
 
     # --- Dedupe by (dataset, ref) so the same underlying ground-truth sentence
     # never appears twice just because different models transcribed it.

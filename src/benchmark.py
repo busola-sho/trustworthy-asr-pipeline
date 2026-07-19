@@ -1,7 +1,7 @@
 from jiwer import wer
 from src.models import ASRModel
 from src.datasets import Dataset
-from src.judge import normalise
+from src.judge import normalise, is_tag_only
 import json
 import os
 from typing import Optional
@@ -25,6 +25,13 @@ def run_benchmark(
         max_samples:     stop after this many samples (ignored if subset_indices given)
         start_from:      resume from this sample index
         subset_indices:  if given, only process these specific indices
+
+    Samples are SKIPPED from scoring (no sample_WER, excluded from corpus_wer)
+    when either:
+      - the reference contains the IGNORE_TIME_SEGMENT_IN_SCORING marker, or
+      - the reference is tag-only (e.g. "<OVERLAP>") with no real lexical
+        content to score the hypothesis against.
+    Both are still recorded in "samples" with skipped=True for transparency.
     """
 
     # resume support
@@ -32,8 +39,14 @@ def run_benchmark(
         with open(output_path) as f:
             existing = json.load(f)
         results = existing.get("samples", [])
-        all_refs = [normalise(s["ref"]) for s in results if isinstance(s.get("ref"), str)]
-        all_hyps = [normalise(s["hyp"]) for s in results if isinstance(s.get("hyp"), str)]
+        all_refs = [
+            normalise(s["ref"]) for s in results
+            if isinstance(s.get("ref"), str) and not s.get("skipped")
+        ]
+        all_hyps = [
+            normalise(s["hyp"]) for s in results
+            if isinstance(s.get("hyp"), str) and not s.get("skipped")
+        ]
     else:
         results = []
         all_refs = []
@@ -54,8 +67,35 @@ def run_benchmark(
         if subset_set is None and max_samples and len(results) >= max_samples:
             break
 
+        ref = sample.label
+
+        # --- Skip samples with no scoreable reference content ---
+        if "IGNORE_TIME_SEGMENT_IN_SCORING" in ref:
+            results.append({
+                "sample_index": i,
+                "ref":          ref,
+                "hyp":          None,
+                "sample_WER":   None,
+                "segments":     [],
+                "skipped":      True,
+                "skip_reason":  "ignore_time_segment",
+            })
+            continue
+
+        if is_tag_only(ref):
+            results.append({
+                "sample_index": i,
+                "ref":          ref,
+                "hyp":          None,
+                "sample_WER":   None,
+                "segments":     [],
+                "skipped":      True,
+                "skip_reason":  "tag_only_reference",
+            })
+            continue
+
         transcript = model.transcribe(sample.audio, sample.sample_rate)
-        sample_wer = wer(normalise(sample.label), normalise(transcript.text))
+        sample_wer = wer(normalise(ref), normalise(transcript.text))
 
         # serialise per-word confidence segments
         segments_data = [
@@ -70,13 +110,13 @@ def run_benchmark(
 
         results.append({
             "sample_index": i,
-            "ref":          sample.label,
+            "ref":          ref,
             "hyp":          transcript.text,
             "sample_WER":   sample_wer,
             "segments":     segments_data,
         })
 
-        all_refs.append(normalise(sample.label))
+        all_refs.append(normalise(ref))
         all_hyps.append(normalise(transcript.text))
 
         # save progress every sample
@@ -85,22 +125,27 @@ def run_benchmark(
 
     corpus_wer = wer(all_refs, all_hyps) if all_refs else 0.0
     count = len(results)
+    n_skipped = sum(1 for r in results if r.get("skipped"))
 
     output = {
-        "model":      model.model_name,
-        "dataset":    dataset.name,
-        "corpus_wer": corpus_wer,
+        "model":       model.model_name,
+        "dataset":     dataset.name,
+        "corpus_wer":  corpus_wer,
         "num_samples": count,
+        "num_scored":  count - n_skipped,
+        "num_skipped": n_skipped,
         "subset_indices": subset_indices,
-        "samples":    results,
+        "samples":     results,
     }
 
     with open(output_path, "w") as f:
         json.dump(output, f, indent=2)
 
     return {
-        "model":      model.model_name,
-        "dataset":    dataset.name,
+        "model":       model.model_name,
+        "dataset":     dataset.name,
         "num_samples": count,
-        "WER":        corpus_wer,
+        "num_scored":  count - n_skipped,
+        "num_skipped": n_skipped,
+        "WER":         corpus_wer,
     }
