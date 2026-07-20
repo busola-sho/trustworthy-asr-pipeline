@@ -1,0 +1,902 @@
+[
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__938",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 3,
+    "severity": 1,
+    "raw_response": "Severity: 1\nJustification: The meaning is confidently and cleanly recoverable as \"truth\" is a plausible alternative to \"drouth\" (which is not a real word), and the overall sentence structure remains intact.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__2347",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 1,
+    "severity": 1,
+    "raw_response": "Severity: 1\nJustification: The phrase \"TRY SEEING HER GOGGLE\" is nonsensical and does not cohere into a believable alternative claim, making it a trivial/cosmetic error.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__1482",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The hypothesis matches the reference exactly, with no changes in meaning or content.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_edacc_20260525_184006__110",
+    "dataset": "edinburgh_international_accents",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 4,
+    "severity": 4,
+    "raw_response": "Severity: 4\nJustification: The hypothesis \"slain\" fundamentally changes the central assertion from an ongoing action (\"playing\") to a completed, severe event. This alters the core meaning and cannot be recovered or justified by context alone.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__170",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 2,
+    "severity": 2,
+    "raw_response": "Severity: 2\nJustification: The hypothesis introduces a new phrase \"bishop rigs\" which is ambiguous and requires reconstruction. This changes the meaning from a specific location \"Bishopbriggs\" to an unclear term, leading to residual doubt about intent.",
+    "error": null
+  },
+  {
+    "uid": "whisper_english_dialects_20260525_110315__2542",
+    "dataset": "english_dialects_scots",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The hypothesis matches the reference exactly, with no changes in surface form or meaning.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__1952",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 1,
+    "severity": 2,
+    "raw_response": "Severity: 2\nJustification: The hypothesis introduces a meaningful ambiguity with \"CORPS\" instead of \"CORE,\" and \"YEURAPE\" instead of \"YOUR APP,\" requiring reconstruction to recover the intended meaning.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_edacc_20260525_213534__34",
+    "dataset": "edinburgh_international_accents",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 4,
+    "severity": 2,
+    "raw_response": "Severity: 2\nJustification: The hypothesis contains a genuine ambiguity with connector word changes (\"DID A FEW TIMES FERITD BE\" vs \"DID A FEW TIMES\"), and the substitution of \"TR BI\" for \"TOOK THE BIB IN\" introduces residual doubt about intent, requiring reconstruction.",
+    "error": null
+  },
+  {
+    "uid": "whisper_commonvoice_20260524_083930__334",
+    "dataset": "common_voice",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 2,
+    "severity": 1,
+    "raw_response": "Severity: 1\nJustification: The ASR output maintains the overall meaning and structure of the reference, with only minor word substitutions that do not significantly alter the content or intent.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__1003",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The hypothesis matches the reference exactly, with no changes in meaning or content.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__1533",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The hypothesis is an exact match to the reference, with no changes in meaning or content.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__1080",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 1,
+    "severity": 1,
+    "raw_response": "Severity: 1\nJustification: The hypothesis contains minor spelling errors (\"GOGGLE\" for \"Google\") and a misspelling of \"podcasts\" as \"POD CASTS\", but the overall meaning is confidently recoverable. No material fact changes are introduced, making it a trivial/cosmetic error.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__1932",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 4,
+    "severity": 3,
+    "raw_response": "Severity: 3\nJustification: The hypothesis reverses \"This is\" to \"THERE IS NOT,\" changing the assertion from a first-person statement to a universal claim. This fundamentally alters the meaning of the sentence, making it a clear factual error.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__1862",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 0,
+    "severity": 1,
+    "raw_response": "Severity: 1\nJustification: The wording differs slightly, but the meaning is confidently and cleanly recoverable. \"Southeastern\" is a real entity that can be reasonably interpreted as a plausible alternative to \"Southeastern\" in this context, which refers to a train operating company.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_commonvoice_20260524_150129__94",
+    "dataset": "common_voice",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 2,
+    "severity": 2,
+    "raw_response": "Severity: 2\nJustification: The ASR output contains several errors, including incorrect spelling of \"liked\" and \"licked,\" a change from \"NME\" to \"enemy,\" which alters the meaning. These changes introduce ambiguity but do not clearly assert different factual information or reverse the central assertion.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__428",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The hypothesis matches the reference exactly, with no changes in meaning or content.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_commonvoice_20260526_053757__453",
+    "dataset": "common_voice",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 1,
+    "severity": 2,
+    "raw_response": "Severity: 2\nJustification: The ASR output significantly garbles the text, making it difficult to recover the original meaning. There are multiple instances of words being replaced or omitted, leading to an ambiguous shift in the overall message and intent.",
+    "error": null
+  },
+  {
+    "uid": "whisper_english_dialects_20260525_110315__644",
+    "dataset": "english_dialects_scots",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 2,
+    "severity": 1,
+    "raw_response": "Severity: 1\nJustification: The word \"on\" is missing from \"work time allowances,\" which makes the phrase less coherent but does not change the core meaning significantly. The rest of the sentence remains intact and recoverable without ambiguity.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__431",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The hypothesis matches the reference exactly, with no changes in meaning or content.",
+    "error": null
+  },
+  {
+    "uid": "qwen_edacc_20260525_204314__94",
+    "dataset": "edinburgh_international_accents",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 4,
+    "severity": 2,
+    "raw_response": "Severity: 2\nJustification: The hypothesis introduces a significant change by altering \"I can't believe you didn't watch Ben Ten\" to \"I can't even watch Ben 10. Peppa Pig, or is that you're too young? Have you even remember\". This change creates ambiguity and requires reconstruction of the intended meaning.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__418",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The hypothesis matches the reference exactly, including capitalization and spacing, with no change to propositional content.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__196",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 1,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The hypothesis matches the reference exactly, with no changes in surface form or meaning.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__1254",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 1,
+    "severity": 2,
+    "raw_response": "Severity: 2\nJustification: The hypothesis introduces a minor error with \"TROW\" instead of \"TRough,\" which alters the meaning slightly but requires reconstruction. This change affects how the items relate within the sentence, leading to ambiguity in interpretation.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_commonvoice_20260524_150129__594",
+    "dataset": "common_voice",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 2,
+    "severity": 2,
+    "raw_response": "Severity: 2\nJustification: The ASR output loses some details and coherence, particularly in the second paragraph where \"pushed\" is changed to \"like it pushed,\" introducing ambiguity. This requires reconstruction to match the reference text accurately.",
+    "error": null
+  },
+  {
+    "uid": "whisper_english_dialects_20260525_110315__2522",
+    "dataset": "english_dialects_scots",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The hypothesis matches the reference exactly, with only a minor difference in punctuation that does not affect the propositional content.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_commonvoice_20260526_053757__286",
+    "dataset": "common_voice",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 2,
+    "severity": 2,
+    "raw_response": "Severity: 2\nJustification: The ASR output contains significant word omissions and substitutions that create ambiguity, requiring reconstruction of the intended meaning. For example, \"Lego\" is partially garbled as \"LEG E,\" and key phrases like \"I used to just spend hours sitting with Lego making models\" are altered to \"I USED TO JUT SPEND HOURS AIN LEG MAKING MODELS.\" These changes make it difficult to confidently recover the original meaning without doubt.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__1531",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The hypothesis matches the reference exactly, including capitalization and spacing, with no change to propositional content.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__1474",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 0,
+    "severity": 1,
+    "raw_response": "Severity: 1\nJustification: The wording differs slightly with \"leaked\" changed to \"leaks,\" but the meaning is confidently and cleanly recoverable, as it does not change the core factual content of the sentence.",
+    "error": null
+  },
+  {
+    "uid": "whisper_english_dialects_20260525_110315__1748",
+    "dataset": "english_dialects_scots",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 0,
+    "severity": 1,
+    "raw_response": "Severity: 1\nJustification: The hypothesis changes \"payment info\" to \"payments info,\" which is a trivial/cosmetic error as the meaning is confidently and cleanly recoverable.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__1904",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The hypothesis matches the reference exactly, with no changes in surface form or meaning.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__567",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 0,
+    "severity": 1,
+    "raw_response": "Severity: 1\nJustification: The wording differs with \"BLUE TOOTH\" instead of \"bluetooth,\" but the meaning is confidently and cleanly recoverable, as it's a common misspelling that doesn't change the propositional content.",
+    "error": null
+  },
+  {
+    "uid": "qwen_commonvoice_20260524_153426__543",
+    "dataset": "common_voice",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 2,
+    "severity": 1,
+    "raw_response": "Severity: 1\nJustification: The ASR output contains minor wording differences but maintains the overall meaning and intent of the reference text. No material facts are changed, and the reconstruction is clean and confident.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_edacc_20260525_184006__18",
+    "dataset": "edinburgh_international_accents",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 3,
+    "severity": 2,
+    "raw_response": "Severity: 2\nJustification: The hypothesis loses a crucial word (\"HURT\"), which alters the meaning significantly. While it is still related to pain or damage, the exact nature of what would hurt is ambiguous without the full reference sentence.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__147",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The hypothesis is an exact match to the reference, with no changes in meaning or content.",
+    "error": null
+  },
+  {
+    "uid": "qwen_commonvoice_20260524_153426__89",
+    "dataset": "common_voice",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 2,
+    "severity": 2,
+    "raw_response": "Severity: 2\nJustification: The hypothesis changes \"sooth end\" to \"south end,\" which alters a key detail about the speaker's location. This change is not trivial and requires reconstruction of the sentence meaning, fitting the criteria for an ambiguous meaning shift.",
+    "error": null
+  },
+  {
+    "uid": "whisper_english_dialects_20260525_110315__2272",
+    "dataset": "english_dialects_scots",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The hypothesis matches the reference exactly, with no changes in surface form or meaning.",
+    "error": null
+  },
+  {
+    "uid": "whisper_english_dialects_20260525_110315__401",
+    "dataset": "english_dialects_scots",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 1,
+    "severity": 2,
+    "raw_response": "Severity: 2\nJustification: The word \"Drumgelloch\" is replaced with \"Dermdgelach,\" which is a plausible but different location. This change introduces ambiguity and requires reconstruction of the meaning, as it alters the specific train route being discussed without clearly asserting a different factual claim.",
+    "error": null
+  },
+  {
+    "uid": "whisper_commonvoice_20260524_083930__442",
+    "dataset": "common_voice",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 2,
+    "severity": 2,
+    "raw_response": "Severity: 2\nJustification: The hypothesis introduces ambiguity by changing \"that's got\" to \"It's got,\" and \"that can be really frustrating\" to \"that can show, you know, we're diminishing our integrity to a degree as a service.\" These changes require reconstruction of the intended meaning.",
+    "error": null
+  },
+  {
+    "uid": "whisper_english_dialects_20260525_110315__2380",
+    "dataset": "english_dialects_scots",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The hypothesis matches the reference exactly, with no changes in meaning or content.",
+    "error": null
+  },
+  {
+    "uid": "qwen_edacc_20260525_204314__80",
+    "dataset": "edinburgh_international_accents",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 2,
+    "severity": 2,
+    "raw_response": "Severity: 2\nJustification: The hypothesis introduces a \"quote-unquote mystery guy\" instead of a \"mystery gang,\" which changes the nature of the characters involved. This ambiguity requires reconstruction and alters the central assertion of the reference, though no critical facts are reversed or fabricated.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__2191",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 3,
+    "severity": 3,
+    "raw_response": "Severity: 3\nJustification: The hypothesis asserts a different material fact by substituting \"ISLAND\" for \"IRELAND\" and \"SHANNON AREA\" for \"SCHENGEN AREA\", which are clear and unambiguous errors.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__1701",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 1,
+    "severity": 1,
+    "raw_response": "Severity: 1\nJustification: The wording differs slightly, but the meaning is confidently recoverable. \"Nitshill\" and \"Nitsill\" are a plausible misspelling, and \"Taynuilt\" and \"Tennault\" are real station names that cohere into a believable alternative claim.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__1163",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 2,
+    "severity": 1,
+    "raw_response": "Severity: 1\nJustification: The meaning is confidently and cleanly recoverable, with minor punctuation differences that do not change the propositional content.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__745",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The hypothesis matches the reference exactly, with no changes in surface form or meaning.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_commonvoice_20260524_150129__319",
+    "dataset": "common_voice",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 2,
+    "severity": 1,
+    "raw_response": "Severity: 1\nJustification: The ASR output contains several minor errors such as \"gey\" for \"gig,\" \"glen offes\" for \"Glenrothes,\" and slight word order changes, but the overall meaning is confidently recoverable. No material facts are changed, and the core content remains intact.",
+    "error": null
+  },
+  {
+    "uid": "whisper_commonvoice_20260524_083930__335",
+    "dataset": "common_voice",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 4,
+    "severity": 2,
+    "raw_response": "Severity: 2\nJustification: The ASR output introduces a significant error by changing \"Bently’s\" to \"Bentleys,\" which alters the meaning of the sentence. Additionally, there is an ambiguous change in the sequence of events and locations mentioned, requiring reconstruction to understand the original intent.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_commonvoice_20260526_053757__548",
+    "dataset": "common_voice",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 2,
+    "severity": 2,
+    "raw_response": "Severity: 2\nJustification: The ASR output significantly garbles the sentence structure and meaning, requiring substantial reconstruction. Words are replaced with nonsensical phrases, and the overall intent is lost, though no clear factual errors are asserted.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_commonvoice_20260526_053757__256",
+    "dataset": "common_voice",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 2,
+    "severity": 2,
+    "raw_response": "Severity: 2\nJustification: The ASR output introduces several ambiguous changes, such as \"ER NE\" for \"that long ago,\" \"LODS OF THEIR GOOD NIGHTTS\" for \"lots of other good nights,\" and \"IT WAS JUST ABSOLUTELY MAGNIFICENT SO A DUBLIN STAG PARTY\" at the end, which require reconstruction to make sense. These changes alter the meaning in a way that is not clearly recoverable without doubt.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__1295",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 1,
+    "severity": 2,
+    "raw_response": "Severity: 2\nJustification: The hypothesis contains a minor misspelling (\"corker hill\" vs \"Corkerhill\") and a transposition of letters in \"Drem\" to \"drre\", which introduces ambiguity but does not change the core meaning. However, the reconstruction required for \"drre\" is necessary, hence level 2 rather than 1.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__744",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The hypothesis matches the reference exactly, with no changes in meaning or content.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__390",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 1,
+    "severity": 1,
+    "raw_response": "Severity: 1\nJustification: The wording is slightly garbled (\"FARIOUS\" for \"VARIOUS\"), but the meaning is confidently and cleanly recoverable. No material fact changes are introduced.",
+    "error": null
+  },
+  {
+    "uid": "whisper_english_dialects_20260525_110315__1275",
+    "dataset": "english_dialects_scots",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The hypothesis only differs in the capitalization of \"riverside,\" which is a surface form difference and does not change the propositional content.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__1655",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The hypothesis matches the reference exactly, with no changes in meaning or content.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__837",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 1,
+    "severity": 1,
+    "raw_response": "Severity: 1\nJustification: The wording differs slightly with \"megabytes\" misspelled as \"megabites,\" but the meaning is confidently and cleanly recoverable.",
+    "error": null
+  },
+  {
+    "uid": "qwen_edacc_20260525_204314__103",
+    "dataset": "edinburgh_international_accents",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 4,
+    "severity": 4,
+    "raw_response": "Severity: 4\nJustification: The hypothesis \"you.\" fundamentally changes the central assertion from a negative (\"NO\") to a positive, which is a critical meaning alteration.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_commonvoice_20260526_053757__162",
+    "dataset": "common_voice",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 1,
+    "severity": 2,
+    "raw_response": "Severity: 2\nJustification: The hypothesis contains a significant error with \"CISELY\" instead of \"precisely,\" and \"TOICATS\" for \"twin cats.\" These changes alter the meaning, requiring reconstruction. However, the core facts about owning two cats named Arthur and Gracie remain intact, though less coherent due to the errors.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__2197",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 1,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The hypothesis \"EMALES FROM TOBY\" is a surface form error with correct spelling and meaning, only differing in capitalization. This does not change the propositional content.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_commonvoice_20260524_150129__602",
+    "dataset": "common_voice",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 2,
+    "severity": 1,
+    "raw_response": "Severity: 1\nJustification: The ASR output has minor word substitutions and omissions that do not significantly alter the meaning, such as \"ween of\" for \"wee,\" \"weenun\" for \"wee,\" and \"that every day\" for \"for me.\" These changes are recoverable without ambiguity.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_commonvoice_20260526_053757__54",
+    "dataset": "common_voice",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 1,
+    "severity": 2,
+    "raw_response": "Severity: 2\nJustification: The hypothesis introduces ambiguity with changes like \"DID\" vs \"did\", \"OTHERN THAT\" for \"other than that\", and \"NEVER EVER HAVE\" repeated, requiring reconstruction of the intended meaning. However, no clear factual error is asserted.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__2081",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The hypothesis matches the reference exactly, with no changes in meaning or content.",
+    "error": null
+  },
+  {
+    "uid": "whisper_english_dialects_20260525_110315__99",
+    "dataset": "english_dialects_scots",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The hypothesis is an exact match to the reference, with no changes in meaning or content.",
+    "error": null
+  },
+  {
+    "uid": "whisper_english_dialects_20260525_110315__854",
+    "dataset": "english_dialects_scots",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The hypothesis matches the reference exactly, with no changes in meaning or content.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__1319",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 1,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The hypothesis matches the reference exactly, with no changes in meaning or content.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__1179",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The hypothesis matches the reference exactly, with no changes in meaning or propositional content.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__2403",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The hypothesis matches the reference exactly, with no changes in meaning or content.",
+    "error": null
+  },
+  {
+    "uid": "whisper_commonvoice_20260524_083930__565",
+    "dataset": "common_voice",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 2,
+    "severity": 2,
+    "raw_response": "Severity: 2\nJustification: The hypothesis introduces several ambiguous changes, such as \"Shorts\" for \"Shotts,\" and garbles the sequence of events, making reconstruction necessary. However, no clear factual errors or critical meaning alterations are present.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__2027",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The hypothesis matches the reference exactly, with no changes in meaning or content.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_commonvoice_20260526_053757__210",
+    "dataset": "common_voice",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 2,
+    "severity": 2,
+    "raw_response": "Severity: 2\nJustification: The ASR output significantly garbles many words and phrases, leading to ambiguous meaning shifts. For example, \"gigs\" is replaced with \"gags,\" changing the context of the statement. While some parts can still be recovered, there is a clear ambiguity in key terms that requires reconstruction.",
+    "error": null
+  },
+  {
+    "uid": "whisper_english_dialects_20260525_110315__2242",
+    "dataset": "english_dialects_scots",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The hypothesis matches the reference exactly, with only a capitalization difference that does not affect the meaning.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__2256",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The hypothesis matches the reference exactly, with no changes in meaning or content.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__2456",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 2,
+    "severity": 1,
+    "raw_response": "Severity: 1\nJustification: The wording differs with \"THE SAP ISN'T\" instead of \"This app isn’t,\" but the meaning is confidently and cleanly recoverable, as it does not change any material facts.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__1227",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The hypothesis matches the reference exactly, with no changes in meaning or content.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__1847",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The hypothesis matches the reference exactly, with no changes in meaning or content.",
+    "error": null
+  },
+  {
+    "uid": "whisper_english_dialects_20260525_110315__1023",
+    "dataset": "english_dialects_scots",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The hypothesis matches the reference exactly, with no changes in meaning or content.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_commonvoice_20260526_053757__351",
+    "dataset": "common_voice",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 2,
+    "severity": 3,
+    "raw_response": "Severity: 3\nJustification: The ASR output significantly alters the speaker's sentiment from \"love\" to \"lat,\" introduces numerous spelling and grammatical errors, and changes the structure of the sentence, which unambiguously asserts a different material fact.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_commonvoice_20260526_053757__65",
+    "dataset": "common_voice",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 2,
+    "severity": 3,
+    "raw_response": "Severity: 3\nJustification: The hypothesis introduces a clear factual error by substituting \"learn\" with \"lam,\" which changes the meaning from learning Spanish to something entirely different. This is an unambiguous assertion of a different material fact, fitting the criteria for level 3.",
+    "error": null
+  },
+  {
+    "uid": "qwen_commonvoice_20260524_153426__190",
+    "dataset": "common_voice",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 2,
+    "severity": 2,
+    "raw_response": "Severity: 2\nJustification: The hypothesis introduces ambiguity by changing \"Guinness book of records\" to \"Guinness Book of Records,\" which is a minor surface-level change. However, it significantly alters the meaning by replacing \"big Nokia chargers\" with \"big Nokia chargers\" (repeated), and changes \"put you through a wa'\" to \"put you through a wire.\" These changes introduce doubt about the intent and details of the original statement.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__1213",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 1,
+    "severity": 2,
+    "raw_response": "Severity: 2\nJustification: The word \"shared\" is changed to \"sheer,\" which alters the meaning slightly but requires some reconstruction. However, there is no clear factual error or critical meaning alteration; it's an ambiguous change that affects the nature of the devices mentioned.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_commonvoice_20260526_053757__503",
+    "dataset": "common_voice",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 2,
+    "severity": 3,
+    "raw_response": "Severity: 3\nJustification: The ASR output contains multiple factual errors, including incorrect spelling and substitution of words (e.g., \"scooter\" for \"scooter\", \"tral fornno ean dre bit t mascalute poly\" for \"twelve hunner BMW\"), which significantly alter the meaning. These changes assert a different material fact about the speaker's possessions and preferences, making this a clear factual error.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_commonvoice_20260524_150129__327",
+    "dataset": "common_voice",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 2,
+    "severity": 1,
+    "raw_response": "Severity: 1\nJustification: The ASR output replaces \"dinnae\" with \"didn't,\" which is a real word and the meaning can be confidently recovered without ambiguity.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__1253",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The hypothesis matches the reference exactly, with no changes in propositional content.",
+    "error": null
+  },
+  {
+    "uid": "whisper_english_dialects_20260525_110315__2321",
+    "dataset": "english_dialects_scots",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 3,
+    "severity": 1,
+    "raw_response": "Severity: 1\nJustification: The word \"conical\" is replaced with \"canonical,\" which changes the meaning slightly but does not alter a critical fact. The reconstruction of the sentence is clean and confident, allowing for a clear understanding of the intended message despite the difference in wording.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_commonvoice_20260526_053757__459",
+    "dataset": "common_voice",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 2,
+    "severity": 2,
+    "raw_response": "Severity: 2\nJustification: The ASR output contains numerous errors, including word omissions and substitutions that create ambiguity. For example, \"Budapest\" is misspelled as \"Budpesta,\" and several filler words are incorrectly transcribed, making the meaning difficult to confidently recover without significant reconstruction.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__1957",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 1,
+    "severity": 1,
+    "raw_response": "Severity: 1\nJustification: The ASR output contains a minor error with \"ONRO\" instead of \"GENRE\", which is nonsensical and easily recoverable to the correct term. This does not change the core meaning or assert any different factual information.",
+    "error": null
+  },
+  {
+    "uid": "qwen_commonvoice_20260524_153426__394",
+    "dataset": "common_voice",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 1,
+    "severity": 2,
+    "raw_response": "Severity: 2\nJustification: The word \"braw\" is ambiguously changed to \"brass,\" which alters the meaning. Additionally, \"S-\" at the end of the reference is missing in the hypothesis, introducing a minor ambiguity that requires reconstruction. However, no clear factual error or critical meaning alteration is present.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_commonvoice_20260524_150129__143",
+    "dataset": "common_voice",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 3,
+    "severity": 2,
+    "raw_response": "Severity: 2\nJustification: The ASR output contains several errors, including \"sex\" for \"Six,\" \"badlands\" for \"Barrowlands,\" and \"mu\" for \"QMU.\" These changes alter the meaning of the sentence, requiring reconstruction to recover the original intent. Additionally, \"v songs\" for \"wee songs\" introduces ambiguity in the description of their music style.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__2227",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The hypothesis matches the reference exactly, with only minor surface-level differences in punctuation that do not affect the propositional content.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__1768",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 2,
+    "severity": 1,
+    "raw_response": "Severity: 1\nJustification: The hypothesis maintains the core meaning and factual content of the reference, with only minor changes (\"men\" to \"many\") that do not significantly alter the claim.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__523",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 2,
+    "severity": 1,
+    "raw_response": "Severity: 1\nJustification: The wording differs significantly, with \"language\" changed to \"lummage,\" which is nonsensical and cannot be confidently recovered. However, the core meaning of the sentence remains intact, as it still conveys a change in devices except for the phone.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__2428",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The hypothesis matches the reference exactly, with no changes in meaning or content.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_edacc_20260525_184006__136",
+    "dataset": "edinburgh_international_accents",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 4,
+    "severity": 1,
+    "raw_response": "Severity: 1\nJustification: The hypothesis \"he couldt even be out of the\" differs from the reference by a misspelling and a transposition of words, but the core meaning is still recoverable as it conveys a similar idea of someone not being able to be somewhere.",
+    "error": null
+  },
+  {
+    "uid": "whisper_english_dialects_20260525_110315__2037",
+    "dataset": "english_dialects_scots",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 0,
+    "severity": 1,
+    "raw_response": "Severity: 1\nJustification: The words \"Lillie\" and \"Lily\" are real alternatives, and the phrase coheres into a believable alternative claim. No material fact changes are asserted.",
+    "error": null
+  },
+  {
+    "uid": "whisper_commonvoice_20260524_083930__430",
+    "dataset": "common_voice",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 2,
+    "severity": 2,
+    "raw_response": "Severity: 2\nJustification: The ASR output introduces several ambiguous meaning shifts, such as changing \"mam still has\" to \"I'm still his,\" and altering the sequence of toys mentioned. These changes require reconstruction to understand the intended meaning accurately.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__148",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The hypothesis matches the reference exactly, including capitalization and spacing, with no change to propositional content.",
+    "error": null
+  },
+  {
+    "uid": "qwen_commonvoice_20260524_153426__13",
+    "dataset": "common_voice",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 3,
+    "severity": 2,
+    "raw_response": "Severity: 2\nJustification: The hypothesis loses several key details, such as \"the job I’d really like to have\" and the specific mention of being a \"declutterer expert,\" which introduces ambiguity in the meaning.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_commonvoice_20260524_150129__449",
+    "dataset": "common_voice",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 2,
+    "severity": 2,
+    "raw_response": "Severity: 2\nJustification: There are several connector/relational word changes that alter the meaning, such as \"eh\" and \"and eh,\" which create ambiguity. Additionally, there is a minor factual error with the substitution of \"him\" for \"them,\" but it does not significantly change the core meaning.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__2140",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The hypothesis matches the reference exactly, with only a minor surface-level difference in punctuation that does not affect the propositional content.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__1669",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The hypothesis matches the reference exactly, with no changes in meaning or content.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__1989",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The hypothesis is an exact match to the reference, with no changes in meaning or content.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__780",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 2,
+    "severity": 1,
+    "raw_response": "Severity: 1\nJustification: The word \"fiber\" is transcribed as \"fire,\" which is a nonsensical rendering with no real alternative, fitting the description of a trivial/cosmetic error.",
+    "error": null
+  }
+]

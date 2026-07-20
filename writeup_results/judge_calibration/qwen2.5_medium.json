@@ -1,0 +1,902 @@
+[
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__938",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 3,
+    "severity": 1,
+    "raw_response": "Error type (primary): Content substitution\nSeverity: 1\nJustification: The word \"drouth\" is replaced with \"truth,\" which changes the meaning but is still a plausible alternative. The overall claim can be confidently recovered, though it introduces a different concept.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__2347",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 1,
+    "severity": 1,
+    "raw_response": "Error type (primary): Content substitution\nSeverity: 1\nJustification: The word \"saying\" is replaced with \"seeing her goggle,\" which changes the underlying claim and makes it less coherent, but the core meaning can still be recovered.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__1482",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Error type (primary): Acceptable variation\nSeverity: 0\nJustification: The hypothesis matches the reference exactly, with no changes in content or surface form.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_edacc_20260525_184006__110",
+    "dataset": "edinburgh_international_accents",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 4,
+    "severity": 4,
+    "raw_response": "Error type (primary): Content substitution\nSeverity: 4\nJustification: The hypothesis reverses the central assertion from an ongoing action (\"playing\") to a completed and severe event (\"slain\"), which fundamentally changes the claim with no real ambiguity.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__170",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 2,
+    "severity": 1,
+    "raw_response": "Error type (primary): Content substitution\nSeverity: 1\nJustification: The word \"Bishopbriggs\" is replaced with \"bishop rigs,\" which changes the location. While this is a factual error, it does not significantly alter the overall meaning of the sentence to an extent that would make it unrecognizable or highly improbable.",
+    "error": null
+  },
+  {
+    "uid": "whisper_english_dialects_20260525_110315__2542",
+    "dataset": "english_dialects_scots",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Error type (primary): Content substitution\nSeverity: 0\nJustification: The word \"1\" is replaced with \"one,\" which does not change the underlying claim or meaning.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__1952",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 1,
+    "severity": 3,
+    "raw_response": "Error type (primary): Content substitution\nSeverity: 3\nJustification: The transcription error replaces \"core\" with \"corps,\" changes \"app\" to \"YEURAPE,\" and alters the app name, which are content-bearing words. These changes assert different material facts about the conversational flows and the app's name, making it a clear factual error.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_edacc_20260525_213534__34",
+    "dataset": "edinburgh_international_accents",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 4,
+    "severity": 1,
+    "raw_response": "Error type (primary): Content substitution\nSeverity: 1\nJustification: The word \"WHERE\" is replaced with \"FERITD,\" which changes the meaning slightly but does not alter a critical fact. The rest of the sentence remains coherent and recoverable.",
+    "error": null
+  },
+  {
+    "uid": "whisper_commonvoice_20260524_083930__334",
+    "dataset": "common_voice",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 2,
+    "severity": 1,
+    "raw_response": "Error type (primary): Content substitution\nSeverity: 1\nJustification: The phrase \"taster\" is replaced with \"taste,\" and \"Fresh Start for Women\" is omitted, which slightly changes the meaning but is still recoverable.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__1003",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Error type (primary): Surface-form error\nSeverity: 0\nJustification: The ASR output is identical to the reference, with no changes in wording or surface form.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__1533",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Error type (primary): Acceptable variation\nSeverity: 0\nJustification: The hypothesis is an exact match to the reference, with no changes in content or surface form.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__1080",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 1,
+    "severity": 1,
+    "raw_response": "Error type (primary): Content substitution\nSeverity: 1\nJustification: The words \"Google\" and \"podcasts\" are replaced with \"GOGGLE\" and \"POD CASTS,\" which changes the underlying claim. However, these substitutions are not nonsensical and can be confidently recovered to their correct forms.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__1932",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 4,
+    "severity": 3,
+    "raw_response": "Error type (primary): Content substitution\nSeverity: 3\nJustification: The hypothesis reverses \"This\" to \"THERE IS,\" changing the subject and asserting a different material fact. This alters the central recommendation from negative to positive, which is a clear factual error.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__1862",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 0,
+    "severity": 1,
+    "raw_response": "Error type (primary): Content substitution\nSeverity: 1\nJustification: The word \"Southeastern\" is replaced with \"Southeastern,\" which is a dialectal/phonetic variation of the same entity. However, it does not change the underlying claim or assert a different material fact, so it falls under a trivial/cosmetic error.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_commonvoice_20260524_150129__94",
+    "dataset": "common_voice",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 2,
+    "severity": 3,
+    "raw_response": "Error type (primary): Content substitution\nSeverity: 3\nJustification: The ASR output incorrectly substitutes \"NME\" with \"enemy,\" which is a different material fact. Additionally, it changes \"didn't actually like it\" to \"actually still really likeick it,\" altering the meaning of the speaker's experience with the book. These changes are clear and factual errors that significantly impact the content.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__428",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Error type (primary): Acceptable variation\nSeverity: 0\nJustification: The hypothesis matches the reference exactly, with no changes in content or surface form.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_commonvoice_20260526_053757__453",
+    "dataset": "common_voice",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 1,
+    "severity": 3,
+    "raw_response": "Error type (primary): Content substitution\nSeverity: 3\nJustification: The ASR output significantly alters key content words, such as replacing \"eh\" with \"AM I IT\", \"a world of peace\" with \"A WIRLD A PIECE\", and \"eradicated\" with \"A RODKID\". These changes assert different material facts that are not recoverable from the pair alone.",
+    "error": null
+  },
+  {
+    "uid": "whisper_english_dialects_20260525_110315__644",
+    "dataset": "english_dialects_scots",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 2,
+    "severity": 1,
+    "raw_response": "Error type (primary): Content substitution\nSeverity: 1\nJustification: The word \"on\" is omitted, changing the relationship between \"leisure activities\" and \"work time,\" which introduces ambiguity but does not clearly alter a factual claim.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__431",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Error type (primary): Acceptable variation\nSeverity: 0\nJustification: The hypothesis matches the reference exactly, with no changes in content or surface form.",
+    "error": null
+  },
+  {
+    "uid": "qwen_edacc_20260525_204314__94",
+    "dataset": "edinburgh_international_accents",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 4,
+    "severity": 3,
+    "raw_response": "Error type (primary): Content substitution\nSeverity: 3\nJustification: The ASR output incorrectly changes \"I can't believe you didn't watch Ben Ten\" to \"I can't even watch Ben 10. Peppa Pig, or is that you're too young?\" This alters the meaning from a statement of disbelief about someone not having watched the show to a personal admission and a question about age, which is a clear factual error.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__418",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Error type (primary): Surface-form error\nSeverity: 0\nJustification: The ASR output only differs in capitalization, which does not change the underlying claim.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__196",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 1,
+    "severity": 0,
+    "raw_response": "Error type (primary): Surface-form error\nSeverity: 0\nJustification: The hypothesis matches the reference in meaning and content, only differing in capitalization and spacing, which do not change the underlying claim.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__1254",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 1,
+    "severity": 1,
+    "raw_response": "Error type (primary): Content substitution\nSeverity: 1\nJustification: The word \"trough\" is replaced with \"trow,\" which changes the underlying claim but does not significantly alter the meaning. The core information about storage configurations remains, allowing for a confident recovery of the intended meaning.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_commonvoice_20260524_150129__594",
+    "dataset": "common_voice",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 2,
+    "severity": 1,
+    "raw_response": "Error type (primary): Content substitution\nSeverity: 1\nJustification: The ASR output replaces \"Higher\" with \"like it pushed,\" which changes the meaning but is still recoverable. The context of not being pushed at school remains intact, though the specific term is altered.",
+    "error": null
+  },
+  {
+    "uid": "whisper_english_dialects_20260525_110315__2522",
+    "dataset": "english_dialects_scots",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Error type (primary): Surface-form error\nSeverity: 0\nJustification: The hypothesis only differs in punctuation with a period after \"Petersburg,\" which does not change the underlying claim and is a surface-level difference.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_commonvoice_20260526_053757__286",
+    "dataset": "common_voice",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 2,
+    "severity": 3,
+    "raw_response": "Error type (primary): Content substitution\nSeverity: 3\nJustification: The ASR output replaces \"Lego\" with \"LEG E\", \"LEGA\", and \"LEGA\" respectively, which changes the specific toy being referred to. This is a clear factual error as it asserts a different material fact without ambiguity.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__1531",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Error type (primary): Surface-form error\nSeverity: 0\nJustification: The ASR output matches the reference exactly in meaning, only differing in capitalization and spacing.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__1474",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 0,
+    "severity": 1,
+    "raw_response": "Error type (primary): Content substitution\nSeverity: 1\nJustification: The word \"leaked\" is replaced with \"leaks,\" which changes the underlying claim but does not alter the core meaning significantly. The sentence remains fluent and believable.",
+    "error": null
+  },
+  {
+    "uid": "whisper_english_dialects_20260525_110315__1748",
+    "dataset": "english_dialects_scots",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 0,
+    "severity": 1,
+    "raw_response": "Error type (primary): Content substitution\nSeverity: 1\nJustification: The word \"payment\" is replaced with \"payments,\" which changes the quantity from singular to plural, but the overall meaning remains recoverable and trivial.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__1904",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Error type (primary): Surface-form error\nSeverity: 0\nJustification: The hypothesis only differs in casing, which does not change the underlying claim.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__567",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 0,
+    "severity": 1,
+    "raw_response": "Error type (primary): Content substitution\nSeverity: 1\nJustification: The word \"bluetooth\" is replaced with \"blue tooth,\" which changes the underlying claim. However, this change does not significantly alter the meaning and can be confidently recovered.",
+    "error": null
+  },
+  {
+    "uid": "qwen_commonvoice_20260524_153426__543",
+    "dataset": "common_voice",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 2,
+    "severity": 1,
+    "raw_response": "Error type (primary): Content substitution\nSeverity: 1\nJustification: The ASR output replaces \"camping\" with \"camp,\" which is a content-bearing word change. While the overall meaning can still be recovered, it introduces a minor but noticeable difference in the claim.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_edacc_20260525_184006__18",
+    "dataset": "edinburgh_international_accents",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 3,
+    "severity": 1,
+    "raw_response": "Error type (primary): Content substitution\nSeverity: 1\nJustification: The word \"certainly\" is a content-bearing replacement for \"<OVERLAP>\", which conveys the idea of certainty. While it doesn't change the core meaning significantly, it introduces ambiguity as to whether the original intended overlap was meant to imply uncertainty or a different level of certainty.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__147",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Error type (primary): Acceptable variation\nSeverity: 0\nJustification: The hypothesis is an exact match to the reference, with no changes in content or surface form.",
+    "error": null
+  },
+  {
+    "uid": "qwen_commonvoice_20260524_153426__89",
+    "dataset": "common_voice",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 2,
+    "severity": 1,
+    "raw_response": "Error type (primary): Content substitution\nSeverity: 1\nJustification: The \"sooth end\" is changed to \"south end,\" and \"park on wir ane\" is altered to \"out in a park on the rain.\" These changes are content-bearing but do not significantly alter the meaning, allowing for confident recovery.",
+    "error": null
+  },
+  {
+    "uid": "whisper_english_dialects_20260525_110315__2272",
+    "dataset": "english_dialects_scots",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Error type (primary): Surface-form error\nSeverity: 0\nJustification: The ASR output is identical to the reference, with no changes in wording or minor spelling differences that affect the underlying claim.",
+    "error": null
+  },
+  {
+    "uid": "whisper_english_dialects_20260525_110315__401",
+    "dataset": "english_dialects_scots",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 1,
+    "severity": 1,
+    "raw_response": "Error type (primary): Content substitution\nSeverity: 1\nJustification: The location \"Drumgelloch\" is replaced with \"Dermdgelach,\" which changes the specific identity of the place, but the overall structure and meaning of the sentence remain recoverable.",
+    "error": null
+  },
+  {
+    "uid": "whisper_commonvoice_20260524_083930__442",
+    "dataset": "common_voice",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 2,
+    "severity": 1,
+    "raw_response": "Error type (primary): Content substitution\nSeverity: 1\nJustification: The ASR output incorrectly states \"It's got court orders\" instead of \"So I’m supervising their court order and I’m trying to get them to, eh, fulfil their obligation to the court, and ultimately society as well,\" which changes the specific action from supervising a court order to just having one. This is a minor change but alters the detailed nature of the job responsibilities.",
+    "error": null
+  },
+  {
+    "uid": "whisper_english_dialects_20260525_110315__2380",
+    "dataset": "english_dialects_scots",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Error type (primary): Acceptable variation\nSeverity: 0\nJustification: The ASR output is an exact match to the reference, with no changes in content or surface form.",
+    "error": null
+  },
+  {
+    "uid": "qwen_edacc_20260525_204314__80",
+    "dataset": "edinburgh_international_accents",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 2,
+    "severity": 1,
+    "raw_response": "Error type (primary): Content substitution\nSeverity: 1\nJustification: The primary error is a content substitution, replacing \"gang\" with \"quote-unquote mystery guy,\" which changes the underlying claim and introduces ambiguity. However, the overall meaning can still be confidently recovered.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__2191",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 3,
+    "severity": 3,
+    "raw_response": "Error type (primary): Content substitution\nSeverity: 3\nJustification: The hypothesis replaces \"Ireland\" with \"ISLAND\", changes \"Schengen Area\" to \"SHANNON AREA\", and alters the word order. These substitutions unambiguously assert different material facts about which countries are part of which areas, constituting a clear factual error.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__1701",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 1,
+    "severity": 1,
+    "raw_response": "Error type (primary): Content substitution\nSeverity: 1\nJustification: The words \"Nitshill\" and \"Taynuilt\" are replaced with \"nitsill\" and \"tennault,\" which changes the specific locations mentioned. This is a content-bearing word replacement that does not alter the overall structure or meaning significantly, but it introduces ambiguity as to the exact stations referred to.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__1163",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 2,
+    "severity": 1,
+    "raw_response": "Error type (primary): Content substitution\nSeverity: 1\nJustification: The ASR output replaces \"Signal to Noise\" with \"signal to noise\" and \"Mister Punch\" with \"Mr. Punch,\" which are minor surface-form differences. However, it also omits the word \"or\" between \"comedy\" and \"tragedy,\" changing the meaning slightly but not fundamentally altering the claim.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__745",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Error type (primary): Surface-form error\nSeverity: 0\nJustification: The ASR output matches the reference exactly, with no changes in wording or surface form.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_commonvoice_20260524_150129__319",
+    "dataset": "common_voice",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 2,
+    "severity": 1,
+    "raw_response": "Error type (primary): Content substitution\nSeverity: 1\nJustification: The word \"gig\" is replaced with \"gey,\" which changes the meaning slightly but does not alter a critical fact. The rest of the transcription maintains the overall structure and intent of the original statement, making it recoverable with minimal doubt.",
+    "error": null
+  },
+  {
+    "uid": "whisper_commonvoice_20260524_083930__335",
+    "dataset": "common_voice",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 4,
+    "severity": 3,
+    "raw_response": "Error type (primary): Content substitution\nSeverity: 3\nJustification: The ASR output incorrectly identifies \"Bently’s\" as \"Bentleys,\" which is a clear factual error. Additionally, the phrase \"people used to come fae all round\" is changed to \"people used to come for a round,\" altering the meaning and context of the statement. These changes assert different material facts without any ambiguity.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_commonvoice_20260526_053757__548",
+    "dataset": "common_voice",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 2,
+    "severity": 3,
+    "raw_response": "Error type (primary): Content substitution\nSeverity: 3\nJustification: The ASR output significantly alters the content and meaning of several phrases, such as \"carrying knifes\" to \"caught in nice,\" which changes the underlying claim. Additionally, the overall structure and coherence are severely degraded, making it difficult to confidently recover the intended meaning from the pair alone.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_commonvoice_20260526_053757__256",
+    "dataset": "common_voice",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 2,
+    "severity": 3,
+    "raw_response": "Error type (primary): Content substitution\nSeverity: 3\nJustification: The ASR output significantly alters key details, such as changing \"stag party\" to \"lodges of their good nightts\" and \"DUBLIN stag party\" to \"A DUBLIN STAG PARTY,\" which are clear factual errors. These changes alter the core meaning of the reference text.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__1295",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 1,
+    "severity": 1,
+    "raw_response": "Error type (primary): Content substitution\nSeverity: 1\nJustification: The word \"Corkerhill\" is replaced with \"corker hill,\" and \"Drem\" is replaced with \"drre.\" These changes are content-bearing but do not significantly alter the meaning, as they still refer to the same locations.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__744",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Error type (primary): Acceptable variation\nSeverity: 0\nJustification: The ASR output matches the reference exactly, with no changes in content or surface form.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__390",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 1,
+    "severity": 1,
+    "raw_response": "Error type (primary): Content substitution\nSeverity: 1\nJustification: The word \"various\" is replaced with \"farioius,\" changing the meaning from multiple explanations to a different, nonsensical term. This requires confident recovery but does not significantly alter the core claim about people explaining rainbows differently over time.",
+    "error": null
+  },
+  {
+    "uid": "whisper_english_dialects_20260525_110315__1275",
+    "dataset": "english_dialects_scots",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Error type (primary): Surface-form error\nSeverity: 0\nJustification: The hypothesis only differs in the capitalization of \"riverside\" and does not change the underlying claim, so it is a surface-form error with no impact on meaning.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__1655",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Error type (primary): Content substitution\nSeverity: 0\nJustification: The only difference is the number representation (\"ten\" vs \"10\"), which does not change the underlying claim and is a surface-form error.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__837",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 1,
+    "severity": 1,
+    "raw_response": "Error type (primary): Content substitution\nSeverity: 1\nJustification: The word \"megabytes\" is replaced with \"megabites,\" which changes the factual content of the statement. However, given that \"megabites\" could be a plausible misspelling and the overall meaning remains recoverable, it qualifies as a trivial/cosmetic error.",
+    "error": null
+  },
+  {
+    "uid": "qwen_edacc_20260525_204314__103",
+    "dataset": "edinburgh_international_accents",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 4,
+    "severity": 3,
+    "raw_response": "Error type (primary): Content substitution\nSeverity: 3\nJustification: The hypothesis replaces \"NO\" with \"you,\" which is a content-bearing word and unambiguously asserts a different material fact. This changes the central assertion from a negative response to an affirmative one, making it a clear factual error.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_commonvoice_20260526_053757__162",
+    "dataset": "common_voice",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 1,
+    "severity": 3,
+    "raw_response": "Error type (primary): Content substitution\nSeverity: 3\nJustification: The transcription replaces \"maist\" with \"MOST\", \"twa cats\" with \"TOICATS\", and \"Gracie\" with \"GRACY\". These changes alter the meaning by substituting real, plausible different entities, which is a clear factual error.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__2197",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 1,
+    "severity": 0,
+    "raw_response": "Error type (primary): Surface-form error\nSeverity: 0\nJustification: The transcription error only involves lowercase letters instead of uppercase for \"EMAILS,\" which is a surface-form issue and does not change the underlying claim.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_commonvoice_20260524_150129__602",
+    "dataset": "common_voice",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 2,
+    "severity": 1,
+    "raw_response": "Error type (primary): Content substitution\nSeverity: 1\nJustification: The word \"ween\" is replaced with \"weeneen,\" which changes the meaning but can be confidently recovered as a typo. No other content-bearing words are significantly altered, and the overall claim remains intact.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_commonvoice_20260526_053757__54",
+    "dataset": "common_voice",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 1,
+    "severity": 3,
+    "raw_response": "Error type (primary): Content substitution\nSeverity: 3\nJustification: The hypothesis reverses the negation for \"other than that,\" changing the meaning from not having played other instruments to never having played any. This is a clear factual error with no real ambiguity about the new claim.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__2081",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Error type (primary): Acceptable variation\nSeverity: 0\nJustification: The hypothesis matches the reference exactly, with no changes in content or surface form.",
+    "error": null
+  },
+  {
+    "uid": "whisper_english_dialects_20260525_110315__99",
+    "dataset": "english_dialects_scots",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Error type (primary): Acceptable variation\nSeverity: 0\nJustification: The hypothesis is an exact match to the reference, with no changes in content or surface form.",
+    "error": null
+  },
+  {
+    "uid": "whisper_english_dialects_20260525_110315__854",
+    "dataset": "english_dialects_scots",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Error type (primary): Acceptable variation\nSeverity: 0\nJustification: The hypothesis matches the reference exactly, with no changes in content or surface form.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__1319",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 1,
+    "severity": 0,
+    "raw_response": "Error type (primary): Surface-form error\nSeverity: 0\nJustification: The transcription only differs in a minor spelling variation (\"Barneveld\" vs \"Barnveld\"), which does not change the underlying claim and is a surface-level difference.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__1179",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 0,
+    "severity": 1,
+    "raw_response": "Error type (primary): Content substitution\nSeverity: 1\nJustification: The word \"but\" is replaced with a comma, which changes the relationship between clauses but does not alter the core meaning. The hypothesis is still easily recoverable and coherent.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__2403",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Error type (primary): Surface-form error\nSeverity: 0\nJustification: The hypothesis only differs from the reference in punctuation, which does not change the underlying claim.",
+    "error": null
+  },
+  {
+    "uid": "whisper_commonvoice_20260524_083930__565",
+    "dataset": "common_voice",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 2,
+    "severity": 3,
+    "raw_response": "Error type (primary): Content substitution\nSeverity: 3\nJustification: The ASR output contains several content substitutions, including \"Lanark Hospital\" for \"a village,\" \"Shorts\" for \"Shotts,\" and \"dinner\" repeated incorrectly. These changes assert different material facts that significantly alter the meaning of the reference text.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__2027",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Error type (primary): Acceptable variation\nSeverity: 0\nJustification: The hypothesis matches the reference exactly, with no changes in content or meaning.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_commonvoice_20260526_053757__210",
+    "dataset": "common_voice",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 2,
+    "severity": 3,
+    "raw_response": "Error type (primary): Content substitution\nSeverity: 3\nJustification: The ASR output substitutes \"gigs\" with \"gags,\" which is a content-bearing word change. This alters the specific context of spending money on enjoyable activities, particularly music-related events, to something less clear and potentially different. The severity is 3 because it unambiguously asserts a different material fact without any real ambiguity about the new claim.",
+    "error": null
+  },
+  {
+    "uid": "whisper_english_dialects_20260525_110315__2242",
+    "dataset": "english_dialects_scots",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Error type (primary): Content substitution\nSeverity: 0\nJustification: The only difference is capitalization (\"bitcoin\" vs \"Bitcoin\"), which does not change the underlying claim and is a surface-form error.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__2256",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Error type (primary): Acceptable variation\nSeverity: 0\nJustification: The hypothesis matches the reference exactly, with only minor surface-level differences in casing that do not change the underlying claim.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__2456",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 2,
+    "severity": 1,
+    "raw_response": "Error type (primary): Content substitution\nSeverity: 1\nJustification: The word \"app\" is replaced with \"SAP,\" which are different entities but not nonsensical. The meaning shift is trivial as the context and overall claim remain recoverable.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__1227",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Error type (primary): Acceptable variation\nSeverity: 0\nJustification: The hypothesis matches the reference exactly, with no changes in content or surface form.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__1847",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Error type (primary): Acceptable variation\nSeverity: 0\nJustification: The ASR output is identical to the reference, with no changes in content or surface form.",
+    "error": null
+  },
+  {
+    "uid": "whisper_english_dialects_20260525_110315__1023",
+    "dataset": "english_dialects_scots",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Error type (primary): Acceptable variation\nSeverity: 0\nJustification: The hypothesis matches the reference exactly, with no changes in content or surface form.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_commonvoice_20260526_053757__351",
+    "dataset": "common_voice",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 2,
+    "severity": 3,
+    "raw_response": "Error type (primary): Content substitution\nSeverity: 3\nJustification: The ASR output significantly alters the content, changing \"I love my job\" to \"I loved my job,\" and \"I don't like about my job is that when they go\" to \"I dislike about my job is that when the go.\" These changes assert a different material fact (past tense vs. present) and alter the speaker's sentiment, which is critical in this context.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_commonvoice_20260526_053757__65",
+    "dataset": "common_voice",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 2,
+    "severity": 3,
+    "raw_response": "Error type (primary): Content substitution\nSeverity: 3\nJustification: The hypothesis replaces \"skill\" with \"scholar,\" changes \"country\" to \"O the country,\" and substitutes \"learn\" for \"like to.\" These substitutions alter the meaning of the sentence, asserting different facts about what the speaker would do.",
+    "error": null
+  },
+  {
+    "uid": "qwen_commonvoice_20260524_153426__190",
+    "dataset": "common_voice",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 2,
+    "severity": 3,
+    "raw_response": "Error type (primary): Content substitution\nSeverity: 3\nJustification: The ASR output incorrectly substitutes \"hae\" with \"hear,\" \"Guinness book of records flung at me head\" with \"Guinness Book of Records flung at my head,\" and \"big Nokia chargers\" with \"big Nokia chargers.\" These changes alter the specific actions described, which are important to the meaning. The substitution of \"through a wa'\" with \"through a wire\" also significantly changes the context, making it a clear factual error.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__1213",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 1,
+    "severity": 3,
+    "raw_response": "Error type (primary): Content substitution\nSeverity: 3\nJustification: The word \"shared\" is replaced with \"sheer,\" which changes the meaning from referring to devices that are shared to those that are sheer (meaning very fine or thin). This alters a critical factual detail, constituting a clear factual error.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_commonvoice_20260526_053757__503",
+    "dataset": "common_voice",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 2,
+    "severity": 3,
+    "raw_response": "Error type (primary): Content substitution\nSeverity: 3\nJustification: The ASR output replaces \"scooter\" with \"scuter\", \"BMW\" with \"tral forno ean dren\", and \"fancy watches\" with \"bingy fancy watches not a topes\". These substitutions change the underlying claim about the speaker's prized possession, making it a clear factual error.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_commonvoice_20260524_150129__327",
+    "dataset": "common_voice",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 2,
+    "severity": 1,
+    "raw_response": "Error type (primary): Content substitution\nSeverity: 1\nJustification: The word \"dinnae\" is replaced with \"didn't,\" which changes the tense but does not alter the underlying claim significantly. The meaning is confidently recoverable, and the sentence remains fluent enough to be believed as true.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__1253",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Error type (primary): Acceptable variation\nSeverity: 0\nJustification: The ASR output is identical to the reference, with no changes in content or surface form.",
+    "error": null
+  },
+  {
+    "uid": "whisper_english_dialects_20260525_110315__2321",
+    "dataset": "english_dialects_scots",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 3,
+    "severity": 1,
+    "raw_response": "Error type (primary): Content substitution\nSeverity: 1\nJustification: The word \"conical\" is replaced with \"canonical,\" which changes the specific design feature being described, but the overall meaning remains recoverable and does not assert a different material fact.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_commonvoice_20260526_053757__459",
+    "dataset": "common_voice",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 2,
+    "severity": 3,
+    "raw_response": "Error type (primary): Content substitution\nSeverity: 3\nJustification: The ASR output contains several content substitutions, including \"A\" for \"Eh,\" \"AM\" for \"so,\" and \"DL EXPLODING AM\" for \"did a lot of exploring.\" These changes alter the underlying claim and assert different facts about the speaker's experience.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__1957",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 1,
+    "severity": 0,
+    "raw_response": "Error type (primary): Surface-form error\nSeverity: 0\nJustification: The ASR output only contains minor capitalization and spelling errors (\"ONRO\" for \"GENRE\") that do not change the underlying claim.",
+    "error": null
+  },
+  {
+    "uid": "qwen_commonvoice_20260524_153426__394",
+    "dataset": "common_voice",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 1,
+    "severity": 3,
+    "raw_response": "Error type (primary): Content substitution\nSeverity: 3\nJustification: The word \"braw\" is replaced with \"brass,\" which changes the meaning from a Scottish dialect expression of approval to a reference to brass instruments. This alters the intended claim and asserts a different material fact, qualifying as a clear factual error.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_commonvoice_20260524_150129__143",
+    "dataset": "common_voice",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 3,
+    "severity": 3,
+    "raw_response": "Error type (primary): Content substitution\nSeverity: 3\nJustification: The transcription error changes \"Electric Six\" to \"electric sex,\" which is a clear factual error. This alters the identity of the band being discussed, and there is no ambiguity about this new claim.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__2227",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Error type (primary): Surface-form error\nSeverity: 0\nJustification: The hypothesis only differs by punctuation and casing, which do not change the underlying claim.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__1768",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 2,
+    "severity": 1,
+    "raw_response": "Error type (primary): Content substitution\nSeverity: 1\nJustification: The word \"men\" is replaced with \"many,\" which does not significantly alter the meaning but introduces a minor change in specificity.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__523",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 2,
+    "severity": 1,
+    "raw_response": "Error type (primary): Content substitution\nSeverity: 1\nJustification: The word \"language\" is replaced with \"lummage,\" which changes the underlying claim. While the rest of the sentence remains similar, this substitution introduces a material fact error without making the meaning completely ambiguous or critical.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__2428",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Error type (primary): Acceptable variation\nSeverity: 0\nJustification: The hypothesis matches the reference exactly, with no changes in content or surface form.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_edacc_20260525_184006__136",
+    "dataset": "edinburgh_international_accents",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 4,
+    "severity": 1,
+    "raw_response": "Error type (primary): Content substitution\nSeverity: 1\nJustification: The word \"YOU\" is replaced with \"he,\" which changes the intended meaning but is still recoverable as a minor pronoun error.",
+    "error": null
+  },
+  {
+    "uid": "whisper_english_dialects_20260525_110315__2037",
+    "dataset": "english_dialects_scots",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 0,
+    "severity": 1,
+    "raw_response": "Error type (primary): Content substitution\nSeverity: 1\nJustification: The names \"Lillie Paterson\" and \"Lily Patterson\" are close but different, which could be seen as a factual error. However, the meaning is confidently recoverable without ambiguity.",
+    "error": null
+  },
+  {
+    "uid": "whisper_commonvoice_20260524_083930__430",
+    "dataset": "common_voice",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 2,
+    "severity": 3,
+    "raw_response": "Error type (primary): Content substitution\nSeverity: 3\nJustification: The ASR output incorrectly substitutes \"mam still has\" with \"I'm still his,\" and \"bairn\" with \"bear,\" which are significant content changes. These errors assert different facts about the speaker's childhood, altering the meaning of the reference text.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__148",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Error type (primary): Surface-form error\nSeverity: 0\nJustification: The hypothesis only differs in capitalization, which does not change the underlying claim.",
+    "error": null
+  },
+  {
+    "uid": "qwen_commonvoice_20260524_153426__13",
+    "dataset": "common_voice",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 3,
+    "severity": 3,
+    "raw_response": "Error type (primary): Content substitution\nSeverity: 3\nJustification: The ASR output replaces \"over all my experience over the years\" with \"overall experience over the years,\" which changes the meaning from a summary of cumulative experience to a single descriptor. This alters a material fact about the speaker's background, making it a clear factual error.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_commonvoice_20260524_150129__449",
+    "dataset": "common_voice",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 2,
+    "severity": 1,
+    "raw_response": "Error type (primary): Content substitution\nSeverity: 1\nJustification: The word \"nae\" is replaced with \"wasn't,\" which changes the meaning from a dialectal expression of not being a fan to a standard English negation. This is a minor change but does affect the intent and nuance of the statement, making it slightly less recoverable than a purely surface-level error.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__2140",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Error type (primary): Surface-form error\nSeverity: 0\nJustification: The ASR output only adds a comma, which does not change the underlying claim or meaning.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__1669",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Error type (primary): Acceptable variation\nSeverity: 0\nJustification: The hypothesis matches the reference exactly, with no changes in content or meaning.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__1989",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Error type (primary): Acceptable variation\nSeverity: 0\nJustification: The hypothesis is an exact match to the reference, with no changes in content or meaning.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__780",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 2,
+    "severity": 1,
+    "raw_response": "Error type (primary): Content substitution\nSeverity: 1\nJustification: The word \"fiber\" was incorrectly transcribed as \"fire,\" which changes the meaning but is still a plausible alternative and can be confidently recovered from the pair alone.",
+    "error": null
+  }
+]

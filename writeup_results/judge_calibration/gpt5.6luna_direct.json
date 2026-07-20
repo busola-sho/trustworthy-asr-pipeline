@@ -1,0 +1,902 @@
+[
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__938",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 3,
+    "severity": 3,
+    "raw_response": "Severity: 3\nJustification: The substitution of “truth” for “drouth” changes a distinct content word and asserts a different condition in which he had the thought. The hypothesis remains grammatically interpretable, so this is a clear factual/semantic change rather than mere garbling.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__2347",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 1,
+    "severity": 1,
+    "raw_response": "Severity: 1\nJustification: “Seeing her goggle” is a garbled but cleanly recoverable rendering of “saying hey Google,” while the remaining command is unchanged. It does not create a believable alternative claim or materially change the intended instruction.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__1482",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The reference and hypothesis are identical in wording and meaning; the only difference is terminal punctuation.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_edacc_20260525_184006__110",
+    "dataset": "edinburgh_international_accents",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 4,
+    "severity": 2,
+    "raw_response": "Severity: 2\nJustification: The hypothesis does not preserve or clearly express the reference phrase, resulting in a total loss of the original detail. However, it does not unambiguously assert a different material fact, so it is an ambiguous/unrecoverable meaning shift rather than a clear factual or critical alteration.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__170",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 2,
+    "severity": 2,
+    "raw_response": "Severity: 2\nJustification: The change from “in Bishopbriggs” to “and bishop rigs” alters the relationship between the weather and the location, while the place name is also ambiguously segmented. The intended meaning is recoverable, but the hypothesis does not cleanly preserve the original claim.",
+    "error": null
+  },
+  {
+    "uid": "whisper_english_dialects_20260525_110315__2542",
+    "dataset": "english_dialects_scots",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: “1” and “one” are an unambiguous formatting/wording variant expressing the same quantity. The added period is also purely cosmetic, so there is no meaning change.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__1952",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 1,
+    "severity": 2,
+    "raw_response": "Severity: 2\nJustification: “CORPS” is likely a garbling of “core,” but “YEURAPE” requires reconstructing “your app” and does not cleanly preserve the original phrase. The intended meaning is plausible, but residual uncertainty remains about the final entity.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_edacc_20260525_213534__34",
+    "dataset": "edinburgh_international_accents",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 4,
+    "severity": 2,
+    "raw_response": "Severity: 2\nJustification: The hypothesis preserves the general idea but garbles a relational phrase and loses the final detail about taking the bib in. This requires reconstruction and leaves residual uncertainty, without clearly asserting a different material fact.",
+    "error": null
+  },
+  {
+    "uid": "whisper_commonvoice_20260524_083930__334",
+    "dataset": "common_voice",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 2,
+    "severity": 2,
+    "raw_response": "Severity: 2\nJustification: The hypothesis is largely faithful, but it omits “I know they say it’s” and merges “English” and “maths,” requiring some reconstruction of the intended relation. These are ambiguous or lost details rather than clear changes to a material fact.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__1003",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The reference and hypothesis are identical apart from capitalization at the beginning. There is no change to the propositional content.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__1533",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The only difference is capitalization of the first word (“Hear” vs. “hear”), with no change to the propositional content.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__1080",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 1,
+    "severity": 1,
+    "raw_response": "Severity: 1\nJustification: The hypothesis contains clear phonetic/spelling garbles (“GOGGLE,” “POD CASTS,” and “UP”), but the intended instruction is cleanly recoverable as installing the Google app for Google Podcasts. No material fact or action is changed.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__1932",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 4,
+    "severity": 4,
+    "raw_response": "Severity: 4\nJustification: “This is not a better way” becomes “There is not a better way,” which fundamentally reverses the central recommendation. The station-name differences are unambiguous phonetic/spelling variants and do not affect the severity.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__1862",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The hypothesis matches the reference in wording and meaning; only capitalization differs.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_commonvoice_20260524_150129__94",
+    "dataset": "common_voice",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 2,
+    "severity": 2,
+    "raw_response": "Severity: 2\nJustification: Most differences are cleanly recoverable ASR garbling or dialectal variants, but “Master and Margarita” becoming “master of margarita” changes a relational word in the book title, and “NME” becoming “enemy” requires reconstruction. This creates residual ambiguity rather than a clear different factual claim.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__428",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The only difference is capitalization at the beginning of the sentence. The propositional content and meaning are unchanged.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_commonvoice_20260526_053757__453",
+    "dataset": "common_voice",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 1,
+    "severity": 2,
+    "raw_response": "Severity: 2\nJustification: The central meaning is largely recoverable, but several garbled spans require reconstruction, including “while you can” rendered as “well you can” and “eradicated” rendered as “RODKID.” These introduce residual uncertainty in a long, multi-clause statement, though no clear contradictory or materially different claim is asserted.",
+    "error": null
+  },
+  {
+    "uid": "whisper_english_dialects_20260525_110315__644",
+    "dataset": "english_dialects_scots",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 2,
+    "severity": 2,
+    "raw_response": "Severity: 2\nJustification: The change from “activities on work time” to “activities and work time” alters the relationship between the items, making it ambiguous whether work time is itself a separate perk. This is a genuine connector-level meaning shift requiring reconstruction, but it does not clearly assert a materially different fact.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__431",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The reference and hypothesis are identical in meaning; the only difference is capitalization at the beginning of the sentence.",
+    "error": null
+  },
+  {
+    "uid": "qwen_edacc_20260525_204314__94",
+    "dataset": "edinburgh_international_accents",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 4,
+    "severity": 4,
+    "raw_response": "Severity: 4\nJustification: The ending changes the central assertion from disbelief that the listener did not watch the shows to the speaker being unable to watch Ben 10, while also distorting who is too young to remember. This is a clear, consequential change in action and viewpoint, not merely a cosmetic or ambiguous error.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__418",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The hypothesis differs only in capitalization, with no change to the meaning or propositional content.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__196",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 1,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: “MUREND” is an unambiguous spelling variation of “Muirend,” and the remaining wording is unchanged apart from capitalization. The propositional content is identical.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__1254",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 1,
+    "severity": 1,
+    "raw_response": "Severity: 1\nJustification: “TROW” is a garbled rendering of “trough,” but the intended phrase and meaning are confidently recoverable. No material fact changes.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_commonvoice_20260524_150129__594",
+    "dataset": "common_voice",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 2,
+    "severity": 2,
+    "raw_response": "Severity: 2\nJustification: The hypothesis preserves the overall meaning but contains several omissions and garbled phrases, such as “never really like it pushed” for “never really got pushed” and the loss of “with my” and fillers around the university study. These are largely recoverable, but the long utterance includes genuine wording/content degradation and requires some reconstruction.",
+    "error": null
+  },
+  {
+    "uid": "whisper_english_dialects_20260525_110315__2522",
+    "dataset": "english_dialects_scots",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The hypothesis conveys exactly the same content as the reference. The added period in “St. Petersburg.” is only punctuation and does not alter the meaning.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_commonvoice_20260526_053757__286",
+    "dataset": "common_voice",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 2,
+    "severity": 2,
+    "raw_response": "Severity: 2\nJustification: The overall meaning is largely recoverable, but multiple garbled or altered phrases create ambiguity, including “any wanted toy,” “you no spend,” and the shift from “your imagination’s sort of your limitation” to “your imaginations or your limitations.” No clearly different material fact is asserted, so this is an ambiguous meaning shift rather than a clear factual error.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__1531",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The hypothesis is identical to the reference apart from capitalization, which does not change the meaning.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__1474",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 0,
+    "severity": 1,
+    "raw_response": "Severity: 1\nJustification: “Leaks” is an ungrammatical rendering of “leaked” after “was selectively,” but the intended meaning is cleanly and confidently recoverable. No material fact or proposition changes.",
+    "error": null
+  },
+  {
+    "uid": "whisper_english_dialects_20260525_110315__1748",
+    "dataset": "english_dialects_scots",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The hypothesis preserves the same meaning and propositional content as the reference. The differences are capitalization, punctuation, and the unambiguous singular/plural variation in “payment(s) info.”",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__1904",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The hypothesis differs only in capitalization. The propositional content, including the temperature, weather, and location, is unchanged.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__567",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: “Blue tooth” is an unambiguous spelling/word-boundary variant of “Bluetooth,” with no change to the sentence’s meaning.",
+    "error": null
+  },
+  {
+    "uid": "qwen_commonvoice_20260524_153426__543",
+    "dataset": "common_voice",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 2,
+    "severity": 4,
+    "raw_response": "Severity: 4\nJustification: The hypothesis makes critical actor and action changes, including changing “I thoroughly enjoy it” to “they thoroughly enjoy it” and changing the daughter from taking the children to swimming lessons to taking lessons herself. These are clear, material alterations rather than merely cosmetic or ambiguous transcription errors.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_edacc_20260525_184006__18",
+    "dataset": "edinburgh_international_accents",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 3,
+    "severity": 2,
+    "raw_response": "Severity: 2\nJustification: The hypothesis omits the substantive action “hurt” and leaves “that would certain” grammatically incomplete, requiring reconstruction to infer the intended meaning. This is an unrecoverable loss/ambiguous shift rather than a clearly asserted different fact.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__147",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The hypothesis differs only by terminal punctuation, with no change to the sentence’s propositional meaning.",
+    "error": null
+  },
+  {
+    "uid": "qwen_commonvoice_20260524_153426__89",
+    "dataset": "common_voice",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 2,
+    "severity": 2,
+    "raw_response": "Severity: 2\nJustification: Most differences are recoverable ASR garblings, but “probably rural” changes the characterization and phrases such as “out in the rain” and “a lot of walk around” require reconstruction and leave residual doubt. No unambiguous, materially different central fact is asserted.",
+    "error": null
+  },
+  {
+    "uid": "whisper_english_dialects_20260525_110315__2272",
+    "dataset": "english_dialects_scots",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The hypothesis differs only in punctuation, with no change to the sentence’s meaning or propositional content.",
+    "error": null
+  },
+  {
+    "uid": "whisper_english_dialects_20260525_110315__401",
+    "dataset": "english_dialects_scots",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 1,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: “Dermdgelach” is an unambiguous phonetic/spelling variation of “Drumgelloch,” with the same route, action, and negation preserved. No propositional meaning changes.",
+    "error": null
+  },
+  {
+    "uid": "whisper_commonvoice_20260524_083930__442",
+    "dataset": "common_voice",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 2,
+    "severity": 2,
+    "raw_response": "Severity: 2\nJustification: The hypothesis preserves the overall meaning but contains several omissions, grammatical distortions, and garbled phrases that require reconstruction, such as “we’re looking after people. It’s got court orders” and “by them by not singing the same...”. No clear, unambiguous different material fact is asserted, so this is an ambiguous meaning shift rather than a clear factual error.",
+    "error": null
+  },
+  {
+    "uid": "whisper_english_dialects_20260525_110315__2380",
+    "dataset": "english_dialects_scots",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The reference and hypothesis are identical in wording; the only difference is terminal punctuation, which does not change the meaning.",
+    "error": null
+  },
+  {
+    "uid": "qwen_edacc_20260525_204314__80",
+    "dataset": "edinburgh_international_accents",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 2,
+    "severity": 3,
+    "raw_response": "Severity: 3\nJustification: “Mystery gang” is rendered as “mystery guy,” asserting a different, singular entity and potentially changing the group’s composition. The remaining differences are mostly minor wording or fluency changes, but this is a clear factual entity change.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__2191",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 3,
+    "severity": 3,
+    "raw_response": "Severity: 3\nJustification: “Island” and “Shannon” are real but different entities from “Ireland” and “Schengen,” producing an unambiguous change in both the country and area being discussed. This is a clear factual error, but it does not reverse or fundamentally negate the central assertion.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__1701",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 1,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: “Nitsill” and “Tennault” are unambiguous phonetic/spelling variants of the station names “Nitshill” and “Taynuilt.” The sentence’s propositional content is unchanged.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__1163",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 2,
+    "severity": 2,
+    "raw_response": "Severity: 2\nJustification: The substitution of “or” with “of” changes the relationship between “tragical comedy” and “comical tragedy,” requiring reconstruction and leaving an ambiguous title meaning. Case, punctuation, and “Mr.” versus “Mister” are merely cosmetic.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__745",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The hypothesis matches the reference exactly in wording and meaning; only capitalization differs.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_commonvoice_20260524_150129__319",
+    "dataset": "common_voice",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 2,
+    "severity": 2,
+    "raw_response": "Severity: 2\nJustification: Most content is recoverable, but the opening question is garbled, “Glenrothes” becomes “glen offes,” and “gets all the crowd going” becomes the less coherent “gets out of the crowd going.” These require reconstruction and leave residual uncertainty, without clearly asserting a different material fact.",
+    "error": null
+  },
+  {
+    "uid": "whisper_commonvoice_20260524_083930__335",
+    "dataset": "common_voice",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 4,
+    "severity": 4,
+    "raw_response": "Severity: 4\nJustification: The hypothesis hallucinates “it’s your boy” where the reference is explicitly inaudible, fabricating content that cannot be verified from the reference. It also omits the Friday/Saturday-night detail and garbles “come fae all round,” but the hallucinated insertion alone warrants a critical score.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_commonvoice_20260526_053757__548",
+    "dataset": "common_voice",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 2,
+    "severity": 2,
+    "raw_response": "Severity: 2\nJustification: The hypothesis preserves the overall concern about knife crime and police response, but substantially garbles the description of people carrying knives and omits the detail that people are being killed. These losses and altered relations require reconstruction and leave residual uncertainty, without clearly asserting a contradictory central fact.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_commonvoice_20260526_053757__256",
+    "dataset": "common_voice",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 2,
+    "severity": 2,
+    "raw_response": "Severity: 2\nJustification: Several phrases are substantially garbled and require reconstruction, particularly the description of other nights and the statement about the brilliant memory. The overall account is recoverable, but residual ambiguity and altered relational wording prevent a confident clean match.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__1295",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 1,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: “Corker hill” is an unambiguous spacing variation of “Corkerhill,” and “drre” is a minor phonetic/spelling rendering of “Drem.” The route and all propositional content remain unchanged.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__744",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The reference and hypothesis are identical in wording and meaning; the only difference is capitalization, which does not alter the propositional content.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__390",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 1,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: “FARIOUS” is an unambiguous spelling/transcription variant of “various,” with no change to the sentence’s propositional content. Uppercase formatting is also purely cosmetic.",
+    "error": null
+  },
+  {
+    "uid": "whisper_english_dialects_20260525_110315__1275",
+    "dataset": "english_dialects_scots",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The only difference is capitalization of “riverside” and punctuation. The propositional content is unchanged.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__1655",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: “Ten” versus “10” is an unambiguous formatting change with identical meaning. The added period is punctuation only.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__837",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 1,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: “Megabites” is an unambiguous spelling variant/phonetic rendering of “megabytes,” with no change to the document’s stated size threshold or any other propositional content.",
+    "error": null
+  },
+  {
+    "uid": "qwen_edacc_20260525_204314__103",
+    "dataset": "edinburgh_international_accents",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 4,
+    "severity": 2,
+    "raw_response": "Severity: 2\nJustification: The hypothesis replaces the clear negation “NO” with “you,” a different and incomplete utterance. It does not form a coherent alternative claim, so the intended meaning is not cleanly recoverable.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_commonvoice_20260526_053757__162",
+    "dataset": "common_voice",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 1,
+    "severity": 1,
+    "raw_response": "Severity: 1\nJustification: The ASR output contains phonetic/dialectal renderings and minor garbling (“cisely,” “toicats,” and “Gracy”), but the intended meaning is cleanly and confidently recoverable. No material fact or relationship is changed.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__2197",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 1,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: “EMALES” is an unambiguous spelling or casing variation of “Emails,” and the entities and relationship remain unchanged.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_commonvoice_20260524_150129__602",
+    "dataset": "common_voice",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 2,
+    "severity": 2,
+    "raw_response": "Severity: 2\nJustification: Most differences are dialectal or confidently recoverable ASR garbling, but “a wee toon” rendered as “a weeun” and “the everyday” as “that every day” require reconstruction and leave some residual uncertainty. The long utterance also contains genuine content-word distortions, warranting an ambiguous meaning-shift score rather than 1.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_commonvoice_20260526_053757__54",
+    "dataset": "common_voice",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 1,
+    "severity": 2,
+    "raw_response": "Severity: 2\nJustification: The main facts are recoverable, but “wasn’t very good at it” loses the explicit reference to performance, and “other than that, no” is garbled as “othern that nor,” requiring reconstruction. This creates residual ambiguity rather than a clearly different factual claim.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__2081",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The hypothesis differs only in capitalization of the proper name “Harry.” The propositional content and meaning are unchanged.",
+    "error": null
+  },
+  {
+    "uid": "whisper_english_dialects_20260525_110315__99",
+    "dataset": "english_dialects_scots",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The reference and hypothesis are identical in wording and propositional content. The only difference is terminal punctuation.",
+    "error": null
+  },
+  {
+    "uid": "whisper_english_dialects_20260525_110315__854",
+    "dataset": "english_dialects_scots",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The hypothesis differs only by terminal punctuation, with no change to the meaning or propositional content.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__1319",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 1,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: “Barnveld” is an unambiguous spelling/orthographic variation of the same proper name, with no change to the sentence’s propositional content.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__1179",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The reference and hypothesis are identical in meaning and wording; the only difference is punctuation.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__2403",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The hypothesis preserves the exact meaning and content of the reference. The differences are limited to punctuation and comma placement.",
+    "error": null
+  },
+  {
+    "uid": "whisper_commonvoice_20260524_083930__565",
+    "dataset": "common_voice",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 2,
+    "severity": 3,
+    "raw_response": "Severity: 3\nJustification: “Shotts” is transcribed as “Shorts,” which is a clear substitution of a different place name and changes a material factual detail. Other garbling is largely recoverable and does not fundamentally alter the account.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__2027",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The reference and hypothesis are identical in meaning and wording; the only difference is terminal punctuation.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_commonvoice_20260526_053757__210",
+    "dataset": "common_voice",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 2,
+    "severity": 2,
+    "raw_response": "Severity: 2\nJustification: Most content is recoverable despite extensive phonetic garbling, but the rendering of “the timing belt was awa’ to go” as “the timing belt was a while ago” introduces a genuine ambiguity about the reason for the repair. The repeated distortions and omissions in this long utterance also leave residual doubt, preventing a level-1 score.",
+    "error": null
+  },
+  {
+    "uid": "whisper_english_dialects_20260525_110315__2242",
+    "dataset": "english_dialects_scots",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The only difference is capitalization of “bitcoin” as “Bitcoin,” which does not change the meaning or propositional content.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__2256",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The only difference is capitalization at the beginning of the sentence, with no change to the meaning or propositional content.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__2456",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 2,
+    "severity": 3,
+    "raw_response": "Severity: 3\nJustification: “This app” has been changed to “THE SAP,” which names a different, plausible entity rather than being a mere surface variation. The remainder of the sentence is unchanged, but the subject of the compatibility claim is materially different.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__1227",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The reference and hypothesis are identical in meaning and wording; the only difference is terminal punctuation.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__1847",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The reference and hypothesis are identical in wording and meaning; the only difference is terminal punctuation.",
+    "error": null
+  },
+  {
+    "uid": "whisper_english_dialects_20260525_110315__1023",
+    "dataset": "english_dialects_scots",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The reference and hypothesis are identical in meaning and wording; the only difference is terminal punctuation.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_commonvoice_20260526_053757__351",
+    "dataset": "common_voice",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 2,
+    "severity": 2,
+    "raw_response": "Severity: 2\nJustification: The overall meaning is largely recoverable, but several phrases are garbled or incomplete, including the explanation about not needing an income and the closing “I’ll have it” versus “I love it.” These introduce residual uncertainty and loss of detail without clearly asserting a different material fact.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_commonvoice_20260526_053757__65",
+    "dataset": "common_voice",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 2,
+    "severity": 2,
+    "raw_response": "Severity: 2\nJustification: The main proposition is recoverable, but “any scholar” for “any skill” and “LAM” for “learn,” along with the missing “to,” introduce genuine content-word uncertainty and require reconstruction. These are not clearly different material facts, so the error is ambiguous rather than a clear factual or critical alteration.",
+    "error": null
+  },
+  {
+    "uid": "qwen_commonvoice_20260524_153426__190",
+    "dataset": "common_voice",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 2,
+    "severity": 2,
+    "raw_response": "Severity: 2\nJustification: The repeated substitution of “wire” for “wall” alters a key phrase but produces an implausible, incoherent alternative rather than a clearly asserted different fact. Other changes, such as “hear” for “have,” omissions, and “I would put” replacing the conditional wording, leave residual ambiguity and require reconstruction.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__1213",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 1,
+    "severity": 1,
+    "raw_response": "Severity: 1\nJustification: “Sheer devices” is an awkward, non-coherent rendering of “shared devices,” and the intended meaning is confidently recoverable. No material fact is changed.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_commonvoice_20260526_053757__503",
+    "dataset": "common_voice",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 2,
+    "severity": 4,
+    "raw_response": "Severity: 4\nJustification: The hypothesis is extensively garbled and introduces apparently fabricated content in the span corresponding to “[inc],” including an unclear comparison involving the watches. Although the repeated claim that the scooter is most precious is partly recoverable, the hallucinated and materially altered content constitutes a critical meaning alteration.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_commonvoice_20260524_150129__327",
+    "dataset": "common_voice",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 2,
+    "severity": 2,
+    "raw_response": "Severity: 2\nJustification: Most differences are dialectal or cosmetic, but “we dinnae like” becomes “we didn’t like,” and “we’ll just have to go” becomes “we just have to go,” introducing tense/aspect ambiguity about current versus past preferences and future obligation.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__1253",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The reference and hypothesis contain identical wording and meaning; the only difference is terminal punctuation.",
+    "error": null
+  },
+  {
+    "uid": "whisper_english_dialects_20260525_110315__2321",
+    "dataset": "english_dialects_scots",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 3,
+    "severity": 1,
+    "raw_response": "Severity: 1\nJustification: “Canonical” is a garbled rendering of “conical,” and “canonical extrusions” does not form a convincing alternative architectural claim. The intended meaning is cleanly recoverable, with no credible material change asserted.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_commonvoice_20260526_053757__459",
+    "dataset": "common_voice",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 2,
+    "severity": 2,
+    "raw_response": "Severity: 2\nJustification: Most of the meaning is preserved, but “we did a lot of exploring” is rendered as “with te dl exploding,” requiring reconstruction and leaving residual doubt about the intended action. The remaining differences are mainly fillers, spelling, and minor garbling.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__1957",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 1,
+    "severity": 1,
+    "raw_response": "Severity: 1\nJustification: “Onro” is a garbled rendering of “genre,” but the intended phrase is cleanly and confidently recoverable from the surrounding sentence. No material fact or propositional content changes.",
+    "error": null
+  },
+  {
+    "uid": "qwen_commonvoice_20260524_153426__394",
+    "dataset": "common_voice",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 1,
+    "severity": 1,
+    "raw_response": "Severity: 1\nJustification: The hypothesis preserves the intended meaning, with only minor garbling and omissions. “Brass” for “braw” is an incoherent wording in context, while “give” for “gie” is an unambiguous dialectal variant; no material fact changes.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_commonvoice_20260524_150129__143",
+    "dataset": "common_voice",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 3,
+    "severity": 3,
+    "raw_response": "Severity: 3\nJustification: The hypothesis preserves the overall account, but changes named entities, notably “Barrowlands” to “badlands” and “Electric Six” to “Electric Sex,” which can assert different venues or entities. Other distortions are mostly recoverable garbling and do not fundamentally alter the central assertion.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__2227",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The hypothesis preserves the exact meaning and wording of the reference. Differences are limited to punctuation and quotation-mark formatting.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__1768",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 2,
+    "severity": 3,
+    "raw_response": "Severity: 3\nJustification: The substitution of “many” for “men” changes the subject from male people to an unspecified large number of people. This is a clear factual change about who supposedly became werewolves, although it does not reverse or fundamentally alter the central assertion.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__523",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 2,
+    "severity": 1,
+    "raw_response": "Severity: 1\nJustification: “LUMMAGE” and “ASSISTEN” are garbled renderings of “language” and “assistant,” but the intended meaning is cleanly and confidently recoverable. No material fact or relationship in the sentence changes.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__2428",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The hypothesis differs only in capitalization from the reference. The propositional content and meaning are unchanged.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_edacc_20260525_184006__136",
+    "dataset": "edinburgh_international_accents",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 4,
+    "severity": 4,
+    "raw_response": "Severity: 4\nJustification: The hypothesis changes the subject from “you” to “he,” thereby changing the actor associated with the inability. Although “couldt” is recoverable as “couldn’t,” the different actor creates a critical meaning alteration.",
+    "error": null
+  },
+  {
+    "uid": "whisper_english_dialects_20260525_110315__2037",
+    "dataset": "english_dialects_scots",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: “Lily Patterson” is an unambiguous spelling variation of the same proper name as “Lillie Paterson.” The sentence’s propositional content is unchanged.",
+    "error": null
+  },
+  {
+    "uid": "whisper_commonvoice_20260524_083930__430",
+    "dataset": "common_voice",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 2,
+    "severity": 3,
+    "raw_response": "Severity: 3\nJustification: Several errors assert clear, materially different facts, including “hid” for “had,” “a kite” for cows, and “when I was born” for “when I was a child.” Although the overall discussion of favourite toys remains recoverable, these are not merely cosmetic or ambiguous distortions.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__148",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The hypothesis differs only in capitalization; all words and propositional content are unchanged.",
+    "error": null
+  },
+  {
+    "uid": "qwen_commonvoice_20260524_153426__13",
+    "dataset": "common_voice",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 3,
+    "severity": 3,
+    "raw_response": "Severity: 3\nJustification: The hypothesis changes “I’ve always hated clutter” into “I’ve always had to clutter,” which is a clear, materially different claim about the speaker’s relationship to clutter. The remaining differences are mostly recoverable wording or minor omissions.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_commonvoice_20260524_150129__449",
+    "dataset": "common_voice",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 2,
+    "severity": 2,
+    "raw_response": "Severity: 2\nJustification: The hypothesis largely preserves the account, but “chuffed with him” changes the object of the speaker’s reaction and is not cleanly recoverable from the sentence. “SECC” rendered as “sec” also loses or obscures a specific venue detail, creating residual ambiguity rather than a clearly asserted different fact.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__2140",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The hypothesis only adds punctuation and does not alter the propositional content or meaning of the reference.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__1669",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The only difference is capitalization at the beginning of the sentence. The propositional content and meaning are unchanged.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__1989",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The hypothesis differs only in punctuation, adding a comma and a period. The propositional content and meaning are unchanged.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__780",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 2,
+    "severity": 1,
+    "raw_response": "Severity: 1\nJustification: “Fire” is a clear, confidently recoverable homophonic transcription error for “fiber,” and the surrounding phrase remains coherent. No material fact is changed.",
+    "error": null
+  }
+]

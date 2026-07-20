@@ -1,0 +1,902 @@
+[
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__938",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 3,
+    "severity": 3,
+    "raw_response": "Error type (primary): Content substitution  \nMateriality: The error replaces \"drouth\" (an archaic/dialectal term meaning drought or thirst) with \"truth,\" altering the condition under which the speaker's thoughts occur—a material change to the scenario being described.  \nDirectionality: The underlying claim shifts from \"thought in a state of thirst\" to \"thought in a state of truth,\" changing what is asserted about the context of the thoughts.  \nRecoverability: The intended meaning is not confidently recoverable from the pair alone, as \"drouth\" is non-standard and easily mistaken; the hypothesis appears coherent on its own.  \nMisleading plausibility: The erroneous transcript is fluent and semantically plausible (\"truth\" is a common word), making it likely to be accepted without suspicion.  \nSeverity: 3  \nJustification: The substitution of \"truth\" for \"drouth\" introduces a clear factual error about the condition (thirst vs. truth) that changes a material detail, and the output is fluent enough to be misleading, placing it at severity level 3.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__2347",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 1,
+    "severity": 1,
+    "raw_response": "Error type (primary): Content substitution\nMateriality: Low; the garbled phrase 'seeing her goggle' does not assert a coherent alternative command, so no important fact is altered.\nDirectionality: The error changes the wording but produces a nonsensical output rather than a different plausible claim about the incident.\nRecoverability: High; the original meaning is cleanly recoverable from the phonetic resemblance and intact surrounding context, meeting the confident recovery standard.\nMisleading plausibility: Very low; the output is obviously malformed ('TRY SEEING HER GOGGLE') and would prompt scrutiny rather than false confidence.\nSeverity: 1\nJustification: The substitution of 'seeing her goggle' for 'saying hey Google' produces a nonsensical rendering with no believable alternative claim, exactly matching the level‑1 example given in the rubric, and the remaining sentence is preserved, allowing confident recovery of the intended meaning.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__1482",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Error type (primary): Acceptable variation  \nMateriality: No information is altered; the only difference is punctuation.  \nDirectionality: The claim remains identical.  \nRecoverability: The intended meaning is perfectly clear.  \nMisleading plausibility: The transcript is fluent and identical to the truth aside from a period, which is normal and not misleading.  \nSeverity: 0  \nJustification: The hypothesis differs only by an added terminal punctuation mark, which does not change the propositional content or introduce any meaning shift, warranting a severity of 0.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_edacc_20260525_184006__110",
+    "dataset": "edinburgh_international_accents",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 4,
+    "severity": 3,
+    "raw_response": "Error type (primary): Content substitution  \nMateriality: The reference describes an activity (\"playing\"), while the hypothesis asserts a killing (\"slain\")—a radically different and highly material action.  \nDirectionality: The claim changes from a neutral activity to a violent event, altering what is asserted about the incident.  \nRecoverability: The intended meaning of the reference cannot be recovered at all from the hypothesis; they share no semantic overlap.  \nMisleading plausibility: \"slain\" is a fluent, real word that would be readily accepted as a credible statement in a policing context, increasing the danger of the error.  \nSeverity: 3  \nJustification: This is a clear factual error: the hypothesis unambiguously asserts a different material action (slaying instead of playing) with no ambiguity, and the word is real and plausible, making it misleadingly believable.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__170",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 2,
+    "severity": 2,
+    "raw_response": "Error type (primary): Addition, omission, or structural error  \nMateriality: The error removes the location (Bishopbriggs) and replaces it with an additional, unclear item, altering where the showers are occurring—location is materially important in a policing context.  \nDirectionality: The claim shifts from \"showers in a specific place\" to a list of \"showers and an unclear item\"; the underlying fact about location is lost, not merely rephrased.  \nRecoverability: The intended meaning can be inferred by recognizing \"bishop rigs\" as a garbled version of \"Bishopbriggs\" and \"and\" as a misrecognition of \"in\", but this requires reconstruction and is not cleanly recoverable from the hypothesis alone.  \nMisleading plausibility: The hypothesis is fluent and could be accepted as a valid weather statement despite the odd phrase \"bishop rigs\", making it potentially misleading rather than obviously erroneous.  \nSeverity: 2  \nJustification: The connector change (\"in\" to \"and\") together with the garbled location name creates an ambiguous meaning shift where the original relational structure is lost, requiring reconstruction to recover intent—this fits level 2 under the rubric.",
+    "error": null
+  },
+  {
+    "uid": "whisper_english_dialects_20260525_110315__2542",
+    "dataset": "english_dialects_scots",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Error type (primary): Surface-form error  \nMateriality: No alteration to the information – \"1\" and \"one\" denote the same quantity.  \nDirectionality: Same claim expressed in a different format; no change to what is asserted.  \nRecoverability: The intended meaning is identical and trivially recoverable.  \nMisleading plausibility: Both forms are equally fluent and accurate; no risk of misinterpretation.  \nSeverity: 0  \nJustification: The only difference is the representation of the numeral as a digit versus a word, which is an unambiguous spelling variant with no change to propositional content – a level 0 surface-form error.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__1952",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 1,
+    "severity": 1,
+    "raw_response": "Error type (primary): Content substitution  \nMateriality: The error changes \"core\" to \"CORPS\" and \"your app\" to \"YEURAPE\", but neither substitution alters a material fact because the resulting phrases are nonsensical in context and do not assert a different believable claim.  \nDirectionality: The underlying claim about completing all core conversational flows remains unchanged; the garbled words do not redirect the assertion.  \nRecoverability: The intended meaning is confidently recoverable from the pair alone—\"CORPS\" is clearly a misrecognition of \"core\" given the surrounding context, and \"YEURAPE\" obviously garbles \"your app.\"  \nMisleading plausibility: Both errors are obviously malformed; \"CORPS\" in all caps and \"YEURAPE\" are not fluent enough to be accepted as true, so they invite scrutiny rather than false confidence.  \nSeverity: 1  \nJustification: The errors are nonsensical renderings (real words that do not cohere into a believable alternative claim, plus a clear garbling) with clean and confident recovery, fitting the level‑1 description for trivial/cosmetic errors in the rubric.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_edacc_20260525_213534__34",
+    "dataset": "edinburgh_international_accents",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 4,
+    "severity": 2,
+    "raw_response": "Error type (primary): Addition, omission, or structural error  \nMateriality: Moderate – the omission of the clause “where it would be like um like” and garbling of the final action “took the bib in” lose descriptive details, but the core mention of pulling out a bib remains.  \nDirectionality: No change to the underlying claim; the hypothesis merely drops and garbles content without asserting a different event.  \nRecoverability: Poor – “FERITD BE” and “TR BI” are nonsensical, and the intended meaning of those parts cannot be confidently reconstructed from the pair alone.  \nMisleading plausibility: Low – “FERITD” and “TR BI” are clearly malformed, so the output is unlikely to be mistaken for a correct transcript.  \nSeverity: 2  \nJustification: The hypothesis loses substantial content (the subject “WE” and the clause “where it would be like um like”) and garbles the ending, creating genuine ambiguity about the exact action described, but it does not assert any clear alternative fact, placing the error at level 2 on the severity scale.",
+    "error": null
+  },
+  {
+    "uid": "whisper_commonvoice_20260524_083930__334",
+    "dataset": "common_voice",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 2,
+    "severity": 2,
+    "raw_response": "Error type (primary): Content substitution  \nMateriality: The conflation of \"English\" and \"maths\" into \"the English maths\" alters a minor detail about the course subjects, but the core narrative (regret over not becoming a counsellor) remains unchanged.  \nDirectionality: The change affects how the list of subjects is expressed without altering the underlying claim about having taken a taster course.  \nRecoverability: The intended meaning (that both English and maths were sampled) can be inferred but not confidently recovered from the pair alone—reconstruction is needed.  \nMisleading plausibility: The phrase \"the English maths\" is fluent and plausible, making it likely to be accepted without scrutiny, though it does not introduce a critical factual error.  \nSeverity: 2  \nJustification: The conflation of two subjects into an ambiguous compound phrase creates a genuine ambiguity about course content, and while the central assertion is unaffected, the required reconstruction and plausible fluency place this at level 2.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__1003",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Error type (primary): Surface-form error  \nMateriality: No material fact changed; only capitalization of the first word.  \nDirectionality: No change to the underlying claim about how light patterns help create depth.  \nRecoverability: Intended meaning is fully and confidently recoverable.  \nMisleading plausibility: The transcript is fluent and identical in meaning; no risk of misinterpretation.  \nSeverity: 0  \nJustification: The only difference is capitalization of \"Light\" to \"light\", which is a surface-form variation with no impact on propositional content, meeting the criteria for level 0.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__1533",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Error type (primary): Acceptable variation\nMateriality: No error exists; no information is altered.\nDirectionality: No change in claim or expression.\nRecoverability: Perfectly recovered — the pair is identical.\nMisleading plausibility: Not applicable; no erroneous content.\nSeverity: 0\nJustification: The reference and hypothesis are identical, so there is no transcription error and no impact on meaning.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__1080",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 1,
+    "severity": 1,
+    "raw_response": "Error type (primary): Content substitution\nMateriality: The error replaces \"Google\" with \"Goggle\" and \"app\" with \"up,\" but both are garbled transcriptions that do not alter the core fact that installation is required to use Google podcasts.\nDirectionality: The underlying claim remains unchanged; the hypothesis is a malformed expression of the same instruction, not a different assertion.\nRecoverability: The intended meaning is confidently recoverable from context—\"Google podcasts\" and the structure \"install the [thing]\" make it clear the garbled words refer to the Google app.\nMisleading plausibility: \"Goggle up\" is not a fluent or credible alternative; it is obviously malformed and likely to be questioned, reducing the risk of false acceptance.\nSeverity: 1\nJustification: The errors are garbled renderings of \"Google\" and \"app\" that do not cohere into a believable alternative claim, so they fall under level 1 (trivial/cosmetic error), as the meaning is cleanly recoverable and no material fact is changed.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__1932",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 4,
+    "severity": 4,
+    "raw_response": "Error type (primary): Polarity or modality error  \nMateriality: Yes – the change from \"This is not a better way\" to \"There is not a better way\" alters whether the specific route is being compared unfavorably or asserted as the best possible, which is material to interpreting the speaker's evaluation.  \nDirectionality: The underlying claim flips: the original states the route is not superior (implying alternatives may be better), while the hypothesis asserts no better route exists (implying this is the best).  \nRecoverability: Low – the intended subject (\"This\") cannot be confidently recovered from the hypothesis alone; \"THERE\" is a plausible but different start, requiring outside context to reconstruct the original meaning.  \nMisleading plausibility: High – the hypothesis is fluent, natural English (\"THERE IS NOT A BETTER WAY\") and would likely be accepted at face value, increasing the danger of misinterpretation.  \nSeverity: 4  \nJustification: The core of the sentence is reversed by swapping \"This\" for \"There\", changing a comparative negation into an existence claim – a clear polarity reversal that fundamentally alters the central assertion about the route, warranting a critical severity score. The station-name garbles (e.g., \"Belliston\" for \"Baillieston\") are minor content substitutions (level 1) but do not mitigate the primary critical error.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__1862",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Error type (primary): Acceptable variation  \nMateriality: No alteration to any information important to understanding the incident – casing only.  \nDirectionality: The underlying claim about the route and public transport is unchanged.  \nRecoverability: The intended meaning is fully and confidently recoverable; no reconstruction needed.  \nMisleading plausibility: The hypothesis is perfectly fluent and identical in meaning to the reference – no risk of false confidence.  \nSeverity: 0  \nJustification: The only differences are capitalization (lowercase letters), which is purely a surface-form variation with no effect on propositional content, so the severity is 0.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_commonvoice_20260524_150129__94",
+    "dataset": "common_voice",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 2,
+    "severity": 3,
+    "raw_response": "Error type (primary): Addition, omission, or structural error  \nMateriality: The error changes the book title from \"Master and Margarita\" to \"Master of Margarita\", altering a specific fact about the speaker's favourite book.  \nDirectionality: It changes the underlying claim about which book is referenced, not just how it is expressed.  \nRecoverability: The intended title cannot be confidently recovered from the pair alone; reconstruction requires outside knowledge of Bulgakov's actual book.  \nMisleading plausibility: \"Master of Margarita\" is a fluent, plausible-sounding title that could be accepted as true.  \nSeverity: 3  \nJustification: The substitution of \"and\" with \"of\" creates a clear factual error by presenting a different, plausible book title, which is material and not recoverable from the transcript, meeting the criteria for level 3.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__428",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Error type (primary): Acceptable variation  \nMateriality: No alteration to identity, action, object, time, location, quantity, or sequence.  \nDirectionality: Only the capitalization of the first word differs; the underlying claim is identical.  \nRecoverability: Meaning is perfectly and immediately recoverable from either form.  \nMisleading plausibility: Both forms are equally fluent and correct; no misleading or erroneous content exists.  \nSeverity: 0  \nJustification: The only difference is casing (uppercase vs. lowercase \"W\"), which is a surface-level convention with no effect on the meaning of the utterance.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_commonvoice_20260526_053757__453",
+    "dataset": "common_voice",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 1,
+    "severity": 2,
+    "raw_response": "Error type (primary): Content substitution  \nMateriality: The error loses the key verb \"eradicated,\" which describes the desired elimination of fear, an important action in the speaker's hope.  \nDirectionality: It does not assert a different claim but renders the detail unrecoverable, removing the assertion entirely rather than reversing it.  \nRecoverability: \"Rodkid\" is nonsense with no phonetic or semantic link to \"eradicated,\" so the intended meaning cannot be confidently reconstructed from the pair alone.  \nMisleading plausibility: The garbled \"a rodkid\" is obviously malformed and unlikely to be mistaken for a valid word, reducing the risk of false acceptance.  \nSeverity: 2  \nJustification: The primary error—replacing \"eradicated\" with the nonsensical \"a rodkid\"—causes total unrecoverable loss of a content detail, which falls at level 2 of the severity scale; other minor garbles (e.g., \"world a piece\") are comparable to level 1 or 0 and do not raise the overall score.",
+    "error": null
+  },
+  {
+    "uid": "whisper_english_dialects_20260525_110315__644",
+    "dataset": "english_dialects_scots",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 2,
+    "severity": 2,
+    "raw_response": "Error type (primary): Addition, omission, or structural error\nMateriality: Alters the description of perks by turning a single benefit (\"leisure activities on work time\") into two separate items (\"leisure activities and work time\"), which changes what perks are claimed.\nDirectionality: Changes the underlying claim about what is offered, from a specific combined perk to two distinct (and vaguer) ones.\nRecoverability: The intended meaning is recoverable from the pair (the reference clarifies the relationship), but the hypothesis alone would be ambiguous.\nMisleading plausibility: The hypothesis is fluent and could be accepted as a plausible list, though \"work time\" as a stand-alone perk is odd; it creates false confidence rather than immediate scrutiny.\nSeverity: 2\nJustification: The substitution of \"on\" with \"and\" is a connector-word change that turns one benefit into two vague ones, fitting the rubric's explicit example for level 2—ambiguous meaning shift without assertion of a clear different material fact.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__431",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Error type (primary): Acceptable variation  \nMateriality: No information is altered; only casing differs.  \nDirectionality: The underlying claim is unchanged.  \nRecoverability: The intended meaning is identical and requires no reconstruction.  \nMisleading plausibility: The output is perfectly fluent and accurate, identical in meaning.  \nSeverity: 0  \nJustification: The only difference is capitalization of the first letter, which is a surface-form variation with no impact on propositional content, so the severity is 0.",
+    "error": null
+  },
+  {
+    "uid": "qwen_edacc_20260525_204314__94",
+    "dataset": "edinburgh_international_accents",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 4,
+    "severity": 4,
+    "raw_response": "Error type (primary): Polarity or modality error\nMateriality: The error changes the speaker's claim from expressing surprise that the listener did not watch Ben 10 to stating that the speaker themselves cannot watch it, altering identity and action.\nDirectionality: It reverses the underlying claim about who watched or did not watch the show, shifting from the listener's action to the speaker's inability.\nRecoverability: The intended meaning cannot be recovered from the pair alone; the hypothesis asserts a completely different fact with no corrective context.\nMisleading plausibility: The erroneous transcript is fluent and natural-sounding (“I can’t even watch Ben 10”), making it likely to be accepted as true.\nSeverity: 4\nJustification: The substitution of “believe you didn’t watch” with “even watch” constitutes a polarity/modality error that fabricates a new central assertion—the speaker’s inability to watch—which is a critical reversal of the ground-truth statement and meets the criteria for severity level 4.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__418",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Error type (primary): Acceptable variation  \nMateriality: No alteration to any factual information; only case formatting differs.  \nDirectionality: The underlying claim about looking at pictures is unchanged.  \nRecoverability: The intended meaning is immediately and confidently recoverable.  \nMisleading plausibility: The uppercase output is a standard formatting variant, not deceptive or plausibly wrong.  \nSeverity: 0  \nJustification: The hypothesis differs only in casing (all uppercase) from the reference, which is a surface-form variation with no propositional content change, meeting the criteria for severity 0.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__196",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 1,
+    "severity": 1,
+    "raw_response": "Error type (primary): Content substitution  \nMateriality: The error alters a station name, but only by dropping a single letter; the reference \"Muirend\" is still clearly identifiable, so the factual location is not materially changed.  \nDirectionality: The underlying claim about the route remains identical; there is no change to what is asserted.  \nRecoverability: The intended meaning is confidently recoverable from the context of the sentence and the correct spelling of \"Partick Station\".  \nMisleading plausibility: The misspelling \"MUREND\" is close enough to the correct name that it may be accepted as a minor typo, but it is not a credible different location.  \nSeverity: 1  \nJustification: The misspelling of \"Muirend\" as \"MUREND\" constitutes a trivial cosmetic error—like the example \"Japer\" for \"Jaipur\"—where the correct meaning is cleanly recoverable and no material fact changes, resulting in a severity of 1.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__1254",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 1,
+    "severity": 0,
+    "raw_response": "Error type (primary): Surface-form error  \nMateriality: No material fact altered; the configuration type remains clearly identifiable as \"trough\" despite the spelling error.  \nDirectionality: No change to the underlying claim; the assertion about storage in a tower or trough configurations is unchanged.  \nRecoverability: The intended meaning is confidently recoverable from the pair alone; “trow” is an obvious garbling of “trough.”  \nMisleading plausibility: Low; “trow” is not a plausible alternative configuration and would likely be recognized as a typo.  \nSeverity: 0  \nJustification: The only difference is a surface-level misspelling of \"trough\" as \"trow,\" which does not alter the propositional content or introduce any ambiguity, making this a severity 0 error under the surface-form category.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_commonvoice_20260524_150129__594",
+    "dataset": "common_voice",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 2,
+    "severity": 2,
+    "raw_response": "Error type (primary): Content substitution  \nMateriality: The garbled phrase \"like it pushed\" replaces the clear fact that the speaker was not challenged (\"got pushed\"), altering a key detail about the school experience.  \nDirectionality: The claim changes from a statement about being unchallenged to an incoherent assertion that cannot be confidently tied to the original meaning.  \nRecoverability: The intended meaning is not cleanly recoverable; reconstruction requires guessing, and residual doubt remains about what was actually said.  \nMisleading plausibility: \"like it pushed\" is obviously malformed and unlikely to be accepted as a fluent, credible claim, reducing the risk of false confidence.  \nSeverity: 2  \nJustification: The error results in an ambiguous loss of a specific detail (the lack of challenge) without asserting a clear alternative fact, fitting the criteria for a level 2 meaning shift where reconstruction is needed and doubt remains.",
+    "error": null
+  },
+  {
+    "uid": "whisper_english_dialects_20260525_110315__2522",
+    "dataset": "english_dialects_scots",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Error type (primary): Acceptable variation  \nMateriality: No information is altered; the abbreviation \"St\" with or without a period refers to the same location.  \nDirectionality: No change to the claim; the sentence expresses the same assertion.  \nRecoverability: The intended meaning is identical and requires no reconstruction.  \nMisleading plausibility: Both forms are equally fluent and correct; no risk of misinterpretation.  \nSeverity: 0  \nJustification: The only difference is a period in the abbreviation \"St.\" vs \"St\", which is a standard punctuation variant with no impact on meaning, content, or propositional content.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_commonvoice_20260526_053757__286",
+    "dataset": "common_voice",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 2,
+    "severity": 2,
+    "raw_response": "Error type (primary): Addition, omission, or structural error  \nMateriality: The change from \"sort of\" to \"or\" alters the relationship between imagination and limitation, which is a non-trivial shift in the description of the speaker's experience.  \nDirectionality: The claim changes from a qualifier (\"sort of\") to a disjunction (\"or\"), presenting two separate entities instead of one acting like the other—this changes how the idea is expressed but not the central fact that imagination is involved.  \nRecoverability: The intended meaning (imagination acts as a limitation) can be reconstructed from the surrounding context, but the change introduces genuine ambiguity—does \"imaginations or your limitations\" mean two different things? Reconstruction is needed.  \nMisleading plausibility: The phrase \"imaginations or your limitations\" is grammatically fluent and could be accepted as a true statement, but its plausibility is moderate because it still fits the overall theme.  \nSeverity: 2  \nJustification: The primary error (connector/relational word replacement) creates genuine ambiguity about the intended relationship and requires reconstruction, while the overall narrative about the speaker's favorite toy and time spent with Lego is still largely recoverable despite multiple garbled details, warranting a severity of 2.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__1531",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Error type (primary): Acceptable variation  \nMateriality: No information is altered; the words and structure are identical.  \nDirectionality: Only the presentation (capitalization) changes; the underlying claim is unchanged.  \nRecoverability: The intended meaning is perfectly and immediately recoverable.  \nMisleading plausibility: The transcript is fluent and correct in content; capitalization alone does not create a misleading alternative.  \nSeverity: 0  \nJustification: The only difference between the reference and hypothesis is the use of all-caps casing, which is a purely surface-level variation with no impact on meaning or propositional content.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__1474",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 0,
+    "severity": 1,
+    "raw_response": "Error type (primary): Polarity or modality error  \nMateriality: The error changes the verb form from past participle \"leaked\" to present tense \"leaks\", but the core action (selective leaking) and all entities remain unchanged, so no material fact is altered.  \nDirectionality: The underlying claim that the testimony was leaked is still clearly expressed; the tense shift does not change whether the event happened or who was involved.  \nRecoverability: The intended past passive meaning is confidently recoverable because \"was ... leaks\" is grammatically anomalous, and the surrounding context (\"his damning testimony ... against ... was selectively ...\") forces the correct reading.  \nMisleading plausibility: The erroneous \"leaks\" produces an ungrammatical phrase (\"was selectively leaks\") that is obviously malformed, so it would likely be flagged or corrected rather than accepted as true.  \nSeverity: 1  \nJustification: The tense error is isolated, easily corrected, and does not affect the factual content; it falls under trivial/cosmetic error because the intended meaning is cleanly recoverable with no doubt.",
+    "error": null
+  },
+  {
+    "uid": "whisper_english_dialects_20260525_110315__1748",
+    "dataset": "english_dialects_scots",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Error type (primary): Acceptable variation  \nMateriality: No alteration to identity, action, object, time, location, quantity, or sequence – \"payment info\" and \"payments info\" are equivalent in context.  \nDirectionality: Only surface-level changes (capitalization, pluralization, punctuation); the underlying claim about Google Pay keeping information safe remains identical.  \nRecoverability: The intended meaning is fully and confidently recoverable from the hypothesis without any reconstruction.  \nMisleading plausibility: The hypothesis is fluent and natural, but since no factual change occurred, it poses no risk of misdirection.  \nSeverity: 0  \nJustification: The hypothesis differs only in capitalization, a minor plural variation (\"payment\" vs \"payments\"), and added commas – none of which alter the propositional content or introduce any ambiguity, so the error is a severity 0 acceptable variation.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__1904",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Error type (primary): Acceptable variation  \nMateriality: No information is altered; only capitalization differs.  \nDirectionality: No change to the underlying claim.  \nRecoverability: The intended meaning is trivially recoverable.  \nMisleading plausibility: The hypothesis is a perfectly fluent and accurate rendering aside from casing, which poses no risk of misinterpretation.  \nSeverity: 0  \nJustification: The difference is purely casing (lowercase vs. uppercase initials), which is a surface-form variation with no effect on propositional content, meeting the definition of severity 0.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__567",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Error type (primary): Acceptable variation  \nMateriality: No material fact is altered; the meaning remains identical.  \nDirectionality: The underlying claim about phone connection is unchanged.  \nRecoverability: The intended meaning is trivially recoverable from context.  \nMisleading plausibility: The output is fluent and natural; it would not cause confusion.  \nSeverity: 0  \nJustification: The hypothesis differs only in capitalization and a standard spelling variant (\"bluetooth\" as two words), which does not change the propositional content, so severity is 0.",
+    "error": null
+  },
+  {
+    "uid": "qwen_commonvoice_20260524_153426__543",
+    "dataset": "common_voice",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 2,
+    "severity": 4,
+    "raw_response": "Error type (primary): Polarity or modality error  \nMateriality: The error changes who is described as thoroughly enjoying the weekend—from the speaker (\"I\") to the kids (\"they\")—altering a central personal claim about the experience.  \nDirectionality: The subject pronoun swap reverses the actor of the enjoyment, changing the underlying claim about who had that positive experience.  \nRecoverability: The intended meaning cannot be confidently recovered from the hypothesis alone; the fluent wording makes the mistaken attribution seem plausible without the reference to correct it.  \nMisleading plausibility: The output is natural and cohesive (\"they thoroughly enjoy it\"), so a reader would likely accept it as true, increasing the risk of misinterpretation.  \nSeverity: 4  \nJustification: The pronoun swap (\"I\" → \"they\") fundamentally reverses a key assertion about who enjoys the weekend, fitting the level‑4 criterion of a different actor creating a critical meaning alteration, and the error is both material and misleadingly fluent.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_edacc_20260525_184006__18",
+    "dataset": "edinburgh_international_accents",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 3,
+    "severity": 1,
+    "raw_response": "Error type (primary): Content substitution  \nMateriality: The error replaces the action word \"hurt\" with the adjective \"certain,\" producing a grammatically incomplete phrase that does not assert any coherent fact about the incident.  \nDirectionality: The change alters a clear claim (\"that would hurt\") into a nonsensical utterance with no discernible propositional content.  \nRecoverability: The intended meaning is trivially recoverable from the reference alone; the hypothesis itself is garbled and offers no plausible alternative reading.  \nMisleading plausibility: The hypothesis \"that would certain\" is obviously malformed and unlikely to be accepted as a credible transcription, reducing its danger as evidence.  \nSeverity: 1  \nJustification: The substitution of \"certain\" for \"hurt\" results in a nonsensical rendering with no coherent alternative claim, fitting the example of \"seeing her goggle\" for \"saying hey Google\" in level 1; the error is trivial because the output cannot be mistaken for a different factual assertion.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__147",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Error type (primary): Acceptable variation  \nMateriality: No alteration to information.  \nDirectionality: No change to the underlying claim.  \nRecoverability: Identical, no recovery needed.  \nMisleading plausibility: Perfectly fluent and correct.  \nSeverity: 0  \nJustification: The hypothesis matches the reference exactly; there is no error, so the severity is zero.",
+    "error": null
+  },
+  {
+    "uid": "qwen_commonvoice_20260524_153426__89",
+    "dataset": "common_voice",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 2,
+    "severity": 3,
+    "raw_response": "Error type (primary): Content substitution  \nMateriality: The error changes the description of the area from \"very rural\" (definite degree) to \"probably rural\" (uncertain guess), altering an important characteristic of the speaker's upbringing. Additional garbled substitutions (e.g., \"on the rain\" for \"on our own\", \"walk around\" for \"folk around\") lose specific details about isolation and community, which are material to understanding the environment.  \nDirectionality: The changes modify the claim about the degree of ruralness and erase details, but do not reverse or fabricate a central assertion. The core narrative remains intact.  \nRecoverability: From the hypothesis alone, the intended meaning of \"very rural\" is not recoverable—the plausible but wrong \"probably\" would be accepted, and the garbled phrases are too nonsensical to reconstruct the original details. Residual doubt remains about several points.  \nMisleading plausibility: The substitution \"probably\" is fluent and could be accepted as true, while the garbled phrases (\"on the rain\", \"walk around\") are clearly malformed and likely to be questioned. Overall, the transcript has enough fluency in one key part to be partially misleading.  \nSeverity: 3  \nJustification: The primary error (substituting \"braaly\" with \"probably\") unambiguously asserts a different material fact about the degree of rurality—a real, plausible word that changes the claim—making it a clear factual error at severity 3. The accompanying garbled losses (level 2) do not raise the score further because they are nonsensical rather than plausible falsehoods.",
+    "error": null
+  },
+  {
+    "uid": "whisper_english_dialects_20260525_110315__2272",
+    "dataset": "english_dialects_scots",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Error type (primary): Surface-form error  \nMateriality: No information altered; only a comma added.  \nDirectionality: No change to the underlying claim.  \nRecoverability: Meaning is trivially recoverable.  \nMisleading plausibility: The output is fluent and identical in meaning; no risk of misinterpretation.  \nSeverity: 0  \nJustification: The sole difference is an optional comma, which does not alter propositional content, so the error has no meaning-level impact.",
+    "error": null
+  },
+  {
+    "uid": "whisper_english_dialects_20260525_110315__401",
+    "dataset": "english_dialects_scots",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 1,
+    "severity": 2,
+    "raw_response": "Error type (primary): Content substitution  \nMateriality: The error alters a location (station name), which is material to understanding the train route and the subject's movements.  \nDirectionality: The claim changes from departing from a specific real station (Drumgelloch) to a garbled, non-existent name (Dermdgelach), but the substitution is nonsensical rather than a plausible alternative, so the underlying claim about the action is preserved.  \nRecoverability: The intended station name cannot be confidently recovered from the pair alone because \"Dermdgelach\" is a distorted rendering that requires external knowledge to guess; reconstruction is needed.  \nMisleading plausibility: \"Dermdgelach\" looks like a plausible station name at first glance but is not a known real place; it is unlikely to be accepted as true without scrutiny, reducing danger.  \nSeverity: 2  \nJustification: The garbled station name is a total loss of the original location detail, and because confident recovery is not possible without outside context, the error falls under level 2 (ambiguous meaning shift / unrecoverable loss) rather than level 1 (where recovery would be clean).",
+    "error": null
+  },
+  {
+    "uid": "whisper_commonvoice_20260524_083930__442",
+    "dataset": "common_voice",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 2,
+    "severity": 1,
+    "raw_response": "Error type (primary): Content substitution  \nMateriality: The substitution of \"image\" for \"hymn sheet\" changes a specific idiomatic metaphor, but the core claim about lack of coordination among seniors is still evident from context; the other errors (minor omissions, garbled phrases) do not affect understanding of the incident.  \nDirectionality: The errors alter wording and introduce nonsensical phrases, but they do not change the underlying claims about job satisfaction, support for clients, or frustration with inconsistent procedures.  \nRecoverability: The intended meaning is confidently recoverable from the pair because the hypothesis retains the key structure and content; garbled portions (e.g., \"same same image,\" \"maybe may show\") are clearly malformed and do not obscure the core narrative.  \nMisleading plausibility: The hypothesis is mostly fluent but contains obvious nonsensical parts that would invite scrutiny rather than false confidence; the errors are not plausible as alternative factual claims.  \nSeverity: 1  \nJustification: The primary error is a nonsensical content substitution (\"image\" for \"hymn sheet\") that does not cohere into a believable alternative claim, and all other deviations (filler omissions, minor structural changes) are trivial or cosmetic, so the overall meaning is cleanly recoverable at severity level 1.",
+    "error": null
+  },
+  {
+    "uid": "whisper_english_dialects_20260525_110315__2380",
+    "dataset": "english_dialects_scots",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Error type (primary): Acceptable variation  \nMateriality: No material information is altered; identical words and structure.  \nDirectionality: No change to the underlying claim.  \nRecoverability: Meaning is fully recoverable; no reconstruction needed.  \nMisleading plausibility: The transcript is fluent and identical to the reference aside from punctuation.  \nSeverity: 0  \nJustification: The only difference is a terminal period, a punctuation variation with no impact on propositional content, so the error is a surface-form change at severity 0.",
+    "error": null
+  },
+  {
+    "uid": "qwen_edacc_20260525_204314__80",
+    "dataset": "edinburgh_international_accents",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 2,
+    "severity": 3,
+    "raw_response": "Error type (primary): Content substitution  \nMateriality: The error changes \"mystery gang\" (a group) to \"mystery guy\" (an individual), altering the central entity and implying an extra person separate from the five people and dog, which is material to understanding the cast.  \nDirectionality: It changes the underlying claim about who is involved – a group vs. a distinct individual – not just how it is expressed.  \nRecoverability: The intended group meaning is not confidently recoverable from the hypothesis alone, as \"mystery guy\" is a plausible alternative that conflicts with the rest of the sentence.  \nMisleading plausibility: \"Mystery guy\" is a fluent, real-English phrase that could be accepted as true, increasing the risk of misinterpretation.  \nSeverity: 3  \nJustification: The substitution of \"gang\" with \"guy\" is a clear factual error about a key entity, and while there are additional minor errors (tense shift, pronoun change, omission), the primary error drives the severity to level 3, as it unambiguously asserts a different material fact without reaching the critical level of a reversed or fabricated claim.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__2191",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 3,
+    "severity": 3,
+    "raw_response": "Error type (primary): Content substitution  \nMateriality: The error changes two key entities—\"Ireland\" to \"Island\" and \"Schengen Area\" to \"Shannon Area\"—which are central to the geographical claim.  \nDirectionality: The underlying claim about which places are excluded from which region is altered, not just how it is expressed.  \nRecoverability: The intended meaning cannot be reliably recovered from the pair alone; \"Island\" and \"Shannon\" are plausible replacements that lead to a different interpretation.  \nMisleading plausibility: The hypothesis forms a fluent, coherent sentence (\"NEITHER THE UNITED KINGDOM OR ISLAND ARE PART OF THE SHANNON AREA\") that could be mistaken for a correct factual statement.  \nSeverity: 3  \nJustification: Both \"Island\" for \"Ireland\" and \"Shannon\" for \"Schengen\" are real-word substitutions that assert different material facts (entity and location), meeting the level 3 criterion for a clear factual error with no ambiguity about the new claim.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__1701",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 1,
+    "severity": 1,
+    "raw_response": "Error type (primary): Surface-form error\nMateriality: The error affects proper nouns (station names), but the intended stations are still clearly identifiable; no factual detail about the journey is altered.\nDirectionality: The underlying claim—the person took a train from Nitshill to Taynuilt—remains unchanged; only the spelling/phonetic rendering is different.\nRecoverability: The intended meaning is confidently recoverable from the pair alone, as the reference provides the correct names and the hypothesis is a straightforward phonetic approximation.\nMisleading plausibility: “nitsill station” and “tennault station” are plausible enough to pass as real names in a transcript, though they are not standard spellings; they could be accepted without immediate suspicion.\nSeverity: 1\nJustification: The hypothesis substitutes phonetically garbled but still recognisable renderings of the station names, with no change to the propositional content, making this a trivial/cosmetic error that is confidentially recoverable.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__1163",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 2,
+    "severity": 3,
+    "raw_response": "Error type (primary): Addition, omission, or structural error  \nMateriality: The change from \"or\" to \"of\" alters the title of the work, which is a material fact about what was written; this could affect identification of the referenced material in a policing context.  \nDirectionality: It changes the underlying claim about the title itself, asserting a different relationship between the two descriptors (\"tragical comedy\" and \"comical tragedy\") instead of the original disjunction.  \nRecoverability: From the hypothesis alone, the intended meaning (the correct title with \"or\") is not recoverable; the output presents a different, plausible phrase that would be accepted as correct without the reference.  \nMisleading plausibility: The output is fluent and reads as a coherent (if slightly unusual) book title, making it likely to be taken at face value as an accurate transcription.  \nSeverity: 3  \nJustification: The substitution of \"or\" with \"of\" creates a clear factual error by changing a key word in the title, resulting in a different material claim that is unambiguous and plausibly believable, which fits the criteria for severity level 3.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__745",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Error type (primary): Acceptable variation  \nMateriality: No information altered; casing does not affect meaning.  \nDirectionality: No change to the underlying claim.  \nRecoverability: Intended meaning is identical and immediately clear.  \nMisleading plausibility: Not misleading; identical content.  \nSeverity: 0  \nJustification: The only difference is capitalization of \"you've,\" which is a surface-form variation with no impact on propositional content, per severity level 0.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_commonvoice_20260524_150129__319",
+    "dataset": "common_voice",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 2,
+    "severity": 2,
+    "raw_response": "Error type (primary): Content substitution\nMateriality: The error changes the location where the concert took place (Glenrothes to glen offes), which is a material fact about the event.\nDirectionality: The error asserts a different place name (glen offes) rather than the correct one, but since it is garbled and not a real place, it does not clearly change the underlying claim about which town; it introduces ambiguity.\nRecoverability: The intended location (Glenrothes) cannot be confidently recovered from the hypothesis alone, as \"glen offes\" is not a known variant; reconstruction requires outside knowledge.\nMisleading plausibility: \"glen offes\" sounds like a plausible place name, so it could be taken as true by a listener unfamiliar with the area, making it potentially misleading.\nSeverity: 2\nJustification: The most impactful error is the substitution of \"Glenrothes\" with \"glen offes\", a garbled but plausible-sounding location that loses the correct detail and cannot be confidently recovered; combined with another loss-of-detail error in the crowd phrase, the meaning is ambiguous rather than clearly false, aligning with level 2 on the severity scale.",
+    "error": null
+  },
+  {
+    "uid": "whisper_commonvoice_20260524_083930__335",
+    "dataset": "common_voice",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 4,
+    "severity": 4,
+    "raw_response": "Error type (primary): Addition, omission, or structural error  \nMateriality: The hallucinated phrase \"it's your boy\" fabricates an identity or claim in place of an inaudible segment, which is material to the speaker's response.  \nDirectionality: It changes the underlying claim from an unknown utterance to a specific statement, altering what was actually said.  \nRecoverability: Unrecoverable because the ground truth is inaudible; no reconstruction is possible.  \nMisleading plausibility: The output \"Oh, it's your boy\" is fluent and plausible, making it dangerous as evidence.  \nSeverity: 4  \nJustification: The ASR hallucinates content to fill an inaudible [inc] span, which under the rubric defaults to a score of 4, as it fabricates a claim with no ground truth to verify and is fluently misleading.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_commonvoice_20260526_053757__548",
+    "dataset": "common_voice",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 2,
+    "severity": 3,
+    "raw_response": "Error type (primary): Addition, omission, or structural error\nMateriality: The phrase \"and obviously killed\" is replaced with \"and obviously it's in some respects,\" which removes a key consequence (death) and substitutes a vague characterization, materially altering understanding of the incident's severity.\nDirectionality: The change shifts the claim from a specific outcome (people are killed) to a different, non-specific statement about the situation, altering what is asserted about the event.\nRecoverability: The intended meaning that people are killed cannot be confidently recovered from the hypothesis; the substitution is irreversible without external context.\nMisleading plausibility: \"obviously it's in some respects\" is a fluent, coherent phrase that could be accepted as true, increasing the risk of false confidence, unlike the garbled portions that signal error.\nSeverity: 3\nJustification: The error is a clear factual error (level 3) because it unambiguously asserts a different material fact—replacing \"killed\" with a vague characterization—and the new claim is plausible enough to be misleading, while other garbled items (e.g., \"caught in nice\") remain at level 1–2 and do not raise the overall score.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_commonvoice_20260526_053757__256",
+    "dataset": "common_voice",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 2,
+    "severity": 2,
+    "raw_response": "Error type (primary): Content substitution  \nMateriality: The substitution of \"stood oot\" with \"to do it\" alters the description of the memory, changing from a comparison (\"stood out\") to a direct assertion (\"to do it is a brilliant memory\"). This is material to understanding the speaker's experience.  \nDirectionality: The change shifts the underlying claim from \"this night stood out as a memory\" to \"doing it (the night) is a memory,\" which is a different characterization of the event.  \nRecoverability: The intended meaning cannot be confidently recovered from the pair alone, as \"to do it\" is a plausible but different phrase, and the surrounding garbling (\"lods of their good nightts\") further obscures the reference.  \nMisleading plausibility: The erroneous phrase \"just to do it is a brilliant memory\" is somewhat fluent and could be accepted as a plausible colloquialism, though the overall transcript has noticeable garbling.  \nSeverity: 2  \nJustification: The error creates genuine ambiguity about the speaker's claim (comparative vs. direct memory) and requires reconstruction; it does not assert a clear, unambiguous new fact (level 3) nor is it a trivial, cleanly recoverable variant (level 1), so the ambiguous meaning shift and unrecoverable loss of the original verb place it at level 2.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__1295",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 1,
+    "severity": 1,
+    "raw_response": "Error type (primary): Surface-form error\nMateriality: The error does not alter any important information; the destination remains identifiable as Drem, and the origin as Corkerhill.\nDirectionality: The underlying claim about the route is unchanged; only the spelling of one location is garbled.\nRecoverability: The intended meaning is confidently recoverable from the pair alone; \"drre\" is clearly a garbled version of \"Drem\" with no plausible alternative.\nMisleading plausibility: The erroneous transcript (\"drre\") is obviously malformed and unlikely to be accepted as a real place, so it does not create false confidence.\nSeverity: 1\nJustification: The garbled rendering of \"Drem\" as \"drre\" is a nonsensical substitution with no real alternative meaning, making the error trivial and fully recoverable; the split of \"Corkerhill\" into \"corker hill\" is an acceptable variation, so the overall severity is level 1.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__744",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Error type (primary): Acceptable variation\nMateriality: No information altered; casing is not material.\nDirectionality: No change to the underlying claim.\nRecoverability: Meaning is identical and immediately clear.\nMisleading plausibility: The hypothesis is perfectly fluent and correct.\nSeverity: 0\nJustification: The only difference is capitalization of \"No\" vs \"no\", which is a surface-level casing variation with no impact on meaning, warranting a severity of 0.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__390",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 1,
+    "severity": 1,
+    "raw_response": "Error type (primary): Content substitution\nMateriality: The error replaces \"various\" with \"farious,\" a non-word; no fact, entity, number, or action is altered.\nDirectionality: The claim remains unchanged; the same assertion about explaining rainbows is expressed.\nRecoverability: The intended meaning is confidently recoverable from context alone—\"farious\" is clearly a garbled version of \"various.\"\nMisleading plausibility: \"Farious\" is not a real word and is obviously malformed, so it would not be mistaken for a correct alternative.\nSeverity: 1\nJustification: The error is a garbled rendering of a content word that does not change the propositional content and is easily corrected; per the rubric, this falls under level 1 (trivial/cosmetic error) because the meaning is confidently and cleanly recoverable with no material fact alteration.",
+    "error": null
+  },
+  {
+    "uid": "whisper_english_dialects_20260525_110315__1275",
+    "dataset": "english_dialects_scots",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Error type (primary): Acceptable variation\nMateriality: No information is altered; the change is purely orthographic (capitalization of \"riverside\" to \"Riverside\").\nDirectionality: The underlying claim about the location and use remains identical; only the surface form differs.\nRecoverability: The intended meaning is fully and confidently recoverable with no ambiguity.\nMisleading plausibility: The hypothesis is fluent and appears identical in meaning; no risk of misinterpretation.\nSeverity: 0\nJustification: The difference between \"riverside\" and \"Riverside\" is a trivial capitalization change that does not affect the propositional content, making it a level 0 acceptable variation.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__1655",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Error type (primary): Acceptable variation  \nMateriality: No information important to understanding the incident is altered; the temperature value and location remain identical.  \nDirectionality: The underlying claim is unchanged; only the orthographic representation of the number differs.  \nRecoverability: The intended meaning is perfectly and confidently recoverable without any reconstruction.  \nMisleading plausibility: The hypothesis is fluent and would be accepted as equivalent to the reference, but it causes no harm because the meaning is exactly the same.  \nSeverity: 0  \nJustification: The substitution of \"10\" for \"ten\" is a purely surface-form variation in number representation, with no change to propositional content, thus meeting the criteria for level 0.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__837",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 1,
+    "severity": 0,
+    "raw_response": "Error type (primary): Acceptable variation\nMateriality: The error is a spelling variant of \"megabytes\" to \"megabites\" with no change to the unit or meaning, so no material fact is altered.\nDirectionality: The underlying claim about the file size limit remains identical; only the surface form of the word differs.\nRecoverability: The intended word is instantly and confidently recoverable as a common misspelling of \"megabytes.\"\nMisleading plausibility: The misspelling is minor and does not create a believable alternative claim; it would be recognized as a typo.\nSeverity: 0\nJustification: The transcription error is a surface-level spelling variant that does not alter propositional content, meeting the definition of level 0 on the severity scale.",
+    "error": null
+  },
+  {
+    "uid": "qwen_edacc_20260525_204314__103",
+    "dataset": "edinburgh_international_accents",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 4,
+    "severity": 4,
+    "raw_response": "Error type (primary): Content substitution  \nMateriality: The reference \"NO\" (a negative response or denial) is replaced with \"you.\" (a pronoun identifying a person), altering a potentially critical piece of information in a policing context.  \nDirectionality: The underlying claim changes from a negation/refusal to an address or identification, a clear shift in the asserted fact.  \nRecoverability: The original meaning cannot be recovered from the hypothesis alone; no hint of the negative response remains.  \nMisleading plausibility: \"you.\" is a fluent, natural phrase that could be accepted as true without suspicion, creating false confidence.  \nSeverity: 4  \nJustification: The error fabricates a completely different assertion (a pronoun instead of a negation), which fundamentally changes the central meaning and cannot be corrected from the pair, meeting the criteria for a critical meaning alteration.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_commonvoice_20260526_053757__162",
+    "dataset": "common_voice",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 1,
+    "severity": 1,
+    "raw_response": "Error type (primary): Surface-form error  \nMateriality: No material fact is altered; the core information (two cats, names, ages) remains fully intact.  \nDirectionality: The underlying claim is unchanged—the same objects, identities, and description are asserted.  \nRecoverability: The intended meaning is confidently recoverable from context (e.g., \"TWO OBJECTS\" and \"ARTHUR AND GRACY\" clarify the garbled \"TOICATS\"; \"CISELY\" is obviously a misrecognition of \"actually\").  \nMisleading plausibility: Both \"CISELY\" and \"TOICATS\" are nonsensical and would be flagged as errors, not accepted as a plausible alternative claim.  \nSeverity: 1  \nJustification: The garbled words \"CISELY\" and \"TOICATS\" are nonsensical renderings with no real alternative, and the intended meaning is confidently recoverable from the surrounding context, making the error trivial rather than ambiguous or factual.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__2197",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 1,
+    "severity": 1,
+    "raw_response": "Error type (primary): Surface-form error  \nMateriality: No material information is altered; the identity of the item (\"Emails\") and the sender (\"Toby\") remain unchanged.  \nDirectionality: The underlying claim about what was sent and from whom is unchanged.  \nRecoverability: The intended meaning is confidently and cleanly recoverable as \"Emails from Toby\" despite the garbled spelling.  \nMisleading plausibility: \"EMALES\" is obviously a malformed rendering and would likely be questioned rather than accepted as a credible alternative.  \nSeverity: 1  \nJustification: The hypothesis substitutes a garbled, nonsensical rendering (\"EMALES\") for the reference word (\"Emails\"), but the intended meaning is immediately and unambiguously recoverable with no material fact change, meeting the criteria for a trivial/cosmetic error (level 1).",
+    "error": null
+  },
+  {
+    "uid": "parakeet_commonvoice_20260524_150129__602",
+    "dataset": "common_voice",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 2,
+    "severity": 1,
+    "raw_response": "Error type (primary): Content substitution  \nMateriality: The errors involve dialectal garbling and a minor phrase shift that do not alter any information about identity, action, time, location, quantity, or sequence.  \nDirectionality: The changes affect how expressions are rendered (e.g., \"aweeneen\" for \"a wheen\", \"that every day\" for \"the everyday\") but do not change the underlying claim about finding joy in daily life.  \nRecoverability: The intended meaning is confidently recoverable from context alone; the garbled words and phrase shift are clearly traceable to the reference.  \nMisleading plausibility: The hypothesis is mostly fluent but contains obvious non-standard renderings; it does not present a believable alternative factual claim that could mislead.  \nSeverity: 1  \nJustification: The primary error is a content substitution that results in trivial wording differences, and the meaning is cleanly recoverable with no material fact change, meeting the criteria for level 1.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_commonvoice_20260526_053757__54",
+    "dataset": "common_voice",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 1,
+    "severity": 1,
+    "raw_response": "Error type (primary): Addition, omission, or structural error  \nMateriality: The missing \"at it\" and the substitution of \"no\" with \"nor\" do not alter any material fact about playing the recorder or never having played other instruments.  \nDirectionality: The changes affect only phrasing and grammar, not the underlying claim about what happened.  \nRecoverability: The intended meaning is confidently recoverable from the pair; the hypothesis still clearly conveys the same facts.  \nMisleading plausibility: The garbled \"OTHERN THAT\" and \"NOR NEVER EVER\" are somewhat awkward but not fluent enough to be easily accepted as a correct transcript without scrutiny.  \nSeverity: 1  \nJustification: The hypothesis contains minor omissions and garbled phrasing that do not change the core assertion (played recorder, never played other instruments), and the meaning is cleanly recoverable, fitting the trivial/cosmetic error level.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__2081",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Error type (primary): Acceptable variation  \nMateriality: No information important to understanding the incident is altered – the name \"Harry\" is the same entity.  \nDirectionality: The underlying claim about who raised salaries and what happened is unchanged.  \nRecoverability: Intended meaning is identical and immediately recoverable with no reconstruction needed.  \nMisleading plausibility: The hypothesis is a fluent, standard rendering that conveys the exact same meaning as the reference.  \nSeverity: 0  \nJustification: The sole difference is the lowercasing of the proper noun \"Harry,\" which is a trivial casing variation with no impact on propositional content, making this a level 0 error.",
+    "error": null
+  },
+  {
+    "uid": "whisper_english_dialects_20260525_110315__99",
+    "dataset": "english_dialects_scots",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Error type (primary): Acceptable variation  \nMateriality: No information is altered—the only difference is a question mark, which does not change the factual content.  \nDirectionality: The underlying claim remains identical; punctuation does not affect the proposition.  \nRecoverability: The intended meaning is trivially recoverable—the hypothesis is semantically identical.  \nMisleading plausibility: The hypothesis is fluent and correct aside from punctuation, but the addition of a question mark is standard and not misleading.  \nSeverity: 0  \nJustification: The hypothesis differs from the reference only by adding a question mark, a surface-level punctuation change that does not alter any content, material fact, or meaning, so the severity is 0.",
+    "error": null
+  },
+  {
+    "uid": "whisper_english_dialects_20260525_110315__854",
+    "dataset": "english_dialects_scots",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Error type (primary): Acceptable variation  \nMateriality: No information is altered; the only difference is a period at the end, which does not affect meaning.  \nDirectionality: There is no change to the claim about what happened.  \nRecoverability: The intended meaning is identical and requires no reconstruction.  \nMisleading plausibility: The output is identical in content, so it is perfectly fluent and accurate.  \nSeverity: 0  \nJustification: The hypothesis adds only a punctuation mark (period) to the reference, which is a surface-form change with no effect on propositional content or comprehension.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__1319",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 1,
+    "severity": 0,
+    "raw_response": "Error type (primary): Surface-form error  \nMateriality: No material information is altered; the name is still recognizably the same person.  \nDirectionality: The wording differs only in spelling; the underlying claim about who worked as a postman remains unchanged.  \nRecoverability: The intended meaning is confidently and cleanly recoverable from the pair alone.  \nMisleading plausibility: The misspelling is minor and would likely be accepted as a benign typo, but it does not create a false claim.  \nSeverity: 0  \nJustification: The hypothesis replaces \"Barneveld\" with \"Barnveld,\" an unambiguous spelling variant of the same proper noun, so there is no change to propositional content.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__1179",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Error type (primary): Acceptable variation\nMateriality: The comma is a punctuation change that does not alter any factual information about the action or its consequences.\nDirectionality: The underlying claim about what will happen (delete receipt, not change or cancel order) remains identical.\nRecoverability: The intended meaning is directly and trivially recoverable from the hypothesis.\nMisleading plausibility: The hypothesis is fluent but perfectly faithful to the reference; no misleading assertion is introduced.\nSeverity: 0\nJustification: The only difference is the insertion of a comma, which is a surface-form punctuation change with no effect on propositional content, placing it at severity 0.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__2403",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Error type (primary): Surface-form error  \nMateriality: No material information altered; only punctuation added.  \nDirectionality: No change to the underlying claim; purely stylistic.  \nRecoverability: Meaning is perfectly and confidently recoverable.  \nMisleading plausibility: The hypothesis is fluent but identical in meaning; no misleading alteration.  \nSeverity: 0  \nJustification: The only difference is the insertion of commas and a serial comma, which are surface-level punctuation changes that do not affect the propositional content or meaning of the sentence.",
+    "error": null
+  },
+  {
+    "uid": "whisper_commonvoice_20260524_083930__565",
+    "dataset": "common_voice",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 2,
+    "severity": 3,
+    "raw_response": "Error type (primary): Content substitution  \nMateriality: The substitution of \"Shotts\" with \"Shorts\" changes a specific location (village name), which is material to understanding where the speaker lived.  \nDirectionality: The error directly alters the factual claim about the village name, not just how it is expressed.  \nRecoverability: The correct location is not recoverable from the hypothesis alone; a reader would accept \"Shorts\" as the intended name.  \nMisleading plausibility: \"Shorts\" is a fluent, real-sounding word that could be mistaken for a place name, creating false confidence in the transcript.  \nSeverity: 3  \nJustification: The primary error is a content substitution that changes a specific location from \"Shotts\" to \"Shorts\", which is a real and plausible different entity, meeting the criteria for a clear factual error (level 3); other garbled phrases are less severe and do not raise the score further.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__2027",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Error type (primary): Acceptable variation  \nMateriality: No information is altered; only punctuation differs.  \nDirectionality: No change to the underlying claim.  \nRecoverability: The intended meaning is perfectly clear and identical.  \nMisleading plausibility: The hypothesis is fluent and harmless; punctuation does not mislead.  \nSeverity: 0  \nJustification: The only difference is a period at the end of the hypothesis, which is a purely surface-form punctuation change with no effect on propositional content, warranting the lowest severity.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_commonvoice_20260526_053757__210",
+    "dataset": "common_voice",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 2,
+    "severity": 3,
+    "raw_response": "Error type (primary): Content substitution\nMateriality: The error changes the temporal description of the timing belt from imminent failure (\"awa' to go\") to a past condition (\"a while ago\"), which could alter the timeline of events relevant to an incident.\nDirectionality: The error changes the underlying claim about the belt's state – from about-to-fail to already-past – thereby altering what is asserted about the car repair situation.\nRecoverability: The intended meaning (imminent failure) is not recoverable from the hypothesis alone; the fluent phrase \"was a while ago\" would be taken at face value as a different fact.\nMisleading plausibility: The phrase \"was a while ago\" is natural and plausible, making it likely to be accepted as true without scrutiny.\nSeverity: 3\nJustification: The substitution of \"awa' to go\" with \"a while ago\" is a clear factual error (level 3) because it unambiguously asserts a different temporal fact about the timing belt, with high materiality and misleading plausibility, though it does not reverse the central claim of having replaced the belt.",
+    "error": null
+  },
+  {
+    "uid": "whisper_english_dialects_20260525_110315__2242",
+    "dataset": "english_dialects_scots",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Error type (primary): Acceptable variation\nMateriality: No alteration to any content-bearing information; only capitalization of a proper noun.\nDirectionality: No change to the underlying claim about the legal status of bitcoin.\nRecoverability: The intended meaning is perfectly recoverable; the only difference is orthographic.\nMisleading plausibility: The hypothesis is fluent and identical in meaning, posing no risk of misinterpretation.\nSeverity: 0\nJustification: The change is purely a surface-form capitalization variant of the same proper noun, with no effect on propositional content or factual accuracy.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__2256",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Error type (primary): Acceptable variation  \nMateriality: No material information altered – only capitalization differs.  \nDirectionality: No change to the underlying claim.  \nRecoverability: Intended meaning is perfectly clear.  \nMisleading plausibility: Both are fluent and identical in content; no risk of misinterpretation.  \nSeverity: 0  \nJustification: The only discrepancy is a capital vs. lowercase initial letter, which is a purely surface-form variation with zero impact on meaning, so the error is completely inconsequential.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__2456",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 2,
+    "severity": 3,
+    "raw_response": "Error type (primary): Content substitution  \nMateriality: The error changes the subject from a generic app to a specific software product (SAP), which alters a key entity in the statement.  \nDirectionality: The underlying claim about what is being discussed shifts from an unspecified app to a named enterprise system.  \nRecoverability: The intended meaning (\"this app\") is not recoverable from the hypothesis alone, as \"THE SAP\" presents a plausible but different entity.  \nMisleading plausibility: The hypothesis is fully fluent and could easily be accepted as correct, increasing its potential to mislead.  \nSeverity: 3  \nJustification: The substitution of \"This app\" with \"THE SAP\" is a clear factual error that changes a material entity, and the output is fluent and plausible, warranting a severity of 3 per the rubric for unambiguous content substitution.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__1227",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Error type (primary): Acceptable variation  \nMateriality: No information is altered; only punctuation differs.  \nDirectionality: No change to the underlying claim.  \nRecoverability: The intended meaning is identical and confidently recoverable.  \nMisleading plausibility: The period is a normal punctuation mark; no risk of misinterpretation.  \nSeverity: 0  \nJustification: The hypothesis adds a period at the end of the reference, which is a punctuation-only change that does not affect propositional content, making this a level 0 severity error.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__1847",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Error type (primary): Acceptable variation  \nMateriality: No information is altered; only punctuation differs.  \nDirectionality: The underlying claim is unchanged.  \nRecoverability: The intended meaning is identical and immediately recoverable.  \nMisleading plausibility: The hypothesis is a verbatim copy plus a period, so it is fully fluent and accurate.  \nSeverity: 0  \nJustification: The only difference is a period at the end of the hypothesis, which is a punctuation change with no effect on meaning, qualifying as a severity 0 acceptable variation.",
+    "error": null
+  },
+  {
+    "uid": "whisper_english_dialects_20260525_110315__1023",
+    "dataset": "english_dialects_scots",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Error type (primary): Acceptable variation  \nMateriality: No material information is altered; the period is punctuation only.  \nDirectionality: No change to the underlying claim about what happened.  \nRecoverability: The intended meaning is identical and requires no reconstruction.  \nMisleading plausibility: The output is fluent and identical in content; no risk of misinterpretation.  \nSeverity: 0  \nJustification: The hypothesis differs from the reference only by an added period, which is a surface-level punctuation variation with no effect on propositional content, so the severity is 0.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_commonvoice_20260526_053757__351",
+    "dataset": "common_voice",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 2,
+    "severity": 3,
+    "raw_response": "Error type (primary): Content substitution  \nMateriality: The error changes the object of dislike from \"my job\" to \"my dog\", a material fact about the speaker's feelings and a key narrative detail.  \nDirectionality: It alters the underlying claim—the speaker asserts a disliking about their dog instead of their job, shifting the subject of the statement.  \nRecoverability: The intended meaning cannot be confidently recovered from the hypothesis alone because earlier references to \"my job\" conflict with the final \"my dog\", creating ambiguity.  \nMisleading plausibility: The phrase \"dislike about my dog\" is fluent and plausible in this dog-care context, making it likely to be accepted as true without suspicion.  \nSeverity: 3  \nJustification: The substitution of \"job\" with \"dog\" is a clear factual error introducing a different, plausible entity, and the concurrent change from \"love it\" to \"I'll have it\" further alters the claim, together representing a material and misleading alteration that fits level 3.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_commonvoice_20260526_053757__65",
+    "dataset": "common_voice",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 2,
+    "severity": 1,
+    "raw_response": "Error type (primary): Content substitution\nMateriality: The change from \"skill\" to \"scholar\" alters a content word, but the core assertion (the speaker wants to learn Spanish) remains intact and is not materially affected.\nDirectionality: The error changes the expression (which noun is used) but does not alter the underlying claim about the speaker's desire to learn Spanish.\nRecoverability: The intended word \"skill\" is easily recoverable from the phonetic similarity and surrounding context; the garbled \"LAM\" for \"learn\" is also cleanly recovered.\nMisleading plausibility: \"any scholar\" is a real phrase but does not cohere into a believable alternative claim in this context, so it is unlikely to mislead a reader.\nSeverity: 1\nJustification: The substitution of \"scholar\" for \"skill\" is a content word change, but the meaning is confidently and cleanly recoverable from the pair alone, with no material fact altered, fitting the criteria for level 1 (trivial/cosmetic error).",
+    "error": null
+  },
+  {
+    "uid": "qwen_commonvoice_20260524_153426__190",
+    "dataset": "common_voice",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 2,
+    "severity": 3,
+    "raw_response": "Error type (primary): Content substitution\nMateriality: The error changes \"wa'\" (wall) to \"wire\" and \"hae\" (have) to \"hear\", altering key objects and actions in the description of abuse and retaliation.\nDirectionality: The underlying claims are changed – from being hit with a book to hearing it, and from being put through a wall to through a wire – rather than just how they are expressed.\nRecoverability: The intended meanings (wall, have) cannot be confidently recovered from the hypothesis because the substituted words are fluent and plausible, masking the original dialect.\nMisleading plausibility: The hypothesis reads naturally and would likely be accepted as accurate, increasing the risk of misinterpretation in a policing context.\nSeverity: 3\nJustification: The primary content substitutions, especially \"wa'\" to \"wire\" and \"hae\" to \"hear\", produce clear factual errors that materially alter the incident details without ambiguity, fitting level 3's requirement of an unambiguously asserted different material fact.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__1213",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 1,
+    "severity": 2,
+    "raw_response": "Error type (primary): Content substitution\nMateriality: The error changes the descriptor of \"devices\" from \"shared\" to \"sheer,\" altering an attribute that is important to understanding the nature of the devices in the instruction.\nDirectionality: The underlying claim about what kind of devices are involved shifts from a specific property (shared) to a nonsensical word, creating an unclear assertion rather than a clear alternative fact.\nRecoverability: The intended word \"shared\" cannot be confidently recovered from the pair alone because \"sheer\" is a real word with a different sound and meaning; reconstruction requires guessing, leaving residual doubt.\nMisleading plausibility: The phrase \"sheer devices\" is not fluent or plausible in this context—it sounds odd and would likely be questioned, reducing the risk of false acceptance.\nSeverity: 2\nJustification: The substitution of \"shared\" with \"sheer\" is a content word change that produces a non-coherent phrase, fitting the ambiguous meaning shift category: recovery is not confident (level 1 criteria unmet) and no clear factual alternative is asserted, so severity 2 is appropriate.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_commonvoice_20260526_053757__503",
+    "dataset": "common_voice",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 2,
+    "severity": 4,
+    "raw_response": "Error type (primary): Addition, omission, or structural error  \nMateriality: The error fabricates content in a place where the ground truth had an inaudible span ([inc]), introducing an unverifiable claim about being given fancy watches and something involving \"not\". This alters an unknown detail into a specific asserted statement, which is material to the full account.  \nDirectionality: It changes the underlying claim from an unknown/unclear detail to a concrete (though garbled) assertion, thereby fabricating information not present in the reference.  \nRecoverability: The intended meaning of the [inc] span cannot be recovered from the hypothesis, as the garbled output provides no reliable clue to what was actually said; the reference itself has a gap.  \nMisleading plausibility: The hallucinated portion is heavily garbled (\"NOT A TOPES THAN EIME\") and is not fluent or plausible; it would likely be questioned rather than believed, but the rubric requires scoring hallucinated [inc] filler as 4 by default regardless of fluency.  \nSeverity: 4  \nJustification: The hypothesis contains a hallucinated filler where the reference had an inaudible mark [inc]; per the rubric, such fabricated content filling an unclear span is scored as severity 4 by default, as there is no ground truth to verify the new assertion, and the falsification is critical regardless of overall garbling.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_commonvoice_20260524_150129__327",
+    "dataset": "common_voice",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 2,
+    "severity": 3,
+    "raw_response": "Error type (primary): Polarity or modality error  \nMateriality: The tense shift from present (\"dinnae\" = don't) to past (\"didn't\") changes the temporal framing of the speaker's lack of thoughts and dislikes, altering whether these states are current or prior.  \nDirectionality: The underlying claim shifts from a present‑tense assertion about the speaker's current state to a past‑tense assertion, changing what is being claimed about the speaker's relationship to AI.  \nRecoverability: Without the reference, a reader would accept the past‑tense reading as stated; the intended present meaning is not recoverable from the hypothesis alone because the surrounding context does not force a correction.  \nMisleading plausibility: The output is fluent, grammatically sound, and reads as a natural English statement, making the erroneous tense plausible and likely to be taken at face value.  \nSeverity: 3  \nJustification: The hypothesis substitutes \"didn't\" for \"dinnae\" (meaning \"don't\") twice, unambiguously asserting a different temporal fact (past instead of present) about the speaker's thoughts and preferences, which is a clear factual error with no ambiguity in the new claim, fitting severity level 3.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__1253",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Error type (primary): Acceptable variation  \nMateriality: No material information is changed; the sentence is identical except for punctuation.  \nDirectionality: No change in the underlying claim.  \nRecoverability: Meaning is fully and immediately recoverable.  \nMisleading plausibility: The punctuation change is trivial and does not create any misleading impression.  \nSeverity: 0  \nJustification: The only difference is a period at the end of the hypothesis, which is a punctuation variation with no effect on meaning or propositional content.",
+    "error": null
+  },
+  {
+    "uid": "whisper_english_dialects_20260525_110315__2321",
+    "dataset": "english_dialects_scots",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 3,
+    "severity": 3,
+    "raw_response": "Error type (primary): Content substitution  \nMateriality: The error alters a descriptive adjective—changing \"conical\" (cone-shaped) to \"canonical\" (standard/accepted)—which affects the nature of the extrusions described, a detail relevant to understanding the building's design.  \nDirectionality: The underlying claim about what the extrusions are like is changed: from a specific shape to a normative property, shifting the factual assertion.  \nRecoverability: The intended word \"conical\" cannot be confidently recovered from \"canonical\" alone, as the two words have distinct meanings with no contextual cues in the pair to correct it.  \nMisleading plausibility: \"Canonical extrusions\" is a fluent and plausible phrase that could be accepted as true, increasing the risk of false confidence.  \nSeverity: 3  \nJustification: The substitution clearly asserts a different material fact (a concrete shape replaced by an abstract property) that is real, plausible, and not recoverable, meeting the level 3 criteria for a clear factual error.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_commonvoice_20260526_053757__459",
+    "dataset": "common_voice",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 2,
+    "severity": 2,
+    "raw_response": "Error type (primary): Addition, omission, or structural error\nMateriality: The error removes the specific action of exploring and replaces it with a nonsensical phrase about \"exploding,\" which alters a meaningful activity in the speaker's account.\nDirectionality: The underlying claim about what happened (exploring vs. a garbled event) is changed, but the garbled output does not assert a clear alternative fact.\nRecoverability: The intended meaning (\"we did a lot of exploring\") cannot be confidently recovered from the hypothesis alone; the phrase \"with te dl exploding\" is unrecoverable.\nMisleading plausibility: The garbled phrase is not fluent or believable, so it is unlikely to be accepted as factual, reducing the risk of false confidence.\nSeverity: 2\nJustification: The ASR replaces a clear action clause with a garbled, unrecoverable string, causing total loss of a detail without asserting a distinct material fact, which fits the level 2 criteria for ambiguous meaning shift due to unrecoverable loss.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__1957",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 1,
+    "severity": 1,
+    "raw_response": "Error type (primary): Content substitution  \nMateriality: Low – \"genre\" is a descriptive word, but its garbled form does not change any key fact about the subject (gnomes) or the claim (used in fantasy fiction).  \nDirectionality: No change to the underlying claim – the garbled \"onro\" is clearly a misrecognition of \"genre\" and does not assert a different meaning.  \nRecoverability: High – the phrase \"fantasy onro of fiction\" is unambiguous in context; the intended word \"genre\" is confidently recoverable without reconstruction.  \nMisleading plausibility: Very low – \"onro\" is a nonsensical token that would immediately be flagged as an error, not mistaken for a real alternative.  \nSeverity: 1  \nJustification: The single-word substitution of \"genre\" with the nonsensical \"onro\" results in a trivial, cleanly recoverable error with no plausible alternative interpretation, placing it at severity level 1 per the rubric for nonsensical renderings where meaning is confidently recovered.",
+    "error": null
+  },
+  {
+    "uid": "qwen_commonvoice_20260524_153426__394",
+    "dataset": "common_voice",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 1,
+    "severity": 1,
+    "raw_response": "Error type (primary): Content substitution\nMateriality: The error changes a single descriptive word (\"braw\" to \"brass\") in a hypothetical statement; no factual details about identity, action, time, or location are altered, so materiality is low.\nDirectionality: The error garbles an expression of opinion but does not change the underlying claim about what the speaker would like to be or what happened.\nRecoverability: The intended meaning (\"braw\" meaning great) is not confidently recoverable from the hypothesis alone, but the nonsensical phrase \"that would be brass\" has no believable alternative claim, and the reference provides clean recovery; reconstruction is not needed because the error is clearly a garbled word.\nMisleading plausibility: \"Brass\" is a real word, but the resulting phrase \"that would be brass\" is not fluent or plausible in context, so it would likely be questioned rather than accepted as true.\nSeverity: 1\nJustification: The primary error is a content substitution where \"braw\" is replaced by \"brass,\" producing a nonsensical rendering with no coherent alternative meaning, which fits the level 1 criteria for trivial/cosmetic errors requiring confident, clean recovery—the surrounding context and lack of plausible alternative keep the severity low.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_commonvoice_20260524_150129__143",
+    "dataset": "common_voice",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 3,
+    "severity": 3,
+    "raw_response": "Error type (primary): Content substitution\nMateriality: The band name \"Electric Six\" is replaced with \"Electric Sex\", altering the identity of the musical act being discussed, which is material to understanding the subject of the conversation.\nDirectionality: The change asserts a different entity (a phrase) rather than the known band, shifting the claim about what they go to see.\nRecoverability: The intended meaning cannot be confidently recovered from the pair alone—\"Electric Sex\" is not a known band and context does not resolve it.\nMisleading plausibility: \"Electric Sex\" is a fluent, plausible phrase that could be accepted as true if the listener is unfamiliar with the correct band, making it dangerously believable.\nSeverity: 3\nJustification: The primary error replaces a specific entity with a different, plausible phrase, meeting the criteria for a clear factual error (level 3); the change is material, not recoverable from the pair, and could mislead a reader.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__2227",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Error type (primary): Acceptable variation  \nMateriality: No material information is altered; only punctuation (comma, quotation marks) and a period are added or changed, none of which affect meaning.  \nDirectionality: The underlying claim about how to end the game remains identical; expression format differs but the assertion is unchanged.  \nRecoverability: The intended meaning is perfectly and instantly recoverable; no reconstruction needed.  \nMisleading plausibility: The altered transcript is still fluent and natural, but since it conveys the same fact, it is not misleading in any substantive way.  \nSeverity: 0  \nJustification: The only changes are benign punctuation and quotation mark variations (single to double quotes and addition of a comma), which have zero impact on propositional content, fitting the definition of severity 0.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__1768",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 2,
+    "severity": 3,
+    "raw_response": "Error type (primary): Content substitution  \nMateriality: The error changes the subject from \"men\" (a specific gender) to \"many\" (a general quantity), altering an important detail about who became werewolves—potentially material in a policing context.  \nDirectionality: It directly changes the factual claim from a specific group to a vague quantifier, shifting what is asserted.  \nRecoverability: The intended meaning (\"men\") is not confidently recoverable from the hypothesis alone, as \"many\" is a plausible alternative with no contextual clue to correct it.  \nMisleading plausibility: The hypothesis is fluent and grammatically correct, so the substitution \"many\" reads naturally and is likely to be accepted as true without suspicion.  \nSeverity: 3  \nJustification: The substitution of \"men\" with \"many\" unambiguously asserts a different material fact (entity/quantity change), and the fluent, plausible output makes it deceptive, meeting the definition of a clear factual error at severity level 3.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__523",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 2,
+    "severity": 1,
+    "raw_response": "Error type (primary): Content substitution  \nMateriality: The garbled \"lummage\" does not replace language with a different real entity; the core claim about changing a setting affecting devices remains intact.  \nDirectionality: The underlying claim that changing the setting will propagate to all devices except the phone is unchanged.  \nRecoverability: The intended word \"language\" is confidently recoverable from context and the similarity to the ground truth; no reconstruction is required.  \nMisleading plausibility: \"Lummage\" is clearly a non-word and would be flagged as an error, not accepted as a true fact.  \nSeverity: 1  \nJustification: The primary error is a nonsense substitution of \"language\" with \"lummage,\" which is easily recoverable and does not create a believable alternative claim, while the minor preposition change (\"in\" for \"on\") adds no material ambiguity.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__2428",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Error type (primary): Acceptable variation  \nMateriality: No information important to understanding the incident is altered.  \nDirectionality: The claim is expressed identically; only capitalization differs.  \nRecoverability: The intended meaning is perfectly clear with no reconstruction needed.  \nMisleading plausibility: The transcript is fluent and correct, posing no risk.  \nSeverity: 0  \nJustification: The only difference is capitalization of the first letter (\"Work\" vs \"work\"), which is a surface-form variation with no change to propositional content.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_edacc_20260525_184006__136",
+    "dataset": "edinburgh_international_accents",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 4,
+    "severity": 3,
+    "raw_response": "Error type (primary): Content substitution\nMateriality: The identity of the subject changes from \"you\" to \"he,\" which is a material fact in a policing context (who is being addressed vs. a third party).\nDirectionality: The underlying claim shifts from addressing the listener directly to referring to another person, altering the assertion about who is involved.\nRecoverability: The intended reference meaning (you could not) is not recoverable from the hypothesis because the subject is clearly different; the pair shows the error but the hypothesis alone is ambiguous.\nMisleading plausibility: The hypothesis is mostly coherent except for the nonstandard \"couldt,\" which could be interpreted as a dialectal variant of \"couldn't,\" making the erroneous subject change plausible enough to mislead.\nSeverity: 3\nJustification: The substitution of \"you\" with \"he\" is a clear factual error about a different entity, and \"couldt\" is a plausible misspelling of \"couldn't\" that doesn't reverse negation, so the severity aligns with level 3.",
+    "error": null
+  },
+  {
+    "uid": "whisper_english_dialects_20260525_110315__2037",
+    "dataset": "english_dialects_scots",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 0,
+    "severity": 3,
+    "raw_response": "Error type (primary): Content substitution  \nMateriality: The error alters the identity of the person from whom messages are received, which is material in a policing context where correct identification is crucial.  \nDirectionality: It changes the underlying claim about who the messages are from—a different person is named.  \nRecoverability: The intended name cannot be confidently recovered from the pair alone because both \"Lillie Paterson\" and \"Lily Patterson\" are plausible but distinct; reconstruction would require outside knowledge.  \nMisleading plausibility: The hypothesis \"Lily Patterson\" is fluent and reads as a real, complete name, making it likely to be accepted as correct without suspicion.  \nSeverity: 3  \nJustification: The ASR output substitutes a real, plausible different entity (name) for the ground-truth name, creating a clear factual error about identity with no ambiguity in the new claim, warranting a severity of 3 under the rubric.",
+    "error": null
+  },
+  {
+    "uid": "whisper_commonvoice_20260524_083930__430",
+    "dataset": "common_voice",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 2,
+    "severity": 3,
+    "raw_response": "Error type (primary): Content substitution  \nMateriality: The substitution of \"bairn\" (child) with \"born\" changes the temporal anchor from childhood to birth, a material fact about when the toys were favourite. Other substitutions (e.g., \"kye\" to \"kite\") also alter key objects.  \nDirectionality: The error shifts the underlying claim: the speaker now asserts the toys were favourite \"when I was born\" rather than during childhood—a different claim about the time of the experience.  \nRecoverability: The intended meaning (\"when I was a child\") is not confidently recoverable from the pair alone because \"born\" is a real, unambiguous word and the context does not clearly correct it; reconstruction is required.  \nMisleading plausibility: \"when I was born\" is a fluent, common phrase that could be accepted as true by a reader, creating false confidence in an erroneous fact.  \nSeverity: 3  \nJustification: The most impactful error is the substitution of \"bairn\" with \"born\", which unambiguously asserts a different material fact (time) and is plausibly deceptive, meeting the criteria for severity level 3; other garbled passages (e.g., \"I'm still his\") are more ambiguous or nonsensical and do not push the overall severity to level 4.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__148",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Error type (primary): Surface-form error  \nMateriality: No information is altered; the same content words appear in the same order.  \nDirectionality: Only the orthographic case changes; the underlying claim is identical.  \nRecoverability: The intended meaning is directly recoverable without any reconstruction.  \nMisleading plausibility: The hypothesis is fluent but perfectly equivalent in meaning to the reference, so it is not misleading.  \nSeverity: 0  \nJustification: The only difference is capitalization, which is a purely surface-level variation with no effect on propositional content, therefore the severity is 0.",
+    "error": null
+  },
+  {
+    "uid": "qwen_commonvoice_20260524_153426__13",
+    "dataset": "common_voice",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 3,
+    "severity": 3,
+    "raw_response": "Error type (primary): Content substitution  \nMateriality: The error changes a key action verb from \"hated\" (dislike) to \"had to\" (necessity), altering the speaker's stated relationship to clutter—a central concept in the narrative.  \nDirectionality: It changes the underlying claim about what the speaker has always done/felt, not just how it is expressed.  \nRecoverability: The intended meaning (\"hated\") is not recoverable from the hypothesis alone; the hypothesis asserts a clearly different action with no ambiguity.  \nMisleading plausibility: \"had to clutter\" is grammatically coherent and could be mistaken as a genuine (if odd) statement, though it conflicts with the surrounding context about being a declutterer expert.  \nSeverity: 3  \nJustification: The substitution of \"hated\" with \"had to\" is a clear factual error asserting a different material action (level 3), as it is unambiguous, changes a specific verb, and is fluent enough to potentially be accepted without immediate scrutiny.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_commonvoice_20260524_150129__449",
+    "dataset": "common_voice",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 2,
+    "severity": 3,
+    "raw_response": "Error type (primary): Content substitution  \nMateriality: The error changes what the speaker pretended to be happy about – from the tickets to Kylie Minogue – altering a key detail about intent and action.  \nDirectionality: The claim shifts from being about an object (tickets) to a person (Kylie), changing the underlying factual assertion.  \nRecoverability: The correct meaning is confidently recoverable from the ground truth, but the hypothesis alone would mislead without it.  \nMisleading plausibility: \"with him\" is fluent and grammatically well-formed, so it could be accepted as true despite the gender inconsistency with Kylie.  \nSeverity: 3  \nJustification: The substitution of \"them\" (tickets) with \"him\" (Kylie) unambiguously asserts a different material fact – which entity the speaker feigned enthusiasm for – meeting the criteria for a clear factual error (level 3).",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__2140",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Error type (primary): Acceptable variation  \nMateriality: The error alters no information; only punctuation and capitalization are added, which do not affect the understanding of the incident or any factual content.  \nDirectionality: The underlying claim is unchanged; it is purely a surface-form normalization.  \nRecoverability: The intended meaning is immediately and confidently recoverable from either version.  \nMisleading plausibility: The hypothesis is fluent and would be accepted as a correctly formatted transcript, but it does not introduce any false or misleading claim.  \nSeverity: 0  \nJustification: The hypothesis differs only in adding standard punctuation and capitalizing \"Alice,\" which are cosmetic changes with no impact on propositional content, fitting the description of acceptable variation at severity 0.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__1669",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Error type (primary): Acceptable variation  \nMateriality: No information important to understanding the incident is altered; capitalization does not change meaning.  \nDirectionality: Only the expression (casing) differs; the underlying claim is identical.  \nRecoverability: The intended meaning is perfectly clear and requires no reconstruction.  \nMisleading plausibility: The transcript is fluent and identical in content, so it is entirely trustworthy.  \nSeverity: 0  \nJustification: The only difference is the capitalization of the first letter of \"Quality\" in the reference, which is a surface-form variation with no effect on propositional content, thus scoring 0.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__1989",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Error type (primary): Acceptable variation  \nMateriality: No material fact is changed; only punctuation differs.  \nDirectionality: The underlying claim about Amazon Prime queries being sent to Amazon is identical.  \nRecoverability: The intended meaning is perfectly and confidently recoverable.  \nMisleading plausibility: The hypothesis is fluent and correct; the comma does not create any misleading impression.  \nSeverity: 0  \nJustification: The only difference between the reference and hypothesis is the insertion of a comma after \"Amazon Prime,\" which is a surface-level punctuation variant with no effect on propositional content or meaning.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__780",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 2,
+    "severity": 1,
+    "raw_response": "Error type (primary): Content substitution\nMateriality: The error changes a key noun (\"fiber\" to \"fire\"), but \"insoluble fire\" is not a coherent concept and does not alter understanding of the factual claim about dietary fiber.\nDirectionality: The change introduces a nonsensical term that does not assert a different plausible fact; it simply garbles the meaning without creating a believable alternative.\nRecoverability: The intended meaning (\"insoluble fiber\") is confidently and cleanly recoverable from the pair alone, as \"insoluble fire\" is obviously an error in the context of listing vegetables.\nMisleading plausibility: The erroneous phrase is clearly malformed and would not be accepted as a plausible alternative; it prompts scrutiny rather than false confidence.\nSeverity: 1\nJustification: The substitution of \"fire\" for \"fiber\" produces a nonsensical phrase that is easily recognized as an error and the correct meaning is confidently recoverable, aligning with the level 1 examples (e.g., \"Japer\" for \"Jaipur\").",
+    "error": null
+  }
+]

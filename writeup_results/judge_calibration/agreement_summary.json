@@ -1,0 +1,1073 @@
+[
+  {
+    "judge": "qwen2.5",
+    "condition": "direct",
+    "qwk": 0.7524,
+    "exact_match_pct": 59.0,
+    "mae": 0.48,
+    "mar_f1": 0.9344,
+    "mar_recall": 0.95,
+    "mar_precision": 0.9194,
+    "format_failure_rate_pct": 0.0,
+    "confusion_matrix": [
+      [
+        35,
+        5,
+        0,
+        0,
+        0
+      ],
+      [
+        3,
+        6,
+        9,
+        0,
+        0
+      ],
+      [
+        0,
+        11,
+        15,
+        3,
+        0
+      ],
+      [
+        0,
+        2,
+        3,
+        1,
+        0
+      ],
+      [
+        0,
+        1,
+        3,
+        1,
+        2
+      ]
+    ],
+    "n_valid": 100,
+    "n_total": 100,
+    "n_failed": 0
+  },
+  {
+    "judge": "qwen2.5",
+    "condition": "medium",
+    "qwk": 0.6727,
+    "exact_match_pct": 46.0,
+    "mae": 0.67,
+    "mar_f1": 0.918,
+    "mar_recall": 0.9333,
+    "mar_precision": 0.9032,
+    "format_failure_rate_pct": 0.0,
+    "confusion_matrix": [
+      [
+        34,
+        6,
+        0,
+        0,
+        0
+      ],
+      [
+        4,
+        8,
+        0,
+        6,
+        0
+      ],
+      [
+        0,
+        17,
+        0,
+        12,
+        0
+      ],
+      [
+        0,
+        3,
+        0,
+        3,
+        0
+      ],
+      [
+        0,
+        2,
+        0,
+        4,
+        1
+      ]
+    ],
+    "n_valid": 100,
+    "n_total": 100,
+    "n_failed": 0
+  },
+  {
+    "judge": "qwen2.5",
+    "condition": "structured",
+    "qwk": 0.7371,
+    "exact_match_pct": 52.0,
+    "mae": 0.59,
+    "mar_f1": 0.9449,
+    "mar_recall": 1.0,
+    "mar_precision": 0.8955,
+    "format_failure_rate_pct": 0.0,
+    "confusion_matrix": [
+      [
+        33,
+        5,
+        1,
+        1,
+        0
+      ],
+      [
+        0,
+        2,
+        9,
+        7,
+        0
+      ],
+      [
+        0,
+        4,
+        13,
+        12,
+        0
+      ],
+      [
+        0,
+        0,
+        4,
+        2,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        4,
+        2
+      ]
+    ],
+    "n_valid": 100,
+    "n_total": 100,
+    "n_failed": 0
+  },
+  {
+    "judge": "qwen3.5",
+    "condition": "direct",
+    "qwk": 0.6807,
+    "exact_match_pct": 46.0,
+    "mae": 0.66,
+    "mar_f1": 0.9091,
+    "mar_recall": 1.0,
+    "mar_precision": 0.8333,
+    "format_failure_rate_pct": 0.0,
+    "confusion_matrix": [
+      [
+        28,
+        11,
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        8,
+        3,
+        7,
+        0
+      ],
+      [
+        0,
+        13,
+        5,
+        11,
+        0
+      ],
+      [
+        0,
+        1,
+        0,
+        5,
+        0
+      ],
+      [
+        0,
+        1,
+        0,
+        6,
+        0
+      ]
+    ],
+    "n_valid": 100,
+    "n_total": 100,
+    "n_failed": 0
+  },
+  {
+    "judge": "qwen3.5",
+    "condition": "medium",
+    "qwk": 0.764,
+    "exact_match_pct": 61.0,
+    "mae": 0.49,
+    "mar_f1": 0.9492,
+    "mar_recall": 0.9333,
+    "mar_precision": 0.9655,
+    "format_failure_rate_pct": 0.0,
+    "confusion_matrix": [
+      [
+        38,
+        1,
+        0,
+        1,
+        0
+      ],
+      [
+        2,
+        9,
+        3,
+        4,
+        0
+      ],
+      [
+        2,
+        6,
+        11,
+        10,
+        0
+      ],
+      [
+        0,
+        1,
+        2,
+        3,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        6,
+        0
+      ]
+    ],
+    "n_valid": 100,
+    "n_total": 100,
+    "n_failed": 0
+  },
+  {
+    "judge": "qwen3.5",
+    "condition": "structured",
+    "qwk": 0.7114,
+    "exact_match_pct": 65.0,
+    "mae": 0.53,
+    "mar_f1": 0.8829,
+    "mar_recall": 0.8167,
+    "mar_precision": 0.9608,
+    "format_failure_rate_pct": 0.0,
+    "confusion_matrix": [
+      [
+        38,
+        1,
+        0,
+        1,
+        0
+      ],
+      [
+        5,
+        6,
+        2,
+        5,
+        0
+      ],
+      [
+        6,
+        4,
+        15,
+        2,
+        2
+      ],
+      [
+        0,
+        0,
+        3,
+        3,
+        0
+      ],
+      [
+        0,
+        0,
+        3,
+        1,
+        3
+      ]
+    ],
+    "n_valid": 100,
+    "n_total": 100,
+    "n_failed": 0
+  },
+  {
+    "judge": "gemma4",
+    "condition": "direct",
+    "qwk": 0.7227,
+    "exact_match_pct": 65.0,
+    "mae": 0.49,
+    "mar_f1": 0.8807,
+    "mar_recall": 0.8,
+    "mar_precision": 0.9796,
+    "format_failure_rate_pct": 0.0,
+    "confusion_matrix": [
+      [
+        39,
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        6,
+        9,
+        0,
+        3,
+        0
+      ],
+      [
+        5,
+        9,
+        10,
+        5,
+        0
+      ],
+      [
+        0,
+        0,
+        2,
+        4,
+        0
+      ],
+      [
+        1,
+        0,
+        1,
+        2,
+        3
+      ]
+    ],
+    "n_valid": 100,
+    "n_total": 100,
+    "n_failed": 0
+  },
+  {
+    "judge": "gemma4",
+    "condition": "medium",
+    "qwk": 0.6519,
+    "exact_match_pct": 55.0,
+    "mae": 0.61,
+    "mar_f1": 0.9217,
+    "mar_recall": 0.8833,
+    "mar_precision": 0.9636,
+    "format_failure_rate_pct": 0.0,
+    "confusion_matrix": [
+      [
+        38,
+        0,
+        0,
+        2,
+        0
+      ],
+      [
+        5,
+        9,
+        1,
+        3,
+        0
+      ],
+      [
+        2,
+        13,
+        4,
+        10,
+        0
+      ],
+      [
+        0,
+        1,
+        1,
+        4,
+        0
+      ],
+      [
+        0,
+        3,
+        0,
+        4,
+        0
+      ]
+    ],
+    "n_valid": 100,
+    "n_total": 100,
+    "n_failed": 0
+  },
+  {
+    "judge": "gemma4",
+    "condition": "structured",
+    "qwk": 0.6721,
+    "exact_match_pct": 60.0,
+    "mae": 0.56,
+    "mar_f1": 0.8462,
+    "mar_recall": 0.7333,
+    "mar_precision": 1.0,
+    "format_failure_rate_pct": 0.0,
+    "confusion_matrix": [
+      [
+        40,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        8,
+        8,
+        0,
+        2,
+        0
+      ],
+      [
+        7,
+        13,
+        6,
+        3,
+        0
+      ],
+      [
+        0,
+        2,
+        0,
+        4,
+        0
+      ],
+      [
+        1,
+        1,
+        0,
+        3,
+        2
+      ]
+    ],
+    "n_valid": 100,
+    "n_total": 100,
+    "n_failed": 0
+  },
+  {
+    "judge": "phi4",
+    "condition": "direct",
+    "qwk": 0.7834,
+    "exact_match_pct": 67.0,
+    "mae": 0.42,
+    "mar_f1": 0.9449,
+    "mar_recall": 1.0,
+    "mar_precision": 0.8955,
+    "format_failure_rate_pct": 0.0,
+    "confusion_matrix": [
+      [
+        33,
+        5,
+        0,
+        2,
+        0
+      ],
+      [
+        0,
+        6,
+        10,
+        2,
+        0
+      ],
+      [
+        0,
+        3,
+        20,
+        6,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        5,
+        0
+      ],
+      [
+        0,
+        0,
+        3,
+        1,
+        3
+      ]
+    ],
+    "n_valid": 100,
+    "n_total": 100,
+    "n_failed": 0
+  },
+  {
+    "judge": "phi4",
+    "condition": "medium",
+    "qwk": 0.7455,
+    "exact_match_pct": 69.0,
+    "mae": 0.41,
+    "mar_f1": 0.9593,
+    "mar_recall": 0.9833,
+    "mar_precision": 0.9365,
+    "format_failure_rate_pct": 0.0,
+    "confusion_matrix": [
+      [
+        36,
+        3,
+        0,
+        1,
+        0
+      ],
+      [
+        1,
+        13,
+        4,
+        0,
+        0
+      ],
+      [
+        0,
+        6,
+        17,
+        6,
+        0
+      ],
+      [
+        0,
+        1,
+        3,
+        2,
+        0
+      ],
+      [
+        0,
+        2,
+        3,
+        1,
+        1
+      ]
+    ],
+    "n_valid": 100,
+    "n_total": 100,
+    "n_failed": 0
+  },
+  {
+    "judge": "phi4",
+    "condition": "structured",
+    "qwk": 0.7464,
+    "exact_match_pct": 66.0,
+    "mae": 0.46,
+    "mar_f1": 0.9123,
+    "mar_recall": 0.8667,
+    "mar_precision": 0.963,
+    "format_failure_rate_pct": 0.0,
+    "confusion_matrix": [
+      [
+        38,
+        1,
+        1,
+        0,
+        0
+      ],
+      [
+        3,
+        9,
+        5,
+        1,
+        0
+      ],
+      [
+        5,
+        8,
+        14,
+        2,
+        0
+      ],
+      [
+        0,
+        2,
+        1,
+        3,
+        0
+      ],
+      [
+        0,
+        0,
+        3,
+        2,
+        2
+      ]
+    ],
+    "n_valid": 100,
+    "n_total": 100,
+    "n_failed": 0
+  },
+  {
+    "judge": "ministral3",
+    "condition": "direct",
+    "qwk": 0.6582,
+    "exact_match_pct": 51.0,
+    "mae": 0.62,
+    "mar_f1": 0.9219,
+    "mar_recall": 0.9833,
+    "mar_precision": 0.8676,
+    "format_failure_rate_pct": 0.0,
+    "confusion_matrix": [
+      [
+        31,
+        8,
+        0,
+        1,
+        0
+      ],
+      [
+        1,
+        10,
+        2,
+        5,
+        0
+      ],
+      [
+        0,
+        14,
+        8,
+        7,
+        0
+      ],
+      [
+        0,
+        2,
+        2,
+        2,
+        0
+      ],
+      [
+        0,
+        1,
+        2,
+        4,
+        0
+      ]
+    ],
+    "n_valid": 100,
+    "n_total": 100,
+    "n_failed": 0
+  },
+  {
+    "judge": "ministral3",
+    "condition": "medium",
+    "qwk": 0.6771,
+    "exact_match_pct": 57.0,
+    "mae": 0.55,
+    "mar_f1": 0.9421,
+    "mar_recall": 0.95,
+    "mar_precision": 0.9344,
+    "format_failure_rate_pct": 0.0,
+    "confusion_matrix": [
+      [
+        36,
+        4,
+        0,
+        0,
+        0
+      ],
+      [
+        2,
+        14,
+        0,
+        2,
+        0
+      ],
+      [
+        1,
+        19,
+        3,
+        6,
+        0
+      ],
+      [
+        0,
+        2,
+        1,
+        3,
+        0
+      ],
+      [
+        0,
+        3,
+        1,
+        2,
+        1
+      ]
+    ],
+    "n_valid": 100,
+    "n_total": 100,
+    "n_failed": 0
+  },
+  {
+    "judge": "ministral3",
+    "condition": "structured",
+    "qwk": 0.5928,
+    "exact_match_pct": 55.0,
+    "mae": 0.67,
+    "mar_f1": 0.887,
+    "mar_recall": 0.85,
+    "mar_precision": 0.9273,
+    "format_failure_rate_pct": 0.0,
+    "confusion_matrix": [
+      [
+        36,
+        3,
+        0,
+        1,
+        0
+      ],
+      [
+        5,
+        9,
+        2,
+        2,
+        0
+      ],
+      [
+        2,
+        12,
+        6,
+        5,
+        4
+      ],
+      [
+        0,
+        2,
+        1,
+        2,
+        1
+      ],
+      [
+        2,
+        1,
+        2,
+        0,
+        2
+      ]
+    ],
+    "n_valid": 100,
+    "n_total": 100,
+    "n_failed": 0
+  },
+  {
+    "judge": "deepseek",
+    "condition": "direct",
+    "qwk": 0.8797,
+    "exact_match_pct": 70.0,
+    "mae": 0.33,
+    "mar_f1": 0.958,
+    "mar_recall": 0.95,
+    "mar_precision": 0.9661,
+    "format_failure_rate_pct": 0.0,
+    "confusion_matrix": [
+      [
+        38,
+        2,
+        0,
+        0,
+        0
+      ],
+      [
+        3,
+        14,
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        3,
+        12,
+        12,
+        2
+      ],
+      [
+        0,
+        0,
+        1,
+        4,
+        1
+      ],
+      [
+        0,
+        0,
+        1,
+        4,
+        2
+      ]
+    ],
+    "n_valid": 100,
+    "n_total": 100,
+    "n_failed": 0
+  },
+  {
+    "judge": "deepseek",
+    "condition": "medium",
+    "qwk": 0.877,
+    "exact_match_pct": 68.0,
+    "mae": 0.35,
+    "mar_f1": 0.958,
+    "mar_recall": 0.95,
+    "mar_precision": 0.9661,
+    "format_failure_rate_pct": 0.0,
+    "confusion_matrix": [
+      [
+        38,
+        2,
+        0,
+        0,
+        0
+      ],
+      [
+        3,
+        14,
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        4,
+        8,
+        16,
+        1
+      ],
+      [
+        0,
+        0,
+        1,
+        4,
+        1
+      ],
+      [
+        0,
+        0,
+        2,
+        1,
+        4
+      ]
+    ],
+    "n_valid": 100,
+    "n_total": 100,
+    "n_failed": 0
+  },
+  {
+    "judge": "deepseek",
+    "condition": "structured",
+    "qwk": 0.8425,
+    "exact_match_pct": 67.0,
+    "mae": 0.39,
+    "mar_f1": 0.958,
+    "mar_recall": 0.95,
+    "mar_precision": 0.9661,
+    "format_failure_rate_pct": 0.0,
+    "confusion_matrix": [
+      [
+        38,
+        1,
+        0,
+        1,
+        0
+      ],
+      [
+        3,
+        12,
+        3,
+        0,
+        0
+      ],
+      [
+        0,
+        5,
+        8,
+        14,
+        2
+      ],
+      [
+        0,
+        1,
+        0,
+        5,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        2,
+        4
+      ]
+    ],
+    "n_valid": 100,
+    "n_total": 100,
+    "n_failed": 0
+  },
+  {
+    "judge": "gpt5.6luna",
+    "condition": "direct",
+    "qwk": 0.8594,
+    "exact_match_pct": 74.0,
+    "mae": 0.32,
+    "mar_f1": 0.9204,
+    "mar_recall": 0.8667,
+    "mar_precision": 0.9811,
+    "format_failure_rate_pct": 0.0,
+    "confusion_matrix": [
+      [
+        39,
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        8,
+        7,
+        3,
+        0,
+        0
+      ],
+      [
+        0,
+        2,
+        20,
+        5,
+        2
+      ],
+      [
+        0,
+        1,
+        1,
+        4,
+        0
+      ],
+      [
+        0,
+        0,
+        3,
+        0,
+        4
+      ]
+    ],
+    "n_valid": 100,
+    "n_total": 100,
+    "n_failed": 0
+  },
+  {
+    "judge": "gpt5.6luna",
+    "condition": "medium",
+    "qwk": 0.8435,
+    "exact_match_pct": 70.0,
+    "mae": 0.36,
+    "mar_f1": 0.9009,
+    "mar_recall": 0.8333,
+    "mar_precision": 0.9804,
+    "format_failure_rate_pct": 0.0,
+    "confusion_matrix": [
+      [
+        39,
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        9,
+        4,
+        4,
+        1,
+        0
+      ],
+      [
+        1,
+        3,
+        19,
+        6,
+        0
+      ],
+      [
+        0,
+        1,
+        1,
+        4,
+        0
+      ],
+      [
+        0,
+        0,
+        3,
+        0,
+        4
+      ]
+    ],
+    "n_valid": 100,
+    "n_total": 100,
+    "n_failed": 0
+  },
+  {
+    "judge": "gpt5.6luna",
+    "condition": "structured",
+    "qwk": 0.8898,
+    "exact_match_pct": 74.0,
+    "mae": 0.29,
+    "mar_f1": 0.9107,
+    "mar_recall": 0.85,
+    "mar_precision": 0.9808,
+    "format_failure_rate_pct": 0.0,
+    "confusion_matrix": [
+      [
+        39,
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        9,
+        6,
+        3,
+        0,
+        0
+      ],
+      [
+        0,
+        2,
+        20,
+        6,
+        1
+      ],
+      [
+        0,
+        0,
+        2,
+        4,
+        0
+      ],
+      [
+        0,
+        0,
+        2,
+        0,
+        5
+      ]
+    ],
+    "n_valid": 100,
+    "n_total": 100,
+    "n_failed": 0
+  }
+]

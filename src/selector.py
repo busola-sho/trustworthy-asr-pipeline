@@ -8,14 +8,28 @@ run_naive_combination_v3.py, run_context_selector.py, run_context_selector_v2.py
 run_context_selector_v1_confidence.py, run_context_selector_v2_confidence.py,
 and run_naive_combination_confidence.py.
 
+CHANGES:
+  - "whisper" replaced with "whisperx" everywhere (standing decision:
+    WhisperX replaces plain Whisper across all ensemble techniques)
+  - CANONICAL_FILES (static, hardcoded timestamps) replaced with
+    find_canonical_file() - a dynamic lookup that finds the most recent
+    FULL-dataset benchmark file for a given model/dataset, searching
+    writeup_results/benchmarks/main/ first, falling back to
+    results/benchmarks/main/. This avoids hardcoding filenames that go
+    stale every time a benchmark is rerun, and fixes the old dict pointing
+    at 150-sample subset files rather than full-dataset runs.
+  - OLLAMA_MODELS extended with the locked judge-shortlist models
+    (phi4, ministral3, gemma4, qwen3.5), for use in the selector ablation.
+
 Usage:
     from src.selector import (
         get_subset_indices, load_qwen_samples, load_subset_by_sample_index,
-        strip_lowconf_markers, DATASET_SIZES, CANONICAL_FILES, SUBSET_FILES,
+        strip_lowconf_markers, DATASET_SIZES, find_canonical_file, SUBSET_FILES,
         OLLAMA_MODELS, ollama_select,
     )
 """
 
+import glob
 import json
 import os
 import random
@@ -32,63 +46,96 @@ DATASET_SIZES = {
     "edacc":            198,
     "shetland":         100,
     "english_dialects": 2543,
-    "shetland":         100,
 }
 
 # ── Benchmark file paths ───────────────────────────────────────────────────────
 
-# Full-dataset benchmark files (relative to project root)
-CANONICAL_FILES = {
-    ("qwen",     "commonvoice"):      "results/benchmarks/main/qwen_commonvoice_20260524_153426.json",
-    ("qwen",     "edacc"):            "results/benchmarks/main/qwen_edacc_20260525_204314.json",
-    ("qwen",     "english_dialects"): "results/benchmarks/main/qwen_english_dialects_20260525_000627.json",
-    ("qwen",     "shetland"):         "results/benchmarks/shetland/shetland_qwen3asr_20260603_150124.json",
+# Full-dataset benchmark files are timestamped and rerun periodically, so we
+# look them up dynamically rather than hardcoding filenames that go stale.
+# Searches writeup_results/ (current) first, then results/ (legacy) as fallback.
+BENCHMARK_SEARCH_DIRS = [
+    "writeup_results/benchmarks/main",
+    "results/benchmarks/main",
+]
 
-    ("whisper",  "commonvoice"):      "results/benchmarks/main/whisper_commonvoice_20260524_083930.json",
-    ("whisper",  "edacc"):            "results/benchmarks/main/whisper_edacc_20260525_184504.json",
-    ("whisper",  "english_dialects"): "results/benchmarks/main/whisper_english_dialects_20260525_110315.json",
-    ("whisper",  "shetland"):         "results/benchmarks/shetland/shetland_whisper_20260603_123115.json",
-
-    ("parakeet", "commonvoice"):      "results/benchmarks/main/parakeet_commonvoice_20260524_150129.json",
-    ("parakeet", "edacc"):            "results/benchmarks/main/parakeet_edacc_20260525_184006.json",
-    ("parakeet", "english_dialects"): "results/benchmarks/main/parakeet_english_dialects_20260524_234807.json",
-    ("parakeet", "shetland"):         "results/benchmarks/shetland/shetland_parakeet_20260606_134131.json",
-
-    ("wav2vec2", "commonvoice"):      "results/benchmarks/main/wav2vec2_commonvoice_20260526_053757.json",
-    ("wav2vec2", "edacc"):            "results/benchmarks/main/wav2vec2_edacc_20260525_213534.json",
-    ("wav2vec2", "english_dialects"): "results/benchmarks/main/wav2vec2_english_dialects_20260526_073439.json",
-    ("wav2vec2", "shetland"):         "results/benchmarks/shetland/shetland_wav2vec2_20260606_134507.json",
+# Shetland is a small, fixed, fully-used held-out set (100 samples, never
+# re-subsetted) - these paths are stable and kept as a static lookup rather
+# than searched for, since there's only ever one canonical file per model.
+SHETLAND_FILES = {
+    "qwen":     "results/benchmarks/shetland/shetland_qwen3asr_20260603_150124.json",
+    "whisperx": "results/benchmarks/shetland/shetland_whisper_20260603_123115.json",
+    "parakeet": "results/benchmarks/shetland/shetland_parakeet_20260606_134131.json",
+    "wav2vec2": "results/benchmarks/shetland/shetland_wav2vec2_20260606_134507.json",
 }
 
-# Per-word confidence subset files (150-sample subsets with segments)
+
+def find_canonical_file(model: str, dataset: str) -> str:
+    """
+    Find the most recent FULL-dataset benchmark file for a given model and
+    dataset. Excludes 150/100-sample subset files (only wants full runs).
+    Searches writeup_results/benchmarks/main/ first, falls back to
+    results/benchmarks/main/. Shetland uses its own static lookup instead,
+    since it's a small fixed set with no full/subset distinction.
+
+    Raises FileNotFoundError with a clear message if nothing is found -
+    this is deliberate: silently falling back to a stale or wrong file
+    would be worse than failing loudly here.
+    """
+    if dataset == "shetland":
+        if model not in SHETLAND_FILES:
+            raise FileNotFoundError(f"No Shetland file registered for model={model}")
+        return SHETLAND_FILES[model]
+
+    for base_dir in BENCHMARK_SEARCH_DIRS:
+        pattern = os.path.join(base_dir, f"{model}_{dataset}_*.json")
+        matches = sorted(glob.glob(pattern))
+        matches = [m for m in matches if "sub150" not in m and "sub100" not in m]
+        if matches:
+            return matches[-1]   # filenames are timestamp-sorted, so latest sorts last
+
+    raise FileNotFoundError(
+        f"No full-dataset benchmark file found for model={model} dataset={dataset} "
+        f"in {BENCHMARK_SEARCH_DIRS}. Run the benchmark/transcription script for "
+        f"this model/dataset first, or check the filename pattern matches "
+        f"'{model}_{dataset}_<timestamp>.json'."
+    )
+
+
+# Per-word confidence subset files (150-sample subsets with segments) - unchanged,
+# these are only used by the sentence-confidence pipeline, not the ensemble scripts.
 SUBSETS_DIR = "results/benchmarks/subsets"
 
 SUBSET_FILES = {
-    ("whisper",  "commonvoice"):      "whisper_commonvoice_sub150.json",
-    ("whisper",  "edacc"):            "whisper_edacc_sub150.json",
-    ("whisper",  "english_dialects"): "whisper_english_dialects_sub150.json",
-    ("whisper",  "shetland"):         "whisper_shetland_sub100.json",
+    ("whisperx", "commonvoice"):      "whisper_commonvoice_sub150.json",
+    ("whisperx", "edacc"):            "whisper_edacc_sub150.json",
+    ("whisperx", "english_dialects"): "whisper_english_dialects_sub150.json",
+    ("whisperx", "shetland"):         "shetland/whisper_shetland_sub100.json",
 
     ("parakeet", "commonvoice"):      "parakeet_commonvoice_sub150.json",
     ("parakeet", "edacc"):            "parakeet_edacc_sub150.json",
     ("parakeet", "english_dialects"): "parakeet_english_dialects_sub150.json",
-    ("parakeet", "shetland"):         "parakeet_shetland_sub100.json",
-    
+    ("parakeet", "shetland"):         "shetland/parakeet_shetland_sub100.json",
+
     ("qwen",     "commonvoice"):      "qwen3asr_commonvoice_sub150.json",
     ("qwen",     "edacc"):            "qwen3asr_edacc_sub150.json",
-    ("whisper",  "shetland"):          "shetland/whisper_shetland_sub100.json",
-    ("parakeet", "shetland"):          "shetland/parakeet_shetland_sub100.json",
-    ("qwen",     "shetland"):          "shetland/qwen3asr_shetland_sub100.json",
     ("qwen",     "english_dialects"): "qwen3asr_english_dialects_sub150.json",
-    }
+    ("qwen",     "shetland"):         "shetland/qwen3asr_shetland_sub100.json",
+}
 
 # ── Ollama model names ─────────────────────────────────────────────────────────
 
 OLLAMA_MODELS = {
-    "qwen":    "qwen2.5:7b",
-    "qwen14b": "qwen2.5:14b",
-    "mistral": "mistral:7b",
-    "gemma2":  "gemma2:9b",
+    # legacy / original selector candidates
+    "qwen":      "qwen2.5:7b",
+    "qwen14b":   "qwen2.5:14b",
+    "mistral":   "mistral:7b",
+    "gemma2":    "gemma2:9b",
+    # locked judge-shortlist models, added for the selector ablation -
+    # confirmed working Ollama tags from the judge calibration work
+    "phi4":       "phi4:14b",
+    "ministral3": "ministral-3:14b",
+    "gemma4":     "gemma4:12b",
+    "qwen3.5":    "qwen3.5:9b",
 }
 
 # ── Subset sampling ────────────────────────────────────────────────────────────
@@ -115,7 +162,7 @@ def load_samples(path: str) -> list:
 
 def load_qwen_samples(dataset: str) -> list:
     """Load Qwen3-ASR samples for a given dataset."""
-    return load_samples(CANONICAL_FILES[("qwen", dataset)])
+    return load_samples(find_canonical_file("qwen", dataset))
 
 
 def load_subset_by_sample_index(model: str, dataset: str) -> dict:

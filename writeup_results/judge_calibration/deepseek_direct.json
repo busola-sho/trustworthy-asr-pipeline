@@ -1,0 +1,902 @@
+[
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__938",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 3,
+    "severity": 3,
+    "raw_response": "Severity: 3  \nJustification: The hypothesis replaces \"drouth\" (meaning thirst) with \"truth,\" unambiguously asserting a different concept that changes the propositional content—from speaking what one thought while thirsty to speaking what one thought in truth—constituting a clear factual error with no ambiguity about the new claim.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__2347",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 1,
+    "severity": 1,
+    "raw_response": "Severity: 1\nJustification: The hypothesis garbles \"Try saying hey Google\" into \"TRY SEEING HER GOGGLE\", a nonsensical rendering that does not form a believable alternative claim, while the rest of the utterance is preserved; this matches the level 1 example provided.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__1482",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0  \nJustification: The only difference is the addition of a period at the end of the hypothesis, which is a punctuation change with no impact on meaning.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_edacc_20260525_184006__110",
+    "dataset": "edinburgh_international_accents",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 4,
+    "severity": 3,
+    "raw_response": "Severity: 3\nJustification: The hypothesis \"slain\" unambiguously asserts a different word and action compared to the reference \"AND PLAYING AND\", which is a clear factual error with no possibility of recovery or ambiguity.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__170",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 2,
+    "severity": 3,
+    "raw_response": "Severity: 3\nJustification: The hypothesis replaces the location \"Bishopbriggs\" with a different plausible entity \"bishop rigs\" and changes the preposition \"in\" to \"and\", unambiguously asserting a different material fact about what is present.",
+    "error": null
+  },
+  {
+    "uid": "whisper_english_dialects_20260525_110315__2542",
+    "dataset": "english_dialects_scots",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0  \nJustification: The only difference is the numeral \"1\" being written out as \"one\" and a period added, which are surface-level variations with no change to propositional content.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__1952",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 1,
+    "severity": 1,
+    "raw_response": "Severity: 1\nJustification: \"CORPS\" and \"YEURAPE\" are garbled renderings of \"core\" and \"your app\" that do not form believable alternative claims; the intended meaning is confidently and cleanly recoverable as the original sentence.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_edacc_20260525_213534__34",
+    "dataset": "edinburgh_international_accents",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 4,
+    "severity": 2,
+    "raw_response": "Severity: 2\nJustification: The hypothesis drops the subject \"WE\" and garbles \"WHERE IT WOULD BE LIKE UM\" into the nonsensical \"FERITD BE LIKE LIKE\", and reduces \"YOU TOOK THE BIB IN\" to the unclear \"YOU TR BI\", creating genuine ambiguity about the actor and the final action that cannot be confidently and cleanly recovered, but no clear different material fact is asserted.",
+    "error": null
+  },
+  {
+    "uid": "whisper_commonvoice_20260524_083930__334",
+    "dataset": "common_voice",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 2,
+    "severity": 2,
+    "raw_response": "Severity: 2  \nJustification: The hypothesis merges \"English, eh, maths\" into \"the English maths\" and drops the opening clause \"I know they say it's\" before \"never too late,\" introducing ambiguity and loss of detail that require reconstruction without asserting an unambiguous different fact.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__1003",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The only difference is the capitalization of the first letter (\"Light\" vs \"light\"), which is a surface form change with no impact on propositional content.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__1533",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0  \nJustification: The hypothesis exactly matches the reference except for the capitalization of \"Hear\" to \"hear\", which is a surface-level casing variation with no change to propositional content.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__1080",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 1,
+    "severity": 1,
+    "raw_response": "Severity: 1  \nJustification: The hypothesis contains phonetic/surface variants (\"GOGGLE\" for \"Google\", \"POD CASTS\" for \"podcasts\") and a nonsensical substitution (\"UP\" for \"app\") that does not cohere into a believable alternative claim, so the original meaning is confidently and cleanly recoverable.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__1932",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 4,
+    "severity": 3,
+    "raw_response": "Severity: 3\nJustification: The substitution of \"This\" with \"There\" changes the assertion from a specific evaluation of a particular way to a general statement about the existence of any better way, which is a clear factual error. The garbled station names are less impactful, but the core meaning shift warrants a level 3.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__1862",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0  \nJustification: The only difference is capitalization of proper nouns (\"Bromley\", \"Hillingdon\", \"Southeastern\") and the initial \"The\" vs \"the\", which are purely surface-level formatting changes with no effect on propositional content.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_commonvoice_20260524_150129__94",
+    "dataset": "common_voice",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 2,
+    "severity": 3,
+    "raw_response": "Severity: 3\nJustification: The hypothesis substitutes \"the enemy\" for \"the NME\" (a specific magazine) and changes \"the Master and Margarita\" to \"the master of margarita,\" both unambiguously altering material facts about where the band's statement appeared and the book's title, meeting the criteria for clear factual errors.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__428",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0  \nJustification: The only difference is capitalization (\"Watch\" vs \"watch\"), which is a surface form change with no effect on meaning or propositional content.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_commonvoice_20260526_053757__453",
+    "dataset": "common_voice",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 1,
+    "severity": 1,
+    "raw_response": "Severity: 1\nJustification: The hypothesis contains numerous surface-level and garbled substitutions (e.g., \"WIRLD A PIECE\" for \"world of peace\", \"A RODKID\" for \"eradicated\"), but these are nonsensical renderings that do not cohere into a believable alternative claim, and the original meaning is confidently and cleanly recoverable from context.",
+    "error": null
+  },
+  {
+    "uid": "whisper_english_dialects_20260525_110315__644",
+    "dataset": "english_dialects_scots",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 2,
+    "severity": 2,
+    "raw_response": "Severity: 2  \nJustification: The change from \"on\" to \"and\" alters the relationship between \"leisure activities\" and \"work time,\" turning a single benefit (activities during work time) into two separate items, which introduces ambiguity about the list of perks but does not assert a clear, different material fact.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__431",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The only difference is the capitalization of the first letter (\"The\" vs. \"the\"), which is a surface-level casing change with no impact on propositional content.",
+    "error": null
+  },
+  {
+    "uid": "qwen_edacc_20260525_204314__94",
+    "dataset": "edinburgh_international_accents",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 4,
+    "severity": 4,
+    "raw_response": "Severity: 4\nJustification: The hypothesis changes \"I can't believe you didn't watch Ben 10\" to \"I can't even watch Ben 10\", fabricating a claim about the speaker's own inability to watch, which fundamentally alters the meaning of a central assertion in the utterance.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__418",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The only difference is capitalization, which is a surface-form change with no impact on propositional content.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__196",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 1,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The hypothesis differs only in casing (all uppercase) and a minor spelling variant of the proper noun \"Muirend\" as \"MUREND,\" which is an unambiguous surface-form error with no change to propositional content.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__1254",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 1,
+    "severity": 1,
+    "raw_response": "Severity: 1  \nJustification: The hypothesis garbles \"trough\" to \"TROW,\" but the intended meaning is confidently and cleanly recoverable as \"trough configurations\" given the context, and no material fact changes. This falls under a trivial/cosmetic error.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_commonvoice_20260524_150129__594",
+    "dataset": "common_voice",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 2,
+    "severity": 2,
+    "raw_response": "Severity: 2  \nJustification: The ASR output garbles \"got pushed\" into \"like it pushed,\" losing a key detail and requiring reconstruction to recover the original meaning, while other differences (e.g., \"think\" for \"find\") are minor; this ambiguity and loss of detail fit level 2 rather than a higher or lower score.",
+    "error": null
+  },
+  {
+    "uid": "whisper_english_dialects_20260525_110315__2522",
+    "dataset": "english_dialects_scots",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0  \nJustification: The only differences are punctuation (a period after \"St\" and a trailing period), which are surface-level formatting changes with no impact on propositional content.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_commonvoice_20260526_053757__286",
+    "dataset": "common_voice",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 2,
+    "severity": 2,
+    "raw_response": "Severity: 2  \nJustification: The hypothesis contains a connector change (\"sort of\" to \"or\") that alters the relationship between imagination and limitations, and loses the detail \"sitting,\" both of which introduce ambiguity without asserting a clear different material fact, consistent with level 2.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__1531",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The only difference is casing (uppercase vs. mixed case), which is a surface-level change with no impact on meaning.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__1474",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 0,
+    "severity": 1,
+    "raw_response": "Severity: 1  \nJustification: The hypothesis changes \"leaked\" to \"leaks,\" producing an ungrammatical phrase (\"was selectively leaks\") that does not form a coherent alternative claim, but the intended meaning (that the testimony was leaked) is confidently and cleanly recoverable with no material fact change.",
+    "error": null
+  },
+  {
+    "uid": "whisper_english_dialects_20260525_110315__1748",
+    "dataset": "english_dialects_scots",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 0,
+    "severity": 1,
+    "raw_response": "Severity: 1\nJustification: The only substantive change is \"payment info\" to \"payments info\" (plural vs. singular), which is a trivial wording variant that does not alter the core meaning; the added commas are surface-level only, so the intended claim is confidently and cleanly recoverable.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__1904",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The only difference is capitalization of \"It\" and \"Oxford\", which is a surface-level casing change with no impact on meaning or propositional content.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__567",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The hypothesis differs only in capitalization and the rendering of \"bluetooth\" as \"BLUE TOOTH,\" which are unambiguous spelling variants with no change to propositional content.",
+    "error": null
+  },
+  {
+    "uid": "qwen_commonvoice_20260524_153426__543",
+    "dataset": "common_voice",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 2,
+    "severity": 3,
+    "raw_response": "Severity: 3\nJustification: The hypothesis contains two clear factual errors: it changes the subject who enjoys the camping from the speaker to \"they\" (the kids), and it alters the daughter's role from taking the kids to swimming lessons to taking lessons herself, both unambiguously asserting different material facts.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_edacc_20260525_184006__18",
+    "dataset": "edinburgh_international_accents",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 3,
+    "severity": 2,
+    "raw_response": "Severity: 2  \nJustification: The hypothesis drops \"HURT\" and replaces it with \"certain\", resulting in a garbled, incoherent phrase that loses a key detail without asserting any clear alternative fact, which fits the definition of an ambiguous meaning shift with unrecoverable loss of content.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__147",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The only difference is the addition of a question mark, which is a punctuation change that does not alter the propositional content or meaning.",
+    "error": null
+  },
+  {
+    "uid": "qwen_commonvoice_20260524_153426__89",
+    "dataset": "common_voice",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 2,
+    "severity": 3,
+    "raw_response": "Severity: 3\nJustification: The hypothesis replaces the dialectal intensifier \"braaly\" (meaning \"very\") with \"probably,\" changing the assertion from a definite description (\"it was very rural\") to a probabilistic one (\"it was probably rural\"), which is a clear factual error. Other substitutions (e.g., \"on the rain\" for \"on our own\" and \"walk\" for \"folk\") are nonsensical or do not cohere into a believable alternative claim, thus falling under lower severity levels.",
+    "error": null
+  },
+  {
+    "uid": "whisper_english_dialects_20260525_110315__2272",
+    "dataset": "english_dialects_scots",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The only differences are the addition of a comma and a period, which are surface-level punctuation changes that do not alter the propositional content or meaning of the sentence.",
+    "error": null
+  },
+  {
+    "uid": "whisper_english_dialects_20260525_110315__401",
+    "dataset": "english_dialects_scots",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 1,
+    "severity": 1,
+    "raw_response": "Severity: 1  \nJustification: The error is a garbled rendering of the station name \"Drumgelloch\" as \"Dermdgelach\", a nonsensical phonetic variant that does not alter the propositional content and is confidently recoverable as the same location.",
+    "error": null
+  },
+  {
+    "uid": "whisper_commonvoice_20260524_083930__442",
+    "dataset": "common_voice",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 2,
+    "severity": 2,
+    "raw_response": "Severity: 2  \nJustification: The hypothesis contains several minor content-word changes and omitted phrases (e.g., \"people. It's got court orders\" instead of \"people that's got court orders,\" and \"same same image\" for \"same hymn sheet\") that introduce ambiguity or require reconstruction, but no clear factual error or reversed central assertion.",
+    "error": null
+  },
+  {
+    "uid": "whisper_english_dialects_20260525_110315__2380",
+    "dataset": "english_dialects_scots",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The only difference is the addition of a period in the hypothesis, which is a punctuation change with no impact on meaning.",
+    "error": null
+  },
+  {
+    "uid": "qwen_edacc_20260525_204314__80",
+    "dataset": "edinburgh_international_accents",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 2,
+    "severity": 3,
+    "raw_response": "Severity: 3\nJustification: The substitution of \"mystery gang\" (a group) with \"mystery guy\" (an individual) is a clear, plausible entity swap that changes a material fact about the described subject, constituting a level 3 error. Other differences (tense shifts, pronoun changes) are minor and do not reach this threshold.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__2191",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 3,
+    "severity": 3,
+    "raw_response": "Severity: 3  \nJustification: The hypothesis substitutes \"Ireland\" with \"ISLAND\" and \"Schengen Area\" with \"SHANNON AREA\", both of which are real words/phrases that unambiguously assert different material facts (a generic island instead of a country, and a different geographic region), meeting the definition of a clear factual error at level 3.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__1701",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 1,
+    "severity": 1,
+    "raw_response": "Severity: 1  \nJustification: The hypothesis contains phonetic misspellings of the station names (\"nitsill\" for \"Nitshill\" and \"tennault\" for \"Taynuilt\"), but the meaning is confidently recoverable as the same train journey with no change to material facts.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__1163",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 2,
+    "severity": 3,
+    "raw_response": "Severity: 3\nJustification: The hypothesis replaces \"or\" with \"of\" in the title, changing \"The tragical comedy or comical tragedy\" to \"the tragical comedy of comical tragedy,\" which unambiguously asserts a different title and thus a different material fact. The remaining differences (capitalization, commas, and \"Mr.\" for \"Mister\") are cosmetic and do not affect meaning.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__745",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The only difference is capitalization of the first letter, which is a surface form change with no impact on meaning.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_commonvoice_20260524_150129__319",
+    "dataset": "common_voice",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 2,
+    "severity": 2,
+    "raw_response": "Severity: 2\nJustification: The hypothesis contains several garbled content words (e.g., \"gey\" for \"gig\", \"glen offes\" for \"Glenrothes\", and \"gets out of the crowd going\" for \"gets all the crowd going\") that do not form coherent alternative claims, requiring reconstruction to recover the original meaning and introducing genuine ambiguity, which aligns with level 2.",
+    "error": null
+  },
+  {
+    "uid": "whisper_commonvoice_20260524_083930__335",
+    "dataset": "common_voice",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 4,
+    "severity": 4,
+    "raw_response": "Severity: 4\nJustification: The hypothesis hallucinates \"Oh, it's your boy\" in place of the reference's inaudible [inc] marker, which is a fabricated assertion that fundamentally changes the meaning and falls under the default level 4 for such substitutions.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_commonvoice_20260526_053757__548",
+    "dataset": "common_voice",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 2,
+    "severity": 1,
+    "raw_response": "Severity: 1\nJustification: The ASR output contains garbled phrases like \"caught in nice\" for \"carrying knifes\" and \"her's a lot hoppin\" for \"there's a lot happening,\" but these are nonsensical renderings that do not form a believable alternative claim, and the overall meaning—fear of knife crime, people getting hurt, and police inaction—is confidently and cleanly recoverable from context.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_commonvoice_20260526_053757__256",
+    "dataset": "common_voice",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 2,
+    "severity": 2,
+    "raw_response": "Severity: 2\nJustification: The hypothesis garbles key phrases like \"stood oot\" into \"to do it\" and \"lots of other\" into \"the lods of their,\" creating ambiguous meaning shifts that require reconstruction without asserting a clear, different material fact.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__1295",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 1,
+    "severity": 1,
+    "raw_response": "Severity: 1\nJustification: The hypothesis contains a split of the proper noun \"Corkerhill\" into \"corker hill\" and a garbled rendering of \"Drem\" as \"drre\", but both are confidently recoverable as the intended locations, resulting in no material change to the meaning.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__744",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The only difference is the capitalization of the first letter (\"No\" vs \"no\"), which is a surface form change with no impact on meaning.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__390",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 1,
+    "severity": 1,
+    "raw_response": "Severity: 1  \nJustification: The hypothesis substitutes \"various\" with the nonsensical \"farious,\" which is clearly a phonetic/garbled rendering and does not alter the propositional content; the intended meaning is confidently and cleanly recoverable.",
+    "error": null
+  },
+  {
+    "uid": "whisper_english_dialects_20260525_110315__1275",
+    "dataset": "english_dialects_scots",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0  \nJustification: The only difference is capitalization of \"riverside\" to \"Riverside,\" which is a surface-form change with no impact on propositional content or meaning.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__1655",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The only difference is the numeral \"10\" instead of the word \"ten\", which is an unambiguous spelling variant with no change to propositional content. The period in the hypothesis is also a surface-level punctuation difference.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__837",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 1,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The only differences are capitalization (all uppercase) and a spelling variant (\"megabites\" for \"megabytes\"), which are superficial and do not alter the propositional content. The meaning is identical.",
+    "error": null
+  },
+  {
+    "uid": "qwen_edacc_20260525_204314__103",
+    "dataset": "edinburgh_international_accents",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 4,
+    "severity": 3,
+    "raw_response": "Severity: 3\nJustification: The reference \"NO\" is a negation, while the hypothesis \"you.\" is a pronoun, creating a clear factual error with no ambiguity about the different asserted word and meaning.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_commonvoice_20260526_053757__162",
+    "dataset": "common_voice",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 1,
+    "severity": 1,
+    "raw_response": "Severity: 1  \nJustification: The hypothesis garbles \"actually\" into \"Cisely\" and \"twa cats\" into \"TOICATS\", but these are nonsensical renderings that do not alter the core proposition that the speaker owns two cats named Arthur and Gracie; the meaning is confidently recoverable without ambiguity.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__2197",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 1,
+    "severity": 0,
+    "raw_response": "Severity: 0  \nJustification: \"EMALES\" is a clear phonetic/spelling variant of \"Emails\" (missing a letter), with no change to propositional content; the meaning is unaffected.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_commonvoice_20260524_150129__602",
+    "dataset": "common_voice",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 2,
+    "severity": 1,
+    "raw_response": "Severity: 1\nJustification: The hypothesis contains garbled renderings of dialectal words (\"aweeneen\" for \"a wheen\", \"weeun\" for \"wee toon\") and a preposition change (\"came for\" for \"came fae\") that produce nonsensical phrases rather than coherent alternative claims, and the overall meaning remains confidently recoverable with no material fact changes.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_commonvoice_20260526_053757__54",
+    "dataset": "common_voice",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 1,
+    "severity": 1,
+    "raw_response": "Severity: 1  \nJustification: The hypothesis garbles \"other than that\" into \"OTHERN THAT\" and substitutes \"NOR\" for \"no,\" but the overall meaning—that the recorder playing was not good and besides that, no instruments were ever played—remains confidently and cleanly recoverable without any change to material facts.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__2081",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The only difference is capitalization of \"Harry\" vs \"harry\", which is a surface-level casing change with no impact on propositional content.",
+    "error": null
+  },
+  {
+    "uid": "whisper_english_dialects_20260525_110315__99",
+    "dataset": "english_dialects_scots",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The only difference is a period vs. a question mark at the end, which is a punctuation variation with no change to propositional content.",
+    "error": null
+  },
+  {
+    "uid": "whisper_english_dialects_20260525_110315__854",
+    "dataset": "english_dialects_scots",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0  \nJustification: The only difference is the addition of a period, which is a surface-level punctuation change with no impact on meaning or propositional content.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__1319",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 1,
+    "severity": 1,
+    "raw_response": "Severity: 1\nJustification: The only difference is a minor misspelling of the proper noun \"van Barneveld\" as \"van Barnveld,\" which is a garbled but confidently recoverable rendering of the name, with no change to the propositional content or factual claim.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__1179",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The only differences are a comma before \"but\" and a typographical variation in the apostrophe, both surface-level punctuation changes that do not alter the propositional content or meaning.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__2403",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The only difference is the addition of commas and an Oxford comma, which are punctuation changes that do not alter the propositional content or meaning of the sentence.",
+    "error": null
+  },
+  {
+    "uid": "whisper_commonvoice_20260524_083930__565",
+    "dataset": "common_voice",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 2,
+    "severity": 2,
+    "raw_response": "Severity: 2\nJustification: Several errors introduce ambiguity or require reconstruction—most notably, \"Shorts\" for \"Shotts\" is a garbled place name that is not a plausible alternative entity, and \"they know that\" for \"a' that\" shifts the clause's meaning without being a clear factual error. No unambiguous material fact is asserted or reversed, so the score stays at 2.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__2027",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0  \nJustification: The only difference is the addition of a period at the end, which is a surface-level punctuation change with no impact on meaning.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_commonvoice_20260526_053757__210",
+    "dataset": "common_voice",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 2,
+    "severity": 3,
+    "raw_response": "Severity: 3  \nJustification: The hypothesis repeatedly substitutes \"gigs\" with \"gags\", a real and plausible different entity (comedy events instead of concerts), which unambiguously asserts a different material fact. Other garbled words are largely nonsensical or recoverable, but this core substitution constitutes a clear factual error.",
+    "error": null
+  },
+  {
+    "uid": "whisper_english_dialects_20260525_110315__2242",
+    "dataset": "english_dialects_scots",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The only differences are capitalization of \"Bitcoin\" (a common variant of the proper noun) and an added period, both surface form changes with no impact on propositional content.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__2256",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The only difference is the capitalization of the first letter (\"First\" vs \"first\"), which is a surface-level casing change with no impact on propositional content.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__2456",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 2,
+    "severity": 3,
+    "raw_response": "Severity: 3  \nJustification: The hypothesis substitutes \"THE SAP\" for \"This app,\" changing the subject from a generic application to a specific real entity (SAP), which unambiguously asserts a different material fact without ambiguity.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__1227",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The only difference is the addition of a period at the end of the hypothesis, which is a punctuation change with no effect on meaning.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__1847",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The hypothesis differs only by the addition of a period at the end, which is a surface-level punctuation change with no effect on meaning or propositional content.",
+    "error": null
+  },
+  {
+    "uid": "whisper_english_dialects_20260525_110315__1023",
+    "dataset": "english_dialects_scots",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The only difference is a period at the end, which is a punctuation change with no impact on propositional content or meaning.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_commonvoice_20260526_053757__351",
+    "dataset": "common_voice",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 2,
+    "severity": 4,
+    "raw_response": "Severity: 4\nJustification: The hypothesis replaces the final assertion \"I love it\" with \"I'll have it,\" fabricating a different claim about the speaker's relationship to the job, and also changes \"my job\" to \"my dog\" earlier, both of which are clear factual errors that fundamentally alter the central meaning.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_commonvoice_20260526_053757__65",
+    "dataset": "common_voice",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 2,
+    "severity": 2,
+    "raw_response": "Severity: 2\n\nJustification: The hypothesis omits the \"[inc]\" and \"[laugh]\" markers (a loss of detail), and substitutes \"any skill\" with \"any scholar\" and \"learn\" with \"lam\"—both garbled but recoverable. These errors do not assert a clear different material fact, but the loss of detail and residual ambiguity in the garbled words warrant a level 2.",
+    "error": null
+  },
+  {
+    "uid": "qwen_commonvoice_20260524_153426__190",
+    "dataset": "common_voice",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 2,
+    "severity": 4,
+    "raw_response": "Severity: 4  \nJustification: The hypothesis reverses a central assertion by changing \"she aie won\" (she always won) to \"I won,\" altering the actor and flipping the claim, and also substitutes \"through a wa’\" (wall) with \"through a wire,\" both clear factual errors that fundamentally change the narrative.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__1213",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 1,
+    "severity": 1,
+    "raw_response": "Severity: 1\nJustification: The substitution of \"shared\" with \"SHEER\" results in a nonsensical phrase (\"sheer devices\") that does not cohere into a believable alternative claim, so the original meaning is confidently and cleanly recoverable as a simple transcription error.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_commonvoice_20260526_053757__503",
+    "dataset": "common_voice",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 2,
+    "severity": 2,
+    "raw_response": "Severity: 2\nJustification: The hypothesis garbles several details (e.g., the bigger bike and BMW are lost, \"fancy watches\" appears with a spurious \"NOT\") but the core claim that the scooter is the most precious thing remains intact; however, the changes are ambiguous and require reconstruction, fitting level 2 for loss of detail and uncertain meaning shifts.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_commonvoice_20260524_150129__327",
+    "dataset": "common_voice",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 2,
+    "severity": 2,
+    "raw_response": "Severity: 2  \nJustification: The hypothesis contains minor content-word changes (missing \"a\" before \"very interesting person\" and \"we'll\" reduced to \"we\"), which are genuine alterations in a multi-clause utterance, but the overall meaning is still confidently recoverable without introducing ambiguity or a clear factual error.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__1253",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0  \nJustification: The only difference is the addition of a period at the end of the hypothesis, which is a punctuation change with no effect on meaning or propositional content.",
+    "error": null
+  },
+  {
+    "uid": "whisper_english_dialects_20260525_110315__2321",
+    "dataset": "english_dialects_scots",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 3,
+    "severity": 3,
+    "raw_response": "Severity: 3\nJustification: The substitution of \"conical\" with \"canonical\" changes a specific geometric descriptor to a qualitative one, asserting a different material fact about the extrusions without ambiguity.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_commonvoice_20260526_053757__459",
+    "dataset": "common_voice",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 2,
+    "severity": 2,
+    "raw_response": "Severity: 2  \nJustification: The hypothesis garbles the clause \"we did a lot of exploring\" into the nonsensical \"WITH TE DL EXPLODING,\" introducing a real word (\"exploding\") but without forming a coherent alternative claim; this results in an ambiguous meaning shift and loss of a detail, fitting level 2 rather than a clear factual error.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__1957",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 1,
+    "severity": 1,
+    "raw_response": "Severity: 1  \nJustification: The only error is \"genre\" transcribed as the nonsensical \"ONRO\", which is clearly a transcription artifact; the intended meaning is easily recoverable and no material fact changes.",
+    "error": null
+  },
+  {
+    "uid": "qwen_commonvoice_20260524_153426__394",
+    "dataset": "common_voice",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 1,
+    "severity": 2,
+    "raw_response": "Severity: 2  \nJustification: The substitution of \"braw\" with \"brass\" produces a nonsensical phrase, and the omission of \"But\" removes a contrastive connector, introducing minor meaning shifts that require reconstruction or leave residual doubt; these changes do not assert a clear different material fact, aligning with level 2 ambiguity.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_commonvoice_20260524_150129__143",
+    "dataset": "common_voice",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 3,
+    "severity": 3,
+    "raw_response": "Severity: 3\nJustification: The hypothesis substitutes \"Electric Six\" with \"electric sex\", \"Barrowlands\" with \"badlands\", and \"QMU\" with \"mu\", each introducing clear and unambiguous factual errors about the band name and venues, which materially changes the reported details without ambiguity.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__2227",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The only differences are punctuation (a comma, double quotes instead of single, and a period), which are purely surface-level and do not alter the propositional content or meaning.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__1768",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 2,
+    "severity": 3,
+    "raw_response": "Severity: 3  \nJustification: The hypothesis changes \"men\" to \"many,\" altering the subject from a specific gender to an unspecific quantity, which unambiguously asserts a different material fact about the individuals who became werewolves.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__523",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 2,
+    "severity": 1,
+    "raw_response": "Severity: 1  \nJustification: The substitution \"lummage\" for \"language\" is a nonsensical garbling with no plausible alternative meaning, and \"assisten\" is a minor typo, so the intended meaning is confidently and cleanly recoverable from context without any material fact change.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__2428",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The only difference is capitalization of the first letter, which is a surface form change with no impact on meaning.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_edacc_20260525_184006__136",
+    "dataset": "edinburgh_international_accents",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 4,
+    "severity": 3,
+    "raw_response": "Severity: 3\nJustification: The hypothesis changes the subject from \"you\" to \"he,\" which is an unambiguous substitution of a different entity (actor), constituting a clear factual error. The garbled verb \"couldt\" does not alter the fact that a different person is referenced.",
+    "error": null
+  },
+  {
+    "uid": "whisper_english_dialects_20260525_110315__2037",
+    "dataset": "english_dialects_scots",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The only difference is a spelling variant of the proper noun (\"Lillie\" vs \"Lily\", \"Paterson\" vs \"Patterson\"), which does not alter the propositional content.",
+    "error": null
+  },
+  {
+    "uid": "whisper_commonvoice_20260524_083930__430",
+    "dataset": "common_voice",
+    "model": "openai/whisper-large-v3",
+    "human_severity": 2,
+    "severity": 3,
+    "raw_response": "Severity: 3\nJustification: The hypothesis contains multiple clear factual errors, such as \"I hid as a bear\" instead of \"I had as a bairn\" and \"when I was born\" instead of \"when I was a bairn,\" which unambiguously change material facts about the speaker's childhood toys, but the overall narrative about favourite toys remains intact, so it does not reach a critical reversal or fabrication.",
+    "error": null
+  },
+  {
+    "uid": "wav2vec2_english_dialects_20260526_073439__148",
+    "dataset": "english_dialects_scots",
+    "model": "facebook/wav2vec2-large-960h-lv60-self",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The only difference between the reference and hypothesis is casing (all uppercase versus mixed case), which is a surface-level variation with no change to meaning or propositional content.",
+    "error": null
+  },
+  {
+    "uid": "qwen_commonvoice_20260524_153426__13",
+    "dataset": "common_voice",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 3,
+    "severity": 4,
+    "raw_response": "Severity: 4\nJustification: The hypothesis changes \"I've always hated clutter\" to \"I've always had to clutter\", reversing the speaker's central attitude toward clutter and fundamentally altering a key assertion about their experience and goals.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_commonvoice_20260524_150129__449",
+    "dataset": "common_voice",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 2,
+    "severity": 3,
+    "raw_response": "Severity: 3\nJustification: The hypothesis changes \"pretended to be really really quite chuffed with them\" (referring to the tickets) to \"pretended to be really really quite chuffed with him\" (referring to Kylie Minogue), which unambiguously substitutes a different entity and asserts a different material fact. Other differences are minor filler omissions, dialectal variants, or word order changes that do not alter the propositional content.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__2140",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The only differences are punctuation (a comma and a period), which are surface-level changes that do not alter the propositional content or meaning.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__1669",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The only difference between the reference and hypothesis is the capitalization of the first letter in \"Quality\" vs. \"quality\", which is a surface form variation with no change to propositional content.",
+    "error": null
+  },
+  {
+    "uid": "qwen_english_dialects_20260525_000627__1989",
+    "dataset": "english_dialects_scots",
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "human_severity": 0,
+    "severity": 0,
+    "raw_response": "Severity: 0\nJustification: The only difference is the addition of a comma, which is a surface-level punctuation change with no impact on propositional content or meaning.",
+    "error": null
+  },
+  {
+    "uid": "parakeet_english_dialects_20260524_234807__780",
+    "dataset": "english_dialects_scots",
+    "model": "nvidia/parakeet-ctc-1.1b",
+    "human_severity": 2,
+    "severity": 3,
+    "raw_response": "Severity: 3\nJustification: The substitution of \"fire\" for \"fiber\" changes the central entity—what the vegetables are sources of—from a dietary component to a combustible phenomenon, which is a clear factual error with no ambiguity.",
+    "error": null
+  }
+]
