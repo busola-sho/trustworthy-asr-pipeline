@@ -399,7 +399,7 @@ class Qwen3ASR(ASRModel):
         import torch as _torch
         self._qwen_model = Qwen3ASRModel.from_pretrained(
             self.model_name,
-            torch_dtype=_torch.float32,
+            torch_dtype=_torch.float16,   # was float32
         )
 
     def transcribe(self, audio: np.ndarray, sample_rate: int, context: str = "") -> Transcription:
@@ -440,7 +440,6 @@ class Qwen3ASR(ASRModel):
                     output_scores=True,
                 )
 
-
             generated_ids = gen_out.sequences[0, prompt_len:]
             chunk_text = qwen.processor.batch_decode(
                 [generated_ids], skip_special_tokens=True,
@@ -451,11 +450,9 @@ class Qwen3ASR(ASRModel):
             if not gen_out.scores:
                 continue
 
-            # stack scores: list of (1, vocab) → (gen_len, vocab)
             scores_stacked = _torch.stack([s[0] for s in gen_out.scores], dim=0)
             token_probs    = F.softmax(scores_stacked.float(), dim=-1)
 
-            # aggregate tokens → words using tokenizer word boundaries
             tokenizer = qwen.processor.tokenizer
             current_toks, current_confs = [], []
 
@@ -481,7 +478,6 @@ class Qwen3ASR(ASRModel):
                     current_toks.append(tok_id_int)
                     current_confs.append(conf)
 
-            # flush last word
             if current_toks:
                 word = tokenizer.decode(current_toks, skip_special_tokens=True).strip()
                 if word:
