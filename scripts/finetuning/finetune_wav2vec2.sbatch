@@ -37,7 +37,7 @@ module load python/3.11.0-icl
 module load ffmpeg/6.0
 
 source /rds/user/ors36/hpc-work/trustworthy-asr-pipeline/.venv_finetune/bin/activate
-
+export HF_HOME=/rds/user/ors36/hpc-work/hf_cache
 export PYTHONPATH=/rds/user/ors36/hpc-work/trustworthy-asr-pipeline
 
 python scripts/finetuning/build_wav2vec2_vocab.py   # only needed if using --no-use_pretrained_vocab below
