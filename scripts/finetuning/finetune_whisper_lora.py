@@ -41,7 +41,8 @@ from importlib.metadata import version, PackageNotFoundError
 from typing import Dict, List, Union
 
 import torch
-from datasets import Dataset, Audio
+import soundfile as sf
+from datasets import Dataset
 from jiwer import wer
 from peft import LoraConfig, TaskType, get_peft_model
 from transformers import (
@@ -67,10 +68,7 @@ def load_manifest_as_dataset(split: str) -> Dataset:
     with open(path) as f:
         for line in f:
             entries.append(json.loads(line))
-    ds = Dataset.from_list(entries)
-    ds = ds.rename_column("audio_path", "audio")
-    ds = ds.cast_column("audio", Audio(sampling_rate=16000))
-    return ds
+    return Dataset.from_list(entries)
 
 
 @dataclass
@@ -94,9 +92,13 @@ class DataCollatorSpeechSeq2SeqWithPadding:
 
 def make_prepare_fn(processor: WhisperProcessor):
     def prepare_example(example):
-        audio = example["audio"]
+        # prepare_manifest.py already wrote 16kHz mono wavs, so no
+        # resampling needed here - read directly, bypassing datasets'
+        # Audio feature (which now requires torchcodec as of recent
+        # `datasets` versions - avoided here to keep the fine-tuning env lean)
+        audio_array, sr = sf.read(example["audio_path"])
         example["input_features"] = processor.feature_extractor(
-            audio["array"], sampling_rate=audio["sampling_rate"]
+            audio_array, sampling_rate=sr
         ).input_features[0]
         example["labels"] = processor.tokenizer(example["text"]).input_ids
         return example

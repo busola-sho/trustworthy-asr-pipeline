@@ -45,7 +45,8 @@ from importlib.metadata import version, PackageNotFoundError
 from typing import Dict, List, Union
 
 import torch
-from datasets import Dataset, Audio
+import soundfile as sf
+from datasets import Dataset
 from jiwer import wer
 from transformers import (
     Wav2Vec2CTCTokenizer,
@@ -71,10 +72,7 @@ def load_manifest_as_dataset(split: str) -> Dataset:
     with open(path) as f:
         for line in f:
             entries.append(json.loads(line))
-    ds = Dataset.from_list(entries)
-    ds = ds.rename_column("audio_path", "audio")
-    ds = ds.cast_column("audio", Audio(sampling_rate=16000))
-    return ds
+    return Dataset.from_list(entries)
 
 
 @dataclass
@@ -96,9 +94,12 @@ class DataCollatorCTCWithPadding:
 
 def make_prepare_fn(processor: Wav2Vec2Processor):
     def prepare_example(example):
-        audio = example["audio"]
+        # prepare_manifest.py already wrote 16kHz mono wavs - read
+        # directly, bypassing datasets' Audio feature (requires
+        # torchcodec as of recent `datasets` versions, avoided here)
+        audio_array, sr = sf.read(example["audio_path"])
         example["input_values"] = processor(
-            audio["array"], sampling_rate=audio["sampling_rate"]
+            audio_array, sampling_rate=sr
         ).input_values[0]
         example["labels"] = processor(text=example["text"]).input_ids
         return example
