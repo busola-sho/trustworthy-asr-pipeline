@@ -44,6 +44,11 @@ source /rds/user/ors36/hpc-work/trustworthy-asr-pipeline/.venv_ampere/bin/activa
 export PYTHONPATH=/rds/user/ors36/hpc-work/trustworthy-asr-pipeline
 export HF_HOME=/rds/user/ors36/hpc-work/hf_cache
 
+# Ollama binary was manually installed to hpc-work (no root access on
+# this cluster) - needs both on PATH and LD_LIBRARY_PATH to run at all
+export PATH=/rds/user/ors36/hpc-work/ollama_install/bin:$PATH
+export LD_LIBRARY_PATH=/rds/user/ors36/hpc-work/ollama_install/lib/ollama:$LD_LIBRARY_PATH
+
 # redirect Ollama's own model storage off the tight $HOME quota
 export OLLAMA_MODELS=/rds/user/ors36/hpc-work/ollama_models
 mkdir -p "$OLLAMA_MODELS"
