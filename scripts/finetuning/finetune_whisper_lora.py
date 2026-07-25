@@ -52,7 +52,7 @@ from transformers import (
     EarlyStoppingCallback,
 )
 
-from src.judge import normalise
+from src.text_normalise import normalise
 
 MANIFEST_DIR = "data/finetune/manifests"
 BASE_MODEL = "openai/whisper-small"

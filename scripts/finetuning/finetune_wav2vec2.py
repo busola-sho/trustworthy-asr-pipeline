@@ -57,7 +57,7 @@ from transformers import (
     EarlyStoppingCallback,
 )
 
-from src.judge import normalise
+from src.text_normalise import normalise
 
 MANIFEST_DIR = "data/finetune/manifests"
 VOCAB_PATH = "data/finetune/wav2vec2_vocab.json"   # only used if --no-use_pretrained_vocab
