@@ -179,6 +179,11 @@ def main():
         bias="none",
     )
     model = get_peft_model(model, lora_config)
+    model.enable_input_require_grads()   # required for LoRA + gradient_checkpointing to work
+                                          # correctly - without this, gradients may not properly
+                                          # flow into the (frozen-base) LoRA adapters, and the
+                                          # "None of the inputs have requires_grad=True" warning
+                                          # can mean training is silently a no-op
     model.print_trainable_parameters()
 
     print("Loading manifests...")
