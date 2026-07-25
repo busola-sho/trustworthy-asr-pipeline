@@ -44,7 +44,7 @@ import torch
 import soundfile as sf
 from datasets import Dataset
 from jiwer import wer
-from peft import LoraConfig, TaskType, get_peft_model
+from peft import LoraConfig, get_peft_model
 from transformers import (
     WhisperForConditionalGeneration,
     WhisperProcessor,
@@ -172,7 +172,6 @@ def main():
     model.config.use_cache = False   # required alongside gradient checkpointing
 
     lora_config = LoraConfig(
-        task_type=TaskType.SEQ_2_SEQ_LM,
         r=args.lora_r,
         lora_alpha=args.lora_alpha,
         target_modules=["q_proj", "v_proj"],
