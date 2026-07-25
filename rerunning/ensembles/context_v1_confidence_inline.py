@@ -15,8 +15,18 @@ Once this finishes, run PHASE 2:
 
 Same underlying fixes as context_v1_confidence.py: WhisperX swap,
 per-model percentile thresholds, two-pass split, tag-only skip, dual
-write, dynamic num_predict, keep_alive. --split {dev,test,full} replaces
---full - defaults to "dev" for iteration.
+write, dynamic num_predict, keep_alive.
+
+FIXED (this pass): main()'s CLI was still on --full (with a matching
+undefined "full" variable in the output dict, and a run_dataset call
+mismatched against its own split="dev" signature) - migrated to --split
+{dev,test,full}, default "dev". Also added think=False to the Ollama
+call - without it, thinking-capable selectors (e.g. gemma4, the locked
+selector per selector_ablation.py) return an EMPTY message.content
+(hidden reasoning eats the whole generation budget), silently producing
+hyp="" and sample_WER=1.0 instead of an error. --selector default
+updated to gemma4 per the ablation lock (mean_severity=0.85,
+mean_wer=9.26%, compliance=100%).
 
 NOT CHANGED - NEEDS YOUR REVIEW: rule content (named-entity trust rule
 etc.) unchanged, same as context_v1.py/context_v1_confidence.py - edit
@@ -152,6 +162,7 @@ def ollama_select(client, model_name, qwen_text, whisperx_text, parakeet_text, n
                 messages=[{"role": "user", "content": prompt}],
                 options={"temperature": 0, "num_ctx": 4096, "num_predict": num_predict},
                 keep_alive="30m",
+                think=False,
             )
             return response.message.content.strip()
         except Exception as e:
@@ -166,7 +177,7 @@ def run_dataset(dataset, selector_key, client, percentile, max_samples=None,
     selector_model = OLLAMA_MODELS[selector_key]
 
     print(f"\n── {dataset} | context V1 + confidence INLINE (PHASE 1: selector only) "
-          f"selector={selector_key} percentile={percentile} ──")
+          f"selector={selector_key} percentile={percentile} split={split} ──")
 
     qwen_samples     = get_indexed_samples("qwen", dataset)
     whisperx_samples = get_indexed_samples("whisperx", dataset)
@@ -277,7 +288,7 @@ def run_dataset(dataset, selector_key, client, percentile, max_samples=None,
         "approach":         "context_v1_confidence_inline",
         "phase":            "selector_only - severity not yet judged",
         "dataset":          dataset,
-        "full_dataset":     full,
+        "split":            split,
         "percentile":       percentile,
         "thresholds_used":  thresholds,
         "subset_indices":   indices,
@@ -302,17 +313,17 @@ def run_dataset(dataset, selector_key, client, percentile, max_samples=None,
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--dataset",     default="commonvoice", choices=DATASETS)
-    parser.add_argument("--selector",    default="qwen",        choices=list(OLLAMA_MODELS.keys()))
+    parser.add_argument("--selector",    default="gemma4",      choices=list(OLLAMA_MODELS.keys()))
     parser.add_argument("--percentile",  type=int, default=DEFAULT_PERCENTILE)
     parser.add_argument("--max-samples", type=int, default=None)
-    parser.add_argument("--full",        action="store_true")
+    parser.add_argument("--split",       default="dev", choices=["dev", "test", "full"])
     parser.add_argument("--dry-run",     action="store_true")
     parser.add_argument("--rerun",       action="store_true")
     args = parser.parse_args()
 
     if args.dry_run:
         print(f"[DRY RUN] dataset={args.dataset} selector={args.selector} "
-              f"percentile={args.percentile} full={args.full}")
+              f"percentile={args.percentile} split={args.split}")
         return
 
     client = Client(host=OLLAMA_HOST)
@@ -322,7 +333,7 @@ def main():
     print(f"Ollama connected. Selector: {OLLAMA_MODELS[args.selector]}")
 
     run_dataset(args.dataset, args.selector, client, args.percentile,
-                max_samples=args.max_samples, rerun=args.rerun, full=args.full)
+                max_samples=args.max_samples, rerun=args.rerun, split=args.split)
 
 
 if __name__ == "__main__":

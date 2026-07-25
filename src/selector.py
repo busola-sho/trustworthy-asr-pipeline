@@ -154,11 +154,29 @@ def get_subset_indices(dataset: str) -> list:
 
 # ── File loading ───────────────────────────────────────────────────────────────
 
-def load_samples(path: str) -> list:
-    """Load samples list from a benchmark JSON file."""
-    with open(path) as f:
-        return json.load(f)["samples"]
+# def load_samples(path: str) -> list:
+#     """Load samples list from a benchmark JSON file."""
+#     with open(path) as f:
+#         return json.load(f)["samples"]
 
+def load_samples(path: str) -> list:
+    """Load samples list from a benchmark JSON file.
+
+    Older benchmark runs (pre-sample_index tracking) don't carry a
+    "sample_index" field on each sample - callers like get_indexed_samples
+    filter on `sample_index is not None`, so these samples were silently
+    dropped (0 samples loaded, no error). Verified via manual spot-check
+    (compare_index_alignment.sh, 50 samples each) that for commonvoice,
+    edacc, and english_dialects, list position in these older files lines
+    up 1:1 with the sample_index used by newer runs for the same dataset -
+    so backfill position as sample_index whenever it's missing.
+    """
+    with open(path) as f:
+        samples = json.load(f)["samples"]
+    for i, s in enumerate(samples):
+        if s.get("sample_index") is None:
+            s["sample_index"] = i
+    return samples
 
 def load_qwen_samples(dataset: str) -> list:
     """Load Qwen3-ASR samples for a given dataset."""

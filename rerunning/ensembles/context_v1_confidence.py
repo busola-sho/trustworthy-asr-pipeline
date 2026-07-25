@@ -21,11 +21,23 @@ CHANGES from the previous version:
     (Qwen, WhisperX, Parakeet) as input, unlike naive/naive_confidence
     which use all 4. Adding wav2vec2 here would change the technique's
     architecture, not just add a confidence signal.
+  - main()'s CLI migrated from --full to --split {dev,test,full}
+    (defaults "dev") - the previous version of this file still had --full
+    in argparse and passed full=args.full to run_dataset, even though
+    run_dataset's own signature already expected split="dev"; that
+    mismatch would crash with TypeError, and the output dict separately
+    referenced an undefined "full" variable (NameError).
+  - think=False added to the Ollama call - without it, thinking-capable
+    selectors (e.g. gemma4, the locked selector per selector_ablation.py)
+    spend the whole generation budget on hidden reasoning tokens and
+    return an EMPTY message.content, silently producing hyp="" and
+    sample_WER=1.0 for every sample rather than an error.
+  - --selector default updated to gemma4, per selector_ablation.py's
+    locked result (mean_severity=0.85, mean_wer=9.26%, compliance=100%)
 
 Everything else unchanged from the previous version: WhisperX swap,
 per-model percentile thresholds, two-pass split, tag-only skip, dual
-write, dynamic num_predict, keep_alive. --split {dev,test,full} replaces
---full - defaults to "dev" for iteration.
+write, dynamic num_predict, keep_alive.
 
 NOT CHANGED - NEEDS YOUR REVIEW: the named-entity trust rule etc. is
 still unchanged - edit SELECTOR_PROMPT once you've decided how to handle
@@ -60,7 +72,7 @@ DEFAULT_PERCENTILE = 20
 # something now that it's available.
 SELECTOR_PROMPT = """You are correcting an ASR transcript. You are given three transcripts of the same audio from different models.
 
-Each transcript is followed by a list of words that model flagged as low-confidence - i.e. words the model itself was uncertain about.
+Each transcript is followed by a list of words that model flagged as low-confidence - i.e. words the model itself was uncertain about. Each entry is labeled with its position in that transcript (counting from 1) - use this position to identify the specific occurrence flagged, especially when a word appears more than once.
 
 TRANSCRIPT A (base — use this as your starting point):
 {qwen}
@@ -166,6 +178,7 @@ def ollama_select(client, model_name, qwen_hyp, whisperx_hyp, parakeet_hyp,
                 messages=[{"role": "user", "content": prompt}],
                 options={"temperature": 0, "num_ctx": 4096, "num_predict": num_predict},
                 keep_alive="30m",
+                think=False,
             )
             return response.message.content.strip()
         except Exception as e:
@@ -180,7 +193,7 @@ def run_dataset(dataset, selector_key, client, percentile, max_samples=None,
     selector_model = OLLAMA_MODELS[selector_key]
 
     print(f"\n── {dataset} | context V1 + confidence (PHASE 1: selector only) "
-          f"selector={selector_key} percentile={percentile} ──")
+          f"selector={selector_key} percentile={percentile} split={split} ──")
 
     qwen_samples     = get_indexed_samples("qwen", dataset)
     whisperx_samples = get_indexed_samples("whisperx", dataset)
@@ -295,7 +308,7 @@ def run_dataset(dataset, selector_key, client, percentile, max_samples=None,
         "confidence_models": CONFIDENCE_MODELS,
         "phase":            "selector_only - severity not yet judged",
         "dataset":          dataset,
-        "full_dataset":     full,
+        "split":            split,
         "percentile":       percentile,
         "thresholds_used":  thresholds,
         "subset_indices":   indices,
@@ -320,17 +333,17 @@ def run_dataset(dataset, selector_key, client, percentile, max_samples=None,
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--dataset",     default="commonvoice", choices=DATASETS)
-    parser.add_argument("--selector",    default="qwen",        choices=list(OLLAMA_MODELS.keys()))
+    parser.add_argument("--selector",    default="gemma4",      choices=list(OLLAMA_MODELS.keys()))
     parser.add_argument("--percentile",  type=int, default=DEFAULT_PERCENTILE)
     parser.add_argument("--max-samples", type=int, default=None)
-    parser.add_argument("--full",        action="store_true")
+    parser.add_argument("--split",       default="dev", choices=["dev", "test", "full"])
     parser.add_argument("--dry-run",     action="store_true")
     parser.add_argument("--rerun",       action="store_true")
     args = parser.parse_args()
 
     if args.dry_run:
         print(f"[DRY RUN] dataset={args.dataset} selector={args.selector} "
-              f"percentile={args.percentile} full={args.full}")
+              f"percentile={args.percentile} split={args.split}")
         return
 
     client = Client(host=OLLAMA_HOST)
@@ -340,7 +353,7 @@ def main():
     print(f"Ollama connected. Selector: {OLLAMA_MODELS[args.selector]}")
 
     run_dataset(args.dataset, args.selector, client, args.percentile,
-                max_samples=args.max_samples, rerun=args.rerun, full=args.full)
+                max_samples=args.max_samples, rerun=args.rerun, split=args.split)
 
 
 if __name__ == "__main__":

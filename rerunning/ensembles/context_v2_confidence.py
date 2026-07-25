@@ -59,7 +59,7 @@ DEFAULT_PERCENTILE = 20
 
 SELECTOR_PROMPT_TEMPLATE = """You are correcting an ASR transcript. You are given three transcripts of the same audio from different models.
 
-Each transcript is followed by a list of words that model flagged as low-confidence - i.e. words the model itself was uncertain about.
+Each transcript is followed by a list of words that model flagged as low-confidence - i.e. words the model itself was uncertain about. Each entry is labeled with its position in that transcript (counting from 1) - use this position to identify the specific occurrence flagged, especially when a word appears more than once.
 
 TRANSCRIPT A (base — use this as your starting point, model: qwen):
 {qwen}
@@ -162,6 +162,7 @@ def ollama_select(client, model_name, qwen_hyp, whisperx_hyp, parakeet_hyp,
                 messages=[{"role": "user", "content": prompt}],
                 options={"temperature": 0, "num_ctx": 4096, "num_predict": num_predict},
                 keep_alive="30m",
+                think=False,
             )
             return response.message.content.strip()
         except Exception as e:
@@ -318,7 +319,7 @@ def run_dataset(dataset, selector_key, client, auto_rules, percentile,
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--dataset",     default="commonvoice", choices=DATASETS)
-    parser.add_argument("--selector",    default="qwen",        choices=list(OLLAMA_MODELS.keys()))
+    parser.add_argument("--selector",    default="gemma4",      choices=list(OLLAMA_MODELS.keys()))
     parser.add_argument("--percentile",  type=int,              default=DEFAULT_PERCENTILE)
     parser.add_argument("--gap",         type=float,            default=1.0)
     parser.add_argument("--max-samples", type=int,              default=None)

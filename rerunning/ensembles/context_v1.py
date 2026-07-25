@@ -14,6 +14,15 @@ CHANGES from the original run_context_selector.py:
   - num_predict sized dynamically per sample; keep_alive="30m"; sleep removed
   - Added tag-only reference skip (e.g. "<OVERLAP>")
   - Added --split {dev,test,full} - defaults to "dev" for iteration
+  - think=False added to the Ollama call - without it, thinking-capable
+    selectors (e.g. gemma4, the locked selector per selector_ablation.py)
+    spend the whole generation budget on hidden reasoning tokens and
+    return an EMPTY message.content, which silently produces hyp="" and
+    sample_WER=1.0 for every sample - not an error, just wrong output.
+    This was invisible while the default selector was qwen2.5 (not a
+    thinking model), and only surfaced once gemma4 became the default.
+  - --selector default updated to gemma4, per selector_ablation.py's
+    locked result (mean_severity=0.85, mean_wer=9.26%, compliance=100%)
   - Writes to BOTH writeup_results/ensembles/context_v1/ (new) and
     results/combinations_v2judge/context/ (old, kept for continuity)
 
@@ -27,7 +36,7 @@ you've decided.
 
 Usage:
     python rerunning/ensembles/context_v1.py --dataset commonvoice --split dev
-    python rerunning/ensembles/context_v1.py --dataset edacc --split full --selector gemma2
+    python rerunning/ensembles/context_v1.py --dataset edacc --split full --selector gemma4
 """
 
 import json
@@ -101,6 +110,7 @@ def ollama_select(client, model_name, qwen_hyp, whisperx_hyp, parakeet_hyp, num_
                 messages=[{"role": "user", "content": prompt}],
                 options={"temperature": 0, "num_ctx": 4096, "num_predict": num_predict},
                 keep_alive="30m",
+                think=False,
             )
             return response.message.content.strip()
         except Exception as e:
@@ -113,7 +123,7 @@ def ollama_select(client, model_name, qwen_hyp, whisperx_hyp, parakeet_hyp, num_
 def run_dataset(dataset, selector_key, client, max_samples=None, rerun=False, split="dev"):
     selector_model = OLLAMA_MODELS[selector_key]
 
-    print(f"\n── {dataset} | context V1 (PHASE 1: selector only) selector={selector_key} ──")
+    print(f"\n── {dataset} | context V1 (PHASE 1: selector only) selector={selector_key} split={split} ──")
 
     qwen_samples     = get_indexed_samples("qwen", dataset)
     whisperx_samples = get_indexed_samples("whisperx", dataset)
@@ -217,7 +227,7 @@ def run_dataset(dataset, selector_key, client, max_samples=None, rerun=False, sp
         "approach":       "context_v1",
         "phase":          "selector_only - severity not yet judged",
         "dataset":        dataset,
-        "full_dataset":   full,
+        "split":          split,
         "subset_indices": indices,
         "corpus_wer":     corpus_wer,
         "num_samples":    len(valid),
@@ -240,15 +250,15 @@ def run_dataset(dataset, selector_key, client, max_samples=None, rerun=False, sp
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--dataset",     default="commonvoice", choices=DATASETS)
-    parser.add_argument("--selector",    default="qwen",        choices=list(OLLAMA_MODELS.keys()))
+    parser.add_argument("--selector",    default="gemma4",      choices=list(OLLAMA_MODELS.keys()))
     parser.add_argument("--max-samples", type=int, default=None)
-    parser.add_argument("--full",        action="store_true")
+    parser.add_argument("--split",       default="dev", choices=["dev", "test", "full"])
     parser.add_argument("--dry-run",     action="store_true")
     parser.add_argument("--rerun",       action="store_true")
     args = parser.parse_args()
 
     if args.dry_run:
-        print(f"[DRY RUN] dataset={args.dataset} selector={args.selector} full={args.full}")
+        print(f"[DRY RUN] dataset={args.dataset} selector={args.selector} split={args.split}")
         return
 
     client = Client(host=OLLAMA_HOST)
@@ -258,7 +268,7 @@ def main():
     print(f"Ollama connected. Selector: {OLLAMA_MODELS[args.selector]}")
 
     run_dataset(args.dataset, args.selector, client,
-                max_samples=args.max_samples, rerun=args.rerun, full=args.full)
+                max_samples=args.max_samples, rerun=args.rerun, split=args.split)
 
 
 if __name__ == "__main__":

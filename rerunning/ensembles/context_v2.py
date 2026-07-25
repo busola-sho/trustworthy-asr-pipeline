@@ -112,6 +112,7 @@ def ollama_select(client, model_name, qwen_hyp, whisperx_hyp, parakeet_hyp,
                 messages=[{"role": "user", "content": prompt}],
                 options={"temperature": 0, "num_ctx": 4096, "num_predict": num_predict},
                 keep_alive="30m",
+                think=False,
             )
             return response.message.content.strip()
         except Exception as e:
@@ -122,28 +123,24 @@ def ollama_select(client, model_name, qwen_hyp, whisperx_hyp, parakeet_hyp,
 
 
 def run_dataset(dataset, selector_key, client, auto_rules, max_samples=None,
-                 rerun=False, full=False):
+                 rerun=False, split="dev"):
     selector_model = OLLAMA_MODELS[selector_key]
 
-    print(f"\n── {dataset} | context V2 (PHASE 1: selector only) selector={selector_key} ──")
+    print(f"\n── {dataset} | context V2 (PHASE 1: selector only) selector={selector_key} split={split} ──")
 
     qwen_samples     = get_indexed_samples("qwen", dataset)
     whisperx_samples = get_indexed_samples("whisperx", dataset)
     parakeet_samples = get_indexed_samples("parakeet", dataset)
 
-    if full:
-        indices = list(range(DATASET_SIZES[dataset]))
-        print(f"  FULL dataset mode: {len(indices)} samples")
-    else:
-        indices = get_subset_indices(dataset)
+    indices = get_indices_for_split(dataset, split)
+    print(f"  Split: {split} ({len(indices)} samples)")
     if max_samples:
         indices = indices[:max_samples]
 
     os.makedirs(NEW_OUTPUT_DIR, exist_ok=True)
     os.makedirs(OLD_OUTPUT_DIR, exist_ok=True)
 
-    suffix = "full" if full else "sub150"
-    filename = f"context_v2_{dataset}_{selector_key}_{suffix}.json"
+    filename = f"context_v2_{dataset}_{selector_key}_{split}.json"
     new_output_path = os.path.join(NEW_OUTPUT_DIR, filename)
     old_output_path = os.path.join(OLD_OUTPUT_DIR, filename)
 
@@ -235,7 +232,7 @@ def run_dataset(dataset, selector_key, client, auto_rules, max_samples=None,
         "approach":         "context_v2",
         "phase":            "selector_only - severity not yet judged",
         "dataset":          dataset,
-        "full_dataset":     full,
+        "split":            split,
         "auto_rules_used":  auto_rules,
         "subset_indices":   indices,
         "corpus_wer":       corpus_wer,
@@ -259,11 +256,11 @@ def run_dataset(dataset, selector_key, client, auto_rules, max_samples=None,
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--dataset",     default="commonvoice", choices=DATASETS)
-    parser.add_argument("--selector",    default="qwen",        choices=list(OLLAMA_MODELS.keys()))
+    parser.add_argument("--selector",    default="gemma4",      choices=list(OLLAMA_MODELS.keys()))
     parser.add_argument("--gap",         type=float, default=1.0,
                         help="Min gap (pp) for eval-suite rule generation")
     parser.add_argument("--max-samples", type=int, default=None)
-    parser.add_argument("--full",        action="store_true")
+    parser.add_argument("--split",       default="dev", choices=["dev", "test", "full"])
     parser.add_argument("--dry-run",     action="store_true")
     parser.add_argument("--rerun",       action="store_true")
     args = parser.parse_args()
@@ -271,7 +268,7 @@ def main():
     auto_rules = build_rules_text(min_gap_pp=args.gap, save=False)
 
     if args.dry_run:
-        print(f"[DRY RUN] dataset={args.dataset} selector={args.selector} full={args.full}")
+        print(f"[DRY RUN] dataset={args.dataset} selector={args.selector} split={args.split}")
         print(f"Auto-generated rules:\n{auto_rules}")
         return
 
@@ -283,7 +280,7 @@ def main():
     print(f"Using auto-generated rules:\n{auto_rules}\n")
 
     run_dataset(args.dataset, args.selector, client, auto_rules,
-                max_samples=args.max_samples, rerun=args.rerun, full=args.full)
+                max_samples=args.max_samples, rerun=args.rerun, split=args.split)
 
 
 if __name__ == "__main__":

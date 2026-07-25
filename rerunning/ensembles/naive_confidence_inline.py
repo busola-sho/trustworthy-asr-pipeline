@@ -19,6 +19,15 @@ percentile thresholds, two-pass split, tag-only skip, dual write,
 dynamic num_predict, keep_alive, order rotation. --split {dev,test,full}
 replaces --full - defaults to "dev" for iteration.
 
+FIXED (this pass): think=False added to the Ollama call - without it,
+thinking-capable selectors (e.g. gemma4, the locked selector per
+selector_ablation.py) spend the whole generation budget on hidden
+reasoning tokens and return an EMPTY message.content, silently producing
+hyp="" and sample_WER=1.0 for every sample rather than an error.
+Invisible while the default selector was qwen2.5 (not a thinking model).
+--selector default updated to gemma4 per the ablation lock
+(mean_severity=0.85, mean_wer=9.26%, compliance=100%).
+
 Usage:
     python rerunning/ensembles/naive_confidence_inline.py --dataset commonvoice --split dev --percentile 20
 """
@@ -42,7 +51,7 @@ OLD_OUTPUT_DIR = "results/combinations_v2judge/naive_confidence_inline"
 OLLAMA_HOST    = "http://localhost:11434"
 ASR_MODELS     = ["qwen", "whisperx", "parakeet", "wav2vec2"]
 DATASETS       = ["commonvoice", "english_dialects", "edacc", "shetland"]
-CONFIDENCE_MODELS = ["whisperx", "parakeet"]
+CONFIDENCE_MODELS = ["qwen", "whisperx", "parakeet", "wav2vec2"]   # all 4 now produce confidence scores
 DEFAULT_PERCENTILE = 20
 
 SELECTOR_PROMPT = """You are given four ASR transcripts of the same spoken audio.
@@ -136,6 +145,7 @@ def ollama_select(client, model_name, prompt_block, num_predict, retries=2):
                 ],
                 options={"temperature": 0, "num_ctx": 4096, "num_predict": num_predict},
                 keep_alive="30m",
+                think=False,
             )
             return response.message.content.strip()
         except Exception as e:
@@ -150,7 +160,7 @@ def run_dataset(dataset, selector_key, client, percentile, max_samples=None,
     selector_model = OLLAMA_MODELS[selector_key]
 
     print(f"\n── {dataset} | naive + confidence INLINE (PHASE 1: selector only) "
-          f"selector={selector_key} percentile={percentile} ──")
+          f"selector={selector_key} percentile={percentile} split={split} ──")
 
     model_samples = {m: get_indexed_samples(m, dataset) for m in ASR_MODELS}
     thresholds = compute_percentile_thresholds(dataset, percentile)
@@ -286,7 +296,7 @@ def run_dataset(dataset, selector_key, client, percentile, max_samples=None,
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--dataset",     default="commonvoice", choices=DATASETS)
-    parser.add_argument("--selector",    default="qwen",        choices=list(OLLAMA_MODELS.keys()))
+    parser.add_argument("--selector",    default="gemma4",      choices=list(OLLAMA_MODELS.keys()))
     parser.add_argument("--percentile",  type=int,              default=DEFAULT_PERCENTILE)
     parser.add_argument("--max-samples", type=int,              default=None)
     parser.add_argument("--split",       default="dev", choices=["dev", "test", "full"])

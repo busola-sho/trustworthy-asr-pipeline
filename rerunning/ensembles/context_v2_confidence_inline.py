@@ -158,6 +158,7 @@ def ollama_select(client, model_name, qwen_text, whisperx_text, parakeet_text,
                 messages=[{"role": "user", "content": prompt}],
                 options={"temperature": 0, "num_ctx": 4096, "num_predict": num_predict},
                 keep_alive="30m",
+                think=False,
             )
             return response.message.content.strip()
         except Exception as e:
@@ -312,7 +313,7 @@ def run_dataset(dataset, selector_key, client, auto_rules, percentile,
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--dataset",     default="commonvoice", choices=DATASETS)
-    parser.add_argument("--selector",    default="qwen",        choices=list(OLLAMA_MODELS.keys()))
+    parser.add_argument("--selector",    default="gemma4",      choices=list(OLLAMA_MODELS.keys()))
     parser.add_argument("--percentile",  type=int,              default=DEFAULT_PERCENTILE)
     parser.add_argument("--gap",         type=float,            default=1.0)
     parser.add_argument("--max-samples", type=int,              default=None)

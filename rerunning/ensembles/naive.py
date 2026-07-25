@@ -29,9 +29,13 @@ CHANGES from the original run_naive_combination_v3.py:
   - Writes to BOTH writeup_results/ensembles/naive/ (new) and
     results/combinations_v2judge/ (old, kept for continuity)
 
+NOTE: --selector default is gemma4, per selector_ablation.py's locked
+result (gemma4:12b: mean_severity=0.85, mean_wer=9.26%, compliance=100%,
+best of the 5 candidates tested).
+
 Usage:
     python rerunning/ensembles/naive.py --dataset commonvoice --split dev
-    python rerunning/ensembles/naive.py --dataset edacc --split full --selector gemma2
+    python rerunning/ensembles/naive.py --dataset edacc --split full --selector gemma4
     python rerunning/ensembles/naive.py --dry-run
 """
 
@@ -113,6 +117,7 @@ def ollama_select(client, model_name, model_order, hyp_by_model, num_predict, re
                 ],
                 options={"temperature": 0, "num_ctx": 4096, "num_predict": num_predict},
                 keep_alive="30m",
+                think=False,
             )
             return response.message.content.strip()
         except Exception as e:
@@ -122,10 +127,10 @@ def ollama_select(client, model_name, model_order, hyp_by_model, num_predict, re
     return None
 
 
-def run_dataset(dataset, selector_key, client, max_samples=None, rerun=False, full=False):
+def run_dataset(dataset, selector_key, client, max_samples=None, rerun=False, split="dev"):
     selector_model = OLLAMA_MODELS[selector_key]
 
-    print(f"\n── {dataset} | naive (PHASE 1: selector only) selector={selector_key} ──")
+    print(f"\n── {dataset} | naive (PHASE 1: selector only) selector={selector_key} split={split} ──")
 
     model_samples = {m: get_indexed_samples(m, dataset) for m in ASR_MODELS}
 
@@ -223,7 +228,7 @@ def run_dataset(dataset, selector_key, client, max_samples=None, rerun=False, fu
         "asr_models":     ASR_MODELS,
         "phase":          "selector_only - severity not yet judged",
         "dataset":        dataset,
-        "full_dataset":   full,
+        "split":          split,
         "subset_indices": indices,
         "corpus_wer":     corpus_wer,
         "num_samples":    len(valid),
@@ -246,7 +251,7 @@ def run_dataset(dataset, selector_key, client, max_samples=None, rerun=False, fu
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--dataset",     default="commonvoice", choices=DATASETS)
-    parser.add_argument("--selector",    default="qwen",        choices=list(OLLAMA_MODELS.keys()))
+    parser.add_argument("--selector",    default="gemma4",      choices=list(OLLAMA_MODELS.keys()))
     parser.add_argument("--max-samples", type=int, default=None)
     parser.add_argument("--split",       default="dev", choices=["dev", "test", "full"],
                         help="'dev' for iteration (default, excludes calibration+test), "

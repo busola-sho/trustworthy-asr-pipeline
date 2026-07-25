@@ -29,7 +29,7 @@
 
 set -e  # stop on first real error (not on individual sample failures - those are handled inside each script)
 
-SELECTOR="qwen"          # TODO: update once selector_ablation.py gives a result
+SELECTOR="gemma4"          # TODO: update once selector_ablation.py gives a result
 PERCENTILE=20
 SPLIT="dev"              # dev | test | full - see note above; keep at "dev" for iteration
 DATASETS=("commonvoice" "english_dialects" "edacc")
