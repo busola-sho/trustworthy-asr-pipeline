@@ -221,7 +221,7 @@ def main():
         fp16=use_fp16,
         gradient_checkpointing=True,
         dataloader_num_workers=4,
-        report_to=["tensorboard"],
+        report_to=[],
         remove_unused_columns=False,
         label_names=["labels"],
         seed=SEED,

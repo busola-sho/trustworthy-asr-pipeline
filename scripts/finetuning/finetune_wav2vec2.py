@@ -240,7 +240,7 @@ def main():
         fp16=use_fp16,
         gradient_checkpointing=True,
         dataloader_num_workers=4,
-        report_to=["tensorboard"],
+        report_to=[],
         group_by_length=True,
         warmup_ratio=args.warmup_ratio,
         seed=SEED,
