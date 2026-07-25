@@ -187,6 +187,10 @@ def main():
         model = Wav2Vec2ForCTC.from_pretrained(
             args.base_model,
             ctc_loss_reduction="mean",
+            ctc_zero_infinity=True,   # prevents NaN loss when a sample's audio is too
+                                      # short relative to its transcript for CTC alignment
+                                      # to be possible - such samples contribute zero loss
+                                      # instead of poisoning the whole batch's average
             pad_token_id=processor.tokenizer.pad_token_id,
         )
     else:
@@ -204,6 +208,7 @@ def main():
         model = Wav2Vec2ForCTC.from_pretrained(
             args.base_model,
             ctc_loss_reduction="mean",
+            ctc_zero_infinity=True,
             pad_token_id=tokenizer.pad_token_id,
             vocab_size=len(tokenizer),
             ignore_mismatched_sizes=True,
