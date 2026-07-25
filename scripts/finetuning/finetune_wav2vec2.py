@@ -202,6 +202,17 @@ def main():
 
     if args.freeze_feature_encoder:
         model.freeze_feature_encoder()
+        # Required alongside gradient_checkpointing=True: with the feature
+        # encoder frozen, its output (which feeds into the checkpointed
+        # transformer layers) has no grad-requiring tensor flowing into
+        # them, so torch's checkpoint mechanism can't build a backward
+        # graph at all - the whole model silently trains on nothing
+        # (confirmed via smoke test: train_loss stuck at 0.0, eval_loss
+        # nan). This hook forces the frozen encoder's output to require
+        # grad, satisfying checkpointing without unfreezing anything.
+        def _make_inputs_require_grad(module, input, output):
+            output.requires_grad_(True)
+        model.wav2vec2.feature_extractor.register_forward_hook(_make_inputs_require_grad)
 
     print("Loading manifests...")
     train_ds = load_manifest_as_dataset("train")
