@@ -1,47 +1,19 @@
 """
 rerunning/ensembles/context_v1_confidence.py
 
-PHASE 1 of 2: Context-aware V1 (hand-written rules) + word-level confidence
-flagging - now using ALL 3 models' confidence (Qwen, WhisperX, Parakeet),
-not just WhisperX/Parakeet. Selector calls only - no severity judging here.
+PHASE 1 of 2: Context-aware V1 (hand-written rules) + word-level
+confidence flagging - uses ALL 3 models' confidence (Qwen, WhisperX,
+Parakeet). Selector calls only - no severity judging here.
 
-Once this finishes, run PHASE 2:
-    python rerunning/add_severity_to_existing.py --files <output file from this script>
+CONCURRENT VERSION: same Phase A (fast sequential prep) / Phase B
+(concurrent Ollama calls via thread pool) split as the other confidence
+scripts. See src/concurrent_ollama.py's docstring for the required
+OLLAMA_NUM_PARALLEL server-side setting.
 
-CHANGES from the previous version:
-  - Qwen now gets confidence flagging too (its confidence extraction was
-    recently added - see src/models.py). Qwen remains the structural
-    "base/anchor" (the transcript being corrected), but its own confidence
-    now modulates how much weight to give B/C's disagreement: a NEW rule
-    says if a word in A itself is low-confidence, treat B/C's disagreement
-    as STRONGER evidence, not just "weaker if B/C's word is low-confidence"
-    as before. Without this, Qwen's confidence data would be extracted but
-    never actually used for anything.
-  - wav2vec2 still NOT included - Context V1/V2 only ever used 3 models
-    (Qwen, WhisperX, Parakeet) as input, unlike naive/naive_confidence
-    which use all 4. Adding wav2vec2 here would change the technique's
-    architecture, not just add a confidence signal.
-  - main()'s CLI migrated from --full to --split {dev,test,full}
-    (defaults "dev") - the previous version of this file still had --full
-    in argparse and passed full=args.full to run_dataset, even though
-    run_dataset's own signature already expected split="dev"; that
-    mismatch would crash with TypeError, and the output dict separately
-    referenced an undefined "full" variable (NameError).
-  - think=False added to the Ollama call - without it, thinking-capable
-    selectors (e.g. gemma4, the locked selector per selector_ablation.py)
-    spend the whole generation budget on hidden reasoning tokens and
-    return an EMPTY message.content, silently producing hyp="" and
-    sample_WER=1.0 for every sample rather than an error.
-  - --selector default updated to gemma4, per selector_ablation.py's
-    locked result (mean_severity=0.85, mean_wer=9.26%, compliance=100%)
-
-Everything else unchanged from the previous version: WhisperX swap,
-per-model percentile thresholds, two-pass split, tag-only skip, dual
-write, dynamic num_predict, keep_alive.
-
-NOT CHANGED - NEEDS YOUR REVIEW: the named-entity trust rule etc. is
-still unchanged - edit SELECTOR_PROMPT once you've decided how to handle
-the WhisperX-vs-Qwen dataset-dependent reliability question.
+NOT CHANGED - STILL NEEDS YOUR REVIEW: the named-entity trust rule
+("WhisperX is more reliable on named entities") is unchanged, per your
+earlier decision to run with it as-is and revisit only if results look
+off for that specific rule.
 
 Usage:
     python rerunning/ensembles/context_v1_confidence.py --dataset commonvoice --split dev --percentile 20
@@ -58,6 +30,7 @@ from src.selector import (
     find_canonical_file, OLLAMA_MODELS, check_selector_available, load_samples,
 )
 from src.splits import get_indices_for_split
+from src.concurrent_ollama import run_concurrent
 
 NEW_OUTPUT_DIR = "writeup_results/ensembles/context_v1_confidence"
 OLD_OUTPUT_DIR = "results/combinations_v2judge/context_v1_confidence"
@@ -65,6 +38,7 @@ OLLAMA_HOST    = "http://localhost:11434"
 DATASETS       = ["commonvoice", "english_dialects", "edacc", "shetland"]
 CONFIDENCE_MODELS  = ["qwen", "whisperx", "parakeet"]   # qwen added
 DEFAULT_PERCENTILE = 20
+MAX_WORKERS = 8   # tune to roughly match OLLAMA_NUM_PARALLEL on the server
 
 # NOTE: rule content unchanged (named-entity trust etc.) - review per the
 # discussion in context_v1.py before editing. The confidence-weighting
@@ -192,7 +166,7 @@ def run_dataset(dataset, selector_key, client, percentile, max_samples=None,
                  rerun=False, split="dev"):
     selector_model = OLLAMA_MODELS[selector_key]
 
-    print(f"\n── {dataset} | context V1 + confidence (PHASE 1: selector only) "
+    print(f"\n── {dataset} | context V1 + confidence (PHASE 1: selector only, CONCURRENT) "
           f"selector={selector_key} percentile={percentile} split={split} ──")
 
     qwen_samples     = get_indexed_samples("qwen", dataset)
@@ -229,32 +203,36 @@ def run_dataset(dataset, selector_key, client, percentile, max_samples=None,
         with open(old_output_path, "w") as f:
             json.dump(payload, f, indent=2, ensure_ascii=False)
 
-    for pos in range(start_from, len(indices)):
-        idx = indices[pos]
+    # ── PHASE A: fast sequential prep - build work items, append skips directly ──
+    remaining_indices = indices[start_from:]
+    work_items = []   # each: (idx, ref, qwen_hyp, whisperx_hyp, parakeet_hyp,
+                      #        qwen_lowconf, whisperx_lowconf, parakeet_lowconf, num_predict)
+    skip_slots = {}
 
+    for idx in remaining_indices:
         qwen_sample     = qwen_samples.get(idx)
         whisperx_sample = whisperx_samples.get(idx)
         parakeet_sample = parakeet_samples.get(idx)
 
         if not all([qwen_sample, whisperx_sample, parakeet_sample]):
-            results.append({"ref": None, "hyp": None, "severity": None,
-                            "sample_WER": None, "error": True,
-                            "error_reason": "missing sample from one or more models",
-                            "dataset_index": idx})
+            skip_slots[idx] = {"ref": None, "hyp": None, "severity": None,
+                               "sample_WER": None, "error": True,
+                               "error_reason": "missing sample from one or more models",
+                               "dataset_index": idx}
             continue
 
         ref = qwen_sample["ref"]
 
         if "IGNORE_TIME_SEGMENT_IN_SCORING" in ref:
-            results.append({"ref": ref, "hyp": None, "severity": None,
-                            "sample_WER": None, "skipped": True,
-                            "skip_reason": "ignore_time_segment", "dataset_index": idx})
+            skip_slots[idx] = {"ref": ref, "hyp": None, "severity": None,
+                               "sample_WER": None, "skipped": True,
+                               "skip_reason": "ignore_time_segment", "dataset_index": idx}
             continue
 
         if is_tag_only(ref):
-            results.append({"ref": ref, "hyp": None, "severity": None,
-                            "sample_WER": None, "skipped": True,
-                            "skip_reason": "tag_only_reference", "dataset_index": idx})
+            skip_slots[idx] = {"ref": ref, "hyp": None, "severity": None,
+                               "sample_WER": None, "skipped": True,
+                               "skip_reason": "tag_only_reference", "dataset_index": idx}
             continue
 
         qwen_hyp     = qwen_sample["hyp"]
@@ -266,8 +244,32 @@ def run_dataset(dataset, selector_key, client, percentile, max_samples=None,
         parakeet_lowconf = get_low_conf_words(parakeet_sample.get("segments"), thresholds["parakeet"])
         num_predict = compute_num_predict([qwen_hyp, whisperx_hyp, parakeet_hyp])
 
-        best_hyp = ollama_select(client, selector_model, qwen_hyp, whisperx_hyp, parakeet_hyp,
-                                  qwen_lowconf, whisperx_lowconf, parakeet_lowconf, num_predict)
+        work_items.append((idx, ref, qwen_hyp, whisperx_hyp, parakeet_hyp,
+                           qwen_lowconf, whisperx_lowconf, parakeet_lowconf, num_predict))
+
+    print(f"  {len(work_items)} samples queued for concurrent Ollama calls "
+          f"({len(skip_slots)} skipped without needing a call)")
+
+    # ── PHASE B: fire all Ollama calls concurrently ──
+    def _worker(item):
+        (_, _, qwen_hyp, whisperx_hyp, parakeet_hyp,
+         qwen_lowconf, whisperx_lowconf, parakeet_lowconf, num_predict) = item
+        return ollama_select(client, selector_model, qwen_hyp, whisperx_hyp, parakeet_hyp,
+                              qwen_lowconf, whisperx_lowconf, parakeet_lowconf, num_predict)
+
+    best_hyps = run_concurrent(work_items, _worker, max_workers=MAX_WORKERS, progress_every=10)
+
+    # ── Reassemble in original index order ──
+    call_results = {item[0]: (item, best_hyp) for item, best_hyp in zip(work_items, best_hyps)}
+
+    for idx in remaining_indices:
+        if idx in skip_slots:
+            results.append(skip_slots[idx])
+            continue
+
+        item, best_hyp = call_results[idx]
+        (_, ref, qwen_hyp, whisperx_hyp, parakeet_hyp,
+         qwen_lowconf, whisperx_lowconf, parakeet_lowconf, _) = item
 
         if best_hyp is None:
             results.append({"ref": ref, "hyp": None, "severity": None,
@@ -291,9 +293,10 @@ def run_dataset(dataset, selector_key, client, percentile, max_samples=None,
             "dataset_index":      idx,
         })
 
-        if (pos + 1) % 10 == 0:
+        if len(results) % 10 == 0:
             save_progress()
-            print(f"  {pos+1}/{len(indices)} done")
+
+    save_progress()
 
     valid = [r for r in results if not r.get("skipped") and not r.get("error")
              and r.get("sample_WER") is not None]

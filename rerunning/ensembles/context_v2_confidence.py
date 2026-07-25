@@ -4,37 +4,13 @@ rerunning/ensembles/context_v2_confidence.py
 PHASE 1 of 2: Context-aware V2 (auto-generated rules) + word-level
 confidence flagging. Selector calls only - no severity judging here.
 
-Once this finishes, run PHASE 2:
-    python rerunning/add_severity_to_existing.py --files <output file from this script>
-
-CHANGES from the original run_context_selector_v2_confidence.py:
-  - REMOVED the SUBSET_FILES monkeypatch - this WAS effective in the
-    original (this script calls load_subset_by_sample_index, unlike plain
-    context_v2), so it was already loading WhisperX subset data via a
-    workaround. Now unnecessary: sample loading goes through
-    find_canonical_file() with proper "whisperx" keys, and full-dataset
-    files already include segments, so there's no need for the
-    subset-only lookup path at all.
-  - Structured confidence metadata instead of inline [LOW-CONF: word]
-    markers - separate "Low-confidence words: ..." line per transcript,
-    with each word tagged by its position (e.g. word 7: "the") to
-    disambiguate repeated words where only one occurrence is flagged
-  - Per-model percentile thresholds instead of one shared raw threshold
-  - Two-pass execution - selector calls only, severity judging separate
-  - num_predict sized dynamically per sample; keep_alive="30m"
-  - Added tag-only reference skip; --split {dev,test,full} replaces
-    --full (defaults to "dev" for iteration); dual write
-  - "whisper" replaced with "whisperx" throughout
-
-*** SAME UNRESOLVED DEPENDENCY AS context_v2.py: build_rules_text() reads
-from error_profiles.json, which likely still reflects old Whisper's error
-data under "whisper_<dataset>" keys. Regenerate it from WhisperX's error
-profiles before trusting the auto-generated MODEL-SPECIFIC RELIABILITY
-RULES text. ***
+CONCURRENT VERSION: same Phase A (fast sequential prep) / Phase B
+(concurrent Ollama calls via thread pool) split as naive_confidence.py.
+See src/concurrent_ollama.py's docstring for the required
+OLLAMA_NUM_PARALLEL server-side setting.
 
 Usage:
     python rerunning/ensembles/context_v2_confidence.py --dataset commonvoice --split dev --percentile 20
-    python rerunning/ensembles/context_v2_confidence.py --dataset edacc --split full --percentile 20
 """
 
 import json
@@ -49,6 +25,7 @@ from src.selector import (
 )
 from src.rules import build_rules_text
 from src.splits import get_indices_for_split
+from src.concurrent_ollama import run_concurrent
 
 NEW_OUTPUT_DIR = "writeup_results/ensembles/context_v2_confidence"
 OLD_OUTPUT_DIR = "results/combinations_v2judge/context_v2_confidence"
@@ -56,6 +33,7 @@ OLLAMA_HOST    = "http://localhost:11434"
 DATASETS       = ["commonvoice", "english_dialects", "edacc", "shetland"]
 CONFIDENCE_MODELS  = ["qwen", "whisperx", "parakeet"]   # qwen added
 DEFAULT_PERCENTILE = 20
+MAX_WORKERS = 8   # tune to roughly match OLLAMA_NUM_PARALLEL on the server
 
 SELECTOR_PROMPT_TEMPLATE = """You are correcting an ASR transcript. You are given three transcripts of the same audio from different models.
 
@@ -176,7 +154,7 @@ def run_dataset(dataset, selector_key, client, auto_rules, percentile,
                  max_samples=None, rerun=False, split="dev"):
     selector_model = OLLAMA_MODELS[selector_key]
 
-    print(f"\n── {dataset} | context V2 + confidence (PHASE 1: selector only) "
+    print(f"\n── {dataset} | context V2 + confidence (PHASE 1: selector only, CONCURRENT) "
           f"selector={selector_key} percentile={percentile} split={split} ──")
 
     qwen_samples     = get_indexed_samples("qwen", dataset)
@@ -213,32 +191,36 @@ def run_dataset(dataset, selector_key, client, auto_rules, percentile,
         with open(old_output_path, "w") as f:
             json.dump(payload, f, indent=2, ensure_ascii=False)
 
-    for pos in range(start_from, len(indices)):
-        idx = indices[pos]
+    # ── PHASE A: fast sequential prep - build work items, append skips directly ──
+    remaining_indices = indices[start_from:]
+    work_items = []   # each: (idx, ref, qwen_hyp, whisperx_hyp, parakeet_hyp,
+                      #        qwen_lowconf, whisperx_lowconf, parakeet_lowconf, num_predict)
+    skip_slots = {}
 
+    for idx in remaining_indices:
         qwen_sample     = qwen_samples.get(idx)
         whisperx_sample = whisperx_samples.get(idx)
         parakeet_sample = parakeet_samples.get(idx)
 
         if not all([qwen_sample, whisperx_sample, parakeet_sample]):
-            results.append({"ref": None, "hyp": None, "severity": None,
-                            "sample_WER": None, "error": True,
-                            "error_reason": "missing sample from one or more models",
-                            "dataset_index": idx})
+            skip_slots[idx] = {"ref": None, "hyp": None, "severity": None,
+                               "sample_WER": None, "error": True,
+                               "error_reason": "missing sample from one or more models",
+                               "dataset_index": idx}
             continue
 
         ref = qwen_sample["ref"]
 
         if "IGNORE_TIME_SEGMENT_IN_SCORING" in ref:
-            results.append({"ref": ref, "hyp": None, "severity": None,
-                            "sample_WER": None, "skipped": True,
-                            "skip_reason": "ignore_time_segment", "dataset_index": idx})
+            skip_slots[idx] = {"ref": ref, "hyp": None, "severity": None,
+                               "sample_WER": None, "skipped": True,
+                               "skip_reason": "ignore_time_segment", "dataset_index": idx}
             continue
 
         if is_tag_only(ref):
-            results.append({"ref": ref, "hyp": None, "severity": None,
-                            "sample_WER": None, "skipped": True,
-                            "skip_reason": "tag_only_reference", "dataset_index": idx})
+            skip_slots[idx] = {"ref": ref, "hyp": None, "severity": None,
+                               "sample_WER": None, "skipped": True,
+                               "skip_reason": "tag_only_reference", "dataset_index": idx}
             continue
 
         qwen_hyp     = qwen_sample["hyp"]
@@ -250,8 +232,32 @@ def run_dataset(dataset, selector_key, client, auto_rules, percentile,
         parakeet_lowconf = get_low_conf_words(parakeet_sample.get("segments"), thresholds["parakeet"])
         num_predict = compute_num_predict([qwen_hyp, whisperx_hyp, parakeet_hyp])
 
-        best_hyp = ollama_select(client, selector_model, qwen_hyp, whisperx_hyp, parakeet_hyp,
-                                  qwen_lowconf, whisperx_lowconf, parakeet_lowconf, auto_rules, num_predict)
+        work_items.append((idx, ref, qwen_hyp, whisperx_hyp, parakeet_hyp,
+                           qwen_lowconf, whisperx_lowconf, parakeet_lowconf, num_predict))
+
+    print(f"  {len(work_items)} samples queued for concurrent Ollama calls "
+          f"({len(skip_slots)} skipped without needing a call)")
+
+    # ── PHASE B: fire all Ollama calls concurrently ──
+    def _worker(item):
+        (_, _, qwen_hyp, whisperx_hyp, parakeet_hyp,
+         qwen_lowconf, whisperx_lowconf, parakeet_lowconf, num_predict) = item
+        return ollama_select(client, selector_model, qwen_hyp, whisperx_hyp, parakeet_hyp,
+                              qwen_lowconf, whisperx_lowconf, parakeet_lowconf, auto_rules, num_predict)
+
+    best_hyps = run_concurrent(work_items, _worker, max_workers=MAX_WORKERS, progress_every=10)
+
+    # ── Reassemble in original index order ──
+    call_results = {item[0]: (item, best_hyp) for item, best_hyp in zip(work_items, best_hyps)}
+
+    for idx in remaining_indices:
+        if idx in skip_slots:
+            results.append(skip_slots[idx])
+            continue
+
+        item, best_hyp = call_results[idx]
+        (_, ref, qwen_hyp, whisperx_hyp, parakeet_hyp,
+         qwen_lowconf, whisperx_lowconf, parakeet_lowconf, _) = item
 
         if best_hyp is None:
             results.append({"ref": ref, "hyp": None, "severity": None,
@@ -276,9 +282,10 @@ def run_dataset(dataset, selector_key, client, auto_rules, percentile,
             "dataset_index":      idx,
         })
 
-        if (pos + 1) % 10 == 0:
+        if len(results) % 10 == 0:
             save_progress()
-            print(f"  {pos+1}/{len(indices)} done")
+
+    save_progress()
 
     valid = [r for r in results if not r.get("skipped") and not r.get("error")
              and r.get("sample_WER") is not None]

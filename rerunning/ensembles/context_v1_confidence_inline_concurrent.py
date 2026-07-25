@@ -1,22 +1,31 @@
 """
-rerunning/ensembles/naive_confidence_inline.py
+rerunning/ensembles/context_v1_confidence_inline_concurrent.py
 
-PHASE 1 of 2: Naive combination + word-level confidence flagging using
-INLINE markers. Selector calls only - no severity judging here.
+PHASE 1 of 2: Context-aware V1 (hand-written rules) + word-level
+confidence flagging using INLINE markers.
 
-CONCURRENT VERSION: same Phase A (fast sequential prep - skip checks,
-inline-marker building) / Phase B (concurrent Ollama calls via thread
-pool) split as naive_confidence.py. See src/concurrent_ollama.py's
-docstring for the required OLLAMA_NUM_PARALLEL server-side setting.
+CONCURRENT VERSION: same Phase A (fast sequential prep) / Phase B
+(concurrent Ollama calls via thread pool) split as the other confidence
+scripts. See src/concurrent_ollama.py's docstring for the required
+OLLAMA_NUM_PARALLEL server-side setting.
+
+NOTE: kept as a separate file (context_v1_confidence_inline_concurrent.py)
+rather than overwriting the original while your local CommonVoice run is
+still in progress - swap this in as the real context_v1_confidence_inline.py
+once that run finishes, before using it for English Dialects/EdAcc on the HPC.
+
+NOT CHANGED - STILL NEEDS YOUR REVIEW: the named-entity trust rule
+("WhisperX is more reliable on named entities") is unchanged, per your
+earlier decision to run with it as-is and revisit only if results look
+off for that specific rule.
 
 Usage:
-    python rerunning/ensembles/naive_confidence_inline.py --dataset commonvoice --split dev --percentile 20
+    python rerunning/ensembles/context_v1_confidence_inline.py --dataset commonvoice --split dev --percentile 20
 """
 
 import json
 import os
 import re
-import random
 import argparse
 from jiwer import wer
 from ollama import Client
@@ -28,30 +37,54 @@ from src.selector import (
 from src.splits import get_indices_for_split
 from src.concurrent_ollama import run_concurrent
 
-NEW_OUTPUT_DIR = "writeup_results/ensembles/naive_confidence_inline"
-OLD_OUTPUT_DIR = "results/combinations_v2judge/naive_confidence_inline"
+NEW_OUTPUT_DIR = "writeup_results/ensembles/context_v1_confidence_inline"
+OLD_OUTPUT_DIR = "results/combinations_v2judge/context_v1_confidence_inline"
 OLLAMA_HOST    = "http://localhost:11434"
-ASR_MODELS     = ["qwen", "whisperx", "parakeet", "wav2vec2"]
 DATASETS       = ["commonvoice", "english_dialects", "edacc", "shetland"]
-CONFIDENCE_MODELS = ["qwen", "whisperx", "parakeet", "wav2vec2"]   # all 4 now produce confidence scores
+CONFIDENCE_MODELS  = ["qwen", "whisperx", "parakeet"]   # qwen added
 DEFAULT_PERCENTILE = 20
 MAX_WORKERS = 8   # tune to roughly match OLLAMA_NUM_PARALLEL on the server
 
-SELECTOR_PROMPT = """You are given four ASR transcripts of the same spoken audio.
+# NOTE: rule content unchanged (named-entity trust etc.) - review per
+# context_v1.py's discussion before editing. The confidence-weighting
+# rules ARE new, making Qwen's confidence do something now it's available.
+SELECTOR_PROMPT = """You are correcting an ASR transcript. You are given three transcripts of the same audio from different models.
 
-Some transcripts include inline [LOW-CONF: word] markers — these indicate words the model itself was uncertain about. Treat such words as MORE likely to be wrong when deciding what to combine. Do NOT include the [LOW-CONF: ...] markers in your final output — write the plain word only.
+Some transcripts include inline [LOW-CONF: word] markers — these indicate words the model itself was uncertain about. Treat words marked this way as MORE likely to be wrong. Do NOT include the [LOW-CONF: ...] markers in your final output — write the plain word only.
 
-Your task is to construct the most accurate transcript by selecting the best words and phrases from the four options. You may:
-- Select one transcript verbatim
-- Swap individual words or short phrases between transcripts where one is clearly more accurate (e.g. a correct name, number, or dialect word)
+TRANSCRIPT A (base — use this as your starting point):
+{qwen}
 
-You MUST NOT:
-- Paraphrase or rewrite sentences
-- Add any words not present in any of the four transcripts
-- Change sentence structure or word order beyond individual word swaps
-- Include any [LOW-CONF: ...] markers in your output
+TRANSCRIPT B (WhisperX):
+{whisperx}
 
-Return only the final transcript, nothing else."""
+TRANSCRIPT C (Parakeet):
+{parakeet}
+
+Your task: return Transcript A with targeted corrections where needed.
+
+GENERAL RULE — applies to all words except named entities:
+Only change a word if BOTH B and C disagree with A and agree with each other on the same alternative. If only one of B or C disagrees with A, keep A unchanged. Ignore capitalisation and punctuation differences when checking agreement.
+
+CONFIDENCE WEIGHTING:
+- If a disagreeing word in B or C is marked [LOW-CONF: ...], treat that disagreement as WEAKER evidence.
+- If the word in A itself is marked [LOW-CONF: ...], treat disagreement from B and C as STRONGER evidence (A is less trustworthy at that specific word).
+
+NAMED ENTITY RULE — applies to people's names, place names, organisations:
+WhisperX (B) is more reliable on named entities. If B has a different named entity than A, consider switching — BUT only if C does not agree with A (case-insensitive). If C agrees with A on the named entity, keep A.
+
+ADDITIONAL KNOWN ERROR PATTERNS:
+- PROFANITY AND INFORMAL EXPRESSIONS: A sometimes self-censors mild profanity (e.g. "shit-scared"→"scared", "bloody"→"body", "sweet F all"→"sweetie fall") — if B and C have the original expression, restore it.
+- NEGATIONS: If A drops or changes a negation and B and C preserve it — this is critical, switch.
+- NUMBERS: If A has a different number than B and C agree on — switch.
+- SCOTTISH DIALECT WORDS: If B or C preserve a Scottish dialect word that A has normalised (e.g. "wee", "wisnae", "dinnae", "cannae", "braw", "aboot", "carry-out", "noo") and both agree — preserve the dialect word.
+- PRONOUNS: If A changes a pronoun (I/you/we/she/they) and B and C agree on the original — switch.
+
+Do NOT paraphrase, reorder, or restructure sentences.
+Do NOT add words that appear in none of the three transcripts.
+Do NOT include any [LOW-CONF: ...] markers in your output.
+
+Return ONLY the corrected transcript. No explanation, no labels, no preamble."""
 
 
 def get_indexed_samples(model: str, dataset: str) -> dict:
@@ -83,8 +116,6 @@ def compute_percentile_thresholds(dataset: str, percentile: int) -> dict:
 
 
 def build_inline_transcript(hyp: str, segments: list, threshold: float) -> str:
-    """Inserts [LOW-CONF: word] markers at the exact position of each
-    flagged word - naturally position-exact, unlike a separate list."""
     if not segments:
         return hyp
     parts = []
@@ -104,28 +135,19 @@ def strip_lowconf_markers(text: str) -> str:
     return re.sub(r'\[LOW-CONF:\s*([^\]]+)\]', r'\1', text)
 
 
-def get_rotated_order(models: list, seed_key: int) -> list:
-    order = list(models)
-    rng = random.Random(seed_key)
-    rng.shuffle(order)
-    return order
-
-
 def compute_num_predict(hyps: list) -> int:
     max_words = max(len(h.split()) for h in hyps)
     estimated = int(max_words * 1.3) + 50
     return max(300, min(estimated, 2048))
 
 
-def ollama_select(client, model_name, prompt_block, num_predict, retries=2):
+def ollama_select(client, model_name, qwen_text, whisperx_text, parakeet_text, num_predict, retries=2):
+    prompt = SELECTOR_PROMPT.format(qwen=qwen_text, whisperx=whisperx_text, parakeet=parakeet_text)
     for attempt in range(retries + 1):
         try:
             response = client.chat(
                 model=model_name,
-                messages=[
-                    {"role": "system", "content": SELECTOR_PROMPT},
-                    {"role": "user",   "content": prompt_block},
-                ],
+                messages=[{"role": "user", "content": prompt}],
                 options={"temperature": 0, "num_ctx": 4096, "num_predict": num_predict},
                 keep_alive="30m",
                 think=False,
@@ -142,10 +164,12 @@ def run_dataset(dataset, selector_key, client, percentile, max_samples=None,
                  rerun=False, split="dev"):
     selector_model = OLLAMA_MODELS[selector_key]
 
-    print(f"\n── {dataset} | naive + confidence INLINE (PHASE 1: selector only, CONCURRENT) "
+    print(f"\n── {dataset} | context V1 + confidence INLINE (PHASE 1: selector only, CONCURRENT) "
           f"selector={selector_key} percentile={percentile} split={split} ──")
 
-    model_samples = {m: get_indexed_samples(m, dataset) for m in ASR_MODELS}
+    qwen_samples     = get_indexed_samples("qwen", dataset)
+    whisperx_samples = get_indexed_samples("whisperx", dataset)
+    parakeet_samples = get_indexed_samples("parakeet", dataset)
     thresholds = compute_percentile_thresholds(dataset, percentile)
 
     indices = get_indices_for_split(dataset, split)
@@ -156,7 +180,7 @@ def run_dataset(dataset, selector_key, client, percentile, max_samples=None,
     os.makedirs(NEW_OUTPUT_DIR, exist_ok=True)
     os.makedirs(OLD_OUTPUT_DIR, exist_ok=True)
 
-    filename = f"naive_confinline_{dataset}_{selector_key}_p{percentile}_{split}.json"
+    filename = f"context_v1confinline_{dataset}_{selector_key}_p{percentile}_{split}.json"
     new_output_path = os.path.join(NEW_OUTPUT_DIR, filename)
     old_output_path = os.path.join(OLD_OUTPUT_DIR, filename)
 
@@ -179,20 +203,22 @@ def run_dataset(dataset, selector_key, client, percentile, max_samples=None,
 
     # ── PHASE A: fast sequential prep - build work items, append skips directly ──
     remaining_indices = indices[start_from:]
-    work_items = []   # each: (idx, ref, hyp_by_model, model_order, prompt_block, num_predict)
-    skip_slots = {}   # idx -> pre-built skip/error result dict
+    work_items = []   # each: (idx, ref, qwen_text, whisperx_text, parakeet_text, num_predict)
+    skip_slots = {}
 
     for idx in remaining_indices:
-        samples_by_model = {m: model_samples[m].get(idx) for m in ASR_MODELS}
+        qwen_sample     = qwen_samples.get(idx)
+        whisperx_sample = whisperx_samples.get(idx)
+        parakeet_sample = parakeet_samples.get(idx)
 
-        if not all(samples_by_model.values()):
+        if not all([qwen_sample, whisperx_sample, parakeet_sample]):
             skip_slots[idx] = {"ref": None, "hyp": None, "severity": None,
                                "sample_WER": None, "error": True,
                                "error_reason": "missing sample from one or more models",
                                "dataset_index": idx}
             continue
 
-        ref = samples_by_model["qwen"]["ref"]
+        ref = qwen_sample["ref"]
 
         if "IGNORE_TIME_SEGMENT_IN_SCORING" in ref:
             skip_slots[idx] = {"ref": ref, "hyp": None, "severity": None,
@@ -206,29 +232,24 @@ def run_dataset(dataset, selector_key, client, percentile, max_samples=None,
                                "skip_reason": "tag_only_reference", "dataset_index": idx}
             continue
 
-        hyp_by_model = {}
-        for m in ASR_MODELS:
-            s = samples_by_model[m]
-            if m in CONFIDENCE_MODELS:
-                hyp_by_model[m] = build_inline_transcript(s["hyp"], s.get("segments"), thresholds[m])
-            else:
-                hyp_by_model[m] = s["hyp"]
+        qwen_hyp     = qwen_sample["hyp"]
+        whisperx_hyp = whisperx_sample["hyp"]
+        parakeet_hyp = parakeet_sample["hyp"]
 
-        model_order = get_rotated_order(ASR_MODELS, seed_key=idx)
-        prompt_block = "\n".join(
-            f"Transcript {i+1}: {hyp_by_model[m]}\n" for i, m in enumerate(model_order)
-        )
-        num_predict = compute_num_predict(list(hyp_by_model.values()))
+        qwen_text     = build_inline_transcript(qwen_hyp, qwen_sample.get("segments"), thresholds["qwen"])
+        whisperx_text = build_inline_transcript(whisperx_hyp, whisperx_sample.get("segments"), thresholds["whisperx"])
+        parakeet_text = build_inline_transcript(parakeet_hyp, parakeet_sample.get("segments"), thresholds["parakeet"])
+        num_predict = compute_num_predict([qwen_text, whisperx_text, parakeet_text])
 
-        work_items.append((idx, ref, hyp_by_model, model_order, prompt_block, num_predict))
+        work_items.append((idx, ref, qwen_text, whisperx_text, parakeet_text, num_predict))
 
     print(f"  {len(work_items)} samples queued for concurrent Ollama calls "
           f"({len(skip_slots)} skipped without needing a call)")
 
     # ── PHASE B: fire all Ollama calls concurrently ──
     def _worker(item):
-        _, _, _, _, prompt_block, num_predict = item
-        return ollama_select(client, selector_model, prompt_block, num_predict)
+        _, _, qwen_text, whisperx_text, parakeet_text, num_predict = item
+        return ollama_select(client, selector_model, qwen_text, whisperx_text, parakeet_text, num_predict)
 
     raw_results = run_concurrent(work_items, _worker, max_workers=MAX_WORKERS, progress_every=10)
 
@@ -241,7 +262,7 @@ def run_dataset(dataset, selector_key, client, percentile, max_samples=None,
             continue
 
         item, raw = call_results[idx]
-        _, ref, hyp_by_model, model_order, _, _ = item
+        _, ref, qwen_text, whisperx_text, parakeet_text, _ = item
 
         if raw is None:
             results.append({"ref": ref, "hyp": None, "severity": None,
@@ -252,14 +273,15 @@ def run_dataset(dataset, selector_key, client, percentile, max_samples=None,
         sample_wer_val = wer(normalise(ref), normalise(best_hyp))
 
         results.append({
-            "ref":               ref,
-            "hyp":               best_hyp,
-            "source_hyps_flagged": hyp_by_model,
-            "model_order":       model_order,
-            "thresholds_used":   thresholds,
-            "sample_WER":        sample_wer_val,
-            "severity":          None,
-            "dataset_index":     idx,
+            "ref":                  ref,
+            "hyp":                  best_hyp,
+            "qwen_hyp_flagged":     qwen_text,
+            "whisperx_hyp_flagged": whisperx_text,
+            "parakeet_hyp_flagged": parakeet_text,
+            "thresholds_used":      thresholds,
+            "sample_WER":           sample_wer_val,
+            "severity":             None,
+            "dataset_index":        idx,
         })
 
         if len(results) % 10 == 0:
@@ -275,18 +297,17 @@ def run_dataset(dataset, selector_key, client, percentile, max_samples=None,
     ) if valid else None
 
     output = {
-        "selector":             selector_key,
-        "approach":             "naive_confidence_inline",
-        "asr_models":           ASR_MODELS,
-        "phase":                "selector_only - severity not yet judged",
-        "dataset":              dataset,
-        "split":                split,
-        "percentile":           percentile,
-        "thresholds_used":      thresholds,
-        "subset_indices":       indices,
-        "corpus_wer":           corpus_wer,
-        "num_samples":          len(valid),
-        "samples":              results,
+        "selector":         selector_key,
+        "approach":         "context_v1_confidence_inline",
+        "phase":            "selector_only - severity not yet judged",
+        "dataset":          dataset,
+        "split":            split,
+        "percentile":       percentile,
+        "thresholds_used":  thresholds,
+        "subset_indices":   indices,
+        "corpus_wer":       corpus_wer,
+        "num_samples":      len(valid),
+        "samples":          results,
     }
 
     with open(new_output_path, "w") as f:
@@ -306,8 +327,8 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--dataset",     default="commonvoice", choices=DATASETS)
     parser.add_argument("--selector",    default="gemma4",      choices=list(OLLAMA_MODELS.keys()))
-    parser.add_argument("--percentile",  type=int,              default=DEFAULT_PERCENTILE)
-    parser.add_argument("--max-samples", type=int,              default=None)
+    parser.add_argument("--percentile",  type=int, default=DEFAULT_PERCENTILE)
+    parser.add_argument("--max-samples", type=int, default=None)
     parser.add_argument("--split",       default="dev", choices=["dev", "test", "full"])
     parser.add_argument("--dry-run",     action="store_true")
     parser.add_argument("--rerun",       action="store_true")

@@ -2,48 +2,18 @@
 rerunning/ensembles/naive_confidence.py
 
 PHASE 1 of 2: Naive combination + word-level confidence flagging.
-Selector calls only - no severity judging here (avoids alternating between
-selector and Phi-4 in memory, which was causing reload-thrashing on limited
-GPU memory - the same issue diagnosed earlier for the WhisperX+Phi-4 combo).
+Selector calls only - no severity judging here.
 
-Once this finishes, run PHASE 2:
-    python rerunning/add_severity_to_existing.py --files <output file from this script>
-
-CHANGES from the previous version, per feedback:
-  1. Structured confidence metadata instead of inline [LOW-CONF: word]
-     markers - each transcript now comes with a separate
-     "Low-confidence words: ..." line, rather than tags embedded in the
-     sentence itself. Shorter prompt, less risk of the selector misreading
-     sentence structure.
-  2. Per-model percentile thresholds instead of one shared raw threshold -
-     WhisperX and Parakeet confidence scores aren't necessarily on the same
-     scale, so each model's threshold is calibrated as the Nth percentile
-     of ITS OWN confidence distribution across the dataset, computed once
-     up front.
-  3. Two-pass execution - this script does ONLY selector calls. Severity
-     judging is a separate pass (add_severity_to_existing.py), so only one
-     model (the selector) is ever loaded during this phase.
-  4. num_predict, keep_alive="30m" added to the Ollama call; the 0.1s
-     sleep between calls removed (no need to rate-limit local calls).
-  5. Order rotation - which transcript is labelled "Transcript 1/2/3/4"
-     is now deterministically rotated per sample (seeded by dataset_index),
-     to avoid position/model-order bias in the selector's choices.
-  6. "whisper" replaced with "whisperx" throughout (standing decision).
-  7. --split {dev,test,full} replaces --full - defaults to "dev" so
-     iteration only scores the dev subset (excludes calibration + test
-     indices), cutting compute ~30-40% per run.
-  8. think=False added to the Ollama call - without it, thinking-capable
-     selectors (e.g. gemma4, the locked selector per selector_ablation.py)
-     spend the whole generation budget on hidden reasoning tokens and
-     return an EMPTY message.content, silently producing hyp="" and
-     sample_WER=1.0 for every sample rather than an error. Invisible while
-     the default selector was qwen2.5 (not a thinking model).
-  9. --selector default updated to gemma4, per selector_ablation.py's
-     locked result (mean_severity=0.85, mean_wer=9.26%, compliance=100%).
+CONCURRENT VERSION: the sequential per-sample loop is split into a fast
+Phase A (skip-checks, threshold-based confidence flagging, prompt block
+building - all cheap, no network I/O) and a concurrent Phase B (actually
+firing the Ollama selector calls via a thread pool, instead of one at a
+time). See src/concurrent_ollama.py's docstring for what this requires
+on the Ollama SERVER side (OLLAMA_NUM_PARALLEL) - client-side
+concurrency alone does nothing without it.
 
 Usage:
     python rerunning/ensembles/naive_confidence.py --dataset commonvoice --split dev --percentile 20
-    python rerunning/ensembles/naive_confidence.py --dataset edacc --split full --percentile 20
 """
 
 import json
@@ -58,6 +28,7 @@ from src.selector import (
     find_canonical_file, OLLAMA_MODELS, check_selector_available, load_samples,
 )
 from src.splits import get_indices_for_split
+from src.concurrent_ollama import run_concurrent
 
 NEW_OUTPUT_DIR = "writeup_results/ensembles/naive_confidence"
 OLD_OUTPUT_DIR = "results/combinations_v2judge/naive_confidence"
@@ -66,6 +37,7 @@ ASR_MODELS     = ["qwen", "whisperx", "parakeet", "wav2vec2"]
 DATASETS       = ["commonvoice", "english_dialects", "edacc", "shetland"]
 CONFIDENCE_MODELS = ["qwen", "whisperx", "parakeet", "wav2vec2"]   # all 4 now produce confidence scores
 DEFAULT_PERCENTILE = 20
+MAX_WORKERS = 8   # tune to roughly match OLLAMA_NUM_PARALLEL on the server
 
 SELECTOR_PROMPT = """You are given four ASR transcripts of the same spoken audio.
 
@@ -206,7 +178,7 @@ def run_dataset(dataset, selector_key, client, percentile, max_samples=None,
                  rerun=False, split="dev"):
     selector_model = OLLAMA_MODELS[selector_key]
 
-    print(f"\n── {dataset} | naive + confidence (PHASE 1: selector only) "
+    print(f"\n── {dataset} | naive + confidence (PHASE 1: selector only, CONCURRENT) "
           f"selector={selector_key} percentile={percentile} split={split} ──")
 
     model_samples = {m: get_indexed_samples(m, dataset) for m in ASR_MODELS}
@@ -241,29 +213,33 @@ def run_dataset(dataset, selector_key, client, percentile, max_samples=None,
         with open(old_output_path, "w") as f:
             json.dump(payload, f, indent=2, ensure_ascii=False)
 
-    for pos in range(start_from, len(indices)):
-        idx = indices[pos]
+    # ── PHASE A: fast sequential prep - build work items, append skips directly ──
+    remaining_indices = indices[start_from:]
+    work_items = []   # each: (idx, ref, hyp_by_model, low_conf_by_model, prompt_block, num_predict)
+    skip_slots = {}   # idx -> pre-built skip/error result dict
+
+    for idx in remaining_indices:
         samples_by_model = {m: model_samples[m].get(idx) for m in ASR_MODELS}
 
         if not all(samples_by_model.values()):
-            results.append({"ref": None, "hyp": None, "severity": None,
-                            "sample_WER": None, "error": True,
-                            "error_reason": "missing sample from one or more models",
-                            "dataset_index": idx})
+            skip_slots[idx] = {"ref": None, "hyp": None, "severity": None,
+                               "sample_WER": None, "error": True,
+                               "error_reason": "missing sample from one or more models",
+                               "dataset_index": idx}
             continue
 
         ref = samples_by_model["qwen"]["ref"]
 
         if "IGNORE_TIME_SEGMENT_IN_SCORING" in ref:
-            results.append({"ref": ref, "hyp": None, "severity": None,
-                            "sample_WER": None, "skipped": True,
-                            "skip_reason": "ignore_time_segment", "dataset_index": idx})
+            skip_slots[idx] = {"ref": ref, "hyp": None, "severity": None,
+                               "sample_WER": None, "skipped": True,
+                               "skip_reason": "ignore_time_segment", "dataset_index": idx}
             continue
 
         if is_tag_only(ref):
-            results.append({"ref": ref, "hyp": None, "severity": None,
-                            "sample_WER": None, "skipped": True,
-                            "skip_reason": "tag_only_reference", "dataset_index": idx})
+            skip_slots[idx] = {"ref": ref, "hyp": None, "severity": None,
+                               "sample_WER": None, "skipped": True,
+                               "skip_reason": "tag_only_reference", "dataset_index": idx}
             continue
 
         hyp_by_model = {m: samples_by_model[m]["hyp"] for m in ASR_MODELS}
@@ -277,7 +253,28 @@ def run_dataset(dataset, selector_key, client, percentile, max_samples=None,
         prompt_block = build_prompt_block(model_order, hyp_by_model, low_conf_by_model)
         num_predict = compute_num_predict(hyp_by_model)
 
-        best_hyp = ollama_select(client, selector_model, prompt_block, num_predict)
+        work_items.append((idx, ref, hyp_by_model, low_conf_by_model, model_order, prompt_block, num_predict))
+
+    print(f"  {len(work_items)} samples queued for concurrent Ollama calls "
+          f"({len(skip_slots)} skipped without needing a call)")
+
+    # ── PHASE B: fire all Ollama calls concurrently ──
+    def _worker(item):
+        _, _, _, _, _, prompt_block, num_predict = item
+        return ollama_select(client, selector_model, prompt_block, num_predict)
+
+    best_hyps = run_concurrent(work_items, _worker, max_workers=MAX_WORKERS, progress_every=10)
+
+    # ── Reassemble in original index order ──
+    call_results = {item[0]: (item, best_hyp) for item, best_hyp in zip(work_items, best_hyps)}
+
+    for idx in remaining_indices:
+        if idx in skip_slots:
+            results.append(skip_slots[idx])
+            continue
+
+        item, best_hyp = call_results[idx]
+        _, ref, hyp_by_model, low_conf_by_model, model_order, _, _ = item
 
         if best_hyp is None:
             results.append({"ref": ref, "hyp": None, "severity": None,
@@ -288,19 +285,20 @@ def run_dataset(dataset, selector_key, client, percentile, max_samples=None,
 
         results.append({
             "ref":               ref,
-            "hyp":               best_hyp,   # matches add_severity_to_existing.py's expected schema
+            "hyp":               best_hyp,
             "source_hyps":       hyp_by_model,
             "model_order":       model_order,
             "low_conf_words":    low_conf_by_model,
             "thresholds_used":   thresholds,
             "sample_WER":        sample_wer_val,
-            "severity":          None,   # filled in by phase 2 (add_severity_to_existing.py)
+            "severity":          None,
             "dataset_index":     idx,
         })
 
-        if (pos + 1) % 10 == 0:
+        if len(results) % 10 == 0:
             save_progress()
-            print(f"  {pos+1}/{len(indices)} done")
+
+    save_progress()
 
     valid = [r for r in results if not r.get("skipped") and not r.get("error")
              and r.get("sample_WER") is not None]
