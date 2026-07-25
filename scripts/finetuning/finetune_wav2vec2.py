@@ -149,6 +149,15 @@ def main():
     parser.add_argument("--gradient_accumulation_steps", type=int, default=4)
     parser.add_argument("--warmup_ratio", type=float, default=0.1)
     parser.add_argument("--early_stopping_patience", type=int, default=3)
+    parser.add_argument("--gradient_checkpointing", action=argparse.BooleanOptionalAction, default=False,
+                        help="Off by default: the frozen-feature-encoder + gradient_checkpointing "
+                             "interaction proved fragile in testing (silent zero-gradient training, "
+                             "confirmed via smoke test: train_loss stuck at 0.0, eval_loss nan) even "
+                             "with the standard forward-hook workaround in place. wav2vec2-large on a "
+                             "full Ampere GPU with these batch sizes likely doesn't need the memory "
+                             "savings anyway - only re-enable if you hit real OOM errors, and verify "
+                             "with a smoke test (train_loss should be a real non-zero number, not "
+                             "exactly 0.0) before trusting a real run.")
     parser.add_argument("--use_pretrained_vocab", action=argparse.BooleanOptionalAction, default=True,
                         help="Reuse the base checkpoint's own processor/vocab/CTC head "
                              "(recommended default for this data volume). Pass "
@@ -202,14 +211,12 @@ def main():
 
     if args.freeze_feature_encoder:
         model.freeze_feature_encoder()
-        # Required alongside gradient_checkpointing=True: with the feature
-        # encoder frozen, its output (which feeds into the checkpointed
-        # transformer layers) has no grad-requiring tensor flowing into
-        # them, so torch's checkpoint mechanism can't build a backward
-        # graph at all - the whole model silently trains on nothing
-        # (confirmed via smoke test: train_loss stuck at 0.0, eval_loss
-        # nan). This hook forces the frozen encoder's output to require
-        # grad, satisfying checkpointing without unfreezing anything.
+        # Kept as a safety net if you re-enable --gradient_checkpointing
+        # later (defaults OFF now - see that flag's help text for why).
+        # This hook alone did NOT fully resolve the issue in testing, so
+        # don't trust gradient_checkpointing=True without re-verifying
+        # via smoke test (train_loss should be non-zero, eval_loss should
+        # not be nan) even with this hook in place.
         def _make_inputs_require_grad(module, input, output):
             output.requires_grad_(True)
         model.wav2vec2.feature_extractor.register_forward_hook(_make_inputs_require_grad)
@@ -249,7 +256,7 @@ def main():
         greater_is_better=False,
         bf16=use_bf16,
         fp16=use_fp16,
-        gradient_checkpointing=True,
+        gradient_checkpointing=args.gradient_checkpointing,
         dataloader_num_workers=4,
         report_to=[],
         group_by_length=True,
@@ -285,6 +292,7 @@ def main():
         "base_model": args.base_model,
         "use_pretrained_vocab": args.use_pretrained_vocab,
         "freeze_feature_encoder": args.freeze_feature_encoder,
+        "gradient_checkpointing": args.gradient_checkpointing,
         "epochs": args.epochs,
         "learning_rate": args.lr,
         "warmup_ratio": args.warmup_ratio,
