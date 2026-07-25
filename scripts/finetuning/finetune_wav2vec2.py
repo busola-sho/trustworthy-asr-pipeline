@@ -115,6 +115,11 @@ def main():
     parser.add_argument("--freeze_feature_encoder", action="store_true", default=True,
                         help="Freeze the CNN feature encoder (recommended default for "
                              "small fine-tuning sets - only adapt the transformer + CTC head)")
+    parser.add_argument("--max_train_samples", type=int, default=None,
+                        help="Limit train set to this many samples - for a quick smoke "
+                             "test before submitting a real job, not for actual training runs")
+    parser.add_argument("--max_val_samples", type=int, default=None,
+                        help="Limit val set to this many samples - smoke-test only")
     args = parser.parse_args()
 
     print(f"Loading tokenizer from {VOCAB_PATH} (run build_wav2vec2_vocab.py first if missing)")
@@ -141,6 +146,10 @@ def main():
     print("Loading manifests...")
     train_ds = load_manifest_as_dataset("train")
     val_ds = load_manifest_as_dataset("val")
+    if args.max_train_samples:
+        train_ds = train_ds.select(range(min(args.max_train_samples, len(train_ds))))
+    if args.max_val_samples:
+        val_ds = val_ds.select(range(min(args.max_val_samples, len(val_ds))))
     print(f"  train: {len(train_ds)}  val: {len(val_ds)}")
 
     prepare_fn = make_prepare_fn(processor)
