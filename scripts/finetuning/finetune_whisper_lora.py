@@ -2,44 +2,63 @@
 scripts/finetuning/finetune_whisper_lora.py
 
 Fine-tunes openai/whisper-small with LoRA on the train manifest, selects
-the best checkpoint by validation WER, evaluates on the held-out test
-manifest at the end.
+the best checkpoint by validation WER, and ONLY evaluates on the
+held-out test manifest if --evaluate_test is explicitly passed (see
+below - this prevents accidentally using test performance to choose
+hyperparameters during a sweep).
 
 Data comes from prepare_manifest.py's output (data/finetune/manifests/
 {train,val,test}.jsonl) - run that first.
 
+WORKFLOW (per the reviewed feedback):
+  1. Train on train.jsonl.
+  2. Select checkpoints/hyperparameters using val.jsonl ONLY - run
+     without --evaluate_test while you're still comparing LoRA configs
+     or learning rates.
+  3. Once a configuration is fixed, run ONE final job with
+     --evaluate_test to get the test-set number. Do this once, not
+     per-sweep-iteration.
+  4. Shetland stays untouched - handled elsewhere, not by this script.
+
 Usage:
+    # during hyperparameter search - val WER only, test never touched:
     python scripts/finetuning/finetune_whisper_lora.py \\
-        --output_dir checkpoints/whisper_small_lora_scots \\
+        --output_dir checkpoints/whisper_small_lora_scots_r32 \\
         --lora_r 32 --lora_alpha 64 --epochs 10 --lr 1e-3
 
-    # try a different LoRA config as a second run for comparison:
+    # final run once a config is chosen - evaluates test ONCE:
     python scripts/finetuning/finetune_whisper_lora.py \\
-        --output_dir checkpoints/whisper_small_lora_scots_r16 \\
-        --lora_r 16 --lora_alpha 32 --epochs 10 --lr 1e-3
+        --output_dir checkpoints/whisper_small_lora_scots_final \\
+        --lora_r 32 --lora_alpha 64 --epochs 10 --lr 1e-3 --evaluate_test
 """
 
 import argparse
 import json
+import platform
+import time
 from dataclasses import dataclass
-from typing import Any, Dict, List, Union
+from importlib.metadata import version, PackageNotFoundError
+from typing import Dict, List, Union
 
 import torch
-import soundfile as sf
 from datasets import Dataset, Audio
 from jiwer import wer
-from peft import LoraConfig, get_peft_model
+from peft import LoraConfig, TaskType, get_peft_model
 from transformers import (
     WhisperForConditionalGeneration,
     WhisperProcessor,
     Seq2SeqTrainer,
     Seq2SeqTrainingArguments,
+    EarlyStoppingCallback,
 )
+
+from src.judge import normalise
 
 MANIFEST_DIR = "data/finetune/manifests"
 BASE_MODEL = "openai/whisper-small"
 LANGUAGE = "english"
 TASK = "transcribe"
+SEED = 42
 
 
 def load_manifest_as_dataset(split: str) -> Dataset:
@@ -66,8 +85,6 @@ class DataCollatorSpeechSeq2SeqWithPadding:
         labels_batch = self.processor.tokenizer.pad(label_features, return_tensors="pt")
         labels = labels_batch["input_ids"].masked_fill(labels_batch.attention_mask.ne(1), -100)
 
-        # if bos was appended by the tokenizer during pad, strip it here since
-        # the model prepends it automatically
         if (labels[:, 0] == self.processor.tokenizer.bos_token_id).all().cpu().item():
             labels = labels[:, 1:]
 
@@ -95,9 +112,26 @@ def make_compute_metrics(processor: WhisperProcessor):
         pred_str = processor.tokenizer.batch_decode(pred_ids, skip_special_tokens=True)
         label_str = processor.tokenizer.batch_decode(label_ids, skip_special_tokens=True)
 
-        error_rate = wer(label_str, pred_str)
+        # normalise() matches the rest of the dissertation pipeline, so this
+        # validation WER is directly comparable to your other reported WERs -
+        # NOT the same number you'd get from raw string comparison.
+        error_rate = wer(
+            [normalise(x) for x in label_str],
+            [normalise(x) for x in pred_str],
+        )
         return {"wer": error_rate}
     return compute_metrics
+
+
+def get_package_versions() -> dict:
+    packages = ["torch", "transformers", "peft", "datasets", "jiwer"]
+    versions = {}
+    for pkg in packages:
+        try:
+            versions[pkg] = version(pkg)
+        except PackageNotFoundError:
+            versions[pkg] = "unknown"
+    return versions
 
 
 def main():
@@ -111,13 +145,21 @@ def main():
     parser.add_argument("--lr", type=float, default=1e-3)
     parser.add_argument("--per_device_batch_size", type=int, default=8)
     parser.add_argument("--gradient_accumulation_steps", type=int, default=2)
-    parser.add_argument("--eval_steps", type=int, default=50)
+    parser.add_argument("--generation_max_length", type=int, default=225,
+                        help="Check your split_summary.json / manifest target-token-length "
+                             "distribution before trusting this default for long-tailed data")
+    parser.add_argument("--early_stopping_patience", type=int, default=3)
+    parser.add_argument("--evaluate_test", action="store_true",
+                        help="Only set this on your FINAL run, once hyperparameters are "
+                             "fixed via validation WER - evaluating test repeatedly during "
+                             "a sweep defeats the point of holding it out.")
     parser.add_argument("--max_train_samples", type=int, default=None,
-                        help="Limit train set to this many samples - for a quick smoke "
-                             "test before submitting a real job, not for actual training runs")
+                        help="Limit train set to this many samples - smoke test only")
     parser.add_argument("--max_val_samples", type=int, default=None,
-                        help="Limit val set to this many samples - smoke-test only")
+                        help="Limit val set to this many samples - smoke test only")
     args = parser.parse_args()
+
+    torch.manual_seed(SEED)
 
     print(f"Loading processor/model: {args.base_model}")
     processor = WhisperProcessor.from_pretrained(args.base_model, language=LANGUAGE, task=TASK)
@@ -125,8 +167,10 @@ def main():
     model.generation_config.language = LANGUAGE
     model.generation_config.task = TASK
     model.generation_config.forced_decoder_ids = None
+    model.config.use_cache = False   # required alongside gradient checkpointing
 
     lora_config = LoraConfig(
+        task_type=TaskType.SEQ_2_SEQ_LM,
         r=args.lora_r,
         lora_alpha=args.lora_alpha,
         target_modules=["q_proj", "v_proj"],
@@ -152,27 +196,34 @@ def main():
     data_collator = DataCollatorSpeechSeq2SeqWithPadding(processor=processor)
     compute_metrics = make_compute_metrics(processor)
 
+    use_bf16 = torch.cuda.is_available() and torch.cuda.is_bf16_supported()
+    use_fp16 = torch.cuda.is_available() and not use_bf16
+
     training_args = Seq2SeqTrainingArguments(
         output_dir=args.output_dir,
         per_device_train_batch_size=args.per_device_batch_size,
         gradient_accumulation_steps=args.gradient_accumulation_steps,
         learning_rate=args.lr,
         num_train_epochs=args.epochs,
-        evaluation_strategy="steps",
-        eval_steps=args.eval_steps,
-        save_strategy="steps",
-        save_steps=args.eval_steps,
+        eval_strategy="epoch",
+        save_strategy="epoch",
         save_total_limit=3,
         predict_with_generate=True,
-        generation_max_length=225,
+        generation_max_length=args.generation_max_length,
+        logging_strategy="steps",
         logging_steps=10,
         load_best_model_at_end=True,
         metric_for_best_model="wer",
         greater_is_better=False,
-        fp16=torch.cuda.is_available(),
+        bf16=use_bf16,
+        fp16=use_fp16,
+        gradient_checkpointing=True,
+        dataloader_num_workers=4,
         report_to=["tensorboard"],
         remove_unused_columns=False,
         label_names=["labels"],
+        seed=SEED,
+        data_seed=SEED,
     )
 
     trainer = Seq2SeqTrainer(
@@ -182,24 +233,53 @@ def main():
         eval_dataset=val_ds,
         data_collator=data_collator,
         compute_metrics=compute_metrics,
-        tokenizer=processor.feature_extractor,
+        processing_class=processor,
+        callbacks=[EarlyStoppingCallback(early_stopping_patience=args.early_stopping_patience)],
     )
 
+    start_time = time.time()
     print("Starting training...")
     trainer.train()
+    training_duration_sec = time.time() - start_time
 
     print(f"Saving best checkpoint (by val WER) to {args.output_dir}/best")
-    trainer.save_model(f"{args.output_dir}/best")
+    trainer.save_model(f"{args.output_dir}/best")   # saves the PEFT adapter, not a merged model
     processor.save_pretrained(f"{args.output_dir}/best")
 
-    print("\nEvaluating best checkpoint on held-out TEST manifest...")
-    test_ds = load_manifest_as_dataset("test")
-    test_ds = test_ds.map(prepare_fn, remove_columns=test_ds.column_names, num_proc=1)
-    test_metrics = trainer.evaluate(eval_dataset=test_ds, metric_key_prefix="test")
-    print(f"Test set results: {test_metrics}")
+    best_val_metrics = trainer.evaluate(eval_dataset=val_ds, metric_key_prefix="val")
+    print(f"Best validation metrics: {best_val_metrics}")
 
-    with open(f"{args.output_dir}/test_results.json", "w") as f:
-        json.dump(test_metrics, f, indent=2)
+    run_metadata = {
+        "base_model": args.base_model,
+        "lora_r": args.lora_r,
+        "lora_alpha": args.lora_alpha,
+        "lora_dropout": args.lora_dropout,
+        "epochs": args.epochs,
+        "learning_rate": args.lr,
+        "seed": SEED,
+        "package_versions": get_package_versions(),
+        "gpu": torch.cuda.get_device_name(0) if torch.cuda.is_available() else "cpu",
+        "python_version": platform.python_version(),
+        "training_duration_sec": round(training_duration_sec, 1),
+        "best_val_metrics": best_val_metrics,
+        "command_line_args": vars(args),
+    }
+
+    if args.evaluate_test:
+        print("\n--evaluate_test set: evaluating best checkpoint on held-out TEST manifest...")
+        test_ds = load_manifest_as_dataset("test")
+        test_ds = test_ds.map(prepare_fn, remove_columns=test_ds.column_names, num_proc=1)
+        test_metrics = trainer.evaluate(eval_dataset=test_ds, metric_key_prefix="test")
+        print(f"Test set results: {test_metrics}")
+        run_metadata["test_metrics"] = test_metrics
+    else:
+        print("\n--evaluate_test NOT set - test manifest untouched, as intended during "
+              "hyperparameter search. Re-run with --evaluate_test once you've picked a "
+              "final configuration.")
+
+    with open(f"{args.output_dir}/run_metadata.json", "w") as f:
+        json.dump(run_metadata, f, indent=2)
+    print(f"Saved run metadata -> {args.output_dir}/run_metadata.json")
 
 
 if __name__ == "__main__":

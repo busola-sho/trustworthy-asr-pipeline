@@ -3,7 +3,7 @@
 #SBATCH -A MLMI-ors36-SL2-GPU
 #SBATCH --nodes=1
 #SBATCH --gres=gpu:1
-#SBATCH --time=04:00:00
+#SBATCH --time=10:00:00
 #SBATCH -p ampere
 #SBATCH --output=logs/finetune_whisper_lora_scots_%j.log
 
@@ -21,6 +21,14 @@
 # cluster - this job does NOT regenerate the manifest, it expects the
 # data to already be sitting in data/finetune/.
 #
+# IMPORTANT: this job does NOT pass --evaluate_test, so it will train
+# and select the best checkpoint using validation WER only - the test
+# manifest stays untouched. Only add --evaluate_test to the command
+# below once you've finished comparing configs/learning rates and have
+# a final configuration picked - run that as a separate, final job
+# rather than editing this one in place, so you keep a record of what
+# was a sweep run vs. the final test-evaluated run.
+#
 # Uses a DEDICATED venv (.venv_finetune) separate from whatever env your
 # main ensemble/benchmark pipeline uses - the fine-tuning scripts only
 # need 6 lightweight packages (see scripts/finetuning/requirements.txt),
@@ -30,6 +38,7 @@
 #   sbatch slurm/finetune_whisper.sbatch
 
 module purge
+module load python/3.11.0-icl
 module load ffmpeg/6.0
 
 source /rds/user/ors36/hpc-work/trustworthy-asr-pipeline/.venv_finetune/bin/activate
