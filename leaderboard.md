@@ -1,0 +1,444 @@
+"""
+build_leaderboard.py
+
+Scans your ensemble result JSON files and builds:
+  1. One table PER DATASET (commonvoice, english_dialects, edacc), rows =
+     techniques, sorted by mean_severity (primary quality metric) then WER.
+  2. ONE combined table: rows = techniques, columns = each dataset's WER
+     and mean_severity, plus an AVERAGE column across all 3 datasets.
+
+Relies on fields every ensemble script already writes into its output
+JSON ("approach", "dataset", "split", "corpus_wer", "mean_severity",
+"num_scored"/"num_samples") rather than parsing filenames.
+
+DEDUPES by (approach, dataset, percentile): if the same technique+dataset
+combo is found in more than one file (e.g. a duplicate copy sitting in a
+folder like "ensembles_again"), only ONE entry is kept, and a warning is
+printed listing the duplicate paths so you can clean them up if you want.
+
+Prints proper fixed-width, aligned plain-text tables (readable directly
+in a terminal) - NOT raw markdown pipe syntax, which only renders
+correctly in a markdown viewer. Pass --markdown-out to ALSO write a
+markdown version to a file, useful for pasting into the dissertation
+itself later.
+
+Usage:
+    python build_leaderboard.py
+    python build_leaderboard.py --split dev
+    python build_leaderboard.py --markdown-out leaderboard.md
+    python build_leaderboard.py --roots writeup_results/ensembles writeup_results/voting/rover writeup_results/benchmarks/main
+"""
+
+import json
+import argparse
+from pathlib import Path
+from collections import defaultdict
+
+from jiwer import wer as compute_wer
+from src.text_normalise import normalise
+from src.splits import get_indices_for_split
+
+DEFAULT_ROOTS = [
+    "writeup_results/ensembles",
+    "writeup_results/voting",
+    "writeup_results/benchmarks/main",
+]
+
+DATASET_ORDER = ["commonvoice", "english_dialects", "edacc"]
+
+
+def find_result_files(roots):
+    results = []
+    for root in roots:
+        root_path = Path(root)
+        if not root_path.exists():
+            continue
+        for path in root_path.rglob("*.json"):
+            try:
+                with open(path) as f:
+                    data = json.load(f)
+            except (json.JSONDecodeError, UnicodeDecodeError):
+                continue
+            if not isinstance(data, dict) or "dataset" not in data:
+                continue
+            # ensemble technique files have "approach"; individual ASR
+            # model benchmark files have "model" instead - both are
+            # useful, tagged differently so the combined table can single
+            # out just the best baseline model rather than showing all 4
+            if "approach" in data or "model" in data:
+                results.append((path, data))
+    return results
+
+
+def extract_row(path, data):
+    is_baseline = "approach" not in data and "model" in data
+    approach = data.get("approach") or data.get("model", "unknown")
+    dataset = data.get("dataset", "unknown")
+    split = data.get("split", data.get("full_dataset", None))
+    corpus_wer = data.get("corpus_wer")
+    mean_severity = data.get("mean_severity")
+    num_scored = data.get("num_scored", data.get("num_samples"))
+    percentile = data.get("percentile")
+
+    return {
+        "path": str(path),
+        "approach": approach,
+        "dataset": dataset,
+        "split": split,
+        "corpus_wer": corpus_wer,
+        "mean_severity": mean_severity,
+        "num_scored": num_scored,
+        "percentile": percentile,
+        "is_baseline": is_baseline,
+        "raw_data": data,   # kept so baseline rows can be recomputed restricted to a split
+    }
+
+
+def recompute_baseline_for_split(row, split):
+    """
+    Baseline (individual ASR model) files are full-dataset runs with no
+    dev/test concept of their own - their top-level corpus_wer/mean_severity
+    cover EVERY sample (dev + test + calibration all mixed together), which
+    isn't a fair comparison against an ensemble technique that was only
+    ever run on the "dev" split. This recomputes WER/severity restricted to
+    exactly the same sample indices get_indices_for_split() gives the
+    ensemble scripts, so the comparison is apples-to-apples.
+
+    Returns a NEW row dict with corpus_wer/mean_severity/num_scored
+    replaced by the split-restricted values. Falls back to the original
+    (full-dataset) values with a warning if samples/severity data isn't
+    available to recompute from.
+    """
+    data = row["raw_data"]
+    samples = data.get("samples")
+    dataset = row["dataset"]
+
+    if not samples:
+        print(f"  WARNING: {row['path']} has no per-sample data to restrict to '{split}' - "
+              f"using its full-dataset stats as-is (not split-matched)")
+        return row
+
+    # backfill sample_index from list position for older files that predate
+    # per-sample indexing - same convention used throughout the rest of the
+    # pipeline (verified safe via compare_index_alignment.sh earlier)
+    for i, s in enumerate(samples):
+        if s.get("sample_index") is None:
+            s["sample_index"] = i
+
+    try:
+        split_indices = set(get_indices_for_split(dataset, split))
+    except (ValueError, KeyError) as e:
+        print(f"  WARNING: could not get '{split}' indices for {dataset} ({e}) - "
+              f"using full-dataset stats for {row['path']}")
+        return row
+
+    subset = [s for s in samples if s.get("sample_index") in split_indices]
+
+    refs, hyps = [], []
+    severities = []
+    for s in subset:
+        if s.get("skipped") or s.get("error"):
+            continue
+        ref, hyp = s.get("ref"), s.get("hyp")
+        if ref and hyp:
+            refs.append(normalise(ref))
+            hyps.append(normalise(hyp))
+        if s.get("severity") is not None:
+            severities.append(s["severity"])
+
+    new_wer = compute_wer(refs, hyps) if refs else None
+    new_severity = sum(severities) / len(severities) if severities else None
+
+    new_row = dict(row)
+    if new_wer is None and new_severity is None:
+        print(f"  WARNING: {row['path']} had samples for '{split}' but none had usable "
+              f"ref/hyp/severity fields - keeping original full-dataset stats instead "
+              f"of discarding them (not split-matched, flagged here so you know)")
+        return row
+    # keep whichever of WER/severity recomputed successfully; fall back to the
+    # original full-dataset value for whichever one didn't (rather than losing
+    # a perfectly good existing number just because e.g. per-sample severity
+    # happened to be missing while per-sample ref/hyp were present)
+    new_row["corpus_wer"] = new_wer if new_wer is not None else row["corpus_wer"]
+    new_row["mean_severity"] = new_severity if new_severity is not None else row["mean_severity"]
+    new_row["num_scored"] = len(refs) if refs else row["num_scored"]
+    return new_row
+
+
+def dedupe_rows(rows):
+    """Keeps one entry per (approach, dataset, percentile) - warns about
+    any duplicates found so you can clean up the duplicate files."""
+    groups = defaultdict(list)
+    for r in rows:
+        key = (r["approach"], r["dataset"], r["percentile"])
+        groups[key].append(r)
+
+    deduped = []
+    dupes_found = []
+    for key, group in groups.items():
+        deduped.append(group[0])
+        if len(group) > 1:
+            dupes_found.append((key, [g["path"] for g in group]))
+
+    if dupes_found:
+        print(f"\nFound {len(dupes_found)} technique+dataset combo(s) with duplicate files "
+              f"(kept the first, ignored the rest):")
+        for (approach, dataset, pct), paths in dupes_found:
+            label = f"{approach} (p{pct})" if pct is not None else approach
+            print(f"  {label} / {dataset}:")
+            for p in paths:
+                print(f"    - {p}")
+
+    return deduped
+
+
+def fmt_wer(wer):
+    return f"{wer*100:.2f}%" if wer is not None else "-"
+
+
+def fmt_sev(sev):
+    return f"{sev:.3f}" if sev is not None else "-"
+
+
+def print_table(headers, rows, aligns=None):
+    """Prints a proper fixed-width, aligned plain-text table - readable
+    directly in a terminal, unlike raw markdown pipe syntax."""
+    n_cols = len(headers)
+    aligns = aligns or ["<"] * n_cols  # '<' left, '>' right
+
+    col_widths = [len(h) for h in headers]
+    for row in rows:
+        for i, cell in enumerate(row):
+            col_widths[i] = max(col_widths[i], len(str(cell)))
+
+    def format_row(cells):
+        parts = []
+        for cell, width, align in zip(cells, col_widths, aligns):
+            parts.append(f"{str(cell):{align}{width}}")
+        return "  ".join(parts)
+
+    header_line = format_row(headers)
+    print(header_line)
+    print("-" * len(header_line))
+    for row in rows:
+        print(format_row(row))
+
+
+def build_markdown_table(headers, rows):
+    lines = ["| " + " | ".join(headers) + " |"]
+    lines.append("|" + "|".join(["---:"] * len(headers)) + "|")
+    for row in rows:
+        lines.append("| " + " | ".join(str(c) for c in row) + " |")
+    return "\n".join(lines)
+
+
+def technique_label(r):
+    label = r["approach"]
+    if r.get("percentile") is not None:
+        label += f" (p{r['percentile']})"
+    return label
+
+
+def build_dataset_table_rows(dataset_rows):
+    def sort_key(r):
+        sev = r["mean_severity"]
+        return (sev is None, sev if sev is not None else 999)
+
+    table_rows = []
+    for r in sorted(dataset_rows, key=sort_key):
+        table_rows.append([
+            technique_label(r),
+            fmt_sev(r["mean_severity"]),
+            fmt_wer(r["corpus_wer"]),
+            r["num_scored"],
+        ])
+    return table_rows
+
+
+def build_combined_table_rows(all_rows):
+    by_approach = defaultdict(dict)
+    for r in all_rows:
+        by_approach[r["approach"]][r["dataset"]] = r
+
+    def avg(vals):
+        vals = [v for v in vals if v is not None]
+        return sum(vals) / len(vals) if vals else None
+
+    def sort_key(approach):
+        sevs = [by_approach[approach].get(ds, {}).get("mean_severity") for ds in DATASET_ORDER]
+        avg_sev = avg(sevs)
+        return (avg_sev is None, avg_sev if avg_sev is not None else 999)
+
+    table_rows = []
+    for approach in sorted(by_approach.keys(), key=sort_key):
+        sevs, wers = [], []
+        row = [approach]
+        for ds in DATASET_ORDER:
+            r = by_approach[approach].get(ds)
+            sev = r["mean_severity"] if r else None
+            wer = r["corpus_wer"] if r else None
+            sevs.append(sev)
+            wers.append(wer)
+            row.append(fmt_sev(sev))
+            row.append(fmt_wer(wer))
+        row.append(fmt_sev(avg(sevs)))
+        row.append(fmt_wer(avg(wers)))
+        table_rows.append(row)
+    return table_rows
+
+
+def pick_top_n(rows, top_n, label="technique"):
+    """Groups rows by 'approach' (works for both baseline model names and
+    ensemble technique names), computes average severity across whichever
+    datasets each has results for, and returns the rows for the TOP N
+    best-averaging ones. Generic version of the old pick_best_baseline -
+    reused for both baselines and ensemble techniques so the final
+    top-2-vs-top-2 comparison table can be built the same way for both."""
+    by_group = defaultdict(dict)
+    for r in rows:
+        by_group[r["approach"]][r["dataset"]] = r
+
+    def avg_severity(name):
+        sevs = [by_group[name].get(ds, {}).get("mean_severity") for ds in DATASET_ORDER]
+        sevs = [s for s in sevs if s is not None]
+        return sum(sevs) / len(sevs) if sevs else None
+
+    candidates = [(m, avg_severity(m)) for m in by_group]
+    candidates = [(m, s) for m, s in candidates if s is not None]
+    if not candidates:
+        return []
+
+    candidates.sort(key=lambda x: x[1])
+    top = candidates[:top_n]
+
+    print(f"\nTop {len(top)} {label}(s) by avg severity:")
+    for rank, (name, avg_sev) in enumerate(top, start=1):
+        n_datasets = len(by_group[name])
+        print(f"  #{rank}: {name} (avg severity {avg_sev:.3f} across {n_datasets} dataset(s))")
+
+    result_rows = []
+    for name, _ in top:
+        result_rows.extend(by_group[name].values())
+    return result_rows
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--roots", nargs="+", default=DEFAULT_ROOTS)
+    parser.add_argument("--split", default="dev",
+                        help="Only include results for this split (default: dev). "
+                             "Pass 'all' to include every split found.")
+    parser.add_argument("--top-baselines", type=int, default=2,
+                        help="How many top individual ASR model baselines to include in the "
+                             "final comparison table, ranked by average severity (default: 2)")
+    parser.add_argument("--top-ensembles", type=int, default=2,
+                        help="How many top ensemble techniques to include in the final "
+                             "comparison table, ranked by average severity (default: 2)")
+    parser.add_argument("--markdown-out", default=None,
+                        help="Also write a markdown version of all tables to this file "
+                             "(for pasting into the dissertation later)")
+    args = parser.parse_args()
+
+    found = find_result_files(args.roots)
+    print(f"Scanned {args.roots} -> found {len(found)} result file(s) with approach+dataset fields")
+
+    rows = [extract_row(path, data) for path, data in found]
+
+    # split into ensemble vs baseline BEFORE applying the --split filter -
+    # baseline (individual ASR model) files are full-dataset runs with no
+    # dev/test split concept, so filtering by split would silently drop
+    # them entirely (their "split" field is None, never equal to "dev")
+    ensemble_candidates = [r for r in rows if not r["is_baseline"]]
+    baseline_candidates = [r for r in rows if r["is_baseline"]]
+    print(f"  {len(ensemble_candidates)} ensemble-technique file(s), "
+          f"{len(baseline_candidates)} baseline (individual model) file(s)")
+
+    if args.split != "all":
+        before = len(ensemble_candidates)
+        ensemble_candidates = [r for r in ensemble_candidates if r["split"] == args.split]
+        print(f"Filtered ensemble rows to split='{args.split}': {len(ensemble_candidates)}/{before} remain "
+              f"(baseline rows are never split-filtered - they're full-dataset runs)")
+
+        print(f"\nRecomputing baseline (individual model) WER/severity restricted to "
+              f"split='{args.split}' - so they're compared fairly against dev-only ensembles:")
+        baseline_candidates = [recompute_baseline_for_split(r, args.split) for r in baseline_candidates]
+
+    ensemble_rows = dedupe_rows(ensemble_candidates)
+    baseline_rows = dedupe_rows(baseline_candidates)
+    print(f"After deduping: {len(ensemble_rows)} ensemble + {len(baseline_rows)} baseline result(s)")
+
+    if not ensemble_rows and not baseline_rows:
+        print("\nNo matching result files found - check --roots and --split.")
+        return
+
+    by_dataset = defaultdict(list)
+    for r in ensemble_rows:
+        by_dataset[r["dataset"]].append(r)
+
+    dataset_headers = ["Technique", "Mean Severity", "Corpus WER", "N scored"]
+    dataset_aligns = ["<", ">", ">", ">"]
+    combined_headers = ["Technique"]
+    for ds in DATASET_ORDER:
+        combined_headers += [f"{ds} Sev", f"{ds} WER"]
+    combined_headers += ["Avg Sev", "Avg WER"]
+    combined_aligns = ["<"] + [">"] * (len(combined_headers) - 1)
+
+    markdown_sections = []
+
+    # ── Table set 1: per-dataset ensemble-technique tables ──
+    all_datasets = DATASET_ORDER + [ds for ds in by_dataset if ds not in DATASET_ORDER]
+    for ds in all_datasets:
+        if ds not in by_dataset:
+            continue
+        print(f"\n{'=' * 60}")
+        print(f"  {ds.upper()}")
+        print(f"{'=' * 60}")
+        table_rows = build_dataset_table_rows(by_dataset[ds])
+        print_table(dataset_headers, table_rows, dataset_aligns)
+        if args.markdown_out:
+            markdown_sections.append(f"## {ds}\n\n" + build_markdown_table(dataset_headers, table_rows))
+
+    # ── Table 2: ALL baseline (individual ASR) models, combined across datasets ──
+    print(f"\n{'=' * 60}")
+    print(f"  BASELINE MODELS (all individual ASR models, combined across datasets)")
+    print(f"{'=' * 60}")
+    baseline_combined_rows = build_combined_table_rows(baseline_rows)
+    print_table(combined_headers, baseline_combined_rows, combined_aligns)
+    if args.markdown_out:
+        markdown_sections.append("## Baseline models (combined across datasets)\n\n" +
+                                   build_markdown_table(combined_headers, baseline_combined_rows))
+
+    # ── Table 3: ALL ensemble techniques, combined across datasets ──
+    print(f"\n{'=' * 60}")
+    print(f"  ENSEMBLE TECHNIQUES (combined across all datasets)")
+    print(f"{'=' * 60}")
+    ensemble_combined_rows = build_combined_table_rows(ensemble_rows)
+    print_table(combined_headers, ensemble_combined_rows, combined_aligns)
+    if args.markdown_out:
+        markdown_sections.append("## Ensemble techniques (combined across datasets)\n\n" +
+                                   build_markdown_table(combined_headers, ensemble_combined_rows))
+
+    # ── Table 4: FINAL - top 2 ensembles vs top 2 baselines, head to head ──
+    print(f"\n{'=' * 60}")
+    print(f"  FINAL: TOP {args.top_ensembles} ENSEMBLE(S) vs TOP {args.top_baselines} BASELINE(S)")
+    print(f"{'=' * 60}")
+    top_ensemble_rows = pick_top_n(ensemble_rows, args.top_ensembles, label="ensemble technique")
+    top_baseline_rows = pick_top_n(baseline_rows, args.top_baselines, label="baseline model")
+    top_baseline_rows = [
+        {**r, "approach": f"[baseline] {r['approach']}"} for r in top_baseline_rows
+    ]
+    final_rows = build_combined_table_rows(top_ensemble_rows + top_baseline_rows)
+    print_table(combined_headers, final_rows, combined_aligns)
+    if args.markdown_out:
+        markdown_sections.append(f"## Final: top {args.top_ensembles} ensemble(s) vs "
+                                   f"top {args.top_baselines} baseline(s)\n\n" +
+                                   build_markdown_table(combined_headers, final_rows))
+
+    if args.markdown_out:
+        with open(args.markdown_out, "w") as f:
+            f.write("\n\n".join(markdown_sections) + "\n")
+        print(f"\nSaved markdown version -> {args.markdown_out}")
+
+
+if __name__ == "__main__":
+    main()
