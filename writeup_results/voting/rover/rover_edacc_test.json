@@ -309,8 +309,11 @@
         "wav2vec2": ""
       },
       "sample_WER": 1.0,
-      "severity": null,
-      "dataset_index": 49
+      "severity": 4,
+      "dataset_index": 49,
+      "severity_status": "scored",
+      "severity_input_hyp": "[EMPTY TRANSCRIPT]",
+      "judge_raw_response": "Severity: 4  \nJustification: The hypothesis \"[EMPTY TRANSCRIPT]\" represents a total loss of content, which results in a critical meaning alteration as it provides no information at all. This is equivalent to fabricating or fundamentally changing the central assertion by omitting any meaningful data that was present in the reference \"HMM.\""
     },
     {
       "ref": "AND THEN WE PLAYED TWO VARIATIONS OF IT YOU KNOW THE AMERICAN STYLE WHERE YOU JUST THROW IT FROM THE SIDE OF THE PITCH",
@@ -574,8 +577,11 @@
         "wav2vec2": ""
       },
       "sample_WER": 1.0,
-      "severity": null,
-      "dataset_index": 107
+      "severity": 4,
+      "dataset_index": 107,
+      "severity_status": "scored",
+      "severity_input_hyp": "[EMPTY TRANSCRIPT]",
+      "judge_raw_response": "Severity: 4  \nJustification: The hypothesis \"[EMPTY TRANSCRIPT]\" represents a total loss of content, which results in a critical meaning alteration as it completely removes the original assertion \"YEAH,\" leaving no basis for any interpretation or reconstruction. This absence fundamentally changes the central assertion by negating its existence entirely."
     },
     {
       "ref": "YOU'RE GONNA LOOK LIKE SUCH A WEIRD PERSON IN THIS VIDEO",
@@ -915,12 +921,21 @@
     }
   ],
   "judge": "phi4:14b (direct prompt)",
-  "mean_severity": 1.328,
+  "mean_severity": 1.417,
   "severity_distribution": {
     "0": 20,
     "1": 14,
     "2": 12,
     "3": 9,
-    "4": 3
+    "4": 5
+  },
+  "severity_coverage": {
+    "total_samples": 60,
+    "scored": 60,
+    "unscored": 0,
+    "scored_this_run": 2,
+    "empty_hypotheses_scored_this_run": 2,
+    "intentionally_skipped_this_run": 0,
+    "judge_failures_this_run": 0
   }
 }

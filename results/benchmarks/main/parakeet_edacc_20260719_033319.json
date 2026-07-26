@@ -2101,7 +2101,10 @@
       "hyp": "",
       "sample_WER": 1.0,
       "segments": [],
-      "severity": null
+      "severity": 4,
+      "severity_status": "scored",
+      "severity_input_hyp": "[EMPTY TRANSCRIPT]",
+      "judge_raw_response": "Severity: 4  \nJustification: The hypothesis \"[EMPTY TRANSCRIPT]\" represents a total loss of content, which results in a critical meaning alteration as it provides no information at all compared to the reference \"MM HMM.\" This absence fundamentally changes any potential assertion or context that could have been conveyed by the original phrase."
     },
     {
       "sample_index": 28,
@@ -2653,7 +2656,9 @@
       "segments": [],
       "skipped": true,
       "skip_reason": "tag_only_reference",
-      "severity": null
+      "severity": null,
+      "severity_status": "skipped",
+      "severity_skip_reason": "sample_marked_skipped"
     },
     {
       "sample_index": 34,
@@ -3567,7 +3572,10 @@
       "hyp": "",
       "sample_WER": 1.0,
       "segments": [],
-      "severity": null
+      "severity": 4,
+      "severity_status": "scored",
+      "severity_input_hyp": "[EMPTY TRANSCRIPT]",
+      "judge_raw_response": "Severity: 4  \nJustification: The hypothesis \"[EMPTY TRANSCRIPT]\" represents a total loss of content, which results in a critical meaning alteration as it provides no information at all. This is equivalent to fabricating or fundamentally changing the central assertion by omitting any meaningful data that was present in the reference \"HMM.\""
     },
     {
       "sample_index": 50,
@@ -4889,7 +4897,10 @@
       "hyp": "",
       "sample_WER": 1.0,
       "segments": [],
-      "severity": null
+      "severity": 4,
+      "severity_status": "scored",
+      "severity_input_hyp": "[EMPTY TRANSCRIPT]",
+      "judge_raw_response": "Severity: 4  \nJustification: The hypothesis \"[EMPTY TRANSCRIPT]\" represents a total loss of content, which fundamentally changes the central assertion by providing no information at all. This is equivalent to fabricating or reversing the original statement, as it leaves nothing for comparison or understanding, thus meeting the criteria for a critical meaning alteration."
     },
     {
       "sample_index": 66,
@@ -4997,7 +5008,9 @@
       "segments": [],
       "skipped": true,
       "skip_reason": "tag_only_reference",
-      "severity": null
+      "severity": null,
+      "severity_status": "skipped",
+      "severity_skip_reason": "sample_marked_skipped"
     },
     {
       "sample_index": 69,
@@ -5211,7 +5224,10 @@
       "hyp": "",
       "sample_WER": 1.0,
       "segments": [],
-      "severity": null
+      "severity": 4,
+      "severity_status": "scored",
+      "severity_input_hyp": "[EMPTY TRANSCRIPT]",
+      "judge_raw_response": "Severity: 4  \nJustification: The hypothesis \"[EMPTY TRANSCRIPT]\" represents a total loss of content, which fundamentally alters the central assertion by providing no information at all. This is equivalent to fabricating or reversing the original statement, as it leaves nothing for comparison or understanding, thus meeting the criteria for a critical meaning alteration."
     },
     {
       "sample_index": 75,
@@ -5293,7 +5309,10 @@
       "hyp": "",
       "sample_WER": 1.0,
       "segments": [],
-      "severity": null
+      "severity": 4,
+      "severity_status": "scored",
+      "severity_input_hyp": "[EMPTY TRANSCRIPT]",
+      "judge_raw_response": "Severity: 4  \nJustification: The hypothesis \"[EMPTY TRANSCRIPT]\" represents a total loss of content, which results in a critical meaning alteration as it completely removes the original assertion \"YEAH,\" leaving no basis for any interpretation or reconstruction. This absence fundamentally changes the central assertion by negating its existence entirely."
     },
     {
       "sample_index": 78,
@@ -8063,7 +8082,10 @@
       "hyp": "",
       "sample_WER": 1.0,
       "segments": [],
-      "severity": null
+      "severity": 4,
+      "severity_status": "scored",
+      "severity_input_hyp": "[EMPTY TRANSCRIPT]",
+      "judge_raw_response": "Severity: 4  \nJustification: The hypothesis \"[EMPTY TRANSCRIPT]\" represents a total loss of content, which results in a critical meaning alteration as it completely removes the original assertion \"YEAH,\" leaving no basis for any interpretation or reconstruction. This absence fundamentally changes the central assertion by negating its existence entirely."
     },
     {
       "sample_index": 108,
@@ -9101,7 +9123,10 @@
       "hyp": "",
       "sample_WER": 1.0,
       "segments": [],
-      "severity": null
+      "severity": 4,
+      "severity_status": "scored",
+      "severity_input_hyp": "[EMPTY TRANSCRIPT]",
+      "judge_raw_response": "Severity: 4\n\nJustification: The hypothesis \"[EMPTY TRANSCRIPT]\" results in a critical meaning alteration because it completely omits the original statement \"YEAH IT'S <OVERLAP>\", which could have conveyed agreement or acknowledgment. This omission fundamentally changes the central assertion by removing any content, thus reversing or fabricating the intended message entirely."
     },
     {
       "sample_index": 122,
@@ -12037,7 +12062,10 @@
       "hyp": "",
       "sample_WER": 1.0,
       "segments": [],
-      "severity": null
+      "severity": 4,
+      "severity_status": "scored",
+      "severity_input_hyp": "[EMPTY TRANSCRIPT]",
+      "judge_raw_response": "Severity: 4  \nJustification: The hypothesis \"[EMPTY TRANSCRIPT]\" represents a total loss of content, which results in a critical meaning alteration as it completely removes the original assertion \"YEAH,\" leaving no basis for any interpretation or reconstruction. This absence fundamentally changes the central assertion by negating its existence entirely."
     },
     {
       "sample_index": 156,
@@ -13315,7 +13343,10 @@
       "hyp": "",
       "sample_WER": 1.0,
       "segments": [],
-      "severity": null
+      "severity": 4,
+      "severity_status": "scored",
+      "severity_input_hyp": "[EMPTY TRANSCRIPT]",
+      "judge_raw_response": "Severity: 4  \nJustification: The hypothesis \"[EMPTY TRANSCRIPT]\" results in a critical meaning alteration because it completely omits the reference \"MM,\" which could represent an essential piece of information such as a name, code, or identifier. This omission fundamentally changes the content by removing any assertion that might have been made with \"MM.\""
     },
     {
       "sample_index": 176,
@@ -15243,12 +15274,21 @@
     }
   ],
   "judge": "phi4:14b (direct prompt)",
-  "mean_severity": 1.759,
+  "mean_severity": 1.862,
   "severity_distribution": {
     "0": 44,
     "1": 36,
     "2": 53,
     "3": 29,
-    "4": 25
+    "4": 34
+  },
+  "severity_coverage": {
+    "total_samples": 198,
+    "scored": 196,
+    "unscored": 2,
+    "scored_this_run": 9,
+    "empty_hypotheses_scored_this_run": 9,
+    "intentionally_skipped_this_run": 2,
+    "judge_failures_this_run": 0
   }
 }

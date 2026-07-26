@@ -2649,7 +2649,9 @@
       "segments": [],
       "skipped": true,
       "skip_reason": "tag_only_reference",
-      "severity": null
+      "severity": null,
+      "severity_status": "skipped",
+      "severity_skip_reason": "sample_marked_skipped"
     },
     {
       "sample_index": 34,
@@ -5009,7 +5011,9 @@
       "segments": [],
       "skipped": true,
       "skip_reason": "tag_only_reference",
-      "severity": null
+      "severity": null,
+      "severity_status": "skipped",
+      "severity_skip_reason": "sample_marked_skipped"
     },
     {
       "sample_index": 69,
@@ -15316,5 +15320,14 @@
     "2": 34,
     "3": 20,
     "4": 19
+  },
+  "severity_coverage": {
+    "total_samples": 198,
+    "scored": 196,
+    "unscored": 2,
+    "scored_this_run": 0,
+    "empty_hypotheses_scored_this_run": 0,
+    "intentionally_skipped_this_run": 2,
+    "judge_failures_this_run": 0
   }
 }
