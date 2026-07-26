@@ -44,7 +44,11 @@ OLLAMA_HOST  = "http://localhost:11434"
 JUDGE_MODEL  = "phi4:14b"   # locked severity judge (Phi-4 + direct, QWK=0.783)
 
 NEW_OUTPUT_DIR = "writeup_results/benchmarks/main"
-MAX_WORKERS = 1     # tune to roughly match OLLAMA_NUM_PARALLEL on the server
+MAX_WORKERS = int(os.environ.get("ENSEMBLE_MAX_WORKERS", "8"))
+# tune via --max-workers or the ENSEMBLE_MAX_WORKERS env var (roughly match
+# OLLAMA_NUM_PARALLEL on the server) - same env var as the six ensemble
+# scripts, so setting it once covers all of them without hardcoding a
+# value shared between your Mac and the HPC via git.
 BATCH_SIZE = 50     # save progress after every N samples judged, not just at the end
 
 

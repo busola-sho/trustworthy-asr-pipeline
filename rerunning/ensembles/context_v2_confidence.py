@@ -33,7 +33,11 @@ OLLAMA_HOST    = "http://localhost:11434"
 DATASETS       = ["commonvoice", "english_dialects", "edacc", "shetland"]
 CONFIDENCE_MODELS  = ["qwen", "whisperx", "parakeet"]   # qwen added
 DEFAULT_PERCENTILE = 20
-MAX_WORKERS = 1   # tune to roughly match OLLAMA_NUM_PARALLEL on the server
+DEFAULT_MAX_WORKERS = int(os.environ.get("ENSEMBLE_MAX_WORKERS", "8"))
+# tune via --max-workers or the ENSEMBLE_MAX_WORKERS env var (roughly match
+# OLLAMA_NUM_PARALLEL on the server) - NOT a hardcoded constant, since your
+# Mac (limited unified memory) and the HPC (dedicated GPU memory) need very
+# different values, and this file is shared between both via git.
 
 SELECTOR_PROMPT_TEMPLATE = """You are correcting an ASR transcript. You are given three transcripts of the same audio from different models.
 
@@ -151,7 +155,8 @@ def ollama_select(client, model_name, qwen_hyp, whisperx_hyp, parakeet_hyp,
 
 
 def run_dataset(dataset, selector_key, client, auto_rules, percentile,
-                 max_samples=None, rerun=False, split="dev"):
+                 max_samples=None, rerun=False, split="dev", max_workers=None):
+    max_workers = max_workers or DEFAULT_MAX_WORKERS
     selector_model = OLLAMA_MODELS[selector_key]
 
     print(f"\n── {dataset} | context V2 + confidence (PHASE 1: selector only, CONCURRENT) "
@@ -245,7 +250,7 @@ def run_dataset(dataset, selector_key, client, auto_rules, percentile,
         return ollama_select(client, selector_model, qwen_hyp, whisperx_hyp, parakeet_hyp,
                               qwen_lowconf, whisperx_lowconf, parakeet_lowconf, auto_rules, num_predict)
 
-    best_hyps = run_concurrent(work_items, _worker, max_workers=MAX_WORKERS, progress_every=10)
+    best_hyps = run_concurrent(work_items, _worker, max_workers=max_workers, progress_every=10)
 
     # ── Reassemble in original index order ──
     call_results = {item[0]: (item, best_hyp) for item, best_hyp in zip(work_items, best_hyps)}
@@ -333,6 +338,11 @@ def main():
     parser.add_argument("--split",       default="dev", choices=["dev", "test", "full"])
     parser.add_argument("--dry-run",     action="store_true")
     parser.add_argument("--rerun",       action="store_true")
+    parser.add_argument("--max-workers", type=int, default=DEFAULT_MAX_WORKERS,
+                        help="Concurrent Ollama calls (default from ENSEMBLE_MAX_WORKERS "
+                             "env var, or 8 if unset). Lower this on memory-limited machines "
+                             "(e.g. a 16GB Mac) - try 1-2. Higher is fine on a dedicated GPU "
+                             "node with real VRAM headroom.")
     args = parser.parse_args()
 
     auto_rules = build_rules_text(min_gap_pp=args.gap, save=False)
@@ -350,7 +360,8 @@ def main():
     print(f"Ollama connected. Selector: {OLLAMA_MODELS[args.selector]}")
 
     run_dataset(args.dataset, args.selector, client, auto_rules, args.percentile,
-                max_samples=args.max_samples, rerun=args.rerun, split=args.split)
+                max_samples=args.max_samples, rerun=args.rerun, split=args.split,
+                max_workers=args.max_workers)
 
 
 if __name__ == "__main__":

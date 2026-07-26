@@ -2,36 +2,22 @@
 rerunning/ensembles/context_v1_confidence_inline.py
 
 PHASE 1 of 2: Context-aware V1 (hand-written rules) + word-level
-confidence flagging using INLINE markers - built specifically to compare
-against context_v1_confidence.py's SEPARATE/structured metadata approach.
+confidence flagging using INLINE markers.
 
-Same reasoning as the naive/context_v2 inline variants: inline markers
-sit at the exact occurrence of a flagged word in the running sentence,
-naturally disambiguating repeated words - the separate design needed an
-explicit position-index fix to recover that. Run both and compare.
+CONCURRENT VERSION: same Phase A (fast sequential prep) / Phase B
+(concurrent Ollama calls via thread pool) split as the other confidence
+scripts. See src/concurrent_ollama.py's docstring for the required
+OLLAMA_NUM_PARALLEL server-side setting.
 
-Once this finishes, run PHASE 2:
-    python rerunning/add_severity_to_existing.py --files <output file from this script>
+NOTE: kept as a separate file (context_v1_confidence_inline_concurrent.py)
+rather than overwriting the original while your local CommonVoice run is
+still in progress - swap this in as the real context_v1_confidence_inline.py
+once that run finishes, before using it for English Dialects/EdAcc on the HPC.
 
-Same underlying fixes as context_v1_confidence.py: WhisperX swap,
-per-model percentile thresholds, two-pass split, tag-only skip, dual
-write, dynamic num_predict, keep_alive.
-
-FIXED (this pass): main()'s CLI was still on --full (with a matching
-undefined "full" variable in the output dict, and a run_dataset call
-mismatched against its own split="dev" signature) - migrated to --split
-{dev,test,full}, default "dev". Also added think=False to the Ollama
-call - without it, thinking-capable selectors (e.g. gemma4, the locked
-selector per selector_ablation.py) return an EMPTY message.content
-(hidden reasoning eats the whole generation budget), silently producing
-hyp="" and sample_WER=1.0 instead of an error. --selector default
-updated to gemma4 per the ablation lock (mean_severity=0.85,
-mean_wer=9.26%, compliance=100%).
-
-NOT CHANGED - NEEDS YOUR REVIEW: rule content (named-entity trust rule
-etc.) unchanged, same as context_v1.py/context_v1_confidence.py - edit
-SELECTOR_PROMPT once you've decided how to handle the WhisperX-vs-Qwen
-dataset-dependent reliability question.
+NOT CHANGED - STILL NEEDS YOUR REVIEW: the named-entity trust rule
+("WhisperX is more reliable on named entities") is unchanged, per your
+earlier decision to run with it as-is and revisit only if results look
+off for that specific rule.
 
 Usage:
     python rerunning/ensembles/context_v1_confidence_inline.py --dataset commonvoice --split dev --percentile 20
@@ -49,6 +35,7 @@ from src.selector import (
     find_canonical_file, OLLAMA_MODELS, check_selector_available, load_samples,
 )
 from src.splits import get_indices_for_split
+from src.concurrent_ollama import run_concurrent
 
 NEW_OUTPUT_DIR = "writeup_results/ensembles/context_v1_confidence_inline"
 OLD_OUTPUT_DIR = "results/combinations_v2judge/context_v1_confidence_inline"
@@ -56,6 +43,11 @@ OLLAMA_HOST    = "http://localhost:11434"
 DATASETS       = ["commonvoice", "english_dialects", "edacc", "shetland"]
 CONFIDENCE_MODELS  = ["qwen", "whisperx", "parakeet"]   # qwen added
 DEFAULT_PERCENTILE = 20
+DEFAULT_MAX_WORKERS = int(os.environ.get("ENSEMBLE_MAX_WORKERS", "8"))
+# tune via --max-workers or the ENSEMBLE_MAX_WORKERS env var (roughly match
+# OLLAMA_NUM_PARALLEL on the server) - NOT a hardcoded constant, since your
+# Mac (limited unified memory) and the HPC (dedicated GPU memory) need very
+# different values, and this file is shared between both via git.
 
 # NOTE: rule content unchanged (named-entity trust etc.) - review per
 # context_v1.py's discussion before editing. The confidence-weighting
@@ -173,10 +165,11 @@ def ollama_select(client, model_name, qwen_text, whisperx_text, parakeet_text, n
 
 
 def run_dataset(dataset, selector_key, client, percentile, max_samples=None,
-                 rerun=False, split="dev"):
+                 rerun=False, split="dev", max_workers=None):
+    max_workers = max_workers or DEFAULT_MAX_WORKERS
     selector_model = OLLAMA_MODELS[selector_key]
 
-    print(f"\n── {dataset} | context V1 + confidence INLINE (PHASE 1: selector only) "
+    print(f"\n── {dataset} | context V1 + confidence INLINE (PHASE 1: selector only, CONCURRENT) "
           f"selector={selector_key} percentile={percentile} split={split} ──")
 
     qwen_samples     = get_indexed_samples("qwen", dataset)
@@ -213,32 +206,35 @@ def run_dataset(dataset, selector_key, client, percentile, max_samples=None,
         with open(old_output_path, "w") as f:
             json.dump(payload, f, indent=2, ensure_ascii=False)
 
-    for pos in range(start_from, len(indices)):
-        idx = indices[pos]
+    # ── PHASE A: fast sequential prep - build work items, append skips directly ──
+    remaining_indices = indices[start_from:]
+    work_items = []   # each: (idx, ref, qwen_text, whisperx_text, parakeet_text, num_predict)
+    skip_slots = {}
 
+    for idx in remaining_indices:
         qwen_sample     = qwen_samples.get(idx)
         whisperx_sample = whisperx_samples.get(idx)
         parakeet_sample = parakeet_samples.get(idx)
 
         if not all([qwen_sample, whisperx_sample, parakeet_sample]):
-            results.append({"ref": None, "hyp": None, "severity": None,
-                            "sample_WER": None, "error": True,
-                            "error_reason": "missing sample from one or more models",
-                            "dataset_index": idx})
+            skip_slots[idx] = {"ref": None, "hyp": None, "severity": None,
+                               "sample_WER": None, "error": True,
+                               "error_reason": "missing sample from one or more models",
+                               "dataset_index": idx}
             continue
 
         ref = qwen_sample["ref"]
 
         if "IGNORE_TIME_SEGMENT_IN_SCORING" in ref:
-            results.append({"ref": ref, "hyp": None, "severity": None,
-                            "sample_WER": None, "skipped": True,
-                            "skip_reason": "ignore_time_segment", "dataset_index": idx})
+            skip_slots[idx] = {"ref": ref, "hyp": None, "severity": None,
+                               "sample_WER": None, "skipped": True,
+                               "skip_reason": "ignore_time_segment", "dataset_index": idx}
             continue
 
         if is_tag_only(ref):
-            results.append({"ref": ref, "hyp": None, "severity": None,
-                            "sample_WER": None, "skipped": True,
-                            "skip_reason": "tag_only_reference", "dataset_index": idx})
+            skip_slots[idx] = {"ref": ref, "hyp": None, "severity": None,
+                               "sample_WER": None, "skipped": True,
+                               "skip_reason": "tag_only_reference", "dataset_index": idx}
             continue
 
         qwen_hyp     = qwen_sample["hyp"]
@@ -250,7 +246,28 @@ def run_dataset(dataset, selector_key, client, percentile, max_samples=None,
         parakeet_text = build_inline_transcript(parakeet_hyp, parakeet_sample.get("segments"), thresholds["parakeet"])
         num_predict = compute_num_predict([qwen_text, whisperx_text, parakeet_text])
 
-        raw = ollama_select(client, selector_model, qwen_text, whisperx_text, parakeet_text, num_predict)
+        work_items.append((idx, ref, qwen_text, whisperx_text, parakeet_text, num_predict))
+
+    print(f"  {len(work_items)} samples queued for concurrent Ollama calls "
+          f"({len(skip_slots)} skipped without needing a call)")
+
+    # ── PHASE B: fire all Ollama calls concurrently ──
+    def _worker(item):
+        _, _, qwen_text, whisperx_text, parakeet_text, num_predict = item
+        return ollama_select(client, selector_model, qwen_text, whisperx_text, parakeet_text, num_predict)
+
+    raw_results = run_concurrent(work_items, _worker, max_workers=max_workers, progress_every=10)
+
+    # ── Reassemble in original index order ──
+    call_results = {item[0]: (item, raw) for item, raw in zip(work_items, raw_results)}
+
+    for idx in remaining_indices:
+        if idx in skip_slots:
+            results.append(skip_slots[idx])
+            continue
+
+        item, raw = call_results[idx]
+        _, ref, qwen_text, whisperx_text, parakeet_text, _ = item
 
         if raw is None:
             results.append({"ref": ref, "hyp": None, "severity": None,
@@ -272,9 +289,10 @@ def run_dataset(dataset, selector_key, client, percentile, max_samples=None,
             "dataset_index":        idx,
         })
 
-        if (pos + 1) % 10 == 0:
+        if len(results) % 10 == 0:
             save_progress()
-            print(f"  {pos+1}/{len(indices)} done")
+
+    save_progress()
 
     valid = [r for r in results if not r.get("skipped") and not r.get("error")
              and r.get("sample_WER") is not None]
@@ -319,6 +337,11 @@ def main():
     parser.add_argument("--split",       default="dev", choices=["dev", "test", "full"])
     parser.add_argument("--dry-run",     action="store_true")
     parser.add_argument("--rerun",       action="store_true")
+    parser.add_argument("--max-workers", type=int, default=DEFAULT_MAX_WORKERS,
+                        help="Concurrent Ollama calls (default from ENSEMBLE_MAX_WORKERS "
+                             "env var, or 8 if unset). Lower this on memory-limited machines "
+                             "(e.g. a 16GB Mac) - try 1-2. Higher is fine on a dedicated GPU "
+                             "node with real VRAM headroom.")
     args = parser.parse_args()
 
     if args.dry_run:
@@ -333,7 +356,8 @@ def main():
     print(f"Ollama connected. Selector: {OLLAMA_MODELS[args.selector]}")
 
     run_dataset(args.dataset, args.selector, client, args.percentile,
-                max_samples=args.max_samples, rerun=args.rerun, split=args.split)
+                max_samples=args.max_samples, rerun=args.rerun, split=args.split,
+                max_workers=args.max_workers)
 
 
 if __name__ == "__main__":
