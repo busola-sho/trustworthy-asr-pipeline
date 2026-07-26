@@ -1,0 +1,1045 @@
+{
+  "selector": "gemma4",
+  "approach": "context_v2_confidence_inline",
+  "confidence_models": [
+    "qwen",
+    "whisperx",
+    "parakeet"
+  ],
+  "phase": "selector_only - severity not yet judged",
+  "dataset": "edacc",
+  "split": "test",
+  "percentile": 20,
+  "thresholds_used": {
+    "qwen": 0.971838,
+    "whisperx": 0.434,
+    "parakeet": 0.775967
+  },
+  "auto_rules_used": "- NEGATIONS: the qwen3asr transcript is empirically more reliable on negations (12.6% pooled error rate across all datasets, n=420, vs 16.2% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it. Note: in some cases parakeet, qwen3asr perform near-identically on negations with no clear winner — in those cases, do not default to qwen3asr automatically; use contextual judgement instead.\n- SCOTTISH DIALECT WORDS: the qwen3asr transcript is empirically more reliable on Scottish dialect words (31.8% pooled error rate across all datasets, n=2440, vs 33.3% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it.",
+  "subset_indices": [
+    1,
+    6,
+    7,
+    8,
+    11,
+    17,
+    20,
+    22,
+    23,
+    24,
+    26,
+    28,
+    31,
+    35,
+    39,
+    40,
+    49,
+    50,
+    55,
+    56,
+    57,
+    58,
+    59,
+    62,
+    67,
+    70,
+    71,
+    75,
+    86,
+    87,
+    88,
+    91,
+    92,
+    96,
+    97,
+    107,
+    108,
+    114,
+    117,
+    129,
+    137,
+    139,
+    141,
+    143,
+    150,
+    151,
+    154,
+    163,
+    166,
+    167,
+    172,
+    173,
+    179,
+    180,
+    183,
+    186,
+    188,
+    189,
+    194,
+    195
+  ],
+  "corpus_wer": 0.16536661466458658,
+  "num_samples": 60,
+  "samples": [
+    {
+      "ref": "YEAH I'VE GOT A NOTIFICATION",
+      "hyp": "Got a notification.",
+      "qwen_hyp_flagged": "[LOW-CONF: Got] a [LOW-CONF: notification.]",
+      "whisperx_hyp_flagged": "[LOW-CONF: I've] got [LOW-CONF: a] [LOW-CONF: notification.]",
+      "parakeet_hyp_flagged": "[LOW-CONF: gotication]",
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967
+      },
+      "sample_WER": 0.4,
+      "severity": null,
+      "auto_rules_used": "- NEGATIONS: the qwen3asr transcript is empirically more reliable on negations (12.6% pooled error rate across all datasets, n=420, vs 16.2% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it. Note: in some cases parakeet, qwen3asr perform near-identically on negations with no clear winner — in those cases, do not default to qwen3asr automatically; use contextual judgement instead.\n- SCOTTISH DIALECT WORDS: the qwen3asr transcript is empirically more reliable on Scottish dialect words (31.8% pooled error rate across all datasets, n=2440, vs 33.3% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it.",
+      "dataset_index": 1
+    },
+    {
+      "ref": "DO YOU WANNA EXPLAIN",
+      "hyp": "Do you want to explain?",
+      "qwen_hyp_flagged": "[LOW-CONF: Do] you [LOW-CONF: wanna] explain?",
+      "whisperx_hyp_flagged": "Do [LOW-CONF: you] [LOW-CONF: want] [LOW-CONF: to] explain?",
+      "parakeet_hyp_flagged": "jonah [LOW-CONF: explains]",
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967
+      },
+      "sample_WER": 0.5,
+      "severity": null,
+      "auto_rules_used": "- NEGATIONS: the qwen3asr transcript is empirically more reliable on negations (12.6% pooled error rate across all datasets, n=420, vs 16.2% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it. Note: in some cases parakeet, qwen3asr perform near-identically on negations with no clear winner — in those cases, do not default to qwen3asr automatically; use contextual judgement instead.\n- SCOTTISH DIALECT WORDS: the qwen3asr transcript is empirically more reliable on Scottish dialect words (31.8% pooled error rate across all datasets, n=2440, vs 33.3% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it.",
+      "dataset_index": 6
+    },
+    {
+      "ref": "WHICH IS JUST THE WHICH IS JUST A UH BASICALLY YOU HAVE TWO ENDS OF A PITCH AND YOUR GOAL'S TO REACH THE OTHER END OF THE PITCH WITHOUT BEING TAGGED BY SOMEONE IN THE MIDDLE AND NO RULES APPLY PEOPLE WERE BEATEN UP BLOOD EVERYWHERE OH GOOD TIMES",
+      "hyp": "Which is just a basically you have two ends of a pitch, and your goal is to reach the other end of the pitch without being tagged by someone in the middle, and no rules apply. People were beaten up, blood everywhere. Good times.",
+      "qwen_hyp_flagged": "Which is just a [LOW-CONF: basically] [LOW-CONF: you] have two ends of a [LOW-CONF: pitch,] and your [LOW-CONF: goal] is to reach the other end of the pitch without being tagged by someone in the [LOW-CONF: middle,] and no rules apply. People were beaten up, blood [LOW-CONF: everywhere.] [LOW-CONF: Ah,] good times.",
+      "whisperx_hyp_flagged": "which is just [LOW-CONF: basically] [LOW-CONF: you] have two ends of a pitch and your goal [LOW-CONF: is] to reach the other end of the pitch without being tagged by someone in the middle. And no rules apply. People were beaten up, blood everywhere. Good times.",
+      "parakeet_hyp_flagged": "which is just a basically you have two ends of a pitch and your goal [LOW-CONF: is] [LOW-CONF: to] reach the other end of the pitch without being tagged by someone in the middle and no rules apply people were beaten up blood everywhere good timeys",
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967
+      },
+      "sample_WER": 0.16326530612244897,
+      "severity": null,
+      "auto_rules_used": "- NEGATIONS: the qwen3asr transcript is empirically more reliable on negations (12.6% pooled error rate across all datasets, n=420, vs 16.2% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it. Note: in some cases parakeet, qwen3asr perform near-identically on negations with no clear winner — in those cases, do not default to qwen3asr automatically; use contextual judgement instead.\n- SCOTTISH DIALECT WORDS: the qwen3asr transcript is empirically more reliable on Scottish dialect words (31.8% pooled error rate across all datasets, n=2440, vs 33.3% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it.",
+      "dataset_index": 7
+    },
+    {
+      "ref": "WAS IT TAGGED OR WAS IT TACKLED",
+      "hyp": "Was it tagged or was it tackled?",
+      "qwen_hyp_flagged": "Was it tagged or was it tackled?",
+      "whisperx_hyp_flagged": "Was it tagged [LOW-CONF: or] was it tackled?",
+      "parakeet_hyp_flagged": "was it tagged [LOW-CONF: or] [LOW-CONF: was] it tackled",
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967
+      },
+      "sample_WER": 0.0,
+      "severity": null,
+      "auto_rules_used": "- NEGATIONS: the qwen3asr transcript is empirically more reliable on negations (12.6% pooled error rate across all datasets, n=420, vs 16.2% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it. Note: in some cases parakeet, qwen3asr perform near-identically on negations with no clear winner — in those cases, do not default to qwen3asr automatically; use contextual judgement instead.\n- SCOTTISH DIALECT WORDS: the qwen3asr transcript is empirically more reliable on Scottish dialect words (31.8% pooled error rate across all datasets, n=2440, vs 33.3% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it.",
+      "dataset_index": 8
+    },
+    {
+      "ref": "OUR RULES WERE TACKLE",
+      "hyp": "Exactly.",
+      "qwen_hyp_flagged": "[LOW-CONF: Exactly.]",
+      "whisperx_hyp_flagged": "[LOW-CONF: Go] [LOW-CONF: with] [LOW-CONF: that.]",
+      "parakeet_hyp_flagged": "[LOW-CONF: that]",
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967
+      },
+      "sample_WER": 1.0,
+      "severity": null,
+      "auto_rules_used": "- NEGATIONS: the qwen3asr transcript is empirically more reliable on negations (12.6% pooled error rate across all datasets, n=420, vs 16.2% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it. Note: in some cases parakeet, qwen3asr perform near-identically on negations with no clear winner — in those cases, do not default to qwen3asr automatically; use contextual judgement instead.\n- SCOTTISH DIALECT WORDS: the qwen3asr transcript is empirically more reliable on Scottish dialect words (31.8% pooled error rate across all datasets, n=2440, vs 33.3% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it.",
+      "dataset_index": 11
+    },
+    {
+      "ref": "STONE UH STONE PLAYGROUND",
+      "hyp": "Stone playground.",
+      "qwen_hyp_flagged": "[LOW-CONF: Storm] [LOW-CONF: playground.]",
+      "whisperx_hyp_flagged": "Stone Playground.",
+      "parakeet_hyp_flagged": "so [LOW-CONF: st] [LOW-CONF: playground]",
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967
+      },
+      "sample_WER": 0.5,
+      "severity": null,
+      "auto_rules_used": "- NEGATIONS: the qwen3asr transcript is empirically more reliable on negations (12.6% pooled error rate across all datasets, n=420, vs 16.2% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it. Note: in some cases parakeet, qwen3asr perform near-identically on negations with no clear winner — in those cases, do not default to qwen3asr automatically; use contextual judgement instead.\n- SCOTTISH DIALECT WORDS: the qwen3asr transcript is empirically more reliable on Scottish dialect words (31.8% pooled error rate across all datasets, n=2440, vs 33.3% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it.",
+      "dataset_index": 17
+    },
+    {
+      "ref": "THAT WOULD NOT GO WELL UM SIMILAR TO THE SIMILARLY TO THAT I PLAYED LOTS OF SHARKS AND FISHES IN UM LIKE",
+      "hyp": "That would not go well. Um, similar to that. Similarly to that, I played lots of sharks and fishes, and like.",
+      "qwen_hyp_flagged": "That would not go well. [LOW-CONF: Um,] [LOW-CONF: similar] to [LOW-CONF: that.] Similarly to that, I [LOW-CONF: played] lots of sharks and [LOW-CONF: fishes,] and [LOW-CONF: like.]",
+      "whisperx_hyp_flagged": "would not go well um similar to [LOW-CONF: that] similarly to that [LOW-CONF: i] [LOW-CONF: played] lots of sharks and fishes and [LOW-CONF: i'm] like",
+      "parakeet_hyp_flagged": "that would not go well similar to that [LOW-CONF: similarly] [LOW-CONF: to] that i play [LOW-CONF: less] [LOW-CONF: with] sharks and fishes and um [LOW-CONF: like]",
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967
+      },
+      "sample_WER": 0.13636363636363635,
+      "severity": null,
+      "auto_rules_used": "- NEGATIONS: the qwen3asr transcript is empirically more reliable on negations (12.6% pooled error rate across all datasets, n=420, vs 16.2% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it. Note: in some cases parakeet, qwen3asr perform near-identically on negations with no clear winner — in those cases, do not default to qwen3asr automatically; use contextual judgement instead.\n- SCOTTISH DIALECT WORDS: the qwen3asr transcript is empirically more reliable on Scottish dialect words (31.8% pooled error rate across all datasets, n=2440, vs 33.3% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it.",
+      "dataset_index": 20
+    },
+    {
+      "ref": "UM SPORTS CAMPS AND WHATNOT",
+      "hyp": "sports camps and whatnot.",
+      "qwen_hyp_flagged": "[LOW-CONF: Sports] camps and whatnot.",
+      "whisperx_hyp_flagged": "sports camps [LOW-CONF: and] whatnot.",
+      "parakeet_hyp_flagged": "sports camps and whatnot",
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967
+      },
+      "sample_WER": 0.2,
+      "severity": null,
+      "auto_rules_used": "- NEGATIONS: the qwen3asr transcript is empirically more reliable on negations (12.6% pooled error rate across all datasets, n=420, vs 16.2% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it. Note: in some cases parakeet, qwen3asr perform near-identically on negations with no clear winner — in those cases, do not default to qwen3asr automatically; use contextual judgement instead.\n- SCOTTISH DIALECT WORDS: the qwen3asr transcript is empirically more reliable on Scottish dialect words (31.8% pooled error rate across all datasets, n=2440, vs 33.3% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it.",
+      "dataset_index": 22
+    },
+    {
+      "ref": "ALL RIGHT",
+      "hyp": "we'd",
+      "qwen_hyp_flagged": "[LOW-CONF: We.]",
+      "whisperx_hyp_flagged": "we'd",
+      "parakeet_hyp_flagged": "we",
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967
+      },
+      "sample_WER": 1.0,
+      "severity": null,
+      "auto_rules_used": "- NEGATIONS: the qwen3asr transcript is empirically more reliable on negations (12.6% pooled error rate across all datasets, n=420, vs 16.2% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it. Note: in some cases parakeet, qwen3asr perform near-identically on negations with no clear winner — in those cases, do not default to qwen3asr automatically; use contextual judgement instead.\n- SCOTTISH DIALECT WORDS: the qwen3asr transcript is empirically more reliable on Scottish dialect words (31.8% pooled error rate across all datasets, n=2440, vs 33.3% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it.",
+      "dataset_index": 23
+    },
+    {
+      "ref": "WE'D UH THE IDEA IT'S ESSENTIALLY THE SAME AS BULLDOG YOU HAVE TO TRY AND RUN TO THE END OF THE FIELD THERE'S ONE PERSON WHO'S THIS SHARK OR MAYBE TWO PEOPLE AND THEY CAN MOVE ANY DIRECTION AND IF THEY TAKE YOU YOU BECOME SEAWEED AND YOU CAN'T MOVE YOUR FEET BUT YOU CAN LIKE LEAN OUT TO CATCH PEOPLE",
+      "hyp": "The idea is it's essentially the same as bulldog. You have to run on the end of the field. There's one person who's the shark, or maybe two people, and they can move any direction. And if they take you, you become seaweed, and you can't move your feet. You can like lean out to catch people.",
+      "qwen_hyp_flagged": "The idea is [LOW-CONF: it's] essentially the same as [LOW-CONF: bouldo.] You have to [LOW-CONF: run] [LOW-CONF: on] [LOW-CONF: the] end of the field. There's one person who's [LOW-CONF: the] shark, or maybe two people, and they can move any direction. And if they take you, you become seaweed, and you can't move your feet. You can like lean out to catch people.",
+      "whisperx_hyp_flagged": "The idea [LOW-CONF: is] it's essentially the same as bulldog. [LOW-CONF: You] [LOW-CONF: have] [LOW-CONF: to] grind one [LOW-CONF: day] into the field. There's one person who's the shark or maybe two people and they can move any direction. And if they take [LOW-CONF: you,] you become seaweed and you can't move your feet. You can like lean out to catch people.",
+      "parakeet_hyp_flagged": "the idea is it's essentially the same as [LOW-CONF: bulldog] [LOW-CONF: you] have to drown [LOW-CONF: at] [LOW-CONF: the] end of the field there's one person who's the [LOW-CONF: shark] or maybe two people and they can move any direction and if they take [LOW-CONF: you] you [LOW-CONF: become] seaweed and you can't move your feet you can like [LOW-CONF: lean] out [LOW-CONF: to] catch people",
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967
+      },
+      "sample_WER": 0.13114754098360656,
+      "severity": null,
+      "auto_rules_used": "- NEGATIONS: the qwen3asr transcript is empirically more reliable on negations (12.6% pooled error rate across all datasets, n=420, vs 16.2% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it. Note: in some cases parakeet, qwen3asr perform near-identically on negations with no clear winner — in those cases, do not default to qwen3asr automatically; use contextual judgement instead.\n- SCOTTISH DIALECT WORDS: the qwen3asr transcript is empirically more reliable on Scottish dialect words (31.8% pooled error rate across all datasets, n=2440, vs 33.3% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it.",
+      "dataset_index": 24
+    },
+    {
+      "ref": "AND THE IDEA WAS THERE WOULD BE MORE AND MORE OBSTACLES AS MORE AND MORE PEOPLE WERE CAUGHT",
+      "hyp": "The idea was to be more and more obstacles as more and more people were caught.",
+      "qwen_hyp_flagged": "The idea was to be more and more [LOW-CONF: obstacles.] [LOW-CONF: As] more and more people were caught.",
+      "whisperx_hyp_flagged": "The idea was to be more [LOW-CONF: and] more obstacles. [LOW-CONF: It's] [LOW-CONF: moment] we're caught.",
+      "parakeet_hyp_flagged": "the [LOW-CONF: idea] was to be more and more [LOW-CONF: obstacles] as [LOW-CONF: more] and [LOW-CONF: more] people were [LOW-CONF: caught]",
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967
+      },
+      "sample_WER": 0.16666666666666666,
+      "severity": null,
+      "auto_rules_used": "- NEGATIONS: the qwen3asr transcript is empirically more reliable on negations (12.6% pooled error rate across all datasets, n=420, vs 16.2% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it. Note: in some cases parakeet, qwen3asr perform near-identically on negations with no clear winner — in those cases, do not default to qwen3asr automatically; use contextual judgement instead.\n- SCOTTISH DIALECT WORDS: the qwen3asr transcript is empirically more reliable on Scottish dialect words (31.8% pooled error rate across all datasets, n=2440, vs 33.3% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it.",
+      "dataset_index": 26
+    },
+    {
+      "ref": "AND THEN IF THE GAME WAS DRAGGING ON THE SEAWEED WOULD BECOME CRABS SO THEY CAN MOVE SIDE TO SIDE BUT NOT FORWARDS AND BACKWARDS SO IT WAS REALLY IT WAS QUITE QUITE A LITTLE <OVERLAP>",
+      "hyp": "And then, if the game was dragging on, the seaweed would become crabs, so they could move side to side, but not forwards and backwards. So it was really, it was quite a little bit.",
+      "qwen_hyp_flagged": "And [LOW-CONF: then,] if the game was dragging on, the [LOW-CONF: seaweed] [LOW-CONF: would] become crabs, so they [LOW-CONF: could] move side to [LOW-CONF: side,] but not forwards and backwards. So it was [LOW-CONF: really,] it was [LOW-CONF: quite,] quite [LOW-CONF: a] [LOW-CONF: little.]",
+      "whisperx_hyp_flagged": "And then if the game was dragging on, the seaweed [LOW-CONF: would] become crabs. So they could move side to side, but not forwards and backwards. So [LOW-CONF: it] [LOW-CONF: was] really, [LOW-CONF: it] was quite a [LOW-CONF: little] [LOW-CONF: bit.]",
+      "parakeet_hyp_flagged": "and then if the game was dragging on the seaweed would [LOW-CONF: become] crabs so [LOW-CONF: they] can [LOW-CONF: move] side to side but not forwards [LOW-CONF: and] backwards [LOW-CONF: so] it was [LOW-CONF: really] it [LOW-CONF: was] quite quiteing",
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967
+      },
+      "sample_WER": 0.08571428571428572,
+      "severity": null,
+      "auto_rules_used": "- NEGATIONS: the qwen3asr transcript is empirically more reliable on negations (12.6% pooled error rate across all datasets, n=420, vs 16.2% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it. Note: in some cases parakeet, qwen3asr perform near-identically on negations with no clear winner — in those cases, do not default to qwen3asr automatically; use contextual judgement instead.\n- SCOTTISH DIALECT WORDS: the qwen3asr transcript is empirically more reliable on Scottish dialect words (31.8% pooled error rate across all datasets, n=2440, vs 33.3% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it.",
+      "dataset_index": 28
+    },
+    {
+      "ref": "AND WAS THAT A TACKLE TO THE GROUND TYPE THING AS WELL",
+      "hyp": "And was that tackle to the ground type thing as well?",
+      "qwen_hyp_flagged": "And was that [LOW-CONF: tackle] to the ground type thing as well?",
+      "whisperx_hyp_flagged": "And was [LOW-CONF: that] tackled to the ground [LOW-CONF: type] thing as [LOW-CONF: well?]",
+      "parakeet_hyp_flagged": "and [LOW-CONF: what] [LOW-CONF: that] tackle to the ground type thing as well",
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967
+      },
+      "sample_WER": 0.08333333333333333,
+      "severity": null,
+      "auto_rules_used": "- NEGATIONS: the qwen3asr transcript is empirically more reliable on negations (12.6% pooled error rate across all datasets, n=420, vs 16.2% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it. Note: in some cases parakeet, qwen3asr perform near-identically on negations with no clear winner — in those cases, do not default to qwen3asr automatically; use contextual judgement instead.\n- SCOTTISH DIALECT WORDS: the qwen3asr transcript is empirically more reliable on Scottish dialect words (31.8% pooled error rate across all datasets, n=2440, vs 33.3% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it.",
+      "dataset_index": 31
+    },
+    {
+      "ref": "RIGHT YEAH",
+      "hyp": "Your.",
+      "qwen_hyp_flagged": "[LOW-CONF: Your.]",
+      "whisperx_hyp_flagged": "[LOW-CONF: Yes.]",
+      "parakeet_hyp_flagged": "[LOW-CONF: you]",
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967
+      },
+      "sample_WER": 1.0,
+      "severity": null,
+      "auto_rules_used": "- NEGATIONS: the qwen3asr transcript is empirically more reliable on negations (12.6% pooled error rate across all datasets, n=420, vs 16.2% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it. Note: in some cases parakeet, qwen3asr perform near-identically on negations with no clear winner — in those cases, do not default to qwen3asr automatically; use contextual judgement instead.\n- SCOTTISH DIALECT WORDS: the qwen3asr transcript is empirically more reliable on Scottish dialect words (31.8% pooled error rate across all datasets, n=2440, vs 33.3% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it.",
+      "dataset_index": 35
+    },
+    {
+      "ref": "THAT MAKES SENSE",
+      "hyp": "That makes sense.",
+      "qwen_hyp_flagged": "That makes sense.",
+      "whisperx_hyp_flagged": "[LOW-CONF: That] [LOW-CONF: makes] sense.",
+      "parakeet_hyp_flagged": "that makes sense",
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967
+      },
+      "sample_WER": 0.0,
+      "severity": null,
+      "auto_rules_used": "- NEGATIONS: the qwen3asr transcript is empirically more reliable on negations (12.6% pooled error rate across all datasets, n=420, vs 16.2% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it. Note: in some cases parakeet, qwen3asr perform near-identically on negations with no clear winner — in those cases, do not default to qwen3asr automatically; use contextual judgement instead.\n- SCOTTISH DIALECT WORDS: the qwen3asr transcript is empirically more reliable on Scottish dialect words (31.8% pooled error rate across all datasets, n=2440, vs 33.3% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it.",
+      "dataset_index": 39
+    },
+    {
+      "ref": "YEAH GOOD FUN",
+      "hyp": "Yeah, good fun.",
+      "qwen_hyp_flagged": "[LOW-CONF: Yeah,] good fun.",
+      "whisperx_hyp_flagged": "Good fun.",
+      "parakeet_hyp_flagged": "have good fun",
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967
+      },
+      "sample_WER": 0.0,
+      "severity": null,
+      "auto_rules_used": "- NEGATIONS: the qwen3asr transcript is empirically more reliable on negations (12.6% pooled error rate across all datasets, n=420, vs 16.2% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it. Note: in some cases parakeet, qwen3asr perform near-identically on negations with no clear winner — in those cases, do not default to qwen3asr automatically; use contextual judgement instead.\n- SCOTTISH DIALECT WORDS: the qwen3asr transcript is empirically more reliable on Scottish dialect words (31.8% pooled error rate across all datasets, n=2440, vs 33.3% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it.",
+      "dataset_index": 40
+    },
+    {
+      "ref": "HMM",
+      "hyp": "Right.",
+      "qwen_hyp_flagged": "[LOW-CONF: Right.]",
+      "whisperx_hyp_flagged": "",
+      "parakeet_hyp_flagged": "",
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967
+      },
+      "sample_WER": 1.0,
+      "severity": null,
+      "auto_rules_used": "- NEGATIONS: the qwen3asr transcript is empirically more reliable on negations (12.6% pooled error rate across all datasets, n=420, vs 16.2% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it. Note: in some cases parakeet, qwen3asr perform near-identically on negations with no clear winner — in those cases, do not default to qwen3asr automatically; use contextual judgement instead.\n- SCOTTISH DIALECT WORDS: the qwen3asr transcript is empirically more reliable on Scottish dialect words (31.8% pooled error rate across all datasets, n=2440, vs 33.3% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it.",
+      "dataset_index": 49
+    },
+    {
+      "ref": "AND THEN WE PLAYED TWO VARIATIONS OF IT YOU KNOW THE AMERICAN STYLE WHERE YOU JUST THROW IT FROM THE SIDE OF THE PITCH",
+      "hyp": "And we played two variations of it. You know, the American style where you just throw it from the side of the pitch.",
+      "qwen_hyp_flagged": "And we [LOW-CONF: played] two variations of [LOW-CONF: it.] You [LOW-CONF: know,] the American style [LOW-CONF: where] you just throw it from the side of the pitch.",
+      "whisperx_hyp_flagged": "And we played two variations of it. [LOW-CONF: You] know, the American style where you just throw it from [LOW-CONF: the] [LOW-CONF: side] [LOW-CONF: of] [LOW-CONF: the] pitch.",
+      "parakeet_hyp_flagged": "and weve [LOW-CONF: played] two variations of it you [LOW-CONF: know] the american style where you [LOW-CONF: just] throw it from the side of the [LOW-CONF: bitch]",
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967
+      },
+      "sample_WER": 0.041666666666666664,
+      "severity": null,
+      "auto_rules_used": "- NEGATIONS: the qwen3asr transcript is empirically more reliable on negations (12.6% pooled error rate across all datasets, n=420, vs 16.2% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it. Note: in some cases parakeet, qwen3asr perform near-identically on negations with no clear winner — in those cases, do not default to qwen3asr automatically; use contextual judgement instead.\n- SCOTTISH DIALECT WORDS: the qwen3asr transcript is empirically more reliable on Scottish dialect words (31.8% pooled error rate across all datasets, n=2440, vs 33.3% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it.",
+      "dataset_index": 50
+    },
+    {
+      "ref": "YEAH",
+      "hyp": "Yeah.",
+      "qwen_hyp_flagged": "Yeah.",
+      "whisperx_hyp_flagged": "Yeah.",
+      "parakeet_hyp_flagged": "yes",
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967
+      },
+      "sample_WER": 0.0,
+      "severity": null,
+      "auto_rules_used": "- NEGATIONS: the qwen3asr transcript is empirically more reliable on negations (12.6% pooled error rate across all datasets, n=420, vs 16.2% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it. Note: in some cases parakeet, qwen3asr perform near-identically on negations with no clear winner — in those cases, do not default to qwen3asr automatically; use contextual judgement instead.\n- SCOTTISH DIALECT WORDS: the qwen3asr transcript is empirically more reliable on Scottish dialect words (31.8% pooled error rate across all datasets, n=2440, vs 33.3% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it.",
+      "dataset_index": 55
+    },
+    {
+      "ref": "I I SUPPOSE IF PEOPLE WERE JUST REALLY BAD AT THROWING BECAUSE THEY WERE REALLY QUITE YOUNG I MEAN WE WERE ALL REALLY YOUNG BUT IT'S STILL VERY WEIRD",
+      "hyp": "I suppose the people are just really bad at throwing because they're really quite young. We're all really young, but it's still very weird.",
+      "qwen_hyp_flagged": "I suppose [LOW-CONF: the] people [LOW-CONF: are] just really bad at [LOW-CONF: throwing] [LOW-CONF: because] they're really quite young. We're all really young, but it's still very weird.",
+      "whisperx_hyp_flagged": "I suppose the [LOW-CONF: people] [LOW-CONF: are] just really bad at throwing [LOW-CONF: because] [LOW-CONF: they're] [LOW-CONF: really] [LOW-CONF: quite] young. [LOW-CONF: We] were all really young, but it's still very weird.",
+      "parakeet_hyp_flagged": "i suppose the [LOW-CONF: people] just really bad at drinks they're [LOW-CONF: really] quite young we're all really young but it's still very weird",
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967
+      },
+      "sample_WER": 0.3103448275862069,
+      "severity": null,
+      "auto_rules_used": "- NEGATIONS: the qwen3asr transcript is empirically more reliable on negations (12.6% pooled error rate across all datasets, n=420, vs 16.2% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it. Note: in some cases parakeet, qwen3asr perform near-identically on negations with no clear winner — in those cases, do not default to qwen3asr automatically; use contextual judgement instead.\n- SCOTTISH DIALECT WORDS: the qwen3asr transcript is empirically more reliable on Scottish dialect words (31.8% pooled error rate across all datasets, n=2440, vs 33.3% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it.",
+      "dataset_index": 56
+    },
+    {
+      "ref": "YEAH WAS YOUR PRIMARY SCHOOL PRETTY BIG",
+      "hyp": "Yeah, was your primary school pretty big?",
+      "qwen_hyp_flagged": "[LOW-CONF: Yeah,] was your primary school pretty big?",
+      "whisperx_hyp_flagged": "Yeah. Was your [LOW-CONF: primary] school [LOW-CONF: pretty] big?",
+      "parakeet_hyp_flagged": "yeah was your primary school pretty big",
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967
+      },
+      "sample_WER": 0.0,
+      "severity": null,
+      "auto_rules_used": "- NEGATIONS: the qwen3asr transcript is empirically more reliable on negations (12.6% pooled error rate across all datasets, n=420, vs 16.2% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it. Note: in some cases parakeet, qwen3asr perform near-identically on negations with no clear winner — in those cases, do not default to qwen3asr automatically; use contextual judgement instead.\n- SCOTTISH DIALECT WORDS: the qwen3asr transcript is empirically more reliable on Scottish dialect words (31.8% pooled error rate across all datasets, n=2440, vs 33.3% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it.",
+      "dataset_index": 57
+    },
+    {
+      "ref": "YEAH BIG BIG HALL FOR THE SIZE I REMEMBER GOING BACK THERE WHEN I WAS A LOT OLDER AND I REMEMBER SEEING THE BASKETBALL HOOPS IN THE HALL AND I COULD LIKE DUNK ON THEM WHICH WAS SO WEIRD BECAUSE BASKETBALL HOOPS ARE SUPPOSED TO BE LIKE TEN FEET TALL AND AT THE",
+      "hyp": "Yeah, big big hall for the size. I remember going back there when I was a lot older, and I remember seeing the basketball hoops in the hall, and I could like dunk on them, which is so weird because basketball hoops are supposed to be like ten feet tall, and at the",
+      "qwen_hyp_flagged": "Yeah, big [LOW-CONF: big] hall for the size. I remember going back there when I was a lot older, and I remember seeing the basketball hoops in the [LOW-CONF: hall,] and I could like dunk on them, which [LOW-CONF: is] so weird because basketball hoops [LOW-CONF: are] supposed to be like ten feet tall, and at the",
+      "whisperx_hyp_flagged": "Yeah, big, big hall for [LOW-CONF: the] size. I remember going back there when I was a lot older and I [LOW-CONF: remember] seeing the basketball hoops in the hall and I could like dunk on them, which is so weird because [LOW-CONF: basketball] hoops [LOW-CONF: are] [LOW-CONF: supposed] to be like 10 feet tall and at the...",
+      "parakeet_hyp_flagged": "yeah big big hall for the size i [LOW-CONF: remember] going back there when i was a lot older and i remember [LOW-CONF: seeing] the basketball [LOW-CONF: hoops] in the hall and i could like [LOW-CONF: dunk] on them which was [LOW-CONF: so] weird because basketball [LOW-CONF: hoops] are [LOW-CONF: supposed] to be like ten feet tall and at the",
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967
+      },
+      "sample_WER": 0.018867924528301886,
+      "severity": null,
+      "auto_rules_used": "- NEGATIONS: the qwen3asr transcript is empirically more reliable on negations (12.6% pooled error rate across all datasets, n=420, vs 16.2% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it. Note: in some cases parakeet, qwen3asr perform near-identically on negations with no clear winner — in those cases, do not default to qwen3asr automatically; use contextual judgement instead.\n- SCOTTISH DIALECT WORDS: the qwen3asr transcript is empirically more reliable on Scottish dialect words (31.8% pooled error rate across all datasets, n=2440, vs 33.3% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it.",
+      "dataset_index": 58
+    },
+    {
+      "ref": "YEAH",
+      "hyp": "Yeah.",
+      "qwen_hyp_flagged": "Yeah.",
+      "whisperx_hyp_flagged": "[LOW-CONF: Yeah.]",
+      "parakeet_hyp_flagged": "yes",
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967
+      },
+      "sample_WER": 0.0,
+      "severity": null,
+      "auto_rules_used": "- NEGATIONS: the qwen3asr transcript is empirically more reliable on negations (12.6% pooled error rate across all datasets, n=420, vs 16.2% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it. Note: in some cases parakeet, qwen3asr perform near-identically on negations with no clear winner — in those cases, do not default to qwen3asr automatically; use contextual judgement instead.\n- SCOTTISH DIALECT WORDS: the qwen3asr transcript is empirically more reliable on Scottish dialect words (31.8% pooled error rate across all datasets, n=2440, vs 33.3% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it.",
+      "dataset_index": 59
+    },
+    {
+      "ref": "DID YOU UM HAVE A FAVORITE BOOK FILM OR TV SHOW OR CARTOON AS A CHILD WHAT WAS IT ABOUT",
+      "hyp": "Did you have a favorite book, film, or TV show, or cartoon as a child? What was it about?",
+      "qwen_hyp_flagged": "Did you [LOW-CONF: have] a [LOW-CONF: favourite] book, film, or TV [LOW-CONF: show,] or cartoon as a child? What was it about?",
+      "whisperx_hyp_flagged": "Did you have a favorite book, film or TV show or cartoon [LOW-CONF: as] a child? What was [LOW-CONF: it] about?",
+      "parakeet_hyp_flagged": "did you [LOW-CONF: have] a favorite [LOW-CONF: book] film or tv show or cartoon as a child what was it about",
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967
+      },
+      "sample_WER": 0.05,
+      "severity": null,
+      "auto_rules_used": "- NEGATIONS: the qwen3asr transcript is empirically more reliable on negations (12.6% pooled error rate across all datasets, n=420, vs 16.2% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it. Note: in some cases parakeet, qwen3asr perform near-identically on negations with no clear winner — in those cases, do not default to qwen3asr automatically; use contextual judgement instead.\n- SCOTTISH DIALECT WORDS: the qwen3asr transcript is empirically more reliable on Scottish dialect words (31.8% pooled error rate across all datasets, n=2440, vs 33.3% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it.",
+      "dataset_index": 62
+    },
+    {
+      "ref": "GO TO TV SHOWS",
+      "hyp": "Go to TV.",
+      "qwen_hyp_flagged": "Go to TV.",
+      "whisperx_hyp_flagged": "[LOW-CONF: Welcome] to TV.",
+      "parakeet_hyp_flagged": "into [LOW-CONF: te]",
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967
+      },
+      "sample_WER": 0.25,
+      "severity": null,
+      "auto_rules_used": "- NEGATIONS: the qwen3asr transcript is empirically more reliable on negations (12.6% pooled error rate across all datasets, n=420, vs 16.2% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it. Note: in some cases parakeet, qwen3asr perform near-identically on negations with no clear winner — in those cases, do not default to qwen3asr automatically; use contextual judgement instead.\n- SCOTTISH DIALECT WORDS: the qwen3asr transcript is empirically more reliable on Scottish dialect words (31.8% pooled error rate across all datasets, n=2440, vs 33.3% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it.",
+      "dataset_index": 67
+    },
+    {
+      "ref": "LAZY TOWN WAS A BIG ONE FOR ME",
+      "hyp": "Lazy tongue was a big one for me.",
+      "qwen_hyp_flagged": "Lazy [LOW-CONF: Town] was a big one for me.",
+      "whisperx_hyp_flagged": "Lazy tongue was [LOW-CONF: a] big one for me.",
+      "parakeet_hyp_flagged": "lazy tong [LOW-CONF: was] a [LOW-CONF: big] one for me",
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967
+      },
+      "sample_WER": 0.125,
+      "severity": null,
+      "auto_rules_used": "- NEGATIONS: the qwen3asr transcript is empirically more reliable on negations (12.6% pooled error rate across all datasets, n=420, vs 16.2% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it. Note: in some cases parakeet, qwen3asr perform near-identically on negations with no clear winner — in those cases, do not default to qwen3asr automatically; use contextual judgement instead.\n- SCOTTISH DIALECT WORDS: the qwen3asr transcript is empirically more reliable on Scottish dialect words (31.8% pooled error rate across all datasets, n=2440, vs 33.3% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it.",
+      "dataset_index": 70
+    },
+    {
+      "ref": "YEAH",
+      "hyp": "Yeah.",
+      "qwen_hyp_flagged": "Yeah.",
+      "whisperx_hyp_flagged": "[LOW-CONF: yeah.]",
+      "parakeet_hyp_flagged": "yeah",
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967
+      },
+      "sample_WER": 0.0,
+      "severity": null,
+      "auto_rules_used": "- NEGATIONS: the qwen3asr transcript is empirically more reliable on negations (12.6% pooled error rate across all datasets, n=420, vs 16.2% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it. Note: in some cases parakeet, qwen3asr perform near-identically on negations with no clear winner — in those cases, do not default to qwen3asr automatically; use contextual judgement instead.\n- SCOTTISH DIALECT WORDS: the qwen3asr transcript is empirically more reliable on Scottish dialect words (31.8% pooled error rate across all datasets, n=2440, vs 33.3% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it.",
+      "dataset_index": 71
+    },
+    {
+      "ref": "IT'S A FORCE OF NATURE",
+      "hyp": "It's a force of nature.",
+      "qwen_hyp_flagged": "It's a force of nature.",
+      "whisperx_hyp_flagged": "[LOW-CONF: It's] a [LOW-CONF: force] [LOW-CONF: of] nature.",
+      "parakeet_hyp_flagged": "[LOW-CONF: as] [LOW-CONF: a] [LOW-CONF: force] [LOW-CONF: in] nature",
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967
+      },
+      "sample_WER": 0.0,
+      "severity": null,
+      "auto_rules_used": "- NEGATIONS: the qwen3asr transcript is empirically more reliable on negations (12.6% pooled error rate across all datasets, n=420, vs 16.2% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it. Note: in some cases parakeet, qwen3asr perform near-identically on negations with no clear winner — in those cases, do not default to qwen3asr automatically; use contextual judgement instead.\n- SCOTTISH DIALECT WORDS: the qwen3asr transcript is empirically more reliable on Scottish dialect words (31.8% pooled error rate across all datasets, n=2440, vs 33.3% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it.",
+      "dataset_index": 75
+    },
+    {
+      "ref": "WOW",
+      "hyp": "Wow.",
+      "qwen_hyp_flagged": "Wow.",
+      "whisperx_hyp_flagged": "Wow.",
+      "parakeet_hyp_flagged": "flown",
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967
+      },
+      "sample_WER": 0.0,
+      "severity": null,
+      "auto_rules_used": "- NEGATIONS: the qwen3asr transcript is empirically more reliable on negations (12.6% pooled error rate across all datasets, n=420, vs 16.2% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it. Note: in some cases parakeet, qwen3asr perform near-identically on negations with no clear winner — in those cases, do not default to qwen3asr automatically; use contextual judgement instead.\n- SCOTTISH DIALECT WORDS: the qwen3asr transcript is empirically more reliable on Scottish dialect words (31.8% pooled error rate across all datasets, n=2440, vs 33.3% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it.",
+      "dataset_index": 86
+    },
+    {
+      "ref": "YEAH I I KNOW I WAS LIKE ONE OF THE ONE OF THE MANY PEOPLE THAT HASN'T ACTUALLY SEEN AN EPISODE OF BEN TEN",
+      "hyp": "Yeah, I know. I was like one of the one of the million people that hasn't actually seen an episode of Ben 10.",
+      "qwen_hyp_flagged": "Yeah, I know. I was like one of the one of the million people that hasn't actually seen an episode of [LOW-CONF: Ben] 10.",
+      "whisperx_hyp_flagged": "I was like one of the million people [LOW-CONF: that] hasn't actually seen an [LOW-CONF: episode] of Ben 10.",
+      "parakeet_hyp_flagged": "yeah i know i was like one of the one of the million people that hasn't actually seen an episode [LOW-CONF: of] benten",
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967
+      },
+      "sample_WER": 0.125,
+      "severity": null,
+      "auto_rules_used": "- NEGATIONS: the qwen3asr transcript is empirically more reliable on negations (12.6% pooled error rate across all datasets, n=420, vs 16.2% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it. Note: in some cases parakeet, qwen3asr perform near-identically on negations with no clear winner — in those cases, do not default to qwen3asr automatically; use contextual judgement instead.\n- SCOTTISH DIALECT WORDS: the qwen3asr transcript is empirically more reliable on Scottish dialect words (31.8% pooled error rate across all datasets, n=2440, vs 33.3% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it.",
+      "dataset_index": 87
+    },
+    {
+      "ref": "OH MY GOODNESS BEN TEN IS SUCH A GREAT SHOW THERE'S NO WAY YOU HAVEN'T SEEN THAT",
+      "hyp": "Oh my goodness! Ben 10 is such a great show. There's no way you haven't seen that.",
+      "qwen_hyp_flagged": "Oh my [LOW-CONF: goodness!] Ben [LOW-CONF: tends] such a great show. There's no way you haven't seen [LOW-CONF: that.]",
+      "whisperx_hyp_flagged": "Oh my goodness. Ben 10 [LOW-CONF: is] such a great show. There's no [LOW-CONF: way] [LOW-CONF: you] [LOW-CONF: haven't] [LOW-CONF: seen] it.",
+      "parakeet_hyp_flagged": "oh my goodness that intends such a great show there's no way you [LOW-CONF: haven't] seen that",
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967
+      },
+      "sample_WER": 0.058823529411764705,
+      "severity": null,
+      "auto_rules_used": "- NEGATIONS: the qwen3asr transcript is empirically more reliable on negations (12.6% pooled error rate across all datasets, n=420, vs 16.2% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it. Note: in some cases parakeet, qwen3asr perform near-identically on negations with no clear winner — in those cases, do not default to qwen3asr automatically; use contextual judgement instead.\n- SCOTTISH DIALECT WORDS: the qwen3asr transcript is empirically more reliable on Scottish dialect words (31.8% pooled error rate across all datasets, n=2440, vs 33.3% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it.",
+      "dataset_index": 88
+    },
+    {
+      "ref": "A LAD'S GOT A WATCH",
+      "hyp": "It's got a lot.",
+      "qwen_hyp_flagged": "[LOW-CONF: It's] [LOW-CONF: got] [LOW-CONF: a] [LOW-CONF: lot.]",
+      "whisperx_hyp_flagged": "[LOW-CONF: It's] got [LOW-CONF: to] work.",
+      "parakeet_hyp_flagged": "[LOW-CONF: got] [LOW-CONF: for]",
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967
+      },
+      "sample_WER": 0.6,
+      "severity": null,
+      "auto_rules_used": "- NEGATIONS: the qwen3asr transcript is empirically more reliable on negations (12.6% pooled error rate across all datasets, n=420, vs 16.2% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it. Note: in some cases parakeet, qwen3asr perform near-identically on negations with no clear winner — in those cases, do not default to qwen3asr automatically; use contextual judgement instead.\n- SCOTTISH DIALECT WORDS: the qwen3asr transcript is empirically more reliable on Scottish dialect words (31.8% pooled error rate across all datasets, n=2440, vs 33.3% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it.",
+      "dataset_index": 91
+    },
+    {
+      "ref": "YEAH",
+      "hyp": "Yeah.",
+      "qwen_hyp_flagged": "Yeah.",
+      "whisperx_hyp_flagged": "[LOW-CONF: Yeah.]",
+      "parakeet_hyp_flagged": "yeah",
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967
+      },
+      "sample_WER": 0.0,
+      "severity": null,
+      "auto_rules_used": "- NEGATIONS: the qwen3asr transcript is empirically more reliable on negations (12.6% pooled error rate across all datasets, n=420, vs 16.2% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it. Note: in some cases parakeet, qwen3asr perform near-identically on negations with no clear winner — in those cases, do not default to qwen3asr automatically; use contextual judgement instead.\n- SCOTTISH DIALECT WORDS: the qwen3asr transcript is empirically more reliable on Scottish dialect words (31.8% pooled error rate across all datasets, n=2440, vs 33.3% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it.",
+      "dataset_index": 92
+    },
+    {
+      "ref": "OH LOVE A BIT OF PEPPA PIG RIGHT",
+      "hyp": "I love the Peppa Pig.",
+      "qwen_hyp_flagged": "[LOW-CONF: Love] [LOW-CONF: the] Peppa Pig.",
+      "whisperx_hyp_flagged": "I love [LOW-CONF: the] Peppa Pig. Oh,",
+      "parakeet_hyp_flagged": "ah [LOW-CONF: love] [LOW-CONF: a] peppa pig i [LOW-CONF: was]",
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967
+      },
+      "sample_WER": 0.625,
+      "severity": null,
+      "auto_rules_used": "- NEGATIONS: the qwen3asr transcript is empirically more reliable on negations (12.6% pooled error rate across all datasets, n=420, vs 16.2% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it. Note: in some cases parakeet, qwen3asr perform near-identically on negations with no clear winner — in those cases, do not default to qwen3asr automatically; use contextual judgement instead.\n- SCOTTISH DIALECT WORDS: the qwen3asr transcript is empirically more reliable on Scottish dialect words (31.8% pooled error rate across all datasets, n=2440, vs 33.3% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it.",
+      "dataset_index": 96
+    },
+    {
+      "ref": "I WAS ALSO NOT THAT INTO POKEMON EITHER",
+      "hyp": "I was also not that into Pokemon either.",
+      "qwen_hyp_flagged": "I was also not that into [LOW-CONF: Pokemon] either.",
+      "whisperx_hyp_flagged": "[LOW-CONF: I] [LOW-CONF: was] also not that into Pokemon either.",
+      "parakeet_hyp_flagged": "i was not that into [LOW-CONF: cookmon] [LOW-CONF: eithay]",
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967
+      },
+      "sample_WER": 0.0,
+      "severity": null,
+      "auto_rules_used": "- NEGATIONS: the qwen3asr transcript is empirically more reliable on negations (12.6% pooled error rate across all datasets, n=420, vs 16.2% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it. Note: in some cases parakeet, qwen3asr perform near-identically on negations with no clear winner — in those cases, do not default to qwen3asr automatically; use contextual judgement instead.\n- SCOTTISH DIALECT WORDS: the qwen3asr transcript is empirically more reliable on Scottish dialect words (31.8% pooled error rate across all datasets, n=2440, vs 33.3% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it.",
+      "dataset_index": 97
+    },
+    {
+      "ref": "YEAH",
+      "hyp": "Yeah.",
+      "qwen_hyp_flagged": "[LOW-CONF: Yeah.]",
+      "whisperx_hyp_flagged": "",
+      "parakeet_hyp_flagged": "",
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967
+      },
+      "sample_WER": 0.0,
+      "severity": null,
+      "auto_rules_used": "- NEGATIONS: the qwen3asr transcript is empirically more reliable on negations (12.6% pooled error rate across all datasets, n=420, vs 16.2% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it. Note: in some cases parakeet, qwen3asr perform near-identically on negations with no clear winner — in those cases, do not default to qwen3asr automatically; use contextual judgement instead.\n- SCOTTISH DIALECT WORDS: the qwen3asr transcript is empirically more reliable on Scottish dialect words (31.8% pooled error rate across all datasets, n=2440, vs 33.3% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it.",
+      "dataset_index": 107
+    },
+    {
+      "ref": "YOU'RE GONNA LOOK LIKE SUCH A WEIRD PERSON IN THIS VIDEO",
+      "hyp": "You're gonna look like such a weird person in this.",
+      "qwen_hyp_flagged": "[LOW-CONF: You're] gonna look like such a weird person in this.",
+      "whisperx_hyp_flagged": "[LOW-CONF: You're] [LOW-CONF: going] [LOW-CONF: to] [LOW-CONF: look] like such a weird person in this.",
+      "parakeet_hyp_flagged": "you're gonna [LOW-CONF: look] to [LOW-CONF: like] such [LOW-CONF: a] weird person in [LOW-CONF: this]",
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967
+      },
+      "sample_WER": 0.09090909090909091,
+      "severity": null,
+      "auto_rules_used": "- NEGATIONS: the qwen3asr transcript is empirically more reliable on negations (12.6% pooled error rate across all datasets, n=420, vs 16.2% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it. Note: in some cases parakeet, qwen3asr perform near-identically on negations with no clear winner — in those cases, do not default to qwen3asr automatically; use contextual judgement instead.\n- SCOTTISH DIALECT WORDS: the qwen3asr transcript is empirically more reliable on Scottish dialect words (31.8% pooled error rate across all datasets, n=2440, vs 33.3% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it.",
+      "dataset_index": 108
+    },
+    {
+      "ref": "OH WORMS THAT MAKES MORE SENSE STILL WEIRD BUT IT MAKES MORE SENSE",
+      "hyp": "Oh, worms. That makes more sense. It's still weird, but makes more sense.",
+      "qwen_hyp_flagged": "[LOW-CONF: Oh,] [LOW-CONF: worms.] That makes more sense. [LOW-CONF: It's] still weird, but [LOW-CONF: makes] [LOW-CONF: more] [LOW-CONF: sense.]",
+      "whisperx_hyp_flagged": "Oh, worms, [LOW-CONF: that] [LOW-CONF: makes] more sense. It's still weird but [LOW-CONF: it] [LOW-CONF: makes] [LOW-CONF: more] [LOW-CONF: sense.]",
+      "parakeet_hyp_flagged": "oh worms [LOW-CONF: and] [LOW-CONF: explore] [LOW-CONF: fs] [LOW-CONF: still] weird but",
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967
+      },
+      "sample_WER": 0.15384615384615385,
+      "severity": null,
+      "auto_rules_used": "- NEGATIONS: the qwen3asr transcript is empirically more reliable on negations (12.6% pooled error rate across all datasets, n=420, vs 16.2% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it. Note: in some cases parakeet, qwen3asr perform near-identically on negations with no clear winner — in those cases, do not default to qwen3asr automatically; use contextual judgement instead.\n- SCOTTISH DIALECT WORDS: the qwen3asr transcript is empirically more reliable on Scottish dialect words (31.8% pooled error rate across all datasets, n=2440, vs 33.3% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it.",
+      "dataset_index": 114
+    },
+    {
+      "ref": "I FEEL LIKE EVEN NOW I JUST WOULDN'T ENJOY THEM",
+      "hyp": "I feel like even now, just wouldn't enjoy them.",
+      "qwen_hyp_flagged": "[LOW-CONF: I] feel like [LOW-CONF: even] [LOW-CONF: now,] just wouldn't enjoy [LOW-CONF: them.]",
+      "whisperx_hyp_flagged": "Even now, just [LOW-CONF: wouldn't] enjoy them.",
+      "parakeet_hyp_flagged": "i [LOW-CONF: like] even now [LOW-CONF: just] would [LOW-CONF: enjoy] the",
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967
+      },
+      "sample_WER": 0.1,
+      "severity": null,
+      "auto_rules_used": "- NEGATIONS: the qwen3asr transcript is empirically more reliable on negations (12.6% pooled error rate across all datasets, n=420, vs 16.2% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it. Note: in some cases parakeet, qwen3asr perform near-identically on negations with no clear winner — in those cases, do not default to qwen3asr automatically; use contextual judgement instead.\n- SCOTTISH DIALECT WORDS: the qwen3asr transcript is empirically more reliable on Scottish dialect words (31.8% pooled error rate across all datasets, n=2440, vs 33.3% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it.",
+      "dataset_index": 117
+    },
+    {
+      "ref": "OH AT LEAST <DTMF> WAS A METEOROLOGIST IN SCHOOL ONE OF THE GEOLOGY TEACHERS",
+      "hyp": "Oh, Roger McAller was a meteorologist in school. One of the geology teachers.",
+      "qwen_hyp_flagged": "[LOW-CONF: Oh,] [LOW-CONF: Roger] [LOW-CONF: McAller] was a meteorologist in [LOW-CONF: school.] One of the geology teachers.",
+      "whisperx_hyp_flagged": "Oh, well, Jim Collar was [LOW-CONF: a] meteorologist in school, one of the geology teachers.",
+      "parakeet_hyp_flagged": "whatard [LOW-CONF: mccallar] [LOW-CONF: was] a [LOW-CONF: meteorologist] in [LOW-CONF: the] school one of the meteology teachers",
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967
+      },
+      "sample_WER": 0.15384615384615385,
+      "severity": null,
+      "auto_rules_used": "- NEGATIONS: the qwen3asr transcript is empirically more reliable on negations (12.6% pooled error rate across all datasets, n=420, vs 16.2% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it. Note: in some cases parakeet, qwen3asr perform near-identically on negations with no clear winner — in those cases, do not default to qwen3asr automatically; use contextual judgement instead.\n- SCOTTISH DIALECT WORDS: the qwen3asr transcript is empirically more reliable on Scottish dialect words (31.8% pooled error rate across all datasets, n=2440, vs 33.3% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it.",
+      "dataset_index": 129
+    },
+    {
+      "ref": "YEAH MADE IT OUT <LAUGH>",
+      "hyp": "Yeah, even us.",
+      "qwen_hyp_flagged": "[LOW-CONF: Yeah,] [LOW-CONF: even] [LOW-CONF: us.]",
+      "whisperx_hyp_flagged": "[LOW-CONF: Yeah,] [LOW-CONF: leave] [LOW-CONF: it] out.",
+      "parakeet_hyp_flagged": "than [LOW-CONF: anyone] else",
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967
+      },
+      "sample_WER": 0.75,
+      "severity": null,
+      "auto_rules_used": "- NEGATIONS: the qwen3asr transcript is empirically more reliable on negations (12.6% pooled error rate across all datasets, n=420, vs 16.2% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it. Note: in some cases parakeet, qwen3asr perform near-identically on negations with no clear winner — in those cases, do not default to qwen3asr automatically; use contextual judgement instead.\n- SCOTTISH DIALECT WORDS: the qwen3asr transcript is empirically more reliable on Scottish dialect words (31.8% pooled error rate across all datasets, n=2440, vs 33.3% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it.",
+      "dataset_index": 137
+    },
+    {
+      "ref": "YEAH",
+      "hyp": "Yeah.",
+      "qwen_hyp_flagged": "Yeah.",
+      "whisperx_hyp_flagged": "[LOW-CONF: Yeah.]",
+      "parakeet_hyp_flagged": "yeah",
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967
+      },
+      "sample_WER": 0.0,
+      "severity": null,
+      "auto_rules_used": "- NEGATIONS: the qwen3asr transcript is empirically more reliable on negations (12.6% pooled error rate across all datasets, n=420, vs 16.2% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it. Note: in some cases parakeet, qwen3asr perform near-identically on negations with no clear winner — in those cases, do not default to qwen3asr automatically; use contextual judgement instead.\n- SCOTTISH DIALECT WORDS: the qwen3asr transcript is empirically more reliable on Scottish dialect words (31.8% pooled error rate across all datasets, n=2440, vs 33.3% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it.",
+      "dataset_index": 139
+    },
+    {
+      "ref": "THAT IS A RECIPE YEAH THAT IS A RECIPE FOR LIKE FOR HEAVEN",
+      "hyp": "That is a recipe for like for.",
+      "qwen_hyp_flagged": "[LOW-CONF: That] is a recipe for [LOW-CONF: like,] [LOW-CONF: for.]",
+      "whisperx_hyp_flagged": "That is a recipe for like for [LOW-CONF: heaven.]",
+      "parakeet_hyp_flagged": "that [LOW-CONF: is] [LOW-CONF: a] recipe [LOW-CONF: for] like for adam",
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967
+      },
+      "sample_WER": 0.46153846153846156,
+      "severity": null,
+      "auto_rules_used": "- NEGATIONS: the qwen3asr transcript is empirically more reliable on negations (12.6% pooled error rate across all datasets, n=420, vs 16.2% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it. Note: in some cases parakeet, qwen3asr perform near-identically on negations with no clear winner — in those cases, do not default to qwen3asr automatically; use contextual judgement instead.\n- SCOTTISH DIALECT WORDS: the qwen3asr transcript is empirically more reliable on Scottish dialect words (31.8% pooled error rate across all datasets, n=2440, vs 33.3% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it.",
+      "dataset_index": 141
+    },
+    {
+      "ref": "WITH LAMB ISN'T LAMB VERY EXPENSIVE",
+      "hyp": "With lamb, isn't lamb fairly expensive?",
+      "qwen_hyp_flagged": "With [LOW-CONF: lamb,] isn't lamb [LOW-CONF: fairly] expensive?",
+      "whisperx_hyp_flagged": "isn't land-framed expensive?",
+      "parakeet_hyp_flagged": "[LOW-CONF: the] [LOW-CONF: flam] isn't [LOW-CONF: longf] expensive",
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967
+      },
+      "sample_WER": 0.16666666666666666,
+      "severity": null,
+      "auto_rules_used": "- NEGATIONS: the qwen3asr transcript is empirically more reliable on negations (12.6% pooled error rate across all datasets, n=420, vs 16.2% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it. Note: in some cases parakeet, qwen3asr perform near-identically on negations with no clear winner — in those cases, do not default to qwen3asr automatically; use contextual judgement instead.\n- SCOTTISH DIALECT WORDS: the qwen3asr transcript is empirically more reliable on Scottish dialect words (31.8% pooled error rate across all datasets, n=2440, vs 33.3% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it.",
+      "dataset_index": 143
+    },
+    {
+      "ref": "YEAH",
+      "hyp": "Yeah.",
+      "qwen_hyp_flagged": "Yeah.",
+      "whisperx_hyp_flagged": "Yeah.",
+      "parakeet_hyp_flagged": "yeah",
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967
+      },
+      "sample_WER": 0.0,
+      "severity": null,
+      "auto_rules_used": "- NEGATIONS: the qwen3asr transcript is empirically more reliable on negations (12.6% pooled error rate across all datasets, n=420, vs 16.2% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it. Note: in some cases parakeet, qwen3asr perform near-identically on negations with no clear winner — in those cases, do not default to qwen3asr automatically; use contextual judgement instead.\n- SCOTTISH DIALECT WORDS: the qwen3asr transcript is empirically more reliable on Scottish dialect words (31.8% pooled error rate across all datasets, n=2440, vs 33.3% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it.",
+      "dataset_index": 150
+    },
+    {
+      "ref": "AND IT DOES INCLUDE ARTHUR'S SEAT AND SO",
+      "hyp": "And that it does include Arthur C.",
+      "qwen_hyp_flagged": "And [LOW-CONF: that] it does include [LOW-CONF: Arthur] C.",
+      "whisperx_hyp_flagged": "[LOW-CONF: but] [LOW-CONF: it] does include Arthur's Seed.",
+      "parakeet_hyp_flagged": "[LOW-CONF: that] [LOW-CONF: does] [LOW-CONF: include] autor [LOW-CONF: c]",
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967
+      },
+      "sample_WER": 0.625,
+      "severity": null,
+      "auto_rules_used": "- NEGATIONS: the qwen3asr transcript is empirically more reliable on negations (12.6% pooled error rate across all datasets, n=420, vs 16.2% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it. Note: in some cases parakeet, qwen3asr perform near-identically on negations with no clear winner — in those cases, do not default to qwen3asr automatically; use contextual judgement instead.\n- SCOTTISH DIALECT WORDS: the qwen3asr transcript is empirically more reliable on Scottish dialect words (31.8% pooled error rate across all datasets, n=2440, vs 33.3% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it.",
+      "dataset_index": 151
+    },
+    {
+      "ref": "WITHIN A TWENTY MINUTE WALK IT'S A SHAME THOUGH THAT'S UH AND EVEN LIKE IKEA'S AND WHATNOT TWENTY MINUTE BUS AWAY NOT TOO MUCH OF A",
+      "hyp": "Within a twenty-minute walk. It's a shame though that it's there, and even like, Ikeas and whatnot, twenty-minute bus away. Not too much of a",
+      "qwen_hyp_flagged": "Within a [LOW-CONF: twenty-minute] walk. It's a shame [LOW-CONF: though] that [LOW-CONF: it's] [LOW-CONF: there,] and even [LOW-CONF: like,] [LOW-CONF: IKEAs] and [LOW-CONF: whatnot,] twenty-minute bus [LOW-CONF: away.] Not too much of a",
+      "whisperx_hyp_flagged": "Within a 20-minute walk. It's a shame, [LOW-CONF: though,] [LOW-CONF: that] [LOW-CONF: it's] there. And even, like, Ikea [LOW-CONF: and] whatnot, 20-minute bus away, not too much [LOW-CONF: of] a...",
+      "parakeet_hyp_flagged": "within [LOW-CONF: a] twenty minute [LOW-CONF: walk] it's a shame though that it's there and even like ikeas [LOW-CONF: and] whatnot [LOW-CONF: twenty] minute [LOW-CONF: bus] away not too much of a",
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967
+      },
+      "sample_WER": 0.3076923076923077,
+      "severity": null,
+      "auto_rules_used": "- NEGATIONS: the qwen3asr transcript is empirically more reliable on negations (12.6% pooled error rate across all datasets, n=420, vs 16.2% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it. Note: in some cases parakeet, qwen3asr perform near-identically on negations with no clear winner — in those cases, do not default to qwen3asr automatically; use contextual judgement instead.\n- SCOTTISH DIALECT WORDS: the qwen3asr transcript is empirically more reliable on Scottish dialect words (31.8% pooled error rate across all datasets, n=2440, vs 33.3% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it.",
+      "dataset_index": 154
+    },
+    {
+      "ref": "YEAH",
+      "hyp": "Yeah.",
+      "qwen_hyp_flagged": "Yeah.",
+      "whisperx_hyp_flagged": "[LOW-CONF: Yeah.]",
+      "parakeet_hyp_flagged": "yes",
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967
+      },
+      "sample_WER": 0.0,
+      "severity": null,
+      "auto_rules_used": "- NEGATIONS: the qwen3asr transcript is empirically more reliable on negations (12.6% pooled error rate across all datasets, n=420, vs 16.2% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it. Note: in some cases parakeet, qwen3asr perform near-identically on negations with no clear winner — in those cases, do not default to qwen3asr automatically; use contextual judgement instead.\n- SCOTTISH DIALECT WORDS: the qwen3asr transcript is empirically more reliable on Scottish dialect words (31.8% pooled error rate across all datasets, n=2440, vs 33.3% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it.",
+      "dataset_index": 163
+    },
+    {
+      "ref": "THE LIGHT POLLUTION",
+      "hyp": "The light pollution.",
+      "qwen_hyp_flagged": "The light pollution.",
+      "whisperx_hyp_flagged": "The light pollution...",
+      "parakeet_hyp_flagged": "the light pollution",
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967
+      },
+      "sample_WER": 0.0,
+      "severity": null,
+      "auto_rules_used": "- NEGATIONS: the qwen3asr transcript is empirically more reliable on negations (12.6% pooled error rate across all datasets, n=420, vs 16.2% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it. Note: in some cases parakeet, qwen3asr perform near-identically on negations with no clear winner — in those cases, do not default to qwen3asr automatically; use contextual judgement instead.\n- SCOTTISH DIALECT WORDS: the qwen3asr transcript is empirically more reliable on Scottish dialect words (31.8% pooled error rate across all datasets, n=2440, vs 33.3% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it.",
+      "dataset_index": 166
+    },
+    {
+      "ref": "YEAH 'CAUSE EVEN ON LIKE A CLEAR NIGHT YOU CAN BARELY SEE THE STARS",
+      "hyp": "Yeah, because even on like a clear night, you can barely see the stars.",
+      "qwen_hyp_flagged": "Yeah, [LOW-CONF: because] even on like a clear night, you can barely see the stars.",
+      "whisperx_hyp_flagged": "yeah because even on like a clear night [LOW-CONF: you] can barely see the stars",
+      "parakeet_hyp_flagged": "yeah because [LOW-CONF: even] on like [LOW-CONF: a] clear night you can barely see the stars",
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967
+      },
+      "sample_WER": 0.07142857142857142,
+      "severity": null,
+      "auto_rules_used": "- NEGATIONS: the qwen3asr transcript is empirically more reliable on negations (12.6% pooled error rate across all datasets, n=420, vs 16.2% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it. Note: in some cases parakeet, qwen3asr perform near-identically on negations with no clear winner — in those cases, do not default to qwen3asr automatically; use contextual judgement instead.\n- SCOTTISH DIALECT WORDS: the qwen3asr transcript is empirically more reliable on Scottish dialect words (31.8% pooled error rate across all datasets, n=2440, vs 33.3% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it.",
+      "dataset_index": 167
+    },
+    {
+      "ref": "UM JAPAN",
+      "hyp": "Japan.",
+      "qwen_hyp_flagged": "Japan.",
+      "whisperx_hyp_flagged": "Japan.",
+      "parakeet_hyp_flagged": "then japan",
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967
+      },
+      "sample_WER": 0.5,
+      "severity": null,
+      "auto_rules_used": "- NEGATIONS: the qwen3asr transcript is empirically more reliable on negations (12.6% pooled error rate across all datasets, n=420, vs 16.2% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it. Note: in some cases parakeet, qwen3asr perform near-identically on negations with no clear winner — in those cases, do not default to qwen3asr automatically; use contextual judgement instead.\n- SCOTTISH DIALECT WORDS: the qwen3asr transcript is empirically more reliable on Scottish dialect words (31.8% pooled error rate across all datasets, n=2440, vs 33.3% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it.",
+      "dataset_index": 172
+    },
+    {
+      "ref": "ALL RIGHT",
+      "hyp": "All right.",
+      "qwen_hyp_flagged": "All right.",
+      "whisperx_hyp_flagged": "[LOW-CONF: All] [LOW-CONF: right.]",
+      "parakeet_hyp_flagged": "[LOW-CONF: right]",
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967
+      },
+      "sample_WER": 0.0,
+      "severity": null,
+      "auto_rules_used": "- NEGATIONS: the qwen3asr transcript is empirically more reliable on negations (12.6% pooled error rate across all datasets, n=420, vs 16.2% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it. Note: in some cases parakeet, qwen3asr perform near-identically on negations with no clear winner — in those cases, do not default to qwen3asr automatically; use contextual judgement instead.\n- SCOTTISH DIALECT WORDS: the qwen3asr transcript is empirically more reliable on Scottish dialect words (31.8% pooled error rate across all datasets, n=2440, vs 33.3% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it.",
+      "dataset_index": 173
+    },
+    {
+      "ref": "WELL I WOULD ALSO SAY JAPAN BUT <LAUGH> FOR PRETTY MUCH THE SAME REASONS BUT I'LL SAY SOMETHING ELSE TO THE CONVERSATION UH I THINK EITHER LIKE ICELAND OR ALASKA",
+      "hyp": "Well, I would also say Japan, but for pretty much the same reasons. But I'll say something else and the conversation. I think either like Iceland or Alaska.",
+      "qwen_hyp_flagged": "Well, I would also say Japan, but for pretty much the same reasons. But I'll say something else [LOW-CONF: and] [LOW-CONF: the] conversation. I think either like Iceland or Alaska.",
+      "whisperx_hyp_flagged": "Well, I would also say Japan, but for [LOW-CONF: pretty] much the same reasons, but I'll say something else [LOW-CONF: at] the conversation. I think either like Iceland or Alaska.",
+      "parakeet_hyp_flagged": "well i would also say japan but [LOW-CONF: for] pretty much the same reasons but i'll say something else the conversation i [LOW-CONF: think] either like iceland or alaska",
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967
+      },
+      "sample_WER": 0.06896551724137931,
+      "severity": null,
+      "auto_rules_used": "- NEGATIONS: the qwen3asr transcript is empirically more reliable on negations (12.6% pooled error rate across all datasets, n=420, vs 16.2% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it. Note: in some cases parakeet, qwen3asr perform near-identically on negations with no clear winner — in those cases, do not default to qwen3asr automatically; use contextual judgement instead.\n- SCOTTISH DIALECT WORDS: the qwen3asr transcript is empirically more reliable on Scottish dialect words (31.8% pooled error rate across all datasets, n=2440, vs 33.3% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it.",
+      "dataset_index": 179
+    },
+    {
+      "ref": "WHAT'S THE APPEAL IN ICELAND",
+      "hyp": "What's the appeal in Iceland?",
+      "qwen_hyp_flagged": "What's the appeal in Iceland?",
+      "whisperx_hyp_flagged": "What's [LOW-CONF: the] appeal in Iceland?",
+      "parakeet_hyp_flagged": "what's the appeal in iceland",
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967
+      },
+      "sample_WER": 0.0,
+      "severity": null,
+      "auto_rules_used": "- NEGATIONS: the qwen3asr transcript is empirically more reliable on negations (12.6% pooled error rate across all datasets, n=420, vs 16.2% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it. Note: in some cases parakeet, qwen3asr perform near-identically on negations with no clear winner — in those cases, do not default to qwen3asr automatically; use contextual judgement instead.\n- SCOTTISH DIALECT WORDS: the qwen3asr transcript is empirically more reliable on Scottish dialect words (31.8% pooled error rate across all datasets, n=2440, vs 33.3% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it.",
+      "dataset_index": 180
+    },
+    {
+      "ref": "YOU DON'T NEED TO LEAVE YOUR HOUSE FOR THAT ONE",
+      "hyp": "Don't need to leave your house for that one.",
+      "qwen_hyp_flagged": "[LOW-CONF: Don't] need to leave your house for that one.",
+      "whisperx_hyp_flagged": "Don't [LOW-CONF: need] to leave your house [LOW-CONF: for] that one.",
+      "parakeet_hyp_flagged": "i [LOW-CONF: still't] [LOW-CONF: need] to leave [LOW-CONF: your] house for that one",
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967
+      },
+      "sample_WER": 0.1,
+      "severity": null,
+      "auto_rules_used": "- NEGATIONS: the qwen3asr transcript is empirically more reliable on negations (12.6% pooled error rate across all datasets, n=420, vs 16.2% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it. Note: in some cases parakeet, qwen3asr perform near-identically on negations with no clear winner — in those cases, do not default to qwen3asr automatically; use contextual judgement instead.\n- SCOTTISH DIALECT WORDS: the qwen3asr transcript is empirically more reliable on Scottish dialect words (31.8% pooled error rate across all datasets, n=2440, vs 33.3% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it.",
+      "dataset_index": 183
+    },
+    {
+      "ref": "YEAH",
+      "hyp": "Yeah.",
+      "qwen_hyp_flagged": "[LOW-CONF: Yeah.]",
+      "whisperx_hyp_flagged": "[LOW-CONF: Yeah.]",
+      "parakeet_hyp_flagged": "[LOW-CONF: this]",
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967
+      },
+      "sample_WER": 0.0,
+      "severity": null,
+      "auto_rules_used": "- NEGATIONS: the qwen3asr transcript is empirically more reliable on negations (12.6% pooled error rate across all datasets, n=420, vs 16.2% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it. Note: in some cases parakeet, qwen3asr perform near-identically on negations with no clear winner — in those cases, do not default to qwen3asr automatically; use contextual judgement instead.\n- SCOTTISH DIALECT WORDS: the qwen3asr transcript is empirically more reliable on Scottish dialect words (31.8% pooled error rate across all datasets, n=2440, vs 33.3% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it.",
+      "dataset_index": 186
+    },
+    {
+      "ref": "I'M SURE IT'S",
+      "hyp": "I'm pretty sure it's.",
+      "qwen_hyp_flagged": "[LOW-CONF: I'm] [LOW-CONF: pretty] sure it's.",
+      "whisperx_hyp_flagged": "sure [LOW-CONF: it's]",
+      "parakeet_hyp_flagged": "countries",
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967
+      },
+      "sample_WER": 0.3333333333333333,
+      "severity": null,
+      "auto_rules_used": "- NEGATIONS: the qwen3asr transcript is empirically more reliable on negations (12.6% pooled error rate across all datasets, n=420, vs 16.2% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it. Note: in some cases parakeet, qwen3asr perform near-identically on negations with no clear winner — in those cases, do not default to qwen3asr automatically; use contextual judgement instead.\n- SCOTTISH DIALECT WORDS: the qwen3asr transcript is empirically more reliable on Scottish dialect words (31.8% pooled error rate across all datasets, n=2440, vs 33.3% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it.",
+      "dataset_index": 188
+    },
+    {
+      "ref": "COSTS AT THE MOMENT",
+      "hyp": "Costs at the moment.",
+      "qwen_hyp_flagged": "[LOW-CONF: Costs] at the moment.",
+      "whisperx_hyp_flagged": "costs [LOW-CONF: at] the moment.",
+      "parakeet_hyp_flagged": "costs at the moment",
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967
+      },
+      "sample_WER": 0.0,
+      "severity": null,
+      "auto_rules_used": "- NEGATIONS: the qwen3asr transcript is empirically more reliable on negations (12.6% pooled error rate across all datasets, n=420, vs 16.2% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it. Note: in some cases parakeet, qwen3asr perform near-identically on negations with no clear winner — in those cases, do not default to qwen3asr automatically; use contextual judgement instead.\n- SCOTTISH DIALECT WORDS: the qwen3asr transcript is empirically more reliable on Scottish dialect words (31.8% pooled error rate across all datasets, n=2440, vs 33.3% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it.",
+      "dataset_index": 189
+    },
+    {
+      "ref": "THAT OR FISHING",
+      "hyp": "fishing.",
+      "qwen_hyp_flagged": "[LOW-CONF: Or] fishing.",
+      "whisperx_hyp_flagged": "fishing.",
+      "parakeet_hyp_flagged": "or fishing",
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967
+      },
+      "sample_WER": 0.6666666666666666,
+      "severity": null,
+      "auto_rules_used": "- NEGATIONS: the qwen3asr transcript is empirically more reliable on negations (12.6% pooled error rate across all datasets, n=420, vs 16.2% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it. Note: in some cases parakeet, qwen3asr perform near-identically on negations with no clear winner — in those cases, do not default to qwen3asr automatically; use contextual judgement instead.\n- SCOTTISH DIALECT WORDS: the qwen3asr transcript is empirically more reliable on Scottish dialect words (31.8% pooled error rate across all datasets, n=2440, vs 33.3% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it.",
+      "dataset_index": 194
+    },
+    {
+      "ref": "OR JUST COLD",
+      "hyp": "Or just.",
+      "qwen_hyp_flagged": "[LOW-CONF: Or] just.",
+      "whisperx_hyp_flagged": "[LOW-CONF: or] just [LOW-CONF: close.]",
+      "parakeet_hyp_flagged": "or [LOW-CONF: just] cold",
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967
+      },
+      "sample_WER": 0.3333333333333333,
+      "severity": null,
+      "auto_rules_used": "- NEGATIONS: the qwen3asr transcript is empirically more reliable on negations (12.6% pooled error rate across all datasets, n=420, vs 16.2% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it. Note: in some cases parakeet, qwen3asr perform near-identically on negations with no clear winner — in those cases, do not default to qwen3asr automatically; use contextual judgement instead.\n- SCOTTISH DIALECT WORDS: the qwen3asr transcript is empirically more reliable on Scottish dialect words (31.8% pooled error rate across all datasets, n=2440, vs 33.3% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it.",
+      "dataset_index": 195
+    }
+  ]
+}

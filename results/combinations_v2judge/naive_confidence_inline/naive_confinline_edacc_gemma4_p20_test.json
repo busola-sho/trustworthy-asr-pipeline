@@ -1,0 +1,1586 @@
+{
+  "selector": "gemma4",
+  "approach": "naive_confidence_inline",
+  "asr_models": [
+    "qwen",
+    "whisperx",
+    "parakeet",
+    "wav2vec2"
+  ],
+  "phase": "selector_only - severity not yet judged",
+  "dataset": "edacc",
+  "split": "test",
+  "percentile": 20,
+  "thresholds_used": {
+    "qwen": 0.971838,
+    "whisperx": 0.434,
+    "parakeet": 0.775967,
+    "wav2vec2": 0.571437
+  },
+  "subset_indices": [
+    1,
+    6,
+    7,
+    8,
+    11,
+    17,
+    20,
+    22,
+    23,
+    24,
+    26,
+    28,
+    31,
+    35,
+    39,
+    40,
+    49,
+    50,
+    55,
+    56,
+    57,
+    58,
+    59,
+    62,
+    67,
+    70,
+    71,
+    75,
+    86,
+    87,
+    88,
+    91,
+    92,
+    96,
+    97,
+    107,
+    108,
+    114,
+    117,
+    129,
+    137,
+    139,
+    141,
+    143,
+    150,
+    151,
+    154,
+    163,
+    166,
+    167,
+    172,
+    173,
+    179,
+    180,
+    183,
+    186,
+    188,
+    189,
+    194,
+    195
+  ],
+  "corpus_wer": 0.2121684867394696,
+  "num_samples": 60,
+  "samples": [
+    {
+      "ref": "YEAH I'VE GOT A NOTIFICATION",
+      "hyp": "I've got a notification.",
+      "source_hyps_flagged": {
+        "qwen": "[LOW-CONF: Got] a [LOW-CONF: notification.]",
+        "whisperx": "[LOW-CONF: I've] got [LOW-CONF: a] [LOW-CONF: notification.]",
+        "parakeet": "[LOW-CONF: gotication]",
+        "wav2vec2": "[LOW-CONF: FATEKISEN]"
+      },
+      "model_order": [
+        "wav2vec2",
+        "qwen",
+        "parakeet",
+        "whisperx"
+      ],
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967,
+        "wav2vec2": 0.571437
+      },
+      "sample_WER": 0.2,
+      "severity": null,
+      "dataset_index": 1
+    },
+    {
+      "ref": "DO YOU WANNA EXPLAIN",
+      "hyp": "Do you want to explain?",
+      "source_hyps_flagged": {
+        "qwen": "[LOW-CONF: Do] you [LOW-CONF: wanna] explain?",
+        "whisperx": "Do [LOW-CONF: you] [LOW-CONF: want] [LOW-CONF: to] explain?",
+        "parakeet": "jonah [LOW-CONF: explains]",
+        "wav2vec2": "[LOW-CONF: JONELANES] AND"
+      },
+      "model_order": [
+        "wav2vec2",
+        "parakeet",
+        "whisperx",
+        "qwen"
+      ],
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967,
+        "wav2vec2": 0.571437
+      },
+      "sample_WER": 0.5,
+      "severity": null,
+      "dataset_index": 6
+    },
+    {
+      "ref": "WHICH IS JUST THE WHICH IS JUST A UH BASICALLY YOU HAVE TWO ENDS OF A PITCH AND YOUR GOAL'S TO REACH THE OTHER END OF THE PITCH WITHOUT BEING TAGGED BY SOMEONE IN THE MIDDLE AND NO RULES APPLY PEOPLE WERE BEATEN UP BLOOD EVERYWHERE OH GOOD TIMES",
+      "hyp": "Which is just basically you have two ends of a pitch, and your goal is to reach the other end of the pitch without being tagged by someone in the middle, and no rules apply. People were beaten up, blood everywhere. Ah, good times.",
+      "source_hyps_flagged": {
+        "qwen": "Which is just a [LOW-CONF: basically] [LOW-CONF: you] have two ends of a [LOW-CONF: pitch,] and your [LOW-CONF: goal] is to reach the other end of the pitch without being tagged by someone in the [LOW-CONF: middle,] and no rules apply. People were beaten up, blood [LOW-CONF: everywhere.] [LOW-CONF: Ah,] good times.",
+        "whisperx": "which is just [LOW-CONF: basically] [LOW-CONF: you] have two ends of a pitch and your goal [LOW-CONF: is] to reach the other end of the pitch without being tagged by someone in the middle. And no rules apply. People were beaten up, blood everywhere. Good times.",
+        "parakeet": "which is just a basically you have two ends of a pitch and your goal [LOW-CONF: is] [LOW-CONF: to] reach the other end of the pitch without being tagged by someone in the middle and no rules apply people were beaten up blood everywhere good timeys",
+        "wav2vec2": "WHICH IS JUST A [LOW-CONF: BASEY] HAVE TWO ENDS OF A PITCH [LOW-CONF: AND] YOU [LOW-CONF: GHOST] REACH THE OTHER END OF THE PITCH WITHOUT BEING TAGGED BY SOMEONE IN THE [LOW-CONF: MIDDLE] AND NO RULES APPLY PEOPLE WERE BEATEN UP BLOOD EVERYWHERE [LOW-CONF: AH] GOOD [LOW-CONF: TUNES]"
+      },
+      "model_order": [
+        "wav2vec2",
+        "whisperx",
+        "qwen",
+        "parakeet"
+      ],
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967,
+        "wav2vec2": 0.571437
+      },
+      "sample_WER": 0.1836734693877551,
+      "severity": null,
+      "dataset_index": 7
+    },
+    {
+      "ref": "WAS IT TAGGED OR WAS IT TACKLED",
+      "hyp": "Was it tagged or was it tackled?",
+      "source_hyps_flagged": {
+        "qwen": "Was it tagged or was it tackled?",
+        "whisperx": "Was it tagged [LOW-CONF: or] was it tackled?",
+        "parakeet": "was it tagged [LOW-CONF: or] [LOW-CONF: was] it tackled",
+        "wav2vec2": "WAS IT THE TIG WAS IT TACKLED"
+      },
+      "model_order": [
+        "qwen",
+        "parakeet",
+        "wav2vec2",
+        "whisperx"
+      ],
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967,
+        "wav2vec2": 0.571437
+      },
+      "sample_WER": 0.0,
+      "severity": null,
+      "dataset_index": 8
+    },
+    {
+      "ref": "OUR RULES WERE TACKLE",
+      "hyp": "Exactly. Go with that. ARN OF A",
+      "source_hyps_flagged": {
+        "qwen": "[LOW-CONF: Exactly.]",
+        "whisperx": "[LOW-CONF: Go] [LOW-CONF: with] [LOW-CONF: that.]",
+        "parakeet": "[LOW-CONF: that]",
+        "wav2vec2": "[LOW-CONF: ARN] [LOW-CONF: OF] A"
+      },
+      "model_order": [
+        "qwen",
+        "whisperx",
+        "parakeet",
+        "wav2vec2"
+      ],
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967,
+        "wav2vec2": 0.571437
+      },
+      "sample_WER": 1.75,
+      "severity": null,
+      "dataset_index": 11
+    },
+    {
+      "ref": "STONE UH STONE PLAYGROUND",
+      "hyp": "Stone Playground.",
+      "source_hyps_flagged": {
+        "qwen": "[LOW-CONF: Storm] [LOW-CONF: playground.]",
+        "whisperx": "Stone Playground.",
+        "parakeet": "so [LOW-CONF: st] [LOW-CONF: playground]",
+        "wav2vec2": "[LOW-CONF: STON] I STONE CLAY GROUND FEET"
+      },
+      "model_order": [
+        "qwen",
+        "parakeet",
+        "whisperx",
+        "wav2vec2"
+      ],
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967,
+        "wav2vec2": 0.571437
+      },
+      "sample_WER": 0.5,
+      "severity": null,
+      "dataset_index": 17
+    },
+    {
+      "ref": "THAT WOULD NOT GO WELL UM SIMILAR TO THE SIMILARLY TO THAT I PLAYED LOTS OF SHARKS AND FISHES IN UM LIKE",
+      "hyp": "That would not go well. Um, similar to that. Similarly to that, I played lots of sharks and fishes, and like.",
+      "source_hyps_flagged": {
+        "qwen": "That would not go well. [LOW-CONF: Um,] [LOW-CONF: similar] to [LOW-CONF: that.] Similarly to that, I [LOW-CONF: played] lots of sharks and [LOW-CONF: fishes,] and [LOW-CONF: like.]",
+        "whisperx": "would not go well um similar to [LOW-CONF: that] similarly to that [LOW-CONF: i] [LOW-CONF: played] lots of sharks and fishes and [LOW-CONF: i'm] like",
+        "parakeet": "that would not go well similar to that [LOW-CONF: similarly] [LOW-CONF: to] that i play [LOW-CONF: less] [LOW-CONF: with] sharks and fishes and um [LOW-CONF: like]",
+        "wav2vec2": "[LOW-CONF: IT] WOULD NOT GO WELL I AM SIMILAR TO SIMILARLY TO THAT OF [LOW-CONF: ALOS] OF [LOW-CONF: SHARKS] AND FISHES [LOW-CONF: ANM] LIKE"
+      },
+      "model_order": [
+        "parakeet",
+        "qwen",
+        "wav2vec2",
+        "whisperx"
+      ],
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967,
+        "wav2vec2": 0.571437
+      },
+      "sample_WER": 0.13636363636363635,
+      "severity": null,
+      "dataset_index": 20
+    },
+    {
+      "ref": "UM SPORTS CAMPS AND WHATNOT",
+      "hyp": "sports camps and whatnot.",
+      "source_hyps_flagged": {
+        "qwen": "[LOW-CONF: Sports] camps and whatnot.",
+        "whisperx": "sports camps [LOW-CONF: and] whatnot.",
+        "parakeet": "sports camps and whatnot",
+        "wav2vec2": "[LOW-CONF: SPORSE] CAMPS [LOW-CONF: AN] WHAT [LOW-CONF: NOT]"
+      },
+      "model_order": [
+        "wav2vec2",
+        "parakeet",
+        "qwen",
+        "whisperx"
+      ],
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967,
+        "wav2vec2": 0.571437
+      },
+      "sample_WER": 0.2,
+      "severity": null,
+      "dataset_index": 22
+    },
+    {
+      "ref": "ALL RIGHT",
+      "hyp": "we",
+      "source_hyps_flagged": {
+        "qwen": "[LOW-CONF: We.]",
+        "whisperx": "we'd",
+        "parakeet": "we",
+        "wav2vec2": "[LOW-CONF: WE]"
+      },
+      "model_order": [
+        "whisperx",
+        "wav2vec2",
+        "qwen",
+        "parakeet"
+      ],
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967,
+        "wav2vec2": 0.571437
+      },
+      "sample_WER": 1.0,
+      "severity": null,
+      "dataset_index": 23
+    },
+    {
+      "ref": "WE'D UH THE IDEA IT'S ESSENTIALLY THE SAME AS BULLDOG YOU HAVE TO TRY AND RUN TO THE END OF THE FIELD THERE'S ONE PERSON WHO'S THIS SHARK OR MAYBE TWO PEOPLE AND THEY CAN MOVE ANY DIRECTION AND IF THEY TAKE YOU YOU BECOME SEAWEED AND YOU CAN'T MOVE YOUR FEET BUT YOU CAN LIKE LEAN OUT TO CATCH PEOPLE",
+      "hyp": "The idea is it's essentially the same as bulldog. You have to run on the end of the field. There's one person who's the shark or maybe two people and they can move any direction. And if they take you, you become seaweed and you can't move your feet. You can like lean out to catch people.",
+      "source_hyps_flagged": {
+        "qwen": "The idea is [LOW-CONF: it's] essentially the same as [LOW-CONF: bouldo.] You have to [LOW-CONF: run] [LOW-CONF: on] [LOW-CONF: the] end of the field. There's one person who's [LOW-CONF: the] shark, or maybe two people, and they can move any direction. And if they take you, you become seaweed, and you can't move your feet. You can like lean out to catch people.",
+        "whisperx": "The idea [LOW-CONF: is] it's essentially the same as bulldog. [LOW-CONF: You] [LOW-CONF: have] [LOW-CONF: to] grind one [LOW-CONF: day] into the field. There's one person who's the shark or maybe two people and they can move any direction. And if they take [LOW-CONF: you,] you become seaweed and you can't move your feet. You can like lean out to catch people.",
+        "parakeet": "the idea is it's essentially the same as [LOW-CONF: bulldog] [LOW-CONF: you] have to drown [LOW-CONF: at] [LOW-CONF: the] end of the field there's one person who's the [LOW-CONF: shark] or maybe two people and they can move any direction and if they take [LOW-CONF: you] you [LOW-CONF: become] seaweed and you can't move your feet you can like [LOW-CONF: lean] out [LOW-CONF: to] catch people",
+        "wav2vec2": "THE IDEAIS IT'S ESSENTIALLY THE SAME AS BOGO YOU HAVE TO DRIDE [LOW-CONF: ONTHEY] INTO THE FIELD [LOW-CONF: THEREIS] ONE PERSON WHO'S [LOW-CONF: THI] [LOW-CONF: SHARK] OR MAYBE TWO PEOPLE AND THEY CAN MOVE ANY DIRECTION AND IF THEY TAKE YOU YOU BECOME SEAWEED AND YOU CAN'T MOVE YOUR FEET [LOW-CONF: YOU] CAN [LOW-CONF: LET] LEAN OUT TO CATCH PEOPLE"
+      },
+      "model_order": [
+        "whisperx",
+        "qwen",
+        "parakeet",
+        "wav2vec2"
+      ],
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967,
+        "wav2vec2": 0.571437
+      },
+      "sample_WER": 0.13114754098360656,
+      "severity": null,
+      "dataset_index": 24
+    },
+    {
+      "ref": "AND THE IDEA WAS THERE WOULD BE MORE AND MORE OBSTACLES AS MORE AND MORE PEOPLE WERE CAUGHT",
+      "hyp": "The idea was to be more and more obstacles as more and more people were caught.",
+      "source_hyps_flagged": {
+        "qwen": "The idea was to be more and more [LOW-CONF: obstacles.] [LOW-CONF: As] more and more people were caught.",
+        "whisperx": "The idea was to be more [LOW-CONF: and] more obstacles. [LOW-CONF: It's] [LOW-CONF: moment] we're caught.",
+        "parakeet": "the [LOW-CONF: idea] was to be more and more [LOW-CONF: obstacles] as [LOW-CONF: more] and [LOW-CONF: more] people were [LOW-CONF: caught]",
+        "wav2vec2": "THE IDEA WAS TO BE MORE [LOW-CONF: AND] MORE [LOW-CONF: OBSTACLES] [LOW-CONF: AS] MM [LOW-CONF: WECA]"
+      },
+      "model_order": [
+        "wav2vec2",
+        "qwen",
+        "parakeet",
+        "whisperx"
+      ],
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967,
+        "wav2vec2": 0.571437
+      },
+      "sample_WER": 0.16666666666666666,
+      "severity": null,
+      "dataset_index": 26
+    },
+    {
+      "ref": "AND THEN IF THE GAME WAS DRAGGING ON THE SEAWEED WOULD BECOME CRABS SO THEY CAN MOVE SIDE TO SIDE BUT NOT FORWARDS AND BACKWARDS SO IT WAS REALLY IT WAS QUITE QUITE A LITTLE <OVERLAP>",
+      "hyp": "And then if the game was dragging on, the seaweed would become crabs, so they could move side to side, but not forwards and backwards. So it was really, it was quite a little.",
+      "source_hyps_flagged": {
+        "qwen": "And [LOW-CONF: then,] if the game was dragging on, the [LOW-CONF: seaweed] [LOW-CONF: would] become crabs, so they [LOW-CONF: could] move side to [LOW-CONF: side,] but not forwards and backwards. So it was [LOW-CONF: really,] it was [LOW-CONF: quite,] quite [LOW-CONF: a] [LOW-CONF: little.]",
+        "whisperx": "And then if the game was dragging on, the seaweed [LOW-CONF: would] become crabs. So they could move side to side, but not forwards and backwards. So [LOW-CONF: it] [LOW-CONF: was] really, [LOW-CONF: it] was quite a [LOW-CONF: little] [LOW-CONF: bit.]",
+        "parakeet": "and then if the game was dragging on the seaweed would [LOW-CONF: become] crabs so [LOW-CONF: they] can [LOW-CONF: move] side to side but not forwards [LOW-CONF: and] backwards [LOW-CONF: so] it was [LOW-CONF: really] it [LOW-CONF: was] quite quiteing",
+        "wav2vec2": "AND THEN IF [LOW-CONF: THE] GAME WAS DRAGGING ON THE SEAWEED [LOW-CONF: HAD] BECOME CRABS [LOW-CONF: SO] THEY COULD MOVE SIDE TO SIDE BUT NOT FORWARDS AND BACKWARDS SO REALLY [LOW-CONF: IT] AS [LOW-CONF: QUI] QUI"
+      },
+      "model_order": [
+        "whisperx",
+        "wav2vec2",
+        "parakeet",
+        "qwen"
+      ],
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967,
+        "wav2vec2": 0.571437
+      },
+      "sample_WER": 0.05714285714285714,
+      "severity": null,
+      "dataset_index": 28
+    },
+    {
+      "ref": "AND WAS THAT A TACKLE TO THE GROUND TYPE THING AS WELL",
+      "hyp": "And was that tackle to the ground type thing as well?",
+      "source_hyps_flagged": {
+        "qwen": "And was that [LOW-CONF: tackle] to the ground type thing as well?",
+        "whisperx": "And was [LOW-CONF: that] tackled to the ground [LOW-CONF: type] thing as [LOW-CONF: well?]",
+        "parakeet": "and [LOW-CONF: what] [LOW-CONF: that] tackle to the ground type thing as well",
+        "wav2vec2": "AND WAS THERE TACKLED TO THE GROUND [LOW-CONF: SAE] THINGS"
+      },
+      "model_order": [
+        "parakeet",
+        "wav2vec2",
+        "whisperx",
+        "qwen"
+      ],
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967,
+        "wav2vec2": 0.571437
+      },
+      "sample_WER": 0.08333333333333333,
+      "severity": null,
+      "dataset_index": 31
+    },
+    {
+      "ref": "RIGHT YEAH",
+      "hyp": "Your",
+      "source_hyps_flagged": {
+        "qwen": "[LOW-CONF: Your.]",
+        "whisperx": "[LOW-CONF: Yes.]",
+        "parakeet": "[LOW-CONF: you]",
+        "wav2vec2": "[LOW-CONF: YOUR]"
+      },
+      "model_order": [
+        "wav2vec2",
+        "whisperx",
+        "qwen",
+        "parakeet"
+      ],
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967,
+        "wav2vec2": 0.571437
+      },
+      "sample_WER": 1.0,
+      "severity": null,
+      "dataset_index": 35
+    },
+    {
+      "ref": "THAT MAKES SENSE",
+      "hyp": "That makes sense.",
+      "source_hyps_flagged": {
+        "qwen": "That makes sense.",
+        "whisperx": "[LOW-CONF: That] [LOW-CONF: makes] sense.",
+        "parakeet": "that makes sense",
+        "wav2vec2": "[LOW-CONF: ECENT]"
+      },
+      "model_order": [
+        "qwen",
+        "parakeet",
+        "wav2vec2",
+        "whisperx"
+      ],
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967,
+        "wav2vec2": 0.571437
+      },
+      "sample_WER": 0.0,
+      "severity": null,
+      "dataset_index": 39
+    },
+    {
+      "ref": "YEAH GOOD FUN",
+      "hyp": "Good fun.",
+      "source_hyps_flagged": {
+        "qwen": "[LOW-CONF: Yeah,] good fun.",
+        "whisperx": "Good fun.",
+        "parakeet": "have good fun",
+        "wav2vec2": "I COULD FIND"
+      },
+      "model_order": [
+        "whisperx",
+        "qwen",
+        "parakeet",
+        "wav2vec2"
+      ],
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967,
+        "wav2vec2": 0.571437
+      },
+      "sample_WER": 0.3333333333333333,
+      "severity": null,
+      "dataset_index": 40
+    },
+    {
+      "ref": "HMM",
+      "hyp": "Please provide the four transcripts so I can perform the task for you. You haven't included them in your message yet!",
+      "source_hyps_flagged": {
+        "qwen": "[LOW-CONF: Right.]",
+        "whisperx": "",
+        "parakeet": "",
+        "wav2vec2": ""
+      },
+      "model_order": [
+        "wav2vec2",
+        "parakeet",
+        "whisperx",
+        "qwen"
+      ],
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967,
+        "wav2vec2": 0.571437
+      },
+      "sample_WER": 21.0,
+      "severity": null,
+      "dataset_index": 49
+    },
+    {
+      "ref": "AND THEN WE PLAYED TWO VARIATIONS OF IT YOU KNOW THE AMERICAN STYLE WHERE YOU JUST THROW IT FROM THE SIDE OF THE PITCH",
+      "hyp": "And we played two variations of it. You know, the American style where you just throw it from the side of the pitch.",
+      "source_hyps_flagged": {
+        "qwen": "And we [LOW-CONF: played] two variations of [LOW-CONF: it.] You [LOW-CONF: know,] the American style [LOW-CONF: where] you just throw it from the side of the pitch.",
+        "whisperx": "And we played two variations of it. [LOW-CONF: You] know, the American style where you just throw it from [LOW-CONF: the] [LOW-CONF: side] [LOW-CONF: of] [LOW-CONF: the] pitch.",
+        "parakeet": "and weve [LOW-CONF: played] two variations of it you [LOW-CONF: know] the american style where you [LOW-CONF: just] throw it from the side of the [LOW-CONF: bitch]",
+        "wav2vec2": "AND [LOW-CONF: I] WE PLAYED TWO VARIATIONS OF IT YOU KNOW THE AMERICAN [LOW-CONF: SA] WHAT YOU JUST [LOW-CONF: THROW] IT FROM [LOW-CONF: HESI] [LOW-CONF: E] BITCH"
+      },
+      "model_order": [
+        "qwen",
+        "parakeet",
+        "whisperx",
+        "wav2vec2"
+      ],
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967,
+        "wav2vec2": 0.571437
+      },
+      "sample_WER": 0.041666666666666664,
+      "severity": null,
+      "dataset_index": 50
+    },
+    {
+      "ref": "YEAH",
+      "hyp": "Yeah.",
+      "source_hyps_flagged": {
+        "qwen": "Yeah.",
+        "whisperx": "Yeah.",
+        "parakeet": "yes",
+        "wav2vec2": "YES"
+      },
+      "model_order": [
+        "whisperx",
+        "parakeet",
+        "wav2vec2",
+        "qwen"
+      ],
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967,
+        "wav2vec2": 0.571437
+      },
+      "sample_WER": 0.0,
+      "severity": null,
+      "dataset_index": 55
+    },
+    {
+      "ref": "I I SUPPOSE IF PEOPLE WERE JUST REALLY BAD AT THROWING BECAUSE THEY WERE REALLY QUITE YOUNG I MEAN WE WERE ALL REALLY YOUNG BUT IT'S STILL VERY WEIRD",
+      "hyp": "I suppose the people are just really bad at throwing because they're really quite young. We're all really young, but it's still very weird.",
+      "source_hyps_flagged": {
+        "qwen": "I suppose [LOW-CONF: the] people [LOW-CONF: are] just really bad at [LOW-CONF: throwing] [LOW-CONF: because] they're really quite young. We're all really young, but it's still very weird.",
+        "whisperx": "I suppose the [LOW-CONF: people] [LOW-CONF: are] just really bad at throwing [LOW-CONF: because] [LOW-CONF: they're] [LOW-CONF: really] [LOW-CONF: quite] young. [LOW-CONF: We] were all really young, but it's still very weird.",
+        "parakeet": "i suppose the [LOW-CONF: people] just really bad at drinks they're [LOW-CONF: really] quite young we're all really young but it's still very weird",
+        "wav2vec2": "ISUPPOSE THE PEOPLE JUST REALLY [LOW-CONF: BAT] [LOW-CONF: AT] [LOW-CONF: THRINKS] [LOW-CONF: ARE] QUITE YOUNG [LOW-CONF: LT] REALLY YOUNG BUT IT'S STILL VERY WEIRD"
+      },
+      "model_order": [
+        "wav2vec2",
+        "parakeet",
+        "whisperx",
+        "qwen"
+      ],
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967,
+        "wav2vec2": 0.571437
+      },
+      "sample_WER": 0.3103448275862069,
+      "severity": null,
+      "dataset_index": 56
+    },
+    {
+      "ref": "YEAH WAS YOUR PRIMARY SCHOOL PRETTY BIG",
+      "hyp": "Yeah, was your primary school pretty big?",
+      "source_hyps_flagged": {
+        "qwen": "[LOW-CONF: Yeah,] was your primary school pretty big?",
+        "whisperx": "Yeah. Was your [LOW-CONF: primary] school [LOW-CONF: pretty] big?",
+        "parakeet": "yeah was your primary school pretty big",
+        "wav2vec2": "[LOW-CONF: WAS] YOUR [LOW-CONF: PRIMISC] [LOW-CONF: PREVI]"
+      },
+      "model_order": [
+        "parakeet",
+        "wav2vec2",
+        "whisperx",
+        "qwen"
+      ],
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967,
+        "wav2vec2": 0.571437
+      },
+      "sample_WER": 0.0,
+      "severity": null,
+      "dataset_index": 57
+    },
+    {
+      "ref": "YEAH BIG BIG HALL FOR THE SIZE I REMEMBER GOING BACK THERE WHEN I WAS A LOT OLDER AND I REMEMBER SEEING THE BASKETBALL HOOPS IN THE HALL AND I COULD LIKE DUNK ON THEM WHICH WAS SO WEIRD BECAUSE BASKETBALL HOOPS ARE SUPPOSED TO BE LIKE TEN FEET TALL AND AT THE",
+      "hyp": "Yeah, big, big hall for the size. I remember going back there when I was a lot older and I remember seeing the basketball hoops in the hall and I could like dunk on them, which is so weird because basketball hoops are supposed to be like ten feet tall and at the",
+      "source_hyps_flagged": {
+        "qwen": "Yeah, big [LOW-CONF: big] hall for the size. I remember going back there when I was a lot older, and I remember seeing the basketball hoops in the [LOW-CONF: hall,] and I could like dunk on them, which [LOW-CONF: is] so weird because basketball hoops [LOW-CONF: are] supposed to be like ten feet tall, and at the",
+        "whisperx": "Yeah, big, big hall for [LOW-CONF: the] size. I remember going back there when I was a lot older and I [LOW-CONF: remember] seeing the basketball hoops in the hall and I could like dunk on them, which is so weird because [LOW-CONF: basketball] hoops [LOW-CONF: are] [LOW-CONF: supposed] to be like 10 feet tall and at the...",
+        "parakeet": "yeah big big hall for the size i [LOW-CONF: remember] going back there when i was a lot older and i remember [LOW-CONF: seeing] the basketball [LOW-CONF: hoops] in the hall and i could like [LOW-CONF: dunk] on them which was [LOW-CONF: so] weird because basketball [LOW-CONF: hoops] are [LOW-CONF: supposed] to be like ten feet tall and at the",
+        "wav2vec2": "YE BIG BIG HALL FOR THE SIZE I REMEMBER [LOW-CONF: GOING] BACK THERE WHEN I WAS A LOT OLDER AND I [LOW-CONF: REMEMBER] [LOW-CONF: SEEING] THE BASKE [LOW-CONF: WALL] HOOPS IN THE HALL AND I [LOW-CONF: COULD] LIKE [LOW-CONF: DONK] ON [LOW-CONF: DEN] WHICH WAS SO WEIRD BECAUSE [LOW-CONF: PASTFUL] HOOPS [LOW-CONF: SOS] TO BE LIKE TEN FEET TALL AND AT THE"
+      },
+      "model_order": [
+        "wav2vec2",
+        "parakeet",
+        "qwen",
+        "whisperx"
+      ],
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967,
+        "wav2vec2": 0.571437
+      },
+      "sample_WER": 0.018867924528301886,
+      "severity": null,
+      "dataset_index": 58
+    },
+    {
+      "ref": "YEAH",
+      "hyp": "Yeah.",
+      "source_hyps_flagged": {
+        "qwen": "Yeah.",
+        "whisperx": "[LOW-CONF: Yeah.]",
+        "parakeet": "yes",
+        "wav2vec2": ""
+      },
+      "model_order": [
+        "parakeet",
+        "wav2vec2",
+        "qwen",
+        "whisperx"
+      ],
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967,
+        "wav2vec2": 0.571437
+      },
+      "sample_WER": 0.0,
+      "severity": null,
+      "dataset_index": 59
+    },
+    {
+      "ref": "DID YOU UM HAVE A FAVORITE BOOK FILM OR TV SHOW OR CARTOON AS A CHILD WHAT WAS IT ABOUT",
+      "hyp": "Did you have a favorite book, film, or TV show, or cartoon as a child? What was it about?",
+      "source_hyps_flagged": {
+        "qwen": "Did you [LOW-CONF: have] a [LOW-CONF: favourite] book, film, or TV [LOW-CONF: show,] or cartoon as a child? What was it about?",
+        "whisperx": "Did you have a favorite book, film or TV show or cartoon [LOW-CONF: as] a child? What was [LOW-CONF: it] about?",
+        "parakeet": "did you [LOW-CONF: have] a favorite [LOW-CONF: book] film or tv show or cartoon as a child what was it about",
+        "wav2vec2": "[LOW-CONF: DIM] HAVE A FAVORITE BOOK FILM OR T V SHOW OR CARTOON IS A CHILD WHAT WAS IT ABOUT"
+      },
+      "model_order": [
+        "wav2vec2",
+        "parakeet",
+        "qwen",
+        "whisperx"
+      ],
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967,
+        "wav2vec2": 0.571437
+      },
+      "sample_WER": 0.05,
+      "severity": null,
+      "dataset_index": 62
+    },
+    {
+      "ref": "GO TO TV SHOWS",
+      "hyp": "Welcome to TV.",
+      "source_hyps_flagged": {
+        "qwen": "Go to TV.",
+        "whisperx": "[LOW-CONF: Welcome] to TV.",
+        "parakeet": "into [LOW-CONF: te]",
+        "wav2vec2": "INTO T"
+      },
+      "model_order": [
+        "parakeet",
+        "whisperx",
+        "wav2vec2",
+        "qwen"
+      ],
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967,
+        "wav2vec2": 0.571437
+      },
+      "sample_WER": 0.5,
+      "severity": null,
+      "dataset_index": 67
+    },
+    {
+      "ref": "LAZY TOWN WAS A BIG ONE FOR ME",
+      "hyp": "Lazy Tong was a big one for me.",
+      "source_hyps_flagged": {
+        "qwen": "Lazy [LOW-CONF: Town] was a big one for me.",
+        "whisperx": "Lazy tongue was [LOW-CONF: a] big one for me.",
+        "parakeet": "lazy tong [LOW-CONF: was] a [LOW-CONF: big] one for me",
+        "wav2vec2": "LAZY TON WAS A BIG ONE FOR ME"
+      },
+      "model_order": [
+        "wav2vec2",
+        "parakeet",
+        "whisperx",
+        "qwen"
+      ],
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967,
+        "wav2vec2": 0.571437
+      },
+      "sample_WER": 0.125,
+      "severity": null,
+      "dataset_index": 70
+    },
+    {
+      "ref": "YEAH",
+      "hyp": "Yeah.",
+      "source_hyps_flagged": {
+        "qwen": "Yeah.",
+        "whisperx": "[LOW-CONF: yeah.]",
+        "parakeet": "yeah",
+        "wav2vec2": ""
+      },
+      "model_order": [
+        "whisperx",
+        "qwen",
+        "wav2vec2",
+        "parakeet"
+      ],
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967,
+        "wav2vec2": 0.571437
+      },
+      "sample_WER": 0.0,
+      "severity": null,
+      "dataset_index": 71
+    },
+    {
+      "ref": "IT'S A FORCE OF NATURE",
+      "hyp": "It's a force of nature.",
+      "source_hyps_flagged": {
+        "qwen": "It's a force of nature.",
+        "whisperx": "[LOW-CONF: It's] a [LOW-CONF: force] [LOW-CONF: of] nature.",
+        "parakeet": "[LOW-CONF: as] [LOW-CONF: a] [LOW-CONF: force] [LOW-CONF: in] nature",
+        "wav2vec2": "[LOW-CONF: I] [LOW-CONF: SO] FORCE [LOW-CONF: OF] NATURE"
+      },
+      "model_order": [
+        "qwen",
+        "whisperx",
+        "parakeet",
+        "wav2vec2"
+      ],
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967,
+        "wav2vec2": 0.571437
+      },
+      "sample_WER": 0.0,
+      "severity": null,
+      "dataset_index": 75
+    },
+    {
+      "ref": "WOW",
+      "hyp": "Wow.",
+      "source_hyps_flagged": {
+        "qwen": "Wow.",
+        "whisperx": "Wow.",
+        "parakeet": "flown",
+        "wav2vec2": "[LOW-CONF: WE]"
+      },
+      "model_order": [
+        "wav2vec2",
+        "whisperx",
+        "parakeet",
+        "qwen"
+      ],
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967,
+        "wav2vec2": 0.571437
+      },
+      "sample_WER": 0.0,
+      "severity": null,
+      "dataset_index": 86
+    },
+    {
+      "ref": "YEAH I I KNOW I WAS LIKE ONE OF THE ONE OF THE MANY PEOPLE THAT HASN'T ACTUALLY SEEN AN EPISODE OF BEN TEN",
+      "hyp": "Yeah, I know. I was like one of the one of the million people that hasn't actually seen an episode of Ben 10.",
+      "source_hyps_flagged": {
+        "qwen": "Yeah, I know. I was like one of the one of the million people that hasn't actually seen an episode of [LOW-CONF: Ben] 10.",
+        "whisperx": "I was like one of the million people [LOW-CONF: that] hasn't actually seen an [LOW-CONF: episode] of Ben 10.",
+        "parakeet": "yeah i know i was like one of the one of the million people that hasn't actually seen an episode [LOW-CONF: of] benten",
+        "wav2vec2": "[LOW-CONF: IKNO] [LOW-CONF: OS] LIKE ONE OF THE ONE OF THE MILLION PEOPLE HASN'T ACTUALLY SEEN AN [LOW-CONF: EPISODE] OF BEN TEN"
+      },
+      "model_order": [
+        "wav2vec2",
+        "qwen",
+        "parakeet",
+        "whisperx"
+      ],
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967,
+        "wav2vec2": 0.571437
+      },
+      "sample_WER": 0.125,
+      "severity": null,
+      "dataset_index": 87
+    },
+    {
+      "ref": "OH MY GOODNESS BEN TEN IS SUCH A GREAT SHOW THERE'S NO WAY YOU HAVEN'T SEEN THAT",
+      "hyp": "Oh my goodness. Ben 10 is such a great show. There's no way you haven't seen that.",
+      "source_hyps_flagged": {
+        "qwen": "Oh my [LOW-CONF: goodness!] Ben [LOW-CONF: tends] such a great show. There's no way you haven't seen [LOW-CONF: that.]",
+        "whisperx": "Oh my goodness. Ben 10 [LOW-CONF: is] such a great show. There's no [LOW-CONF: way] [LOW-CONF: you] [LOW-CONF: haven't] [LOW-CONF: seen] it.",
+        "parakeet": "oh my goodness that intends such a great show there's no way you [LOW-CONF: haven't] seen that",
+        "wav2vec2": "OH MY GOODNESS [LOW-CONF: TANTON] SUCH A GREAT SHOW THERE'S NO WAY [LOW-CONF: HAVEN] [LOW-CONF: SELIE]"
+      },
+      "model_order": [
+        "parakeet",
+        "whisperx",
+        "qwen",
+        "wav2vec2"
+      ],
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967,
+        "wav2vec2": 0.571437
+      },
+      "sample_WER": 0.058823529411764705,
+      "severity": null,
+      "dataset_index": 88
+    },
+    {
+      "ref": "A LAD'S GOT A WATCH",
+      "hyp": "It's got a lot.",
+      "source_hyps_flagged": {
+        "qwen": "[LOW-CONF: It's] [LOW-CONF: got] [LOW-CONF: a] [LOW-CONF: lot.]",
+        "whisperx": "[LOW-CONF: It's] got [LOW-CONF: to] work.",
+        "parakeet": "[LOW-CONF: got] [LOW-CONF: for]",
+        "wav2vec2": "AND GO"
+      },
+      "model_order": [
+        "whisperx",
+        "wav2vec2",
+        "parakeet",
+        "qwen"
+      ],
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967,
+        "wav2vec2": 0.571437
+      },
+      "sample_WER": 0.6,
+      "severity": null,
+      "dataset_index": 91
+    },
+    {
+      "ref": "YEAH",
+      "hyp": "Yeah.",
+      "source_hyps_flagged": {
+        "qwen": "Yeah.",
+        "whisperx": "[LOW-CONF: Yeah.]",
+        "parakeet": "yeah",
+        "wav2vec2": "YEA"
+      },
+      "model_order": [
+        "qwen",
+        "whisperx",
+        "parakeet",
+        "wav2vec2"
+      ],
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967,
+        "wav2vec2": 0.571437
+      },
+      "sample_WER": 0.0,
+      "severity": null,
+      "dataset_index": 92
+    },
+    {
+      "ref": "OH LOVE A BIT OF PEPPA PIG RIGHT",
+      "hyp": "I love the Peppa Pig. Oh,",
+      "source_hyps_flagged": {
+        "qwen": "[LOW-CONF: Love] [LOW-CONF: the] Peppa Pig.",
+        "whisperx": "I love [LOW-CONF: the] Peppa Pig. Oh,",
+        "parakeet": "ah [LOW-CONF: love] [LOW-CONF: a] peppa pig i [LOW-CONF: was]",
+        "wav2vec2": "[LOW-CONF: LUMBER] PAPE PIG"
+      },
+      "model_order": [
+        "qwen",
+        "wav2vec2",
+        "whisperx",
+        "parakeet"
+      ],
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967,
+        "wav2vec2": 0.571437
+      },
+      "sample_WER": 0.625,
+      "severity": null,
+      "dataset_index": 96
+    },
+    {
+      "ref": "I WAS ALSO NOT THAT INTO POKEMON EITHER",
+      "hyp": "I was also not that into Pokemon either.",
+      "source_hyps_flagged": {
+        "qwen": "I was also not that into [LOW-CONF: Pokemon] either.",
+        "whisperx": "[LOW-CONF: I] [LOW-CONF: was] also not that into Pokemon either.",
+        "parakeet": "i was not that into [LOW-CONF: cookmon] [LOW-CONF: eithay]",
+        "wav2vec2": "I WAS ALL RIGHT NOT THAT [LOW-CONF: INSE] [LOW-CONF: COKON] NEITHER"
+      },
+      "model_order": [
+        "qwen",
+        "parakeet",
+        "wav2vec2",
+        "whisperx"
+      ],
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967,
+        "wav2vec2": 0.571437
+      },
+      "sample_WER": 0.0,
+      "severity": null,
+      "dataset_index": 97
+    },
+    {
+      "ref": "YEAH",
+      "hyp": "Yeah.",
+      "source_hyps_flagged": {
+        "qwen": "[LOW-CONF: Yeah.]",
+        "whisperx": "",
+        "parakeet": "",
+        "wav2vec2": ""
+      },
+      "model_order": [
+        "qwen",
+        "wav2vec2",
+        "parakeet",
+        "whisperx"
+      ],
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967,
+        "wav2vec2": 0.571437
+      },
+      "sample_WER": 0.0,
+      "severity": null,
+      "dataset_index": 107
+    },
+    {
+      "ref": "YOU'RE GONNA LOOK LIKE SUCH A WEIRD PERSON IN THIS VIDEO",
+      "hyp": "You're going to look like such a weird person in this.",
+      "source_hyps_flagged": {
+        "qwen": "[LOW-CONF: You're] gonna look like such a weird person in this.",
+        "whisperx": "[LOW-CONF: You're] [LOW-CONF: going] [LOW-CONF: to] [LOW-CONF: look] like such a weird person in this.",
+        "parakeet": "you're gonna [LOW-CONF: look] to [LOW-CONF: like] such [LOW-CONF: a] weird person in [LOW-CONF: this]",
+        "wav2vec2": "LOOKED LIKE SUCH A WEIRD PERSON IN THIS"
+      },
+      "model_order": [
+        "wav2vec2",
+        "qwen",
+        "parakeet",
+        "whisperx"
+      ],
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967,
+        "wav2vec2": 0.571437
+      },
+      "sample_WER": 0.2727272727272727,
+      "severity": null,
+      "dataset_index": 108
+    },
+    {
+      "ref": "OH WORMS THAT MAKES MORE SENSE STILL WEIRD BUT IT MAKES MORE SENSE",
+      "hyp": "Oh, worms, that makes more sense. It's still weird but it makes more sense.",
+      "source_hyps_flagged": {
+        "qwen": "[LOW-CONF: Oh,] [LOW-CONF: worms.] That makes more sense. [LOW-CONF: It's] still weird, but [LOW-CONF: makes] [LOW-CONF: more] [LOW-CONF: sense.]",
+        "whisperx": "Oh, worms, [LOW-CONF: that] [LOW-CONF: makes] more sense. It's still weird but [LOW-CONF: it] [LOW-CONF: makes] [LOW-CONF: more] [LOW-CONF: sense.]",
+        "parakeet": "oh worms [LOW-CONF: and] [LOW-CONF: explore] [LOW-CONF: fs] [LOW-CONF: still] weird but",
+        "wav2vec2": "OH WORMS [LOW-CONF: ANY] [LOW-CONF: SPORSE] [LOW-CONF: INTS] [LOW-CONF: STILL] WEIRD BUT WE HA"
+      },
+      "model_order": [
+        "wav2vec2",
+        "qwen",
+        "parakeet",
+        "whisperx"
+      ],
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967,
+        "wav2vec2": 0.571437
+      },
+      "sample_WER": 0.07692307692307693,
+      "severity": null,
+      "dataset_index": 114
+    },
+    {
+      "ref": "I FEEL LIKE EVEN NOW I JUST WOULDN'T ENJOY THEM",
+      "hyp": "I feel like even now, just wouldn't enjoy them.",
+      "source_hyps_flagged": {
+        "qwen": "[LOW-CONF: I] feel like [LOW-CONF: even] [LOW-CONF: now,] just wouldn't enjoy [LOW-CONF: them.]",
+        "whisperx": "Even now, just [LOW-CONF: wouldn't] enjoy them.",
+        "parakeet": "i [LOW-CONF: like] even now [LOW-CONF: just] would [LOW-CONF: enjoy] the",
+        "wav2vec2": "[LOW-CONF: IKE] GIVE IN NOW TO [LOW-CONF: SWIENJOYLE]"
+      },
+      "model_order": [
+        "wav2vec2",
+        "parakeet",
+        "qwen",
+        "whisperx"
+      ],
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967,
+        "wav2vec2": 0.571437
+      },
+      "sample_WER": 0.1,
+      "severity": null,
+      "dataset_index": 117
+    },
+    {
+      "ref": "OH AT LEAST <DTMF> WAS A METEOROLOGIST IN SCHOOL ONE OF THE GEOLOGY TEACHERS",
+      "hyp": "Oh, Roger McAller was a meteorologist in school. One of the geology teachers.",
+      "source_hyps_flagged": {
+        "qwen": "[LOW-CONF: Oh,] [LOW-CONF: Roger] [LOW-CONF: McAller] was a meteorologist in [LOW-CONF: school.] One of the geology teachers.",
+        "whisperx": "Oh, well, Jim Collar was [LOW-CONF: a] meteorologist in school, one of the geology teachers.",
+        "parakeet": "whatard [LOW-CONF: mccallar] [LOW-CONF: was] a [LOW-CONF: meteorologist] in [LOW-CONF: the] school one of the meteology teachers",
+        "wav2vec2": "WHAT DO [LOW-CONF: WE] CALL [LOW-CONF: HER] [LOW-CONF: WO] [LOW-CONF: TE] [LOW-CONF: METEOROLOGISTS] IN SCHOOL ONE OF THE GEOLOGY TEACHERS"
+      },
+      "model_order": [
+        "wav2vec2",
+        "whisperx",
+        "qwen",
+        "parakeet"
+      ],
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967,
+        "wav2vec2": 0.571437
+      },
+      "sample_WER": 0.15384615384615385,
+      "severity": null,
+      "dataset_index": 129
+    },
+    {
+      "ref": "YEAH MADE IT OUT <LAUGH>",
+      "hyp": "than anyone else\n\nYeah, leave it out.\n\nS E AN OATH\n\nYeah, even us.",
+      "source_hyps_flagged": {
+        "qwen": "[LOW-CONF: Yeah,] [LOW-CONF: even] [LOW-CONF: us.]",
+        "whisperx": "[LOW-CONF: Yeah,] [LOW-CONF: leave] [LOW-CONF: it] out.",
+        "parakeet": "than [LOW-CONF: anyone] else",
+        "wav2vec2": "[LOW-CONF: S] E AN [LOW-CONF: OATH]"
+      },
+      "model_order": [
+        "parakeet",
+        "whisperx",
+        "wav2vec2",
+        "qwen"
+      ],
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967,
+        "wav2vec2": 0.571437
+      },
+      "sample_WER": 2.75,
+      "severity": null,
+      "dataset_index": 137
+    },
+    {
+      "ref": "YEAH",
+      "hyp": "Yeah.",
+      "source_hyps_flagged": {
+        "qwen": "Yeah.",
+        "whisperx": "[LOW-CONF: Yeah.]",
+        "parakeet": "yeah",
+        "wav2vec2": ""
+      },
+      "model_order": [
+        "wav2vec2",
+        "whisperx",
+        "parakeet",
+        "qwen"
+      ],
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967,
+        "wav2vec2": 0.571437
+      },
+      "sample_WER": 0.0,
+      "severity": null,
+      "dataset_index": 139
+    },
+    {
+      "ref": "THAT IS A RECIPE YEAH THAT IS A RECIPE FOR LIKE FOR HEAVEN",
+      "hyp": "That is a recipe for like for heaven.",
+      "source_hyps_flagged": {
+        "qwen": "[LOW-CONF: That] is a recipe for [LOW-CONF: like,] [LOW-CONF: for.]",
+        "whisperx": "That is a recipe for like for [LOW-CONF: heaven.]",
+        "parakeet": "that [LOW-CONF: is] [LOW-CONF: a] recipe [LOW-CONF: for] like for adam",
+        "wav2vec2": "[LOW-CONF: ASOFE] THAT IS A RECIPE FOR LIKE FOR [LOW-CONF: EVEN]"
+      },
+      "model_order": [
+        "wav2vec2",
+        "whisperx",
+        "parakeet",
+        "qwen"
+      ],
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967,
+        "wav2vec2": 0.571437
+      },
+      "sample_WER": 0.38461538461538464,
+      "severity": null,
+      "dataset_index": 141
+    },
+    {
+      "ref": "WITH LAMB ISN'T LAMB VERY EXPENSIVE",
+      "hyp": "With lamb, isn't lamb fairly expensive?",
+      "source_hyps_flagged": {
+        "qwen": "With [LOW-CONF: lamb,] isn't lamb [LOW-CONF: fairly] expensive?",
+        "whisperx": "isn't land-framed expensive?",
+        "parakeet": "[LOW-CONF: the] [LOW-CONF: flam] isn't [LOW-CONF: longf] expensive",
+        "wav2vec2": "[LOW-CONF: WITAM] IS A LON FOR EXPENSE"
+      },
+      "model_order": [
+        "wav2vec2",
+        "parakeet",
+        "qwen",
+        "whisperx"
+      ],
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967,
+        "wav2vec2": 0.571437
+      },
+      "sample_WER": 0.16666666666666666,
+      "severity": null,
+      "dataset_index": 143
+    },
+    {
+      "ref": "YEAH",
+      "hyp": "Yeah.",
+      "source_hyps_flagged": {
+        "qwen": "Yeah.",
+        "whisperx": "Yeah.",
+        "parakeet": "yeah",
+        "wav2vec2": "YES"
+      },
+      "model_order": [
+        "wav2vec2",
+        "qwen",
+        "whisperx",
+        "parakeet"
+      ],
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967,
+        "wav2vec2": 0.571437
+      },
+      "sample_WER": 0.0,
+      "severity": null,
+      "dataset_index": 150
+    },
+    {
+      "ref": "AND IT DOES INCLUDE ARTHUR'S SEAT AND SO",
+      "hyp": "it does include Arthur's Seed.",
+      "source_hyps_flagged": {
+        "qwen": "And [LOW-CONF: that] it does include [LOW-CONF: Arthur] C.",
+        "whisperx": "[LOW-CONF: but] [LOW-CONF: it] does include Arthur's Seed.",
+        "parakeet": "[LOW-CONF: that] [LOW-CONF: does] [LOW-CONF: include] autor [LOW-CONF: c]",
+        "wav2vec2": "[LOW-CONF: NI] [LOW-CONF: DOSIN] [LOW-CONF: QUET] [LOW-CONF: ARTHER] [LOW-CONF: SE] AND"
+      },
+      "model_order": [
+        "whisperx",
+        "qwen",
+        "parakeet",
+        "wav2vec2"
+      ],
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967,
+        "wav2vec2": 0.571437
+      },
+      "sample_WER": 0.5,
+      "severity": null,
+      "dataset_index": 151
+    },
+    {
+      "ref": "WITHIN A TWENTY MINUTE WALK IT'S A SHAME THOUGH THAT'S UH AND EVEN LIKE IKEA'S AND WHATNOT TWENTY MINUTE BUS AWAY NOT TOO MUCH OF A",
+      "hyp": "Within a twenty-minute walk. It's a shame though that it's there. And even, like, Ikeas and whatnot, twenty-minute bus away, not too much of a",
+      "source_hyps_flagged": {
+        "qwen": "Within a [LOW-CONF: twenty-minute] walk. It's a shame [LOW-CONF: though] that [LOW-CONF: it's] [LOW-CONF: there,] and even [LOW-CONF: like,] [LOW-CONF: IKEAs] and [LOW-CONF: whatnot,] twenty-minute bus [LOW-CONF: away.] Not too much of a",
+        "whisperx": "Within a 20-minute walk. It's a shame, [LOW-CONF: though,] [LOW-CONF: that] [LOW-CONF: it's] there. And even, like, Ikea [LOW-CONF: and] whatnot, 20-minute bus away, not too much [LOW-CONF: of] a...",
+        "parakeet": "within [LOW-CONF: a] twenty minute [LOW-CONF: walk] it's a shame though that it's there and even like ikeas [LOW-CONF: and] whatnot [LOW-CONF: twenty] minute [LOW-CONF: bus] away not too much of a",
+        "wav2vec2": "WITHIN A TWENTY MINUTE WALK IT'S A SHAME [LOW-CONF: THOY] [LOW-CONF: LIT] [LOW-CONF: TERE] AND EVEN LIKE [LOW-CONF: IKEARS] AND WHAT NOT TWENTY MINUTE [LOW-CONF: BUSS] AWAY NOT TOO MUCH [LOW-CONF: YET]"
+      },
+      "model_order": [
+        "qwen",
+        "parakeet",
+        "wav2vec2",
+        "whisperx"
+      ],
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967,
+        "wav2vec2": 0.571437
+      },
+      "sample_WER": 0.3076923076923077,
+      "severity": null,
+      "dataset_index": 154
+    },
+    {
+      "ref": "YEAH",
+      "hyp": "Yeah.",
+      "source_hyps_flagged": {
+        "qwen": "Yeah.",
+        "whisperx": "[LOW-CONF: Yeah.]",
+        "parakeet": "yes",
+        "wav2vec2": "[LOW-CONF: I]"
+      },
+      "model_order": [
+        "whisperx",
+        "qwen",
+        "parakeet",
+        "wav2vec2"
+      ],
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967,
+        "wav2vec2": 0.571437
+      },
+      "sample_WER": 0.0,
+      "severity": null,
+      "dataset_index": 163
+    },
+    {
+      "ref": "THE LIGHT POLLUTION",
+      "hyp": "The light pollution.",
+      "source_hyps_flagged": {
+        "qwen": "The light pollution.",
+        "whisperx": "The light pollution...",
+        "parakeet": "the light pollution",
+        "wav2vec2": "[LOW-CONF: THE] LIGHT POLLUTION"
+      },
+      "model_order": [
+        "qwen",
+        "wav2vec2",
+        "parakeet",
+        "whisperx"
+      ],
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967,
+        "wav2vec2": 0.571437
+      },
+      "sample_WER": 0.0,
+      "severity": null,
+      "dataset_index": 166
+    },
+    {
+      "ref": "YEAH 'CAUSE EVEN ON LIKE A CLEAR NIGHT YOU CAN BARELY SEE THE STARS",
+      "hyp": "Yeah, because even on like a clear night, you can barely see the stars.",
+      "source_hyps_flagged": {
+        "qwen": "Yeah, [LOW-CONF: because] even on like a clear night, you can barely see the stars.",
+        "whisperx": "yeah because even on like a clear night [LOW-CONF: you] can barely see the stars",
+        "parakeet": "yeah because [LOW-CONF: even] on like [LOW-CONF: a] clear night you can barely see the stars",
+        "wav2vec2": "YE [LOW-CONF: IT] IS EVEN ON MUCH A CLEAR NIGHT YE CAN BARELY SEE THE STARS"
+      },
+      "model_order": [
+        "parakeet",
+        "wav2vec2",
+        "qwen",
+        "whisperx"
+      ],
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967,
+        "wav2vec2": 0.571437
+      },
+      "sample_WER": 0.07142857142857142,
+      "severity": null,
+      "dataset_index": 167
+    },
+    {
+      "ref": "UM JAPAN",
+      "hyp": "Japan.",
+      "source_hyps_flagged": {
+        "qwen": "Japan.",
+        "whisperx": "Japan.",
+        "parakeet": "then japan",
+        "wav2vec2": "JAPAN"
+      },
+      "model_order": [
+        "whisperx",
+        "wav2vec2",
+        "qwen",
+        "parakeet"
+      ],
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967,
+        "wav2vec2": 0.571437
+      },
+      "sample_WER": 0.5,
+      "severity": null,
+      "dataset_index": 172
+    },
+    {
+      "ref": "ALL RIGHT",
+      "hyp": "All right.",
+      "source_hyps_flagged": {
+        "qwen": "All right.",
+        "whisperx": "[LOW-CONF: All] [LOW-CONF: right.]",
+        "parakeet": "[LOW-CONF: right]",
+        "wav2vec2": "GREAT"
+      },
+      "model_order": [
+        "qwen",
+        "wav2vec2",
+        "whisperx",
+        "parakeet"
+      ],
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967,
+        "wav2vec2": 0.571437
+      },
+      "sample_WER": 0.0,
+      "severity": null,
+      "dataset_index": 173
+    },
+    {
+      "ref": "WELL I WOULD ALSO SAY JAPAN BUT <LAUGH> FOR PRETTY MUCH THE SAME REASONS BUT I'LL SAY SOMETHING ELSE TO THE CONVERSATION UH I THINK EITHER LIKE ICELAND OR ALASKA",
+      "hyp": "Well, I would also say Japan, but for pretty much the same reasons, but I'll say something else at the conversation. I think either like Iceland or Alaska.",
+      "source_hyps_flagged": {
+        "qwen": "Well, I would also say Japan, but for pretty much the same reasons. But I'll say something else [LOW-CONF: and] [LOW-CONF: the] conversation. I think either like Iceland or Alaska.",
+        "whisperx": "Well, I would also say Japan, but for [LOW-CONF: pretty] much the same reasons, but I'll say something else [LOW-CONF: at] the conversation. I think either like Iceland or Alaska.",
+        "parakeet": "well i would also say japan but [LOW-CONF: for] pretty much the same reasons but i'll say something else the conversation i [LOW-CONF: think] either like iceland or alaska",
+        "wav2vec2": "WELL I WOULD ALSO SAY [LOW-CONF: TOPA] [LOW-CONF: BORH] FOR VERTY MUCH THE SAME REASONS BUT I'LL SAY SOMETHING ELSE AD THE CONVERSATION I THINK EITHER LIKE ICELAND OR ALASKA"
+      },
+      "model_order": [
+        "wav2vec2",
+        "parakeet",
+        "qwen",
+        "whisperx"
+      ],
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967,
+        "wav2vec2": 0.571437
+      },
+      "sample_WER": 0.06896551724137931,
+      "severity": null,
+      "dataset_index": 179
+    },
+    {
+      "ref": "WHAT'S THE APPEAL IN ICELAND",
+      "hyp": "What's the appeal in Iceland?",
+      "source_hyps_flagged": {
+        "qwen": "What's the appeal in Iceland?",
+        "whisperx": "What's [LOW-CONF: the] appeal in Iceland?",
+        "parakeet": "what's the appeal in iceland",
+        "wav2vec2": "WHAT [LOW-CONF: SEE] [LOW-CONF: APPEAL] IN ICELAND"
+      },
+      "model_order": [
+        "wav2vec2",
+        "parakeet",
+        "qwen",
+        "whisperx"
+      ],
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967,
+        "wav2vec2": 0.571437
+      },
+      "sample_WER": 0.0,
+      "severity": null,
+      "dataset_index": 180
+    },
+    {
+      "ref": "YOU DON'T NEED TO LEAVE YOUR HOUSE FOR THAT ONE",
+      "hyp": "Don't need to leave your house for that one.",
+      "source_hyps_flagged": {
+        "qwen": "[LOW-CONF: Don't] need to leave your house for that one.",
+        "whisperx": "Don't [LOW-CONF: need] to leave your house [LOW-CONF: for] that one.",
+        "parakeet": "i [LOW-CONF: still't] [LOW-CONF: need] to leave [LOW-CONF: your] house for that one",
+        "wav2vec2": "[LOW-CONF: DONN] YOU LEAVE YOUR HOUSE FOR THAT ONE"
+      },
+      "model_order": [
+        "whisperx",
+        "parakeet",
+        "wav2vec2",
+        "qwen"
+      ],
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967,
+        "wav2vec2": 0.571437
+      },
+      "sample_WER": 0.1,
+      "severity": null,
+      "dataset_index": 183
+    },
+    {
+      "ref": "YEAH",
+      "hyp": "Yeah.",
+      "source_hyps_flagged": {
+        "qwen": "[LOW-CONF: Yeah.]",
+        "whisperx": "[LOW-CONF: Yeah.]",
+        "parakeet": "[LOW-CONF: this]",
+        "wav2vec2": ""
+      },
+      "model_order": [
+        "qwen",
+        "whisperx",
+        "wav2vec2",
+        "parakeet"
+      ],
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967,
+        "wav2vec2": 0.571437
+      },
+      "sample_WER": 0.0,
+      "severity": null,
+      "dataset_index": 186
+    },
+    {
+      "ref": "I'M SURE IT'S",
+      "hyp": "I'm pretty sure it's.",
+      "source_hyps_flagged": {
+        "qwen": "[LOW-CONF: I'm] [LOW-CONF: pretty] sure it's.",
+        "whisperx": "sure [LOW-CONF: it's]",
+        "parakeet": "countries",
+        "wav2vec2": "[LOW-CONF: ENTERIES]"
+      },
+      "model_order": [
+        "parakeet",
+        "qwen",
+        "wav2vec2",
+        "whisperx"
+      ],
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967,
+        "wav2vec2": 0.571437
+      },
+      "sample_WER": 0.3333333333333333,
+      "severity": null,
+      "dataset_index": 188
+    },
+    {
+      "ref": "COSTS AT THE MOMENT",
+      "hyp": "costs at the moment",
+      "source_hyps_flagged": {
+        "qwen": "[LOW-CONF: Costs] at the moment.",
+        "whisperx": "costs [LOW-CONF: at] the moment.",
+        "parakeet": "costs at the moment",
+        "wav2vec2": "COSTS AT THE MOMENT"
+      },
+      "model_order": [
+        "qwen",
+        "whisperx",
+        "parakeet",
+        "wav2vec2"
+      ],
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967,
+        "wav2vec2": 0.571437
+      },
+      "sample_WER": 0.0,
+      "severity": null,
+      "dataset_index": 189
+    },
+    {
+      "ref": "THAT OR FISHING",
+      "hyp": "or fishing.",
+      "source_hyps_flagged": {
+        "qwen": "[LOW-CONF: Or] fishing.",
+        "whisperx": "fishing.",
+        "parakeet": "or fishing",
+        "wav2vec2": "[LOW-CONF: ORFISHING]"
+      },
+      "model_order": [
+        "whisperx",
+        "wav2vec2",
+        "parakeet",
+        "qwen"
+      ],
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967,
+        "wav2vec2": 0.571437
+      },
+      "sample_WER": 0.3333333333333333,
+      "severity": null,
+      "dataset_index": 194
+    },
+    {
+      "ref": "OR JUST COLD",
+      "hyp": "Or just.",
+      "source_hyps_flagged": {
+        "qwen": "[LOW-CONF: Or] just.",
+        "whisperx": "[LOW-CONF: or] just [LOW-CONF: close.]",
+        "parakeet": "or [LOW-CONF: just] cold",
+        "wav2vec2": "OR DIS"
+      },
+      "model_order": [
+        "whisperx",
+        "parakeet",
+        "qwen",
+        "wav2vec2"
+      ],
+      "thresholds_used": {
+        "qwen": 0.971838,
+        "whisperx": 0.434,
+        "parakeet": 0.775967,
+        "wav2vec2": 0.571437
+      },
+      "sample_WER": 0.3333333333333333,
+      "severity": null,
+      "dataset_index": 195
+    }
+  ]
+}
