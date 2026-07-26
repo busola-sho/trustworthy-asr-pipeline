@@ -149,6 +149,14 @@ def main():
     parser.add_argument("--gradient_accumulation_steps", type=int, default=4)
     parser.add_argument("--warmup_ratio", type=float, default=0.1)
     parser.add_argument("--early_stopping_patience", type=int, default=3)
+    parser.add_argument("--precision", choices=["fp32", "fp16", "bf16", "auto"], default="fp32",
+                        help="Defaults to fp32: wav2vec2 CTC training is well-documented to be "
+                             "numerically fragile under mixed precision (grad_norm going nan from "
+                             "the very first step is a commonly reported symptom, confirmed in a "
+                             "real run here). Given this dataset is small (~10h), fp32's slowdown "
+                             "cost is acceptable and correctness matters more. Use --precision auto "
+                             "to restore the old bf16-if-supported/else-fp16 behavior if you want to "
+                             "try mixed precision again later.")
     parser.add_argument("--gradient_checkpointing", action=argparse.BooleanOptionalAction, default=False,
                         help="Off by default: the frozen-feature-encoder + gradient_checkpointing "
                              "interaction proved fragile in testing (silent zero-gradient training, "
@@ -214,6 +222,15 @@ def main():
             ignore_mismatched_sizes=True,
         )
 
+    # SpecAugment time-masking can crash on very short clips (mask_length
+    # must be < sequence_length, and a handful of ultra-short samples in
+    # this dataset produce fewer encoded frames than the default mask
+    # needs) - and its regularization benefit is minimal on a ~10h
+    # fine-tuning run anyway (it's built for large-scale pretraining,
+    # where overfitting is the bigger risk). Disabled rather than trying
+    # to filter every possible short clip out of the manifest.
+    model.config.apply_spec_augment = False
+
     if args.freeze_feature_encoder:
         model.freeze_feature_encoder()
         # Kept as a safety net if you re-enable --gradient_checkpointing
@@ -242,8 +259,16 @@ def main():
     data_collator = DataCollatorCTCWithPadding(processor=processor, padding=True)
     compute_metrics = make_compute_metrics(processor)
 
-    use_bf16 = torch.cuda.is_available() and torch.cuda.is_bf16_supported()
-    use_fp16 = torch.cuda.is_available() and not use_bf16
+    if args.precision == "fp32":
+        use_bf16, use_fp16 = False, False
+    elif args.precision == "bf16":
+        use_bf16, use_fp16 = True, False
+    elif args.precision == "fp16":
+        use_bf16, use_fp16 = False, True
+    else:  # "auto" - restores the old behavior
+        use_bf16 = torch.cuda.is_available() and torch.cuda.is_bf16_supported()
+        use_fp16 = torch.cuda.is_available() and not use_bf16
+    print(f"Precision: bf16={use_bf16} fp16={use_fp16} (--precision {args.precision})")
 
     training_args = TrainingArguments(
         output_dir=args.output_dir,
@@ -298,6 +323,7 @@ def main():
         "use_pretrained_vocab": args.use_pretrained_vocab,
         "freeze_feature_encoder": args.freeze_feature_encoder,
         "gradient_checkpointing": args.gradient_checkpointing,
+        "precision": args.precision,
         "epochs": args.epochs,
         "learning_rate": args.lr,
         "warmup_ratio": args.warmup_ratio,
