@@ -38,7 +38,7 @@ OLLAMA_HOST    = "http://localhost:11434"
 DATASETS       = ["commonvoice", "english_dialects", "edacc", "shetland"]
 CONFIDENCE_MODELS  = ["qwen", "whisperx", "parakeet"]   # qwen added
 DEFAULT_PERCENTILE = 20
-MAX_WORKERS = 8   # tune to roughly match OLLAMA_NUM_PARALLEL on the server
+MAX_WORKERS = 1   # tune to roughly match OLLAMA_NUM_PARALLEL on the server
 
 # NOTE: rule content unchanged (named-entity trust etc.) - review per the
 # discussion in context_v1.py before editing. The confidence-weighting

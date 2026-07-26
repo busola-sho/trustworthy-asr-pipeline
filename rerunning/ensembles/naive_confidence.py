@@ -37,7 +37,7 @@ ASR_MODELS     = ["qwen", "whisperx", "parakeet", "wav2vec2"]
 DATASETS       = ["commonvoice", "english_dialects", "edacc", "shetland"]
 CONFIDENCE_MODELS = ["qwen", "whisperx", "parakeet", "wav2vec2"]   # all 4 now produce confidence scores
 DEFAULT_PERCENTILE = 20
-MAX_WORKERS = 8   # tune to roughly match OLLAMA_NUM_PARALLEL on the server
+MAX_WORKERS = 1   # tune to roughly match OLLAMA_NUM_PARALLEL on the server
 
 SELECTOR_PROMPT = """You are given four ASR transcripts of the same spoken audio.
 

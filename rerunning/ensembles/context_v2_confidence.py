@@ -33,7 +33,7 @@ OLLAMA_HOST    = "http://localhost:11434"
 DATASETS       = ["commonvoice", "english_dialects", "edacc", "shetland"]
 CONFIDENCE_MODELS  = ["qwen", "whisperx", "parakeet"]   # qwen added
 DEFAULT_PERCENTILE = 20
-MAX_WORKERS = 8   # tune to roughly match OLLAMA_NUM_PARALLEL on the server
+MAX_WORKERS = 1   # tune to roughly match OLLAMA_NUM_PARALLEL on the server
 
 SELECTOR_PROMPT_TEMPLATE = """You are correcting an ASR transcript. You are given three transcripts of the same audio from different models.
 

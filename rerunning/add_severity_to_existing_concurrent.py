@@ -44,7 +44,7 @@ OLLAMA_HOST  = "http://localhost:11434"
 JUDGE_MODEL  = "phi4:14b"   # locked severity judge (Phi-4 + direct, QWK=0.783)
 
 NEW_OUTPUT_DIR = "writeup_results/benchmarks/main"
-MAX_WORKERS = 8     # tune to roughly match OLLAMA_NUM_PARALLEL on the server
+MAX_WORKERS = 1     # tune to roughly match OLLAMA_NUM_PARALLEL on the server
 BATCH_SIZE = 50     # save progress after every N samples judged, not just at the end
 
 
