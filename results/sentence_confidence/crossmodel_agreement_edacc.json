@@ -1,33 +1,74 @@
 {
   "method": "crossmodel_agreement",
   "dataset": "edacc",
-  "corpus_wer": null,
+  "corpus_wer": 0.1860730593607306,
+  "models": [
+    "qwen",
+    "whisperx",
+    "parakeet",
+    "wav2vec2"
+  ],
   "samples": [
     {
       "dataset_index": 0,
       "sentences": [
         {
           "sent_pos": 0,
-          "confidence": 0.9394,
-          "min_agreement": 0.9091,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 0.9091,
-          "sim_qwen_par": 0.9091,
-          "sentence": "Okay, I think it's recording. Right."
+          "confidence": 0.875,
+          "min_agreement": 0.75,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 0.75,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 0.75,
+          "sim_parakeet_wav2vec2": 0.75,
+          "sentence": "Okay, I think it's recording."
+        },
+        {
+          "sent_pos": 1,
+          "confidence": 1.0,
+          "min_agreement": 1.0,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
+          "sentence": "Right."
         }
       ]
     },
     {
-      "dataset_index": 1,
+      "dataset_index": 2,
       "sentences": [
         {
           "sent_pos": 0,
-          "confidence": 0.9048,
-          "min_agreement": 0.8571,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 0.8571,
-          "sim_qwen_par": 0.8571,
-          "sentence": "I got a notification."
+          "confidence": 0.8993,
+          "min_agreement": 0.8,
+          "sim_qwen_whisperx": 0.9091,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 0.8889,
+          "sim_whisperx_parakeet": 0.9091,
+          "sim_whisperx_wav2vec2": 0.8,
+          "sim_parakeet_wav2vec2": 0.8889,
+          "sentence": "Hello, my participant number is C14-P1."
+        }
+      ]
+    },
+    {
+      "dataset_index": 3,
+      "sentences": [
+        {
+          "sent_pos": 0,
+          "confidence": 0.9394,
+          "min_agreement": 0.9091,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 0.9091,
+          "sim_qwen_wav2vec2": 0.9091,
+          "sim_whisperx_parakeet": 0.9091,
+          "sim_whisperx_wav2vec2": 0.9091,
+          "sim_parakeet_wav2vec2": 1.0,
+          "sentence": "And my participant number is C14-P2."
         }
       ]
     },
@@ -36,99 +77,80 @@
       "sentences": [
         {
           "sent_pos": 0,
-          "confidence": 0.8753,
-          "min_agreement": 0.8421,
-          "sim_wx_qwen": 0.8421,
-          "sim_wx_par": 0.8649,
-          "sim_qwen_par": 0.9189,
-          "sentence": "Right. And now I think we just have to converse for fifteen minutes. I'll start with the first one."
+          "confidence": 0.9615,
+          "min_agreement": 0.9231,
+          "sim_qwen_whisperx": 0.9231,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 0.9231,
+          "sim_whisperx_wav2vec2": 0.9231,
+          "sim_parakeet_wav2vec2": 1.0,
+          "sentence": "Right, and now I think we just have to converse for 15 minutes."
         },
         {
           "sent_pos": 1,
-          "confidence": 1.0,
-          "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "When you were a kid, what kinds of games did you play? Is there one you remember well?"
-        },
-        {
-          "sent_pos": 2,
-          "confidence": 0.9649,
-          "min_agreement": 0.9474,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 0.9474,
-          "sim_qwen_par": 0.9474,
-          "sentence": "You can go first because you had a game."
-        }
-      ]
-    },
-    {
-      "dataset_index": 6,
-      "sentences": [
-        {
-          "sent_pos": 0,
-          "confidence": 0.7778,
-          "min_agreement": 0.6667,
-          "sim_wx_qwen": 0.6667,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 0.6667,
-          "sentence": "Do you want to explain..."
-        },
-        {
-          "sent_pos": 1,
-          "confidence": 0.0,
-          "min_agreement": 0.0,
-          "sim_wx_qwen": 0.0,
-          "sim_wx_par": 0.0,
-          "sim_qwen_par": 0.0,
-          "sentence": "..."
-        }
-      ]
-    },
-    {
-      "dataset_index": 7,
-      "sentences": [
-        {
-          "sent_pos": 0,
-          "confidence": 0.9906,
-          "min_agreement": 0.9859,
-          "sim_wx_qwen": 0.9859,
-          "sim_wx_par": 0.9859,
-          "sim_qwen_par": 1.0,
-          "sentence": "which is just a basically you have two ends of a pitch and your goal is to reach the other end of the pitch without being tagged by someone in the middle, and no rules apply."
-        },
-        {
-          "sent_pos": 1,
-          "confidence": 1.0,
-          "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "People were beaten up, blood everywhere."
-        },
-        {
-          "sent_pos": 2,
-          "confidence": 0.6556,
+          "confidence": 0.7389,
           "min_agreement": 0.5,
-          "sim_wx_qwen": 0.8,
-          "sim_wx_par": 0.6667,
-          "sim_qwen_par": 0.5,
-          "sentence": "Ah, good times."
+          "sim_qwen_whisperx": 0.8,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 0.6667,
+          "sim_whisperx_parakeet": 0.8,
+          "sim_whisperx_wav2vec2": 0.5,
+          "sim_parakeet_wav2vec2": 0.6667,
+          "sentence": "Let's start with the first one."
+        },
+        {
+          "sent_pos": 2,
+          "confidence": 0.9583,
+          "min_agreement": 0.9167,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 0.9167,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 0.9167,
+          "sim_parakeet_wav2vec2": 0.9167,
+          "sentence": "When you were a kid, what kinds of games did you play?"
+        },
+        {
+          "sent_pos": 3,
+          "confidence": 0.9,
+          "min_agreement": 0.8,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 0.8,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 0.8,
+          "sim_parakeet_wav2vec2": 0.8,
+          "sentence": "Is there one you remember well?"
+        },
+        {
+          "sent_pos": 4,
+          "confidence": 0.8204,
+          "min_agreement": 0.6667,
+          "sim_qwen_whisperx": 0.9474,
+          "sim_qwen_parakeet": 0.9524,
+          "sim_qwen_wav2vec2": 0.7059,
+          "sim_whisperx_parakeet": 0.9,
+          "sim_whisperx_wav2vec2": 0.75,
+          "sim_parakeet_wav2vec2": 0.6667,
+          "sentence": "Right, you can go first because you had a game."
         }
       ]
     },
     {
-      "dataset_index": 8,
+      "dataset_index": 5,
       "sentences": [
         {
           "sent_pos": 0,
-          "confidence": 1.0,
-          "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "Was it tagged or was it tackled?"
+          "confidence": 0.9445,
+          "min_agreement": 0.8889,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 0.8889,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 0.8889,
+          "sim_parakeet_wav2vec2": 0.8889,
+          "sentence": "Well, obviously there's British Bulldogs."
         }
       ]
     },
@@ -137,35 +159,66 @@
       "sentences": [
         {
           "sent_pos": 0,
-          "confidence": 0.8426,
-          "min_agreement": 0.75,
-          "sim_wx_qwen": 0.8889,
-          "sim_wx_par": 0.8889,
-          "sim_qwen_par": 0.75,
-          "sentence": "Uh, school rules were tag."
-        },
-        {
-          "sent_pos": 1,
-          "confidence": 0.9048,
-          "min_agreement": 0.8571,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 0.8571,
-          "sim_qwen_par": 0.8571,
-          "sentence": "School rules were tight"
+          "confidence": 0.8301,
+          "min_agreement": 0.6667,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 0.8571,
+          "sim_qwen_wav2vec2": 0.8,
+          "sim_whisperx_parakeet": 0.8571,
+          "sim_whisperx_wav2vec2": 0.8,
+          "sim_parakeet_wav2vec2": 0.6667,
+          "sentence": "School rules were tight."
         }
       ]
     },
     {
-      "dataset_index": 11,
+      "dataset_index": 10,
       "sentences": [
         {
           "sent_pos": 0,
-          "confidence": 0.6,
-          "min_agreement": 0.4,
-          "sim_wx_qwen": 0.4,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 0.4,
-          "sentence": "Power rules for that."
+          "confidence": 0.8333,
+          "min_agreement": 0.6667,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 0.6667,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 0.6667,
+          "sim_parakeet_wav2vec2": 0.6667,
+          "sentence": "Oh, okay."
+        }
+      ]
+    },
+    {
+      "dataset_index": 12,
+      "sentences": [
+        {
+          "sent_pos": 0,
+          "confidence": 0.9762,
+          "min_agreement": 0.9524,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 0.9524,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 0.9524,
+          "sim_parakeet_wav2vec2": 0.9524,
+          "sentence": "Back when I was a kid, it was, yeah, you'd have to be tackled to the floor for it to count."
+        }
+      ]
+    },
+    {
+      "dataset_index": 13,
+      "sentences": [
+        {
+          "sent_pos": 0,
+          "confidence": 1.0,
+          "min_agreement": 1.0,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
+          "sentence": "Yeah."
         }
       ]
     },
@@ -174,21 +227,44 @@
       "sentences": [
         {
           "sent_pos": 0,
-          "confidence": 1.0,
-          "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
+          "confidence": 0.9445,
+          "min_agreement": 0.8889,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 0.8889,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 0.8889,
+          "sim_parakeet_wav2vec2": 0.8889,
           "sentence": "So it was quite brutal."
         },
         {
           "sent_pos": 1,
-          "confidence": 0.8593,
-          "min_agreement": 0.7778,
-          "sim_wx_qwen": 0.9,
-          "sim_wx_par": 0.7778,
-          "sim_qwen_par": 0.9,
+          "confidence": 0.7499,
+          "min_agreement": 0.5882,
+          "sim_qwen_whisperx": 0.9,
+          "sim_qwen_parakeet": 0.9,
+          "sim_qwen_wav2vec2": 0.5882,
+          "sim_whisperx_parakeet": 0.7778,
+          "sim_whisperx_wav2vec2": 0.6667,
+          "sim_parakeet_wav2vec2": 0.6667,
           "sentence": "You could it was quick, very quickly banned as a game."
+        }
+      ]
+    },
+    {
+      "dataset_index": 15,
+      "sentences": [
+        {
+          "sent_pos": 0,
+          "confidence": 0.7857,
+          "min_agreement": 0.6667,
+          "sim_qwen_whisperx": 0.9091,
+          "sim_qwen_parakeet": 0.9167,
+          "sim_qwen_wav2vec2": 0.6667,
+          "sim_whisperx_parakeet": 0.8182,
+          "sim_whisperx_wav2vec2": 0.7368,
+          "sim_parakeet_wav2vec2": 0.6667,
+          "sentence": "Yeah, when our school didn't have any grass fields, it was just."
         }
       ]
     },
@@ -199,42 +275,13 @@
           "sent_pos": 0,
           "confidence": 1.0,
           "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "Nice."
-        },
-        {
-          "sent_pos": 1,
-          "confidence": 1.0,
-          "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
           "sentence": "like."
-        },
-        {
-          "sent_pos": 2,
-          "confidence": 1.0,
-          "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "than"
-        }
-      ]
-    },
-    {
-      "dataset_index": 17,
-      "sentences": [
-        {
-          "sent_pos": 0,
-          "confidence": 0.7778,
-          "min_agreement": 0.6667,
-          "sim_wx_qwen": 0.6667,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 0.6667,
-          "sentence": "Storm playground."
         }
       ]
     },
@@ -245,9 +292,12 @@
           "sent_pos": 0,
           "confidence": 0.8667,
           "min_agreement": 0.8,
-          "sim_wx_qwen": 0.8,
-          "sim_wx_par": 0.8,
-          "sim_qwen_par": 1.0,
+          "sim_qwen_whisperx": 0.8,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 0.8,
+          "sim_whisperx_parakeet": 0.8,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 0.8,
           "sentence": "That would suck."
         }
       ]
@@ -259,33 +309,13 @@
           "sent_pos": 0,
           "confidence": 1.0,
           "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
           "sentence": "It does hurt."
-        }
-      ]
-    },
-    {
-      "dataset_index": 20,
-      "sentences": [
-        {
-          "sent_pos": 0,
-          "confidence": 0.9259,
-          "min_agreement": 0.8889,
-          "sim_wx_qwen": 0.8889,
-          "sim_wx_par": 0.8889,
-          "sim_qwen_par": 1.0,
-          "sentence": "That would not go well."
-        },
-        {
-          "sent_pos": 1,
-          "confidence": 0.7224,
-          "min_agreement": 0.5714,
-          "sim_wx_qwen": 0.9,
-          "sim_wx_par": 0.5714,
-          "sim_qwen_par": 0.6957,
-          "sentence": "Similar to that, I played lots of sharks and fishes in like"
         }
       ]
     },
@@ -296,88 +326,13 @@
           "sent_pos": 0,
           "confidence": 1.0,
           "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "David Stegall \u2013 Even"
-        }
-      ]
-    },
-    {
-      "dataset_index": 22,
-      "sentences": [
-        {
-          "sent_pos": 0,
-          "confidence": 1.0,
-          "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "sports camps and whatnot."
-        }
-      ]
-    },
-    {
-      "dataset_index": 23,
-      "sentences": [
-        {
-          "sent_pos": 0,
-          "confidence": 0.7778,
-          "min_agreement": 0.6667,
-          "sim_wx_qwen": 0.6667,
-          "sim_wx_par": 0.6667,
-          "sim_qwen_par": 1.0,
-          "sentence": "We do."
-        }
-      ]
-    },
-    {
-      "dataset_index": 24,
-      "sentences": [
-        {
-          "sent_pos": 0,
-          "confidence": 0.9608,
-          "min_agreement": 0.9412,
-          "sim_wx_qwen": 0.9412,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 0.9412,
-          "sentence": "The idea is it's essentially the same as bulldog."
-        },
-        {
-          "sent_pos": 1,
-          "confidence": 0.5778,
-          "min_agreement": 0.5333,
-          "sim_wx_qwen": 0.5333,
-          "sim_wx_par": 0.5333,
-          "sim_qwen_par": 0.6667,
-          "sentence": "You have to drown one day in the field."
-        },
-        {
-          "sent_pos": 2,
-          "confidence": 1.0,
-          "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "There's one person who's the shark or maybe two people, and they can move any direction."
-        },
-        {
-          "sent_pos": 3,
-          "confidence": 1.0,
-          "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "And if they take you, you become seaweed and you can't move your feet."
-        },
-        {
-          "sent_pos": 4,
-          "confidence": 1.0,
-          "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "You can like lean out to catch people."
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
+          "sentence": "Um."
         }
       ]
     },
@@ -388,24 +343,13 @@
           "sent_pos": 0,
           "confidence": 1.0,
           "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "Right."
-        }
-      ]
-    },
-    {
-      "dataset_index": 26,
-      "sentences": [
-        {
-          "sent_pos": 0,
-          "confidence": 0.8133,
-          "min_agreement": 0.72,
-          "sim_wx_qwen": 0.72,
-          "sim_wx_par": 0.72,
-          "sim_qwen_par": 1.0,
-          "sentence": "The idea was to be more and more obstacles as more and more people were caught."
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
+          "sentence": "Thank you."
         }
       ]
     },
@@ -416,42 +360,13 @@
           "sent_pos": 0,
           "confidence": 1.0,
           "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "you"
-        }
-      ]
-    },
-    {
-      "dataset_index": 28,
-      "sentences": [
-        {
-          "sent_pos": 0,
-          "confidence": 1.0,
-          "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "And then if the game was dragging on, the seaweed would become crabs."
-        },
-        {
-          "sent_pos": 1,
-          "confidence": 0.9394,
-          "min_agreement": 0.9091,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 0.9091,
-          "sim_qwen_par": 0.9091,
-          "sentence": "They could move side to side, but not forwards and backwards."
-        },
-        {
-          "sent_pos": 2,
-          "confidence": 0.849,
-          "min_agreement": 0.8235,
-          "sim_wx_qwen": 0.9,
-          "sim_wx_par": 0.8235,
-          "sim_qwen_par": 0.8235,
-          "sentence": "So it was really, it was quite a little bit."
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
+          "sentence": "Yeah."
         }
       ]
     },
@@ -460,40 +375,109 @@
       "sentences": [
         {
           "sent_pos": 0,
-          "confidence": 0.709,
-          "min_agreement": 0.5714,
-          "sim_wx_qwen": 0.8889,
-          "sim_wx_par": 0.5714,
-          "sim_qwen_par": 0.6667,
-          "sentence": "It's quite creative actually, yeah."
+          "confidence": 0.5997,
+          "min_agreement": 0.4,
+          "sim_qwen_whisperx": 0.8889,
+          "sim_qwen_parakeet": 0.5714,
+          "sim_qwen_wav2vec2": 0.5,
+          "sim_whisperx_parakeet": 0.6667,
+          "sim_whisperx_wav2vec2": 0.5714,
+          "sim_parakeet_wav2vec2": 0.4,
+          "sentence": "That's quite creative, actually. Yeah."
         }
       ]
     },
     {
-      "dataset_index": 31,
-      "sentences": [
-        {
-          "sent_pos": 0,
-          "confidence": 0.8788,
-          "min_agreement": 0.8182,
-          "sim_wx_qwen": 0.9091,
-          "sim_wx_par": 0.8182,
-          "sim_qwen_par": 0.9091,
-          "sentence": "And was that tackle to the ground type thing as well?"
-        }
-      ]
-    },
-    {
-      "dataset_index": 33,
+      "dataset_index": 30,
       "sentences": [
         {
           "sent_pos": 0,
           "confidence": 1.0,
           "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "We."
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
+          "sentence": "It was very fun, though."
+        },
+        {
+          "sent_pos": 1,
+          "confidence": 0.9285,
+          "min_agreement": 0.8571,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 0.8571,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 0.8571,
+          "sim_parakeet_wav2vec2": 0.8571,
+          "sentence": "I love playing it."
+        },
+        {
+          "sent_pos": 2,
+          "confidence": 0.6749,
+          "min_agreement": 0.5,
+          "sim_qwen_whisperx": 0.6667,
+          "sim_qwen_parakeet": 0.7273,
+          "sim_qwen_wav2vec2": 0.8889,
+          "sim_whisperx_parakeet": 0.5,
+          "sim_whisperx_wav2vec2": 0.6,
+          "sim_parakeet_wav2vec2": 0.6667,
+          "sentence": "I always play it last."
+        },
+        {
+          "sent_pos": 3,
+          "confidence": 0.9,
+          "min_agreement": 0.8,
+          "sim_qwen_whisperx": 0.8,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 0.8,
+          "sim_whisperx_wav2vec2": 0.8,
+          "sim_parakeet_wav2vec2": 1.0,
+          "sentence": "It lasts like two or three."
+        },
+        {
+          "sent_pos": 4,
+          "confidence": 1.0,
+          "min_agreement": 1.0,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
+          "sentence": "So good."
+        }
+      ]
+    },
+    {
+      "dataset_index": 32,
+      "sentences": [
+        {
+          "sent_pos": 0,
+          "confidence": 1.0,
+          "min_agreement": 1.0,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
+          "sentence": "No, it's fully just tag."
+        },
+        {
+          "sent_pos": 1,
+          "confidence": 0.5333,
+          "min_agreement": 0.4,
+          "sim_qwen_whisperx": 0.5,
+          "sim_qwen_parakeet": 0.75,
+          "sim_qwen_wav2vec2": 0.4,
+          "sim_whisperx_parakeet": 0.75,
+          "sim_whisperx_wav2vec2": 0.4,
+          "sim_parakeet_wav2vec2": 0.4,
+          "sentence": "Tag to be caught."
         }
       ]
     },
@@ -502,26 +486,61 @@
       "sentences": [
         {
           "sent_pos": 0,
-          "confidence": 0.9297,
-          "min_agreement": 0.8936,
-          "sim_wx_qwen": 0.9787,
-          "sim_wx_par": 0.8936,
-          "sim_qwen_par": 0.9167,
-          "sentence": "did a few times where it'd be like a bib you had to pull out sometimes as well. Like you took a bib."
+          "confidence": 0.875,
+          "min_agreement": 0.8182,
+          "sim_qwen_whisperx": 0.9583,
+          "sim_qwen_parakeet": 0.9167,
+          "sim_qwen_wav2vec2": 0.8636,
+          "sim_whisperx_parakeet": 0.875,
+          "sim_whisperx_wav2vec2": 0.8182,
+          "sim_parakeet_wav2vec2": 0.8182,
+          "sentence": "I did a few times where it'd be like like a bib you had to pull out sometimes as well, like you took a bib."
         }
       ]
     },
     {
-      "dataset_index": 35,
+      "dataset_index": 36,
       "sentences": [
         {
           "sent_pos": 0,
-          "confidence": 0.7778,
-          "min_agreement": 0.6667,
-          "sim_wx_qwen": 0.6667,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 0.6667,
-          "sentence": "to your"
+          "confidence": 0.9102,
+          "min_agreement": 0.8571,
+          "sim_qwen_whisperx": 0.8889,
+          "sim_qwen_parakeet": 0.9474,
+          "sim_qwen_wav2vec2": 0.8571,
+          "sim_whisperx_parakeet": 0.9444,
+          "sim_whisperx_wav2vec2": 0.9091,
+          "sim_parakeet_wav2vec2": 0.9143,
+          "sentence": "Your shorts, and you had to like yank it out in time for it to count as a catch."
+        },
+        {
+          "sent_pos": 1,
+          "confidence": 0.9116,
+          "min_agreement": 0.8571,
+          "sim_qwen_whisperx": 0.9412,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 0.8649,
+          "sim_whisperx_parakeet": 0.9412,
+          "sim_whisperx_wav2vec2": 0.8571,
+          "sim_parakeet_wav2vec2": 0.8649,
+          "sentence": "I think that was when we were playing touch rugby, so we could practice, you know, touch tackles."
+        }
+      ]
+    },
+    {
+      "dataset_index": 37,
+      "sentences": [
+        {
+          "sent_pos": 0,
+          "confidence": 1.0,
+          "min_agreement": 1.0,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
+          "sentence": "Yeah."
         }
       ]
     },
@@ -532,47 +551,37 @@
           "sent_pos": 0,
           "confidence": 1.0,
           "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "Um,"
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
+          "sentence": "Um."
         },
         {
           "sent_pos": 1,
           "confidence": 1.0,
           "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
+          "sentence": "Yeah."
+        },
+        {
+          "sent_pos": 2,
+          "confidence": 1.0,
+          "min_agreement": 1.0,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
           "sentence": "them"
-        }
-      ]
-    },
-    {
-      "dataset_index": 39,
-      "sentences": [
-        {
-          "sent_pos": 0,
-          "confidence": 1.0,
-          "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "That makes sense."
-        }
-      ]
-    },
-    {
-      "dataset_index": 40,
-      "sentences": [
-        {
-          "sent_pos": 0,
-          "confidence": 1.0,
-          "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "Good fun."
         }
       ]
     },
@@ -581,12 +590,32 @@
       "sentences": [
         {
           "sent_pos": 0,
-          "confidence": 0.5079,
-          "min_agreement": 0.2857,
-          "sim_wx_qwen": 0.2857,
-          "sim_wx_par": 0.5714,
-          "sim_qwen_par": 0.6667,
-          "sentence": "So it's safer."
+          "confidence": 0.75,
+          "min_agreement": 0.5,
+          "sim_qwen_whisperx": 0.5,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 0.5,
+          "sim_whisperx_wav2vec2": 0.5,
+          "sim_parakeet_wav2vec2": 1.0,
+          "sentence": "So what's safer?"
+        }
+      ]
+    },
+    {
+      "dataset_index": 42,
+      "sentences": [
+        {
+          "sent_pos": 0,
+          "confidence": 0.7941,
+          "min_agreement": 0.5882,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 0.5882,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 0.5882,
+          "sim_parakeet_wav2vec2": 0.5882,
+          "sentence": "Do you do much dodgeball when you're in primary school?"
         }
       ]
     },
@@ -595,12 +624,73 @@
       "sentences": [
         {
           "sent_pos": 0,
-          "confidence": 0.8009,
-          "min_agreement": 0.7692,
-          "sim_wx_qwen": 0.7692,
-          "sim_wx_par": 0.8333,
-          "sim_qwen_par": 0.8,
-          "sentence": "No, mostly in secondary school. Was there any bulletproof?"
+          "confidence": 0.75,
+          "min_agreement": 0.5,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 0.5,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 0.5,
+          "sim_parakeet_wav2vec2": 0.5,
+          "sentence": "No, mostly in secondary school."
+        },
+        {
+          "sent_pos": 1,
+          "confidence": 0.6667,
+          "min_agreement": 0.5,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 0.5,
+          "sim_qwen_wav2vec2": 0.5,
+          "sim_whisperx_parakeet": 0.5,
+          "sim_whisperx_wav2vec2": 0.5,
+          "sim_parakeet_wav2vec2": 1.0,
+          "sentence": "Is there any?"
+        }
+      ]
+    },
+    {
+      "dataset_index": 44,
+      "sentences": [
+        {
+          "sent_pos": 0,
+          "confidence": 0.7778,
+          "min_agreement": 0.6667,
+          "sim_qwen_whisperx": 0.6667,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 0.6667,
+          "sim_whisperx_parakeet": 0.6667,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 0.6667,
+          "sentence": "Ball games."
+        }
+      ]
+    },
+    {
+      "dataset_index": 45,
+      "sentences": [
+        {
+          "sent_pos": 0,
+          "confidence": 0.7778,
+          "min_agreement": 0.6667,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 0.6667,
+          "sim_qwen_wav2vec2": 0.6667,
+          "sim_whisperx_parakeet": 0.6667,
+          "sim_whisperx_wav2vec2": 0.6667,
+          "sim_parakeet_wav2vec2": 1.0,
+          "sentence": "Any problem?"
+        },
+        {
+          "sent_pos": 1,
+          "confidence": 0.6262,
+          "min_agreement": 0.5,
+          "sim_qwen_whisperx": 0.875,
+          "sim_qwen_parakeet": 0.7059,
+          "sim_qwen_wav2vec2": 0.5,
+          "sim_whisperx_parakeet": 0.5882,
+          "sim_whisperx_wav2vec2": 0.5,
+          "sim_parakeet_wav2vec2": 0.5882,
+          "sentence": "We did like softball, whatever it's called, rounders."
         }
       ]
     },
@@ -609,12 +699,32 @@
       "sentences": [
         {
           "sent_pos": 0,
+          "confidence": 0.8333,
+          "min_agreement": 0.6667,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 0.6667,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 0.6667,
+          "sim_parakeet_wav2vec2": 0.6667,
+          "sentence": "In primary."
+        }
+      ]
+    },
+    {
+      "dataset_index": 47,
+      "sentences": [
+        {
+          "sent_pos": 0,
           "confidence": 1.0,
           "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "in primary."
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
+          "sentence": "Yeah."
         }
       ]
     },
@@ -623,58 +733,51 @@
       "sentences": [
         {
           "sent_pos": 0,
+          "confidence": 1.0,
+          "min_agreement": 1.0,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
+          "sentence": "Oh, wow."
+        },
+        {
+          "sent_pos": 1,
           "confidence": 0.9167,
-          "min_agreement": 0.875,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 0.875,
-          "sim_qwen_par": 0.875,
-          "sentence": "Oh wow, we had a fair bit of dodgeball."
+          "min_agreement": 0.8333,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 0.8333,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 0.8333,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 0.8333,
+          "sentence": "We had a fair bit of dodgeball."
         },
         {
-          "sent_pos": 1,
-          "confidence": 1.0,
-          "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "It's never outside. It's always in PE though."
-        }
-      ]
-    },
-    {
-      "dataset_index": 49,
-      "sentences": [
-        {
-          "sent_pos": 0,
-          "confidence": 1.0,
-          "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "Hmm."
+          "sent_pos": 2,
+          "confidence": 0.9,
+          "min_agreement": 0.8,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 0.8,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 0.8,
+          "sim_parakeet_wav2vec2": 0.8,
+          "sentence": "It's never outside."
         },
         {
-          "sent_pos": 1,
+          "sent_pos": 3,
           "confidence": 1.0,
           "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "Right."
-        }
-      ]
-    },
-    {
-      "dataset_index": 50,
-      "sentences": [
-        {
-          "sent_pos": 0,
-          "confidence": 0.9556,
-          "min_agreement": 0.9333,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 0.9333,
-          "sim_qwen_par": 0.9333,
-          "sentence": "And we played two variations of it. You know, the American style where you just throw it from the side of the pitch."
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
+          "sentence": "It's always in PE, though."
         }
       ]
     },
@@ -685,10 +788,47 @@
           "sent_pos": 0,
           "confidence": 1.0,
           "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
           "sentence": "Yeah."
+        }
+      ]
+    },
+    {
+      "dataset_index": 52,
+      "sentences": [
+        {
+          "sent_pos": 0,
+          "confidence": 0.9425,
+          "min_agreement": 0.898,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 0.96,
+          "sim_qwen_wav2vec2": 0.898,
+          "sim_whisperx_parakeet": 0.96,
+          "sim_whisperx_wav2vec2": 0.898,
+          "sim_parakeet_wav2vec2": 0.9388,
+          "sentence": "And then there was like a Tig style where you like chase the person with the ball, and just throw it at them, which, like."
+        }
+      ]
+    },
+    {
+      "dataset_index": 53,
+      "sentences": [
+        {
+          "sent_pos": 0,
+          "confidence": 0.9285,
+          "min_agreement": 0.8571,
+          "sim_qwen_whisperx": 0.8571,
+          "sim_qwen_parakeet": 0.8571,
+          "sim_qwen_wav2vec2": 0.8571,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
+          "sentence": "It's a bit weird."
         }
       ]
     },
@@ -699,116 +839,54 @@
           "sent_pos": 0,
           "confidence": 1.0,
           "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
           "sentence": "Looking back, how on earth could you ever beat that?"
         }
       ]
     },
     {
-      "dataset_index": 55,
+      "dataset_index": 60,
       "sentences": [
         {
           "sent_pos": 0,
-          "confidence": 1.0,
-          "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "Yeah."
-        }
-      ]
-    },
-    {
-      "dataset_index": 56,
-      "sentences": [
-        {
-          "sent_pos": 0,
-          "confidence": 0.9048,
-          "min_agreement": 0.8571,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 0.8571,
-          "sim_qwen_par": 0.8571,
-          "sentence": "I suppose the people are just really bad at throwing because they're really quite young."
+          "confidence": 0.8333,
+          "min_agreement": 0.6667,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 0.6667,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 0.6667,
+          "sim_parakeet_wav2vec2": 0.6667,
+          "sentence": "primary school."
         },
         {
           "sent_pos": 1,
-          "confidence": 0.9608,
-          "min_agreement": 0.9412,
-          "sim_wx_qwen": 0.9412,
-          "sim_wx_par": 0.9412,
-          "sim_qwen_par": 1.0,
-          "sentence": "We're all really young, but it's still very weird."
-        }
-      ]
-    },
-    {
-      "dataset_index": 57,
-      "sentences": [
-        {
-          "sent_pos": 0,
-          "confidence": 1.0,
-          "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "Yeah. Was your primary school pretty big?"
-        }
-      ]
-    },
-    {
-      "dataset_index": 58,
-      "sentences": [
-        {
-          "sent_pos": 0,
-          "confidence": 1.0,
-          "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "Yeah, big, big hall for the size."
-        },
-        {
-          "sent_pos": 1,
-          "confidence": 1.0,
-          "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "I remember going back there when I was a lot older and I remember seeing the basketball hoops in the hall"
+          "confidence": 0.9361,
+          "min_agreement": 0.8824,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 0.9714,
+          "sim_qwen_wav2vec2": 0.8824,
+          "sim_whisperx_parakeet": 0.9714,
+          "sim_whisperx_wav2vec2": 0.8824,
+          "sim_parakeet_wav2vec2": 0.9091,
+          "sentence": "It wasn't even seven feet, so it was very fun to go back there and then mess about there."
         },
         {
           "sent_pos": 2,
-          "confidence": 0.9394,
-          "min_agreement": 0.9091,
-          "sim_wx_qwen": 0.9545,
-          "sim_wx_par": 0.9091,
-          "sim_qwen_par": 0.9545,
-          "sentence": "and I could like dunk on them, which is so weird because basketball hoops are supposed to be like ten feet tall"
-        },
-        {
-          "sent_pos": 3,
-          "confidence": 1.0,
-          "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "and at the"
-        }
-      ]
-    },
-    {
-      "dataset_index": 59,
-      "sentences": [
-        {
-          "sent_pos": 0,
-          "confidence": 1.0,
-          "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "Yeah."
+          "confidence": 0.7405,
+          "min_agreement": 0.5714,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 0.75,
+          "sim_qwen_wav2vec2": 0.5714,
+          "sim_whisperx_parakeet": 0.75,
+          "sim_whisperx_wav2vec2": 0.5714,
+          "sim_parakeet_wav2vec2": 0.8,
+          "sentence": "After I did some coaching."
         }
       ]
     },
@@ -819,33 +897,13 @@
           "sent_pos": 0,
           "confidence": 1.0,
           "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "Yes."
-        }
-      ]
-    },
-    {
-      "dataset_index": 62,
-      "sentences": [
-        {
-          "sent_pos": 0,
-          "confidence": 0.9649,
-          "min_agreement": 0.9474,
-          "sim_wx_qwen": 0.9474,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 0.9474,
-          "sentence": "Did you have a favorite book, film or TV show, or cartoon as a child? What was it about?"
-        },
-        {
-          "sent_pos": 1,
-          "confidence": 0.977,
-          "min_agreement": 0.9655,
-          "sim_wx_qwen": 0.9655,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 0.9655,
-          "sentence": "Did you have a favourite book, film, or TV show, or cartoon as a child? What was it about?"
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
+          "sentence": "Yeah."
         }
       ]
     },
@@ -854,12 +912,32 @@
       "sentences": [
         {
           "sent_pos": 0,
+          "confidence": 0.8333,
+          "min_agreement": 0.6667,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 0.6667,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 0.6667,
+          "sim_parakeet_wav2vec2": 0.6667,
+          "sentence": "Honestly, I don't recall."
+        }
+      ]
+    },
+    {
+      "dataset_index": 64,
+      "sentences": [
+        {
+          "sent_pos": 0,
           "confidence": 1.0,
           "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "Honestly, I don't recall."
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
+          "sentence": "Nothing."
         }
       ]
     },
@@ -870,102 +948,47 @@
           "sent_pos": 0,
           "confidence": 1.0,
           "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "Yeah."
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
+          "sentence": "Hmm."
         }
       ]
     },
     {
-      "dataset_index": 67,
+      "dataset_index": 66,
       "sentences": [
         {
           "sent_pos": 0,
-          "confidence": 0.3333,
-          "min_agreement": 0.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 0.0,
-          "sim_qwen_par": 0.0,
-          "sentence": "into TV."
-        },
-        {
-          "sent_pos": 1,
-          "confidence": 0.8667,
-          "min_agreement": 0.8,
-          "sim_wx_qwen": 0.8,
-          "sim_wx_par": 0.8,
-          "sim_qwen_par": 1.0,
-          "sentence": "Go to TV."
-        },
-        {
-          "sent_pos": 2,
-          "confidence": 1.0,
-          "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "into te"
+          "confidence": 0.509,
+          "min_agreement": 0.1667,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 0.7619,
+          "sim_qwen_wav2vec2": 0.1818,
+          "sim_whisperx_parakeet": 0.7619,
+          "sim_whisperx_wav2vec2": 0.1818,
+          "sim_parakeet_wav2vec2": 0.1667,
+          "sentence": "What were the go-to TV shows back in the childhood?"
         }
       ]
     },
     {
-      "dataset_index": 68,
+      "dataset_index": 69,
       "sentences": [
         {
           "sent_pos": 0,
-          "confidence": 1.0,
-          "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "Okay."
-        },
-        {
-          "sent_pos": 1,
-          "confidence": 1.0,
-          "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "Oh."
-        }
-      ]
-    },
-    {
-      "dataset_index": 70,
-      "sentences": [
-        {
-          "sent_pos": 0,
-          "confidence": 1.0,
-          "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "LazyTown was a big one for me."
-        },
-        {
-          "sent_pos": 1,
-          "confidence": 0.875,
-          "min_agreement": 0.875,
-          "sim_wx_qwen": 0.875,
-          "sim_wx_par": 0.875,
-          "sim_qwen_par": 0.875,
-          "sentence": "Lazy Town was a big one for me."
-        }
-      ]
-    },
-    {
-      "dataset_index": 71,
-      "sentences": [
-        {
-          "sent_pos": 0,
-          "confidence": 1.0,
-          "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "Yeah."
+          "confidence": 0.7778,
+          "min_agreement": 0.6667,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 0.6667,
+          "sim_qwen_wav2vec2": 0.6667,
+          "sim_whisperx_parakeet": 0.6667,
+          "sim_whisperx_wav2vec2": 0.6667,
+          "sim_parakeet_wav2vec2": 1.0,
+          "sentence": "Obviously, Scooby-Doo."
         }
       ]
     },
@@ -974,21 +997,32 @@
       "sentences": [
         {
           "sent_pos": 0,
-          "confidence": 0.6845,
-          "min_agreement": 0.5714,
-          "sim_wx_qwen": 0.625,
-          "sim_wx_par": 0.8571,
-          "sim_qwen_par": 0.5714,
+          "confidence": 0.5005,
+          "min_agreement": 0.2222,
+          "sim_qwen_whisperx": 0.625,
+          "sim_qwen_parakeet": 0.5714,
+          "sim_qwen_wav2vec2": 0.3636,
+          "sim_whisperx_parakeet": 0.8571,
+          "sim_whisperx_wav2vec2": 0.3636,
+          "sim_parakeet_wav2vec2": 0.2222,
           "sentence": "Do you want to describe what Scooby-Doo was?"
-        },
+        }
+      ]
+    },
+    {
+      "dataset_index": 73,
+      "sentences": [
         {
-          "sent_pos": 1,
-          "confidence": 0.7574,
-          "min_agreement": 0.625,
-          "sim_wx_qwen": 0.625,
-          "sim_wx_par": 0.8235,
-          "sim_qwen_par": 0.8235,
-          "sentence": "Do you wanna describe what Scooby Doo was?"
+          "sent_pos": 0,
+          "confidence": 0.9285,
+          "min_agreement": 0.8571,
+          "sim_qwen_whisperx": 0.8571,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 0.8571,
+          "sim_whisperx_wav2vec2": 0.8571,
+          "sim_parakeet_wav2vec2": 1.0,
+          "sentence": "Honestly, even now I can't describe it."
         }
       ]
     },
@@ -999,24 +1033,13 @@
           "sent_pos": 0,
           "confidence": 1.0,
           "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "you"
-        }
-      ]
-    },
-    {
-      "dataset_index": 75,
-      "sentences": [
-        {
-          "sent_pos": 0,
-          "confidence": 0.7778,
-          "min_agreement": 0.6667,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 0.6667,
-          "sim_qwen_par": 0.6667,
-          "sentence": "It's a force of nature."
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
+          "sentence": "Yeah."
         }
       ]
     },
@@ -1027,9 +1050,12 @@
           "sent_pos": 0,
           "confidence": 1.0,
           "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
           "sentence": "It's really quite something."
         }
       ]
@@ -1041,10 +1067,196 @@
           "sent_pos": 0,
           "confidence": 1.0,
           "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "Yeah."
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
+          "sentence": "Okay."
+        }
+      ]
+    },
+    {
+      "dataset_index": 78,
+      "sentences": [
+        {
+          "sent_pos": 0,
+          "confidence": 0.5062,
+          "min_agreement": 0.2,
+          "sim_qwen_whisperx": 0.6667,
+          "sim_qwen_parakeet": 0.8235,
+          "sim_qwen_wav2vec2": 0.2222,
+          "sim_whisperx_parakeet": 0.875,
+          "sim_whisperx_wav2vec2": 0.25,
+          "sim_parakeet_wav2vec2": 0.2,
+          "sentence": "I think I'm going to give it a shot."
+        },
+        {
+          "sent_pos": 1,
+          "confidence": 0.6518,
+          "min_agreement": 0.3333,
+          "sim_qwen_whisperx": 0.8889,
+          "sim_qwen_parakeet": 0.8889,
+          "sim_qwen_wav2vec2": 0.3333,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 0.4,
+          "sim_parakeet_wav2vec2": 0.4,
+          "sentence": "I'll give it a shot."
+        }
+      ]
+    },
+    {
+      "dataset_index": 79,
+      "sentences": [
+        {
+          "sent_pos": 0,
+          "confidence": 1.0,
+          "min_agreement": 1.0,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
+          "sentence": "The idea,"
+        }
+      ]
+    },
+    {
+      "dataset_index": 80,
+      "sentences": [
+        {
+          "sent_pos": 0,
+          "confidence": 0.7065,
+          "min_agreement": 0.6,
+          "sim_qwen_whisperx": 0.8889,
+          "sim_qwen_parakeet": 0.6667,
+          "sim_qwen_wav2vec2": 0.75,
+          "sim_whisperx_parakeet": 0.6,
+          "sim_whisperx_wav2vec2": 0.6667,
+          "sim_parakeet_wav2vec2": 0.6667,
+          "sentence": "There's this quote-unquote mystery gang."
+        },
+        {
+          "sent_pos": 1,
+          "confidence": 0.9163,
+          "min_agreement": 0.8333,
+          "sim_qwen_whisperx": 0.9091,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 0.9231,
+          "sim_whisperx_parakeet": 0.9091,
+          "sim_whisperx_wav2vec2": 0.8333,
+          "sim_parakeet_wav2vec2": 0.9231,
+          "sentence": "These five people and one talking dog."
+        },
+        {
+          "sent_pos": 2,
+          "confidence": 1.0,
+          "min_agreement": 1.0,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
+          "sentence": "And they'd go and solve mysteries."
+        },
+        {
+          "sent_pos": 3,
+          "confidence": 0.75,
+          "min_agreement": 0.5,
+          "sim_qwen_whisperx": 0.875,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 0.625,
+          "sim_whisperx_parakeet": 0.875,
+          "sim_whisperx_wav2vec2": 0.5,
+          "sim_parakeet_wav2vec2": 0.625,
+          "sentence": "And they'd be like some person dressed up as a monster or ghost terrorizing some neighborhood or something."
+        },
+        {
+          "sent_pos": 4,
+          "confidence": 0.3536,
+          "min_agreement": 0.0,
+          "sim_qwen_whisperx": 0.0,
+          "sim_qwen_parakeet": 0.8,
+          "sim_qwen_wav2vec2": 0.5714,
+          "sim_whisperx_parakeet": 0.0,
+          "sim_whisperx_wav2vec2": 0.0,
+          "sim_parakeet_wav2vec2": 0.75,
+          "sentence": "And they'd try and find out who it was."
+        },
+        {
+          "sent_pos": 5,
+          "confidence": 0.5412,
+          "min_agreement": 0.3636,
+          "sim_qwen_whisperx": 0.6667,
+          "sim_qwen_parakeet": 0.6667,
+          "sim_qwen_wav2vec2": 0.3636,
+          "sim_whisperx_parakeet": 0.75,
+          "sim_whisperx_wav2vec2": 0.4,
+          "sim_parakeet_wav2vec2": 0.4,
+          "sentence": "They'd get someone to call them in like, help, we need to solve this."
+        },
+        {
+          "sent_pos": 6,
+          "confidence": 0.25,
+          "min_agreement": 0.0,
+          "sim_qwen_whisperx": 0.0,
+          "sim_qwen_parakeet": 0.0,
+          "sim_qwen_wav2vec2": 0.0,
+          "sim_whisperx_parakeet": 0.25,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 0.25,
+          "sentence": "They'd be like, okay, we're here to help."
+        },
+        {
+          "sent_pos": 7,
+          "confidence": 0.4498,
+          "min_agreement": 0.2,
+          "sim_qwen_whisperx": 0.5714,
+          "sim_qwen_parakeet": 0.2,
+          "sim_qwen_wav2vec2": 0.2,
+          "sim_whisperx_parakeet": 0.3636,
+          "sim_whisperx_wav2vec2": 0.3636,
+          "sim_parakeet_wav2vec2": 1.0,
+          "sentence": "And at the end, they'd always reveal the person."
+        },
+        {
+          "sent_pos": 8,
+          "confidence": 0.7281,
+          "min_agreement": 0.6316,
+          "sim_qwen_whisperx": 0.8421,
+          "sim_qwen_parakeet": 0.7895,
+          "sim_qwen_wav2vec2": 0.6316,
+          "sim_whisperx_parakeet": 0.7895,
+          "sim_whisperx_wav2vec2": 0.6316,
+          "sim_parakeet_wav2vec2": 0.6842,
+          "sentence": "They'd catch them in a big elaborate plan, take their mask off, and it would be one of the people that called them for help or something like that."
+        },
+        {
+          "sent_pos": 9,
+          "confidence": 0.7826,
+          "min_agreement": 0.6667,
+          "sim_qwen_whisperx": 0.7368,
+          "sim_qwen_parakeet": 0.6667,
+          "sim_qwen_wav2vec2": 0.7778,
+          "sim_whisperx_parakeet": 0.9524,
+          "sim_whisperx_wav2vec2": 0.7619,
+          "sim_parakeet_wav2vec2": 0.8,
+          "sentence": "It was always quite funny and it was always quite silly."
+        },
+        {
+          "sent_pos": 10,
+          "confidence": 0.9615,
+          "min_agreement": 0.9231,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 0.9231,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 0.9231,
+          "sim_parakeet_wav2vec2": 0.9231,
+          "sentence": "It had a very slapstick way of running"
         }
       ]
     },
@@ -1053,12 +1265,39 @@
       "sentences": [
         {
           "sent_pos": 0,
-          "confidence": 0.8667,
+          "confidence": 0.9,
           "min_agreement": 0.8,
-          "sim_wx_qwen": 0.8,
-          "sim_wx_par": 0.8,
-          "sim_qwen_par": 1.0,
+          "sim_qwen_whisperx": 0.8,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 0.8,
+          "sim_whisperx_wav2vec2": 0.8,
+          "sim_parakeet_wav2vec2": 1.0,
           "sentence": "Very, very good."
+        },
+        {
+          "sent_pos": 1,
+          "confidence": 1.0,
+          "min_agreement": 1.0,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
+          "sentence": "m thank you"
+        },
+        {
+          "sent_pos": 2,
+          "confidence": 1.0,
+          "min_agreement": 1.0,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
+          "sentence": "THEN FORGET"
         }
       ]
     },
@@ -1067,12 +1306,39 @@
       "sentences": [
         {
           "sent_pos": 0,
-          "confidence": 0.9048,
-          "min_agreement": 0.8571,
-          "sim_wx_qwen": 0.8571,
-          "sim_wx_par": 0.8571,
-          "sim_qwen_par": 1.0,
-          "sentence": "Did you watch LazyTown?"
+          "confidence": 1.0,
+          "min_agreement": 1.0,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
+          "sentence": "Yeah."
+        },
+        {
+          "sent_pos": 1,
+          "confidence": 0.9,
+          "min_agreement": 0.8,
+          "sim_qwen_whisperx": 0.8,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 0.8,
+          "sim_whisperx_wav2vec2": 0.8,
+          "sim_parakeet_wav2vec2": 1.0,
+          "sentence": "Did you know?"
+        },
+        {
+          "sent_pos": 2,
+          "confidence": 0.7786,
+          "min_agreement": 0.5714,
+          "sim_qwen_whisperx": 0.75,
+          "sim_qwen_parakeet": 0.75,
+          "sim_qwen_wav2vec2": 0.5714,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 0.8,
+          "sim_parakeet_wav2vec2": 0.8,
+          "sentence": "Did you watch Lazy Town?"
         }
       ]
     },
@@ -1081,12 +1347,44 @@
       "sentences": [
         {
           "sent_pos": 0,
+          "confidence": 0.7,
+          "min_agreement": 0.4,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 0.4,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 0.4,
+          "sim_parakeet_wav2vec2": 0.4,
+          "sentence": "No, not that much."
+        }
+      ]
+    },
+    {
+      "dataset_index": 84,
+      "sentences": [
+        {
+          "sent_pos": 0,
           "confidence": 1.0,
           "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "No, not that much."
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
+          "sentence": "Any animated ones as a child?"
+        },
+        {
+          "sent_pos": 1,
+          "confidence": 0.8333,
+          "min_agreement": 0.6667,
+          "sim_qwen_whisperx": 0.6667,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 0.6667,
+          "sim_whisperx_wav2vec2": 0.6667,
+          "sim_parakeet_wav2vec2": 1.0,
+          "sentence": "Ben Tens."
         }
       ]
     },
@@ -1097,61 +1395,13 @@
           "sent_pos": 0,
           "confidence": 1.0,
           "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
           "sentence": "No."
-        }
-      ]
-    },
-    {
-      "dataset_index": 86,
-      "sentences": [
-        {
-          "sent_pos": 0,
-          "confidence": 1.0,
-          "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "Wow."
-        }
-      ]
-    },
-    {
-      "dataset_index": 87,
-      "sentences": [
-        {
-          "sent_pos": 0,
-          "confidence": 0.6667,
-          "min_agreement": 0.5,
-          "sim_wx_qwen": 0.5,
-          "sim_wx_par": 0.5,
-          "sim_qwen_par": 1.0,
-          "sentence": "Yeah, I know."
-        },
-        {
-          "sent_pos": 1,
-          "confidence": 0.9487,
-          "min_agreement": 0.9231,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 0.9231,
-          "sim_qwen_par": 0.9231,
-          "sentence": "I was like one of the million people that hasn't actually seen an episode of Ben 10."
-        }
-      ]
-    },
-    {
-      "dataset_index": 88,
-      "sentences": [
-        {
-          "sent_pos": 0,
-          "confidence": 0.8542,
-          "min_agreement": 0.8125,
-          "sim_wx_qwen": 0.875,
-          "sim_wx_par": 0.8125,
-          "sim_qwen_par": 0.875,
-          "sentence": "Oh my goodness! Ben tends such a great show. There's no way you haven't seen that."
         }
       ]
     },
@@ -1160,11 +1410,14 @@
       "sentences": [
         {
           "sent_pos": 0,
-          "confidence": 0.9048,
+          "confidence": 0.9285,
           "min_agreement": 0.8571,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 0.8571,
-          "sim_qwen_par": 0.8571,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 0.8571,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 0.8571,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 0.8571,
           "sentence": "It just sounds awful."
         }
       ]
@@ -1176,65 +1429,25 @@
           "sent_pos": 0,
           "confidence": 1.0,
           "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
           "sentence": "It's so good."
         },
         {
           "sent_pos": 1,
-          "confidence": 1.0,
-          "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
+          "confidence": 0.9,
+          "min_agreement": 0.8,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 0.8,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 0.8,
+          "sim_parakeet_wav2vec2": 0.8,
           "sentence": "The kid can."
-        }
-      ]
-    },
-    {
-      "dataset_index": 91,
-      "sentences": [
-        {
-          "sent_pos": 0,
-          "confidence": 1.0,
-          "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "Yeah."
-        },
-        {
-          "sent_pos": 1,
-          "confidence": 0.5778,
-          "min_agreement": 0.4,
-          "sim_wx_qwen": 0.6667,
-          "sim_wx_par": 0.6667,
-          "sim_qwen_par": 0.4,
-          "sentence": "It's got a lot."
-        },
-        {
-          "sent_pos": 2,
-          "confidence": 0.7778,
-          "min_agreement": 0.6667,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 0.6667,
-          "sim_qwen_par": 0.6667,
-          "sentence": "got for"
-        }
-      ]
-    },
-    {
-      "dataset_index": 92,
-      "sentences": [
-        {
-          "sent_pos": 0,
-          "confidence": 1.0,
-          "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "Yeah."
         }
       ]
     },
@@ -1245,9 +1458,12 @@
           "sent_pos": 0,
           "confidence": 1.0,
           "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
           "sentence": "Okay."
         }
       ]
@@ -1257,85 +1473,104 @@
       "sentences": [
         {
           "sent_pos": 0,
-          "confidence": 0.9524,
-          "min_agreement": 0.9286,
-          "sim_wx_qwen": 0.9286,
-          "sim_wx_par": 0.9286,
-          "sim_qwen_par": 1.0,
-          "sentence": "He can press his watch and then turn into any of these ten heroes."
+          "confidence": 0.9508,
+          "min_agreement": 0.9,
+          "sim_qwen_whisperx": 0.9524,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 0.95,
+          "sim_whisperx_parakeet": 0.9524,
+          "sim_whisperx_wav2vec2": 0.9,
+          "sim_parakeet_wav2vec2": 0.95,
+          "sentence": "He can press his watch and then turn into any of these ten heroes, but it's like I think it's random."
         },
         {
           "sent_pos": 1,
-          "confidence": 1.0,
-          "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "But it's like, I think it's random. At least it's random in the first series or it's random at some part."
+          "confidence": 0.875,
+          "min_agreement": 0.75,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 0.75,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 0.75,
+          "sim_parakeet_wav2vec2": 0.75,
+          "sentence": "At least it's random in the first series, or it's random at some part."
         },
         {
           "sent_pos": 2,
-          "confidence": 1.0,
-          "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "And they're all really cool ones."
+          "confidence": 0.7486,
+          "min_agreement": 0.6154,
+          "sim_qwen_whisperx": 0.8372,
+          "sim_qwen_parakeet": 0.8696,
+          "sim_qwen_wav2vec2": 0.619,
+          "sim_whisperx_parakeet": 0.8837,
+          "sim_whisperx_wav2vec2": 0.6154,
+          "sim_parakeet_wav2vec2": 0.6667,
+          "sentence": "And they're all really cool ones, and there are lots of spin-off games based on it, which were all really fun to play."
         },
         {
           "sent_pos": 3,
-          "confidence": 0.8604,
-          "min_agreement": 0.8276,
-          "sim_wx_qwen": 0.8571,
-          "sim_wx_par": 0.8966,
-          "sim_qwen_par": 0.8276,
-          "sentence": "Lots of spin-off games based on it, which are all really fun to play."
+          "confidence": 0.3988,
+          "min_agreement": 0.2222,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 0.2222,
+          "sim_qwen_wav2vec2": 0.3077,
+          "sim_whisperx_parakeet": 0.2222,
+          "sim_whisperx_wav2vec2": 0.3077,
+          "sim_parakeet_wav2vec2": 0.3333,
+          "sentence": "I was a big Ben 10 fan."
         },
         {
           "sent_pos": 4,
-          "confidence": 0.3956,
-          "min_agreement": 0.1905,
-          "sim_wx_qwen": 0.7857,
-          "sim_wx_par": 0.1905,
-          "sim_qwen_par": 0.2105,
-          "sentence": "I was a big Ben 10 fan. I can't believe I haven't watched Ben 10."
+          "confidence": 0.3983,
+          "min_agreement": 0.2,
+          "sim_qwen_whisperx": 0.5333,
+          "sim_qwen_parakeet": 0.5455,
+          "sim_qwen_wav2vec2": 0.4444,
+          "sim_whisperx_parakeet": 0.3333,
+          "sim_whisperx_wav2vec2": 0.2,
+          "sim_parakeet_wav2vec2": 0.3333,
+          "sentence": "I can't even watch Ben 10."
         },
         {
           "sent_pos": 5,
-          "confidence": 0.7352,
-          "min_agreement": 0.6957,
-          "sim_wx_qwen": 0.7826,
-          "sim_wx_par": 0.7273,
-          "sim_qwen_par": 0.6957,
-          "sentence": "Peppa Pig? Or is that too young for you to remember?"
+          "confidence": 0.6462,
+          "min_agreement": 0.5,
+          "sim_qwen_whisperx": 0.7826,
+          "sim_qwen_parakeet": 0.6957,
+          "sim_qwen_wav2vec2": 0.5714,
+          "sim_whisperx_parakeet": 0.7273,
+          "sim_whisperx_wav2vec2": 0.6,
+          "sim_parakeet_wav2vec2": 0.5,
+          "sentence": "Peppa Pig, or is that too young for you to remember?"
         }
       ]
     },
     {
-      "dataset_index": 96,
+      "dataset_index": 95,
       "sentences": [
         {
           "sent_pos": 0,
-          "confidence": 0.7685,
-          "min_agreement": 0.6667,
-          "sim_wx_qwen": 0.8889,
-          "sim_wx_par": 0.6667,
-          "sim_qwen_par": 0.75,
-          "sentence": "I love the Peppa Pig."
-        }
-      ]
-    },
-    {
-      "dataset_index": 97,
-      "sentences": [
+          "confidence": 0.9667,
+          "min_agreement": 0.9333,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 0.9333,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 0.9333,
+          "sim_parakeet_wav2vec2": 0.9333,
+          "sentence": "I think I've seen a bit of that."
+        },
         {
-          "sent_pos": 0,
-          "confidence": 0.8462,
-          "min_agreement": 0.7692,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 0.7692,
-          "sim_qwen_par": 0.7692,
-          "sentence": "I was also not that into Pokemon either."
+          "sent_pos": 1,
+          "confidence": 0.6536,
+          "min_agreement": 0.3636,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 0.875,
+          "sim_qwen_wav2vec2": 0.3636,
+          "sim_whisperx_parakeet": 0.875,
+          "sim_whisperx_wav2vec2": 0.3636,
+          "sim_parakeet_wav2vec2": 0.4444,
+          "sentence": "I think that was more of my sister's thing."
         }
       ]
     },
@@ -1346,9 +1581,12 @@
           "sent_pos": 0,
           "confidence": 1.0,
           "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
           "sentence": "No, I never."
         }
       ]
@@ -1358,12 +1596,32 @@
       "sentences": [
         {
           "sent_pos": 0,
-          "confidence": 0.8061,
+          "confidence": 0.8227,
           "min_agreement": 0.7,
-          "sim_wx_qwen": 0.8182,
-          "sim_wx_par": 0.7,
-          "sim_qwen_par": 0.9,
-          "sentence": "I don't think I've seen a single like TV show of that."
+          "sim_qwen_whisperx": 0.8182,
+          "sim_qwen_parakeet": 0.9,
+          "sim_qwen_wav2vec2": 0.8182,
+          "sim_whisperx_parakeet": 0.7,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 0.7,
+          "sentence": "I don't think I've seen a single TV show with that."
+        }
+      ]
+    },
+    {
+      "dataset_index": 100,
+      "sentences": [
+        {
+          "sent_pos": 0,
+          "confidence": 0.9035,
+          "min_agreement": 0.8125,
+          "sim_qwen_whisperx": 0.9375,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 0.8667,
+          "sim_whisperx_parakeet": 0.9375,
+          "sim_whisperx_wav2vec2": 0.8125,
+          "sim_parakeet_wav2vec2": 0.8667,
+          "sentence": "I'd still like episodes because they'd be on after stuff I'd be watching, but would never be."
         }
       ]
     },
@@ -1374,9 +1632,12 @@
           "sent_pos": 0,
           "confidence": 1.0,
           "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
           "sentence": "Yeah."
         }
       ]
@@ -1386,48 +1647,68 @@
       "sentences": [
         {
           "sent_pos": 0,
-          "confidence": 1.0,
-          "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "something I'd be there to go and see."
+          "confidence": 0.9667,
+          "min_agreement": 0.9333,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 0.9333,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 0.9333,
+          "sim_parakeet_wav2vec2": 0.9333,
+          "sentence": "Something I'd be there to go and see."
         },
         {
           "sent_pos": 1,
-          "confidence": 1.0,
-          "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "Um."
+          "confidence": 0.8333,
+          "min_agreement": 0.6667,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 0.6667,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 0.6667,
+          "sim_parakeet_wav2vec2": 0.6667,
+          "sentence": "Oh, book."
         },
         {
           "sent_pos": 2,
           "confidence": 1.0,
           "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "Oh, book."
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
+          "sentence": "Yeah."
         },
         {
           "sent_pos": 3,
           "confidence": 1.0,
           "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "Yeah."
-        },
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
+          "sentence": "Did you?"
+        }
+      ]
+    },
+    {
+      "dataset_index": 103,
+      "sentences": [
         {
-          "sent_pos": 4,
+          "sent_pos": 0,
           "confidence": 1.0,
           "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "Did you?"
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
+          "sentence": "you."
         }
       ]
     },
@@ -1438,28 +1719,13 @@
           "sent_pos": 0,
           "confidence": 1.0,
           "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "read"
-        },
-        {
-          "sent_pos": 1,
-          "confidence": 1.0,
-          "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
           "sentence": "Be."
-        },
-        {
-          "sent_pos": 2,
-          "confidence": 1.0,
-          "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "read"
         }
       ]
     },
@@ -1468,20 +1734,50 @@
       "sentences": [
         {
           "sent_pos": 0,
-          "confidence": 1.0,
-          "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "The Harry Potters, no, really, yeah, I have not."
+          "confidence": 0.75,
+          "min_agreement": 0.5,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 0.5,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 0.5,
+          "sim_parakeet_wav2vec2": 0.5,
+          "sentence": "The Harry Potters."
         },
         {
           "sent_pos": 1,
           "confidence": 1.0,
           "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
+          "sentence": "No, really?"
+        },
+        {
+          "sent_pos": 2,
+          "confidence": 0.9285,
+          "min_agreement": 0.8571,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 0.8571,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 0.8571,
+          "sim_parakeet_wav2vec2": 0.8571,
+          "sentence": "Yeah, I have not."
+        },
+        {
+          "sent_pos": 3,
+          "confidence": 1.0,
+          "min_agreement": 1.0,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
           "sentence": "I tried to, and I got bored."
         }
       ]
@@ -1493,38 +1789,13 @@
           "sent_pos": 0,
           "confidence": 1.0,
           "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
           "sentence": "Oh wow."
-        }
-      ]
-    },
-    {
-      "dataset_index": 107,
-      "sentences": [
-        {
-          "sent_pos": 0,
-          "confidence": 1.0,
-          "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "Yeah."
-        }
-      ]
-    },
-    {
-      "dataset_index": 108,
-      "sentences": [
-        {
-          "sent_pos": 0,
-          "confidence": 0.8945,
-          "min_agreement": 0.8421,
-          "sim_wx_qwen": 0.8889,
-          "sim_wx_par": 0.8421,
-          "sim_qwen_par": 0.9524,
-          "sentence": "You're gonna look like such a weird person in this."
         }
       ]
     },
@@ -1533,30 +1804,80 @@
       "sentences": [
         {
           "sent_pos": 0,
-          "confidence": 1.0,
-          "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "What did I even do as a kid? I don't remember."
+          "confidence": 0.9285,
+          "min_agreement": 0.8571,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 0.8571,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 0.8571,
+          "sim_parakeet_wav2vec2": 0.8571,
+          "sentence": "What did I even do as a kid?"
         },
         {
           "sent_pos": 1,
-          "confidence": 0.8885,
-          "min_agreement": 0.8333,
-          "sim_wx_qwen": 0.9231,
-          "sim_wx_par": 0.8333,
-          "sim_qwen_par": 0.9091,
-          "sentence": "Didn't watch TV. Didn't read books."
+          "confidence": 1.0,
+          "min_agreement": 1.0,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
+          "sentence": "I don't remember."
         },
         {
           "sent_pos": 2,
+          "confidence": 0.7111,
+          "min_agreement": 0.5,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 0.8,
+          "sim_qwen_wav2vec2": 0.5,
+          "sim_whisperx_parakeet": 0.8,
+          "sim_whisperx_wav2vec2": 0.5,
+          "sim_parakeet_wav2vec2": 0.6667,
+          "sentence": "Didn't watch TV."
+        },
+        {
+          "sent_pos": 3,
           "confidence": 1.0,
           "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
+          "sentence": "Didn't read books."
+        },
+        {
+          "sent_pos": 4,
+          "confidence": 0.7857,
+          "min_agreement": 0.5714,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 0.5714,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 0.5714,
+          "sim_parakeet_wav2vec2": 0.5714,
           "sentence": "I literally think I just stayed outside."
+        }
+      ]
+    },
+    {
+      "dataset_index": 110,
+      "sentences": [
+        {
+          "sent_pos": 0,
+          "confidence": 0.75,
+          "min_agreement": 0.5,
+          "sim_qwen_whisperx": 0.5,
+          "sim_qwen_parakeet": 0.5,
+          "sim_qwen_wav2vec2": 0.5,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
+          "sentence": "I'm playing in"
         }
       ]
     },
@@ -1565,30 +1886,15 @@
       "sentences": [
         {
           "sent_pos": 0,
-          "confidence": 0.3333,
+          "confidence": 0.3056,
           "min_agreement": 0.0,
-          "sim_wx_qwen": 0.5,
-          "sim_wx_par": 0.5,
-          "sim_qwen_par": 0.0,
-          "sentence": "and eight birds."
-        },
-        {
-          "sent_pos": 1,
-          "confidence": 1.0,
-          "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "And."
-        },
-        {
-          "sent_pos": 2,
-          "confidence": 0.6667,
-          "min_agreement": 0.5,
-          "sim_wx_qwen": 0.5,
-          "sim_wx_par": 0.5,
-          "sim_qwen_par": 1.0,
-          "sentence": "in eight words"
+          "sim_qwen_whisperx": 0.6667,
+          "sim_qwen_parakeet": 0.0,
+          "sim_qwen_wav2vec2": 0.0,
+          "sim_whisperx_parakeet": 0.5,
+          "sim_whisperx_wav2vec2": 0.0,
+          "sim_parakeet_wav2vec2": 0.6667,
+          "sentence": "And eight words."
         }
       ]
     },
@@ -1597,11 +1903,14 @@
       "sentences": [
         {
           "sent_pos": 0,
-          "confidence": 0.6413,
+          "confidence": 0.6968,
           "min_agreement": 0.4,
-          "sim_wx_qwen": 0.6667,
-          "sim_wx_par": 0.8571,
-          "sim_qwen_par": 0.4,
+          "sim_qwen_whisperx": 0.6667,
+          "sim_qwen_parakeet": 0.4,
+          "sim_qwen_wav2vec2": 0.4,
+          "sim_whisperx_parakeet": 0.8571,
+          "sim_whisperx_wav2vec2": 0.8571,
+          "sim_parakeet_wav2vec2": 1.0,
           "sentence": "Is it eight birds?"
         }
       ]
@@ -1611,35 +1920,15 @@
       "sentences": [
         {
           "sent_pos": 0,
-          "confidence": 1.0,
-          "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "eight words."
-        }
-      ]
-    },
-    {
-      "dataset_index": 114,
-      "sentences": [
-        {
-          "sent_pos": 0,
-          "confidence": 0.6667,
-          "min_agreement": 0.5,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 0.5,
-          "sim_qwen_par": 0.5,
-          "sentence": "Oh, worms. That makes more sense."
-        },
-        {
-          "sent_pos": 1,
-          "confidence": 0.6929,
-          "min_agreement": 0.5455,
-          "sim_wx_qwen": 0.9333,
-          "sim_wx_par": 0.5455,
-          "sim_qwen_par": 0.6,
-          "sentence": "It's still weird, but makes more sense."
+          "confidence": 0.8333,
+          "min_agreement": 0.6667,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 0.6667,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 0.6667,
+          "sim_parakeet_wav2vec2": 0.6667,
+          "sentence": "Eight words."
         }
       ]
     },
@@ -1648,20 +1937,26 @@
       "sentences": [
         {
           "sent_pos": 0,
-          "confidence": 0.8667,
-          "min_agreement": 0.8,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 0.8,
-          "sim_qwen_par": 0.8,
+          "confidence": 0.7389,
+          "min_agreement": 0.5,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 0.8,
+          "sim_qwen_wav2vec2": 0.6667,
+          "sim_whisperx_parakeet": 0.8,
+          "sim_whisperx_wav2vec2": 0.6667,
+          "sim_parakeet_wav2vec2": 0.5,
           "sentence": "That's reasonable."
         },
         {
           "sent_pos": 1,
           "confidence": 1.0,
           "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
           "sentence": "Eating birds a bit too far."
         }
       ]
@@ -1671,62 +1966,75 @@
       "sentences": [
         {
           "sent_pos": 0,
-          "confidence": 0.6559,
-          "min_agreement": 0.6154,
-          "sim_wx_qwen": 0.625,
-          "sim_wx_par": 0.6154,
-          "sim_qwen_par": 0.7273,
-          "sentence": "Charlie and the Hottie Parts. Such a good series."
+          "confidence": 0.3345,
+          "min_agreement": 0.0,
+          "sim_qwen_whisperx": 0.2857,
+          "sim_qwen_parakeet": 0.75,
+          "sim_qwen_wav2vec2": 0.4,
+          "sim_whisperx_parakeet": 0.5714,
+          "sim_whisperx_wav2vec2": 0.0,
+          "sim_parakeet_wav2vec2": 0.0,
+          "sentence": "Yeah, well, truly the Harry Potter."
         },
         {
           "sent_pos": 1,
-          "confidence": 0.8611,
-          "min_agreement": 0.8333,
-          "sim_wx_qwen": 0.9167,
-          "sim_wx_par": 0.8333,
-          "sim_qwen_par": 0.8333,
-          "sentence": "It actually is a good read, and a lot better than movies."
+          "confidence": 1.0,
+          "min_agreement": 1.0,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
+          "sentence": "Such a good series."
         },
         {
           "sent_pos": 2,
-          "confidence": 0.9608,
-          "min_agreement": 0.9412,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 0.9412,
-          "sim_qwen_par": 0.9412,
-          "sentence": "The movies are quite good, so it's saying something."
+          "confidence": 0.786,
+          "min_agreement": 0.6364,
+          "sim_qwen_whisperx": 0.9231,
+          "sim_qwen_parakeet": 0.8462,
+          "sim_qwen_wav2vec2": 0.75,
+          "sim_whisperx_parakeet": 0.8333,
+          "sim_whisperx_wav2vec2": 0.7273,
+          "sim_parakeet_wav2vec2": 0.6364,
+          "sentence": "It actually is a good read, and a lot better than the movies."
         },
         {
           "sent_pos": 3,
-          "confidence": 1.0,
-          "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "I would highly recommend it."
+          "confidence": 0.8769,
+          "min_agreement": 0.7778,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 0.9412,
+          "sim_qwen_wav2vec2": 0.7778,
+          "sim_whisperx_parakeet": 0.9412,
+          "sim_whisperx_wav2vec2": 0.7778,
+          "sim_parakeet_wav2vec2": 0.8235,
+          "sentence": "The movies are quite good, so it's saying something."
         },
         {
           "sent_pos": 4,
           "confidence": 1.0,
           "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "I actually do want to reread them."
-        }
-      ]
-    },
-    {
-      "dataset_index": 117,
-      "sentences": [
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
+          "sentence": "I would highly recommend it."
+        },
         {
-          "sent_pos": 0,
-          "confidence": 0.8182,
-          "min_agreement": 0.7273,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 0.7273,
-          "sim_qwen_par": 0.7273,
-          "sentence": "Even now, just wouldn't enjoy them."
+          "sent_pos": 5,
+          "confidence": 0.8077,
+          "min_agreement": 0.6154,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 0.6154,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 0.6154,
+          "sim_parakeet_wav2vec2": 0.6154,
+          "sentence": "I actually do want to reread them."
         }
       ]
     },
@@ -1735,12 +2043,27 @@
       "sentences": [
         {
           "sent_pos": 0,
-          "confidence": 0.8788,
-          "min_agreement": 0.8182,
-          "sim_wx_qwen": 0.9091,
-          "sim_wx_par": 0.8182,
-          "sim_qwen_par": 0.9091,
-          "sentence": "Do you do anything currently? Maybe you could talk about that."
+          "confidence": 0.8083,
+          "min_agreement": 0.75,
+          "sim_qwen_whisperx": 0.8,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 0.75,
+          "sim_whisperx_parakeet": 0.8,
+          "sim_whisperx_wav2vec2": 0.75,
+          "sim_parakeet_wav2vec2": 0.75,
+          "sentence": "Do you do anything currently?"
+        },
+        {
+          "sent_pos": 1,
+          "confidence": 0.7444,
+          "min_agreement": 0.6,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 0.8333,
+          "sim_qwen_wav2vec2": 0.6,
+          "sim_whisperx_parakeet": 0.8333,
+          "sim_whisperx_wav2vec2": 0.6,
+          "sim_parakeet_wav2vec2": 0.6,
+          "sentence": "Maybe you could talk about that."
         }
       ]
     },
@@ -1749,12 +2072,39 @@
       "sentences": [
         {
           "sent_pos": 0,
-          "confidence": 0.8667,
-          "min_agreement": 0.8,
-          "sim_wx_qwen": 0.8,
-          "sim_wx_par": 0.8,
-          "sim_qwen_par": 1.0,
-          "sentence": "Oh yeah, how to read the weather by Storm Dunlop. Ah, what a great book!"
+          "confidence": 1.0,
+          "min_agreement": 1.0,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
+          "sentence": "Oh, yeah."
+        },
+        {
+          "sent_pos": 1,
+          "confidence": 0.8167,
+          "min_agreement": 0.75,
+          "sim_qwen_whisperx": 0.75,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 0.8,
+          "sim_whisperx_parakeet": 0.75,
+          "sim_whisperx_wav2vec2": 0.8,
+          "sim_parakeet_wav2vec2": 0.8,
+          "sentence": "How to read the weather by Storm Dunlop."
+        },
+        {
+          "sent_pos": 2,
+          "confidence": 0.7804,
+          "min_agreement": 0.5714,
+          "sim_qwen_whisperx": 0.8889,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 0.6667,
+          "sim_whisperx_parakeet": 0.8889,
+          "sim_whisperx_wav2vec2": 0.5714,
+          "sim_parakeet_wav2vec2": 0.6667,
+          "sentence": "Oh, what a great book."
         }
       ]
     },
@@ -1763,11 +2113,14 @@
       "sentences": [
         {
           "sent_pos": 0,
-          "confidence": 0.9683,
-          "min_agreement": 0.9524,
-          "sim_wx_qwen": 0.9524,
-          "sim_wx_par": 0.9524,
-          "sim_qwen_par": 1.0,
+          "confidence": 0.8838,
+          "min_agreement": 0.7778,
+          "sim_qwen_whisperx": 0.9524,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 0.7778,
+          "sim_whisperx_parakeet": 0.9524,
+          "sim_whisperx_wav2vec2": 0.8421,
+          "sim_parakeet_wav2vec2": 0.7778,
           "sentence": "I'd ask what that's about, but I think it's pretty intuitive."
         }
       ]
@@ -1779,19 +2132,30 @@
           "sent_pos": 0,
           "confidence": 1.0,
           "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "Yes."
-        },
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
+          "sentence": "Amen."
+        }
+      ]
+    },
+    {
+      "dataset_index": 122,
+      "sentences": [
         {
-          "sent_pos": 1,
-          "confidence": 1.0,
-          "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "Yeah."
+          "sent_pos": 0,
+          "confidence": 0.4456,
+          "min_agreement": 0.0,
+          "sim_qwen_whisperx": 0.9091,
+          "sim_qwen_parakeet": 0.6,
+          "sim_qwen_wav2vec2": 0.3333,
+          "sim_whisperx_parakeet": 0.5455,
+          "sim_whisperx_wav2vec2": 0.2857,
+          "sim_parakeet_wav2vec2": 0.0,
+          "sentence": "Might as well explain it anyway."
         }
       ]
     },
@@ -1802,19 +2166,25 @@
           "sent_pos": 0,
           "confidence": 1.0,
           "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
           "sentence": "It's literally everything you need to know about the weather in one book."
         },
         {
           "sent_pos": 1,
-          "confidence": 0.8258,
-          "min_agreement": 0.7407,
-          "sim_wx_qwen": 0.9091,
-          "sim_wx_par": 0.7407,
-          "sim_qwen_par": 0.8276,
-          "sentence": "I can just look outside and be like, \"Yep, it's gonna rain two hundred millilitres today.\""
+          "confidence": 0.7555,
+          "min_agreement": 0.6087,
+          "sim_qwen_whisperx": 0.9032,
+          "sim_qwen_parakeet": 0.8571,
+          "sim_qwen_wav2vec2": 0.6364,
+          "sim_whisperx_parakeet": 0.8276,
+          "sim_whisperx_wav2vec2": 0.6087,
+          "sim_parakeet_wav2vec2": 0.7,
+          "sentence": "I can just look outside and be like, \"Yep, it's gonna rain 200 milliliters today.\""
         }
       ]
     },
@@ -1825,9 +2195,12 @@
           "sent_pos": 0,
           "confidence": 1.0,
           "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
           "sentence": "Wow."
         }
       ]
@@ -1837,53 +2210,66 @@
       "sentences": [
         {
           "sent_pos": 0,
-          "confidence": 0.9259,
-          "min_agreement": 0.8889,
-          "sim_wx_qwen": 0.8889,
-          "sim_wx_par": 0.8889,
-          "sim_qwen_par": 1.0,
-          "sentence": "just by sniffing the cleanse."
-        },
-        {
-          "sent_pos": 1,
-          "confidence": 0.9259,
-          "min_agreement": 0.8889,
-          "sim_wx_qwen": 0.8889,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 0.8889,
-          "sentence": "Just by sniffing the clients."
-        },
-        {
-          "sent_pos": 2,
-          "confidence": 0.9259,
-          "min_agreement": 0.8889,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 0.8889,
-          "sim_qwen_par": 0.8889,
+          "confidence": 0.6518,
+          "min_agreement": 0.3333,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 0.8889,
+          "sim_qwen_wav2vec2": 0.4,
+          "sim_whisperx_parakeet": 0.8889,
+          "sim_whisperx_wav2vec2": 0.4,
+          "sim_parakeet_wav2vec2": 0.3333,
           "sentence": "just by sniffing the clouds"
         }
       ]
     },
     {
-      "dataset_index": 129,
+      "dataset_index": 126,
       "sentences": [
         {
           "sent_pos": 0,
-          "confidence": 0.6956,
-          "min_agreement": 0.6667,
-          "sim_wx_qwen": 0.7059,
-          "sim_wx_par": 0.6667,
-          "sim_qwen_par": 0.7143,
-          "sentence": "Oh, well, Roger McAller was a meteorologist in school."
-        },
+          "confidence": 1.0,
+          "min_agreement": 1.0,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
+          "sentence": "So basically, a meteorology degree is a waste of time."
+        }
+      ]
+    },
+    {
+      "dataset_index": 127,
+      "sentences": [
         {
-          "sent_pos": 1,
-          "confidence": 0.8667,
-          "min_agreement": 0.8,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 0.8,
-          "sim_qwen_par": 0.8,
-          "sentence": "One of the geology teachers."
+          "sent_pos": 0,
+          "confidence": 1.0,
+          "min_agreement": 1.0,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
+          "sentence": "Exactly."
+        }
+      ]
+    },
+    {
+      "dataset_index": 128,
+      "sentences": [
+        {
+          "sent_pos": 0,
+          "confidence": 1.0,
+          "min_agreement": 1.0,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
+          "sentence": "You could just get the weather."
         }
       ]
     },
@@ -1892,21 +2278,44 @@
       "sentences": [
         {
           "sent_pos": 0,
-          "confidence": 1.0,
-          "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
+          "confidence": 0.9285,
+          "min_agreement": 0.8571,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 0.8571,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 0.8571,
+          "sim_parakeet_wav2vec2": 0.8571,
           "sentence": "Oh, that's quite cool."
         },
         {
           "sent_pos": 1,
-          "confidence": 0.6127,
-          "min_agreement": 0.5714,
-          "sim_wx_qwen": 0.6,
-          "sim_wx_par": 0.5714,
-          "sim_qwen_par": 0.6667,
-          "sentence": "I don't think we're allowed to say it here though for that."
+          "confidence": 0.5675,
+          "min_agreement": 0.5,
+          "sim_qwen_whisperx": 0.6,
+          "sim_qwen_parakeet": 0.6667,
+          "sim_qwen_wav2vec2": 0.5333,
+          "sim_whisperx_parakeet": 0.5714,
+          "sim_whisperx_wav2vec2": 0.5333,
+          "sim_parakeet_wav2vec2": 0.5,
+          "sentence": "I don't think we ought to stay here though for that."
+        }
+      ]
+    },
+    {
+      "dataset_index": 131,
+      "sentences": [
+        {
+          "sent_pos": 0,
+          "confidence": 1.0,
+          "min_agreement": 1.0,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
+          "sentence": "Yeah."
         }
       ]
     },
@@ -1915,12 +2324,39 @@
       "sentences": [
         {
           "sent_pos": 0,
-          "confidence": 0.9852,
-          "min_agreement": 0.9778,
-          "sim_wx_qwen": 0.9778,
-          "sim_wx_par": 0.9778,
-          "sim_qwen_par": 1.0,
-          "sentence": "privacy reasons. Is there a particular food you used to like as a child? Do you like making it? Definitely roast dinners."
+          "confidence": 0.9475,
+          "min_agreement": 0.8966,
+          "sim_qwen_whisperx": 0.9655,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 0.9286,
+          "sim_whisperx_parakeet": 0.9655,
+          "sim_whisperx_wav2vec2": 0.8966,
+          "sim_parakeet_wav2vec2": 0.9286,
+          "sentence": "privacy reasons um is there a particular food you used to like as a child?"
+        },
+        {
+          "sent_pos": 1,
+          "confidence": 0.9,
+          "min_agreement": 0.8,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 0.8,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 0.8,
+          "sim_parakeet_wav2vec2": 0.8,
+          "sentence": "Do you like making it?"
+        },
+        {
+          "sent_pos": 2,
+          "confidence": 1.0,
+          "min_agreement": 1.0,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
+          "sentence": "Definitely roast dinners."
         }
       ]
     },
@@ -1929,12 +2365,32 @@
       "sentences": [
         {
           "sent_pos": 0,
-          "confidence": 0.5238,
-          "min_agreement": 0.2857,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 0.2857,
-          "sim_qwen_par": 0.2857,
-          "sentence": "It was a new slut, but great."
+          "confidence": 0.5619,
+          "min_agreement": 0.4,
+          "sim_qwen_whisperx": 0.4,
+          "sim_qwen_parakeet": 0.5714,
+          "sim_qwen_wav2vec2": 0.4,
+          "sim_whisperx_parakeet": 0.5,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 0.5,
+          "sentence": "Everything is like great."
+        }
+      ]
+    },
+    {
+      "dataset_index": 134,
+      "sentences": [
+        {
+          "sent_pos": 0,
+          "confidence": 1.0,
+          "min_agreement": 1.0,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
+          "sentence": "Grapes."
         }
       ]
     },
@@ -1943,30 +2399,27 @@
       "sentences": [
         {
           "sent_pos": 0,
-          "confidence": 1.0,
-          "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
+          "confidence": 0.8333,
+          "min_agreement": 0.6667,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 0.6667,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 0.6667,
+          "sim_parakeet_wav2vec2": 0.6667,
           "sentence": "Oh my god, grapes are amazing."
         },
         {
           "sent_pos": 1,
-          "confidence": 0.8,
-          "min_agreement": 0.75,
-          "sim_wx_qwen": 0.75,
-          "sim_wx_par": 0.75,
-          "sim_qwen_par": 0.9,
-          "sentence": "My mom had to always buy an extra pack because"
-        },
-        {
-          "sent_pos": 2,
-          "confidence": 0.6637,
-          "min_agreement": 0.5263,
-          "sim_wx_qwen": 0.5263,
-          "sim_wx_par": 0.6316,
-          "sim_qwen_par": 0.8333,
-          "sentence": "I just munching it like in the shopping center or in the shelf."
+          "confidence": 0.6096,
+          "min_agreement": 0.4571,
+          "sim_qwen_whisperx": 0.6111,
+          "sim_qwen_parakeet": 0.878,
+          "sim_qwen_wav2vec2": 0.5128,
+          "sim_whisperx_parakeet": 0.6486,
+          "sim_whisperx_wav2vec2": 0.4571,
+          "sim_parakeet_wav2vec2": 0.55,
+          "sentence": "My mom had to always buy an extra pack because I just munching it like in the shopping center or in the in the shelf."
         }
       ]
     },
@@ -1975,26 +2428,15 @@
       "sentences": [
         {
           "sent_pos": 0,
-          "confidence": 0.8889,
+          "confidence": 0.9167,
           "min_agreement": 0.8333,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 0.8333,
-          "sim_qwen_par": 0.8333,
-          "sentence": "You wouldn't even be out of the."
-        }
-      ]
-    },
-    {
-      "dataset_index": 137,
-      "sentences": [
-        {
-          "sent_pos": 0,
-          "confidence": 0.5278,
-          "min_agreement": 0.3333,
-          "sim_wx_qwen": 0.5,
-          "sim_wx_par": 0.75,
-          "sim_qwen_par": 0.3333,
-          "sentence": "Yeah, leave it at that."
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 0.8333,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 0.8333,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 0.8333,
+          "sentence": "You wouldn't even be out of the"
         }
       ]
     },
@@ -2003,44 +2445,63 @@
       "sentences": [
         {
           "sent_pos": 0,
-          "confidence": 0.9333,
-          "min_agreement": 0.9,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 0.9,
-          "sim_qwen_par": 0.9,
-          "sentence": "And there'd be already a pack done. That'd be good."
+          "confidence": 0.8412,
+          "min_agreement": 0.6667,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 0.8571,
+          "sim_qwen_wav2vec2": 0.8333,
+          "sim_whisperx_parakeet": 0.8571,
+          "sim_whisperx_wav2vec2": 0.8333,
+          "sim_parakeet_wav2vec2": 0.6667,
+          "sentence": "And there'd be already a pack done."
         },
         {
           "sent_pos": 1,
-          "confidence": 0.977,
-          "min_agreement": 0.9655,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 0.9655,
-          "sim_qwen_par": 0.9655,
-          "sentence": "The roast dinners were great. It would actually be quite consistently a Sunday thing for my family."
+          "confidence": 0.75,
+          "min_agreement": 0.5,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 0.5,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 0.5,
+          "sim_parakeet_wav2vec2": 0.5,
+          "sentence": "That'd be good."
         },
         {
           "sent_pos": 2,
-          "confidence": 0.9401,
-          "min_agreement": 0.9091,
-          "sim_wx_qwen": 0.9091,
-          "sim_wx_par": 0.9778,
-          "sim_qwen_par": 0.9333,
-          "sentence": "I don't think it was ever meant to be, but somehow it just worked out quite well that it'd be on a Sunday."
-        }
-      ]
-    },
-    {
-      "dataset_index": 139,
-      "sentences": [
-        {
-          "sent_pos": 0,
           "confidence": 1.0,
           "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "Yeah."
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
+          "sentence": "The roast dinners were great."
+        },
+        {
+          "sent_pos": 3,
+          "confidence": 0.3235,
+          "min_agreement": 0.0,
+          "sim_qwen_whisperx": 0.4706,
+          "sim_qwen_parakeet": 0.4706,
+          "sim_qwen_wav2vec2": 0.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 0.0,
+          "sim_parakeet_wav2vec2": 0.0,
+          "sentence": "It would actually be quite consistently a Sunday thing for my family."
+        },
+        {
+          "sent_pos": 4,
+          "confidence": 0.8472,
+          "min_agreement": 0.7333,
+          "sim_qwen_whisperx": 0.875,
+          "sim_qwen_parakeet": 0.875,
+          "sim_qwen_wav2vec2": 0.7333,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 0.8,
+          "sim_parakeet_wav2vec2": 0.8,
+          "sentence": "I don't think it was ever like meant to be, but somehow it just worked out quite well that it'd be on a Sunday."
         }
       ]
     },
@@ -2051,51 +2512,49 @@
           "sent_pos": 0,
           "confidence": 1.0,
           "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
           "sentence": "I think we had chicken the most."
         },
         {
           "sent_pos": 1,
-          "confidence": 1.0,
-          "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
+          "confidence": 0.9375,
+          "min_agreement": 0.875,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 0.875,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 0.875,
+          "sim_parakeet_wav2vec2": 0.875,
           "sentence": "We rarely ever had any other different meat."
         },
         {
           "sent_pos": 2,
-          "confidence": 0.9556,
+          "confidence": 0.9444,
           "min_agreement": 0.9333,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 0.9333,
-          "sim_qwen_par": 0.9333,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 0.9333,
+          "sim_qwen_wav2vec2": 0.9333,
+          "sim_whisperx_parakeet": 0.9333,
+          "sim_whisperx_wav2vec2": 0.9333,
+          "sim_parakeet_wav2vec2": 0.9333,
           "sentence": "It would always just be roast chicken, roast potatoes, Yorkshire puddings, carrots, peas, and gravy."
         },
         {
           "sent_pos": 3,
-          "confidence": 0.8889,
-          "min_agreement": 0.8333,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 0.8333,
-          "sim_qwen_par": 0.8333,
+          "confidence": 0.8056,
+          "min_agreement": 0.6667,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 0.8333,
+          "sim_qwen_wav2vec2": 0.6667,
+          "sim_whisperx_parakeet": 0.8333,
+          "sim_whisperx_wav2vec2": 0.6667,
+          "sim_parakeet_wav2vec2": 0.8333,
           "sentence": "And that's all you could ask."
-        }
-      ]
-    },
-    {
-      "dataset_index": 141,
-      "sentences": [
-        {
-          "sent_pos": 0,
-          "confidence": 0.9556,
-          "min_agreement": 0.9333,
-          "sim_wx_qwen": 0.9333,
-          "sim_wx_par": 0.9333,
-          "sim_qwen_par": 1.0,
-          "sentence": "That is a recipe for like, for heaven."
         }
       ]
     },
@@ -2104,71 +2563,116 @@
       "sentences": [
         {
           "sent_pos": 0,
-          "confidence": 0.9608,
-          "min_agreement": 0.9412,
-          "sim_wx_qwen": 0.9412,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 0.9412,
-          "sentence": "Yeah, it's perfect. All you need. So good."
+          "confidence": 0.8302,
+          "min_agreement": 0.6667,
+          "sim_qwen_whisperx": 0.8571,
+          "sim_qwen_parakeet": 0.8571,
+          "sim_qwen_wav2vec2": 0.6667,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 0.8,
+          "sim_parakeet_wav2vec2": 0.8,
+          "sentence": "Yeah, it's perfect."
         },
         {
           "sent_pos": 1,
-          "confidence": 1.0,
-          "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "And I do know how to make it. I do still like eating it."
+          "confidence": 0.9445,
+          "min_agreement": 0.8889,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 0.8889,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 0.8889,
+          "sim_parakeet_wav2vec2": 0.8889,
+          "sentence": "All you need, so good."
         },
         {
           "sent_pos": 2,
-          "confidence": 0.9608,
-          "min_agreement": 0.9412,
-          "sim_wx_qwen": 0.9412,
-          "sim_wx_par": 0.9412,
-          "sim_qwen_par": 1.0,
-          "sentence": "I make it every couple weeks, I'd say,"
+          "confidence": 0.8837,
+          "min_agreement": 0.7692,
+          "sim_qwen_whisperx": 0.7692,
+          "sim_qwen_parakeet": 0.9333,
+          "sim_qwen_wav2vec2": 0.9333,
+          "sim_whisperx_parakeet": 0.8333,
+          "sim_whisperx_wav2vec2": 0.8333,
+          "sim_parakeet_wav2vec2": 1.0,
+          "sentence": "And I can, and I do know how to make it."
         },
         {
           "sent_pos": 3,
-          "confidence": 1.0,
-          "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "which is fairly often for a student lifestyle to have a roast every few weeks."
+          "confidence": 0.7804,
+          "min_agreement": 0.5714,
+          "sim_qwen_whisperx": 0.5714,
+          "sim_qwen_parakeet": 0.8889,
+          "sim_qwen_wav2vec2": 0.8889,
+          "sim_whisperx_parakeet": 0.6667,
+          "sim_whisperx_wav2vec2": 0.6667,
+          "sim_parakeet_wav2vec2": 1.0,
+          "sentence": "I do still like eating it."
         },
         {
           "sent_pos": 4,
-          "confidence": 1.0,
-          "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "I'm thinking of trying it with lambs."
+          "confidence": 0.9424,
+          "min_agreement": 0.8947,
+          "sim_qwen_whisperx": 0.973,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 0.8947,
+          "sim_whisperx_parakeet": 0.973,
+          "sim_whisperx_wav2vec2": 0.9189,
+          "sim_parakeet_wav2vec2": 0.8947,
+          "sentence": "I make it every couple weeks, I'd say, which is fairly often for a student lifestyle to have a roast every few weeks."
         },
         {
           "sent_pos": 5,
-          "confidence": 0.8889,
-          "min_agreement": 0.8333,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 0.8333,
-          "sim_qwen_par": 0.8333,
+          "confidence": 0.9,
+          "min_agreement": 0.8,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 0.8,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 0.8,
+          "sim_parakeet_wav2vec2": 0.8,
+          "sentence": "I'm thinking of trying it with lamb."
+        },
+        {
+          "sent_pos": 6,
+          "confidence": 0.8081,
+          "min_agreement": 0.7273,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 0.8333,
+          "sim_qwen_wav2vec2": 0.7273,
+          "sim_whisperx_parakeet": 0.8333,
+          "sim_whisperx_wav2vec2": 0.7273,
+          "sim_parakeet_wav2vec2": 0.7273,
           "sentence": "I think it'd be quite nice."
         }
       ]
     },
     {
-      "dataset_index": 143,
+      "dataset_index": 144,
       "sentences": [
         {
           "sent_pos": 0,
-          "confidence": 0.6032,
-          "min_agreement": 0.5714,
-          "sim_wx_qwen": 0.5714,
-          "sim_wx_par": 0.6667,
-          "sim_qwen_par": 0.5714,
-          "sentence": "But for one, isn't land fairly expensive?"
+          "confidence": 0.6463,
+          "min_agreement": 0.5333,
+          "sim_qwen_whisperx": 0.8235,
+          "sim_qwen_parakeet": 0.6667,
+          "sim_qwen_wav2vec2": 0.5714,
+          "sim_whisperx_parakeet": 0.5556,
+          "sim_whisperx_wav2vec2": 0.7273,
+          "sim_parakeet_wav2vec2": 0.5333,
+          "sentence": "Yeah, and also need to know where to get it."
+        },
+        {
+          "sent_pos": 1,
+          "confidence": 0.8636,
+          "min_agreement": 0.7273,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 0.7273,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 0.7273,
+          "sim_parakeet_wav2vec2": 0.7273,
+          "sentence": "But like, you know, once we get past those two small..."
         }
       ]
     },
@@ -2177,12 +2681,27 @@
       "sentences": [
         {
           "sent_pos": 0,
+          "confidence": 0.7948,
+          "min_agreement": 0.6,
+          "sim_qwen_whisperx": 0.7273,
+          "sim_qwen_parakeet": 0.7273,
+          "sim_qwen_wav2vec2": 0.6,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 0.8571,
+          "sim_parakeet_wav2vec2": 0.8571,
+          "sentence": "Yeah, I don't think lions do them."
+        },
+        {
+          "sent_pos": 1,
           "confidence": 1.0,
           "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "I don't think a lot of it's an end point."
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
+          "sentence": "Yeah."
         }
       ]
     },
@@ -2191,30 +2710,39 @@
       "sentences": [
         {
           "sent_pos": 0,
-          "confidence": 0.8293,
-          "min_agreement": 0.7368,
-          "sim_wx_qwen": 0.7368,
-          "sim_wx_par": 0.8421,
-          "sim_qwen_par": 0.9091,
-          "sentence": "You should. Yeah. What's your favorite thing about Edinburgh? Arthur's Seat?"
+          "confidence": 0.9,
+          "min_agreement": 0.8,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 0.8,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 0.8,
+          "sim_parakeet_wav2vec2": 0.8,
+          "sentence": "You should, yeah."
         },
         {
           "sent_pos": 1,
           "confidence": 0.9167,
-          "min_agreement": 0.875,
-          "sim_wx_qwen": 0.875,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 0.875,
-          "sentence": "What's your favorite thing about Edinburgh? Arthur seat."
+          "min_agreement": 0.8333,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 0.8333,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 0.8333,
+          "sim_parakeet_wav2vec2": 0.8333,
+          "sentence": "What's your favorite thing about Edinburgh?"
         },
         {
           "sent_pos": 2,
-          "confidence": 0.8845,
-          "min_agreement": 0.8235,
-          "sim_wx_qwen": 0.8235,
-          "sim_wx_par": 0.9412,
-          "sim_qwen_par": 0.8889,
-          "sentence": "you should yeah what's your favorite thing about edinburgh arthur's seat"
+          "confidence": 0.7778,
+          "min_agreement": 0.6667,
+          "sim_qwen_whisperx": 0.6667,
+          "sim_qwen_parakeet": 0.6667,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 0.6667,
+          "sim_parakeet_wav2vec2": 0.6667,
+          "sentence": "Arthur's Seat?"
         }
       ]
     },
@@ -2225,27 +2753,36 @@
           "sent_pos": 0,
           "confidence": 1.0,
           "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
           "sentence": "I don't know."
         },
         {
           "sent_pos": 1,
-          "confidence": 0.9394,
-          "min_agreement": 0.9091,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 0.9091,
-          "sim_qwen_par": 0.9091,
+          "confidence": 0.8665,
+          "min_agreement": 0.7619,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 0.9091,
+          "sim_qwen_wav2vec2": 0.7619,
+          "sim_whisperx_parakeet": 0.9091,
+          "sim_whisperx_wav2vec2": 0.7619,
+          "sim_parakeet_wav2vec2": 0.8571,
           "sentence": "I feel like it is like the 19 cities in one."
         },
         {
           "sent_pos": 2,
-          "confidence": 1.0,
-          "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
+          "confidence": 0.875,
+          "min_agreement": 0.75,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 0.75,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 0.75,
+          "sim_parakeet_wav2vec2": 0.75,
           "sentence": "Like there's a different vibe on each street."
         }
       ]
@@ -2255,11 +2792,14 @@
       "sentences": [
         {
           "sent_pos": 0,
-          "confidence": 0.7778,
+          "confidence": 0.8333,
           "min_agreement": 0.6667,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 0.6667,
-          "sim_qwen_par": 0.6667,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 0.6667,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 0.6667,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 0.6667,
           "sentence": "Oh, that is quite good."
         }
       ]
@@ -2271,38 +2811,13 @@
           "sent_pos": 0,
           "confidence": 1.0,
           "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
           "sentence": "Yeah."
-        }
-      ]
-    },
-    {
-      "dataset_index": 150,
-      "sentences": [
-        {
-          "sent_pos": 0,
-          "confidence": 1.0,
-          "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "Yeah."
-        }
-      ]
-    },
-    {
-      "dataset_index": 151,
-      "sentences": [
-        {
-          "sent_pos": 0,
-          "confidence": 0.6556,
-          "min_agreement": 0.5,
-          "sim_wx_qwen": 0.6667,
-          "sim_wx_par": 0.5,
-          "sim_qwen_par": 0.8,
-          "sentence": "But it does include Arthur's Seed."
         }
       ]
     },
@@ -2311,11 +2826,14 @@
       "sentences": [
         {
           "sent_pos": 0,
-          "confidence": 0.8168,
+          "confidence": 0.8296,
           "min_agreement": 0.7273,
-          "sim_wx_qwen": 0.9231,
-          "sim_wx_par": 0.7273,
-          "sim_qwen_par": 0.8,
+          "sim_qwen_whisperx": 0.9231,
+          "sim_qwen_parakeet": 0.8,
+          "sim_qwen_wav2vec2": 0.8,
+          "sim_whisperx_parakeet": 0.7273,
+          "sim_whisperx_wav2vec2": 0.7273,
+          "sim_parakeet_wav2vec2": 1.0,
           "sentence": "You can get anything you really want."
         }
       ]
@@ -2325,44 +2843,15 @@
       "sentences": [
         {
           "sent_pos": 0,
-          "confidence": 1.0,
-          "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "Yeah."
-        },
-        {
-          "sent_pos": 1,
-          "confidence": 0.7778,
+          "confidence": 0.8333,
           "min_agreement": 0.6667,
-          "sim_wx_qwen": 0.6667,
-          "sim_wx_par": 0.6667,
-          "sim_qwen_par": 1.0,
+          "sim_qwen_whisperx": 0.6667,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 0.6667,
+          "sim_whisperx_wav2vec2": 0.6667,
+          "sim_parakeet_wav2vec2": 1.0,
           "sentence": "School hill walking, yeah."
-        },
-        {
-          "sent_pos": 2,
-          "confidence": 0.7778,
-          "min_agreement": 0.6667,
-          "sim_wx_qwen": 0.6667,
-          "sim_wx_par": 0.6667,
-          "sim_qwen_par": 1.0,
-          "sentence": "school hill walking yeah"
-        }
-      ]
-    },
-    {
-      "dataset_index": 154,
-      "sentences": [
-        {
-          "sent_pos": 0,
-          "confidence": 0.8703,
-          "min_agreement": 0.8462,
-          "sim_wx_qwen": 0.88,
-          "sim_wx_par": 0.8462,
-          "sim_qwen_par": 0.8846,
-          "sentence": "within a twenty-minute walk it's a shame though that it's there and even like IKEAs and whatnot twenty-minute bus away not too much of a"
         }
       ]
     },
@@ -2373,19 +2862,54 @@
           "sent_pos": 0,
           "confidence": 1.0,
           "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "him."
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
+          "sentence": "Yeah."
+        }
+      ]
+    },
+    {
+      "dataset_index": 156,
+      "sentences": [
+        {
+          "sent_pos": 0,
+          "confidence": 1.0,
+          "min_agreement": 1.0,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
+          "sentence": "Stretch by any means."
         },
         {
           "sent_pos": 1,
-          "confidence": 1.0,
-          "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "Yeah."
+          "confidence": 0.75,
+          "min_agreement": 0.5,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 0.5,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 0.5,
+          "sim_parakeet_wav2vec2": 0.5,
+          "sentence": "Definitely do like all of that."
+        },
+        {
+          "sent_pos": 2,
+          "confidence": 0.6595,
+          "min_agreement": 0.5,
+          "sim_qwen_whisperx": 0.8571,
+          "sim_qwen_parakeet": 0.8333,
+          "sim_qwen_wav2vec2": 0.5,
+          "sim_whisperx_parakeet": 0.6667,
+          "sim_whisperx_wav2vec2": 0.5,
+          "sim_parakeet_wav2vec2": 0.6,
+          "sentence": "What's your least favorite thing about Edinburgh?"
         }
       ]
     },
@@ -2396,28 +2920,37 @@
           "sent_pos": 0,
           "confidence": 1.0,
           "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "Um,"
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
+          "sentence": "Bye."
         },
         {
           "sent_pos": 1,
           "confidence": 1.0,
           "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "Uh."
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
+          "sentence": "okay"
         },
         {
           "sent_pos": 2,
           "confidence": 1.0,
           "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "okay"
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
+          "sentence": "Uh."
         }
       ]
     },
@@ -2426,12 +2959,61 @@
       "sentences": [
         {
           "sent_pos": 0,
-          "confidence": 0.8799,
-          "min_agreement": 0.8235,
-          "sim_wx_qwen": 0.9412,
-          "sim_wx_par": 0.875,
-          "sim_qwen_par": 0.8235,
+          "confidence": 0.8637,
+          "min_agreement": 0.7778,
+          "sim_qwen_whisperx": 0.9412,
+          "sim_qwen_parakeet": 0.8235,
+          "sim_qwen_wav2vec2": 0.7778,
+          "sim_whisperx_parakeet": 0.875,
+          "sim_whisperx_wav2vec2": 0.8235,
+          "sim_parakeet_wav2vec2": 0.9412,
           "sentence": "For me, it's the scent, like the smells."
+        }
+      ]
+    },
+    {
+      "dataset_index": 159,
+      "sentences": [
+        {
+          "sent_pos": 0,
+          "confidence": 0.8911,
+          "min_agreement": 0.8,
+          "sim_qwen_whisperx": 0.9524,
+          "sim_qwen_parakeet": 0.8,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 0.8421,
+          "sim_whisperx_wav2vec2": 0.9524,
+          "sim_parakeet_wav2vec2": 0.8,
+          "sentence": "I don't know about you, but I love the yeast smell."
+        }
+      ]
+    },
+    {
+      "dataset_index": 160,
+      "sentences": [
+        {
+          "sent_pos": 0,
+          "confidence": 0.875,
+          "min_agreement": 0.75,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 0.75,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 0.75,
+          "sim_parakeet_wav2vec2": 0.75,
+          "sentence": "The yeast smells nice."
+        },
+        {
+          "sent_pos": 1,
+          "confidence": 0.8028,
+          "min_agreement": 0.6667,
+          "sim_qwen_whisperx": 0.9524,
+          "sim_qwen_parakeet": 0.9,
+          "sim_qwen_wav2vec2": 0.6667,
+          "sim_whisperx_parakeet": 0.8421,
+          "sim_whisperx_wav2vec2": 0.7059,
+          "sim_parakeet_wav2vec2": 0.75,
+          "sentence": "It's just the alleyways that smell a bit like urine."
         }
       ]
     },
@@ -2440,12 +3022,15 @@
       "sentences": [
         {
           "sent_pos": 0,
-          "confidence": 1.0,
-          "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "the not so nice city smells that you get."
+          "confidence": 0.7827,
+          "min_agreement": 0.5882,
+          "sim_qwen_whisperx": 0.9474,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 0.5882,
+          "sim_whisperx_parakeet": 0.9474,
+          "sim_whisperx_wav2vec2": 0.625,
+          "sim_parakeet_wav2vec2": 0.5882,
+          "sentence": "Yeah, the not so nice city smells that you get."
         }
       ]
     },
@@ -2454,26 +3039,27 @@
       "sentences": [
         {
           "sent_pos": 0,
-          "confidence": 0.9556,
-          "min_agreement": 0.9333,
-          "sim_wx_qwen": 0.9333,
-          "sim_wx_par": 0.9333,
-          "sim_qwen_par": 1.0,
-          "sentence": "Yeah, the bad gas from cars, not like the weirdly nice petrol smell you get."
-        }
-      ]
-    },
-    {
-      "dataset_index": 163,
-      "sentences": [
+          "confidence": 0.9545,
+          "min_agreement": 0.9091,
+          "sim_qwen_whisperx": 0.9091,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 0.9091,
+          "sim_whisperx_wav2vec2": 0.9091,
+          "sim_parakeet_wav2vec2": 1.0,
+          "sentence": "Yeah, the bad gas from cars."
+        },
         {
-          "sent_pos": 0,
-          "confidence": 1.0,
-          "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "Yeah."
+          "sent_pos": 1,
+          "confidence": 0.7729,
+          "min_agreement": 0.5714,
+          "sim_qwen_whisperx": 0.9474,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 0.5714,
+          "sim_whisperx_parakeet": 0.9474,
+          "sim_whisperx_wav2vec2": 0.6,
+          "sim_parakeet_wav2vec2": 0.5714,
+          "sentence": "Not like the weirdly nice petrol smell you get."
         }
       ]
     },
@@ -2482,40 +3068,32 @@
       "sentences": [
         {
           "sent_pos": 0,
-          "confidence": 0.8356,
-          "min_agreement": 0.7907,
-          "sim_wx_qwen": 0.8182,
-          "sim_wx_par": 0.7907,
-          "sim_qwen_par": 0.898,
-          "sentence": "like the pollution-y smell you get from cars. I don't really like that, but I imagine that comes in every city, not just Edinburgh."
+          "confidence": 0.7461,
+          "min_agreement": 0.6364,
+          "sim_qwen_whisperx": 0.8182,
+          "sim_qwen_parakeet": 0.898,
+          "sim_qwen_wav2vec2": 0.6667,
+          "sim_whisperx_parakeet": 0.7907,
+          "sim_whisperx_wav2vec2": 0.6667,
+          "sim_parakeet_wav2vec2": 0.6364,
+          "sentence": "Like the pollution-y smell you get from cars, I don't really like that, but I imagine that comes in every city, not just Edinburgh."
         }
       ]
     },
     {
-      "dataset_index": 166,
+      "dataset_index": 165,
       "sentences": [
         {
           "sent_pos": 0,
-          "confidence": 1.0,
-          "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "The light pollution."
-        }
-      ]
-    },
-    {
-      "dataset_index": 167,
-      "sentences": [
-        {
-          "sent_pos": 0,
-          "confidence": 1.0,
-          "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "Yeah, because even on a clear night, you can barely see the stars."
+          "confidence": 0.6176,
+          "min_agreement": 0.4,
+          "sim_qwen_whisperx": 0.9,
+          "sim_qwen_parakeet": 0.5556,
+          "sim_qwen_wav2vec2": 0.7059,
+          "sim_whisperx_parakeet": 0.5556,
+          "sim_whisperx_wav2vec2": 0.5882,
+          "sim_parakeet_wav2vec2": 0.4,
+          "sentence": "Actually, I think it would be on the light pollution."
         }
       ]
     },
@@ -2524,12 +3102,61 @@
       "sentences": [
         {
           "sent_pos": 0,
-          "confidence": 1.0,
-          "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
+          "confidence": 0.8333,
+          "min_agreement": 0.6667,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 0.6667,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 0.6667,
+          "sim_parakeet_wav2vec2": 0.6667,
           "sentence": "Yeah, true."
+        }
+      ]
+    },
+    {
+      "dataset_index": 169,
+      "sentences": [
+        {
+          "sent_pos": 0,
+          "confidence": 0.8333,
+          "min_agreement": 0.6667,
+          "sim_qwen_whisperx": 0.6667,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 0.6667,
+          "sim_whisperx_wav2vec2": 0.6667,
+          "sim_parakeet_wav2vec2": 1.0,
+          "sentence": "It's actually rather difficult."
+        }
+      ]
+    },
+    {
+      "dataset_index": 170,
+      "sentences": [
+        {
+          "sent_pos": 0,
+          "confidence": 0.8458,
+          "min_agreement": 0.7692,
+          "sim_qwen_whisperx": 0.9231,
+          "sim_qwen_parakeet": 0.8571,
+          "sim_qwen_wav2vec2": 0.7692,
+          "sim_whisperx_parakeet": 0.9231,
+          "sim_whisperx_wav2vec2": 0.8333,
+          "sim_parakeet_wav2vec2": 0.7692,
+          "sentence": "Yeah, just a couple minutes left."
+        },
+        {
+          "sent_pos": 1,
+          "confidence": 0.669,
+          "min_agreement": 0.4,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 0.8571,
+          "sim_qwen_wav2vec2": 0.4,
+          "sim_whisperx_parakeet": 0.8571,
+          "sim_whisperx_wav2vec2": 0.4,
+          "sim_parakeet_wav2vec2": 0.5,
+          "sentence": "Where are the topics?"
         }
       ]
     },
@@ -2540,38 +3167,30 @@
           "sent_pos": 0,
           "confidence": 1.0,
           "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
           "sentence": "If you could go on holiday anywhere, where would you go and why?"
         }
       ]
     },
     {
-      "dataset_index": 172,
+      "dataset_index": 174,
       "sentences": [
         {
           "sent_pos": 0,
-          "confidence": 1.0,
-          "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "Japan."
-        }
-      ]
-    },
-    {
-      "dataset_index": 173,
-      "sentences": [
-        {
-          "sent_pos": 0,
-          "confidence": 0.7778,
-          "min_agreement": 0.6667,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 0.6667,
-          "sim_qwen_par": 0.6667,
-          "sentence": "All right."
+          "confidence": 0.9666,
+          "min_agreement": 0.9333,
+          "sim_qwen_whisperx": 0.9677,
+          "sim_qwen_parakeet": 0.9333,
+          "sim_qwen_wav2vec2": 0.9677,
+          "sim_whisperx_parakeet": 0.9655,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 0.9655,
+          "sentence": "Because I think there's just such a different culture to what anything I've experienced before."
         }
       ]
     },
@@ -2582,10 +3201,13 @@
           "sent_pos": 0,
           "confidence": 1.0,
           "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "you"
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
+          "sentence": "Yeah."
         }
       ]
     },
@@ -2594,65 +3216,50 @@
       "sentences": [
         {
           "sent_pos": 0,
-          "confidence": 0.4189,
-          "min_agreement": 0.1429,
-          "sim_wx_qwen": 0.1429,
-          "sim_wx_par": 0.1538,
-          "sim_qwen_par": 0.96,
-          "sentence": "Definitely one of those things I've only seen or heard of."
+          "confidence": 0.6661,
+          "min_agreement": 0.4286,
+          "sim_qwen_whisperx": 0.4571,
+          "sim_qwen_parakeet": 0.9778,
+          "sim_qwen_wav2vec2": 0.8205,
+          "sim_whisperx_parakeet": 0.4706,
+          "sim_whisperx_wav2vec2": 0.4286,
+          "sim_parakeet_wav2vec2": 0.8421,
+          "sentence": "It would definitely be one of those things I've only seen or heard of, probably or America, but America's quite you know."
         },
         {
           "sent_pos": 1,
-          "confidence": 0.6667,
-          "min_agreement": 0.5,
-          "sim_wx_qwen": 0.5,
-          "sim_wx_par": 0.5,
-          "sim_qwen_par": 1.0,
-          "sentence": "Probably, or America."
-        },
-        {
-          "sent_pos": 2,
           "confidence": 1.0,
           "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "But America's quite you know."
-        },
-        {
-          "sent_pos": 3,
-          "confidence": 0.5111,
-          "min_agreement": 0.2667,
-          "sim_wx_qwen": 0.2667,
-          "sim_wx_par": 0.2667,
-          "sim_qwen_par": 1.0,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
           "sentence": "I couldn't see that being incredibly different."
         },
         {
-          "sent_pos": 4,
-          "confidence": 0.7527,
-          "min_agreement": 0.6316,
-          "sim_wx_qwen": 0.6316,
-          "sim_wx_par": 0.6667,
-          "sim_qwen_par": 0.96,
-          "sentence": "I could see Japan having a lot of stuff I would not be used to,"
+          "sent_pos": 2,
+          "confidence": 0.8614,
+          "min_agreement": 0.766,
+          "sim_qwen_whisperx": 0.8936,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 0.8077,
+          "sim_whisperx_parakeet": 0.8936,
+          "sim_whisperx_wav2vec2": 0.766,
+          "sim_parakeet_wav2vec2": 0.8077,
+          "sentence": "I could see Japan having a lot of stuff I would not be used to, stuff that I'd be like, oh, this is interesting and new."
         },
         {
-          "sent_pos": 5,
-          "confidence": 0.9683,
-          "min_agreement": 0.9524,
-          "sim_wx_qwen": 0.9524,
-          "sim_wx_par": 0.9524,
-          "sim_qwen_par": 1.0,
-          "sentence": "stuff that I'd be like, oh, this is interesting and new."
-        },
-        {
-          "sent_pos": 6,
-          "confidence": 0.9333,
-          "min_agreement": 0.9,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 0.9,
-          "sim_qwen_par": 0.9,
+          "sent_pos": 3,
+          "confidence": 0.9111,
+          "min_agreement": 0.8889,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 0.9,
+          "sim_qwen_wav2vec2": 0.8889,
+          "sim_whisperx_parakeet": 0.9,
+          "sim_whisperx_wav2vec2": 0.8889,
+          "sim_parakeet_wav2vec2": 0.8889,
           "sentence": "Where it'd be completely normal to people who live there."
         }
       ]
@@ -2664,9 +3271,12 @@
           "sent_pos": 0,
           "confidence": 1.0,
           "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
           "sentence": "Yeah."
         }
       ]
@@ -2676,58 +3286,15 @@
       "sentences": [
         {
           "sent_pos": 0,
-          "confidence": 1.0,
-          "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "What about yourself?"
-        }
-      ]
-    },
-    {
-      "dataset_index": 179,
-      "sentences": [
-        {
-          "sent_pos": 0,
-          "confidence": 1.0,
-          "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "Well, I would also say Japan, but for pretty much the same reasons."
-        },
-        {
-          "sent_pos": 1,
-          "confidence": 0.9139,
-          "min_agreement": 0.875,
-          "sim_wx_qwen": 0.875,
-          "sim_wx_par": 0.9333,
-          "sim_qwen_par": 0.9333,
-          "sentence": "But I'll say something else at the conversation."
-        },
-        {
-          "sent_pos": 2,
-          "confidence": 1.0,
-          "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "I think either like Iceland or Alaska."
-        }
-      ]
-    },
-    {
-      "dataset_index": 180,
-      "sentences": [
-        {
-          "sent_pos": 0,
-          "confidence": 1.0,
-          "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "What's the appeal in Iceland?"
+          "confidence": 0.669,
+          "min_agreement": 0.4,
+          "sim_qwen_whisperx": 0.8571,
+          "sim_qwen_parakeet": 0.8571,
+          "sim_qwen_wav2vec2": 0.5,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 0.4,
+          "sim_parakeet_wav2vec2": 0.4,
+          "sentence": "And what about yourself?"
         }
       ]
     },
@@ -2736,11 +3303,14 @@
       "sentences": [
         {
           "sent_pos": 0,
-          "confidence": 0.8667,
+          "confidence": 0.9,
           "min_agreement": 0.8,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 0.8,
-          "sim_qwen_par": 0.8,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 0.8,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 0.8,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 0.8,
           "sentence": "It's just cold, you know."
         }
       ]
@@ -2752,38 +3322,59 @@
           "sent_pos": 0,
           "confidence": 1.0,
           "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "cold."
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
+          "sentence": "Cold."
         }
       ]
     },
     {
-      "dataset_index": 183,
+      "dataset_index": 184,
       "sentences": [
         {
           "sent_pos": 0,
-          "confidence": 0.9608,
-          "min_agreement": 0.9412,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 0.9412,
-          "sim_qwen_par": 0.9412,
-          "sentence": "You don't need to leave your house for that one."
+          "confidence": 0.8122,
+          "min_agreement": 0.7429,
+          "sim_qwen_whisperx": 0.878,
+          "sim_qwen_parakeet": 0.9333,
+          "sim_qwen_wav2vec2": 0.75,
+          "sim_whisperx_parakeet": 0.8,
+          "sim_whisperx_wav2vec2": 0.7429,
+          "sim_parakeet_wav2vec2": 0.7692,
+          "sentence": "Yeah, and just like it's such a unique geography, like hot springs, mountains, volcanoes, the aurora borealis, like ice, icebergs, glaciers, and whatnot."
+        },
+        {
+          "sent_pos": 1,
+          "confidence": 0.9458,
+          "min_agreement": 0.9032,
+          "sim_qwen_whisperx": 0.9677,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 0.9032,
+          "sim_whisperx_parakeet": 0.9677,
+          "sim_whisperx_wav2vec2": 0.9333,
+          "sim_parakeet_wav2vec2": 0.9032,
+          "sentence": "It's like all that sort of stuff just in one like small package of an area."
         }
       ]
     },
     {
-      "dataset_index": 186,
+      "dataset_index": 185,
       "sentences": [
         {
           "sent_pos": 0,
-          "confidence": 1.0,
-          "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "Yeah."
+          "confidence": 0.75,
+          "min_agreement": 0.6667,
+          "sim_qwen_whisperx": 0.75,
+          "sim_qwen_parakeet": 0.6667,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 0.6667,
+          "sim_whisperx_wav2vec2": 0.75,
+          "sim_parakeet_wav2vec2": 0.6667,
+          "sentence": "Yeah, it's very scenic."
         }
       ]
     },
@@ -2792,40 +3383,27 @@
       "sentences": [
         {
           "sent_pos": 0,
-          "confidence": 0.9733,
-          "min_agreement": 0.96,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 0.96,
-          "sim_qwen_par": 0.96,
-          "sentence": "It would be quite nice actually. I wonder how accessible that is with COVID and"
-        }
-      ]
-    },
-    {
-      "dataset_index": 188,
-      "sentences": [
+          "confidence": 0.9285,
+          "min_agreement": 0.8571,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 0.8571,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 0.8571,
+          "sim_parakeet_wav2vec2": 0.8571,
+          "sentence": "Be quite nice actually."
+        },
         {
-          "sent_pos": 0,
-          "confidence": 0.7746,
+          "sent_pos": 1,
+          "confidence": 0.8333,
           "min_agreement": 0.6667,
-          "sim_wx_qwen": 0.6667,
-          "sim_wx_par": 0.8,
-          "sim_qwen_par": 0.8571,
-          "sentence": "I'm sure it's,"
-        }
-      ]
-    },
-    {
-      "dataset_index": 189,
-      "sentences": [
-        {
-          "sent_pos": 0,
-          "confidence": 1.0,
-          "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "costs at the moment."
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 0.6667,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 0.6667,
+          "sim_parakeet_wav2vec2": 0.6667,
+          "sentence": "Wonder how accessible that is with COVID and."
         }
       ]
     },
@@ -2834,12 +3412,15 @@
       "sentences": [
         {
           "sent_pos": 0,
-          "confidence": 0.7703,
-          "min_agreement": 0.6667,
-          "sim_wx_qwen": 0.875,
-          "sim_wx_par": 0.7692,
-          "sim_qwen_par": 0.6667,
-          "sentence": "of costs would be the same, like through the roof."
+          "confidence": 0.7501,
+          "min_agreement": 0.6154,
+          "sim_qwen_whisperx": 0.9412,
+          "sim_qwen_parakeet": 0.8,
+          "sim_qwen_wav2vec2": 0.6667,
+          "sim_whisperx_parakeet": 0.75,
+          "sim_whisperx_wav2vec2": 0.6154,
+          "sim_parakeet_wav2vec2": 0.7273,
+          "sentence": "The cost would be insane, like through the roof."
         }
       ]
     },
@@ -2848,85 +3429,73 @@
       "sentences": [
         {
           "sent_pos": 0,
-          "confidence": 1.0,
-          "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
+          "confidence": 0.8415,
+          "min_agreement": 0.6829,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 0.6829,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 0.6829,
+          "sim_parakeet_wav2vec2": 0.6829,
           "sentence": "Yeah, because a lot of the places to travel to are quite cheap at the moment because they're trying to boost the industry again."
         },
         {
           "sent_pos": 1,
-          "confidence": 0.7679,
-          "min_agreement": 0.7143,
-          "sim_wx_qwen": 0.7143,
-          "sim_wx_par": 0.7143,
-          "sim_qwen_par": 0.875,
+          "confidence": 0.6769,
+          "min_agreement": 0.5455,
+          "sim_qwen_whisperx": 0.7143,
+          "sim_qwen_parakeet": 0.875,
+          "sim_qwen_wav2vec2": 0.5455,
+          "sim_whisperx_parakeet": 0.7143,
+          "sim_whisperx_wav2vec2": 0.6667,
+          "sim_parakeet_wav2vec2": 0.5455,
           "sentence": "But I imagine Iceland just stayed expensive."
         },
         {
           "sent_pos": 2,
-          "confidence": 0.9048,
-          "min_agreement": 0.8571,
-          "sim_wx_qwen": 0.8571,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 0.8571,
-          "sentence": "It's given me that impression that we'll have."
+          "confidence": 0.8226,
+          "min_agreement": 0.7143,
+          "sim_qwen_whisperx": 0.8235,
+          "sim_qwen_parakeet": 0.8,
+          "sim_qwen_wav2vec2": 0.7143,
+          "sim_whisperx_parakeet": 0.875,
+          "sim_whisperx_wav2vec2": 0.8,
+          "sim_parakeet_wav2vec2": 0.9231,
+          "sentence": "It's given me that impression that it will have."
         }
       ]
     },
     {
-      "dataset_index": 194,
+      "dataset_index": 192,
       "sentences": [
         {
           "sent_pos": 0,
-          "confidence": 1.0,
-          "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "fishing."
-        },
-        {
-          "sent_pos": 1,
-          "confidence": 0.7778,
+          "confidence": 0.839,
           "min_agreement": 0.6667,
-          "sim_wx_qwen": 0.6667,
-          "sim_wx_par": 0.6667,
-          "sim_qwen_par": 1.0,
-          "sentence": "Or fishing."
-        },
-        {
-          "sent_pos": 2,
-          "confidence": 0.7778,
-          "min_agreement": 0.6667,
-          "sim_wx_qwen": 0.6667,
-          "sim_wx_par": 0.6667,
-          "sim_qwen_par": 1.0,
-          "sentence": "or fishing"
+          "sim_qwen_whisperx": 0.9565,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 0.7273,
+          "sim_whisperx_parakeet": 0.9565,
+          "sim_whisperx_wav2vec2": 0.6667,
+          "sim_parakeet_wav2vec2": 0.7273,
+          "sentence": "Yeah, because I guess Iceland's like main thing is tourism, isn't it?"
         }
       ]
     },
     {
-      "dataset_index": 195,
+      "dataset_index": 193,
       "sentences": [
         {
           "sent_pos": 0,
-          "confidence": 1.0,
-          "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
-          "sentence": "Or just..."
-        },
-        {
-          "sent_pos": 1,
-          "confidence": 0.8667,
-          "min_agreement": 0.8,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 0.8,
-          "sim_qwen_par": 0.8,
-          "sentence": "or just cold"
+          "confidence": 0.9615,
+          "min_agreement": 0.9231,
+          "sim_qwen_whisperx": 0.9231,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 0.9231,
+          "sim_whisperx_wav2vec2": 0.9231,
+          "sim_parakeet_wav2vec2": 1.0,
+          "sentence": "Yeah, yeah, it does sound like that."
         }
       ]
     },
@@ -2935,12 +3504,15 @@
       "sentences": [
         {
           "sent_pos": 0,
-          "confidence": 0.4866,
-          "min_agreement": 0.4,
-          "sim_wx_qwen": 0.4,
-          "sim_wx_par": 0.4444,
-          "sim_qwen_par": 0.6154,
-          "sentence": "always fighting Britain over fishing rights."
+          "confidence": 0.3836,
+          "min_agreement": 0.1818,
+          "sim_qwen_whisperx": 0.2857,
+          "sim_qwen_parakeet": 0.6667,
+          "sim_qwen_wav2vec2": 0.5263,
+          "sim_whisperx_parakeet": 0.3077,
+          "sim_whisperx_wav2vec2": 0.1818,
+          "sim_parakeet_wav2vec2": 0.3333,
+          "sentence": "Thousands always in, always high in Britain, but over fishing rates."
         }
       ]
     },
@@ -2949,29 +3521,38 @@
       "sentences": [
         {
           "sent_pos": 0,
-          "confidence": 0.9167,
-          "min_agreement": 0.875,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 0.875,
-          "sim_qwen_par": 0.875,
+          "confidence": 0.7917,
+          "min_agreement": 0.6667,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 0.875,
+          "sim_qwen_wav2vec2": 0.6667,
+          "sim_whisperx_parakeet": 0.875,
+          "sim_whisperx_wav2vec2": 0.6667,
+          "sim_parakeet_wav2vec2": 0.6667,
           "sentence": "So yeah, I think this is 15 done."
         },
         {
           "sent_pos": 1,
-          "confidence": 1.0,
-          "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
+          "confidence": 0.9091,
+          "min_agreement": 0.8182,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 0.8182,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 0.8182,
+          "sim_parakeet_wav2vec2": 0.8182,
           "sentence": "So I'm going to stop the recording and then upload the files."
         },
         {
           "sent_pos": 2,
           "confidence": 1.0,
           "min_agreement": 1.0,
-          "sim_wx_qwen": 1.0,
-          "sim_wx_par": 1.0,
-          "sim_qwen_par": 1.0,
+          "sim_qwen_whisperx": 1.0,
+          "sim_qwen_parakeet": 1.0,
+          "sim_qwen_wav2vec2": 1.0,
+          "sim_whisperx_parakeet": 1.0,
+          "sim_whisperx_wav2vec2": 1.0,
+          "sim_parakeet_wav2vec2": 1.0,
           "sentence": "Right."
         }
       ]
