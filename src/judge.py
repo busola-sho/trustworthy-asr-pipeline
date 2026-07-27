@@ -15,7 +15,7 @@ import torch
 from ollama import Client
 
 OLLAMA_HOST  = "http://localhost:11434"
-JUDGE_MODEL  = "qwen2.5:7b"
+JUDGE_MODEL  = "phi4:14b"
 
 # ── MAR prompt (v2 judge — named entities excluded) ────────────────────────────
 
