@@ -21,6 +21,8 @@ export HF_HOME=/rds/user/ors36/hpc-work/hf_cache
 export PATH=/rds/user/ors36/hpc-work/ollama_install/bin:$PATH
 export LD_LIBRARY_PATH=/rds/user/ors36/hpc-work/ollama_install/lib/ollama:$LD_LIBRARY_PATH
 export OLLAMA_MODELS=/rds/user/ors36/hpc-work/ollama_models
+export OLLAMA_NUM_PARALLEL=8
+export ENSEMBLE_MAX_WORKERS=8
 mkdir -p "$OLLAMA_MODELS"
 
 ollama serve &

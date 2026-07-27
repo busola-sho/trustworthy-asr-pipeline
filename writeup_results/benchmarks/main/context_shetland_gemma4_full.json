@@ -118,7 +118,7 @@
       "sample_WER": 0.07142857142857142,
       "severity": 2,
       "dataset_index": 0,
-      "judge_raw_response": "Severity: 2\n\nJustification: The ASR output introduces ambiguity by omitting \"What do you think\" and altering the structure of a question, which could lead to confusion about whether it's a statement or a question. Additionally, changing \"you\" to \"here\" slightly alters the relational context without asserting a different material fact, requiring reconstruction for clarity."
+      "judge_raw_response": "Severity: 2\n\nJustification: The ASR output introduces ambiguity by altering \"What do you think this is? A fashion choice?\" to \"What do you think this is a fashion choice?\", which changes the structure and potentially the meaning of the question. Additionally, \"Don't be cheeky, you.\" becomes \"Don't be cheeky here.\", introducing uncertainty about who or what is being addressed. These changes require reconstruction for clarity but do not assert a different material fact with certainty."
     },
     {
       "ref": "Morning. Morning, Billy. Morning, Craig. Anything? Robert Eunson's in the cells. Drunk in the Market Square at three this morning singing King Of The Road. You'd think he'd have found another song by now. You got any news from the Up Helly Aa Committee? Aye, it's just in. Guizer Jarl thinks it'll be the best festival we've ever had. Oh! I heard a rumour there's gonna be a Lady Gaga squad this year? You know anything? Well, you see, I do. But then, if I told you about it, then I'd have to kill you.",
@@ -140,7 +140,7 @@
       "sample_WER": 0.1346153846153846,
       "severity": 2,
       "dataset_index": 2,
-      "judge_raw_response": "Severity: 2\n\nJustification: The hypothesis introduces some ambiguity and requires reconstruction, such as \"Your squad\" instead of \"The Jarl Squad,\" which could lead to confusion about the group involved. Additionally, \"Set fire to the galley to eat\" changes the meaning from setting a fire for an unspecified purpose to eating, introducing doubt about intent without asserting a completely different fact. These errors create ambiguity but do not unambiguously assert a new material fact or fundamentally alter the central assertion."
+      "judge_raw_response": "Severity: 2\n\nJustification: The hypothesis introduces some ambiguity and requires reconstruction, such as \"Your squad\" instead of \"The Jarl Squad,\" which could lead to confusion about the group involved. Additionally, \"Set fire to the galley to eat\" changes the meaning from setting a fire for an unspecified purpose to eating, introducing doubt about intent without asserting a completely different fact. These errors necessitate some reconstruction and introduce ambiguity but do not assert a clear factual error or critical alteration of meaning."
     },
     {
       "ref": "I don't understand. She's been shot. She's dead. Okay, what I want you to do is I want you to phone Billy on the landline and give him all the details. I'm going to get the inter-island ferry to Bressay and I'll be there in 20 minutes, okay? Okay.",
@@ -162,7 +162,7 @@
       "sample_WER": 0.15853658536585366,
       "severity": 2,
       "dataset_index": 4,
-      "judge_raw_response": "Severity: 2\n\nJustification: The hypothesis introduces ambiguity and requires reconstruction, such as changing \"Are there any signs of a break-in at the croft?\" to \"Any sign of a break in the croft?\", which alters the clarity of questioning. Additionally, it changes \"Do you know if the neighbours heard anything?\" to \"You know if the neighbours heard anything?\", introducing uncertainty about whether this is a question or statement. These alterations create ambiguity without asserting a different material fact."
+      "judge_raw_response": "Severity: 2\n\nJustification: The hypothesis introduces some ambiguity and requires reconstruction, such as changing \"Are there any signs of a break-in at the croft?\" to \"Any sign of a break in the croft?\", which slightly alters the structure but not the meaning. Additionally, \"Did Mima own a gun? She keeps it in the hall cupboard.\" is changed to \"It might be my own gun? She keeps it in the hall cupboard.\", introducing ambiguity about ownership and requiring clarification. These changes do not assert a different material fact with certainty, thus fitting level 2 for ambiguous meaning shifts."
     },
     {
       "ref": "What's the signal like up here? Comes and goes. You'll need to go up the hill. Okay, this is what I want you to do. I want you to phone the hospital in Lerwick. Use the landline. But try not to contaminate anything. And get them to send an ambulance over here. After that, I want you to tape off this area, set up a common approach path and put up a windshield. Do you think you can handle that? Yeah. Can I cover her up? No",
@@ -173,7 +173,7 @@
       "sample_WER": 0.04597701149425287,
       "severity": 2,
       "dataset_index": 5,
-      "judge_raw_response": "Severity: 2\n\nJustification: The hypothesis introduces minor changes, such as \"It comes and goes\" instead of \"Comes and goes,\" which slightly alters the sentence structure but not the meaning. Additionally, \"Can I cover it up?\" replaces \"Can I cover her up?\", introducing ambiguity about what is being covered without clear context to resolve it confidently. These changes require some reconstruction or introduce doubt, fitting an ambiguous meaning shift rather than a trivial error or factual change."
+      "judge_raw_response": "Severity: 2\n\nJustification: The hypothesis introduces minor ambiguities, such as changing \"C'mon\" to \"You need to,\" which slightly alters the tone and directness of the command. Additionally, \"cover her up?\" is changed to \"cover it up?\", introducing ambiguity about what should be covered, but these do not assert a different material fact or significantly alter the meaning."
     },
     {
       "ref": "Gun hasn't been fired for years. Did Mima own this place? Yeah. Does cousin Ronald have a claim? No. He's related on my mother's side. Ah, so it'll come to your dad? Yeah. And where is he now? At home. I told him not to come down. It did not feel right breaking the news like that on the mobile, but I was worried about contamination. No, no, you did the right thing.",
@@ -195,7 +195,7 @@
       "sample_WER": 0.19672131147540983,
       "severity": 2,
       "dataset_index": 7,
-      "judge_raw_response": "Severity: 2\n\nJustification: The hypothesis omits \"Right,\" and slightly alters phrasing, such as changing \"Are you sure?\" to \"You sure?\" and \"Cos\" to \"Because.\" These changes introduce some ambiguity in the relational context but do not assert a different material fact. Additionally, minor wording differences like \"off-duty\" vs. \"off duty\" are present, which require reconstruction for full clarity but don't significantly alter meaning or intent."
+      "judge_raw_response": "Severity: 2\n\nJustification: The hypothesis omits \"Right,\" and slightly alters phrasing, such as changing \"Are you sure?\" to \"You sure?\" and \"Cos\" to \"Because.\" These changes introduce some ambiguity in tone and intent but do not alter the core meaning or material facts of the conversation. The overall propositional content remains intact, requiring only minor reconstruction for clarity."
     },
     {
       "ref": "No? I'm sorry for your loss. You must be stunned. But I'm going to have to ask you a few questions. You passed by the croft last night? Aye. I was just on my way home. He was drinking over in Lerwick. Like he does every night. Look, I'm no' long back from sea. I don't know what to do with myself. Now, get off my back! For goodness' sake! All right? These days, the deep-sea ships only do two or three long trips a year. Ronald can explain.",
@@ -206,7 +206,7 @@
       "sample_WER": 0.12359550561797752,
       "severity": 2,
       "dataset_index": 8,
-      "judge_raw_response": "Severity: 2\n\nJustification: The transcription errors introduce some ambiguity and require reconstruction for clarity, such as \"croft\" vs. \"craft,\" which could change the context slightly but is not entirely unambiguous. Additionally, \"over in Lerwick\" being transcribed as \"over a lyric\" introduces confusion that needs clarification to understand the intended meaning, fitting an ambiguous meaning shift rather than asserting a clear factual error or critical alteration."
+      "judge_raw_response": "Severity: 2\n\nJustification: The transcription errors introduce some ambiguity and require reconstruction for clarity, such as \"croft\" vs. \"craft,\" which could change the context slightly but is not entirely unambiguous. Additionally, \"over in Lerwick\" being transcribed as \"over a lyric\" introduces confusion that needs clarification to understand the intended meaning fully. These changes do not assert different material facts or fundamentally alter the central assertion of the statement."
     },
     {
       "ref": "I'd been over at the main island. I got the last ferry back and I had a wee nightcap at the ceilidh. What about you, Anna, did you see anybody about? The baby was sleeping. I took the opportunity to join him. Jackie, Ronald's mum was here. That was earlier. How long did Jackie stay? Half an hour. She wanted to tell us about a piece of bone she found at the dig. She was actually quite excited. Is that the dig at Mima's? Uh-huh.",
@@ -261,7 +261,7 @@
       "sample_WER": 0.19230769230769232,
       "severity": 3,
       "dataset_index": 13,
-      "judge_raw_response": "Severity: 3\n\nJustification: The hypothesis introduces several factual errors, such as changing \"She could start an argument\" to \"You start an argument,\" altering the subject and meaning. Additionally, it changes \"Did you hear a gunshot?\" to \"He had a gunshot,\" which asserts a different material fact about who experienced the event. These changes unambiguously alter key facts without introducing ambiguity or requiring reconstruction."
+      "judge_raw_response": "Severity: 3\n\nJustification: The hypothesis introduces several factual errors, such as changing \"She could start an argument\" to \"You start an argument,\" and altering the question about shedding light on what happened into a statement involving a gunshot. These changes unambiguously assert different material facts without real ambiguity, fitting the criteria for a severity level 3 error."
     },
     {
       "ref": "Sandy, you've got some leave due. I want you to stay with your dad. Cos he needs you. I want to help. Well, you can. Get him to check that nothing was taken from the croft, cos we need to be sure. I'm capable of more than that if you'll give me a chance. I know you are, but it's difficult. You can't investigate your own family.",
@@ -283,7 +283,7 @@
       "sample_WER": 0.09183673469387756,
       "severity": 3,
       "dataset_index": 15,
-      "judge_raw_response": "Severity: 3\n\nJustification: The substitution of \"Maureen's\" with \"Molly's\" is a clear factual error, as it unambiguously asserts a different material fact regarding the name of the person being referred to. This change could have implications in identifying individuals involved or mentioned in the context."
+      "judge_raw_response": "Severity: 3\n\nJustification: The substitution of \"Maureen's\" with \"Molly's\" is a clear factual error, as it unambiguously asserts a different material fact regarding the name of the person being referred to. This change could have implications in identifying individuals involved or mentioned in the context, which is critical in a high-stakes policing scenario."
     },
     {
       "ref": "Looks like hard work. Was. We're not sure yet if Mima's family will let us continue digging here. Can I ask about the brace? It's just you don't really look like a detective? And you don't look like an archaeologist. She isn't, she's a student. Don't let the brace fool you. They fast-track the brainy ones like me.",
@@ -294,7 +294,7 @@
       "sample_WER": 0.034482758620689655,
       "severity": 1,
       "dataset_index": 16,
-      "judge_raw_response": "Severity: 1\n\nJustification: The transcription errors are minor and do not alter the meaning of the sentence; they include missing punctuation (a comma after \"hard work\") and a slight change in phrasing (\"fast-track\" to \"fast track\"). These changes do not affect the propositional content or introduce any ambiguity, allowing for confident recovery of the original intent."
+      "judge_raw_response": "Severity: 1\n\nJustification: The transcription errors are minor and do not alter the meaning of the sentence. The missing comma after \"hard work\" and the slight change in spacing for \"fast track\" are trivial, with no impact on the propositional content or clarity of the message."
     },
     {
       "ref": "Is there anything missing? Only tales from other people about my father. Mima never... Never talked about him. He worked on the Shetland Bus during the war. Is that right? Local boats were used to transport saboteurs into Norway under the noses of the Germans. Across the North Sea in the dead of winter. Aye, brave men.",
@@ -316,7 +316,7 @@
       "sample_WER": 0.05,
       "severity": 1,
       "dataset_index": 18,
-      "judge_raw_response": "Severity: 1\n\nJustification: The differences between the reference and hypothesis are primarily surface-level, such as changes from \"were hoping\" to \"we're hoping,\" \"from that period\" to \"in that period,\" and minor punctuation adjustments. These do not alter the propositional content or introduce ambiguity, allowing for confident recovery of the original meaning without any material fact change."
+      "judge_raw_response": "Severity: 1\n\nJustification: The differences between the reference and hypothesis are primarily surface-level, such as \"We were hoping\" vs. \"We're hoping,\" which do not alter the propositional content or meaning of the statements. Other changes like punctuation (\"What?!\") to a simpler form (\"What?\") and slight wording variations maintain the original intent without introducing ambiguity or factual errors."
     },
     {
       "ref": "Hi, Tosh. You recovered? You were giving it laldy the other night. DC Macintosh, if you don't mind, Drew. It's not like it's your business any more, is it? All right. Aye, fair enough. Do you have a Paul Berglund staying? The Professor who's running the dig at Mima Wilson's? You just missed him. He was going to catch the mainland ferry. He said he'd be back in a day or so. University business, I think. Can you describe him for me? Scandinavian-looking. Wearing a Gore-Tex waterproof.",
@@ -327,7 +327,7 @@
       "sample_WER": 0.13793103448275862,
       "severity": 2,
       "dataset_index": 19,
-      "judge_raw_response": "Severity: 2\n\nJustification: The transcription errors introduce some ambiguity and require reconstruction, such as \"Tosh\" vs. \"Josh,\" \"giving it laldy\" vs. \"giving it loudly,\" and \"Berglund\" vs. \"Bergland.\" Additionally, the insertion of \"You were scribing for him?\" introduces a new element that wasn't in the original, but doesn't assert a different material fact with certainty. These changes affect clarity without asserting unambiguous factual errors or critical meaning alterations."
+      "judge_raw_response": "Severity: 2\n\nJustification: The transcription errors introduce some ambiguity and require reconstruction, such as \"Josh\" instead of \"Tosh,\" \"loudly\" instead of \"laldy,\" and \"Bergland\" instead of \"Berglund.\" Additionally, the omission of \"The Professor who's running the dig at Mima Wilson's?\" changes how information is connected, requiring clarification. These errors do not assert a different material fact but create some ambiguity in meaning."
     },
     {
       "ref": "Berglund was on the ferry that just left. Okay, get McCabe to radio Aberdeen, I want him back on the next one. And the harbour master doesn't remember seeing Joseph get on the Bressay ferry. Okay, we're going to have to go through the CCTV, cos I need to know if he was in Lerwick or not. List of people with a licence to hold a shotgun. The Haldanes are on it, Andrew and Ronald. Joseph Wilson. Sandy. Half the islands. And the other half are phoning me wanting to know what happened. Vicky at the museum is still trying to carbon-date the skull fragment.",
@@ -349,7 +349,7 @@
       "sample_WER": 0.07042253521126761,
       "severity": 3,
       "dataset_index": 21,
-      "judge_raw_response": "Severity: 3\n\nJustification: The hypothesis incorrectly changes \"Hattie\" to \"he\" and \"Mima\" to \"Maima,\" which are clear factual errors involving different entities. Additionally, the phrase \"It was a big rush, he said threateningly\" alters the original meaning by adding an interpretation not present in the reference, but this does not reach the level of reversing or fabricating central assertions as required for severity 4."
+      "judge_raw_response": "Severity: 3\n\nJustification: The hypothesis introduces a clear factual error by changing \"Mima\" to \"Maima,\" which is a different entity, and alters the gender of the speaker from female (\"she\") to male (\"he\"), affecting the material facts. Additionally, it changes the context of urgency in the sentence about taking a ferry, altering the meaning without ambiguity."
     },
     {
       "ref": "And you can corroborate that? Of course! Sorry, am I a suspect? Well, according to Hattie, this dig was quite important to you. Mima could have closed it down. Like I said, Hattie exaggerates. I didn't get that impression. It seems we've taken an instant dislike to each other. That's unfortunate. Not for me. I'd really appreciate it if you'd let me know in advance the next time you plan to leave Shetland.",
@@ -360,7 +360,7 @@
       "sample_WER": 0.0684931506849315,
       "severity": 3,
       "dataset_index": 22,
-      "judge_raw_response": "Severity: 3\n\nJustification: The hypothesis incorrectly substitutes \"Sheridan\" for \"Shetland,\" which is a clear factual error involving location, and it changes the meaning of the statement by introducing an incorrect entity. This substitution unambiguously asserts a different material fact without real ambiguity about the new claim."
+      "judge_raw_response": "Severity: 3\n\nJustification: The hypothesis incorrectly substitutes \"Sheridan\" for \"Shetland,\" which is a clear factual error involving location, and thus unambiguously asserts a different material fact. Additionally, the change from \"Mima could have closed it down\" to \"Maybe I could have closed it down\" introduces an ambiguity regarding who might have had the authority or ability to close the dig, but this does not reach the level of a critical meaning alteration as defined for severity 4."
     },
     {
       "ref": "He was found by the road, unconscious. Nothing on CCTV. Blind spot. Okay. You must have some idea who did this to you? It was dark and I was... Well, I'd had a few. They didn't rob you, then? I don't think so, no. Do you think it might have something to do with Mima? No. No, nothing. How can you be so sure? Why would it? Because people blame you. Mum! Look, I told you not to come. I'm fine.",
@@ -371,7 +371,7 @@
       "sample_WER": 0.04938271604938271,
       "severity": 1,
       "dataset_index": 23,
-      "judge_raw_response": "Severity: 1\n\nJustification: The ASR output contains minor wording differences and slight reordering of phrases, but the overall meaning remains confidently recoverable without any material fact changes. These are mostly trivial or cosmetic errors that do not introduce ambiguity or alter the propositional content significantly."
+      "judge_raw_response": "Severity: 1\n\nJustification: The ASR output contains minor wording differences and slight reordering of phrases, but the overall meaning remains confidently recoverable without any material fact changes. These are primarily cosmetic errors that do not introduce ambiguity or alter the propositional content significantly."
     },
     {
       "ref": "I was rubbish at history. I mean, King James VI and King James I were the same person? That's just confusing. Having said that, Rocky II and Rocky IV are the same film. Uh-huh. Jimmy Perez? Hi, Vicky, thanks for seeing us. You interested in the Shetland Bus? Uh-huh. That's ironic. You weren't when you were at school. I was his teacher.",
@@ -393,7 +393,7 @@
       "sample_WER": 0.08695652173913043,
       "severity": 2,
       "dataset_index": 25,
-      "judge_raw_response": "Severity: 2\n\nJustification: The transcription errors involve minor name changes (\"Mima\" to \"Maima\" and \"Jackie\" to \"Jacky\") that introduce ambiguity but do not fundamentally alter the meaning or factual content of the statement. These changes require some reconstruction for clarity, fitting the criteria for an ambiguous meaning shift without asserting a different material fact."
+      "judge_raw_response": "Severity: 2\n\nJustification: The transcription errors involve minor name changes (\"Mima\" to \"Maima\" and \"Jackie\" to \"Jacky\") that introduce ambiguity but do not assert a different material fact. These changes require reconstruction for clarity, fitting the criteria for an ambiguous meaning shift without asserting new facts or altering central claims."
     },
     {
       "ref": "She was right, though. We don't need men these days, anyway. You know, the man that hurt you... it just means he's not the right one. Are you sure you're a policeman? I can still roll over the bonnet of a car if I need to. I take it you met the right person. You telling me she's never hurt you? Not deliberately.",
@@ -415,7 +415,7 @@
       "sample_WER": 0.22033898305084745,
       "severity": 3,
       "dataset_index": 27,
-      "judge_raw_response": "Severity: 3\n\nJustification: The hypothesis introduces several factual errors, such as changing \"I heard about Ronald\" to \"Heard about Ronald?\" and altering the speaker's identity in \"If you're thinking it was me who had a go at Ronald, think again\" to \"You're thinking it was me, Edward Ronald? Think again.\" These changes assert different material facts regarding the speaker's identity and intent. Additionally, there are errors like \"Didn't ever saw him attacked,\" which misrepresent the original meaning but do not introduce ambiguity or critical alterations in the central assertion."
+      "judge_raw_response": "Severity: 3\n\nJustification: The hypothesis introduces several factual errors, such as changing \"I heard about Ronald\" to \"Heard about Ronald?\" and altering the speaker's identity in \"If you're thinking it was me who had a go at Ronald, think again\" to \"You're thinking it was me, Edward Ronald? Think again.\" These changes assert different material facts regarding the speaker's identity and intent. Additionally, there are errors like \"I'd be all right\" instead of \"He'll be all right,\" which misrepresent the original statement about Ronald's condition."
     },
     {
       "ref": "Do you have the ticket? I threw it away. Someone must have seen you. You were telling me about the Shetland Bus. You never mentioned that Ronald's grandfather and your father sailed together. Were your father and Mima married then? Childhood sweethearts.",
@@ -426,7 +426,7 @@
       "sample_WER": 0.07142857142857142,
       "severity": 2,
       "dataset_index": 28,
-      "judge_raw_response": "Severity: 2\n\nJustification: The hypothesis contains errors that introduce ambiguity and require reconstruction, such as \"sailing bus\" instead of \"Shetland Bus,\" which alters the meaning but is not entirely unrecognizable. Additionally, \"ever mentioned\" instead of \"never mentioned\" changes the intent, requiring clarification to understand the original meaning."
+      "judge_raw_response": "Severity: 2\n\nJustification: The transcription errors introduce ambiguity and require reconstruction for clarity. \"Shetland Bus\" is garbled as \"sailing bus,\" which alters the specific reference but can be inferred from context, and \"Mima\" instead of \"Mima\" introduces a minor name error that could lead to confusion about identity without additional context. These changes do not assert a different material fact with certainty, thus fitting an ambiguous meaning shift."
     },
     {
       "ref": "Cos they say that there was a Norwegian who was killed on the island, a traitor. Did Mima ever mention anything about that? Like I said, she never spoke much about those years. Because there's a photograph of Mima with some young Norwegian lad at the museum. And I just wondered that... maybe that's why she was upset about the skull. Cos maybe she thought it was somebody she knew. And if that was the case... then, she'd be even more loath to sell up, wouldn't she? Who said anything about selling up?",
@@ -437,7 +437,7 @@
       "sample_WER": 0.15053763440860216,
       "severity": 2,
       "dataset_index": 29,
-      "judge_raw_response": "Severity: 2\n\nJustification: The transcription errors introduce ambiguity and require reconstruction, such as changing \"Cos\" to \"Because,\" altering the name from \"Mima\" to \"Maima,\" and modifying locations from \"on the island\" to \"in the islands.\" These changes affect clarity but do not assert a different material fact or fundamentally alter the central meaning."
+      "judge_raw_response": "Severity: 2\n\nJustification: The transcription errors introduce ambiguity and require reconstruction, such as changing \"Cos\" to \"Because,\" altering the name from \"Mima\" to \"Maima,\" and modifying locations from \"on the island\" to \"in the islands.\" These changes affect relational words and proper nouns but do not assert a different material fact with certainty."
     },
     {
       "ref": "We know that Mima Wilson was killed around 11 PM. And we know that the killer wanted to make it look like a burglary. Hattie James was the last person to see Mima alive. Paul Berglund had a lot riding on the dig. He stood to get major funding if they got results. So is it possible that Mima was going to shut them down after they discovered the skull? Or that she was going to sell the land? Is that a strong enough motive to kill her?",
@@ -448,7 +448,7 @@
       "sample_WER": 0.045454545454545456,
       "severity": 2,
       "dataset_index": 30,
-      "judge_raw_response": "Severity: 2\n\nJustification: The transcription error involves a minor misspelling of \"Berglund\" as \"Bergland,\" which could introduce ambiguity regarding the identity of the person involved. Additionally, there is a slight change in punctuation and wording (\"So is it possible that Mima was going to shut them down after they discovered the skull? Or that she was going to sell the land?\" vs. \"So, is it possible that Mima was going to shut them down after they discovered the skull, or that she was going to sell the land?\"), which may affect how the clauses are connected but does not change the overall meaning significantly. These issues require some reconstruction and introduce potential ambiguity without asserting a different material fact."
+      "judge_raw_response": "Severity: 2\n\nJustification: The transcription error involves a minor misspelling of \"Berglund\" as \"Bergland,\" which could introduce ambiguity regarding the identity of the person involved, requiring reconstruction for clarity. Additionally, there is a slight change in punctuation and capitalization (\"11 PM\" to \"11pm\"), but these do not affect the propositional content significantly. Overall, while the meaning can be confidently recovered, the presence of minor ambiguities warrants a score of 2."
     },
     {
       "ref": "Ronald Haldane. He could have shot Mima, either deliberately or accidentally. But if he did it deliberately, then, why? He wouldn't gain from her death. If he did it by accident, he could have panicked and tried to make it look like a burglary. Yeah, you see, that's possible. Is your dog a member of the magic circle, by any chance? Cos he's very good at making those biscuits disappear. Okay, okay, I'll buy some more. What, are we done with the dog and the biscuits? Sure.",
@@ -459,7 +459,7 @@
       "sample_WER": 0.1724137931034483,
       "severity": 3,
       "dataset_index": 31,
-      "judge_raw_response": "Severity: 3\n\nJustification: The hypothesis introduces a clear factual error by changing \"Ronald Haldane\" to \"Ronald Howdie\" and \"Mima\" to \"Maima,\" which are unambiguous substitutions of different entities. Additionally, the phrase \"make it up\" replaces \"panicked and tried to make it look like a burglary,\" altering the meaning related to Ronald's potential actions without ambiguity."
+      "judge_raw_response": "Severity: 3\n\nJustification: The hypothesis introduces a clear factual error by changing \"Ronald Haldane\" to \"Ronald Howdie\" and \"Mima\" to \"Maima,\" which are unambiguous substitutions of different entities. Additionally, the phrase \"make it up\" instead of \"panicked and tried to make it look like a burglary\" alters the meaning significantly without ambiguity, asserting a different material fact about Ronald's potential actions."
     },
     {
       "ref": "What are you doing here? We're looking for Hattie. I haven't seen her since last night. She's been weird since Mima was killed. Do you have a number for her parents? Her mum's name's Gwen, she lives in Glasgow. That's all I know. We don't really go in for girlie heart-to-hearts. Well, do you know where she might have gone? What, you don't know, you don't care? I can't tell. You know, Mima's death has affected us all, it's not just Hattie. I'm getting the first ferry back to civilisation. No, you're not. Not unless I say so.",
@@ -481,7 +481,7 @@
       "sample_WER": 0.14285714285714285,
       "severity": 3,
       "dataset_index": 33,
-      "judge_raw_response": "Severity: 3\n\nJustification: The hypothesis introduces a clear factual error by changing \"Brae\" to \"Bray,\" which is a different location, and alters the meaning of Hattie's situation from \"crying into her beer\" to \"letting cry in their beer,\" introducing ambiguity about her actions. Additionally, it changes the intent regarding Sandy's involvement with a search party, affecting the material fact of his required presence."
+      "judge_raw_response": "Severity: 3\n\nJustification: The hypothesis introduces a clear factual error by changing \"Brae\" to \"Bray,\" which is a different location, and alters the meaning of Hattie's situation with \"letting cry in their beer\" instead of \"crying into her beer.\" These changes assert different material facts without ambiguity."
     },
     {
       "ref": "Hello. Gwen James? Sorry, who's this? This is Detective Perez, from the Shetland Constabulary. There's no cause for concern, Mrs James, I just wondered if you'd heard from your daughter Hattie recently? Is everything all right? She's not in any trouble, is she? No, no. Is she... Is she likely to hide herself away if she's upset about something? Why? Don't worry, Mrs James. If she does get in contact with you, can you please let me know? Aye.",
@@ -492,7 +492,7 @@
       "sample_WER": 0.012658227848101266,
       "severity": 2,
       "dataset_index": 34,
-      "judge_raw_response": "Severity: 2\n\nJustification: The hypothesis introduces a minor ambiguity with \"upset about something\" changed to \"upset with something,\" which could slightly alter the relational meaning but does not assert a different material fact. Additionally, there is an omission of \"if she's upset about something?\" in the reference, leading to some loss of detail that requires reconstruction for full understanding."
+      "judge_raw_response": "Severity: 2\n\nJustification: The transcription error introduces a minor ambiguity with \"upset about something\" changed to \"upset with something,\" which could slightly alter the relational meaning but does not change the overall intent or factual content. Additionally, there is an omission of \"not\" in \"Is she?\" creating some uncertainty that requires reconstruction for clarity, fitting the criteria for an ambiguous meaning shift."
     },
     {
       "ref": "Did Hattie ask permission to work at the dig? No, I didn't know she was here. I was over at my croft all night. Well, I have to ask you this. Were you alone? Uh-huh. Alone. I just want to know what happened to my mother and this girl, I don't need accusations.",
@@ -514,7 +514,7 @@
       "sample_WER": 0.05,
       "severity": 2,
       "dataset_index": 36,
-      "judge_raw_response": "Severity: 2\n\nJustification: The transcription errors introduce ambiguity and require reconstruction, such as \"Paul Berglund\" being changed to \"Paul Bergman,\" which could lead to confusion about the identity of a person. Additionally, \"prints\" is altered to \"footprints,\" changing the type of evidence being referred to, but it's still possible to infer the intended meaning with some effort."
+      "judge_raw_response": "Severity: 2\n\nJustification: The transcription errors include \"Paul Bergman\" instead of \"Paul Berglund,\" which introduces ambiguity and requires reconstruction, and \"footprints\" instead of \"prints,\" altering the meaning slightly but not creating a completely different fact. These changes introduce some doubt about intent and require clarification to ensure accurate understanding, fitting the criteria for an ambiguous meaning shift."
     },
     {
       "ref": "But, from the photos, she reckons blood loss, wounds probably self-inflicted. I'm just-- I'm not sure. I mean, see... The bruise on the arm, it could be someone held her. And she's got another one on the back of her head. She could have cracked it when she passed out. And these cuts? No reason why they couldn't be defensive. Self-harmer? Her mother said she'd suffered from depression, didn't she? The lab got back. The only prints on the knife are Hattie's.",
@@ -536,7 +536,7 @@
       "sample_WER": 0.12698412698412698,
       "severity": 2,
       "dataset_index": 38,
-      "judge_raw_response": "Severity: 2\n\nJustification: The hypothesis introduces some ambiguity and garbling, such as \"And a knife\" instead of \"On a knife,\" which slightly alters the meaning but is still recoverable. Additionally, there are minor omissions like \"Who is it?\" being reduced to \"What?\", introducing potential confusion about intent without asserting a different material fact. These changes require some reconstruction and introduce ambiguity, fitting level 2."
+      "judge_raw_response": "Severity: 2\n\nJustification: The hypothesis introduces some ambiguity and garbling, such as \"And a knife\" instead of \"On a knife,\" which slightly alters the meaning but is still recoverable. Additionally, there are minor omissions like \"Who is it?\" being reduced to \"What?\", creating potential confusion about intent without asserting a different material fact. These changes require some reconstruction and introduce ambiguity, fitting level 2."
     },
     {
       "ref": "What would you say if I told you I just picked up that great wee engine for your boat? I was going to call you. Sounds ominous, go on. Well, I was just thinking, you know, because I can't think of one single person on these islands that you haven't done business with, because everybody likes you and everybody respects you... Where is this going? I'm thinking of requesting a banning order for Up Helly Aa. On what grounds? Public safety. I do not have the manpower. The festival will police itself. I've got two unsolved murders on my hands and I'm supposed to switch off all the streetlights in Lerwick. No CCTV. I'm supposed to open all the church halls. And there's tourists jamming all the roads. Now, what do I do if something happens? What do you want me to do about it? I'm not on the Island Council. But you know just about everybody that is. So I'm thinking, you know, if you back me up, then, we might have a chance.",
@@ -547,7 +547,7 @@
       "sample_WER": 0.05142857142857143,
       "severity": 2,
       "dataset_index": 39,
-      "judge_raw_response": "Severity: 2\n\nJustification: The ASR output contains several errors that introduce ambiguity or require reconstruction, such as \"in these islands\" instead of \"on these islands,\" and \"up here\" instead of \"Up Helly Aa.\" Additionally, \"The festival will peace itself\" is a garbled phrase that needs interpretation. These changes create some uncertainty about the original meaning but do not assert a completely different material fact or fundamentally alter the central message."
+      "judge_raw_response": "Severity: 2\n\nJustification: The ASR output contains several errors that introduce ambiguity or require reconstruction, such as \"in these islands\" instead of \"on these islands,\" and \"up here\" instead of \"Up Helly Aa.\" Additionally, \"The festival will peace itself\" is a garbled phrase that needs interpretation. These changes create some uncertainty about the original meaning but do not assert a different material fact with complete clarity."
     },
     {
       "ref": "Have you heard? Yes. What a waste, such a talented girl. I've never understood suicide. The knife found by her body had the initials \"PB\" engraved on it. The knife was used to slash her wrists. Any reason why she might use your knife specifically? Was it symbolic, is that what you mean? She was upset about a love affair and I just wondered... Professor, student, it happens. Yeah, I get the drift, Inspector. Mm-hm. But I want to make one thing clear, there was nothing going on between Hattie and myself. If there's a reason she took her life... it wasn't me.",
@@ -558,7 +558,7 @@
       "sample_WER": 0.038834951456310676,
       "severity": 1,
       "dataset_index": 40,
-      "judge_raw_response": "Severity: 1\n\nJustification: The differences between the reference and hypothesis are primarily cosmetic, such as punctuation changes (\"What a waste,\" vs. \"What a waste!\") and capitalization of initials (\"PB\" vs. \"P.B.\"). These do not alter the propositional content or meaning of the statements, allowing for confident recovery of the intended message without ambiguity or factual error."
+      "judge_raw_response": "Severity: 1\n\nJustification: The differences between the reference and hypothesis are primarily cosmetic, such as punctuation changes (\"What a waste,\" vs. \"What a waste!\") and capitalization of initials (\"PB\" vs. \"P.B.\"). These do not alter the propositional content or meaning of the statements, allowing for confident recovery of the intended message without ambiguity."
     },
     {
       "ref": "There's talk of a failed love affair a few years ago. Does she mention anything about that? No, Berglund comes up a lot in her posts. Thanks. Having had one or two fruitless crushes on older men, I'd say she was a bit in love with him. You think? And he's always messaging her. He said they hardly knew each other. Not sure about that. Check out her photos. Not only did he know her, I've a feeling it was in the biblical sense, as well. Professor Berglund's been telling porky pies.",
@@ -569,7 +569,7 @@
       "sample_WER": 0.10869565217391304,
       "severity": 2,
       "dataset_index": 41,
-      "judge_raw_response": "Severity: 2\n\nJustification: The hypothesis introduces minor ambiguities and changes, such as omitting \"There's\" at the beginning and altering \"You think?\" to \"Think,\" which require some reconstruction for clarity. Additionally, the phrase \"Not only did he know her\" is left incomplete, leading to a slight loss of detail without asserting a different material fact. These issues create ambiguity but do not result in a clear factual error or critical meaning alteration."
+      "judge_raw_response": "Severity: 2\n\nJustification: The hypothesis introduces minor ambiguities and changes, such as omitting \"There's\" at the beginning and altering \"Does she mention anything about that?\" to \"Has she mentioned anything about that?\", which slightly shifts the meaning but remains recoverable. Additionally, \"You think?\" is changed to \"Think.\", removing a direct address, which could introduce some ambiguity in interpretation without significantly altering the factual content. These changes require reconstruction for clarity but do not assert different material facts or fundamentally alter the central assertion."
     },
     {
       "ref": "You told me that you'd never worked with Hattie before this project. So who's that, your twin brother? She was volunteering on a dig I was supervising. I thought you might misinterpret the situation. Try me. We had a brief fling. I was away from my family. Hattie was beautiful and available. What I didn't realize was how needy she could be. Were you still sleeping with her at the time? No. You think it's significant she used my knife to kill herself. You're wrong. I didn't say she killed herself, Professor.",
@@ -580,7 +580,7 @@
       "sample_WER": 0.09782608695652174,
       "severity": 2,
       "dataset_index": 42,
-      "judge_raw_response": "Severity: 2\n\nJustification: The transcription errors introduce ambiguity and require reconstruction, such as \"Try me\" being changed to \"Training,\" which alters the meaning of that segment. Additionally, there are minor wording changes like \"didn't realize\" to \"didn't realise,\" but these do not significantly alter the propositional content or assert a different material fact. The overall meaning is recoverable with some effort, fitting an ambiguous meaning shift."
+      "judge_raw_response": "Severity: 2\n\nJustification: The transcription errors introduce ambiguity and require reconstruction, such as \"Try me\" being changed to \"Training,\" which alters the meaning of that segment. Additionally, there are minor wording changes like \"didn't realize\" to \"didn't realise,\" but these do not significantly alter the propositional content or assert a different material fact."
     },
     {
       "ref": "Was Hattie threatening to tell the university about your affair? 'Cause sleeping with a student is a no-no. I mean, you would lose your funding overnight if that got out. It was over. It was! I don't know why you're looking at her. She's young enough to be your daughter, man. Hattie did all these. They're all objects that were found at the dig. Except for that one. Freya... the protector of lovers. Well, you better hope she's looking out for you two, 'cause you're going to need her.",
@@ -613,7 +613,7 @@
       "sample_WER": 0.061068702290076333,
       "severity": 3,
       "dataset_index": 45,
-      "judge_raw_response": "Severity: 3\n\nJustification: The hypothesis contains several factual errors, such as \"no for a few days\" instead of \"not for a few days,\" which changes the meaning significantly. Additionally, \"Perlingstad\" is substituted for \"Per Lungstad,\" and \"led far more trips\" instead of \"did far more trips,\" both altering material facts about the individual's identity and actions. These errors unambiguously assert different material facts without real ambiguity."
+      "judge_raw_response": "Severity: 3\n\nJustification: The hypothesis contains several factual errors, such as \"no for a few days\" instead of \"not for a few days,\" which changes the meaning significantly. Additionally, \"Perlingstad\" is substituted for \"Per Lungstad,\" and \"led far more trips\" instead of \"did far more trips,\" both altering material facts about identity and actions. These errors unambiguously assert different material facts without real ambiguity."
     },
     {
       "ref": "Shouldn't you be looking after the croft? I need to do something more, especially now my father is a suspect. What do you mean? His name is on your incident board. Do you really think my father could kill his own mother. If he did, he wouldn't be beating up cousin Ronald for the same crime, would he? Who said he beat up Ronald? Crossed your mind though, didn't it? Look, I'm not arguing with you about this, okay? My dad needs to know what happened. It's eating him alive. I can see it in his eyes. I'm worried about him. If it helps, I'll go over and see him tomorrow. Tell him how the investigation is going. Put his mind at ease. How's that? Now, go home.",
@@ -624,7 +624,7 @@
       "sample_WER": 0.078125,
       "severity": 2,
       "dataset_index": 46,
-      "judge_raw_response": "Severity: 2\n\nJustification: The hypothesis contains minor changes such as punctuation and slight wording differences (\"I need to do something more\" vs. \"I need to do something more, especially now my father is a suspect\"), which introduce some ambiguity in meaning but do not assert different material facts. Additionally, the phrase \"It's eaten him alive\" instead of \"It's eating him alive\" slightly alters the tense and could imply a completed action rather than an ongoing one, requiring reconstruction to understand the intended meaning."
+      "judge_raw_response": "Severity: 2\n\nJustification: The ASR output introduces minor ambiguities and changes, such as altering \"is eating him alive\" to \"has eaten him alive,\" which slightly shifts the temporal aspect but does not change the overall meaning. Additionally, there are punctuation differences that affect sentence structure without introducing new material facts or reversing central assertions. These changes require some reconstruction for clarity but do not introduce significant ambiguity about intent or factual content."
     },
     {
       "ref": "He did happen to mention your domestic situation. I'm not here to judge you. It can't have been easy moving all the way up here... just to find yourself on your own for weeks on end while your man's out at sea. And then, when he does show his face, it's always at the end of a bottle. Now, with the baby, it's a difficult situation. I'm not surprised you feel neglected. Along comes a man like Paul Berglund. If I was in your situation, I would probably have a go at him myself. The problem I have is that Mima Wilson must have known about your affair, because it would have been hard for her to miss it. And then, the question I have to ask myself is: what part, if any, that played in her death?",
@@ -635,7 +635,7 @@
       "sample_WER": 0.10144927536231885,
       "severity": 3,
       "dataset_index": 47,
-      "judge_raw_response": "Severity: 3\n\nJustification: The hypothesis introduces several clear factual errors, such as changing \"he\" to \"you,\" altering \"end of a bottle\" to \"end of your ball,\" and substituting \"Paul Berglund\" with \"ball-bergling.\" These changes assert different material facts about the situation being described."
+      "judge_raw_response": "Severity: 3\n\nJustification: The hypothesis introduces several clear factual errors, such as changing \"he\" to \"you,\" altering \"end of a bottle\" to \"end of your ball,\" and substituting \"Paul Berglund\" with \"ball-bergling.\" These changes assert different material facts about the situation being described. Additionally, \"Mima Wilson\" is changed to \"Maima Wilson,\" which introduces another factual error regarding identity."
     },
     {
       "ref": "She knew an unhappy marriage when she saw one. Meaning? It was clear she never married again because she was so unhappy with Jerry Wilson. She almost seemed relieved he died young. Now... you know that if it does turn out that Mima threatened to reveal your affair, it gives you a motive for murder. There's a lot of money at stake. I don't care about the Haldane money. I never have. You know, I wish Mima had told Ronald about us. I would've thanked her.",
@@ -646,7 +646,7 @@
       "sample_WER": 0.12790697674418605,
       "severity": 3,
       "dataset_index": 48,
-      "judge_raw_response": "Severity: 3\n\nJustification: The hypothesis contains clear factual errors, such as substituting \"Maima\" for \"Mima,\" which asserts a different entity, and altering \"Haldane money\" to \"Haldian money.\" These changes introduce unambiguous differences in material facts without ambiguity about the new claims."
+      "judge_raw_response": "Severity: 3\n\nJustification: The hypothesis introduces a clear factual error by changing \"Mima\" to \"Maima,\" which is a different entity, and alters the meaning of the sentence regarding who threatened to reveal an affair. Additionally, \"Haldane money\" is changed to \"Haldian money,\" another factual error involving a material fact (entity name). These changes unambiguously assert different facts without real ambiguity about the new claims."
     },
     {
       "ref": "So, how long have you been taking illegal bets? You know me. I'm always looking for a new project. It was just a bit of fun. How much does Ronald owe you? Three grand. You should have told me. Well, as you just pointed out, it is slightly illegal. Yeah, but do you not see my point? Ronald's got a motive now. He needs money, he needs it quick. He could've gone to Mima's to rob her. Why would he? Jackie'll bail him out. And what if she said no? I hope you don't think I had him duffed up.",
@@ -657,7 +657,7 @@
       "sample_WER": 0.18,
       "severity": 3,
       "dataset_index": 49,
-      "judge_raw_response": "Severity: 3\n\nJustification: The hypothesis introduces a clear factual error by changing \"Three grand\" to \"Eight grand,\" which alters the material fact of how much Ronald owes. Additionally, \"He could have gone and made Mr. Roberts\" instead of \"robbed Mima's\" asserts a different action with no ambiguity about the new claim."
+      "judge_raw_response": "Severity: 3\n\nJustification: The hypothesis contains a clear factual error by changing \"Three grand\" to \"Eight grand,\" which alters the material fact of how much Ronald owes. Additionally, \"made Mr. Roberts\" instead of \"robbed her\" introduces another factual change regarding Ronald's potential actions. These changes are unambiguous and assert different material facts without ambiguity."
     },
     {
       "ref": "Truth be told, there's a queue from here to Aberdeen waiting to take a swing at him. Your days as a bookie are over. Okay? Is everything all right with Cassie? Eh? Aye, she's fine. I was wondering... how she feels about me and Mary starting a new family? I mean, has she said anything to you? No, she likes Mary. Oh, but me, not so much. No, eh-- Ah. I'm sure she resents me for walking out when she was a baby. Well, I know she does. She feels rejected. That's natural. But she needs us both. You did the right thing coming back.",
@@ -668,7 +668,7 @@
       "sample_WER": 0.09523809523809523,
       "severity": 2,
       "dataset_index": 50,
-      "judge_raw_response": "Severity: 2\n\nJustification: The transcription errors introduce some ambiguity and require reconstruction for clarity, such as \"a queue from here to Aberdeen\" becoming \"a queue for here at Aberdeen,\" which alters the spatial relationship. Additionally, \"Is everything all right with Cassie?\" is changed to \"Is everyone all right with Cassie?\", introducing a potential misunderstanding about who is being referred to, but it can still be confidently reconstructed as referring to Cassie's well-being. These changes do not assert a different material fact or fundamentally alter the meaning, thus fitting an ambiguous meaning shift."
+      "judge_raw_response": "Severity: 2\n\nJustification: The ASR output introduces some ambiguity and requires reconstruction, such as \"queue for here at Aberdeen\" instead of \"queue from here to Aberdeen,\" which alters the meaning slightly but is recoverable. Additionally, \"Is everyone all right with Cassie?\" changes the focus from a specific person (Cassie) to a group, introducing potential confusion about intent without asserting a completely different fact."
     },
     {
       "ref": "Come on! Any chance of a bacon roll? It's no bed and breakfast, Ronald. And if I was you, I would stop drinking. You're a better man sober. So do you think I killed Mima? Some people are capable of anything with a drink in them. Now, gone, get away home.",
@@ -679,7 +679,7 @@
       "sample_WER": 0.09803921568627451,
       "severity": 3,
       "dataset_index": 51,
-      "judge_raw_response": "Severity: 3\n\nJustification: The hypothesis contains a clear factual error by substituting \"Mima\" with \"Naima,\" which is an unambiguous change of entity. Additionally, the phrase \"Only chance of a bacon roll?\" alters the meaning from a question to a statement, but this does not reach the level of a critical alteration as it doesn't fundamentally change the central assertion or fabricate new content."
+      "judge_raw_response": "Severity: 3\n\nJustification: The hypothesis contains a clear factual error by substituting \"Mima\" with \"Naima,\" which is an unambiguous change of entity. Additionally, the phrase \"Only chance of a bacon roll?\" alters the meaning from a question to a statement, but this does not reach the level of severity 4 as it doesn't fundamentally alter the central assertion or fabricate content."
     },
     {
       "ref": "She said that Jerry found out about her and Per. He was in a rage. He told her that he'd given Per 24 hours to get off the island. And what about the money? The money that Per had on him to take to Norway. I... I don't know. When did she tell you this? When? The day she died.",
@@ -690,7 +690,7 @@
       "sample_WER": 0.2,
       "severity": 2,
       "dataset_index": 52,
-      "judge_raw_response": "Severity: 2\n\nJustification: The transcription errors introduce some ambiguity and require reconstruction, such as \"told her\" instead of \"He told her,\" which slightly alters the clarity of who is speaking. Additionally, \"It was all about the money\" changes the emphasis from a question to a statement, but does not assert a different material fact with certainty. These issues fit within an ambiguous meaning shift rather than a clear factual error or critical alteration."
+      "judge_raw_response": "Severity: 2\n\nJustification: The transcription errors introduce some ambiguity and require reconstruction, such as \"told her\" instead of \"He told her,\" which slightly alters the clarity of who is speaking. Additionally, \"It was all about the money\" changes the emphasis from a question to a statement, but does not assert a different material fact with certainty. These issues fit within an ambiguous meaning shift without asserting new facts unambiguously."
     },
     {
       "ref": "Why didn't you tell me this? This is nobody's business but mine. But you must have been angry... after being lied to for all those years. Are you telling me you didn't lose your temper? I did not harm my mother. Well, then, where were you the night she died? Because you weren't in Lerwick. I need to know, Joseph. I need to know you didn't do this. I was out on my boat. All night. I couldn't tell you, 'cause I've already been out 15 days fishing. That's my quota for the month. You're saying you lied to me because you were black landing?",
@@ -712,7 +712,7 @@
       "sample_WER": 0.03076923076923077,
       "severity": 3,
       "dataset_index": 54,
-      "judge_raw_response": "Severity: 3\n\nJustification: The hypothesis incorrectly substitutes \"scullery men\" for \"Scalloway men,\" which is a clear factual error as it changes the identity of the group involved. Additionally, \"we got some of our boys captured\" instead of \"he got some of our boys captured\" shifts the responsibility from the Norwegian to an unspecified subject, altering the material fact about who caused the capture."
+      "judge_raw_response": "Severity: 3\n\nJustification: The hypothesis incorrectly substitutes \"scullery men\" for \"Scalloway men,\" which is a clear factual error regarding the identity of the group involved. Additionally, it changes \"they got some of our boys captured\" to \"we got some of our boys captured,\" altering the subject and thus asserting a different material fact about who was responsible for capturing the boys."
     },
     {
       "ref": "No, you wouldn't. 'Cause that's not true. Is it? Per Lungstad wasn't a traitor. Mima was having an affair with him, wasn't she? Well, if she was, it's a secret she's taken with her to the grave. I wouldn't be too sure about that, Andrew. You know what I think? I think Jerry killed Per in a jealous rage. And I think you helped him to dump the body, maybe even helped to kill him. Not true!",
@@ -745,7 +745,7 @@
       "sample_WER": 0.06944444444444445,
       "severity": 3,
       "dataset_index": 57,
-      "judge_raw_response": "Severity: 3\n\nJustification: The hypothesis changes \"saw\" to \"thought,\" which alters the certainty of her knowledge about the murder, and it removes the question tag \"was it Ronald?\" turning it into a statement. These changes introduce unambiguous differences in material facts regarding her perception and actions."
+      "judge_raw_response": "Severity: 3\n\nJustification: The hypothesis changes \"saw\" to \"thought,\" which alters the certainty of her knowledge about the murder, and it removes the question tag \"did she threaten to ruin you?\" turning it into a statement. These changes introduce unambiguous differences in material facts regarding her actions and intentions."
     },
     {
       "ref": "Why are you doing this to us? Ronald had nothing to do with Mima's death, nothing. You can't be sure of that, Jackie. It was a robbery. Some incomer. You said yourself they smashed a window, pulled out the phone! The answer to Mima's death lies in the past. And you and your father know it.",
@@ -756,7 +756,7 @@
       "sample_WER": 0.05357142857142857,
       "severity": 2,
       "dataset_index": 58,
-      "judge_raw_response": "Severity: 2\n\nJustification: The hypothesis introduces ambiguity by changing \"a robbery\" to \"Was a robbery?\" and \"Some incomer\" to \"Some intruder?\", which requires reconstruction for clarity. Additionally, the change from \"the phone\" to \"a phone\" could imply a slight shift in meaning, but overall, there is no unambiguous assertion of a different material fact."
+      "judge_raw_response": "Severity: 2\n\nJustification: The hypothesis introduces ambiguity by changing \"a robbery\" to \"Was a robbery?\" and \"incomer\" to \"intruder,\" which requires reconstruction of the intended meaning. Additionally, \"pulled out the phone!\" is altered to \"pulled out a phone,\" introducing uncertainty about whether it refers to a specific or any phone. These changes create ambiguity without asserting a different material fact."
     },
     {
       "ref": "What did Jimmy Perez want? Hm? All these years, you've sat up here, looking down on us, haven't you? Well, now, you're gonna tell me the truth. What did Perez want?! He thinks Ronald killed your mother!",
@@ -767,7 +767,7 @@
       "sample_WER": 0.1891891891891892,
       "severity": 2,
       "dataset_index": 59,
-      "judge_raw_response": "Severity: 2\n\nJustification: The ASR output introduces ambiguity by changing \"Hm?\" to a more assertive tone and altering \"you're gonna\" to \"I know you're going to,\" which slightly shifts the relational dynamics of the sentence. Additionally, \"Ronald killed your mother\" is changed to \"Ronald's killed your mother,\" introducing a subtle tense shift that could imply ongoing action rather than a completed one, requiring reconstruction for clarity."
+      "judge_raw_response": "Severity: 2\n\nJustification: The ASR output introduces ambiguity by changing \"Hm?\" to a more assertive tone and altering \"you're gonna\" to \"I know you're going to,\" which slightly shifts the relational dynamics of the sentence. Additionally, \"Ronald killed your mother\" is changed to \"Ronald's killed your mother,\" introducing a subtle tense shift that could imply ongoing action or uncertainty about the timing, requiring reconstruction for clarity."
     },
     {
       "ref": "Put the knife down! He's getting what he deserves. Joseph, put down the knife. Put it down! Don't make things any worse than they already are! I'm not letting him get away with it! I'm going to mark him, mark him for life... so everyone, everyone, will remember what he did. He didn't kill Mima. He'd nothing to do with it! Did he, Jackie? Go on! Tell him who killed Mima. Tell him! Tell him!",
@@ -789,7 +789,7 @@
       "sample_WER": 0.03896103896103896,
       "severity": 3,
       "dataset_index": 61,
-      "judge_raw_response": "Severity: 3\n\nJustification: The substitution of \"Mima\" with \"Mama\" is a clear factual error, as it changes the identity of the person making the call and accusations. This alteration affects the material fact regarding who is involved in the situation described."
+      "judge_raw_response": "Severity: 3\n\nJustification: The substitution of \"Mima\" with \"Mama\" and vice versa introduces a clear factual error by changing the identity of the person involved, which is a material fact in this context. This change affects the narrative's accuracy regarding who made the call and accusations, thus altering key details without ambiguity."
     },
     {
       "ref": "And Hattie? Hattie came to see me... and she said Mima's lover was buried near the croft. I couldn't let her find the body. I followed her. I didn't want to hurt anyone. But I had to put an end to this. You have to protect your family. You know that, Joseph. Family comes first. We are family.",
@@ -833,7 +833,7 @@
       "sample_WER": 0.17037037037037037,
       "severity": 3,
       "dataset_index": 65,
-      "judge_raw_response": "Severity: 3\n\nJustification: The hypothesis introduces a factual error by changing \"Mr. Bain\" to \"Mr. Bing,\" which is an unambiguous assertion of a different material fact regarding the identity of a person involved, and it adds information about a phone being found in her pocket that was not present in the reference, altering the details of evidence presented. These changes are clear factual errors without ambiguity about the new claims made."
+      "judge_raw_response": "Severity: 3\n\nJustification: The hypothesis introduces a factual error by changing \"Mr. Bain\" to \"Mr. Bing,\" which is an unambiguous assertion of a different material fact regarding the identity of a person involved in the conversation. Additionally, it incorrectly states that there was no phone found (\"And her phone\"), whereas the reference indicates there was no phone (\"No phone?\"). These changes introduce clear factual errors without ambiguity about the new claims being made."
     },
     {
       "ref": "We haven't managed to reach Catherine's father yet. Can you tell me who she stays with when he's offshore? No-one. Catherine only came to live with Euan a year ago when her mother died. He'd lived on his own for years. She was always at boarding school. I don't think heavy-duty parenting would have suited either of them. Doesn't mean they weren't fond of each other. Someone mentioned the \"teacher's lassie\". Do you know who that would be? Yeah, that would be Sally Henry. Her mother, Margaret, is the teacher at the primary. She and Catherine were friends.",
@@ -855,7 +855,7 @@
       "sample_WER": 0.12962962962962962,
       "severity": 2,
       "dataset_index": 67,
-      "judge_raw_response": "Severity: 2\n\nJustification: The hypothesis introduces some ambiguity and requires reconstruction, such as \"drinking themselves stupid and erratic\" instead of \"drinking themselves stupid,\" which slightly alters the meaning. Additionally, \"work out your mother's ways\" is a garbled version that changes the intent from avoiding her to understanding her behavior, introducing doubt about the original message."
+      "judge_raw_response": "Severity: 2\n\nJustification: The hypothesis introduces some ambiguity and requires reconstruction, such as \"drinking themselves stupid and erratic\" instead of \"drinking themselves stupid,\" which slightly alters the meaning. Additionally, \"work out your mother's ways\" is a garbled version that changes the intent from avoiding her to analyzing her behavior, but it doesn't assert a completely different fact or central claim."
     },
     {
       "ref": "You know, whatever you say to me... stays with me. Your parents don't get to hear it. She didn't always tell me what she was doing. I'm not allowed out so much. She didn't like to rub it in. What about Saturday night, when you went calling on Magnus Bain? Catherine thought it would be a dare to knock on his door. And after that? Went home.",
@@ -866,7 +866,7 @@
       "sample_WER": 0.04477611940298507,
       "severity": 3,
       "dataset_index": 68,
-      "judge_raw_response": "Severity: 3\n\nJustification: The hypothesis contains a clear factual error by changing \"Magnus Bain\" to \"Magnus Bane,\" which is an unambiguous substitution of one entity for another. Additionally, the omission of \"she\" in \"Didn't like to rub it in\" alters the meaning by removing the subject, but this does not reach the level of critical alteration as defined for a severity score of 4."
+      "judge_raw_response": "Severity: 3\n\nJustification: The hypothesis contains a clear factual error by changing \"Magnus Bain\" to \"Magnus Bane,\" which is an unambiguous substitution of one entity for another. Additionally, the omission of \"She\" in \"Didn't like to rub it in\" alters the subject and introduces ambiguity about who didn’t like to rub it in, but this does not reach the level of a critical meaning alteration as defined by severity 4."
     },
     {
       "ref": "Like I said, she didn't always tell me what she was doing. What about Sunday? Yesterday. Did you see her then? She called. Late afternoon. I couldn't come out cos I had homework. A good friend, eh? Never had a friend like her before. Did Catherine have a boyfriend? No. Did she have a girlfriend? No. Was anybody after her? We used to joke about Mr. Scott. He was always looking at her in class. A teacher? She thought he was ridiculous.",
@@ -877,7 +877,7 @@
       "sample_WER": 0.15853658536585366,
       "severity": 3,
       "dataset_index": 69,
-      "judge_raw_response": "Severity: 3\n\nJustification: The hypothesis introduces a clear factual error by changing \"Did you see her then?\" to \"Yesterday, you see her then?\", which alters the question's meaning and intent. Additionally, it incorrectly attributes the action of looking at Catherine in class to the speaker instead of Mr. Scott, introducing another unambiguous material fact change."
+      "judge_raw_response": "Severity: 3\n\nJustification: The hypothesis introduces a clear factual error by changing \"Did you see her then?\" to \"Yesterday, you see her then?\", which alters the question's meaning and intent. Additionally, it incorrectly attributes the action of looking at Catherine in class to the speaker instead of Mr. Scott, asserting a different material fact about who was observing her."
     },
     {
       "ref": "Perez isn't a Shetland name. No. Er... They say they came over with a shipwreck from the Armada. And a Spanish sailor fell in love with a girl from Fair Isle. You don't look very Spanish. No, I think...! I think I probably take after her. What did your mum mean when she said that Catherine liked to provoke people? Catherine thought respect was something adults had to earn. She wasn't always polite. What, to your mum? To anyone.",
@@ -888,7 +888,7 @@
       "sample_WER": 0.06329113924050633,
       "severity": 2,
       "dataset_index": 70,
-      "judge_raw_response": "Severity: 2\n\nJustification: The hypothesis introduces minor ambiguities and slight changes, such as omitting \"Er...\" and altering the phrase \"I think...! I think\" to \"I think I think,\" which could affect clarity but do not significantly alter the meaning. Additionally, \"What?\" is changed from \"What, to your mum?\" which creates some ambiguity about the intended question's target. These changes require reconstruction for full understanding but do not assert a different material fact or fundamentally change the central assertion."
+      "judge_raw_response": "Severity: 2\n\nJustification: The hypothesis contains minor ambiguities and omissions, such as \"Er...\" being omitted and the repetition of \"I think\" which slightly alters the flow but not the meaning. Additionally, \"What?\" is used instead of \"What,\" introducing a slight ambiguity in intent without changing the material fact. These changes require some reconstruction to understand the original intent, fitting an ambiguous meaning shift."
     },
     {
       "ref": "Keep trying. We need to search his house, and I want him to get this from us. I don't want him to get it from Facebook. Yeah. Boss... I've been getting phone calls from my friend Reg Gilbert, Mr. Media, about a possible serial killer on Shetland. I don't know what you're talking about. For Christ's sake, Jimmy! You're my most senior detective. You should be briefing me about this, not the other way round. I'm sorry, can we go outside?",
@@ -910,7 +910,7 @@
       "sample_WER": 0.07766990291262135,
       "severity": 3,
       "dataset_index": 72,
-      "judge_raw_response": "Severity: 3\n\nJustification: The hypothesis incorrectly changes \"Catriona Bruce\" to \"Katrina Bruce,\" which is a clear factual error involving the substitution of a real, plausible different entity. This alteration could impact the investigation's focus and credibility in a high-stakes policing context."
+      "judge_raw_response": "Severity: 3\n\nJustification: The hypothesis incorrectly changes \"Catriona Bruce\" to \"Katrina Bruce,\" which is a clear factual error involving the substitution of a real, plausible different entity. This change asserts a different material fact about the identity of the missing child without ambiguity."
     },
     {
       "ref": "I've never known a girl be killed and that not be one of the rumours. Which is depressing enough. But in this case I can absolutely promise you it's pure speculation. Time of death was between midnight last night and four o'clock this morning. She was killed where she was found, strangled with her own scarf. Any sign of sexual assault? No.",
@@ -921,7 +921,7 @@
       "sample_WER": 0.06451612903225806,
       "severity": 0,
       "dataset_index": 73,
-      "judge_raw_response": "Severity: 0\n\nJustification: The differences between the reference and hypothesis are primarily surface-level, involving minor variations in wording such as \"I've\" vs. \"I have,\" \"girl be killed\" vs. \"a girl be killed,\" and \"rumours\" vs. \"rumors.\" These changes do not alter the propositional content or meaning of the statement, maintaining the same factual information throughout."
+      "judge_raw_response": "Severity: 0\n\nJustification: The hypothesis maintains the same propositional content as the reference, with differences only in surface form such as punctuation and slight wording variations (e.g., \"I've\" vs. \"I have,\" \"rumours\" vs. \"rumors\"). These changes do not alter the meaning or factual content of the statement."
     },
     {
       "ref": "Anything else? Hm! I'm just a GP. Anything else can wait for the pathologist in Aberdeen. Who's going to tell me the exact same thing you will, only in three days' time. Cora... There were scratch marks on her neck and skin tissue under her fingernails. My guess is they'll find it's her own. Because she was trying to get her fingers under the scarf to pull it away. But no defensive injuries. So either they took her completely by surprise. What, at this time of year? It's light all night. Or she knew them well enough to let them get very close.",
@@ -932,7 +932,7 @@
       "sample_WER": 0.04854368932038835,
       "severity": 3,
       "dataset_index": 74,
-      "judge_raw_response": "Severity: 3\n\nJustification: The hypothesis introduces a factual error by changing \"light all night\" to \"late all night,\" which alters the material fact about the time of year and lighting conditions. Additionally, \"My guess is you'll find it's her own\" changes the subject from \"they'll find\" to \"you'll find,\" introducing an unambiguous different entity involved in the action. These errors assert different facts without ambiguity."
+      "judge_raw_response": "Severity: 3\n\nJustification: The hypothesis introduces a factual error by changing \"light all night\" to \"late all night,\" which alters the material fact about the time of year and lighting conditions. Additionally, \"My guess is you'll find it's her own\" changes the subject from \"they'll find\" to \"you'll find,\" introducing an unambiguous different entity involved in the action. These changes assert different material facts without ambiguity."
     },
     {
       "ref": "Even if the team from the mainland got it wrong and Catriona was abducted, she was a child and her body was never found. Catherine was ten years older and her body was left in an open space, in full view. Different victim profiles, different modus operandi, let alone the 19 years between them. I really... I can't see the same hand in both. What about the fact that they were from the same village, lived in the same house? Even their names are similar. That's a coincidence that the tabloids love, but it's not a link. What worries me is that people are going to start talking about this, and before you know it, people are looking for freaks and monsters and forgetting what they actually saw. OK. We issue a statement. Despite certain similarities, the police believe there is no connection between the death of... Et cetera, et cetera. Yeah.",
@@ -943,7 +943,7 @@
       "sample_WER": 0.125,
       "severity": 3,
       "dataset_index": 75,
-      "judge_raw_response": "Severity: 3\n\nJustification: The hypothesis incorrectly substitutes \"Katrina\" for \"Catriona,\" which is a clear factual error involving the name of an individual, thus asserting a different material fact. Additionally, changing \"loved\" to \"loving\" and \"linked\" to \"link\" introduces minor errors but does not alter the overall meaning significantly; however, these changes do not affect the severity score as they are less critical than the factual error with the name."
+      "judge_raw_response": "Severity: 3\n\nJustification: The hypothesis incorrectly substitutes \"Katrina\" for \"Catriona,\" which is a clear factual error involving the name of an individual, thus asserting a different material fact. Additionally, changing \"loved\" to \"loving\" and \"linked\" to \"link\" introduces minor errors but does not alter the overall meaning significantly; however, these changes do not affect the severity score as they are less critical compared to the factual error with the name."
     },
     {
       "ref": "Saturday night. Midsummer. Catherine and her friend Sally go to a beach party and then call in on Magnus Bain. Sally goes home, Catherine goes on to spend the night away from home, presumably in Lerwick, because the next morning, Sunday, she gets off the Lerwick bus and she bumps into Magnus again, then goes back to his house for cake. Teatime on Sunday, she drops in on Jess Collins. And we know from the door-to-door that she's seen several times after that. The last sighting is 8.30, when she pops into a neighbour's house for milk. The whole family saw her.",
@@ -954,7 +954,7 @@
       "sample_WER": 0.06862745098039216,
       "severity": 1,
       "dataset_index": 76,
-      "judge_raw_response": "Severity: 1\n\nJustification: The transcription error involves a minor misspelling of \"Magnus Bain\" as \"Magnus Bane,\" which is a trivial/cosmetic error since the meaning and context remain clear and confidently recoverable without any ambiguity or material fact change. Other differences, such as punctuation and formatting (e.g., \"8.30\" vs. \"8:30\"), are surface-level changes that do not affect propositional content."
+      "judge_raw_response": "Severity: 1\n\nJustification: The transcription error involves a minor misspelling of \"Magnus Bain\" as \"Magnus Bane,\" which is a trivial/cosmetic error since the meaning and context remain clear and confidently recoverable without any ambiguity or material fact change. Other differences, such as punctuation and formatting (e.g., \"Teatime\" vs. \"tea time\"), are surface-level changes that do not affect propositional content."
     },
     {
       "ref": "She's killed... here. Between 12 midnight and 4 a.m. I'm seeing the name Magnus Bain a lot. He saw the body and said nothing. Plus, he's pretty odd. Yeah, pretty odd isn't enough to make us have a look at someone. Plus, he says his neighbours don't talk to him. Did we check up on that? Well, it's not just them avoiding him. He's pretty much a recluse. I can see him not reporting it. You know him? Only by reputation. Like Tosh says - odd. If she knew her killer, do you think she'd arranged to meet them? Maybe she was already with them. Boss? That was Aberdeen about the footprints you photographed.",
@@ -965,7 +965,7 @@
       "sample_WER": 0.13274336283185842,
       "severity": 2,
       "dataset_index": 77,
-      "judge_raw_response": "Severity: 2\n\nJustification: The ASR output introduces some ambiguity and requires reconstruction, such as \"I was seeing the name Magnus being a lot\" instead of \"I'm seeing the name Magnus Bain a lot,\" which affects clarity but is recoverable. Additionally, minor connector changes like \"between twelve midnight and four a.m.\" slightly alter the flow without changing meaning significantly. These issues introduce some ambiguity in understanding but do not assert different material facts or fundamentally change the central assertion."
+      "judge_raw_response": "Severity: 2\n\nJustification: The hypothesis introduces some ambiguity and requires reconstruction, such as \"I was seeing\" instead of \"I'm seeing,\" which slightly alters the temporal context. Additionally, \"Magnus being a lot\" is garbled compared to \"Magnus Bain a lot,\" requiring interpretation but not asserting a different fact. These changes introduce minor ambiguities without clearly altering material facts or central assertions."
     },
     {
       "ref": "You all knew Catherine. And maybe some of you know, or knew, things about her that she would rather have kept private. But we need to know who she was with and what she was doing in the 24 hours leading up to her death. Whenever someone dies, and especially in circumstances like this, there's always rumours about what may or may not have happened. And they don't help. Cos all they do is make people scared. And I don't want you to be scared.",
@@ -976,7 +976,7 @@
       "sample_WER": 0.047058823529411764,
       "severity": 3,
       "dataset_index": 78,
-      "judge_raw_response": "Severity: 3\n\nJustification: The hypothesis introduces a clear factual error by changing \"I don't want you to be scared\" to \"And I don't want to be scared,\" which shifts the intended audience of reassurance from others to the speaker themselves, altering the material fact about who is being addressed. This change unambiguously asserts a different intent regarding fear and responsibility."
+      "judge_raw_response": "Severity: 3\n\nJustification: The hypothesis introduces a clear factual error by changing \"I don't want you to be scared\" to \"And I don't want to be scared,\" which shifts the intended audience of reassurance from others to the speaker themselves, altering the material fact about who is being addressed. This change unambiguously asserts a different meaning regarding the speaker's intent and concern for the audience's feelings."
     },
     {
       "ref": "Can I talk to you? What's up? I taught her film and photography as part of her Media Studies. I was also her registration teacher. What was she like? Bright. Challenging. She could be hard work. But she was also receptive and interested and engaged. They're not all like that, believe me. Was she popular? Admired, certainly. But perhaps a bit too spiky for real popularity. A satirical eye and an impressive line in contempt, even by 17-year-old standards. It doesn't necessarily endear you to your contemporaries. No. Or your teachers, I would imagine. Oh, Catherine and I understood each other very well.",
@@ -987,7 +987,7 @@
       "sample_WER": 0.10679611650485436,
       "severity": 2,
       "dataset_index": 79,
-      "judge_raw_response": "Severity: 2\n\nJustification: The ASR output introduces ambiguity and requires reconstruction, such as changing \"her Media Studies\" to \"my media studies,\" which alters the meaning slightly but is recoverable. Additionally, \"Was she popular?\" becomes fragmented into \"She popular? Admired?\", creating a need for clarification without asserting a completely different fact. These changes introduce some doubt about intent and relational understanding, fitting an ambiguous meaning shift."
+      "judge_raw_response": "Severity: 2\n\nJustification: The ASR output introduces ambiguity and requires reconstruction, such as changing \"her Media Studies\" to \"my media studies,\" which alters the meaning slightly but is recoverable. Additionally, the phrase \"She popular? Admired?\" lacks clarity compared to the original, requiring interpretation to understand that it refers to her popularity and admiration. These changes introduce some ambiguity without asserting a completely different material fact."
     },
     {
       "ref": "Did you ever see her outside of school? Not by arrangement, if that's what you're suggesting. By accident, then? It's almost impossible to avoid, if you live in Lerwick. I'm thinking of moving to Bressay and learning to row. What brought you to Shetland in the first place? I wanted to be somewhere where there was scope to make a real difference. You know... hearts and minds. Honest to God, it was like a confessional in there. The broken hearts and sexual health of an entire generation, in detail. I tell you, if Cassie ever brings home a boy called Peanuts, be very afraid.",
@@ -1009,7 +1009,7 @@
       "sample_WER": 0.09722222222222222,
       "severity": 1,
       "dataset_index": 81,
-      "judge_raw_response": "Severity: 1\n\nJustification: The differences between the reference and hypothesis are minor, such as slight variations in wording (\"Well\" vs. \"She was definitely an outsider,\" \"anybody\" vs. \"anyone,\" \"Okay\" vs. \"OK\"), which do not alter the propositional content or introduce ambiguity. These changes are trivial and do not affect the overall meaning of the statement."
+      "judge_raw_response": "Severity: 1\n\nJustification: The differences between the reference and hypothesis are minor, such as slight variations in wording (\"Well\" vs. \"She was definitely an outsider,\" \"anybody\" vs. \"anyone,\" \"Okay\" vs. \"OK\"), which do not alter the meaning or introduce ambiguity. These changes are trivial and do not affect the propositional content of the message."
     },
     {
       "ref": "Boss! You had a visitor while you were out. Alan Isbister. The Walsay Playboy? He had to go over to the pier in his Very Expensive Car for a Very Important Meeting, but he said he'd call in again on his way back. Apparently, it's about the case.",
@@ -1042,7 +1042,7 @@
       "sample_WER": 0.18032786885245902,
       "severity": 2,
       "dataset_index": 84,
-      "judge_raw_response": "Severity: 2\n\nJustification: The hypothesis introduces some ambiguity and requires reconstruction, such as changing \"I hardly noticed her\" to \"Hardly noticed them,\" which alters the subject from singular to plural. Additionally, \"The Haa\" is garbled to \"The Ha?\" and \"What was she doing?\" becomes \"What was the?\", both of which introduce uncertainty about the intended meaning without asserting a completely different fact."
+      "judge_raw_response": "Severity: 2\n\nJustification: The hypothesis introduces some ambiguity and requires reconstruction, such as changing \"I hardly noticed her\" to \"Hardly noticed them,\" which alters the focus from a specific person to an unspecified group. Additionally, \"How did they make her stand out?\" changes the meaning of the original question about why she didn't stand out, introducing doubt about intent and requiring clarification for accurate interpretation."
     },
     {
       "ref": "His dad's the big man who made the family fortune with the pelagic trawler. Plus, his mother never wanted him out of her sight. I thought the Isbisters were in haulage. You see trucks everywhere. The trawling's the real business. This is half the bloody island. Why wasn't I invited?",
@@ -1053,7 +1053,7 @@
       "sample_WER": 0.08,
       "severity": 3,
       "dataset_index": 85,
-      "judge_raw_response": "Severity: 3\n\nJustification: The substitution of \"Isbisters\" with \"ice boosters\" introduces a clear factual error by changing the entity involved, which is unambiguously different and affects the material fact about who was thought to be in haulage. Additionally, omitting \"Why wasn't I invited?\" alters the expression of dissatisfaction or inquiry, but this omission does not reach the level of reversing or fabricating central assertions as defined for a severity score of 4."
+      "judge_raw_response": "Severity: 3\n\nJustification: The substitution of \"ice boosters\" for \"Isbisters\" introduces a clear factual error by changing the entity involved, which could mislead about who is in haulage. However, it does not reverse or fundamentally alter the central assertion of the sentence, thus fitting within level 3 rather than level 4."
     },
     {
       "ref": "You know, when we found Catherine's body, she didn't have her house keys or her phone. We don't usually lock the doors, but her phone? She never went anywhere without it. Maybe if she left in a rush. The officer that searched the house couldn't find it there either. You think someone took it? It's like a mugging that went wrong? No, it doesn't look like that.",
@@ -1064,7 +1064,7 @@
       "sample_WER": 0.04477611940298507,
       "severity": 2,
       "dataset_index": 86,
-      "judge_raw_response": "Severity: 2\n\nJustification: The ASR output introduces minor ambiguities and repetition, such as \"We don't usually lock the doors. Or her phone,\" which could slightly alter how information is perceived but does not change the core meaning or facts. Additionally, the repeated \"Maybe she she left in a rush\" requires reconstruction to understand the intended message, indicating an ambiguous meaning shift rather than a clear factual error."
+      "judge_raw_response": "Severity: 2\n\nJustification: The hypothesis introduces minor ambiguities and repetition (\"Or her phone\" instead of \"but her phone\") that could slightly alter the flow or emphasis, but these do not change the core meaning. Additionally, there is a slight redundancy with \"Maybe she she left in a rush,\" which requires reconstruction to understand the intended meaning clearly. These issues necessitate some level of interpretation without introducing significant factual errors or altering the central assertion."
     },
     {
       "ref": "17 is young... to be living alone. Is that a question? No. I mean, it's a lot of freedom, nobody asking where you're going, what you're doing, when are you going to be home. Do you know what she did with it? She went out. Not so much. She liked her own company. You know, I went to that school. From Fair Isle. It was right cliquey. Hard, being on the outside.",
@@ -1075,7 +1075,7 @@
       "sample_WER": 0.18055555555555555,
       "severity": 3,
       "dataset_index": 87,
-      "judge_raw_response": "Severity: 3\n\nJustification: The hypothesis incorrectly transcribes \"From Fair Isle\" as \"It's a fairisle,\" which introduces an unambiguous factual error by suggesting the speaker attended school in Fair Isle rather than just having gone there. This changes the material fact of the location related to the speaker's education, fitting the criteria for a clear factual error."
+      "judge_raw_response": "Severity: 3\n\nJustification: The hypothesis incorrectly transcribes \"Fair Isle\" as \"fairisle,\" which is a clear factual error involving the name of a place, and it changes the meaning by potentially referring to something else. Additionally, there are minor wording differences that do not significantly alter the propositional content but contribute to the overall score being at level 3 due to this specific factual change."
     },
     {
       "ref": "Hello, Jess. I'm a wee bit worried about Euan. What will the neighbours say? Two male visitors in one night. Practically a knocking shop. I'm sorry, I didn't mean to interrupt your evening. Oh, no! Duncan just dropped by to see how I was getting on. Thank you. Hi. Hi. How do you two know each other, then? Well, my ex and Jimmy were together for a long time before she passed on, the result of which is that we now share a very lovely and very strong-willed daughter. I'm her father, Jimmy's her dad. Yeah. I should be getting back to her. Good night. Here. Could you just hold that? I just want to have a word.",
@@ -1086,7 +1086,7 @@
       "sample_WER": 0.1016949152542373,
       "severity": 2,
       "dataset_index": 88,
-      "judge_raw_response": "Severity: 2\n\nJustification: The hypothesis introduces some ambiguity and requires reconstruction, such as changing \"Euan\" to \"you,\" which alters the focus of concern. Additionally, minor connector changes like \"Good night\" to \"Bye\" slightly shift meaning but do not assert a different material fact with certainty. These alterations create potential for misunderstanding without clearly asserting incorrect information."
+      "judge_raw_response": "Severity: 2\n\nJustification: The hypothesis introduces some ambiguity and requires reconstruction, such as changing \"Euan\" to \"you,\" which alters the focus of concern but can be inferred from context. Additionally, minor connector changes like \"Good night\" to \"Bye\" slightly shift meaning without asserting a different material fact, fitting an ambiguous meaning shift rather than a clear factual error or critical alteration."
     },
     {
       "ref": "How would you like it if I told you to stop washing? I smell better after I've washed. Wet dog stinks. Tosh! This is a briefing. Brief us. I looked into Hugo Scott. Nice shiny teaching record. No previous anything. As for tracing and eliminating everyone in Ravenswick the night Catherine was killed, most of them were in bed so verifiable alibis are proving a bit of a problem. OK. How about Alan Isbister's party guests? Still working our way through. Nothing from any of them so far. There's a lot of talk round about Magnus Bain. I'm not having this investigation being driven by public opinion.",
@@ -1097,7 +1097,7 @@
       "sample_WER": 0.11214953271028037,
       "severity": 2,
       "dataset_index": 89,
-      "judge_raw_response": "Severity: 2\n\nJustification: The hypothesis contains minor errors such as \"wet dogs\" instead of \"wet dog,\" and \"Al and I's bister's party guests\" which introduces ambiguity in identifying the correct person, requiring reconstruction. Additionally, \"Magnus being\" is garbled, leading to some uncertainty about the intended meaning without clear context from the reference. These errors introduce a level of ambiguity that necessitates interpretation but do not assert a completely different material fact or central claim."
+      "judge_raw_response": "Severity: 2\n\nJustification: The hypothesis contains minor errors such as \"wet dogs\" instead of \"wet dog,\" and \"Al and I's bister's\" instead of \"Alan Isbister's,\" which introduce ambiguity in meaning but do not assert a different material fact. Additionally, the phrase \"Magnus being\" is garbled, requiring reconstruction to understand the intended reference to Magnus Bain, indicating an ambiguous shift rather than a clear factual error or critical alteration."
     },
     {
       "ref": "Probably him being so weird. Catherine liked freaks and misfits. Why did she like you, then? Because you don't strike me as either of those two things. Maybe being a teacher's kid is OK if your parent is popular. If they're not, it's pretty much the definition of both. So, you're going to talk to Magnus Bain. Better late than never, I suppose. Mrs. Henry, is there something you think I should know? I mean, something concrete. People used to think they were doing a kindness letting their children talk to him. More innocent back then.",
@@ -1119,7 +1119,7 @@
       "sample_WER": 0.13636363636363635,
       "severity": 1,
       "dataset_index": 91,
-      "judge_raw_response": "Severity: 1\n\nJustification: The ASR output omits \"Mm\" and repeats \"Thank you,\" but these changes are trivial and do not alter the propositional content or meaning of the dialogue. The core message remains confidently and cleanly recoverable without any material fact changes."
+      "judge_raw_response": "Severity: 1\n\nJustification: The ASR output omits \"Mm\" and repeats \"Thank you,\" but these changes are trivial and do not alter the propositional content or meaning of the dialogue. The core message remains confidently recoverable without any material fact change."
     },
     {
       "ref": "Who's the wee girl? Agnes. She's my sister. She's dead. Is that your mother? There's no milk. It's my day for Lerwick, but I couldn't get out. You know why they came, don't you, Magnus? They think you had something to do with Catherine's death. No! What did you do after she'd gone? TV. What did you watch? There was some lad fishing off a boat.",
@@ -1141,7 +1141,7 @@
       "sample_WER": 0.03571428571428571,
       "severity": 1,
       "dataset_index": 93,
-      "judge_raw_response": "Severity: 1\n\nJustification: The transcription errors are minor and do not alter the meaning or factual content of the statement. \"Okay\" instead of \"OK,\" and omitting \"your\" before \"DNA\" are trivial changes that do not affect the propositional content, allowing for confident recovery of the original intent."
+      "judge_raw_response": "Severity: 1\n\nJustification: The transcription errors are minor and do not alter the meaning of the sentence. \"Okay\" instead of \"OK,\" and omitting \"your\" before \"DNA\" are trivial changes that do not affect the propositional content or introduce ambiguity, allowing for confident recovery of the intended message."
     },
     {
       "ref": "I'd asked them to come back this term with a pitch for their end-of-year project. It could have been something to do with that. Do you have any idea how it was taken? Surely the subject would know. The subject isn't technologically minded. Er... Catherine liked retro. She wanted a Hasselblad, but she couldn't afford one. What's a Hasselblad? It's a camera that gives you this square format. They're expensive. Catherine got an app on her phone instead. What? That was taken on a phone?",
@@ -1163,7 +1163,7 @@
       "sample_WER": 0.09433962264150944,
       "severity": 2,
       "dataset_index": 95,
-      "judge_raw_response": "Severity: 2\n\nJustification: The hypothesis contains minor errors such as \"crunching the blacks\" instead of \"crunching the blacks,\" and \"Don McCullen\" instead of \"Don McCullin.\" These changes introduce some ambiguity in meaning, particularly regarding the specific work done on the image and the reference to Don McCullin. However, these do not assert a different material fact or create significant confusion about the overall intent."
+      "judge_raw_response": "Severity: 2\n\nJustification: The hypothesis contains minor errors such as \"crunching the blacks\" instead of \"crunching the blacks,\" and \"Don McCullen\" instead of \"Don McCullin.\" These changes introduce some ambiguity in meaning, particularly regarding the specific work done on the image and the reference to Don McCullin, but they do not assert a different material fact or fundamentally alter the central assertion."
     },
     {
       "ref": "Catherine Ross took a photograph of Magnus Bain on her phone on the day she died. So, can we get on to Aberdeen, and see if they can get a timing for when she downloaded it onto her laptop? Sure. What happened in Ravenswick? Fingerprinting and a DNA sample. And, apparently, this isn't the first time Magnus has been fingerprinted. So, can you see if we've got anything on record for that? Got it. Alibi? He doesn't have an alibi! The man's a recluse. He doesn't see anybody from one week's end to the next unless it's his day for bloody Lerwick. But he has no motive. There is nothing tying him to this except talk, and talk can be generated.",
@@ -1174,7 +1174,7 @@
       "sample_WER": 0.09917355371900827,
       "severity": 3,
       "dataset_index": 96,
-      "judge_raw_response": "Severity: 3\n\nJustification: The hypothesis introduces a clear factual error by changing \"Catherine Ross\" to \"Ross,\" omitting her first name, and altering \"Magnus Bain\" to \"Magnus Bane.\" Additionally, it changes \"Lerwick\" to \"Lerick\" and adds an inappropriate phrase \"gay for bloody Lerick,\" which significantly alters the meaning of the statement about Magnus's social interactions. These errors introduce different material facts with no ambiguity."
+      "judge_raw_response": "Severity: 3\n\nJustification: The hypothesis introduces a clear factual error by changing \"Catherine Ross\" to \"Ross,\" omitting her first name, and altering \"Magnus Bain\" to \"Magnus Bane,\" which asserts a different material fact. Additionally, the phrase \"gay for bloody Lerwick\" is substituted with \"Lerick,\" introducing an offensive term that changes the meaning significantly, though it remains within the scope of factual error rather than critical alteration."
     },
     {
       "ref": "What if somebody wants us to be looking at him? What if it's misdirection? Like who? I don't know. Somebody with enough money to buy all the rumour-mongering they want. Sorry, Tosh. Right. What have I missed? The pathology report came through. Nothing new. Basically, it's exactly what Cora said. And Forensics got back about the fibre under Catherine's nail. It's hemp, from a rug. What kind of rug? \"Antique and most probably of Turkish origin.\" Apparently they can tell from the dye. Uh-huh?",
@@ -1196,7 +1196,7 @@
       "sample_WER": 0.1111111111111111,
       "severity": 2,
       "dataset_index": 98,
-      "judge_raw_response": "Severity: 2\n\nJustification: The transcription error changes \"outside of school\" to \"at those schools,\" which introduces ambiguity regarding the location and potentially alters the context of the meeting arrangement. Additionally, some minor details like \"Yes\" being omitted or added slightly affect clarity but do not introduce a new material fact, maintaining an ambiguous meaning shift rather than a clear factual error."
+      "judge_raw_response": "Severity: 2\n\nJustification: The transcription error changes \"outside of school\" to \"at those schools,\" which introduces ambiguity and requires reconstruction to understand the original intent. Additionally, some minor details like \"Yes\" being omitted after \"Turkish\" slightly alter the flow but do not change the overall meaning significantly."
     },
     {
       "ref": "OK, I want a solicitor. Yeah, I think that's a good idea. \"Very Don McCullin.\" Hm? What does that mean? You can look at a beautiful photograph taken with insight and care and you look at it like you've seen it all before, like there's nothing new in the world for you at all. All the things you said about Catherine, that she was interested, receptive and engaged. That wasn't about her, was it? It was about you. It was about how she responded to you. She came in to borrow a DVD. That's all. And she got a fibre from your rug caught underneath her nail how, exactly? We... We talked.",
@@ -1207,7 +1207,7 @@
       "sample_WER": 0.03571428571428571,
       "severity": 3,
       "dataset_index": 99,
-      "judge_raw_response": "Severity: 3\n\nJustification: The substitution of \"solicitor\" with \"solicit\" changes a material fact by altering the intended meaning from requesting legal assistance to potentially implying an inappropriate request, which is significant in context. This error unambiguously asserts a different action or intent without ambiguity about the new claim."
+      "judge_raw_response": "Severity: 3\n\nJustification: The substitution of \"solicitor\" with \"solicit\" changes a material fact by altering the intended meaning from requesting legal assistance to potentially implying an inappropriate request, which is significant in context. This change unambiguously asserts a different action or intent without ambiguity about the new claim."
     }
   ],
   "judge": "phi4:14b (direct prompt)",
