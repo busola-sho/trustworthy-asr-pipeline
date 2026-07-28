@@ -9,7 +9,7 @@
   "design": "leave-one-dataset-out + shetland held-out",
   "results": {
     "commonvoice": {
-      "spearman": 0.2663,
+      "spearman": 0.3193,
       "pvalue": 0.0,
       "best_alpha": 100.0,
       "coefs": {
@@ -19,33 +19,33 @@
       }
     },
     "edacc": {
-      "spearman": 0.1054,
-      "pvalue": 0.1063,
+      "spearman": 0.1177,
+      "pvalue": 0.0712,
       "best_alpha": 10.0,
       "coefs": {
-        "verbalized_conf": -0.18837402214699736,
-        "crossmodel_mean": -0.09422931914029259,
-        "acoustic_mean": -0.18191119307302733
+        "verbalized_conf": -0.1873551001083817,
+        "crossmodel_mean": -0.1095903555335069,
+        "acoustic_mean": -0.17058665671473144
       }
     },
     "english_dialects": {
-      "spearman": 0.2883,
-      "pvalue": 0.0,
-      "best_alpha": 100.0,
-      "coefs": {
-        "verbalized_conf": -0.16854226770988281,
-        "crossmodel_mean": -0.028380480736641407,
-        "acoustic_mean": -0.03554304780490901
-      }
-    },
-    "shetland": {
-      "spearman": 0.1954,
+      "spearman": 0.2892,
       "pvalue": 0.0,
       "best_alpha": 10.0,
       "coefs": {
-        "verbalized_conf": -0.19153365450119064,
-        "crossmodel_mean": -0.10524479914998316,
-        "acoustic_mean": -0.16490233145208322
+        "verbalized_conf": -0.17290347987277077,
+        "crossmodel_mean": -0.055737814674077034,
+        "acoustic_mean": -0.054430356258461404
+      }
+    },
+    "shetland": {
+      "spearman": 0.1969,
+      "pvalue": 0.0,
+      "best_alpha": 10.0,
+      "coefs": {
+        "verbalized_conf": -0.18966525973805318,
+        "crossmodel_mean": -0.11548060699470282,
+        "acoustic_mean": -0.15890122460784006
       }
     }
   }

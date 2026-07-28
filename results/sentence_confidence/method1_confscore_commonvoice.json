@@ -1,14 +1,13 @@
 {
   "method": "confscore",
-  "labels_file": "results/sentence_confidence/sentence_labels_commonvoice.json",
-  "conf_file": "results/combinations_v2judge/context_v2_whisperx_confidence/context_v2_commonvoice_qwen_sub150.json",
-  "n_sentences": 1138,
-  "corpus_wer": 0.1833,
-  "mar_rate": 0.1388,
-  "mean_wer": null,
-  "mean_conf": 0.7764,
-  "mean_severity": 1.6195,
-  "median_severity": 2.0,
-  "spearman_corr": -0.2189,
+  "labels_file": "results/sentence_confidence/sentence_labels_commonvoice_confscore.json",
+  "conf_file": "writeup_results/ensembles/naive_confscore/naive_confscore_commonvoice_gemma4sel_dev.json",
+  "n_sentences": 4693,
+  "corpus_wer": 0.1715,
+  "mar_rate": 0.0239,
+  "mean_conf": 0.9126,
+  "mean_severity": 1.1639,
+  "median_severity": 1.0,
+  "spearman_corr": -0.305,
   "spearman_pvalue": 0.0
 }
