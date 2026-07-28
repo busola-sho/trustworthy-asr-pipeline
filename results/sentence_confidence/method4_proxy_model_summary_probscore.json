@@ -1,41 +1,41 @@
 {
   "method": "proxy_model_lodo",
+  "variant": "probscore",
   "model": "Ridge Regression",
   "features": [
     "verbalized_conf",
     "crossmodel_mean",
     "acoustic_mean"
   ],
-  "design": "leave-one-dataset-out + shetland held-out",
   "results": {
     "commonvoice": {
       "spearman": 0.2215,
       "pvalue": 0.0,
       "best_alpha": 100.0,
       "coefs": {
-        "verbalized_conf": -0.16634260171162085,
-        "crossmodel_mean": -0.11499086236486995,
-        "acoustic_mean": -0.06012318216359048
+        "verbalized_conf": -0.1663426017116252,
+        "crossmodel_mean": -0.1149908623648669,
+        "acoustic_mean": -0.06012318216358965
       }
     },
     "edacc": {
-      "spearman": 0.0098,
-      "pvalue": 0.8805,
-      "best_alpha": 10.0,
+      "spearman": 0.0115,
+      "pvalue": 0.8592,
+      "best_alpha": 100.0,
       "coefs": {
-        "verbalized_conf": -0.17420582368789772,
-        "crossmodel_mean": -0.08489325937112273,
-        "acoustic_mean": -0.1958238328845606
+        "verbalized_conf": -0.17092128224008435,
+        "crossmodel_mean": -0.08587119705091723,
+        "acoustic_mean": -0.191683461634791
       }
     },
     "english_dialects": {
       "spearman": 0.3108,
       "pvalue": 0.0,
-      "best_alpha": 10.0,
+      "best_alpha": 100.0,
       "coefs": {
-        "verbalized_conf": -0.13274695830011463,
-        "crossmodel_mean": -0.04361428931288816,
-        "acoustic_mean": -0.02380139953315853
+        "verbalized_conf": -0.12755385534996366,
+        "crossmodel_mean": -0.042725122938277627,
+        "acoustic_mean": -0.023839143420162814
       }
     },
     "shetland": {
@@ -43,9 +43,9 @@
       "pvalue": 0.0,
       "best_alpha": 100.0,
       "coefs": {
-        "verbalized_conf": -0.16673220202617348,
-        "crossmodel_mean": -0.11278510196045426,
-        "acoustic_mean": -0.16196864847769102
+        "verbalized_conf": -0.16673220202617967,
+        "crossmodel_mean": -0.11278510196045137,
+        "acoustic_mean": -0.1619686484776899
       }
     }
   }

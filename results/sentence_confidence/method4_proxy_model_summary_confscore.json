@@ -1,51 +1,51 @@
 {
   "method": "proxy_model_lodo",
+  "variant": "confscore",
   "model": "Ridge Regression",
   "features": [
     "verbalized_conf",
     "crossmodel_mean",
     "acoustic_mean"
   ],
-  "design": "leave-one-dataset-out + shetland held-out",
   "results": {
     "commonvoice": {
-      "spearman": 0.3193,
+      "spearman": 0.3243,
       "pvalue": 0.0,
       "best_alpha": 100.0,
       "coefs": {
-        "verbalized_conf": -0.16110009854811916,
-        "crossmodel_mean": -0.12449391032155042,
-        "acoustic_mean": -0.07710873393810108
+        "verbalized_conf": -0.16109707195390305,
+        "crossmodel_mean": -0.12253317159016038,
+        "acoustic_mean": -0.07766676185940222
       }
     },
     "edacc": {
-      "spearman": 0.1177,
-      "pvalue": 0.0712,
+      "spearman": 0.1123,
+      "pvalue": 0.0818,
       "best_alpha": 10.0,
       "coefs": {
-        "verbalized_conf": -0.1873551001083817,
-        "crossmodel_mean": -0.1095903555335069,
-        "acoustic_mean": -0.17058665671473144
+        "verbalized_conf": -0.1801086000928373,
+        "crossmodel_mean": -0.11021340885382214,
+        "acoustic_mean": -0.174431629925047
       }
     },
     "english_dialects": {
-      "spearman": 0.2892,
+      "spearman": 0.2862,
       "pvalue": 0.0,
       "best_alpha": 10.0,
       "coefs": {
-        "verbalized_conf": -0.17290347987277077,
-        "crossmodel_mean": -0.055737814674077034,
-        "acoustic_mean": -0.054430356258461404
+        "verbalized_conf": -0.16644388268055163,
+        "crossmodel_mean": -0.05726883496680098,
+        "acoustic_mean": -0.062274082616812505
       }
     },
     "shetland": {
-      "spearman": 0.1969,
+      "spearman": 0.1927,
       "pvalue": 0.0,
-      "best_alpha": 10.0,
+      "best_alpha": 100.0,
       "coefs": {
-        "verbalized_conf": -0.18966525973805318,
-        "crossmodel_mean": -0.11548060699470282,
-        "acoustic_mean": -0.15890122460784006
+        "verbalized_conf": -0.1803595779643509,
+        "crossmodel_mean": -0.11562177818247706,
+        "acoustic_mean": -0.16141821225145708
       }
     }
   }
