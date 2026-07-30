@@ -24,7 +24,6 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 
-OUTPUT_DIR = "writeup_results/sentence_confidence/figures"
 DATASETS = ["commonvoice", "edacc", "english_dialects", "shetland"]
 
 DATASET_DISPLAY = {
@@ -47,45 +46,54 @@ def _label_path(dataset, variant):
     return f"results/sentence_confidence/sentence_labels_{dataset}_{variant}.json"
 
 
-# each technique: (display name, label file variant, confidences file, confidence field)
-TECHNIQUES = {
-    "confscore": {
-        "title": "Naive - Verbalized Confidence (confscore)",
-        "labels": lambda d: _label_path(d, "confscore"),
-        "conf": lambda d: _combo_path(d, "confscore"),
-        "field": "confidence",
-    },
-    "probscore": {
-        "title": "Naive - Verbalized Confidence (probscore)",
-        "labels": lambda d: _label_path(d, "probscore"),
-        "conf": lambda d: _combo_path(d, "probscore"),
-        "field": "confidence",
-    },
-    "crossmodel_mean": {
-        "title": "Naive - Cross-model Agreement (mean, probscore-anchored)",
-        "labels": lambda d: _label_path(d, "probscore"),
-        "conf": lambda d: f"results/sentence_confidence/crossmodel_agreement_probscore_{d}.json",
-        "field": "confidence",
-    },
-    "crossmodel_min": {
-        "title": "Naive - Cross-model Agreement (min, probscore-anchored)",
-        "labels": lambda d: _label_path(d, "probscore"),
-        "conf": lambda d: f"results/sentence_confidence/crossmodel_agreement_probscore_{d}.json",
-        "field": "min_agreement",
-    },
-    "acoustic_mean": {
-        "title": "Naive - Acoustic Confidence (mean, probscore-anchored)",
-        "labels": lambda d: _label_path(d, "probscore"),
-        "conf": lambda d: f"results/sentence_confidence/acoustic_confidence_probscore_{d}.json",
-        "field": "confidence",
-    },
-    "proxy_model": {
-        "title": "Naive - Proxy Model (Ridge Regression, probscore-trained)",
-        "labels": lambda d: _label_path(d, "probscore"),
-        "conf": lambda d: f"results/sentence_confidence/proxy_model_{d}_probscore.json",
-        "field": "confidence",
-    },
-}
+def build_techniques(variant):
+    """
+    Builds the full TECHNIQUES dict for ONE variant, fully self-consistent -
+    crossmodel_mean/min, acoustic_mean, and proxy_model are all anchored
+    to the SAME variant as the verbalized score itself (not mixed, per
+    the confound fix - see build_leaderboard.py / summarise_final.py).
+    "confscore"/"probscore" always shows both raw scores for reference,
+    but the other's own OWN row uses whichever variant this function
+    was called for.
+    """
+    return {
+        "confscore": {
+            "title": "Naive - Verbalized Confidence (confscore)",
+            "labels": lambda d: _label_path(d, "confscore"),
+            "conf": lambda d: _combo_path(d, "confscore"),
+            "field": "confidence",
+        },
+        "probscore": {
+            "title": "Naive - Verbalized Confidence (probscore)",
+            "labels": lambda d: _label_path(d, "probscore"),
+            "conf": lambda d: _combo_path(d, "probscore"),
+            "field": "confidence",
+        },
+        "crossmodel_mean": {
+            "title": f"Naive - Cross-model Agreement (mean, {variant}-anchored)",
+            "labels": lambda d: _label_path(d, variant),
+            "conf": lambda d: f"results/sentence_confidence/crossmodel_agreement_{variant}_{d}.json",
+            "field": "confidence",
+        },
+        "crossmodel_min": {
+            "title": f"Naive - Cross-model Agreement (min, {variant}-anchored)",
+            "labels": lambda d: _label_path(d, variant),
+            "conf": lambda d: f"results/sentence_confidence/crossmodel_agreement_{variant}_{d}.json",
+            "field": "min_agreement",
+        },
+        "acoustic_mean": {
+            "title": f"Naive - Acoustic Confidence (mean, {variant}-anchored)",
+            "labels": lambda d: _label_path(d, variant),
+            "conf": lambda d: f"results/sentence_confidence/acoustic_confidence_{variant}_{d}.json",
+            "field": "confidence",
+        },
+        "proxy_model": {
+            "title": f"Naive - Proxy Model (Ridge Regression, {variant}-trained)",
+            "labels": lambda d: _label_path(d, variant),
+            "conf": lambda d: f"results/sentence_confidence/proxy_model_{d}_{variant}.json",
+            "field": "confidence",
+        },
+    }
 
 
 def load_labels(path):
@@ -119,8 +127,8 @@ def load_confidences(path, field):
     return conf_map
 
 
-def get_data_by_severity(technique_key, dataset):
-    tech = TECHNIQUES[technique_key]
+def get_data_by_severity(technique_key, dataset, techniques):
+    tech = techniques[technique_key]
     labels = load_labels(tech["labels"](dataset))
     conf_map = load_confidences(tech["conf"](dataset), tech["field"])
     by_sev = defaultdict(list)
@@ -131,14 +139,14 @@ def get_data_by_severity(technique_key, dataset):
     return by_sev
 
 
-def plot_technique(technique_key, output_dir):
-    tech = TECHNIQUES[technique_key]
+def plot_technique(technique_key, output_dir, techniques):
+    tech = techniques[technique_key]
     fig, axes = plt.subplots(2, 2, figsize=(14, 10))
     axes = axes.flatten()
 
     for i, dataset in enumerate(DATASETS):
         ax = axes[i]
-        by_sev = get_data_by_severity(technique_key, dataset)
+        by_sev = get_data_by_severity(technique_key, dataset, techniques)
         severities = list(range(5))
         data = [by_sev.get(s, []) for s in severities]
 
@@ -198,8 +206,12 @@ def plot_technique(technique_key, output_dir):
 
 
 def main():
-    for technique_key in TECHNIQUES:
-        plot_technique(technique_key, OUTPUT_DIR)
+    for variant in ["probscore", "confscore"]:
+        techniques = build_techniques(variant)
+        output_dir = f"writeup_results/sentence_confidence/figures_{variant}"
+        print(f"\n── {variant} ──")
+        for technique_key in techniques:
+            plot_technique(technique_key, output_dir, techniques)
 
 
 if __name__ == "__main__":

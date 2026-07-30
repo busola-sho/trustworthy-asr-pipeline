@@ -93,24 +93,15 @@ MODEL_NAME_ALIASES = {
 
 
 def normalize_model_name(raw_name: str) -> str:
-    """Normalise benchmark model names to stable short labels.
-
-    Some result files store full checkpoint paths while others use short names.
-    We also strip punctuation so forms such as ``qwen3-asr`` and ``qwen3asr``
-    are grouped together rather than appearing as separate techniques.
-    """
+    """Raw benchmark files sometimes store the full HuggingFace checkpoint
+    path (e.g. 'facebook/wav2vec2-large-960h-lv60-self') instead of a clean
+    short name - only whisperx's file happens to already use one ('whisperx').
+    Maps known checkpoint paths to the same clean short names, so the
+    leaderboard groups/labels every baseline model consistently."""
     lowered = raw_name.lower()
-    compact = lowered.replace("-", "").replace("_", "").replace("/", "")
-
-    if "qwen3asr" in compact:
-        return "qwen"
-    if "wav2vec2" in compact:
-        return "wav2vec2"
-    if "parakeet" in compact:
-        return "parakeet"
-    if "whisper" in compact:
-        return "whisperx"
-
+    for key, clean_name in MODEL_NAME_ALIASES.items():
+        if key in lowered:
+            return clean_name
     return raw_name
 
 
@@ -282,24 +273,10 @@ def compute_pooled_metrics(rows_for_one_technique):
     return pooled_wer, pooled_severity, len(all_severities)
 
 
-def build_pooled_table_rows(rows, datasets=None):
-    """Build pooled/micro-average rows.
-
-    Parameters
-    ----------
-    rows:
-        Result rows to pool.
-    datasets:
-        Optional iterable of dataset names to include. Passing
-        ``DATASET_ORDER`` keeps Shetland out of the in-domain pooled table.
-
-    This explicit filter prevents a method that happens to have a Shetland
-    result from receiving 100 extra samples while the other methods do not.
-    """
-    if datasets is not None:
-        allowed = set(datasets)
-        rows = [r for r in rows if r["dataset"] in allowed]
-
+def build_pooled_table_rows(rows):
+    """Groups rows by approach, computes pooled metrics per technique
+    across whichever datasets it has data for, returns table rows sorted
+    by pooled severity (best first)."""
     by_approach = defaultdict(list)
     for r in rows:
         by_approach[r["approach"]].append(r)
@@ -475,12 +452,7 @@ def pick_top_n(rows, top_n, label="technique"):
 
     result_rows = []
     for name, _ in top:
-        # The final in-domain comparison must use only the three datasets in
-        # DATASET_ORDER. Shetland remains a separate external-test table.
-        for ds in DATASET_ORDER:
-            row = by_group[name].get(ds)
-            if row is not None:
-                result_rows.append(row)
+        result_rows.extend(by_group[name].values())
     return result_rows
 
 
@@ -533,32 +505,6 @@ def build_head_to_head_rows(best_baselines, best_ensembles):
     return rows
 
 
-def print_pool_diagnostics(rows, title):
-    """Print the usable per-dataset sample counts that will enter pooling.
-
-    This makes it immediately obvious if an old/full-dataset result file has
-    slipped through split restriction.
-    """
-    print(f"\nPool diagnostics: {title}")
-    grouped = defaultdict(list)
-    for row in rows:
-        if row["dataset"] not in DATASET_ORDER:
-            continue
-        samples = row["raw_data"].get("samples") or []
-        usable = [
-            s for s in samples
-            if not s.get("skipped")
-            and not s.get("error")
-            and s.get("severity") is not None
-        ]
-        grouped[row["approach"]].append((row["dataset"], len(usable), row["path"]))
-
-    for approach in sorted(grouped):
-        counts = ", ".join(f"{ds}={n}" for ds, n, _ in sorted(grouped[approach]))
-        total = sum(n for _, n, _ in grouped[approach])
-        print(f"  {approach}: {counts} -> total={total}")
-
-
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--roots", nargs="+", default=DEFAULT_ROOTS)
@@ -580,6 +526,26 @@ def main():
     print(f"Scanned {args.roots} -> found {len(found)} result file(s) with approach+dataset fields")
 
     rows = [extract_row(path, data) for path, data in found]
+
+    # exclude sentence-confidence-specific technique variants - these were
+    # built to test verbalized confidence scoring formats (Method 1 of the
+    # sentence-confidence work), not as candidate ensemble techniques in
+    # their own right. They inherit severity scores the same way every
+    # other ensemble file does, so without this filter they'd silently
+    # appear in the pure ensemble comparison tables alongside naive,
+    # context_v1/v2, rover, etc. - which is a different comparison
+    # (sentence-confidence signal evaluation) than what these tables are
+    # for.
+    EXCLUDED_APPROACHES = {
+        "naive_confscore", "naive_probscore",
+        "naive_confscore_meaning", "naive_probscore_meaning",
+    }
+    n_before_exclusion = len(rows)
+    rows = [r for r in rows if r["approach"] not in EXCLUDED_APPROACHES]
+    n_excluded = n_before_exclusion - len(rows)
+    if n_excluded:
+        print(f"  Excluded {n_excluded} file(s) from sentence-confidence technique variants "
+              f"({', '.join(sorted(EXCLUDED_APPROACHES))}) - not part of the pure ensemble comparison")
 
     # split into ensemble vs baseline BEFORE applying the --split filter -
     # baseline (individual ASR model) files are full-dataset runs with no
@@ -610,9 +576,6 @@ def main():
     ensemble_rows = dedupe_rows(ensemble_candidates)
     baseline_rows = dedupe_rows(baseline_candidates)
     print(f"After deduping: {len(ensemble_rows)} ensemble + {len(baseline_rows)} baseline result(s)")
-
-    print_pool_diagnostics(baseline_rows, "baseline rows used for in-domain micro-average")
-    print_pool_diagnostics(ensemble_rows, "ensemble rows used for in-domain micro-average")
 
     if not ensemble_rows and not baseline_rows:
         print("\nNo matching result files found - check --roots and --split.")
@@ -716,7 +679,7 @@ def main():
     print(f"{'=' * 60}")
     pooled_headers = ["Technique", "Pooled Severity", "Pooled WER", "N (total samples)"]
     pooled_aligns = ["<", ">", ">", ">"]
-    baseline_pooled_rows = build_pooled_table_rows(baseline_rows, datasets=DATASET_ORDER)
+    baseline_pooled_rows = build_pooled_table_rows(baseline_rows)
     print_table(pooled_headers, baseline_pooled_rows, pooled_aligns)
     if args.markdown_out:
         markdown_sections.append("## Baseline models - pooled/micro-average (every sample weighted equally)\n\n" +
@@ -736,7 +699,7 @@ def main():
     print(f"\n{'=' * 60}")
     print(f"  ENSEMBLE TECHNIQUES - POOLED / MICRO-AVERAGE (every sample weighted equally)")
     print(f"{'=' * 60}")
-    ensemble_pooled_rows = build_pooled_table_rows(ensemble_rows, datasets=DATASET_ORDER)
+    ensemble_pooled_rows = build_pooled_table_rows(ensemble_rows)
     print_table(pooled_headers, ensemble_pooled_rows, pooled_aligns)
     if args.markdown_out:
         markdown_sections.append("## Ensemble techniques - pooled/micro-average (every sample weighted equally)\n\n" +
