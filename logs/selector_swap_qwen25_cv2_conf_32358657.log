@@ -1,0 +1,727 @@
+Error: listen tcp 127.0.0.1:11434: bind: address already in use
+[?2026h[?25l[1Gpulling manifest ⠋ [K[?25h[?2026l[?2026h[?25l[1Gpulling manifest ⠙ [K[?25h[?2026l[?2026h[?25l[1Gpulling manifest ⠹ [K[?25h[?2026l[?2026h[?25l[1Gpulling manifest ⠸ [K[?25h[?2026l[?2026h[?25l[1Gpulling manifest [K
+pulling 2bada8a74506: 100% ▕██████████████████▏ 4.7 GB                         [K
+pulling 66b9ea09bd5b: 100% ▕██████████████████▏   68 B                         [K
+pulling eb4402837c78: 100% ▕██████████████████▏ 1.5 KB                         [K
+pulling 832dd9e00a68: 100% ▕██████████████████▏  11 KB                         [K
+pulling 2f15b3218f05: 100% ▕██████████████████▏  487 B                         [K
+verifying sha256 digest [K
+writing manifest [K
+success [K[?25h[?2026l
+── context_v2_confidence | qwen2.5 | commonvoice ──
+Ollama connected. Selector: qwen2.5:7b
+
+── commonvoice | context V2 + confidence (PHASE 1: selector only, CONCURRENT) selector=qwen percentile=20 split=dev ──
+  Calibrated threshold for qwen (p20): 0.951 (from 96378 word scores)
+  Calibrated threshold for whisperx (p20): 0.492 (from 95983 word scores)
+  Calibrated threshold for parakeet (p20): 0.797 (from 96143 word scores)
+  Split: dev (475 samples)
+  475 samples queued for concurrent Ollama calls (0 skipped without needing a call)
+  10/475 done
+  20/475 done
+  30/475 done
+  40/475 done
+  50/475 done
+  60/475 done
+  70/475 done
+  80/475 done
+  90/475 done
+  100/475 done
+  110/475 done
+  120/475 done
+  130/475 done
+  140/475 done
+  150/475 done
+  160/475 done
+  170/475 done
+  180/475 done
+  190/475 done
+  200/475 done
+  210/475 done
+  220/475 done
+  230/475 done
+  240/475 done
+  250/475 done
+  260/475 done
+  270/475 done
+  280/475 done
+  290/475 done
+  300/475 done
+  310/475 done
+  320/475 done
+  330/475 done
+  340/475 done
+  350/475 done
+  360/475 done
+  370/475 done
+  380/475 done
+  390/475 done
+  400/475 done
+  410/475 done
+  420/475 done
+  430/475 done
+  440/475 done
+  450/475 done
+  460/475 done
+  470/475 done
+
+  WER: 19.97%  (N=475)
+  Saved: writeup_results/ensembles/context_v2_confidence/context_v2conf_commonvoice_qwen_p20_dev.json
+  Saved: results/combinations_v2judge/context_v2_confidence/context_v2conf_commonvoice_qwen_p20_dev.json
+
+  PHASE 1 done. Now run PHASE 2:
+  python rerunning/add_severity_to_existing.py --files writeup_results/ensembles/context_v2_confidence/context_v2conf_commonvoice_qwen_p20_dev.json
+Found 1 file(s) to process.
+
+── context_v2_conf_commonvoice_qwen_p20_dev.json ──
+Traceback (most recent call last):
+  File "/rds/user/ors36/hpc-work/trustworthy-asr-pipeline/rerunning/add_severity_to_existing_concurrent.py", line 205, in <module>
+    main()
+  File "/rds/user/ors36/hpc-work/trustworthy-asr-pipeline/rerunning/add_severity_to_existing_concurrent.py", line 201, in main
+    process_file(file_path, client, max_workers=args.max_workers, batch_size=args.batch_size)
+  File "/rds/user/ors36/hpc-work/trustworthy-asr-pipeline/rerunning/add_severity_to_existing_concurrent.py", line 95, in process_file
+    with open(file_path) as f:
+         ^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'writeup_results/ensembles/context_v2_confidence/context_v2_conf_commonvoice_qwen_p20_dev.json'
+── context_v2_confidence_inline | qwen2.5 | commonvoice ──
+Ollama connected. Selector: qwen2.5:7b
+
+── commonvoice | context V2 + confidence INLINE (PHASE 1: selector only, CONCURRENT) selector=qwen percentile=20 split=dev ──
+  Calibrated threshold for qwen (p20): 0.951 (from 96378 word scores)
+  Calibrated threshold for whisperx (p20): 0.492 (from 95983 word scores)
+  Calibrated threshold for parakeet (p20): 0.797 (from 96143 word scores)
+  Split: dev (475 samples)
+  475 samples queued for concurrent Ollama calls (0 skipped without needing a call)
+  10/475 done
+  20/475 done
+  30/475 done
+  40/475 done
+  50/475 done
+  60/475 done
+  70/475 done
+  80/475 done
+  90/475 done
+  100/475 done
+  110/475 done
+  120/475 done
+  130/475 done
+  140/475 done
+  150/475 done
+  160/475 done
+  170/475 done
+  180/475 done
+  190/475 done
+  200/475 done
+  210/475 done
+  220/475 done
+  230/475 done
+  240/475 done
+  250/475 done
+  260/475 done
+  270/475 done
+  280/475 done
+  290/475 done
+  300/475 done
+  310/475 done
+  320/475 done
+  330/475 done
+  340/475 done
+  350/475 done
+  360/475 done
+  370/475 done
+  380/475 done
+  390/475 done
+  400/475 done
+  410/475 done
+  420/475 done
+  430/475 done
+  440/475 done
+  450/475 done
+  460/475 done
+  470/475 done
+
+  WER: 19.63%  (N=475)
+  Saved: writeup_results/ensembles/context_v2_confidence_inline/context_v2confinline_commonvoice_qwen_p20_dev.json
+  Saved: results/combinations_v2judge/context_v2_confidence_inline/context_v2confinline_commonvoice_qwen_p20_dev.json
+
+  PHASE 1 done. Now run PHASE 2:
+  python rerunning/add_severity_to_existing.py --files writeup_results/ensembles/context_v2_confidence_inline/context_v2confinline_commonvoice_qwen_p20_dev.json
+Found 1 file(s) to process.
+
+── context_v2_conf_inline_commonvoice_qwen_p20_dev.json ──
+Traceback (most recent call last):
+  File "/rds/user/ors36/hpc-work/trustworthy-asr-pipeline/rerunning/add_severity_to_existing_concurrent.py", line 205, in <module>
+    main()
+  File "/rds/user/ors36/hpc-work/trustworthy-asr-pipeline/rerunning/add_severity_to_existing_concurrent.py", line 201, in main
+    process_file(file_path, client, max_workers=args.max_workers, batch_size=args.batch_size)
+  File "/rds/user/ors36/hpc-work/trustworthy-asr-pipeline/rerunning/add_severity_to_existing_concurrent.py", line 95, in process_file
+    with open(file_path) as f:
+         ^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'writeup_results/ensembles/context_v2_confidence_inline/context_v2_conf_inline_commonvoice_qwen_p20_dev.json'
+── context_v2_confidence | qwen2.5 | english_dialects ──
+Ollama connected. Selector: qwen2.5:7b
+
+── english_dialects | context V2 + confidence (PHASE 1: selector only, CONCURRENT) selector=qwen percentile=20 split=dev ──
+  Calibrated threshold for qwen (p20): 1.000 (from 34186 word scores)
+  Calibrated threshold for whisperx (p20): 0.755 (from 34172 word scores)
+  Calibrated threshold for parakeet (p20): 0.946 (from 34712 word scores)
+  Split: dev (1780 samples)
+  1780 samples queued for concurrent Ollama calls (0 skipped without needing a call)
+  10/1780 done
+  20/1780 done
+  30/1780 done
+  40/1780 done
+  50/1780 done
+  60/1780 done
+  70/1780 done
+  80/1780 done
+  90/1780 done
+  100/1780 done
+  110/1780 done
+  120/1780 done
+  130/1780 done
+  140/1780 done
+  150/1780 done
+  160/1780 done
+  170/1780 done
+  180/1780 done
+  190/1780 done
+  200/1780 done
+  210/1780 done
+  220/1780 done
+  230/1780 done
+  240/1780 done
+  250/1780 done
+  260/1780 done
+  270/1780 done
+  280/1780 done
+  290/1780 done
+  300/1780 done
+  310/1780 done
+  320/1780 done
+  330/1780 done
+  340/1780 done
+  350/1780 done
+  360/1780 done
+  370/1780 done
+  380/1780 done
+  390/1780 done
+  400/1780 done
+  410/1780 done
+  420/1780 done
+  430/1780 done
+  440/1780 done
+  450/1780 done
+  460/1780 done
+  470/1780 done
+  480/1780 done
+  490/1780 done
+  500/1780 done
+  510/1780 done
+  520/1780 done
+  530/1780 done
+  540/1780 done
+  550/1780 done
+  560/1780 done
+  570/1780 done
+  580/1780 done
+  590/1780 done
+  600/1780 done
+  610/1780 done
+  620/1780 done
+  630/1780 done
+  640/1780 done
+  650/1780 done
+  660/1780 done
+  670/1780 done
+  680/1780 done
+  690/1780 done
+  700/1780 done
+  710/1780 done
+  720/1780 done
+  730/1780 done
+  740/1780 done
+  750/1780 done
+  760/1780 done
+  770/1780 done
+  780/1780 done
+  790/1780 done
+  800/1780 done
+  810/1780 done
+  820/1780 done
+  830/1780 done
+  840/1780 done
+  850/1780 done
+  860/1780 done
+  870/1780 done
+  880/1780 done
+  890/1780 done
+  900/1780 done
+  910/1780 done
+  920/1780 done
+  930/1780 done
+  940/1780 done
+  950/1780 done
+  960/1780 done
+  970/1780 done
+  980/1780 done
+  990/1780 done
+  1000/1780 done
+  1010/1780 done
+  1020/1780 done
+  1030/1780 done
+  1040/1780 done
+  1050/1780 done
+  1060/1780 done
+  1070/1780 done
+  1080/1780 done
+  1090/1780 done
+  1100/1780 done
+  1110/1780 done
+  1120/1780 done
+  1130/1780 done
+  1140/1780 done
+  1150/1780 done
+  1160/1780 done
+  1170/1780 done
+  1180/1780 done
+  1190/1780 done
+  1200/1780 done
+  1210/1780 done
+  1220/1780 done
+  1230/1780 done
+  1240/1780 done
+  1250/1780 done
+  1260/1780 done
+  1270/1780 done
+  1280/1780 done
+  1290/1780 done
+  1300/1780 done
+  1310/1780 done
+  1320/1780 done
+  1330/1780 done
+  1340/1780 done
+  1350/1780 done
+  1360/1780 done
+  1370/1780 done
+  1380/1780 done
+  1390/1780 done
+  1400/1780 done
+  1410/1780 done
+  1420/1780 done
+  1430/1780 done
+  1440/1780 done
+  1450/1780 done
+  1460/1780 done
+  1470/1780 done
+  1480/1780 done
+  1490/1780 done
+  1500/1780 done
+  1510/1780 done
+  1520/1780 done
+  1530/1780 done
+  1540/1780 done
+  1550/1780 done
+  1560/1780 done
+  1570/1780 done
+  1580/1780 done
+  1590/1780 done
+  1600/1780 done
+  1610/1780 done
+  1620/1780 done
+  1630/1780 done
+  1640/1780 done
+  1650/1780 done
+  1660/1780 done
+  1670/1780 done
+  1680/1780 done
+  1690/1780 done
+  1700/1780 done
+  1710/1780 done
+  1720/1780 done
+  1730/1780 done
+  1740/1780 done
+  1750/1780 done
+  1760/1780 done
+  1770/1780 done
+  1780/1780 done
+
+  WER: 4.72%  (N=1780)
+  Saved: writeup_results/ensembles/context_v2_confidence/context_v2conf_english_dialects_qwen_p20_dev.json
+  Saved: results/combinations_v2judge/context_v2_confidence/context_v2conf_english_dialects_qwen_p20_dev.json
+
+  PHASE 1 done. Now run PHASE 2:
+  python rerunning/add_severity_to_existing.py --files writeup_results/ensembles/context_v2_confidence/context_v2conf_english_dialects_qwen_p20_dev.json
+Found 1 file(s) to process.
+
+── context_v2_conf_english_dialects_qwen_p20_dev.json ──
+Traceback (most recent call last):
+  File "/rds/user/ors36/hpc-work/trustworthy-asr-pipeline/rerunning/add_severity_to_existing_concurrent.py", line 205, in <module>
+    main()
+  File "/rds/user/ors36/hpc-work/trustworthy-asr-pipeline/rerunning/add_severity_to_existing_concurrent.py", line 201, in main
+    process_file(file_path, client, max_workers=args.max_workers, batch_size=args.batch_size)
+  File "/rds/user/ors36/hpc-work/trustworthy-asr-pipeline/rerunning/add_severity_to_existing_concurrent.py", line 95, in process_file
+    with open(file_path) as f:
+         ^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'writeup_results/ensembles/context_v2_confidence/context_v2_conf_english_dialects_qwen_p20_dev.json'
+── context_v2_confidence_inline | qwen2.5 | english_dialects ──
+Ollama connected. Selector: qwen2.5:7b
+
+── english_dialects | context V2 + confidence INLINE (PHASE 1: selector only, CONCURRENT) selector=qwen percentile=20 split=dev ──
+  Calibrated threshold for qwen (p20): 1.000 (from 34186 word scores)
+  Calibrated threshold for whisperx (p20): 0.755 (from 34172 word scores)
+  Calibrated threshold for parakeet (p20): 0.946 (from 34712 word scores)
+  Split: dev (1780 samples)
+  1780 samples queued for concurrent Ollama calls (0 skipped without needing a call)
+  10/1780 done
+  20/1780 done
+  30/1780 done
+  40/1780 done
+  50/1780 done
+  60/1780 done
+  70/1780 done
+  80/1780 done
+  90/1780 done
+  100/1780 done
+  110/1780 done
+  120/1780 done
+  130/1780 done
+  140/1780 done
+  150/1780 done
+  160/1780 done
+  170/1780 done
+  180/1780 done
+  190/1780 done
+  200/1780 done
+  210/1780 done
+  220/1780 done
+  230/1780 done
+  240/1780 done
+  250/1780 done
+  260/1780 done
+  270/1780 done
+  280/1780 done
+  290/1780 done
+  300/1780 done
+  310/1780 done
+  320/1780 done
+  330/1780 done
+  340/1780 done
+  350/1780 done
+  360/1780 done
+  370/1780 done
+  380/1780 done
+  390/1780 done
+  400/1780 done
+  410/1780 done
+  420/1780 done
+  430/1780 done
+  440/1780 done
+  450/1780 done
+  460/1780 done
+  470/1780 done
+  480/1780 done
+  490/1780 done
+  500/1780 done
+  510/1780 done
+  520/1780 done
+  530/1780 done
+  540/1780 done
+  550/1780 done
+  560/1780 done
+  570/1780 done
+  580/1780 done
+  590/1780 done
+  600/1780 done
+  610/1780 done
+  620/1780 done
+  630/1780 done
+  640/1780 done
+  650/1780 done
+  660/1780 done
+  670/1780 done
+  680/1780 done
+  690/1780 done
+  700/1780 done
+  710/1780 done
+  720/1780 done
+  730/1780 done
+  740/1780 done
+  750/1780 done
+  760/1780 done
+  770/1780 done
+  780/1780 done
+  790/1780 done
+  800/1780 done
+  810/1780 done
+  820/1780 done
+  830/1780 done
+  840/1780 done
+  850/1780 done
+  860/1780 done
+  870/1780 done
+  880/1780 done
+  890/1780 done
+  900/1780 done
+  910/1780 done
+  920/1780 done
+  930/1780 done
+  940/1780 done
+  950/1780 done
+  960/1780 done
+  970/1780 done
+  980/1780 done
+  990/1780 done
+  1000/1780 done
+  1010/1780 done
+  1020/1780 done
+  1030/1780 done
+  1040/1780 done
+  1050/1780 done
+  1060/1780 done
+  1070/1780 done
+  1080/1780 done
+  1090/1780 done
+  1100/1780 done
+  1110/1780 done
+  1120/1780 done
+  1130/1780 done
+  1140/1780 done
+  1150/1780 done
+  1160/1780 done
+  1170/1780 done
+  1180/1780 done
+  1190/1780 done
+  1200/1780 done
+  1210/1780 done
+  1220/1780 done
+  1230/1780 done
+  1240/1780 done
+  1250/1780 done
+  1260/1780 done
+  1270/1780 done
+  1280/1780 done
+  1290/1780 done
+  1300/1780 done
+  1310/1780 done
+  1320/1780 done
+  1330/1780 done
+  1340/1780 done
+  1350/1780 done
+  1360/1780 done
+  1370/1780 done
+  1380/1780 done
+  1390/1780 done
+  1400/1780 done
+  1410/1780 done
+  1420/1780 done
+  1430/1780 done
+  1440/1780 done
+  1450/1780 done
+  1460/1780 done
+  1470/1780 done
+  1480/1780 done
+  1490/1780 done
+  1500/1780 done
+  1510/1780 done
+  1520/1780 done
+  1530/1780 done
+  1540/1780 done
+  1550/1780 done
+  1560/1780 done
+  1570/1780 done
+  1580/1780 done
+  1590/1780 done
+  1600/1780 done
+  1610/1780 done
+  1620/1780 done
+  1630/1780 done
+  1640/1780 done
+  1650/1780 done
+  1660/1780 done
+  1670/1780 done
+  1680/1780 done
+  1690/1780 done
+  1700/1780 done
+  1710/1780 done
+  1720/1780 done
+  1730/1780 done
+  1740/1780 done
+  1750/1780 done
+  1760/1780 done
+  1770/1780 done
+  1780/1780 done
+
+  WER: 4.40%  (N=1780)
+  Saved: writeup_results/ensembles/context_v2_confidence_inline/context_v2confinline_english_dialects_qwen_p20_dev.json
+  Saved: results/combinations_v2judge/context_v2_confidence_inline/context_v2confinline_english_dialects_qwen_p20_dev.json
+
+  PHASE 1 done. Now run PHASE 2:
+  python rerunning/add_severity_to_existing.py --files writeup_results/ensembles/context_v2_confidence_inline/context_v2confinline_english_dialects_qwen_p20_dev.json
+Found 1 file(s) to process.
+
+── context_v2_conf_inline_english_dialects_qwen_p20_dev.json ──
+Traceback (most recent call last):
+  File "/rds/user/ors36/hpc-work/trustworthy-asr-pipeline/rerunning/add_severity_to_existing_concurrent.py", line 205, in <module>
+    main()
+  File "/rds/user/ors36/hpc-work/trustworthy-asr-pipeline/rerunning/add_severity_to_existing_concurrent.py", line 201, in main
+    process_file(file_path, client, max_workers=args.max_workers, batch_size=args.batch_size)
+  File "/rds/user/ors36/hpc-work/trustworthy-asr-pipeline/rerunning/add_severity_to_existing_concurrent.py", line 95, in process_file
+    with open(file_path) as f:
+         ^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'writeup_results/ensembles/context_v2_confidence_inline/context_v2_conf_inline_english_dialects_qwen_p20_dev.json'
+── context_v2_confidence | qwen2.5 | edacc ──
+Ollama connected. Selector: qwen2.5:7b
+
+── edacc | context V2 + confidence (PHASE 1: selector only, CONCURRENT) selector=qwen percentile=20 split=dev ──
+  Calibrated threshold for qwen (p20): 0.972 (from 2220 word scores)
+  Calibrated threshold for whisperx (p20): 0.434 (from 2133 word scores)
+  Calibrated threshold for parakeet (p20): 0.776 (from 2212 word scores)
+  Split: dev (138 samples)
+  136 samples queued for concurrent Ollama calls (2 skipped without needing a call)
+  10/136 done
+  20/136 done
+  30/136 done
+  40/136 done
+  50/136 done
+  60/136 done
+  70/136 done
+  80/136 done
+  90/136 done
+  100/136 done
+  110/136 done
+  120/136 done
+  130/136 done
+
+  WER: 19.86%  (N=136)
+  Saved: writeup_results/ensembles/context_v2_confidence/context_v2conf_edacc_qwen_p20_dev.json
+  Saved: results/combinations_v2judge/context_v2_confidence/context_v2conf_edacc_qwen_p20_dev.json
+
+  PHASE 1 done. Now run PHASE 2:
+  python rerunning/add_severity_to_existing.py --files writeup_results/ensembles/context_v2_confidence/context_v2conf_edacc_qwen_p20_dev.json
+Found 1 file(s) to process.
+
+── context_v2_conf_edacc_qwen_p20_dev.json ──
+Traceback (most recent call last):
+  File "/rds/user/ors36/hpc-work/trustworthy-asr-pipeline/rerunning/add_severity_to_existing_concurrent.py", line 205, in <module>
+    main()
+  File "/rds/user/ors36/hpc-work/trustworthy-asr-pipeline/rerunning/add_severity_to_existing_concurrent.py", line 201, in main
+    process_file(file_path, client, max_workers=args.max_workers, batch_size=args.batch_size)
+  File "/rds/user/ors36/hpc-work/trustworthy-asr-pipeline/rerunning/add_severity_to_existing_concurrent.py", line 95, in process_file
+    with open(file_path) as f:
+         ^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'writeup_results/ensembles/context_v2_confidence/context_v2_conf_edacc_qwen_p20_dev.json'
+── context_v2_confidence_inline | qwen2.5 | edacc ──
+Ollama connected. Selector: qwen2.5:7b
+
+── edacc | context V2 + confidence INLINE (PHASE 1: selector only, CONCURRENT) selector=qwen percentile=20 split=dev ──
+  Calibrated threshold for qwen (p20): 0.972 (from 2220 word scores)
+  Calibrated threshold for whisperx (p20): 0.434 (from 2133 word scores)
+  Calibrated threshold for parakeet (p20): 0.776 (from 2212 word scores)
+  Split: dev (138 samples)
+  136 samples queued for concurrent Ollama calls (2 skipped without needing a call)
+  10/136 done
+  20/136 done
+  30/136 done
+  40/136 done
+  50/136 done
+  60/136 done
+  70/136 done
+  80/136 done
+  90/136 done
+  100/136 done
+  110/136 done
+  120/136 done
+  130/136 done
+
+  WER: 19.63%  (N=136)
+  Saved: writeup_results/ensembles/context_v2_confidence_inline/context_v2confinline_edacc_qwen_p20_dev.json
+  Saved: results/combinations_v2judge/context_v2_confidence_inline/context_v2confinline_edacc_qwen_p20_dev.json
+
+  PHASE 1 done. Now run PHASE 2:
+  python rerunning/add_severity_to_existing.py --files writeup_results/ensembles/context_v2_confidence_inline/context_v2confinline_edacc_qwen_p20_dev.json
+Found 1 file(s) to process.
+
+── context_v2_conf_inline_edacc_qwen_p20_dev.json ──
+Traceback (most recent call last):
+  File "/rds/user/ors36/hpc-work/trustworthy-asr-pipeline/rerunning/add_severity_to_existing_concurrent.py", line 205, in <module>
+    main()
+  File "/rds/user/ors36/hpc-work/trustworthy-asr-pipeline/rerunning/add_severity_to_existing_concurrent.py", line 201, in main
+    process_file(file_path, client, max_workers=args.max_workers, batch_size=args.batch_size)
+  File "/rds/user/ors36/hpc-work/trustworthy-asr-pipeline/rerunning/add_severity_to_existing_concurrent.py", line 95, in process_file
+    with open(file_path) as f:
+         ^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'writeup_results/ensembles/context_v2_confidence_inline/context_v2_conf_inline_edacc_qwen_p20_dev.json'
+── context_v2_confidence | qwen2.5 | shetland ──
+Ollama connected. Selector: qwen2.5:7b
+
+── shetland | context V2 + confidence (PHASE 1: selector only, CONCURRENT) selector=qwen percentile=20 split=full ──
+  Calibrated threshold for whisperx (p20): 0.412 (from 8241 word scores)
+  Split: full (100 samples)
+  100 samples queued for concurrent Ollama calls (0 skipped without needing a call)
+  10/100 done
+  20/100 done
+  30/100 done
+  40/100 done
+  50/100 done
+  60/100 done
+  70/100 done
+  80/100 done
+  90/100 done
+  100/100 done
+
+  WER: 10.63%  (N=100)
+  Saved: writeup_results/ensembles/context_v2_confidence/context_v2conf_shetland_qwen_p20_full.json
+  Saved: results/combinations_v2judge/context_v2_confidence/context_v2conf_shetland_qwen_p20_full.json
+
+  PHASE 1 done. Now run PHASE 2:
+  python rerunning/add_severity_to_existing.py --files writeup_results/ensembles/context_v2_confidence/context_v2conf_shetland_qwen_p20_full.json
+Found 1 file(s) to process.
+
+── context_v2_conf_shetland_qwen_p20_full.json ──
+Traceback (most recent call last):
+  File "/rds/user/ors36/hpc-work/trustworthy-asr-pipeline/rerunning/add_severity_to_existing_concurrent.py", line 205, in <module>
+    main()
+  File "/rds/user/ors36/hpc-work/trustworthy-asr-pipeline/rerunning/add_severity_to_existing_concurrent.py", line 201, in main
+    process_file(file_path, client, max_workers=args.max_workers, batch_size=args.batch_size)
+  File "/rds/user/ors36/hpc-work/trustworthy-asr-pipeline/rerunning/add_severity_to_existing_concurrent.py", line 95, in process_file
+    with open(file_path) as f:
+         ^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'writeup_results/ensembles/context_v2_confidence/context_v2_conf_shetland_qwen_p20_full.json'
+── context_v2_confidence_inline | qwen2.5 | shetland ──
+Ollama connected. Selector: qwen2.5:7b
+
+── shetland | context V2 + confidence INLINE (PHASE 1: selector only, CONCURRENT) selector=qwen percentile=20 split=full ──
+  Calibrated threshold for whisperx (p20): 0.412 (from 8241 word scores)
+  Split: full (100 samples)
+  100 samples queued for concurrent Ollama calls (0 skipped without needing a call)
+  10/100 done
+  20/100 done
+  30/100 done
+  40/100 done
+  50/100 done
+  60/100 done
+  70/100 done
+  80/100 done
+  90/100 done
+  100/100 done
+
+  WER: 10.96%  (N=100)
+  Saved: writeup_results/ensembles/context_v2_confidence_inline/context_v2confinline_shetland_qwen_p20_full.json
+  Saved: results/combinations_v2judge/context_v2_confidence_inline/context_v2confinline_shetland_qwen_p20_full.json
+
+  PHASE 1 done. Now run PHASE 2:
+  python rerunning/add_severity_to_existing.py --files writeup_results/ensembles/context_v2_confidence_inline/context_v2confinline_shetland_qwen_p20_full.json
+Found 1 file(s) to process.
+
+── context_v2_conf_inline_shetland_qwen_p20_full.json ──
+Traceback (most recent call last):
+  File "/rds/user/ors36/hpc-work/trustworthy-asr-pipeline/rerunning/add_severity_to_existing_concurrent.py", line 205, in <module>
+    main()
+  File "/rds/user/ors36/hpc-work/trustworthy-asr-pipeline/rerunning/add_severity_to_existing_concurrent.py", line 201, in main
+    process_file(file_path, client, max_workers=args.max_workers, batch_size=args.batch_size)
+  File "/rds/user/ors36/hpc-work/trustworthy-asr-pipeline/rerunning/add_severity_to_existing_concurrent.py", line 95, in process_file
+    with open(file_path) as f:
+         ^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'writeup_results/ensembles/context_v2_confidence_inline/context_v2_conf_inline_shetland_qwen_p20_full.json'
+/var/spool/slurm/slurmd/job32358657/slurm_script: line 55: kill: (4123319) - No such process
