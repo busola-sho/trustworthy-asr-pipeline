@@ -59,7 +59,7 @@ Your task is to select the SINGLE candidate that is most likely to match what wa
 GENERAL RULE - applies to all words except where a specific rule below overrides it:
 Give more weight to a candidate whose disputed words are corroborated by at least two of the other three candidates. If no other candidate matches a given disputed word, do not treat that alone as disqualifying.
 
-MODEL-SPECIFIC RELIABILITY RULES (derived from measured error rates across all benchmark datasets):
+MODEL-SPECIFIC RELIABILITY RULES (derived from measured error rates on the development data):
 {auto_rules}
 
 You must select one complete candidate transcript exactly as provided.

@@ -60,7 +60,7 @@ You MUST NOT:
 GENERAL RULE - applies to all words except where a specific rule below overrides it:
 Only change a word if at least two of the other three transcripts disagree with it and agree with each other on the same alternative.
 
-MODEL-SPECIFIC RELIABILITY RULES (derived from measured error rates across all benchmark datasets):
+MODEL-SPECIFIC RELIABILITY RULES (derived from measured error rates on the development data):
 {auto_rules}
 
 Return only the final transcript, nothing else."""
