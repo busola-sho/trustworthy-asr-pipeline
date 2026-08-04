@@ -3,46 +3,25 @@ rerunning/grid/anchored_correction_context_v2.py
 
 PHASE 1 of 2: Context-aware profile-guided selector V2 — auto-generated
 error-pattern rules from the automated eval suite. Uses Qwen3-ASR as
-anchor, WhisperX and Parakeet as supporting models. Selector calls only -
-no severity judging here.
+anchor, with WhisperX, Parakeet, and wav2vec2 as supporting models.
+Selector calls only - no severity judging here.
 
 Once this finishes, run PHASE 2:
-    python rerunning/add_severity_to_existing.py --files <output file from this script>
+    python rerunning/add_severity_to_existing_concurrent.py --files <output file from this script>
 
-CHANGES from the original run_context_selector_v2.py:
-  - REMOVED a dead monkeypatch that overrode SUBSET_FILES[("whisper", ...)]
-    to point at WhisperX subset files - this had NO effect in this script,
-    since it loads via CANONICAL_FILES (now find_canonical_file), not
-    SUBSET_FILES. Despite the output folder being named
-    "context_v2_whisperx_confidence", this script was silently still
-    loading plain Whisper's data the whole time.
-  - "whisper" replaced with "whisperx" throughout, properly this time -
-    resolves the context_v2 / context_v2_whisperx naming split entirely,
-    since there's only one context_v2 now that Whisper is fully retired
-  - Two-pass execution - selector calls only, severity judging separate
-  - num_predict sized dynamically - larger than other scripts since V2's
-    output format repeats transcript content in the per-sentence
-    confidence section (roughly 2x the transcript length alone)
-  - Added tag-only reference skip; --split {dev,test,full} replaces
-    --full (defaults to "dev" for iteration); dual write
-
-*** IMPORTANT - UNRESOLVED DEPENDENCY: build_rules_text() reads from
-error_profiles.json, which was almost certainly generated from OLD
-Whisper's error data (not WhisperX's). If that file's keys still say
-"whisper_<dataset>", the auto-generated MODEL-SPECIFIC RELIABILITY RULES
-text will keep asserting things about a model ("whisper") that no longer
-exists in your pipeline. This needs regenerating from WhisperX's error
-profiles before V2's auto-rules are trustworthy - not something this
-script can fix on its own, since it doesn't control how error_profiles.json
-is built. ***
+FIX (this version): same bug as anchored_correction_context_v1.py -
+filename pattern was still "context_v2_{...}", left over from the
+original context_v2.py this was adapted from - only NEW_OUTPUT_DIR had
+been updated to the new grid folder, not the filename itself. Filename
+and "approach" field now both correctly say "anchored_correction_v2",
+matching the rest of the grid and the folder name.
 
 Usage:
-    python rerunning/ensembles/context_v2.py --dataset commonvoice --split dev
-    python rerunning/ensembles/context_v2.py --dataset edacc --split full --gap 0.5
+    python rerunning/grid/anchored_correction_context_v2.py --dataset commonvoice --split dev
+    python rerunning/grid/anchored_correction_context_v2.py --dataset edacc --split full --gap 0.5
 """
 
 import json
-import re
 import os
 import argparse
 from jiwer import wer
@@ -55,7 +34,7 @@ from src.selector import (
 from src.rules import build_rules_text
 from src.splits import get_indices_for_split
 
-NEW_OUTPUT_DIR = "writeup_results/ensembles/context_v2"
+NEW_OUTPUT_DIR = "writeup_results/grid/anchored_correction_v2"
 OLD_OUTPUT_DIR = "results/combinations_v2judge/context_v2"
 OLLAMA_HOST    = "http://localhost:11434"
 DATASETS       = ["commonvoice", "english_dialects", "edacc", "shetland"]
@@ -105,10 +84,11 @@ def compute_num_predict(hyps: list) -> int:
 
 
 def ollama_select(client, model_name, qwen_hyp, whisperx_hyp, parakeet_hyp,
-                   auto_rules, num_predict, retries=2):
+                   wav2vec2_hyp, auto_rules, num_predict, retries=2):
     prompt = SELECTOR_PROMPT_TEMPLATE.format(
-        whisperx=whisperx_hyp, qwen=qwen_hyp,
-        parakeet=parakeet_hyp, auto_rules=auto_rules,
+        qwen=qwen_hyp, whisperx=whisperx_hyp,
+        parakeet=parakeet_hyp, wav2vec2=wav2vec2_hyp,
+        auto_rules=auto_rules,
     )
     for attempt in range(retries + 1):
         try:
@@ -131,11 +111,12 @@ def run_dataset(dataset, selector_key, client, auto_rules, max_samples=None,
                  rerun=False, split="dev"):
     selector_model = OLLAMA_MODELS[selector_key]
 
-    print(f"\n── {dataset} | context V2 (PHASE 1: selector only) selector={selector_key} split={split} ──")
+    print(f"\n── {dataset} | anchored correction V2 (PHASE 1: selector only) selector={selector_key} split={split} ──")
 
     qwen_samples     = get_indexed_samples("qwen", dataset)
     whisperx_samples = get_indexed_samples("whisperx", dataset)
     parakeet_samples = get_indexed_samples("parakeet", dataset)
+    wav2vec2_samples = get_indexed_samples("wav2vec2", dataset)
 
     indices = get_indices_for_split(dataset, split)
     print(f"  Split: {split} ({len(indices)} samples)")
@@ -145,7 +126,9 @@ def run_dataset(dataset, selector_key, client, auto_rules, max_samples=None,
     os.makedirs(NEW_OUTPUT_DIR, exist_ok=True)
     os.makedirs(OLD_OUTPUT_DIR, exist_ok=True)
 
-    filename = f"context_v2_{dataset}_{selector_key}_{split}.json"
+    # FIX: was "context_v2_{dataset}_{selector_key}_{split}.json" - now
+    # matches the approach name and folder name consistently.
+    filename = f"anchored_correction_v2_{dataset}_{selector_key}_{split}.json"
     new_output_path = os.path.join(NEW_OUTPUT_DIR, filename)
     old_output_path = os.path.join(OLD_OUTPUT_DIR, filename)
 
@@ -172,8 +155,9 @@ def run_dataset(dataset, selector_key, client, auto_rules, max_samples=None,
         qwen_sample     = qwen_samples.get(idx)
         whisperx_sample = whisperx_samples.get(idx)
         parakeet_sample = parakeet_samples.get(idx)
+        wav2vec2_sample = wav2vec2_samples.get(idx)
 
-        if not all([qwen_sample, whisperx_sample, parakeet_sample]):
+        if not all([qwen_sample, whisperx_sample, parakeet_sample, wav2vec2_sample]):
             results.append({"ref": None, "hyp": None, "severity": None,
                             "sample_WER": None, "error": True,
                             "error_reason": "missing sample from one or more models",
@@ -197,10 +181,15 @@ def run_dataset(dataset, selector_key, client, auto_rules, max_samples=None,
         qwen_hyp     = qwen_sample["hyp"]
         whisperx_hyp = whisperx_sample["hyp"]
         parakeet_hyp = parakeet_sample["hyp"]
-        num_predict  = compute_num_predict([qwen_hyp, whisperx_hyp, parakeet_hyp])
+        wav2vec2_hyp = wav2vec2_sample["hyp"]
+        num_predict = compute_num_predict(
+            [qwen_hyp, whisperx_hyp, parakeet_hyp, wav2vec2_hyp]
+        )
 
         best_hyp = ollama_select(
-            client, selector_model, qwen_hyp, whisperx_hyp, parakeet_hyp, auto_rules, num_predict)
+            client, selector_model, qwen_hyp, whisperx_hyp, parakeet_hyp,
+            wav2vec2_hyp, auto_rules, num_predict
+        )
 
         if best_hyp is None:
             results.append({"ref": ref, "hyp": None, "severity": None,
@@ -215,6 +204,7 @@ def run_dataset(dataset, selector_key, client, auto_rules, max_samples=None,
             "qwen_base":             qwen_hyp,
             "whisperx_hyp":          whisperx_hyp,
             "parakeet_hyp":          parakeet_hyp,
+            "wav2vec2_hyp":          wav2vec2_hyp,
             "sample_WER":            sample_wer_val,
             "severity":              None,
             "auto_rules_used":       auto_rules,
@@ -234,7 +224,11 @@ def run_dataset(dataset, selector_key, client, auto_rules, max_samples=None,
 
     output = {
         "selector":         selector_key,
-        "approach":         "context_v2",
+        # FIX: was "context_v2" - now matches this script's actual
+        # identity in the grid, consistent with the filename/folder.
+        "approach":         "anchored_correction_v2",
+        "strategy":         "anchored_correction",
+        "context_condition": "v2",
         "phase":            "selector_only - severity not yet judged",
         "dataset":          dataset,
         "split":            split,
@@ -255,7 +249,7 @@ def run_dataset(dataset, selector_key, client, auto_rules, max_samples=None,
     print(f"  Saved: {new_output_path}")
     print(f"  Saved: {old_output_path}")
     print(f"\n  PHASE 1 done. Now run PHASE 2:")
-    print(f"  python rerunning/add_severity_to_existing.py --files {new_output_path}")
+    print(f"  python rerunning/add_severity_to_existing_concurrent.py --files {new_output_path}")
 
 
 def main():
