@@ -116,6 +116,7 @@ def extract_row(path, data):
     mean_severity = data.get("mean_severity")
     num_scored = data.get("num_scored", data.get("num_samples"))
     percentile = data.get("percentile")
+    selector = data.get("selector")   # None for baseline/mechanical (rover, mbr_consensus) rows
 
     return {
         "path": str(path),
@@ -126,6 +127,7 @@ def extract_row(path, data):
         "mean_severity": mean_severity,
         "num_scored": num_scored,
         "percentile": percentile,
+        "selector": selector,
         "is_baseline": is_baseline,
         "raw_data": data,   # kept so baseline rows can be recomputed restricted to a split
     }
@@ -295,11 +297,18 @@ def build_pooled_table_rows(rows):
 
 
 def dedupe_rows(rows):
-    """Keeps one entry per (approach, dataset, percentile) - warns about
-    any duplicates found so you can clean up the duplicate files."""
+    """Keeps one entry per (approach, dataset, percentile, selector) -
+    warns about any duplicates found so you can clean up the duplicate
+    files. selector is included in the key so that genuinely different
+    experiments (e.g. the same technique run with gemma4 vs qwen vs
+    phi4 as selector) are NEVER silently collapsed into one row - this
+    was a real bug: different selectors of the same approach used to
+    dedup against each other, meaning the table could silently show
+    whichever selector's file the filesystem happened to list first,
+    not necessarily gemma4 (the locked default)."""
     groups = defaultdict(list)
     for r in rows:
-        key = (r["approach"], r["dataset"], r["percentile"])
+        key = (r["approach"], r["dataset"], r["percentile"], r["selector"])
         groups[key].append(r)
 
     deduped = []
@@ -310,10 +319,11 @@ def dedupe_rows(rows):
             dupes_found.append((key, [g["path"] for g in group]))
 
     if dupes_found:
-        print(f"\nFound {len(dupes_found)} technique+dataset combo(s) with duplicate files "
+        print(f"\nFound {len(dupes_found)} technique+dataset+selector combo(s) with duplicate files "
               f"(kept the first, ignored the rest):")
-        for (approach, dataset, pct), paths in dupes_found:
+        for (approach, dataset, pct, selector), paths in dupes_found:
             label = f"{approach} (p{pct})" if pct is not None else approach
+            label += f" [{selector}]" if selector else ""
             print(f"  {label} / {dataset}:")
             for p in paths:
                 print(f"    - {p}")
@@ -508,6 +518,12 @@ def build_head_to_head_rows(best_baselines, best_ensembles):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--roots", nargs="+", default=DEFAULT_ROOTS)
+    parser.add_argument("--selector", default="gemma4",
+                        help="Only include ensemble-technique results run with this selector "
+                             "(default: gemma4, the locked production default). Rows with no "
+                             "selector field (rover, mbr_consensus, baselines) are always kept "
+                             "regardless. Pass e.g. 'qwen' or 'phi4' for the selector-swap "
+                             "comparison work.")
     parser.add_argument("--split", default="dev",
                         help="Only include results for this split (default: dev). "
                              "Pass 'all' to include every split found.")
@@ -526,6 +542,43 @@ def main():
     print(f"Scanned {args.roots} -> found {len(found)} result file(s) with approach+dataset fields")
 
     rows = [extract_row(path, data) for path, data in found]
+
+    # exclude sentence-confidence-specific technique variants - these were
+    # built to test verbalized confidence scoring formats (Method 1 of the
+    # sentence-confidence work), not as candidate ensemble techniques in
+    # their own right. They inherit severity scores the same way every
+    # other ensemble file does, so without this filter they'd silently
+    # appear in the pure ensemble comparison tables alongside naive,
+    # context_v1/v2, rover, etc. - which is a different comparison
+    # (sentence-confidence signal evaluation) than what these tables are
+    # for.
+    EXCLUDED_APPROACHES = {
+        "naive_confscore", "naive_probscore",
+        "naive_confscore_meaning", "naive_probscore_meaning",
+    }
+    n_before_exclusion = len(rows)
+    rows = [r for r in rows if r["approach"] not in EXCLUDED_APPROACHES]
+    n_excluded = n_before_exclusion - len(rows)
+    if n_excluded:
+        print(f"  Excluded {n_excluded} file(s) from sentence-confidence technique variants "
+              f"({', '.join(sorted(EXCLUDED_APPROACHES))}) - not part of the pure ensemble comparison")
+
+    # filter to a single selector - REQUIRED, not optional, since a real
+    # bug was found where different selectors of the same approach (e.g.
+    # naive run under gemma4 vs qwen vs phi4, from the selector-swap
+    # experiment) were silently colliding in dedup, with the table
+    # showing whichever selector's file the filesystem happened to list
+    # first - not necessarily gemma4, the locked default. Rows with no
+    # selector at all (rover, mbr_consensus - purely mechanical, no LLM
+    # involved; baseline individual-model files) are always kept
+    # regardless of --selector, since they're selector-independent by
+    # construction, not omissions.
+    n_before_selector_filter = len(rows)
+    rows = [r for r in rows if r["selector"] in (args.selector, None)]
+    n_selector_filtered = n_before_selector_filter - len(rows)
+    if n_selector_filtered:
+        print(f"  Filtered {n_selector_filtered} file(s) to selector='{args.selector}' "
+              f"(rows with no selector field - rover, mbr_consensus, baselines - always kept)")
 
     # split into ensemble vs baseline BEFORE applying the --split filter -
     # baseline (individual ASR model) files are full-dataset runs with no

@@ -39,9 +39,9 @@ GRID_FOLDERS = {
 
 # (grid folder, legacy folder, legacy filename pattern) - for cross-checking
 CROSS_CHECK = {
-    "unanchored_fusion_naive": ("writeup_results/ensembles/naive", "naive_{d}_gemma4sel_dev.json"),
-    "anchored_correction_v1":  ("writeup_results/ensembles/context_v1", "context_{d}_gemma4_dev.json"),
-    "anchored_correction_v2":  ("writeup_results/ensembles/context_v2", "context_v2_{d}_gemma4_dev.json"),
+    "unanchored_fusion_naive": ("writeup_results/ensembles/naive/gemma4", "naive_{d}_gemma4sel_dev.json"),
+    "anchored_correction_v1":  ("writeup_results/ensembles/context_v1/gemma4", "context_{d}_gemma4_dev.json"),
+    "anchored_correction_v2":  ("writeup_results/ensembles/context_v2/gemma4", "context_v2_{d}_gemma4_dev.json"),
 }
 
 
@@ -170,8 +170,17 @@ def print_strategy_comparison(grid_data):
 
 
 def main():
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--verify", action="store_true",
+                        help="Also run the cross-check against legacy original files "
+                             "(off by default - already verified once, adds noise you "
+                             "don't need on every run)")
+    args = parser.parse_args()
+
     grid_data = load_grid_data()
-    cross_check(grid_data)
+    if args.verify:
+        cross_check(grid_data)
     print_grid_table(grid_data)
     print_strategy_comparison(grid_data)
 
