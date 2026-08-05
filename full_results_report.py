@@ -72,9 +72,47 @@ def find_baseline_path(model, dataset):
     return matches[-1] if matches else None
 
 
-def load_baseline_restricted(model, dataset, split):
-    """Loads a baseline's full-dataset file, restricts to the given
-    split's sample indices, returns per-sample refs/hyps/severities."""
+def compute_grid_index_intersection(scan_dir, target_split):
+    """For each dataset, returns the SET of dataset_index values that
+    were successfully scored (severity is not None) in EVERY grid
+    strategy file found for that dataset+split. Using the intersection
+    (not the union, and not just one file) means the resulting baseline
+    comparison is fair against every row in the grid table - not just
+    whichever strategy happened to be checked first - since different
+    grid strategies can each independently drop 1-2 samples (missing-
+    sample/tag-only-reference edge cases)."""
+    accepted_splits = ("dev", "full") if target_split == "dev" else ("test",)
+    per_dataset_per_file_indices = defaultdict(list)  # dataset -> list of sets (one per file found)
+
+    for path in glob.glob(f"{scan_dir}/*/*.json"):
+        try:
+            d = json.load(open(path))
+        except Exception:
+            continue
+        if d.get("split") not in accepted_splits:
+            continue
+        ds = normalize_dataset(d.get("dataset"))
+        samples = d.get("samples", [])
+        scored_indices = {s.get("dataset_index") for s in samples if s.get("severity") is not None}
+        if scored_indices:
+            per_dataset_per_file_indices[ds].append(scored_indices)
+
+    intersection_by_dataset = {}
+    for ds, index_sets in per_dataset_per_file_indices.items():
+        if not index_sets:
+            continue
+        common = index_sets[0]
+        for s in index_sets[1:]:
+            common = common & s
+        intersection_by_dataset[ds] = common
+    return intersection_by_dataset
+
+
+def load_baseline_restricted(model, dataset, split, explicit_indices=None):
+    """Loads a baseline's full-dataset file, restricts to either the
+    given split's own sample indices (default) or an explicit index
+    set (e.g. the grid's intersection, for direct comparability),
+    returns per-sample refs/hyps/severities."""
     path = find_baseline_path(model, dataset)
     if not path:
         return None
@@ -84,8 +122,12 @@ def load_baseline_restricted(model, dataset, split):
         if s.get("sample_index") is None:
             s["sample_index"] = i
 
-    split_indices = set(get_indices_for_split(dataset, split))
-    subset = [s for s in samples if s.get("sample_index") in split_indices]
+    if explicit_indices is not None:
+        target_indices = explicit_indices
+    else:
+        target_indices = set(get_indices_for_split(dataset, split))
+
+    subset = [s for s in samples if s.get("sample_index") in target_indices]
 
     refs, hyps, severities = [], [], []
     for s in subset:
@@ -100,11 +142,18 @@ def load_baseline_restricted(model, dataset, split):
     return {"refs": refs, "hyps": hyps, "severities": severities}
 
 
-def print_baseline_table(split):
+def print_baseline_table(split, grid_indices=None):
     print(f"\n{'='*100}")
-    print(f"  BASELINE MODELS - {split.upper()} SPLIT (mean severity (N), pooled corpus WER)")
-    print(f"  Calibration pool exclusion: ALWAYS applied here - get_indices_for_split()")
-    print(f"  is called fresh each time, using the corrected candidate_pool.json.")
+    if grid_indices:
+        print(f"  BASELINE MODELS - {split.upper()} SPLIT, RESTRICTED TO GRID'S EXACT SAMPLE SET")
+        print(f"  (mean severity (N), pooled corpus WER)")
+        print(f"  Each dataset restricted to the INTERSECTION of sample indices actually")
+        print(f"  scored across every grid strategy for that dataset+split - so these numbers")
+        print(f"  are directly, exactly comparable to every row in the grid table below.")
+    else:
+        print(f"  BASELINE MODELS - {split.upper()} SPLIT (mean severity (N), pooled corpus WER)")
+        print(f"  Calibration pool exclusion: ALWAYS applied here - get_indices_for_split()")
+        print(f"  is called fresh each time, using the corrected candidate_pool.json.")
     print(f"{'='*100}")
     header = f"{'Model':<12}" + "".join(f"{d:>24}" for d in DATASETS) + f"{'Avg Sev':>10}{'Pooled WER':>12}{'Total N':>10}"
     print(header)
@@ -114,7 +163,8 @@ def print_baseline_table(split):
         per_dataset = {}
         all_refs, all_hyps, all_sevs = [], [], []
         for d in DATASETS:
-            loaded = load_baseline_restricted(model, d, split)
+            explicit = grid_indices.get(d) if grid_indices else None
+            loaded = load_baseline_restricted(model, d, split, explicit_indices=explicit)
             if loaded is None:
                 continue
             per_dataset[d] = loaded
@@ -143,10 +193,14 @@ def print_baseline_table(split):
         print(row)
 
 
-def load_grid_data(scan_dir):
+def load_grid_data(scan_dir, target_split="dev"):
     """Returns {folder: {dataset: {"refs":.., "hyps":.., "severities":..}}}
     - keeps per-sample data (not just the file's own summary stats) so
-    pooled WER can be computed correctly across datasets."""
+    pooled WER can be computed correctly across datasets.
+    target_split: "dev" (also matches "full", for Shetland-style files)
+    or "test". Folders/files with no data for the requested split are
+    simply absent from the result - most grid cells only have dev so
+    far, only your confirmed top strategies have test."""
     GRID_FOLDERS = {
         "selection_naive":              ("selection", "naive"),
         "selection_context_v1":         ("selection", "v1"),
@@ -159,6 +213,8 @@ def load_grid_data(scan_dir):
         "anchored_correction_v2":       ("anchored_correction", "v2"),
     }
 
+    accepted_splits = ("dev", "full") if target_split == "dev" else ("test",)
+
     data = {}
     for folder, (strategy, context) in GRID_FOLDERS.items():
         data[folder] = {"strategy": strategy, "context": context, "by_dataset": {}}
@@ -167,7 +223,7 @@ def load_grid_data(scan_dir):
                 d = json.load(open(path))
             except Exception:
                 continue
-            if d.get("split") not in ("dev", "full"):
+            if d.get("split") not in accepted_splits:
                 continue
             ds = normalize_dataset(d.get("dataset"))
             samples = d.get("samples", [])
@@ -185,9 +241,12 @@ def load_grid_data(scan_dir):
     return data
 
 
-def print_grid_tables(grid_data, scan_dir):
+def print_grid_tables(grid_data, scan_dir, label="DEV"):
     print(f"\n{'='*100}")
-    print(f"  9-CELL GRID (mean severity (N) per dataset, pooled corpus WER across all 3)")
+    print(f"  9-CELL GRID - {label} SPLIT (mean severity (N) per dataset, pooled corpus WER across all 3)")
+    if label == "TEST":
+        print(f"  NOTE: only strategies you've explicitly run on test will show rows here -")
+        print(f"  most grid cells only have dev results so far.")
     calib_status = ("PATCHED - calibration samples excluded" if "calib_fixed" in scan_dir
                      else "NOT PATCHED - calibration samples may still be included "
                           "(this reads whatever's stored in each file; use "
@@ -199,9 +258,13 @@ def print_grid_tables(grid_data, scan_dir):
     print("-" * len(header))
 
     strategy_results = defaultdict(dict)
+    any_rows = False
 
     for folder, info in grid_data.items():
         by_dataset = info["by_dataset"]
+        if not by_dataset:
+            continue  # no data at all for this split - skip the row entirely, don't print an all-dash line
+        any_rows = True
         row = f"{info['strategy']:<22}{info['context']:<10}"
         sevs = []
         all_refs, all_hyps, all_sevs_flat = [], [], []
@@ -229,8 +292,12 @@ def print_grid_tables(grid_data, scan_dir):
         if avg_sev is not None:
             strategy_results[info["strategy"]][info["context"]] = (avg_sev, pooled_wer, sevs)
 
+    if not any_rows:
+        print("  (no results found for this split)")
+        return
+
     print(f"\n{'='*100}")
-    print(f"  STRATEGY COMPARISON (best context condition per strategy, by severity)")
+    print(f"  STRATEGY COMPARISON - {label} SPLIT (best context condition per strategy, by severity)")
     print(f"{'='*100}")
     header = f"{'Strategy':<22}{'Best condition':<16}{'Avg Sev':>10}{'Pooled WER':>12}"
     print(header)
@@ -242,10 +309,109 @@ def print_grid_tables(grid_data, scan_dir):
         avg_sev, pooled_wer, sevs = conditions[best_context]
         results.append((strategy, best_context, avg_sev, pooled_wer))
 
+    if not results:
+        print("  (no strategy has complete 3-dataset results for this split yet)")
+        return
+
     results.sort(key=lambda x: x[2])
     for strategy, best_context, avg_sev, pooled_wer in results:
         wer_str = f"{pooled_wer*100:.2f}%" if pooled_wer is not None else "-"
         print(f"{strategy:<22}{best_context:<16}{avg_sev:>10.3f}{wer_str:>12}")
+
+
+def find_mechanical_path(technique, dataset, split):
+    """rover/mbr_consensus files - no selector, purely mechanical."""
+    if technique == "rover":
+        matches = glob.glob(f"writeup_results/voting/rover/rover_{dataset}_{split}.json")
+    elif technique == "mbr_consensus":
+        matches = glob.glob(f"writeup_results/ensembles/mbr_consensus/mbr_{dataset}_{split}.json")
+    else:
+        return None
+    return matches[0] if matches else None
+
+
+def load_mechanical_restricted(technique, dataset, split, explicit_indices):
+    """Loads rover/mbr_consensus, restricted to an explicit index set
+    (the grid's intersection), same treatment as the baseline models -
+    so ROVER/MBR are compared on the EXACT same samples as the grid,
+    not their own independently-sized full run."""
+    path = find_mechanical_path(technique, dataset, split)
+    if not path:
+        return None
+    data = json.load(open(path))
+    samples = data.get("samples", [])
+
+    subset = [s for s in samples if s.get("dataset_index") in explicit_indices]
+
+    refs, hyps, severities = [], [], []
+    for s in subset:
+        if s.get("skipped") or s.get("error"):
+            continue
+        ref, hyp = s.get("ref"), s.get("hyp")
+        if ref and hyp:
+            refs.append(normalise(ref))
+            hyps.append(normalise(hyp))
+        if s.get("severity") is not None:
+            severities.append(s["severity"])
+    return {"refs": refs, "hyps": hyps, "severities": severities}
+
+
+def print_mechanical_table(split, grid_indices, grid_data):
+    print(f"\n{'='*100}")
+    print(f"  ROVER / MBR CONSENSUS vs GRID - {split.upper()} SPLIT, SAME EXACT SAMPLE SET")
+    print(f"  Both restricted to the same grid-intersection indices as the baseline comparison above,")
+    print(f"  so this is a fair, apples-to-apples check against the grid's winning strategies.")
+    print(f"{'='*100}")
+    header = f"{'Technique':<26}" + "".join(f"{d:>24}" for d in DATASETS) + f"{'Avg Sev':>10}{'Pooled WER':>12}{'Total N':>10}"
+    print(header)
+    print("-" * len(header))
+
+    rows = []
+
+    for technique in ["rover", "mbr_consensus"]:
+        dataset_sevs = []
+        all_refs, all_hyps, all_sevs = [], [], []
+        row = f"{technique:<26}"
+        for d in DATASETS:
+            explicit = grid_indices.get(d, set())
+            loaded = load_mechanical_restricted(technique, d, split, explicit)
+            if loaded and loaded["severities"]:
+                sev = sum(loaded["severities"]) / len(loaded["severities"])
+                n = len(loaded["severities"])
+                dataset_sevs.append(sev)
+                row += f"{f'{sev:.3f} (N={n})':>24}"
+                all_refs.extend(loaded["refs"])
+                all_hyps.extend(loaded["hyps"])
+                all_sevs.extend(loaded["severities"])
+            else:
+                row += f"{'-':>24}"
+
+        avg_sev = sum(dataset_sevs) / len(dataset_sevs) if dataset_sevs else None
+        pooled_wer = compute_wer(all_refs, all_hyps) if all_refs else None
+        row += f"{(f'{avg_sev:.3f}' if avg_sev is not None else '-'):>10}"
+        row += f"{(f'{pooled_wer*100:.2f}%' if pooled_wer is not None else '-'):>12}"
+        row += f"{len(all_sevs):>10}"
+        print(row)
+        if avg_sev is not None:
+            rows.append((technique, avg_sev, pooled_wer))
+
+    if rows:
+        best_grid_label, best_grid_sev = None, None
+        for folder, info in grid_data.items():
+            by_dataset = info["by_dataset"]
+            sevs = [sum(by_dataset[d]["severities"]) / len(by_dataset[d]["severities"])
+                    for d in DATASETS if by_dataset.get(d) and by_dataset[d]["severities"]]
+            if len(sevs) == len(DATASETS):
+                avg = sum(sevs) / len(sevs)
+                if best_grid_sev is None or avg < best_grid_sev:
+                    best_grid_sev = avg
+                    best_grid_label = f"{info['strategy']} + {info['context']}"
+
+        print(f"\n  Best grid strategy overall (unrestricted comparison, see grid table above): "
+              f"{best_grid_label} (avg severity {best_grid_sev:.3f})")
+        for technique, avg_sev, pooled_wer in sorted(rows, key=lambda x: x[1]):
+            verdict = "grid wins" if best_grid_sev < avg_sev else "mechanical wins"
+            print(f"  {technique}: {avg_sev:.3f} vs grid's {best_grid_sev:.3f} -> {verdict}")
 
 
 def main():
@@ -257,8 +423,24 @@ def main():
     print_baseline_table("dev")
     print_baseline_table("test")
 
-    grid_data = load_grid_data(args.grid_dir)
-    print_grid_tables(grid_data, args.grid_dir)
+    grid_data_dev = load_grid_data(args.grid_dir, target_split="dev")
+    print_grid_tables(grid_data_dev, args.grid_dir, label="DEV")
+
+    grid_data_test = load_grid_data(args.grid_dir, target_split="test")
+    print_grid_tables(grid_data_test, args.grid_dir, label="TEST")
+
+    # baseline restricted to the EXACT same sample indices as the grid,
+    # so the two are finally directly comparable rather than each
+    # independently deriving a slightly different split
+    dev_grid_indices = compute_grid_index_intersection(args.grid_dir, "dev")
+    if dev_grid_indices:
+        print_baseline_table("dev", grid_indices=dev_grid_indices)
+        print_mechanical_table("dev", dev_grid_indices, grid_data_dev)
+
+    test_grid_indices = compute_grid_index_intersection(args.grid_dir, "test")
+    if test_grid_indices:
+        print_baseline_table("test", grid_indices=test_grid_indices)
+        print_mechanical_table("test", test_grid_indices, grid_data_test)
 
 
 if __name__ == "__main__":
