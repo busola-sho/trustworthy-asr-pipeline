@@ -1,23 +1,28 @@
 """
 plot_strategy_severity.py
 
-Two figures, grouped by STRATEGY name (not raw technique labels like
-"naive"/"context_v1"), using each strategy's confirmed best condition:
-  Selection            -> naive   (selection_naive)
-  Unanchored Fusion     -> naive   (naive.py)
-  Anchored Correction  -> v1      (context_v1.py)
+Two figures, grouped by STRATEGY name, using each strategy's confirmed
+best condition:
+  Selection            -> naive
+  Unanchored Fusion     -> naive
+  Anchored Correction  -> v1
 plus ROVER, MBR consensus, and that dataset's best baseline model.
 
-Figure 1: severity distribution (%) per level 0-4, severity 0-1 visually
-distinct from 2-4 (lighter vs darker colour family), WER/mean severity
-moved out of x-axis labels into a companion caption line per bar.
+Reads from the CALIBRATION-CORRECTED mirrors (grid_calib_fixed,
+ensembles_calib_fixed, voting_calib_fixed) - not the original,
+pre-patch locations - so these diagrams reflect the final, leakage-
+corrected numbers.
 
-Figure 2: simple binary meaning-preserved (severity 0-1) vs
-meaning-altered (severity 2-4) - the headline-communicating figure.
+Figure 1: severity distribution (%) stacked bars, x-axis ordered
+Unanchored Fusion -> Anchored Correction -> Selection -> Best Baseline
+-> MBR -> ROVER (strongest to weakest, left to right, for a visual
+slope). Two green shades for meaning-preserving (0,1), three warm/red
+shades for meaning-altered (2,3,4).
 
-NOTE: Selection has no Shetland run (selection_*.py scripts were only
-ever run on the 3 dev datasets) - Shetland's panel omits it, not an
-oversight in the chart itself.
+Figure 2: simple binary meaning-preserved vs meaning-altered, same
+ordering.
+
+NOTE: Selection has no Shetland run - Shetland's panel omits it.
 
 Usage:
     python plot_strategy_severity.py
@@ -49,10 +54,6 @@ BEST_BASELINE_PER_DATASET = {
     "shetland": "qwen",
 }
 
-# severity 0-1 = lighter/greener, 2-4 = darker/redder - visually distinct
-SEVERITY_COLOURS = ["#2ecc71", "#95d44e", "#f4b942", "#e67e22", "#c0392b"]
-SEVERITY_LABELS = ["0", "1", "2", "3", "4"]
-
 
 def _dev_or_full(dataset):
     return "full" if dataset == "shetland" else "dev"
@@ -62,26 +63,37 @@ def strategy_file_paths(dataset):
     split = _dev_or_full(dataset)
     baseline = BEST_BASELINE_PER_DATASET[dataset]
 
-    # order chosen deliberately: strongest to weakest performer, left to
-    # right, so the chart reads as a visual slope (shrinking green,
-    # growing red) rather than an arbitrary arrangement
-    paths = {
-        "Unanchored\nFusion":   f"writeup_results/ensembles/naive/gemma4/naive_{dataset}_gemma4sel_{split}.json",
-        "Anchored\nCorrection": f"writeup_results/ensembles/context_v1/gemma4/context_{dataset}_gemma4_{split}.json",
-    }
+    # Shetland was NEVER re-run through the renamed grid scripts (every
+    # grid loop only covered commonvoice/edacc/english_dialects) - its
+    # naive/context_v1 results only exist in the legacy ensembles
+    # location, not grid_calib_fixed. Use that location for Shetland
+    # specifically; everything else uses the grid mirror as normal.
+    if dataset == "shetland":
+        paths = {
+            "Unanchored\nFusion":   "writeup_results/ensembles_calib_fixed/naive/gemma4/naive_shetland_gemma4sel_full.json",
+            "Anchored\nCorrection": "writeup_results/ensembles_calib_fixed/context_v1/gemma4/context_shetland_gemma4_full.json",
+        }
+    else:
+        # order chosen deliberately: strongest to weakest, left to right
+        paths = {
+            "Unanchored\nFusion":   f"writeup_results/grid_calib_fixed/unanchored_fusion_naive/unanchored_fusion_naive_{dataset}_gemma4_{split}.json",
+            "Anchored\nCorrection": f"writeup_results/grid_calib_fixed/anchored_correction_v1/anchored_correction_v1_{dataset}_gemma4_{split}.json",
+        }
     if dataset != "shetland":
-        paths["Selection"] = f"writeup_results/grid/selection_naive/selection_naive_{dataset}_gemma4_{split}.json"
+        paths["Selection"] = f"writeup_results/grid_calib_fixed/selection_naive/selection_naive_{dataset}_gemma4_{split}.json"
     paths[f"Best Baseline\n({baseline})"] = None  # resolved separately below
-    paths["MBR"] = f"writeup_results/ensembles/mbr_consensus/mbr_{dataset}_{split}.json"
-    paths["ROVER"] = f"writeup_results/voting/rover/rover_{dataset}_{split}.json"
+    paths["MBR"] = f"writeup_results/ensembles_calib_fixed/mbr_consensus/mbr_{dataset}_{split}.json"
+    paths["ROVER"] = f"writeup_results/voting_calib_fixed/rover/rover_{dataset}_{split}.json"
 
     return paths, baseline
 
 
 def find_baseline_path(model, dataset):
-    """Baseline files live under writeup_results/benchmarks/main/ or
-    have a dedicated Shetland path - matches find_canonical_file()'s
-    own lookup convention."""
+    """Baseline files aren't touched by the calibration patch (they're
+    full-dataset runs, restricted on the fly by get_indices_for_split(),
+    which now correctly excludes calibration via the fixed
+    candidate_pool.json) - reading directly from benchmarks/main is
+    already correct."""
     if dataset == "shetland":
         shetland_files = {
             "qwen":     "results/benchmarks/shetland/shetland_qwen3asr_20260603_150124.json",
@@ -141,9 +153,6 @@ def collect_dataset_data(dataset):
     return results
 
 
-# two green shades for meaning-preserving (0,1), three warm/red shades
-# for meaning-altered (2,3,4) - keeps the semantic grouping visible
-# within each stacked bar
 SEVERITY_STACK_COLOURS = ["#a8e6a3", "#4caf50", "#f4b942", "#e67e22", "#c0392b"]
 SEVERITY_STACK_LABELS = ["0 - no change", "1 - trivial", "2 - ambiguous", "3 - factual", "4 - critical"]
 
@@ -165,7 +174,7 @@ def plot_severity_distribution():
                    edgecolor="black", linewidth=0.4,
                    label=SEVERITY_STACK_LABELS[level] if i == 0 else None)
             for xi, (v, b) in enumerate(zip(values, bottoms)):
-                if v >= 4:  # only label segments big enough to read
+                if v >= 4:
                     ax.text(xi, b + v / 2, f"{v:.0f}%", ha="center", va="center",
                             fontsize=7, color="black" if level < 3 else "white")
             bottoms += np.array(values)
@@ -178,7 +187,7 @@ def plot_severity_distribution():
         ax.grid(axis="y", alpha=0.3)
 
     fig.legend(loc="upper center", ncol=5, fontsize=9, bbox_to_anchor=(0.5, 1.0), frameon=True)
-    fig.suptitle("Severity Distribution by Strategy, per Dataset\n"
+    fig.suptitle("Severity Distribution by Strategy, per Dataset (calibration-corrected)\n"
                  "(each bar stacked by severity level - lighter green = fully preserved, darker red = critical)",
                  fontsize=12, fontweight="bold", y=1.08)
     plt.tight_layout(rect=[0, 0, 1, 0.92])
@@ -191,11 +200,8 @@ def plot_severity_distribution():
 
 
 def print_summary_table():
-    """WER and mean severity per strategy per dataset - the companion
-    table for the figures above, kept separate rather than crammed
-    into the plot itself."""
     print(f"\n{'='*100}")
-    print(f"  SUMMARY TABLE: WER and mean severity by strategy, per dataset")
+    print(f"  SUMMARY TABLE: WER and mean severity by strategy, per dataset (calibration-corrected)")
     print(f"{'='*100}")
     header = f"{'Strategy':<22}" + "".join(f"{d:>20}" for d in ["CommonVoice", "EdAcc", "English Dialects", "Shetland"])
     print(header)
@@ -249,7 +255,7 @@ def plot_binary_preserved_altered():
         if i == 0:
             ax.legend(fontsize=8, loc="upper right")
 
-    fig.suptitle("Meaning Preservation Rate by Strategy, per Dataset", fontsize=13, fontweight="bold")
+    fig.suptitle("Meaning Preservation Rate by Strategy, per Dataset (calibration-corrected)", fontsize=13, fontweight="bold")
     plt.tight_layout(rect=[0, 0, 1, 0.96])
 
     os.makedirs(FIGURES_DIR, exist_ok=True)
