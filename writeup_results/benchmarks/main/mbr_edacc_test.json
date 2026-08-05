@@ -1,0 +1,1351 @@
+{
+  "approach": "mbr_consensus",
+  "asr_models": [
+    "qwen",
+    "whisperx",
+    "parakeet",
+    "wav2vec2"
+  ],
+  "phase": "selection_only - severity not yet judged",
+  "dataset": "edacc",
+  "split": "test",
+  "subset_indices": [
+    1,
+    6,
+    7,
+    8,
+    11,
+    17,
+    20,
+    22,
+    23,
+    24,
+    26,
+    28,
+    31,
+    35,
+    39,
+    40,
+    49,
+    50,
+    55,
+    56,
+    57,
+    58,
+    59,
+    62,
+    67,
+    70,
+    71,
+    75,
+    86,
+    87,
+    88,
+    91,
+    92,
+    96,
+    97,
+    107,
+    108,
+    114,
+    117,
+    129,
+    137,
+    139,
+    141,
+    143,
+    150,
+    151,
+    154,
+    163,
+    166,
+    167,
+    172,
+    173,
+    179,
+    180,
+    183,
+    186,
+    188,
+    189,
+    194,
+    195
+  ],
+  "corpus_wer": 0.20124804992199688,
+  "num_samples": 60,
+  "pick_distribution": {
+    "qwen": 0,
+    "whisperx": 0,
+    "parakeet": 0,
+    "wav2vec2": 0
+  },
+  "samples": [
+    {
+      "ref": "YEAH I'VE GOT A NOTIFICATION",
+      "hyp": "gotication",
+      "source_hyps": {
+        "qwen": "Got a notification.",
+        "whisperx": "I've got a notification.",
+        "parakeet": "gotication",
+        "wav2vec2": "FATEKISEN"
+      },
+      "chosen_source": "parakeet",
+      "risk_by_model": {
+        "qwen": 2.0833333333333335,
+        "whisperx": 2.7777777777777772,
+        "parakeet": 1.0,
+        "wav2vec2": 1.0
+      },
+      "sample_WER": 1.0,
+      "severity": 1,
+      "dataset_index": 1,
+      "judge_raw_response": "Severity: 1\n\nJustification: The ASR output \"gotication\" is a nonsensical rendering of the reference \"I'VE GOT A NOTIFICATION,\" with no coherent alternative meaning. Despite the garbling, the intended message can be confidently and cleanly recovered as having received a notification."
+    },
+    {
+      "ref": "DO YOU WANNA EXPLAIN",
+      "hyp": "jonah explains",
+      "source_hyps": {
+        "qwen": "Do you wanna explain?",
+        "whisperx": "Do you want to explain?",
+        "parakeet": "jonah explains",
+        "wav2vec2": "JONELANES AND"
+      },
+      "chosen_source": "parakeet",
+      "risk_by_model": {
+        "qwen": 1.4666666666666668,
+        "whisperx": 1.8333333333333333,
+        "parakeet": 1.0,
+        "wav2vec2": 1.0
+      },
+      "sample_WER": 1.0,
+      "severity": 3,
+      "dataset_index": 6,
+      "judge_raw_response": "Severity: 3\n\nJustification: The hypothesis \"jonah explains\" unambiguously asserts a different material fact by introducing the entity \"Jonah,\" which is not present in the reference. This substitution changes the meaning from a question about willingness to explain into a statement that someone named Jonah is explaining, thus asserting a different factual scenario."
+    },
+    {
+      "ref": "WHICH IS JUST THE WHICH IS JUST A UH BASICALLY YOU HAVE TWO ENDS OF A PITCH AND YOUR GOAL'S TO REACH THE OTHER END OF THE PITCH WITHOUT BEING TAGGED BY SOMEONE IN THE MIDDLE AND NO RULES APPLY PEOPLE WERE BEATEN UP BLOOD EVERYWHERE OH GOOD TIMES",
+      "hyp": "Which is just a basically you have two ends of a pitch, and your goal is to reach the other end of the pitch without being tagged by someone in the middle, and no rules apply. People were beaten up, blood everywhere. Ah, good times.",
+      "source_hyps": {
+        "qwen": "Which is just a basically you have two ends of a pitch, and your goal is to reach the other end of the pitch without being tagged by someone in the middle, and no rules apply. People were beaten up, blood everywhere. Ah, good times.",
+        "whisperx": "which is just basically you have two ends of a pitch and your goal is to reach the other end of the pitch without being tagged by someone in the middle. And no rules apply. People were beaten up, blood everywhere. Good times.",
+        "parakeet": "which is just a basically you have two ends of a pitch and your goal is to reach the other end of the pitch without being tagged by someone in the middle and no rules apply people were beaten up blood everywhere good timeys",
+        "wav2vec2": "WHICH IS JUST A  BASEY HAVE TWO ENDS OF A PITCH AND YOU GHOST REACH THE OTHER END OF THE PITCH WITHOUT BEING TAGGED BY SOMEONE IN THE MIDDLE AND NO RULES APPLY PEOPLE WERE BEATEN UP BLOOD EVERYWHERE AH GOOD TUNES"
+      },
+      "chosen_source": "qwen",
+      "risk_by_model": {
+        "qwen": 0.08621094667606295,
+        "whisperx": 0.09345839345839346,
+        "parakeet": 0.09381075427587056,
+        "wav2vec2": 0.17447341633388147
+      },
+      "sample_WER": 0.16326530612244897,
+      "severity": 1,
+      "dataset_index": 7,
+      "judge_raw_response": "Severity: 1\n\nJustification: The hypothesis retains the overall meaning of the reference with minor surface-level changes, such as punctuation and filler words (\"uh\" removed), which do not alter the propositional content. The core message about the game's objective and chaotic nature remains confidently recoverable without any material fact change."
+    },
+    {
+      "ref": "WAS IT TAGGED OR WAS IT TACKLED",
+      "hyp": "Was it tagged or was it tackled?",
+      "source_hyps": {
+        "qwen": "Was it tagged or was it tackled?",
+        "whisperx": "Was it tagged or was it tackled?",
+        "parakeet": "was it tagged or was it tackled",
+        "wav2vec2": "WAS IT THE TIG WAS IT TACKLED"
+      },
+      "chosen_source": "qwen",
+      "risk_by_model": {
+        "qwen": 0.09523809523809523,
+        "whisperx": 0.09523809523809523,
+        "parakeet": 0.09523809523809523,
+        "wav2vec2": 0.2857142857142857
+      },
+      "sample_WER": 0.0,
+      "severity": 0,
+      "dataset_index": 8,
+      "judge_raw_response": "Severity: 0\n\nJustification: The difference between \"WAS IT TAGGED OR WAS IT TACKLED\" and \"Was it tagged or was it tackled?\" is purely in capitalization, which does not affect the propositional content of the sentence. There is no change to meaning at the level that would impact its use as evidence."
+    },
+    {
+      "ref": "OUR RULES WERE TACKLE",
+      "hyp": "that",
+      "source_hyps": {
+        "qwen": "Exactly.",
+        "whisperx": "Go with that.",
+        "parakeet": "that",
+        "wav2vec2": "ARN OF A"
+      },
+      "chosen_source": "parakeet",
+      "risk_by_model": {
+        "qwen": 1.0,
+        "whisperx": 2.0,
+        "parakeet": 0.8888888888888888,
+        "wav2vec2": 2.3333333333333335
+      },
+      "sample_WER": 1.0,
+      "severity": 4,
+      "dataset_index": 11,
+      "judge_raw_response": "Severity: 4\n\nJustification: The hypothesis \"that\" fundamentally changes the central assertion of the reference \"OUR RULES WERE TACKLE,\" resulting in a critical meaning alteration. The original statement implies specific rules related to tackling, while the output provides no meaningful content or context, effectively fabricating an entirely different and nonsensical claim."
+    },
+    {
+      "ref": "STONE UH STONE PLAYGROUND",
+      "hyp": "Stone Playground.",
+      "source_hyps": {
+        "qwen": "Storm playground.",
+        "whisperx": "Stone Playground.",
+        "parakeet": "so st playground",
+        "wav2vec2": "STON I STONE CLAY GROUND FEET"
+      },
+      "chosen_source": "whisperx",
+      "risk_by_model": {
+        "qwen": 0.7222222222222222,
+        "whisperx": 0.6666666666666666,
+        "parakeet": 1.0,
+        "wav2vec2": 2.5
+      },
+      "sample_WER": 0.5,
+      "severity": 1,
+      "dataset_index": 17,
+      "judge_raw_response": "Severity: 1\n\nJustification: The hypothesis \"Stone Playground\" retains the core meaning of the reference \"STONE UH STONE PLAYGROUND,\" with only minor surface form differences such as casing and filler words (\"UH\"). These changes do not alter the propositional content, making any potential error trivial or cosmetic."
+    },
+    {
+      "ref": "THAT WOULD NOT GO WELL UM SIMILAR TO THE SIMILARLY TO THAT I PLAYED LOTS OF SHARKS AND FISHES IN UM LIKE",
+      "hyp": "That would not go well. Um, similar to that. Similarly to that, I played lots of sharks and fishes, and like.",
+      "source_hyps": {
+        "qwen": "That would not go well. Um, similar to that. Similarly to that, I played lots of sharks and fishes, and like.",
+        "whisperx": "would not go well um similar to that similarly to that i played lots of sharks and fishes and i'm like",
+        "parakeet": "that would not go well similar to that similarly to that i play less with sharks and fishes and um like",
+        "wav2vec2": "IT WOULD NOT GO WELL I AM SIMILAR TO SIMILARLY TO THAT OF ALOS OF SHARKS AND FISHES ANM LIKE"
+      },
+      "chosen_source": "qwen",
+      "risk_by_model": {
+        "qwen": 0.24444444444444446,
+        "whisperx": 0.27698412698412694,
+        "parakeet": 0.3412698412698412,
+        "wav2vec2": 0.42857142857142855
+      },
+      "sample_WER": 0.13636363636363635,
+      "severity": 1,
+      "dataset_index": 20,
+      "judge_raw_response": "Severity: 1\n\nJustification: The hypothesis retains the overall meaning of the reference, with minor surface-level changes such as punctuation and slight rephrasing (\"similarly\" instead of \"similar to that\"). These alterations do not affect the propositional content or introduce any ambiguity, making the meaning confidently recoverable."
+    },
+    {
+      "ref": "UM SPORTS CAMPS AND WHATNOT",
+      "hyp": "Sports camps and whatnot.",
+      "source_hyps": {
+        "qwen": "Sports camps and whatnot.",
+        "whisperx": "sports camps and whatnot.",
+        "parakeet": "sports camps and whatnot",
+        "wav2vec2": "SPORSE CAMPS AN WHAT NOT"
+      },
+      "chosen_source": "qwen",
+      "risk_by_model": {
+        "qwen": 0.26666666666666666,
+        "whisperx": 0.26666666666666666,
+        "parakeet": 0.26666666666666666,
+        "wav2vec2": 1.0
+      },
+      "sample_WER": 0.2,
+      "severity": 1,
+      "dataset_index": 22,
+      "judge_raw_response": "Severity: 1\n\nJustification: The transcription error involves dropping the initial \"UM\" and capitalizing \"Sports,\" which are surface-level changes that do not alter the propositional content or meaning of the sentence. The intended message remains confidently recoverable without any ambiguity or material fact change."
+    },
+    {
+      "ref": "ALL RIGHT",
+      "hyp": "We.",
+      "source_hyps": {
+        "qwen": "We.",
+        "whisperx": "we'd",
+        "parakeet": "we",
+        "wav2vec2": "WE"
+      },
+      "chosen_source": "qwen",
+      "risk_by_model": {
+        "qwen": 0.3333333333333333,
+        "whisperx": 1.0,
+        "parakeet": 0.3333333333333333,
+        "wav2vec2": 0.3333333333333333
+      },
+      "sample_WER": 1.0,
+      "severity": 4,
+      "dataset_index": 23,
+      "judge_raw_response": "Severity: 4\n\nJustification: The hypothesis \"We.\" fundamentally changes the central assertion of the reference \"ALL RIGHT,\" which is a standalone acknowledgment or agreement, into an entirely different subject with no clear connection. This represents a critical meaning alteration as it introduces new content without any basis in the original statement."
+    },
+    {
+      "ref": "WE'D UH THE IDEA IT'S ESSENTIALLY THE SAME AS BULLDOG YOU HAVE TO TRY AND RUN TO THE END OF THE FIELD THERE'S ONE PERSON WHO'S THIS SHARK OR MAYBE TWO PEOPLE AND THEY CAN MOVE ANY DIRECTION AND IF THEY TAKE YOU YOU BECOME SEAWEED AND YOU CAN'T MOVE YOUR FEET BUT YOU CAN LIKE LEAN OUT TO CATCH PEOPLE",
+      "hyp": "the idea is it's essentially the same as bulldog you have to drown at the end of the field there's one person who's the shark or maybe two people and they can move any direction and if they take you you become seaweed and you can't move your feet you can like lean out to catch people",
+      "source_hyps": {
+        "qwen": "The idea is it's essentially the same as bouldo. You have to run on the end of the field. There's one person who's the shark, or maybe two people, and they can move any direction. And if they take you, you become seaweed, and you can't move your feet. You can like lean out to catch people.",
+        "whisperx": "The idea is it's essentially the same as bulldog. You have to grind one day into the field. There's one person who's the shark or maybe two people and they can move any direction. And if they take you, you become seaweed and you can't move your feet. You can like lean out to catch people.",
+        "parakeet": "the idea is it's essentially the same as bulldog you have to drown at the end of the field there's one person who's the shark or maybe two people and they can move any direction and if they take you you become seaweed and you can't move your feet you can like lean out to catch people",
+        "wav2vec2": "THE IDEAIS IT'S ESSENTIALLY THE SAME AS BOGO YOU HAVE TO DRIDE ONTHEY INTO THE FIELD THEREIS ONE PERSON WHO'S THI SHARK OR MAYBE TWO PEOPLE AND THEY CAN MOVE ANY DIRECTION AND IF THEY TAKE YOU YOU BECOME SEAWEED AND YOU CAN'T MOVE YOUR FEET YOU CAN LET LEAN OUT TO CATCH PEOPLE"
+      },
+      "chosen_source": "parakeet",
+      "risk_by_model": {
+        "qwen": 0.12115937993130976,
+        "whisperx": 0.11988304093567252,
+        "parakeet": 0.11520699897892879,
+        "wav2vec2": 0.1822263993316625
+      },
+      "sample_WER": 0.14754098360655737,
+      "severity": 3,
+      "dataset_index": 24,
+      "judge_raw_response": "Severity: 3\n\nJustification: The hypothesis changes \"try and run\" to \"drown,\" which introduces a clear factual error by altering the intended action, thus changing the material fact of what players are supposed to do in the game. This substitution significantly impacts the understanding of the rules or objectives described."
+    },
+    {
+      "ref": "AND THE IDEA WAS THERE WOULD BE MORE AND MORE OBSTACLES AS MORE AND MORE PEOPLE WERE CAUGHT",
+      "hyp": "The idea was to be more and more obstacles. As more and more people were caught.",
+      "source_hyps": {
+        "qwen": "The idea was to be more and more obstacles. As more and more people were caught.",
+        "whisperx": "The idea was to be more and more obstacles. It's moment we're caught.",
+        "parakeet": "the idea was to be more and more obstacles as more and more people were caught",
+        "wav2vec2": "THE IDEA WAS TO BE MORE AND MORE OBSTACLES AS MM WECA"
+      },
+      "chosen_source": "qwen",
+      "risk_by_model": {
+        "qwen": 0.32051282051282054,
+        "whisperx": 0.3611111111111111,
+        "parakeet": 0.32051282051282054,
+        "wav2vec2": 0.3525641025641026
+      },
+      "sample_WER": 0.16666666666666666,
+      "severity": 3,
+      "dataset_index": 26,
+      "judge_raw_response": "Severity: 3\n\nJustification: The hypothesis introduces a clear factual error by changing \"there would be\" to \"to be,\" which alters the intended meaning of the original sentence. This change results in an unambiguous assertion that differs materially from the reference, as it suggests a directive rather than a prediction or expectation."
+    },
+    {
+      "ref": "AND THEN IF THE GAME WAS DRAGGING ON THE SEAWEED WOULD BECOME CRABS SO THEY CAN MOVE SIDE TO SIDE BUT NOT FORWARDS AND BACKWARDS SO IT WAS REALLY IT WAS QUITE QUITE A LITTLE <OVERLAP>",
+      "hyp": "And then, if the game was dragging on, the seaweed would become crabs, so they could move side to side, but not forwards and backwards. So it was really, it was quite, quite a little.",
+      "source_hyps": {
+        "qwen": "And then, if the game was dragging on, the seaweed would become crabs, so they could move side to side, but not forwards and backwards. So it was really, it was quite, quite a little.",
+        "whisperx": "And then if the game was dragging on, the seaweed would become crabs. So they could move side to side, but not forwards and backwards. So it was really, it was quite a little bit.",
+        "parakeet": "and then if the game was dragging on the seaweed would become crabs so they can move side to side but not forwards and backwards so it was really it was quite quiteing",
+        "wav2vec2": "AND THEN IF THE GAME WAS DRAGGING ON THE SEAWEED HAD BECOME CRABS SO THEY COULD MOVE SIDE TO SIDE BUT NOT FORWARDS AND BACKWARDS SO  REALLY IT AS QUI QUI"
+      },
+      "chosen_source": "qwen",
+      "risk_by_model": {
+        "qwen": 0.14547316482800354,
+        "whisperx": 0.14547316482800354,
+        "parakeet": 0.15145929339477726,
+        "wav2vec2": 0.22308802308802309
+      },
+      "sample_WER": 0.02857142857142857,
+      "severity": 1,
+      "dataset_index": 28,
+      "judge_raw_response": "Severity: 1\n\nJustification: The hypothesis retains the core meaning of the reference, with minor surface-level differences such as punctuation and filler words. These changes do not alter the propositional content or introduce any ambiguity in understanding the intended message."
+    },
+    {
+      "ref": "AND WAS THAT A TACKLE TO THE GROUND TYPE THING AS WELL",
+      "hyp": "And was that tackled to the ground type thing as well?",
+      "source_hyps": {
+        "qwen": "And was that tackle to the ground type thing as well?",
+        "whisperx": "And was that tackled to the ground type thing as well?",
+        "parakeet": "and what that tackle to the ground type thing as well",
+        "wav2vec2": "AND WAS THERE TACKLED TO THE GROUND SAE THINGS"
+      },
+      "chosen_source": "whisperx",
+      "risk_by_model": {
+        "qwen": 0.2828282828282828,
+        "whisperx": 0.2760942760942761,
+        "parakeet": 0.3501683501683502,
+        "wav2vec2": 0.5454545454545454
+      },
+      "sample_WER": 0.16666666666666666,
+      "severity": 2,
+      "dataset_index": 31,
+      "judge_raw_response": "Severity: 2\n\nJustification: The hypothesis introduces ambiguity by changing \"a tackle\" to \"tackled,\" which alters the meaning from describing an action (a tackle) to suggesting that something was tackled. This requires reconstruction of intent and creates uncertainty about whether a specific action or event is being described, fitting the criteria for an ambiguous meaning shift."
+    },
+    {
+      "ref": "RIGHT YEAH",
+      "hyp": "Your.",
+      "source_hyps": {
+        "qwen": "Your.",
+        "whisperx": "Yes.",
+        "parakeet": "you",
+        "wav2vec2": "YOUR"
+      },
+      "chosen_source": "qwen",
+      "risk_by_model": {
+        "qwen": 0.6666666666666666,
+        "whisperx": 1.0,
+        "parakeet": 1.0,
+        "wav2vec2": 0.6666666666666666
+      },
+      "sample_WER": 1.0,
+      "severity": 3,
+      "dataset_index": 35,
+      "judge_raw_response": "Severity: 3\n\nJustification: The hypothesis \"Your.\" unambiguously asserts a different material fact compared to the reference \"RIGHT YEAH,\" as it changes the entity from an affirmative response to a possessive pronoun, which is a clear factual error. There is no ambiguity about this new claim, fitting the criteria for level 3 severity."
+    },
+    {
+      "ref": "THAT MAKES SENSE",
+      "hyp": "That makes sense.",
+      "source_hyps": {
+        "qwen": "That makes sense.",
+        "whisperx": "That makes sense.",
+        "parakeet": "that makes sense",
+        "wav2vec2": "ECENT"
+      },
+      "chosen_source": "qwen",
+      "risk_by_model": {
+        "qwen": 1.0,
+        "whisperx": 1.0,
+        "parakeet": 1.0,
+        "wav2vec2": 1.0
+      },
+      "sample_WER": 0.0,
+      "severity": 0,
+      "dataset_index": 39,
+      "judge_raw_response": "Severity: 0\n\nJustification: The difference between \"THAT MAKES SENSE\" and \"That makes sense.\" is purely a matter of capitalization, which does not alter the propositional content or meaning of the sentence. This falls under surface form changes with no impact on meaning."
+    },
+    {
+      "ref": "YEAH GOOD FUN",
+      "hyp": "Good fun.",
+      "source_hyps": {
+        "qwen": "Yeah, good fun.",
+        "whisperx": "Good fun.",
+        "parakeet": "have good fun",
+        "wav2vec2": "I COULD FIND"
+      },
+      "chosen_source": "whisperx",
+      "risk_by_model": {
+        "qwen": 0.611111111111111,
+        "whisperx": 0.5555555555555555,
+        "parakeet": 0.611111111111111,
+        "wav2vec2": 1.1666666666666667
+      },
+      "sample_WER": 0.3333333333333333,
+      "severity": 1,
+      "dataset_index": 40,
+      "judge_raw_response": "Severity: 1\n\nJustification: The hypothesis \"Good fun.\" omits the interjection \"YEAH\" from the reference, but retains the core meaning of \"GOOD FUN,\" making it a trivial/cosmetic error. The omission does not alter the propositional content or introduce any ambiguity about the sentiment being expressed."
+    },
+    {
+      "ref": "HMM",
+      "hyp": "",
+      "source_hyps": {
+        "qwen": "Right.",
+        "whisperx": "",
+        "parakeet": "",
+        "wav2vec2": ""
+      },
+      "chosen_source": "whisperx",
+      "risk_by_model": {
+        "qwen": 1.0,
+        "whisperx": 0.3333333333333333,
+        "parakeet": 0.3333333333333333,
+        "wav2vec2": 0.3333333333333333
+      },
+      "sample_WER": 1.0,
+      "severity": null,
+      "dataset_index": 49
+    },
+    {
+      "ref": "AND THEN WE PLAYED TWO VARIATIONS OF IT YOU KNOW THE AMERICAN STYLE WHERE YOU JUST THROW IT FROM THE SIDE OF THE PITCH",
+      "hyp": "And we played two variations of it. You know, the American style where you just throw it from the side of the pitch.",
+      "source_hyps": {
+        "qwen": "And we played two variations of it. You know, the American style where you just throw it from the side of the pitch.",
+        "whisperx": "And we played two variations of it. You know, the American style where you just throw it from the side of the pitch.",
+        "parakeet": "and weve played two variations of it you know the american style where you just throw it from the side of the bitch",
+        "wav2vec2": "AND I WE PLAYED TWO VARIATIONS OF IT YOU KNOW THE AMERICAN SA WHAT YOU JUST THROW IT FROM HESI E BITCH"
+      },
+      "chosen_source": "qwen",
+      "risk_by_model": {
+        "qwen": 0.15019762845849802,
+        "whisperx": 0.15019762845849802,
+        "parakeet": 0.17918313570487485,
+        "wav2vec2": 0.34782608695652173
+      },
+      "sample_WER": 0.041666666666666664,
+      "severity": 1,
+      "dataset_index": 50,
+      "judge_raw_response": "Severity: 1\n\nJustification: The hypothesis introduces punctuation that breaks up the sentence into smaller parts, but the overall meaning remains confidently and cleanly recoverable without any material fact changes. The core propositional content about playing variations in American style is preserved."
+    },
+    {
+      "ref": "YEAH",
+      "hyp": "Yeah.",
+      "source_hyps": {
+        "qwen": "Yeah.",
+        "whisperx": "Yeah.",
+        "parakeet": "yes",
+        "wav2vec2": "YES"
+      },
+      "chosen_source": "qwen",
+      "risk_by_model": {
+        "qwen": 0.6666666666666666,
+        "whisperx": 0.6666666666666666,
+        "parakeet": 0.6666666666666666,
+        "wav2vec2": 0.6666666666666666
+      },
+      "sample_WER": 0.0,
+      "severity": 0,
+      "dataset_index": 55,
+      "judge_raw_response": "Severity: 0  \nJustification: The difference between \"YEAH\" and \"Yeah.\" is purely a matter of casing and punctuation, with no change to the propositional content or meaning. This falls under surface form variations that do not affect the underlying message."
+    },
+    {
+      "ref": "I I SUPPOSE IF PEOPLE WERE JUST REALLY BAD AT THROWING BECAUSE THEY WERE REALLY QUITE YOUNG I MEAN WE WERE ALL REALLY YOUNG BUT IT'S STILL VERY WEIRD",
+      "hyp": "I suppose the people are just really bad at throwing because they're really quite young. We're all really young, but it's still very weird.",
+      "source_hyps": {
+        "qwen": "I suppose the people are just really bad at throwing because they're really quite young. We're all really young, but it's still very weird.",
+        "whisperx": "I suppose the people are just really bad at throwing because they're really quite young. We were all really young, but it's still very weird.",
+        "parakeet": "i suppose the people just really bad at drinks they're really quite young we're all really young but it's still very weird",
+        "wav2vec2": "ISUPPOSE THE PEOPLE JUST REALLY BAT AT THRINKS ARE QUITE YOUNG LT REALLY YOUNG BUT IT'S STILL VERY WEIRD"
+      },
+      "chosen_source": "qwen",
+      "risk_by_model": {
+        "qwen": 0.2475598086124402,
+        "whisperx": 0.2965178096757044,
+        "parakeet": 0.24868421052631576,
+        "wav2vec2": 0.4067676767676767
+      },
+      "sample_WER": 0.3103448275862069,
+      "severity": 1,
+      "dataset_index": 56,
+      "judge_raw_response": "Severity: 1\n\nJustification: The ASR output introduces punctuation and slightly rephrases parts of the sentence, but these changes do not alter the propositional content or introduce any ambiguity. The meaning is confidently recoverable without any material fact change, fitting a trivial/cosmetic error category."
+    },
+    {
+      "ref": "YEAH WAS YOUR PRIMARY SCHOOL PRETTY BIG",
+      "hyp": "Yeah, was your primary school pretty big?",
+      "source_hyps": {
+        "qwen": "Yeah, was your primary school pretty big?",
+        "whisperx": "Yeah. Was your primary school pretty big?",
+        "parakeet": "yeah was your primary school pretty big",
+        "wav2vec2": "WAS YOUR PRIMISC PREVI"
+      },
+      "chosen_source": "qwen",
+      "risk_by_model": {
+        "qwen": 0.4166666666666667,
+        "whisperx": 0.4166666666666667,
+        "parakeet": 0.4166666666666667,
+        "wav2vec2": 0.7142857142857143
+      },
+      "sample_WER": 0.0,
+      "severity": 1,
+      "dataset_index": 57,
+      "judge_raw_response": "Severity: 1\n\nJustification: The hypothesis includes additional punctuation (a comma and a question mark) that are not present in the reference, but these changes do not alter the propositional content or meaning of the sentence. The core message remains confidently and cleanly recoverable without any material fact change."
+    },
+    {
+      "ref": "YEAH BIG BIG HALL FOR THE SIZE I REMEMBER GOING BACK THERE WHEN I WAS A LOT OLDER AND I REMEMBER SEEING THE BASKETBALL HOOPS IN THE HALL AND I COULD LIKE DUNK ON THEM WHICH WAS SO WEIRD BECAUSE BASKETBALL HOOPS ARE SUPPOSED TO BE LIKE TEN FEET TALL AND AT THE",
+      "hyp": "Yeah, big big hall for the size. I remember going back there when I was a lot older, and I remember seeing the basketball hoops in the hall, and I could like dunk on them, which is so weird because basketball hoops are supposed to be like ten feet tall, and at the",
+      "source_hyps": {
+        "qwen": "Yeah, big big hall for the size. I remember going back there when I was a lot older, and I remember seeing the basketball hoops in the hall, and I could like dunk on them, which is so weird because basketball hoops are supposed to be like ten feet tall, and at the",
+        "whisperx": "Yeah, big, big hall for the size. I remember going back there when I was a lot older and I remember seeing the basketball hoops in the hall and I could like dunk on them, which is so weird because basketball hoops are supposed to be like 10 feet tall and at the...",
+        "parakeet": "yeah big big hall for the size i remember going back there when i was a lot older and i remember seeing the basketball hoops in the hall and i could like dunk on them which was so weird because basketball hoops are supposed to be like ten feet tall and at the",
+        "wav2vec2": "YE BIG BIG HALL FOR THE SIZE I REMEMBER GOING BACK THERE WHEN I WAS A LOT OLDER AND I REMEMBER SEEING THE BASKE WALL HOOPS IN THE HALL AND I COULD LIKE DONK ON DEN WHICH WAS SO WEIRD BECAUSE PASTFUL HOOPS  SOS TO BE LIKE TEN FEET TALL AND AT THE"
+      },
+      "chosen_source": "qwen",
+      "risk_by_model": {
+        "qwen": 0.06918238993710692,
+        "whisperx": 0.08176100628930817,
+        "parakeet": 0.06918238993710692,
+        "wav2vec2": 0.16981132075471697
+      },
+      "sample_WER": 0.018867924528301886,
+      "severity": 2,
+      "dataset_index": 58,
+      "judge_raw_response": "Severity: 2\n\nJustification: The hypothesis ends abruptly with \"and at the,\" which results in a loss of detail and leaves the sentence incomplete. This creates ambiguity about what was intended, requiring reconstruction or inference to understand the full meaning, thus fitting an ambiguous meaning shift."
+    },
+    {
+      "ref": "YEAH",
+      "hyp": "Yeah.",
+      "source_hyps": {
+        "qwen": "Yeah.",
+        "whisperx": "Yeah.",
+        "parakeet": "yes",
+        "wav2vec2": ""
+      },
+      "chosen_source": "qwen",
+      "risk_by_model": {
+        "qwen": 0.6666666666666666,
+        "whisperx": 0.6666666666666666,
+        "parakeet": 1.0,
+        "wav2vec2": 1.0
+      },
+      "sample_WER": 0.0,
+      "severity": 0,
+      "dataset_index": 59,
+      "judge_raw_response": "Severity: 0  \nJustification: The difference between \"YEAH\" and \"Yeah.\" is purely a matter of casing and punctuation, with no change to the propositional content or meaning. This falls under surface form variations that do not affect the underlying message."
+    },
+    {
+      "ref": "DID YOU UM HAVE A FAVORITE BOOK FILM OR TV SHOW OR CARTOON AS A CHILD WHAT WAS IT ABOUT",
+      "hyp": "Did you have a favorite book, film or TV show or cartoon as a child? What was it about?",
+      "source_hyps": {
+        "qwen": "Did you have a favourite book, film, or TV show, or cartoon as a child? What was it about?",
+        "whisperx": "Did you have a favorite book, film or TV show or cartoon as a child? What was it about?",
+        "parakeet": "did you have a favorite book film or tv show or cartoon as a child what was it about",
+        "wav2vec2": "DIM HAVE A FAVORITE BOOK FILM OR T V SHOW OR CARTOON IS A CHILD WHAT WAS IT ABOUT"
+      },
+      "chosen_source": "whisperx",
+      "risk_by_model": {
+        "qwen": 0.14035087719298245,
+        "whisperx": 0.10526315789473684,
+        "parakeet": 0.10526315789473684,
+        "wav2vec2": 0.2807017543859649
+      },
+      "sample_WER": 0.05,
+      "severity": 1,
+      "dataset_index": 62,
+      "judge_raw_response": "Severity: 1\n\nJustification: The ASR output has removed filler words (\"UM\") and added punctuation, which are surface-level changes that do not alter the propositional content of the question. The meaning is confidently recoverable without any ambiguity or material fact change."
+    },
+    {
+      "ref": "GO TO TV SHOWS",
+      "hyp": "into te",
+      "source_hyps": {
+        "qwen": "Go to TV.",
+        "whisperx": "Welcome to TV.",
+        "parakeet": "into te",
+        "wav2vec2": "INTO T"
+      },
+      "chosen_source": "parakeet",
+      "risk_by_model": {
+        "qwen": 1.111111111111111,
+        "whisperx": 1.111111111111111,
+        "parakeet": 0.8333333333333334,
+        "wav2vec2": 0.8333333333333334
+      },
+      "sample_WER": 1.0,
+      "severity": 2,
+      "dataset_index": 67,
+      "judge_raw_response": "Severity: 2\n\nJustification: The hypothesis \"into te\" is garbled and requires reconstruction to recover the intended meaning of \"GO TO TV SHOWS.\" There's genuine ambiguity in how to interpret \"into te,\" making it necessary to reconstruct the original intent, which aligns with an ambiguous meaning shift."
+    },
+    {
+      "ref": "LAZY TOWN WAS A BIG ONE FOR ME",
+      "hyp": "Lazy Town was a big one for me.",
+      "source_hyps": {
+        "qwen": "Lazy Town was a big one for me.",
+        "whisperx": "Lazy tongue was a big one for me.",
+        "parakeet": "lazy tong was a big one for me",
+        "wav2vec2": "LAZY TON WAS A BIG ONE FOR ME"
+      },
+      "chosen_source": "qwen",
+      "risk_by_model": {
+        "qwen": 0.125,
+        "whisperx": 0.125,
+        "parakeet": 0.125,
+        "wav2vec2": 0.125
+      },
+      "sample_WER": 0.0,
+      "severity": 0,
+      "dataset_index": 70,
+      "judge_raw_response": "Severity: 0\n\nJustification: The difference between \"LAZY TOWN\" and \"Lazy Town\" is purely a matter of casing, which does not affect the propositional content or meaning of the sentence. This falls under surface form changes with no impact on the overall message conveyed."
+    },
+    {
+      "ref": "YEAH",
+      "hyp": "Yeah.",
+      "source_hyps": {
+        "qwen": "Yeah.",
+        "whisperx": "yeah.",
+        "parakeet": "yeah",
+        "wav2vec2": ""
+      },
+      "chosen_source": "qwen",
+      "risk_by_model": {
+        "qwen": 0.3333333333333333,
+        "whisperx": 0.3333333333333333,
+        "parakeet": 0.3333333333333333,
+        "wav2vec2": 1.0
+      },
+      "sample_WER": 0.0,
+      "severity": 0,
+      "dataset_index": 71,
+      "judge_raw_response": "Severity: 0  \nJustification: The difference between \"YEAH\" and \"Yeah.\" is purely a matter of casing and punctuation, with no change to the propositional content or meaning. This falls under surface form variations that do not affect the underlying message."
+    },
+    {
+      "ref": "IT'S A FORCE OF NATURE",
+      "hyp": "It's a force of nature.",
+      "source_hyps": {
+        "qwen": "It's a force of nature.",
+        "whisperx": "It's a force of nature.",
+        "parakeet": "as a force in nature",
+        "wav2vec2": "I SO FORCE OF NATURE"
+      },
+      "chosen_source": "qwen",
+      "risk_by_model": {
+        "qwen": 0.26666666666666666,
+        "whisperx": 0.26666666666666666,
+        "parakeet": 0.4666666666666666,
+        "wav2vec2": 0.4666666666666666
+      },
+      "sample_WER": 0.0,
+      "severity": 0,
+      "dataset_index": 75,
+      "judge_raw_response": "Severity: 0\n\nJustification: The hypothesis \"It's a force of nature.\" is identical in meaning to the reference \"IT'S A FORCE OF NATURE,\" with only differences in capitalization and punctuation, which do not affect the propositional content. These are surface-level changes that fall under level 0 as they do not alter the meaning."
+    },
+    {
+      "ref": "WOW",
+      "hyp": "Wow.",
+      "source_hyps": {
+        "qwen": "Wow.",
+        "whisperx": "Wow.",
+        "parakeet": "flown",
+        "wav2vec2": "WE"
+      },
+      "chosen_source": "qwen",
+      "risk_by_model": {
+        "qwen": 0.6666666666666666,
+        "whisperx": 0.6666666666666666,
+        "parakeet": 1.0,
+        "wav2vec2": 1.0
+      },
+      "sample_WER": 0.0,
+      "severity": 0,
+      "dataset_index": 86,
+      "judge_raw_response": "Severity: 0  \nJustification: The difference between \"WOW\" and \"Wow.\" is purely a matter of casing and punctuation, with no change to the propositional content or meaning. This falls under surface form variations that do not affect the overall message."
+    },
+    {
+      "ref": "YEAH I I KNOW I WAS LIKE ONE OF THE ONE OF THE MANY PEOPLE THAT HASN'T ACTUALLY SEEN AN EPISODE OF BEN TEN",
+      "hyp": "Yeah, I know. I was like one of the one of the million people that hasn't actually seen an episode of Ben 10.",
+      "source_hyps": {
+        "qwen": "Yeah, I know. I was like one of the one of the million people that hasn't actually seen an episode of Ben 10.",
+        "whisperx": "I was like one of the million people that hasn't actually seen an episode of Ben 10.",
+        "parakeet": "yeah i know i was like one of the one of the million people that hasn't actually seen an episode of benten",
+        "wav2vec2": "IKNO OS LIKE ONE OF THE ONE OF THE MILLION PEOPLE HASN'T ACTUALLY SEEN AN EPISODE OF BEN TEN"
+      },
+      "chosen_source": "qwen",
+      "risk_by_model": {
+        "qwen": 0.27075710667041936,
+        "whisperx": 0.3309756604951113,
+        "parakeet": 0.3261991295373985,
+        "wav2vec2": 0.3599162985352244
+      },
+      "sample_WER": 0.125,
+      "severity": 2,
+      "dataset_index": 87,
+      "judge_raw_response": "Severity: 2\n\nJustification: The transcription error changes \"many\" to \"million,\" which introduces ambiguity regarding the number of people and requires reconstruction to determine the intended meaning. This alteration affects the scale but does not assert a different material fact with certainty, thus fitting an ambiguous meaning shift rather than a clear factual error."
+    },
+    {
+      "ref": "OH MY GOODNESS BEN TEN IS SUCH A GREAT SHOW THERE'S NO WAY YOU HAVEN'T SEEN THAT",
+      "hyp": "Oh my goodness! Ben tends such a great show. There's no way you haven't seen that.",
+      "source_hyps": {
+        "qwen": "Oh my goodness! Ben tends such a great show. There's no way you haven't seen that.",
+        "whisperx": "Oh my goodness. Ben 10 is such a great show. There's no way you haven't seen it.",
+        "parakeet": "oh my goodness that intends such a great show there's no way you haven't seen that",
+        "wav2vec2": "OH MY GOODNESS TANTON SUCH A GREAT SHOW THERE'S NO WAY HAVEN SELIE"
+      },
+      "chosen_source": "qwen",
+      "risk_by_model": {
+        "qwen": 0.25433634992458526,
+        "whisperx": 0.32532051282051283,
+        "parakeet": 0.2739441930618401,
+        "wav2vec2": 0.38725490196078427
+      },
+      "sample_WER": 0.11764705882352941,
+      "severity": 3,
+      "dataset_index": 88,
+      "judge_raw_response": "Severity: 3\n\nJustification: The hypothesis incorrectly substitutes \"Ben tends\" for \"Ben Ten,\" which unambiguously asserts a different material fact by changing the name of the show, thus altering its identity. This is a clear factual error as it introduces an incorrect entity without ambiguity about the new claim."
+    },
+    {
+      "ref": "A LAD'S GOT A WATCH",
+      "hyp": "got for",
+      "source_hyps": {
+        "qwen": "It's got a lot.",
+        "whisperx": "It's got to work.",
+        "parakeet": "got for",
+        "wav2vec2": "AND GO"
+      },
+      "chosen_source": "parakeet",
+      "risk_by_model": {
+        "qwen": 1.3333333333333333,
+        "whisperx": 1.3333333333333333,
+        "parakeet": 0.8333333333333334,
+        "wav2vec2": 1.0
+      },
+      "sample_WER": 0.8,
+      "severity": 4,
+      "dataset_index": 91,
+      "judge_raw_response": "Severity: 4\n\nJustification: The hypothesis \"got for\" significantly alters the meaning of the reference by removing key information about a person (\"A LAD\") and an object (\"WATCH\"), resulting in a critical loss of context. This change effectively fabricates content, as it introduces ambiguity without any basis to reconstruct the original intent or factual assertion."
+    },
+    {
+      "ref": "YEAH",
+      "hyp": "Yeah.",
+      "source_hyps": {
+        "qwen": "Yeah.",
+        "whisperx": "Yeah.",
+        "parakeet": "yeah",
+        "wav2vec2": "YEA"
+      },
+      "chosen_source": "qwen",
+      "risk_by_model": {
+        "qwen": 0.3333333333333333,
+        "whisperx": 0.3333333333333333,
+        "parakeet": 0.3333333333333333,
+        "wav2vec2": 1.0
+      },
+      "sample_WER": 0.0,
+      "severity": 0,
+      "dataset_index": 92,
+      "judge_raw_response": "Severity: 0  \nJustification: The difference between \"YEAH\" and \"Yeah.\" is purely a matter of casing and punctuation, with no change to the propositional content or meaning. This falls under surface form variations that do not affect the underlying message."
+    },
+    {
+      "ref": "OH LOVE A BIT OF PEPPA PIG RIGHT",
+      "hyp": "Love the Peppa Pig.",
+      "source_hyps": {
+        "qwen": "Love the Peppa Pig.",
+        "whisperx": "I love the Peppa Pig. Oh,",
+        "parakeet": "ah love a peppa pig i was",
+        "wav2vec2": "LUMBER PAPE PIG"
+      },
+      "chosen_source": "qwen",
+      "risk_by_model": {
+        "qwen": 0.6349206349206349,
+        "whisperx": 0.9126984126984127,
+        "parakeet": 1.222222222222222,
+        "wav2vec2": 0.8134920634920636
+      },
+      "sample_WER": 0.625,
+      "severity": 1,
+      "dataset_index": 96,
+      "judge_raw_response": "Severity: 1\n\nJustification: The hypothesis \"Love the Peppa Pig\" retains the core meaning of expressing affection for \"Peppa Pig,\" despite omitting \"OH LOVE A BIT OF.\" The omission is a surface-level change that does not alter the propositional content or introduce ambiguity, making it a trivial/cosmetic error."
+    },
+    {
+      "ref": "I WAS ALSO NOT THAT INTO POKEMON EITHER",
+      "hyp": "I was also not that into Pokemon either.",
+      "source_hyps": {
+        "qwen": "I was also not that into Pokemon either.",
+        "whisperx": "I was also not that into Pokemon either.",
+        "parakeet": "i was not that into cookmon eithay",
+        "wav2vec2": "I WAS ALL RIGHT NOT THAT INSE COKON NEITHER"
+      },
+      "chosen_source": "qwen",
+      "risk_by_model": {
+        "qwen": 0.3280423280423281,
+        "whisperx": 0.3280423280423281,
+        "parakeet": 0.4351851851851852,
+        "wav2vec2": 0.6547619047619048
+      },
+      "sample_WER": 0.0,
+      "severity": 0,
+      "dataset_index": 97,
+      "judge_raw_response": "Severity: 0\n\nJustification: The differences between the reference and hypothesis are limited to casing (\"I WAS ALSO NOT\" vs. \"I was also not\") and punctuation (capitalization of \"Pokemon\"), which do not alter the propositional content or meaning of the sentence. These changes are surface-level and do not affect the overall message conveyed."
+    },
+    {
+      "ref": "YEAH",
+      "hyp": "",
+      "source_hyps": {
+        "qwen": "Yeah.",
+        "whisperx": "",
+        "parakeet": "",
+        "wav2vec2": ""
+      },
+      "chosen_source": "whisperx",
+      "risk_by_model": {
+        "qwen": 1.0,
+        "whisperx": 0.3333333333333333,
+        "parakeet": 0.3333333333333333,
+        "wav2vec2": 0.3333333333333333
+      },
+      "sample_WER": 1.0,
+      "severity": null,
+      "dataset_index": 107
+    },
+    {
+      "ref": "YOU'RE GONNA LOOK LIKE SUCH A WEIRD PERSON IN THIS VIDEO",
+      "hyp": "You're gonna look like such a weird person in this.",
+      "source_hyps": {
+        "qwen": "You're gonna look like such a weird person in this.",
+        "whisperx": "You're going to look like such a weird person in this.",
+        "parakeet": "you're gonna look to like such a weird person in this",
+        "wav2vec2": "LOOKED LIKE SUCH A WEIRD PERSON IN THIS"
+      },
+      "chosen_source": "qwen",
+      "risk_by_model": {
+        "qwen": 0.2159090909090909,
+        "whisperx": 0.3242424242424242,
+        "parakeet": 0.2909090909090909,
+        "wav2vec2": 0.34242424242424246
+      },
+      "sample_WER": 0.09090909090909091,
+      "severity": 3,
+      "dataset_index": 108,
+      "judge_raw_response": "Severity: 3\n\nJustification: The ASR output omits \"VIDEO\" from the end of the sentence, resulting in a clear factual error by changing the material fact about what is being referred to. This omission alters the context and meaning significantly enough to be considered unambiguously different from the reference."
+    },
+    {
+      "ref": "OH WORMS THAT MAKES MORE SENSE STILL WEIRD BUT IT MAKES MORE SENSE",
+      "hyp": "oh worms and explore fs still weird but",
+      "source_hyps": {
+        "qwen": "Oh, worms. That makes more sense. It's still weird, but makes more sense.",
+        "whisperx": "Oh, worms, that makes more sense. It's still weird but it makes more sense.",
+        "parakeet": "oh worms and explore fs still weird but",
+        "wav2vec2": "OH WORMS ANY SPORSE INTS STILL WEIRD BUT WE HA"
+      },
+      "chosen_source": "parakeet",
+      "risk_by_model": {
+        "qwen": 0.6238095238095238,
+        "whisperx": 0.7006410256410257,
+        "parakeet": 0.5860805860805861,
+        "wav2vec2": 0.6277472527472527
+      },
+      "sample_WER": 0.6153846153846154,
+      "severity": 3,
+      "dataset_index": 114,
+      "judge_raw_response": "Severity: 3\n\nJustification: The hypothesis introduces a different material fact by substituting \"worms\" with \"explore fs,\" which changes the entity being discussed. This substitution is unambiguous and results in a clear factual error, as it alters the original meaning without any real ambiguity about the new claim."
+    },
+    {
+      "ref": "I FEEL LIKE EVEN NOW I JUST WOULDN'T ENJOY THEM",
+      "hyp": "Even now, just wouldn't enjoy them.",
+      "source_hyps": {
+        "qwen": "I feel like even now, just wouldn't enjoy them.",
+        "whisperx": "Even now, just wouldn't enjoy them.",
+        "parakeet": "i like even now just would enjoy the",
+        "wav2vec2": "IKE GIVE IN NOW TO SWIENJOYLE"
+      },
+      "chosen_source": "whisperx",
+      "risk_by_model": {
+        "qwen": 0.736111111111111,
+        "whisperx": 0.611111111111111,
+        "parakeet": 0.7222222222222223,
+        "wav2vec2": 0.9212962962962963
+      },
+      "sample_WER": 0.4,
+      "severity": 2,
+      "dataset_index": 117,
+      "judge_raw_response": "Severity: 2\n\nJustification: The hypothesis omits \"I FEEL LIKE,\" which introduces ambiguity regarding the speaker's personal feelings, requiring reconstruction for full understanding. This omission alters how the sentiment is expressed without asserting a different material fact, fitting an ambiguous meaning shift."
+    },
+    {
+      "ref": "OH AT LEAST <DTMF> WAS A METEOROLOGIST IN SCHOOL ONE OF THE GEOLOGY TEACHERS",
+      "hyp": "Oh, Roger McAller was a meteorologist in school. One of the geology teachers.",
+      "source_hyps": {
+        "qwen": "Oh, Roger McAller was a meteorologist in school. One of the geology teachers.",
+        "whisperx": "Oh, well, Jim Collar was a meteorologist in school, one of the geology teachers.",
+        "parakeet": "whatard mccallar was a meteorologist in the school one of the meteology teachers",
+        "wav2vec2": "WHAT DO WE CALL HER WO TE METEOROLOGISTS IN SCHOOL ONE OF THE GEOLOGY TEACHERS"
+      },
+      "chosen_source": "qwen",
+      "risk_by_model": {
+        "qwen": 0.3774114774114774,
+        "whisperx": 0.4085470085470086,
+        "parakeet": 0.4932844932844933,
+        "wav2vec2": 0.652014652014652
+      },
+      "sample_WER": 0.15384615384615385,
+      "severity": 3,
+      "dataset_index": 129,
+      "judge_raw_response": "Severity: 3\n\nJustification: The hypothesis introduces a specific name, \"Roger McAller,\" which is not present in the reference, asserting a different material fact about who was a meteorologist. This change clearly alters the factual content without ambiguity, fitting the criteria for a clear factual error."
+    },
+    {
+      "ref": "YEAH MADE IT OUT <LAUGH>",
+      "hyp": "Yeah, even us.",
+      "source_hyps": {
+        "qwen": "Yeah, even us.",
+        "whisperx": "Yeah, leave it out.",
+        "parakeet": "than anyone else",
+        "wav2vec2": "S E AN OATH"
+      },
+      "chosen_source": "qwen",
+      "risk_by_model": {
+        "qwen": 0.9166666666666666,
+        "whisperx": 1.111111111111111,
+        "parakeet": 1.0,
+        "wav2vec2": 1.222222222222222
+      },
+      "sample_WER": 0.75,
+      "severity": 3,
+      "dataset_index": 137,
+      "judge_raw_response": "Severity: 3\n\nJustification: The hypothesis \"Yeah, even us\" introduces a different material fact by implying inclusion or participation (\"even us\"), which is not present in the reference \"YEAH MADE IT OUT <LAUGH>\". This substitution unambiguously changes the meaning to assert something new and specific."
+    },
+    {
+      "ref": "YEAH",
+      "hyp": "Yeah.",
+      "source_hyps": {
+        "qwen": "Yeah.",
+        "whisperx": "Yeah.",
+        "parakeet": "yeah",
+        "wav2vec2": ""
+      },
+      "chosen_source": "qwen",
+      "risk_by_model": {
+        "qwen": 0.3333333333333333,
+        "whisperx": 0.3333333333333333,
+        "parakeet": 0.3333333333333333,
+        "wav2vec2": 1.0
+      },
+      "sample_WER": 0.0,
+      "severity": 0,
+      "dataset_index": 139,
+      "judge_raw_response": "Severity: 0  \nJustification: The difference between \"YEAH\" and \"Yeah.\" is purely a matter of casing and punctuation, with no change to the propositional content or meaning. This falls under surface form variations that do not affect the overall message."
+    },
+    {
+      "ref": "THAT IS A RECIPE YEAH THAT IS A RECIPE FOR LIKE FOR HEAVEN",
+      "hyp": "That is a recipe for like, for.",
+      "source_hyps": {
+        "qwen": "That is a recipe for like, for.",
+        "whisperx": "That is a recipe for like for heaven.",
+        "parakeet": "that is a recipe for like for adam",
+        "wav2vec2": "ASOFE THAT IS A RECIPE FOR LIKE FOR EVEN"
+      },
+      "chosen_source": "qwen",
+      "risk_by_model": {
+        "qwen": 0.1574074074074074,
+        "whisperx": 0.16335978835978834,
+        "parakeet": 0.16335978835978834,
+        "wav2vec2": 0.2619047619047619
+      },
+      "sample_WER": 0.46153846153846156,
+      "severity": 3,
+      "dataset_index": 141,
+      "judge_raw_response": "Severity: 3\n\nJustification: The hypothesis omits \"RECIPE YEAH THAT IS A RECIPE FOR LIKE FOR HEAVEN,\" resulting in a clear factual error by leaving out significant content that changes the meaning of the statement. This omission alters the material fact being conveyed, as it removes the emphasis and context provided by the repeated phrase and the metaphorical expression \"FOR LIKE FOR HEAVEN.\""
+    },
+    {
+      "ref": "WITH LAMB ISN'T LAMB VERY EXPENSIVE",
+      "hyp": "isn't land-framed expensive?",
+      "source_hyps": {
+        "qwen": "With lamb, isn't lamb fairly expensive?",
+        "whisperx": "isn't land-framed expensive?",
+        "parakeet": "the flam isn't longf expensive",
+        "wav2vec2": "WITAM IS A LON FOR EXPENSE"
+      },
+      "chosen_source": "whisperx",
+      "risk_by_model": {
+        "qwen": 1.0444444444444445,
+        "whisperx": 0.7555555555555555,
+        "parakeet": 0.8888888888888888,
+        "wav2vec2": 1.4000000000000001
+      },
+      "sample_WER": 0.6666666666666666,
+      "severity": 2,
+      "dataset_index": 143,
+      "judge_raw_response": "Severity: 2\n\nJustification: The hypothesis \"isn't land-framed expensive?\" introduces ambiguity and requires reconstruction to recover the original meaning, as it garbles \"lamb\" into \"land-framed.\" While the intent can be inferred, there is residual doubt about the exact reference, making it an ambiguous meaning shift."
+    },
+    {
+      "ref": "YEAH",
+      "hyp": "Yeah.",
+      "source_hyps": {
+        "qwen": "Yeah.",
+        "whisperx": "Yeah.",
+        "parakeet": "yeah",
+        "wav2vec2": "YES"
+      },
+      "chosen_source": "qwen",
+      "risk_by_model": {
+        "qwen": 0.3333333333333333,
+        "whisperx": 0.3333333333333333,
+        "parakeet": 0.3333333333333333,
+        "wav2vec2": 1.0
+      },
+      "sample_WER": 0.0,
+      "severity": 0,
+      "dataset_index": 150,
+      "judge_raw_response": "Severity: 0  \nJustification: The difference between \"YEAH\" and \"Yeah.\" is purely a matter of casing and punctuation, with no change to the propositional content or meaning. This falls under surface form variations that do not affect the underlying message."
+    },
+    {
+      "ref": "AND IT DOES INCLUDE ARTHUR'S SEAT AND SO",
+      "hyp": "that does include autor c",
+      "source_hyps": {
+        "qwen": "And that it does include Arthur C.",
+        "whisperx": "but it does include Arthur's Seed.",
+        "parakeet": "that does include autor c",
+        "wav2vec2": "NI DOSIN QUET ARTHER SE AND"
+      },
+      "chosen_source": "parakeet",
+      "risk_by_model": {
+        "qwen": 0.8111111111111112,
+        "whisperx": 0.7904761904761904,
+        "parakeet": 0.6984126984126983,
+        "wav2vec2": 1.0666666666666667
+      },
+      "sample_WER": 0.75,
+      "severity": 3,
+      "dataset_index": 151,
+      "judge_raw_response": "Severity: 3\n\nJustification: The hypothesis \"that does include autor c\" unambiguously asserts a different material fact by substituting \"Arthur's Seat,\" which is likely a specific location, with \"autor c,\" a nonsensical or unrelated term. This substitution results in a clear factual error regarding the entity being referenced."
+    },
+    {
+      "ref": "WITHIN A TWENTY MINUTE WALK IT'S A SHAME THOUGH THAT'S UH AND EVEN LIKE IKEA'S AND WHATNOT TWENTY MINUTE BUS AWAY NOT TOO MUCH OF A",
+      "hyp": "within a twenty minute walk it's a shame though that it's there and even like ikeas and whatnot twenty minute bus away not too much of a",
+      "source_hyps": {
+        "qwen": "Within a twenty-minute walk. It's a shame though that it's there, and even like, IKEAs and whatnot, twenty-minute bus away. Not too much of a",
+        "whisperx": "Within a 20-minute walk. It's a shame, though, that it's there. And even, like, Ikea and whatnot, 20-minute bus away, not too much of a...",
+        "parakeet": "within a twenty minute walk it's a shame though that it's there and even like ikeas and whatnot twenty minute bus away not too much of a",
+        "wav2vec2": "WITHIN A TWENTY MINUTE WALK IT'S A SHAME THOY LIT TERE AND EVEN LIKE IKEARS AND WHAT NOT TWENTY MINUTE BUSS AWAY NOT TOO MUCH YET"
+      },
+      "chosen_source": "parakeet",
+      "risk_by_model": {
+        "qwen": 0.2688698955365622,
+        "whisperx": 0.28121557454890783,
+        "parakeet": 0.24820512820512822,
+        "wav2vec2": 0.49679012345679013
+      },
+      "sample_WER": 0.15384615384615385,
+      "severity": 1,
+      "dataset_index": 154,
+      "judge_raw_response": "Severity: 1\n\nJustification: The transcription error involves minor wording differences, such as \"that's uh\" being changed to \"that it's there,\" which do not significantly alter the meaning or introduce ambiguity. The overall propositional content remains confidently and cleanly recoverable without any material fact changes."
+    },
+    {
+      "ref": "YEAH",
+      "hyp": "Yeah.",
+      "source_hyps": {
+        "qwen": "Yeah.",
+        "whisperx": "Yeah.",
+        "parakeet": "yes",
+        "wav2vec2": "I"
+      },
+      "chosen_source": "qwen",
+      "risk_by_model": {
+        "qwen": 0.6666666666666666,
+        "whisperx": 0.6666666666666666,
+        "parakeet": 1.0,
+        "wav2vec2": 1.0
+      },
+      "sample_WER": 0.0,
+      "severity": 0,
+      "dataset_index": 163,
+      "judge_raw_response": "Severity: 0  \nJustification: The difference between \"YEAH\" and \"Yeah.\" is purely a matter of casing and punctuation, with no change to the propositional content or meaning. This falls under surface form variations that do not affect the underlying message."
+    },
+    {
+      "ref": "THE LIGHT POLLUTION",
+      "hyp": "The light pollution.",
+      "source_hyps": {
+        "qwen": "The light pollution.",
+        "whisperx": "The light pollution...",
+        "parakeet": "the light pollution",
+        "wav2vec2": "THE LIGHT POLLUTION"
+      },
+      "chosen_source": "qwen",
+      "risk_by_model": {
+        "qwen": 0.0,
+        "whisperx": 0.0,
+        "parakeet": 0.0,
+        "wav2vec2": 0.0
+      },
+      "sample_WER": 0.0,
+      "severity": 0,
+      "dataset_index": 166,
+      "judge_raw_response": "Severity: 0\n\nJustification: The difference between \"THE LIGHT POLLUTION\" and \"The light pollution.\" is purely a matter of capitalization, which does not affect the propositional content or meaning of the phrase. This falls under surface form changes with no impact on meaning."
+    },
+    {
+      "ref": "YEAH 'CAUSE EVEN ON LIKE A CLEAR NIGHT YOU CAN BARELY SEE THE STARS",
+      "hyp": "Yeah, because even on like a clear night, you can barely see the stars.",
+      "source_hyps": {
+        "qwen": "Yeah, because even on like a clear night, you can barely see the stars.",
+        "whisperx": "yeah because even on like a clear night you can barely see the stars",
+        "parakeet": "yeah because even on like a clear night you can barely see the stars",
+        "wav2vec2": "YE IT IS EVEN ON MUCH A CLEAR NIGHT YE CAN BARELY SEE THE STARS"
+      },
+      "chosen_source": "qwen",
+      "risk_by_model": {
+        "qwen": 0.1111111111111111,
+        "whisperx": 0.1111111111111111,
+        "parakeet": 0.1111111111111111,
+        "wav2vec2": 0.35714285714285715
+      },
+      "sample_WER": 0.07142857142857142,
+      "severity": 0,
+      "dataset_index": 167,
+      "judge_raw_response": "Severity: 0\n\nJustification: The hypothesis retains the same propositional content as the reference, with only minor differences in punctuation and capitalization that do not alter the meaning. These changes are surface-level and do not affect the overall message or factual content of the sentence."
+    },
+    {
+      "ref": "UM JAPAN",
+      "hyp": "Japan.",
+      "source_hyps": {
+        "qwen": "Japan.",
+        "whisperx": "Japan.",
+        "parakeet": "then japan",
+        "wav2vec2": "JAPAN"
+      },
+      "chosen_source": "qwen",
+      "risk_by_model": {
+        "qwen": 0.16666666666666666,
+        "whisperx": 0.16666666666666666,
+        "parakeet": 1.0,
+        "wav2vec2": 0.16666666666666666
+      },
+      "sample_WER": 0.5,
+      "severity": 1,
+      "dataset_index": 172,
+      "judge_raw_response": "Severity: 1\n\nJustification: The hypothesis \"Japan\" is a garbled version of the reference \"UM JAPAN,\" where the filler word \"UM\" is omitted. This omission does not change the propositional content or introduce any ambiguity, as the meaning remains confidently and cleanly recoverable without material fact changes."
+    },
+    {
+      "ref": "ALL RIGHT",
+      "hyp": "right",
+      "source_hyps": {
+        "qwen": "All right.",
+        "whisperx": "All right.",
+        "parakeet": "right",
+        "wav2vec2": "GREAT"
+      },
+      "chosen_source": "parakeet",
+      "risk_by_model": {
+        "qwen": 1.0,
+        "whisperx": 1.0,
+        "parakeet": 0.6666666666666666,
+        "wav2vec2": 1.0
+      },
+      "sample_WER": 0.5,
+      "severity": 1,
+      "dataset_index": 173,
+      "judge_raw_response": "Severity: 1\n\nJustification: The hypothesis \"right\" is a truncated version of the reference \"ALL RIGHT,\" but the meaning remains confidently and cleanly recoverable as an affirmation. There is no material fact change, making it a trivial/cosmetic error."
+    },
+    {
+      "ref": "WELL I WOULD ALSO SAY JAPAN BUT <LAUGH> FOR PRETTY MUCH THE SAME REASONS BUT I'LL SAY SOMETHING ELSE TO THE CONVERSATION UH I THINK EITHER LIKE ICELAND OR ALASKA",
+      "hyp": "well i would also say japan but for pretty much the same reasons but i'll say something else the conversation i think either like iceland or alaska",
+      "source_hyps": {
+        "qwen": "Well, I would also say Japan, but for pretty much the same reasons. But I'll say something else and the conversation. I think either like Iceland or Alaska.",
+        "whisperx": "Well, I would also say Japan, but for pretty much the same reasons, but I'll say something else at the conversation. I think either like Iceland or Alaska.",
+        "parakeet": "well i would also say japan but for pretty much the same reasons but i'll say something else the conversation i think either like iceland or alaska",
+        "wav2vec2": "WELL I WOULD ALSO SAY TOPA BORH FOR VERTY MUCH THE SAME REASONS BUT I'LL SAY SOMETHING ELSE AD THE CONVERSATION I THINK EITHER LIKE ICELAND OR ALASKA"
+      },
+      "chosen_source": "parakeet",
+      "risk_by_model": {
+        "qwen": 0.0718694885361552,
+        "whisperx": 0.0718694885361552,
+        "parakeet": 0.07142857142857142,
+        "wav2vec2": 0.14462081128747795
+      },
+      "sample_WER": 0.06896551724137931,
+      "severity": 2,
+      "dataset_index": 179,
+      "judge_raw_response": "Severity: 2\n\nJustification: The omission of \"to\" before \"the conversation\" introduces ambiguity, as it affects the clarity of what is being said about the conversation. This requires reconstruction for clear understanding, fitting an ambiguous meaning shift without asserting a different material fact."
+    },
+    {
+      "ref": "WHAT'S THE APPEAL IN ICELAND",
+      "hyp": "What's the appeal in Iceland?",
+      "source_hyps": {
+        "qwen": "What's the appeal in Iceland?",
+        "whisperx": "What's the appeal in Iceland?",
+        "parakeet": "what's the appeal in iceland",
+        "wav2vec2": "WHAT SEE APPEAL IN ICELAND"
+      },
+      "chosen_source": "qwen",
+      "risk_by_model": {
+        "qwen": 0.13333333333333333,
+        "whisperx": 0.13333333333333333,
+        "parakeet": 0.13333333333333333,
+        "wav2vec2": 0.4000000000000001
+      },
+      "sample_WER": 0.0,
+      "severity": 0,
+      "dataset_index": 180,
+      "judge_raw_response": "Severity: 0\n\nJustification: The difference between the reference and hypothesis is purely a matter of capitalization, which does not affect the propositional content or meaning of the sentence. This falls under surface form changes with no impact on meaning."
+    },
+    {
+      "ref": "YOU DON'T NEED TO LEAVE YOUR HOUSE FOR THAT ONE",
+      "hyp": "Don't need to leave your house for that one.",
+      "source_hyps": {
+        "qwen": "Don't need to leave your house for that one.",
+        "whisperx": "Don't need to leave your house for that one.",
+        "parakeet": "i still't need to leave your house for that one",
+        "wav2vec2": "DONN YOU LEAVE YOUR HOUSE FOR THAT ONE"
+      },
+      "chosen_source": "qwen",
+      "risk_by_model": {
+        "qwen": 0.19166666666666665,
+        "whisperx": 0.19166666666666665,
+        "parakeet": 0.3148148148148148,
+        "wav2vec2": 0.35555555555555557
+      },
+      "sample_WER": 0.1,
+      "severity": 1,
+      "dataset_index": 183,
+      "judge_raw_response": "Severity: 1\n\nJustification: The hypothesis omits \"YOU\" from the reference, but the meaning is confidently and cleanly recoverable as it retains the imperative nature of the statement. There is no material fact change or ambiguity introduced by this omission."
+    },
+    {
+      "ref": "YEAH",
+      "hyp": "Yeah.",
+      "source_hyps": {
+        "qwen": "Yeah.",
+        "whisperx": "Yeah.",
+        "parakeet": "this",
+        "wav2vec2": ""
+      },
+      "chosen_source": "qwen",
+      "risk_by_model": {
+        "qwen": 0.6666666666666666,
+        "whisperx": 0.6666666666666666,
+        "parakeet": 1.0,
+        "wav2vec2": 1.0
+      },
+      "sample_WER": 0.0,
+      "severity": 0,
+      "dataset_index": 186,
+      "judge_raw_response": "Severity: 0  \nJustification: The difference between \"YEAH\" and \"Yeah.\" is purely a matter of casing and punctuation, with no change to the propositional content or meaning. This falls under surface form variations that do not affect the underlying message."
+    },
+    {
+      "ref": "I'M SURE IT'S",
+      "hyp": "countries",
+      "source_hyps": {
+        "qwen": "I'm pretty sure it's.",
+        "whisperx": "sure it's",
+        "parakeet": "countries",
+        "wav2vec2": "ENTERIES"
+      },
+      "chosen_source": "parakeet",
+      "risk_by_model": {
+        "qwen": 3.0,
+        "whisperx": 1.5,
+        "parakeet": 1.0,
+        "wav2vec2": 1.0
+      },
+      "sample_WER": 1.0,
+      "severity": 4,
+      "dataset_index": 188,
+      "judge_raw_response": "Severity: 4\n\nJustification: The hypothesis \"countries\" fundamentally changes the central assertion of the reference \"I'M SURE IT'S,\" introducing a completely different and unrelated concept with no basis in the original statement, thus fabricating content. This alteration is critical as it reverses or replaces the intended meaning entirely without any context to correct or clarify it."
+    },
+    {
+      "ref": "COSTS AT THE MOMENT",
+      "hyp": "Costs at the moment.",
+      "source_hyps": {
+        "qwen": "Costs at the moment.",
+        "whisperx": "costs at the moment.",
+        "parakeet": "costs at the moment",
+        "wav2vec2": "COSTS AT THE MOMENT"
+      },
+      "chosen_source": "qwen",
+      "risk_by_model": {
+        "qwen": 0.0,
+        "whisperx": 0.0,
+        "parakeet": 0.0,
+        "wav2vec2": 0.0
+      },
+      "sample_WER": 0.0,
+      "severity": 0,
+      "dataset_index": 189,
+      "judge_raw_response": "Severity: 0\n\nJustification: The difference between \"COSTS\" and \"costs\" is purely a matter of casing, which does not affect the propositional content or meaning of the sentence. There are no changes in punctuation, filler words, or any other elements that would alter the intended message."
+    },
+    {
+      "ref": "THAT OR FISHING",
+      "hyp": "fishing.",
+      "source_hyps": {
+        "qwen": "Or fishing.",
+        "whisperx": "fishing.",
+        "parakeet": "or fishing",
+        "wav2vec2": "ORFISHING"
+      },
+      "chosen_source": "whisperx",
+      "risk_by_model": {
+        "qwen": 1.0,
+        "whisperx": 0.6666666666666666,
+        "parakeet": 1.0,
+        "wav2vec2": 1.0
+      },
+      "sample_WER": 0.6666666666666666,
+      "severity": 3,
+      "dataset_index": 194,
+      "judge_raw_response": "Severity: 3\n\nJustification: The hypothesis \"fishing\" unambiguously asserts a different material fact by omitting the reference's initial phrase \"THAT OR,\" which changes the meaning from presenting an alternative (\"that or fishing\") to stating only one option. This results in a clear factual error as it removes part of the original content, altering the intended proposition without ambiguity."
+    },
+    {
+      "ref": "OR JUST COLD",
+      "hyp": "Or just.",
+      "source_hyps": {
+        "qwen": "Or just.",
+        "whisperx": "or just close.",
+        "parakeet": "or just cold",
+        "wav2vec2": "OR DIS"
+      },
+      "chosen_source": "qwen",
+      "risk_by_model": {
+        "qwen": 0.38888888888888884,
+        "whisperx": 0.611111111111111,
+        "parakeet": 0.611111111111111,
+        "wav2vec2": 0.611111111111111
+      },
+      "sample_WER": 0.3333333333333333,
+      "severity": 1,
+      "dataset_index": 195,
+      "judge_raw_response": "Severity: 1\n\nJustification: The hypothesis \"Or just.\" is a truncated version of the reference \"OR JUST COLD,\" missing only the word \"COLD.\" While the meaning is slightly altered, it remains confidently and cleanly recoverable as the context suggests that something was being described as cold. There is no material fact change or ambiguity introduced by this omission."
+    }
+  ],
+  "judge": "phi4:14b (direct prompt)",
+  "mean_severity": 1.431,
+  "severity_distribution": {
+    "0": 18,
+    "1": 17,
+    "2": 7,
+    "3": 12,
+    "4": 4
+  }
+}
