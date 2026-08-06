@@ -1,0 +1,46 @@
+{
+  "model": "whisper_ft_chunked",
+  "dataset": "commonvoice",
+  "checkpoint": "checkpoints/whisper_medium_lora_scots_r32_lr5e4_final/best",
+  "base_model": "openai/whisper-medium",
+  "chunking": "28s time-based chunks, no VAD",
+  "corpus_wer": 0.04455445544554455,
+  "num_samples": 5,
+  "samples": [
+    {
+      "ref": "I think I'd quite like to be a British Sign Language interpreter, 'cause before I went to uni, I did support work and I did a few wee courses in British Sign Language and eh it was nothing like- it was nothing like anything I'd done before, and it was such an expressive language and eh I really enjoyed supporting people. You know just taking them t- taking them to the shops, and eh just doing really basic stuff. There's this woman  whose hair I'd really like to- she liked me to straighten her hair and do her make up, and she'd talk about getting married to this other guy that lived there but, eh, I don't know if that ever actually happened [laugh] Eh, but yeah, I think I'd quite like to do BSL interpreting and learn more aboot American sign language as well, and various sign languages around the world.",
+      "hyp": "I think I'd quite like to be a British Sign Language interpreter, ‘cause before I went to uni I did support work and I did a few wee courses in British Sign Language and, eh, it was nothing like- it was nothing like anything I done before and it was such an expressive language and, eh, I really enjoyed supporting people, you know, just taking them- taking them to the shops and, eh, just doing really basic stuff. There's this woman who's hair really like to- she liked me to straighten her hair and do her make-up and she would talk about getting married to this other guy that lived there, but eh, I don’t know if that ever actually happened. Eh, but yeah, I think I'd quite like to do BSL interpreting and learn more about American sign language as well and various sign languages around the world.",
+      "sample_WER": 0.06578947368421052,
+      "sample_index": 0,
+      "n_chunks": 2
+    },
+    {
+      "ref": "Aye, I’d’ve loved to have been a professional gymnast. I used to when I was young do flips but- and cartwheels but no, you know, professional. And years ago we- the opportunities are different nowadays, you know, we didnae have these kind of a classes to go to. But anyway I did take the opportunity when I was in my forties. A gymnastics coach of the kids told me I should go to an adult class in Bellahouston. So I did, I decided to go and um there was a great wee coach Hazel. She was professional. And she encouraged me- I s- I told her I’d love to do flips. She says well you’ve got the physique, you’ve got the energy. So she was so good at helping me to visualise going into this ball pit- we’re on a trampoline, so I’m jumping the trampoline and she's just visualise a dolphin and it helps you flip into the- so you’re flipping into the ball pit. What a feeling. She was so good, you know, that encouragement. At first I was all over the place. Anyway, so that was great to get that opportunity.",
+      "hyp": "Aye, I’d a’ loved to be a professional gymnast. I used to when I was young do flips but in cartwheels but no, you know, professional. And years ago the opportunities are different nowadays, you know, we didnae have these kind of a classes to go to. But anyway, I did take the opportunity when I was in my forties. A gymnastic coach of the kids told me I should go to an adult class in Bellahouston. So I did, I decided to go and eh there was a great wee coach Hazel. She was professional and she encouraged me. I s- I told her I'd love to do flips. She says well you've got the physique, you've got the energy. So she was so good at helping me to visualise going into this ball pit. We're on a trampoline, so I'm jumping the trampoline and she's just visualise a dolphin and it helps you flip into the- so you're flipping into the ball pit. What a feeling. She was so good, you know, that encouragement. At first I was all over the place. Anyway, so that was great to get that opportunity.",
+      "sample_WER": 0.041237113402061855,
+      "sample_index": 1,
+      "n_chunks": 3
+    },
+    {
+      "ref": "My life right now is actually good. Can’t complain much. I’ve hit sixty. I’m in the sixty club and I’m quite chilled. I just take each day as it comes. I live in the present. I don’t look back, I don’t look forward. I just enjoy each moment as it comes because when you get to a certain age in life you don’t take your time for granted. You actually live in the moment each day.",
+      "hyp": "My life right now is actually good. Can't complain much. I've hit sixty. I'm in the sixty club and I'm quite chilled. I just take each day as it comes. I live in the present. I don't look back. I don't look forward. I just enjoy each moment as it comes because when you get to a certain age in life you don't take your time for granted. You actually live in the moment each day.",
+      "sample_WER": 0.0,
+      "sample_index": 2,
+      "n_chunks": 1
+    },
+    {
+      "ref": "I would say internet because it’s quite educational if you need to find something out you can just go into internet. Google is a great one as well, Google Maps for driving, getting you to a destination. So that’s gr- you know, I think all these- it’s got a great advantage th- the technology that’s moved on. Um, and that is, you know, really educational.",
+      "hyp": "I would say internet, because it’s quite educational, if you need to find something out you can just get into internet. Google is a great one as well, Google Maps for driving, get me to a destination. So that’s good, you know I think of these- it’s got a great advantage the technology that’s moved on, um and that is, you know, really educational.",
+      "sample_WER": 0.09230769230769231,
+      "sample_index": 3,
+      "n_chunks": 1
+    },
+    {
+      "ref": "When I was young with- growing up with my siblings my dad- because we came from the boxing family- my dad would put me in a ring when I was young with my brothers to fight. Could you believe that? Anyway, it helped me to be- 'cause I was a tomboy with five brothers and then I've got a twin, so if there was anybody bullying my twin I was always told to sort them out. So, really, I had to always win the fights. But growing up with my brothers, I would try my best to win a fight because I was determined 'cause my dad made me feel “you can do it hen, you can do it”.",
+      "hyp": "When I was young with- grown up with my siblings, my dad- because we came from the boxing family, my dad would put me in a ring when I was young with my brothers to fight. Could you believe that? Anyway, it helped me to be- because I was a tomboy with five brothers and then I've got a twin, so if there was anybody bullying my twin I was always told to sort them out. So, really, I had to always win the fights. but growing up with my brothers, I would try my best to win a fight because I was determined, because my dad made me feel you can do it hen, you can do it.",
+      "sample_WER": 0.025210084033613446,
+      "sample_index": 4,
+      "n_chunks": 2
+    }
+  ]
+}
