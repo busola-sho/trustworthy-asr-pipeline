@@ -66,6 +66,7 @@ SHETLAND_FILES = {
     "whisperx": "results/benchmarks/shetland/shetland_whisper_20260603_123115.json",
     "parakeet": "results/benchmarks/shetland/shetland_parakeet_20260606_134131.json",
     "wav2vec2": "results/benchmarks/shetland/shetland_wav2vec2_20260606_134507.json",
+    "whisper_ft_chunked": "writeup_results/benchmarks/main/whisper_ft_chunked_shetland_20260806_000000.json",
 }
 
 
