@@ -8,24 +8,22 @@ the locked winning strategy (Unanchored Fusion + Naive).
 
 Conditions (left to right):
   Baseline (no confidence)
-  List (p20 threshold)
-  Inline (p20 threshold)
-  List (p10 threshold)      - only shown if the file exists
-  Inline (p10 threshold)    - only shown if the file exists
-  List (p5 threshold)       - only shown if the file exists
-  Inline (p5 threshold)     - only shown if the file exists
+  List (best threshold: p5 - confirmed via full p5/p10/p20 sweep,
+        avg severity 1.214 vs 1.220 at p10, 1.237 at p20)
+  Inline (best threshold: p10 - avg severity 1.212 vs 1.228 at p5,
+        1.224 at p20)
   List (unfiltered, v2 compliance-checked)
   Inline (unfiltered, v2 compliance-checked)
+
+Only the best-performing threshold per format is featured, rather than
+all 3 (largely redundant once the sweep confirmed the winner) - the
+full p5/p10/p20 comparison remains available separately if needed.
 
 Confidence experiment files were all run AFTER the candidate_pool.json
 naming fix, so they already correctly exclude calibration samples -
 no _calib_fixed mirror needed for these specifically. The baseline
 (no confidence) condition uses the grid_calib_fixed mirror, same as
 plot_strategy_severity.py.
-
-Missing files (e.g. p5/p10 still running in the background) are
-skipped gracefully rather than erroring - the chart just shows
-whichever conditions are actually done.
 
 Usage:
     python plot_confidence_conditions.py
@@ -59,25 +57,26 @@ FONT_BAR_LABEL = 18
 
 
 def condition_file_paths(dataset):
-    """Returns {label: path} - only includes p5/p10 entries if those
-    files actually exist yet (background job may still be running)."""
+    """Returns {label: path}.
+
+    Featured conditions, per the full p5/p10/p20 sweep comparison:
+      List:   p5 was the best-performing threshold (avg severity 1.214,
+              vs 1.220 at p10 and 1.237 at p20 - p20 was actually the
+              WORST of the three for List format).
+      Inline: p10 was the best-performing threshold (avg severity 1.212,
+              vs 1.228 at p5 and 1.224 at p20).
+    Rather than clutter the figure with all 3 thresholds per format
+    (which are largely redundant once the sweep confirmed the winner),
+    this shows only the best of each - the full sweep numbers remain
+    available via the printed summary table for anyone who wants the
+    detail."""
     paths = {
         "Baseline\n(no confidence)": f"writeup_results/grid_calib_fixed/unanchored_fusion_naive/unanchored_fusion_naive_{dataset}_gemma4_dev.json",
-        "List\n(p20)": f"writeup_results/grid/unanchored_fusion_naive_confidence_list/unanchored_fusion_naive_confidence_list_{dataset}_gemma4_p20_thr-dev_dev.json",
-        "Inline\n(p20)": f"writeup_results/grid/unanchored_fusion_naive_confidence_inline/unanchored_fusion_naive_confidence_inline_{dataset}_gemma4_p20_thr-dev_dev.json",
+        "List\n(best: p5)": f"writeup_results/grid/unanchored_fusion_naive_confidence_list/unanchored_fusion_naive_confidence_list_{dataset}_gemma4_p5_thr-dev_dev.json",
+        "Inline\n(best: p10)": f"writeup_results/grid/unanchored_fusion_naive_confidence_inline/unanchored_fusion_naive_confidence_inline_{dataset}_gemma4_p10_thr-dev_dev.json",
+        "List\n(unfiltered,\nfrom p20)": f"writeup_results/grid/unanchored_fusion_naive_confidence_list_full_v2/unanchored_fusion_naive_confidence_list_full_v2_{dataset}_gemma4_dev.json",
+        "Inline\n(unfiltered,\nfrom p20)": f"writeup_results/grid/unanchored_fusion_naive_confidence_inline_full_v2/unanchored_fusion_naive_confidence_inline_full_v2_{dataset}_gemma4_dev.json",
     }
-
-    for p in [10, 5]:
-        list_path = f"writeup_results/grid/unanchored_fusion_naive_confidence_list/unanchored_fusion_naive_confidence_list_{dataset}_gemma4_p{p}_thr-dev_dev.json"
-        inline_path = f"writeup_results/grid/unanchored_fusion_naive_confidence_inline/unanchored_fusion_naive_confidence_inline_{dataset}_gemma4_p{p}_thr-dev_dev.json"
-        if os.path.exists(list_path):
-            paths[f"List\n(p{p})"] = list_path
-        if os.path.exists(inline_path):
-            paths[f"Inline\n(p{p})"] = inline_path
-
-    paths["List\n(unfiltered)"] = f"writeup_results/grid/unanchored_fusion_naive_confidence_list_full_v2/unanchored_fusion_naive_confidence_list_full_v2_{dataset}_gemma4_dev.json"
-    paths["Inline\n(unfiltered)"] = f"writeup_results/grid/unanchored_fusion_naive_confidence_inline_full_v2/unanchored_fusion_naive_confidence_inline_full_v2_{dataset}_gemma4_dev.json"
-
     return paths
 
 
