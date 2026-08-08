@@ -1,0 +1,1119 @@
+{
+  "dataset": "edacc",
+  "split": "test",
+  "judge": "phi4:14b",
+  "architecture": "two-stage: alignment (per-transcript) then judging (per-segment, span-only)",
+  "flag_threshold": 2,
+  "flag_convention": "y=1 for meaning-altering/flagged (severity>=2), y=0 for meaning-preserved (severity<2)",
+  "num_transcripts": 58,
+  "num_segments": 80,
+  "num_segments_parsed": 80,
+  "num_segments_flagged": 25,
+  "num_segments_alignment_failed": 0,
+  "transcripts": [
+    {
+      "dataset_index": 1,
+      "ref": "YEAH I'VE GOT A NOTIFICATION",
+      "hyp": "I've got a notification.",
+      "raw_alignment_response": "[skipped: single-segment transcript, no alignment needed]",
+      "segments": [
+        {
+          "segment": "I've got a notification.",
+          "corresponding_span": "YEAH I'VE GOT A NOTIFICATION",
+          "severity": 3,
+          "justification": "The ASR output omits \"YEAH\" from the reference span, which changes a material fact by removing an expression of affirmation or emphasis. This omission results in a clear factual error regarding the speaker's intent or tone, as it alters the conveyed meaning without ambiguity.",
+          "flagged": true,
+          "raw_judge_response": "Severity: 3\n\nJustification: The ASR output omits \"YEAH\" from the reference span, which changes a material fact by removing an expression of affirmation or emphasis. This omission results in a clear factual error regarding the speaker's intent or tone, as it alters the conveyed meaning without ambiguity."
+        }
+      ]
+    },
+    {
+      "dataset_index": 6,
+      "ref": "DO YOU WANNA EXPLAIN",
+      "hyp": "Do you wanna explain?",
+      "raw_alignment_response": "[skipped: single-segment transcript, no alignment needed]",
+      "segments": [
+        {
+          "segment": "Do you wanna explain?",
+          "corresponding_span": "DO YOU WANNA EXPLAIN",
+          "severity": 0,
+          "justification": "The predicted segment \"Do you wanna explain?\" is a case variation of the reference span \"DO YOU WANNA EXPLAIN,\" with no change in meaning or propositional content. This difference only affects surface form, specifically casing, and does not alter any material facts or intent.",
+          "flagged": false,
+          "raw_judge_response": "Severity: 0\n\nJustification: The predicted segment \"Do you wanna explain?\" is a case variation of the reference span \"DO YOU WANNA EXPLAIN,\" with no change in meaning or propositional content. This difference only affects surface form, specifically casing, and does not alter any material facts or intent."
+        }
+      ]
+    },
+    {
+      "dataset_index": 7,
+      "ref": "WHICH IS JUST THE WHICH IS JUST A UH BASICALLY YOU HAVE TWO ENDS OF A PITCH AND YOUR GOAL'S TO REACH THE OTHER END OF THE PITCH WITHOUT BEING TAGGED BY SOMEONE IN THE MIDDLE AND NO RULES APPLY PEOPLE WERE BEATEN UP BLOOD EVERYWHERE OH GOOD TIMES",
+      "hyp": "Which is just basically you have two ends of a pitch, and your goal is to reach the other end of the pitch without being tagged by someone in the middle, and no rules apply. People were beaten up, blood everywhere. Ah, good times.",
+      "raw_alignment_response": "[1] WHICH IS JUST THE WHICH IS JUST A UH BASICALLY YOU HAVE TWO ENDS OF A PITCH AND YOUR GOAL'S TO REACH THE OTHER END OF THE PITCH WITHOUT BEING TAGGED BY SOMEONE IN THE MIDDLE AND NO RULES APPLY  \n[2] PEOPLE WERE BEATEN UP BLOOD EVERYWHERE  \n[3] OH GOOD TIMES",
+      "segments": [
+        {
+          "segment": "Which is just basically you have two ends of a pitch, and your goal is to reach the other end of the pitch without being tagged by someone in the middle, and no rules apply.",
+          "corresponding_span": "WHICH IS JUST THE WHICH IS JUST A UH BASICALLY YOU HAVE TWO ENDS OF A PITCH AND YOUR GOAL'S TO REACH THE OTHER END OF THE PITCH WITHOUT BEING TAGGED BY SOMEONE IN THE MIDDLE AND NO RULES APPLY",
+          "severity": 1,
+          "justification": "The predicted segment is a slightly rephrased version of the reference span, with minor surface-level changes such as punctuation and filler words removed. These alterations do not affect the propositional content or meaning, allowing for confident and clean recovery of the original intent.",
+          "flagged": false,
+          "raw_judge_response": "Severity: 1\n\nJustification: The predicted segment is a slightly rephrased version of the reference span, with minor surface-level changes such as punctuation and filler words removed. These alterations do not affect the propositional content or meaning, allowing for confident and clean recovery of the original intent."
+        },
+        {
+          "segment": "People were beaten up, blood everywhere.",
+          "corresponding_span": "PEOPLE WERE BEATEN UP BLOOD EVERYWHERE",
+          "severity": 1,
+          "justification": "The ASR output omits the conjunction \"and\" between \"beaten up\" and \"blood everywhere,\" but the meaning is confidently recoverable without any material fact changes. This is a trivial/cosmetic error as it does not introduce ambiguity or alter the propositional content of the statement.",
+          "flagged": false,
+          "raw_judge_response": "Severity: 1\n\nJustification: The ASR output omits the conjunction \"and\" between \"beaten up\" and \"blood everywhere,\" but the meaning is confidently recoverable without any material fact changes. This is a trivial/cosmetic error as it does not introduce ambiguity or alter the propositional content of the statement."
+        },
+        {
+          "segment": "Ah, good times.",
+          "corresponding_span": "OH GOOD TIMES",
+          "severity": 0,
+          "justification": "The predicted segment \"Ah, good times.\" maintains the same propositional content as the reference span \"OH GOOD TIMES,\" with only minor surface form differences such as capitalization and an added filler word (\"Ah\"). These changes do not alter the meaning or factual content of the statement.",
+          "flagged": false,
+          "raw_judge_response": "Severity: 0\n\nJustification: The predicted segment \"Ah, good times.\" maintains the same propositional content as the reference span \"OH GOOD TIMES,\" with only minor surface form differences such as capitalization and an added filler word (\"Ah\"). These changes do not alter the meaning or factual content of the statement."
+        }
+      ]
+    },
+    {
+      "dataset_index": 8,
+      "ref": "WAS IT TAGGED OR WAS IT TACKLED",
+      "hyp": "Was it tagged or was it tackled?",
+      "raw_alignment_response": "[skipped: single-segment transcript, no alignment needed]",
+      "segments": [
+        {
+          "segment": "Was it tagged or was it tackled?",
+          "corresponding_span": "WAS IT TAGGED OR WAS IT TACKLED",
+          "severity": 0,
+          "justification": "The predicted segment \"Was it tagged or was it tackled?\" differs from the reference span \"WAS IT TAGGED OR WAS IT TACKLED\" only in terms of capitalization, which is a surface form change. There is no alteration to the propositional content or meaning of the sentence.",
+          "flagged": false,
+          "raw_judge_response": "Severity: 0\n\nJustification: The predicted segment \"Was it tagged or was it tackled?\" differs from the reference span \"WAS IT TAGGED OR WAS IT TACKLED\" only in terms of capitalization, which is a surface form change. There is no alteration to the propositional content or meaning of the sentence."
+        }
+      ]
+    },
+    {
+      "dataset_index": 11,
+      "ref": "OUR RULES WERE TACKLE",
+      "hyp": "Exactly.",
+      "raw_alignment_response": "[skipped: single-segment transcript, no alignment needed]",
+      "segments": [
+        {
+          "segment": "Exactly.",
+          "corresponding_span": "OUR RULES WERE TACKLE",
+          "severity": 4,
+          "justification": "The ASR output \"Exactly.\" fundamentally changes the central assertion of the reference span \"OUR RULES WERE TACKLE,\" which likely refers to a specific rule or action. This alteration results in a critical meaning change, as it replaces an actionable statement with an affirmation that does not convey any original content or intent.",
+          "flagged": true,
+          "raw_judge_response": "Severity: 4\n\nJustification: The ASR output \"Exactly.\" fundamentally changes the central assertion of the reference span \"OUR RULES WERE TACKLE,\" which likely refers to a specific rule or action. This alteration results in a critical meaning change, as it replaces an actionable statement with an affirmation that does not convey any original content or intent."
+        }
+      ]
+    },
+    {
+      "dataset_index": 17,
+      "ref": "STONE UH STONE PLAYGROUND",
+      "hyp": "Stone Playground.",
+      "raw_alignment_response": "[skipped: single-segment transcript, no alignment needed]",
+      "segments": [
+        {
+          "segment": "Stone Playground.",
+          "corresponding_span": "STONE UH STONE PLAYGROUND",
+          "severity": 2,
+          "justification": "The ASR output omits \"UH STONE\" from the reference span, resulting in a loss of detail that introduces ambiguity about whether there are multiple playgrounds or specific features within the Stone Playground. This requires reconstruction to fully understand the original intent, fitting an ambiguous meaning shift without asserting a different material fact.",
+          "flagged": true,
+          "raw_judge_response": "Severity: 2\n\nJustification: The ASR output omits \"UH STONE\" from the reference span, resulting in a loss of detail that introduces ambiguity about whether there are multiple playgrounds or specific features within the Stone Playground. This requires reconstruction to fully understand the original intent, fitting an ambiguous meaning shift without asserting a different material fact."
+        }
+      ]
+    },
+    {
+      "dataset_index": 21,
+      "ref": "WHAT EVEN IS THAT",
+      "hyp": "um,",
+      "raw_alignment_response": "[skipped: single-segment transcript, no alignment needed]",
+      "segments": [
+        {
+          "segment": "um,",
+          "corresponding_span": "WHAT EVEN IS THAT",
+          "severity": 4,
+          "justification": "The ASR output \"um,\" completely omits the reference span \"WHAT EVEN IS THAT,\" resulting in a critical meaning alteration by removing an entire question, which could fundamentally change the context or intent of the statement. This omission leaves no basis for understanding the original inquiry, thus meeting the criteria for a severity level 4 error.",
+          "flagged": true,
+          "raw_judge_response": "Severity: 4\n\nJustification: The ASR output \"um,\" completely omits the reference span \"WHAT EVEN IS THAT,\" resulting in a critical meaning alteration by removing an entire question, which could fundamentally change the context or intent of the statement. This omission leaves no basis for understanding the original inquiry, thus meeting the criteria for a severity level 4 error."
+        }
+      ]
+    },
+    {
+      "dataset_index": 23,
+      "ref": "ALL RIGHT",
+      "hyp": "we",
+      "raw_alignment_response": "[skipped: single-segment transcript, no alignment needed]",
+      "segments": [
+        {
+          "segment": "we",
+          "corresponding_span": "ALL RIGHT",
+          "severity": 4,
+          "justification": "The predicted segment \"we\" fundamentally changes the meaning of the reference span \"ALL RIGHT,\" which is a standalone expression indicating agreement or readiness. This alteration introduces a completely different subject and context, reversing the original assertion without any basis in the given text.",
+          "flagged": true,
+          "raw_judge_response": "Severity: 4\n\nJustification: The predicted segment \"we\" fundamentally changes the meaning of the reference span \"ALL RIGHT,\" which is a standalone expression indicating agreement or readiness. This alteration introduces a completely different subject and context, reversing the original assertion without any basis in the given text."
+        }
+      ]
+    },
+    {
+      "dataset_index": 24,
+      "ref": "WE'D UH THE IDEA IT'S ESSENTIALLY THE SAME AS BULLDOG YOU HAVE TO TRY AND RUN TO THE END OF THE FIELD THERE'S ONE PERSON WHO'S THIS SHARK OR MAYBE TWO PEOPLE AND THEY CAN MOVE ANY DIRECTION AND IF THEY TAKE YOU YOU BECOME SEAWEED AND YOU CAN'T MOVE YOUR FEET BUT YOU CAN LIKE LEAN OUT TO CATCH PEOPLE",
+      "hyp": "The idea is it's essentially the same as bulldog. You have to run on the end of the field. There's one person who's the shark or maybe two people, and they can move any direction. And if they take you, you become seaweed and you can't move your feet. You can like lean out to catch people.",
+      "raw_alignment_response": "[1] \"WE'D UH THE IDEA IT'S ESSENTIALLY THE SAME AS BULLDOG\"  \n[2] \"YOU HAVE TO TRY AND RUN TO THE END OF THE FIELD\"  \n[3] \"THERE'S ONE PERSON WHO'S THIS SHARK OR MAYBE TWO PEOPLE AND THEY CAN MOVE ANY DIRECTION\"  \n[4] \"AND IF THEY TAKE YOU YOU BECOME SEAWEED AND YOU CAN'T MOVE YOUR FEET\"  \n[5] \"BUT YOU CAN LIKE LEAN OUT TO CATCH PEOPLE\"",
+      "segments": [
+        {
+          "segment": "The idea is it's essentially the same as bulldog.",
+          "corresponding_span": "WE'D UH THE IDEA IT'S ESSENTIALLY THE SAME AS BULLDOG",
+          "severity": 2,
+          "justification": "The ASR output omits \"WE'D UH\" from the reference, which introduces ambiguity regarding who is expressing the idea and potentially alters the relational context. This omission requires reconstruction for full understanding, fitting an ambiguous meaning shift without asserting a different material fact.",
+          "flagged": true,
+          "raw_judge_response": "Severity: 2\n\nJustification: The ASR output omits \"WE'D UH\" from the reference, which introduces ambiguity regarding who is expressing the idea and potentially alters the relational context. This omission requires reconstruction for full understanding, fitting an ambiguous meaning shift without asserting a different material fact."
+        },
+        {
+          "segment": "You have to run on the end of the field.",
+          "corresponding_span": "YOU HAVE TO TRY AND RUN TO THE END OF THE FIELD",
+          "severity": 2,
+          "justification": "The ASR output changes \"TRY AND RUN\" to \"RUN,\" which introduces ambiguity regarding the intent or effort required, and alters the meaning slightly by omitting the aspect of attempting. This results in a genuine ambiguity that requires reconstruction for clarity, fitting the criteria for an ambiguous meaning shift.",
+          "flagged": true,
+          "raw_judge_response": "Severity: 2\n\nJustification: The ASR output changes \"TRY AND RUN\" to \"RUN,\" which introduces ambiguity regarding the intent or effort required, and alters the meaning slightly by omitting the aspect of attempting. This results in a genuine ambiguity that requires reconstruction for clarity, fitting the criteria for an ambiguous meaning shift."
+        },
+        {
+          "segment": "There's one person who's the shark or maybe two people, and they can move any direction.",
+          "corresponding_span": "THERE'S ONE PERSON WHO'S THIS SHARK OR MAYBE TWO PEOPLE AND THEY CAN MOVE ANY DIRECTION",
+          "severity": 1,
+          "justification": "The transcription error involves minor surface form changes, such as capitalization (\"THERE'S\" vs. \"There's\") and punctuation (missing comma after \"shark\"), but these do not alter the propositional content or meaning of the sentence. The intended message remains confidently and cleanly recoverable without any material fact change.",
+          "flagged": false,
+          "raw_judge_response": "Severity: 1\n\nJustification: The transcription error involves minor surface form changes, such as capitalization (\"THERE'S\" vs. \"There's\") and punctuation (missing comma after \"shark\"), but these do not alter the propositional content or meaning of the sentence. The intended message remains confidently and cleanly recoverable without any material fact change."
+        },
+        {
+          "segment": "And if they take you, you become seaweed and you can't move your feet.",
+          "corresponding_span": "AND IF THEY TAKE YOU YOU BECOME SEAWEED AND YOU CAN'T MOVE YOUR FEET",
+          "severity": 0,
+          "justification": "The predicted segment is identical to the reference span, with no changes in meaning or propositional content. The only difference is the capitalization of \"And,\" which is a surface form variation and does not affect the overall meaning.",
+          "flagged": false,
+          "raw_judge_response": "Severity: 0\n\nJustification: The predicted segment is identical to the reference span, with no changes in meaning or propositional content. The only difference is the capitalization of \"And,\" which is a surface form variation and does not affect the overall meaning."
+        },
+        {
+          "segment": "You can like lean out to catch people.",
+          "corresponding_span": "BUT YOU CAN LIKE LEAN OUT TO CATCH PEOPLE",
+          "severity": 3,
+          "justification": "The ASR output omits \"BUT,\" which changes the meaning by removing a contrastive element, potentially altering the context or intent of the statement. This omission results in an unambiguous factual difference regarding how the action is framed within the sentence.",
+          "flagged": true,
+          "raw_judge_response": "Severity: 3\n\nJustification: The ASR output omits \"BUT,\" which changes the meaning by removing a contrastive element, potentially altering the context or intent of the statement. This omission results in an unambiguous factual difference regarding how the action is framed within the sentence."
+        }
+      ]
+    },
+    {
+      "dataset_index": 25,
+      "ref": "RIGHT",
+      "hyp": "THAT'S RIGHT",
+      "raw_alignment_response": "[skipped: single-segment transcript, no alignment needed]",
+      "segments": [
+        {
+          "segment": "THAT'S RIGHT",
+          "corresponding_span": "RIGHT",
+          "severity": 1,
+          "justification": "The predicted segment \"THAT'S RIGHT\" retains the same propositional content as the reference span \"RIGHT,\" with only a minor addition of filler words that do not alter the meaning. The core assertion remains unchanged, making it a trivial/cosmetic error.",
+          "flagged": false,
+          "raw_judge_response": "Severity: 1\n\nJustification: The predicted segment \"THAT'S RIGHT\" retains the same propositional content as the reference span \"RIGHT,\" with only a minor addition of filler words that do not alter the meaning. The core assertion remains unchanged, making it a trivial/cosmetic error."
+        }
+      ]
+    },
+    {
+      "dataset_index": 27,
+      "ref": "MM HMM",
+      "hyp": "UM",
+      "raw_alignment_response": "[skipped: single-segment transcript, no alignment needed]",
+      "segments": [
+        {
+          "segment": "UM",
+          "corresponding_span": "MM HMM",
+          "severity": 1,
+          "justification": "The transcription error changes \"MM HMM\" to \"UM,\" which is a surface-level alteration involving filler words. The meaning remains confidently and cleanly recoverable, as both expressions serve similar conversational functions without altering the propositional content or introducing ambiguity.",
+          "flagged": false,
+          "raw_judge_response": "Severity: 1\n\nJustification: The transcription error changes \"MM HMM\" to \"UM,\" which is a surface-level alteration involving filler words. The meaning remains confidently and cleanly recoverable, as both expressions serve similar conversational functions without altering the propositional content or introducing ambiguity."
+        }
+      ]
+    },
+    {
+      "dataset_index": 29,
+      "ref": "THAT'S A BIT THAT'S QUITE CREATIVE ACTUALLY YEAH",
+      "hyp": "That's quite creative, actually. Yeah.",
+      "raw_alignment_response": "[1] THAT'S A BIT THAT'S QUITE CREATIVE ACTUALLY  \n[2] YEAH",
+      "segments": [
+        {
+          "segment": "That's quite creative, actually.",
+          "corresponding_span": "THAT'S A BIT THAT'S QUITE CREATIVE ACTUALLY",
+          "severity": 2,
+          "justification": "The ASR output omits \"A BIT\" from the reference, which introduces ambiguity regarding the degree of creativity being described. This omission requires reconstruction to fully understand the intended meaning, fitting the criteria for an ambiguous meaning shift without asserting a different material fact.",
+          "flagged": true,
+          "raw_judge_response": "Severity: 2\n\nJustification: The ASR output omits \"A BIT\" from the reference, which introduces ambiguity regarding the degree of creativity being described. This omission requires reconstruction to fully understand the intended meaning, fitting the criteria for an ambiguous meaning shift without asserting a different material fact."
+        },
+        {
+          "segment": "Yeah.",
+          "corresponding_span": "YEAH",
+          "severity": 0,
+          "justification": "The difference between \"YEAH\" and \"Yeah.\" is purely a matter of casing and punctuation, with no change to the propositional content or meaning. This falls under surface form variations that do not affect the underlying message.",
+          "flagged": false,
+          "raw_judge_response": "Severity: 0\n\nJustification: The difference between \"YEAH\" and \"Yeah.\" is purely a matter of casing and punctuation, with no change to the propositional content or meaning. This falls under surface form variations that do not affect the underlying message."
+        }
+      ]
+    },
+    {
+      "dataset_index": 32,
+      "ref": "NO IT WAS FULLY JUST TAG TAGS WE'D CALL",
+      "hyp": "No, it's fully just tag. Tags we'd call.",
+      "raw_alignment_response": "[1] NO IT WAS FULLY JUST TAG  \n[2] TAGS WE'D CALL",
+      "segments": [
+        {
+          "segment": "No, it's fully just tag.",
+          "corresponding_span": "NO IT WAS FULLY JUST TAG",
+          "severity": 1,
+          "justification": "The ASR output introduces minor surface-level changes, such as capitalization and punctuation (\"No,\" vs. \"NO\"), which do not alter the propositional content of the statement. The meaning is confidently recoverable without any ambiguity or material fact change.",
+          "flagged": false,
+          "raw_judge_response": "Severity: 1\n\nJustification: The ASR output introduces minor surface-level changes, such as capitalization and punctuation (\"No,\" vs. \"NO\"), which do not alter the propositional content of the statement. The meaning is confidently recoverable without any ambiguity or material fact change."
+        },
+        {
+          "segment": "Tags we'd call.",
+          "corresponding_span": "TAGS WE'D CALL",
+          "severity": 0,
+          "justification": "The predicted segment \"Tags we'd call.\" differs from the reference span \"TAGS WE'D CALL\" only in terms of casing and punctuation, which do not alter the propositional content or meaning. These are surface-level changes that fall under level 0 as they have no impact on the meaning.",
+          "flagged": false,
+          "raw_judge_response": "Severity: 0\n\nJustification: The predicted segment \"Tags we'd call.\" differs from the reference span \"TAGS WE'D CALL\" only in terms of casing and punctuation, which do not alter the propositional content or meaning. These are surface-level changes that fall under level 0 as they have no impact on the meaning."
+        }
+      ]
+    },
+    {
+      "dataset_index": 37,
+      "ref": "YEAH",
+      "hyp": "Yeah.",
+      "raw_alignment_response": "[skipped: single-segment transcript, no alignment needed]",
+      "segments": [
+        {
+          "segment": "Yeah.",
+          "corresponding_span": "YEAH",
+          "severity": 0,
+          "justification": "The difference between \"YEAH\" and \"Yeah.\" is purely a matter of casing and punctuation, with no change to the propositional content or meaning. This falls under surface form variations that do not affect the underlying message.",
+          "flagged": false,
+          "raw_judge_response": "Severity: 0\n\nJustification: The difference between \"YEAH\" and \"Yeah.\" is purely a matter of casing and punctuation, with no change to the propositional content or meaning. This falls under surface form variations that do not affect the underlying message."
+        }
+      ]
+    },
+    {
+      "dataset_index": 41,
+      "ref": "IT'S A LOT SAFER",
+      "hyp": "It's a lot safer.",
+      "raw_alignment_response": "[skipped: single-segment transcript, no alignment needed]",
+      "segments": [
+        {
+          "segment": "It's a lot safer.",
+          "corresponding_span": "IT'S A LOT SAFER",
+          "severity": 0,
+          "justification": "The predicted segment \"It's a lot safer\" matches the reference span \"IT'S A LOT SAFER\" with only differences in capitalization and punctuation, which are considered surface form variations that do not alter the propositional content or meaning.",
+          "flagged": false,
+          "raw_judge_response": "Severity: 0\n\nJustification: The predicted segment \"It's a lot safer\" matches the reference span \"IT'S A LOT SAFER\" with only differences in capitalization and punctuation, which are considered surface form variations that do not alter the propositional content or meaning."
+        }
+      ]
+    },
+    {
+      "dataset_index": 42,
+      "ref": "DID YOU DO MUCH DODGE BALL WHEN YOU WERE IN PRIMARY SCHOOL",
+      "hyp": "Do you do much dodgeball when you're in primary school?",
+      "raw_alignment_response": "[skipped: single-segment transcript, no alignment needed]",
+      "segments": [
+        {
+          "segment": "Do you do much dodgeball when you're in primary school?",
+          "corresponding_span": "DID YOU DO MUCH DODGE BALL WHEN YOU WERE IN PRIMARY SCHOOL",
+          "severity": 2,
+          "justification": "The ASR output changes \"DID YOU DO MUCH DODGE BALL\" to \"Do you do much dodgeball,\" which introduces a shift from past tense to present tense, requiring reconstruction of the intended meaning. This change creates ambiguity about whether the question refers to past experiences or current activities, necessitating clarification for accurate interpretation.",
+          "flagged": true,
+          "raw_judge_response": "Severity: 2\n\nJustification: The ASR output changes \"DID YOU DO MUCH DODGE BALL\" to \"Do you do much dodgeball,\" which introduces a shift from past tense to present tense, requiring reconstruction of the intended meaning. This change creates ambiguity about whether the question refers to past experiences or current activities, necessitating clarification for accurate interpretation."
+        }
+      ]
+    },
+    {
+      "dataset_index": 51,
+      "ref": "YEAH",
+      "hyp": "Yeah.",
+      "raw_alignment_response": "[skipped: single-segment transcript, no alignment needed]",
+      "segments": [
+        {
+          "segment": "Yeah.",
+          "corresponding_span": "YEAH",
+          "severity": 0,
+          "justification": "The difference between \"YEAH\" and \"Yeah.\" is purely a matter of casing and punctuation, with no change to the propositional content or meaning. This falls under surface form variations that do not affect the semantic level.",
+          "flagged": false,
+          "raw_judge_response": "Severity: 0\n\nJustification: The difference between \"YEAH\" and \"Yeah.\" is purely a matter of casing and punctuation, with no change to the propositional content or meaning. This falls under surface form variations that do not affect the semantic level."
+        }
+      ]
+    },
+    {
+      "dataset_index": 52,
+      "ref": "AND THEN THERE WAS LIKE A PIG STYLE WHERE YOU LIKE CHASE THE PERSON WITH THE BALL AND JUST THROW IT AT THEM WHICH LIKE",
+      "hyp": "And then there was like a Tig style where you like chase the person with the ball, and just throw it at them, which, like.",
+      "raw_alignment_response": "[skipped: single-segment transcript, no alignment needed]",
+      "segments": [
+        {
+          "segment": "And then there was like a Tig style where you like chase the person with the ball, and just throw it at them, which, like.",
+          "corresponding_span": "AND THEN THERE WAS LIKE A PIG STYLE WHERE YOU LIKE CHASE THE PERSON WITH THE BALL AND JUST THROW IT AT THEM WHICH LIKE",
+          "severity": 1,
+          "justification": "The transcription error changes \"Pig\" to \"Tig,\" which is a minor spelling variation that does not significantly alter the meaning or context of the sentence. The intended concept remains understandable, and there's no material fact change, making it a trivial/cosmetic error.",
+          "flagged": false,
+          "raw_judge_response": "Severity: 1\n\nJustification: The transcription error changes \"Pig\" to \"Tig,\" which is a minor spelling variation that does not significantly alter the meaning or context of the sentence. The intended concept remains understandable, and there's no material fact change, making it a trivial/cosmetic error."
+        }
+      ]
+    },
+    {
+      "dataset_index": 57,
+      "ref": "YEAH WAS YOUR PRIMARY SCHOOL PRETTY BIG",
+      "hyp": "Yeah, was your primary school pretty big?",
+      "raw_alignment_response": "[skipped: single-segment transcript, no alignment needed]",
+      "segments": [
+        {
+          "segment": "Yeah, was your primary school pretty big?",
+          "corresponding_span": "YEAH WAS YOUR PRIMARY SCHOOL PRETTY BIG",
+          "severity": 1,
+          "justification": "The predicted segment includes an additional comma and a question mark, which are surface-level changes that do not alter the propositional content or meaning of the original reference span. These punctuation differences are cosmetic and do not affect the overall message being conveyed.",
+          "flagged": false,
+          "raw_judge_response": "Severity: 1\n\nJustification: The predicted segment includes an additional comma and a question mark, which are surface-level changes that do not alter the propositional content or meaning of the original reference span. These punctuation differences are cosmetic and do not affect the overall message being conveyed."
+        }
+      ]
+    },
+    {
+      "dataset_index": 58,
+      "ref": "YEAH BIG BIG HALL FOR THE SIZE I REMEMBER GOING BACK THERE WHEN I WAS A LOT OLDER AND I REMEMBER SEEING THE BASKETBALL HOOPS IN THE HALL AND I COULD LIKE DUNK ON THEM WHICH WAS SO WEIRD BECAUSE BASKETBALL HOOPS ARE SUPPOSED TO BE LIKE TEN FEET TALL AND AT THE",
+      "hyp": "Yeah, big, big hall for the size. I remember going back there when I was a lot older and I remember seeing the basketball hoops in the hall and I could like dunk on them, which is so weird because basketball hoops are supposed to be like ten feet tall and at the",
+      "raw_alignment_response": "[1] YEAH BIG BIG HALL FOR THE SIZE  \n[2] I REMEMBER GOING BACK THERE WHEN I WAS A LOT OLDER AND I REMEMBER SEEING THE BASKETBALL HOOPS IN THE HALL AND I COULD LIKE DUNK ON THEM WHICH WAS SO WEIRD BECAUSE BASKETBALL HOOPS ARE SUPPOSED TO BE LIKE TEN FEET TALL AND AT THE",
+      "segments": [
+        {
+          "segment": "Yeah, big, big hall for the size.",
+          "corresponding_span": "YEAH BIG BIG HALL FOR THE SIZE",
+          "severity": 1,
+          "justification": "The ASR output introduces commas that are not present in the reference span, but these changes are superficial and do not alter the propositional content or meaning of the sentence. The intended message remains confidently recoverable without any material fact change.",
+          "flagged": false,
+          "raw_judge_response": "Severity: 1\n\nJustification: The ASR output introduces commas that are not present in the reference span, but these changes are superficial and do not alter the propositional content or meaning of the sentence. The intended message remains confidently recoverable without any material fact change."
+        },
+        {
+          "segment": "I remember going back there when I was a lot older and I remember seeing the basketball hoops in the hall and I could like dunk on them, which is so weird because basketball hoops are supposed to be like ten feet tall and at the",
+          "corresponding_span": "I REMEMBER GOING BACK THERE WHEN I WAS A LOT OLDER AND I REMEMBER SEEING THE BASKETBALL HOOPS IN THE HALL AND I COULD LIKE DUNK ON THEM WHICH WAS SO WEIRD BECAUSE BASKETBALL HOOPS ARE SUPPOSED TO BE LIKE TEN FEET TALL AND AT THE",
+          "severity": 2,
+          "justification": "The ASR output omits \"the\" at the end of the sentence, which results in a loss of detail but does not introduce ambiguity or change the meaning significantly. This qualifies as an ambiguous meaning shift because it requires reconstruction to understand the intended reference, though no material fact is altered.",
+          "flagged": true,
+          "raw_judge_response": "Severity: 2\n\nJustification: The ASR output omits \"the\" at the end of the sentence, which results in a loss of detail but does not introduce ambiguity or change the meaning significantly. This qualifies as an ambiguous meaning shift because it requires reconstruction to understand the intended reference, though no material fact is altered."
+        }
+      ]
+    },
+    {
+      "dataset_index": 59,
+      "ref": "YEAH",
+      "hyp": "Yeah.",
+      "raw_alignment_response": "[skipped: single-segment transcript, no alignment needed]",
+      "segments": [
+        {
+          "segment": "Yeah.",
+          "corresponding_span": "YEAH",
+          "severity": 0,
+          "justification": "The difference between \"YEAH\" and \"Yeah.\" is purely a matter of casing and punctuation, with no impact on the propositional content or meaning. This falls under surface form changes that do not alter the intended message.",
+          "flagged": false,
+          "raw_judge_response": "Severity: 0\n\nJustification: The difference between \"YEAH\" and \"Yeah.\" is purely a matter of casing and punctuation, with no impact on the propositional content or meaning. This falls under surface form changes that do not alter the intended message."
+        }
+      ]
+    },
+    {
+      "dataset_index": 60,
+      "ref": "PRIMARY SCHOOL IT WASN'T EVEN SEVEN FEET SO IT WAS VERY FUN TO GO BACK THERE THEN MESS ABOUT THEREAFTER I DID SOME UM COACHING",
+      "hyp": "Primary school. It wasn't even seven feet, so it was very fun to go back there and then mess about there. After I did some coaching.",
+      "raw_alignment_response": "[1] PRIMARY SCHOOL  \n[2] IT WASN'T EVEN SEVEN FEET SO IT WAS VERY FUN TO GO BACK THERE THEN MESS ABOUT THERE  \n[3] AFTER I DID SOME UM COACHING  \n\n(Note: The word \"AFTER\" in the reference transcript corresponds to \"After\" in segment 3, and \"UM\" is considered part of the phrase \"some um coaching.\")",
+      "segments": [
+        {
+          "segment": "Primary school.",
+          "corresponding_span": "PRIMARY SCHOOL",
+          "severity": 0,
+          "justification": "The difference between \"PRIMARY SCHOOL\" and \"Primary school.\" is purely a matter of casing and punctuation, with no change to the propositional content or meaning. This falls under surface form variations that do not affect the overall message.",
+          "flagged": false,
+          "raw_judge_response": "Severity: 0\n\nJustification: The difference between \"PRIMARY SCHOOL\" and \"Primary school.\" is purely a matter of casing and punctuation, with no change to the propositional content or meaning. This falls under surface form variations that do not affect the overall message."
+        },
+        {
+          "segment": "It wasn't even seven feet, so it was very fun to go back there and then mess about there.",
+          "corresponding_span": "IT WASN'T EVEN SEVEN FEET SO IT WAS VERY FUN TO GO BACK THERE THEN MESS ABOUT THERE",
+          "severity": 1,
+          "justification": "The ASR output introduces a comma and changes \"THEN\" to \"and then,\" which are minor surface form differences that do not alter the propositional content or meaning of the sentence. These changes are trivial and cosmetic, with no impact on the overall message conveyed by the reference span.",
+          "flagged": false,
+          "raw_judge_response": "Severity: 1\n\nJustification: The ASR output introduces a comma and changes \"THEN\" to \"and then,\" which are minor surface form differences that do not alter the propositional content or meaning of the sentence. These changes are trivial and cosmetic, with no impact on the overall message conveyed by the reference span."
+        },
+        {
+          "segment": "After I did some coaching.",
+          "corresponding_span": "AFTER I DID SOME UM COACHING",
+          "severity": 1,
+          "justification": "The ASR output omits filler words (\"um\") and changes \"AFTER\" to lowercase, but the propositional content remains unchanged. These are surface-level differences that do not affect the meaning or factual content of the statement.",
+          "flagged": false,
+          "raw_judge_response": "Severity: 1\n\nJustification: The ASR output omits filler words (\"um\") and changes \"AFTER\" to lowercase, but the propositional content remains unchanged. These are surface-level differences that do not affect the meaning or factual content of the statement."
+        }
+      ]
+    },
+    {
+      "dataset_index": 61,
+      "ref": "YEAH",
+      "hyp": "Yeah.",
+      "raw_alignment_response": "[skipped: single-segment transcript, no alignment needed]",
+      "segments": [
+        {
+          "segment": "Yeah.",
+          "corresponding_span": "YEAH",
+          "severity": 0,
+          "justification": "The difference between \"YEAH\" and \"Yeah.\" is purely a matter of casing and punctuation, with no impact on the propositional content or meaning. This falls under surface form changes that do not alter the intended message.",
+          "flagged": false,
+          "raw_judge_response": "Severity: 0\n\nJustification: The difference between \"YEAH\" and \"Yeah.\" is purely a matter of casing and punctuation, with no impact on the propositional content or meaning. This falls under surface form changes that do not alter the intended message."
+        }
+      ]
+    },
+    {
+      "dataset_index": 64,
+      "ref": "NOTHING",
+      "hyp": "Nothing.",
+      "raw_alignment_response": "[skipped: single-segment transcript, no alignment needed]",
+      "segments": [
+        {
+          "segment": "Nothing.",
+          "corresponding_span": "NOTHING",
+          "severity": 0,
+          "justification": "The difference between \"NOTHING\" and \"Nothing.\" is purely a matter of capitalization, which does not alter the propositional content or meaning. This falls under surface form changes with no impact on the intended message.",
+          "flagged": false,
+          "raw_judge_response": "Severity: 0\n\nJustification: The difference between \"NOTHING\" and \"Nothing.\" is purely a matter of capitalization, which does not alter the propositional content or meaning. This falls under surface form changes with no impact on the intended message."
+        }
+      ]
+    },
+    {
+      "dataset_index": 69,
+      "ref": "OBVIOUSLY SCOOBY DOO",
+      "hyp": "Obviously, Scooby-Doo.",
+      "raw_alignment_response": "[1] Obviously  \n[2] SCOOBY DOO.  \n\n(Note: The predicted segments include a comma and a period that are not present in the reference transcript, but they align with the intended segmentation.)",
+      "segments": [
+        {
+          "segment": "Obviously,",
+          "corresponding_span": "Obviously",
+          "severity": 0,
+          "justification": "The predicted segment \"Obviously,\" includes a comma that is absent in the reference span \"Obviously.\" This difference pertains only to punctuation, which does not alter the propositional content or meaning of the word. Therefore, it falls under surface form changes with no impact on meaning.",
+          "flagged": false,
+          "raw_judge_response": "Severity: 0\n\nJustification: The predicted segment \"Obviously,\" includes a comma that is absent in the reference span \"Obviously.\" This difference pertains only to punctuation, which does not alter the propositional content or meaning of the word. Therefore, it falls under surface form changes with no impact on meaning."
+        },
+        {
+          "segment": "Scooby-Doo.",
+          "corresponding_span": "SCOOBY DOO.",
+          "severity": 0,
+          "justification": "The predicted segment \"Scooby-Doo\" is a minor surface form variation of the reference span \"SCOOBY DOO,\" differing only in capitalization and hyphenation. There is no change to the propositional content or meaning, as both refer to the same entity without any ambiguity or factual alteration.",
+          "flagged": false,
+          "raw_judge_response": "Severity: 0\n\nJustification: The predicted segment \"Scooby-Doo\" is a minor surface form variation of the reference span \"SCOOBY DOO,\" differing only in capitalization and hyphenation. There is no change to the propositional content or meaning, as both refer to the same entity without any ambiguity or factual alteration."
+        }
+      ]
+    },
+    {
+      "dataset_index": 72,
+      "ref": "DO YOU WANNA DESCRIBE WHAT SCOOBY DOO WAS",
+      "hyp": "Do you want to describe what Scooby-Doo was?",
+      "raw_alignment_response": "[skipped: single-segment transcript, no alignment needed]",
+      "segments": [
+        {
+          "segment": "Do you want to describe what Scooby-Doo was?",
+          "corresponding_span": "DO YOU WANNA DESCRIBE WHAT SCOOBY DOO WAS",
+          "severity": 1,
+          "justification": "The transcription error involves minor surface form changes, such as capitalization (\"DO\" vs. \"Do\") and the addition of a hyphen in \"Scooby-Doo.\" These do not alter the propositional content or meaning of the sentence, making it a trivial/cosmetic error with confident recovery of the intended message.",
+          "flagged": false,
+          "raw_judge_response": "Severity: 1\n\nJustification: The transcription error involves minor surface form changes, such as capitalization (\"DO\" vs. \"Do\") and the addition of a hyphen in \"Scooby-Doo.\" These do not alter the propositional content or meaning of the sentence, making it a trivial/cosmetic error with confident recovery of the intended message."
+        }
+      ]
+    },
+    {
+      "dataset_index": 73,
+      "ref": "HONESTLY EVEN NOW I CAN'T DESCRIBE IT",
+      "hyp": "Honestly, even now I can't describe it.",
+      "raw_alignment_response": "[skipped: single-segment transcript, no alignment needed]",
+      "segments": [
+        {
+          "segment": "Honestly, even now I can't describe it.",
+          "corresponding_span": "HONESTLY EVEN NOW I CAN'T DESCRIBE IT",
+          "severity": 1,
+          "justification": "The predicted segment includes an additional comma after \"Honestly,\" which is a surface form difference and does not alter the propositional content or meaning of the sentence. This qualifies as a trivial/cosmetic error, where the meaning remains confidently and cleanly recoverable without any material fact changes.",
+          "flagged": false,
+          "raw_judge_response": "Severity: 1\n\nJustification: The predicted segment includes an additional comma after \"Honestly,\" which is a surface form difference and does not alter the propositional content or meaning of the sentence. This qualifies as a trivial/cosmetic error, where the meaning remains confidently and cleanly recoverable without any material fact changes."
+        }
+      ]
+    },
+    {
+      "dataset_index": 76,
+      "ref": "YEAH IT'S REALLY QUITE SOMETHING",
+      "hyp": "It's really quite something.",
+      "raw_alignment_response": "[skipped: single-segment transcript, no alignment needed]",
+      "segments": [
+        {
+          "segment": "It's really quite something.",
+          "corresponding_span": "YEAH IT'S REALLY QUITE SOMETHING",
+          "severity": 1,
+          "justification": "The predicted segment \"It's really quite something\" differs from the reference span \"YEAH IT'S REALLY QUITE SOMETHING\" primarily in the omission of the interjection \"YEAH.\" This change is a surface-level alteration that does not affect the propositional content or meaning, as the core sentiment and message remain intact. The meaning is confidently recoverable without any ambiguity or material fact changes.",
+          "flagged": false,
+          "raw_judge_response": "Severity: 1\n\nJustification: The predicted segment \"It's really quite something\" differs from the reference span \"YEAH IT'S REALLY QUITE SOMETHING\" primarily in the omission of the interjection \"YEAH.\" This change is a surface-level alteration that does not affect the propositional content or meaning, as the core sentiment and message remain intact. The meaning is confidently recoverable without any ambiguity or material fact changes."
+        }
+      ]
+    },
+    {
+      "dataset_index": 77,
+      "ref": "YEAH",
+      "hyp": "Okay.",
+      "raw_alignment_response": "[skipped: single-segment transcript, no alignment needed]",
+      "segments": [
+        {
+          "segment": "Okay.",
+          "corresponding_span": "YEAH",
+          "severity": 3,
+          "justification": "The predicted segment \"Okay.\" asserts a different material fact compared to the reference span \"YEAH,\" which indicates agreement or affirmation. This substitution changes the nature of the response from an affirmative acknowledgment to a neutral or possibly non-committal statement, thus representing a clear factual error without ambiguity about the new claim.",
+          "flagged": true,
+          "raw_judge_response": "Severity: 3\n\nJustification: The predicted segment \"Okay.\" asserts a different material fact compared to the reference span \"YEAH,\" which indicates agreement or affirmation. This substitution changes the nature of the response from an affirmative acknowledgment to a neutral or possibly non-committal statement, thus representing a clear factual error without ambiguity about the new claim."
+        }
+      ]
+    },
+    {
+      "dataset_index": 89,
+      "ref": "IT JUST SOUNDS AWFUL",
+      "hyp": "It just sounds awful.",
+      "raw_alignment_response": "[skipped: single-segment transcript, no alignment needed]",
+      "segments": [
+        {
+          "segment": "It just sounds awful.",
+          "corresponding_span": "IT JUST SOUNDS AWFUL",
+          "severity": 0,
+          "justification": "The predicted segment \"It just sounds awful\" is identical to the reference span \"IT JUST SOUNDS AWFUL,\" with only a difference in capitalization, which does not affect the propositional content or meaning. This falls under surface form variations that do not change the meaning.",
+          "flagged": false,
+          "raw_judge_response": "Severity: 0\n\nJustification: The predicted segment \"It just sounds awful\" is identical to the reference span \"IT JUST SOUNDS AWFUL,\" with only a difference in capitalization, which does not affect the propositional content or meaning. This falls under surface form variations that do not change the meaning."
+        }
+      ]
+    },
+    {
+      "dataset_index": 90,
+      "ref": "IT'S SO GOOD THE KID CAN",
+      "hyp": "It's so good. The kid can.",
+      "raw_alignment_response": "[1] IT'S SO GOOD  \n[2] THE KID CAN",
+      "segments": [
+        {
+          "segment": "It's so good.",
+          "corresponding_span": "IT'S SO GOOD",
+          "severity": 0,
+          "justification": "The predicted segment \"It's so good.\" differs from the reference span \"IT'S SO GOOD\" only in terms of capitalization and punctuation, which are surface-level changes that do not affect the propositional content or meaning. Therefore, there is no change to the meaning at all.",
+          "flagged": false,
+          "raw_judge_response": "Severity: 0\n\nJustification: The predicted segment \"It's so good.\" differs from the reference span \"IT'S SO GOOD\" only in terms of capitalization and punctuation, which are surface-level changes that do not affect the propositional content or meaning. Therefore, there is no change to the meaning at all."
+        },
+        {
+          "segment": "The kid can.",
+          "corresponding_span": "THE KID CAN",
+          "severity": 0,
+          "justification": "The predicted segment \"The kid can.\" differs from the reference span \"THE KID CAN\" only in terms of casing and punctuation, which are surface-level changes that do not affect the propositional content or meaning. There is no change to the core message conveyed by the sentence.",
+          "flagged": false,
+          "raw_judge_response": "Severity: 0\n\nJustification: The predicted segment \"The kid can.\" differs from the reference span \"THE KID CAN\" only in terms of casing and punctuation, which are surface-level changes that do not affect the propositional content or meaning. There is no change to the core message conveyed by the sentence."
+        }
+      ]
+    },
+    {
+      "dataset_index": 91,
+      "ref": "A LAD'S GOT A WATCH",
+      "hyp": "It's got to work.",
+      "raw_alignment_response": "[skipped: single-segment transcript, no alignment needed]",
+      "segments": [
+        {
+          "segment": "It's got to work.",
+          "corresponding_span": "A LAD'S GOT A WATCH",
+          "severity": 4,
+          "justification": "The ASR output \"It's got to work\" fundamentally changes the central assertion of the reference span \"A LAD'S GOT A WATCH,\" introducing a new meaning related to functionality rather than possession. This alteration is critical as it reverses or fabricates content, fitting the criteria for a severity level 4 error.",
+          "flagged": true,
+          "raw_judge_response": "Severity: 4\n\nJustification: The ASR output \"It's got to work\" fundamentally changes the central assertion of the reference span \"A LAD'S GOT A WATCH,\" introducing a new meaning related to functionality rather than possession. This alteration is critical as it reverses or fabricates content, fitting the criteria for a severity level 4 error."
+        }
+      ]
+    },
+    {
+      "dataset_index": 95,
+      "ref": "PEPPA PIG UH I THINK I'VE SEEN A BIT OF THAT UH I THINK THAT WAS MORE MY SISTER'S THING",
+      "hyp": "I think I've seen a bit of that. I think that was more of my sister's thing.",
+      "raw_alignment_response": "[1] UH I THINK I'VE SEEN A BIT OF THAT  \n[2] UH I THINK THAT WAS MORE MY SISTER'S THING  \n\nPEPPA PIG is not included in any predicted segments as it does not appear in the given predictions.",
+      "segments": [
+        {
+          "segment": "I think I've seen a bit of that.",
+          "corresponding_span": "UH I THINK I'VE SEEN A BIT OF THAT",
+          "severity": 1,
+          "justification": "The ASR output omits the filler word \"UH\" from the reference span, which is a surface form change that does not alter the propositional content or meaning of the sentence. The core message remains confidently and cleanly recoverable without any material fact changes.",
+          "flagged": false,
+          "raw_judge_response": "Severity: 1\n\nJustification: The ASR output omits the filler word \"UH\" from the reference span, which is a surface form change that does not alter the propositional content or meaning of the sentence. The core message remains confidently and cleanly recoverable without any material fact changes."
+        },
+        {
+          "segment": "I think that was more of my sister's thing.",
+          "corresponding_span": "UH I THINK THAT WAS MORE MY SISTER'S THING",
+          "severity": 1,
+          "justification": "The predicted segment differs slightly from the reference span by omitting \"UH\" and changing \"THAT WAS MORE MY SISTER'S THING\" to \"that was more of my sister's thing,\" which are surface-level changes. These alterations do not affect the propositional content or meaning, making it a trivial/cosmetic error with confident recovery of the original intent.",
+          "flagged": false,
+          "raw_judge_response": "Severity: 1\n\nJustification: The predicted segment differs slightly from the reference span by omitting \"UH\" and changing \"THAT WAS MORE MY SISTER'S THING\" to \"that was more of my sister's thing,\" which are surface-level changes. These alterations do not affect the propositional content or meaning, making it a trivial/cosmetic error with confident recovery of the original intent."
+        }
+      ]
+    },
+    {
+      "dataset_index": 96,
+      "ref": "OH LOVE A BIT OF PEPPA PIG RIGHT",
+      "hyp": "I love the Peppa Pig.",
+      "raw_alignment_response": "[skipped: single-segment transcript, no alignment needed]",
+      "segments": [
+        {
+          "segment": "I love the Peppa Pig.",
+          "corresponding_span": "OH LOVE A BIT OF PEPPA PIG RIGHT",
+          "severity": 3,
+          "justification": "The ASR output changes \"OH LOVE A BIT OF PEPPA PIG RIGHT\" to \"I love the Peppa Pig,\" which introduces a different material fact by specifying \"the Peppa Pig\" instead of just mentioning it in passing. This substitution alters the specificity and context, making it a clear factual error without ambiguity about the new claim.",
+          "flagged": true,
+          "raw_judge_response": "Severity: 3\n\nJustification: The ASR output changes \"OH LOVE A BIT OF PEPPA PIG RIGHT\" to \"I love the Peppa Pig,\" which introduces a different material fact by specifying \"the Peppa Pig\" instead of just mentioning it in passing. This substitution alters the specificity and context, making it a clear factual error without ambiguity about the new claim."
+        }
+      ]
+    },
+    {
+      "dataset_index": 100,
+      "ref": "I'D SAW LIKE EPISODES BECAUSE THEY'D BE ON AFTER STUFF I'D BE WATCHING BUT WOULD NEVER BE",
+      "hyp": "I saw like episodes because they'd be on after stuff I'd be watching, but would never be.",
+      "raw_alignment_response": "[skipped: single-segment transcript, no alignment needed]",
+      "segments": [
+        {
+          "segment": "I saw like episodes because they'd be on after stuff I'd be watching, but would never be.",
+          "corresponding_span": "I'D SAW LIKE EPISODES BECAUSE THEY'D BE ON AFTER STUFF I'D BE WATCHING BUT WOULD NEVER BE",
+          "severity": 2,
+          "justification": "The ASR output omits \"I'D\" at the beginning, leading to a slight ambiguity about who is performing the action of seeing episodes. This omission requires reconstruction for clarity and introduces some doubt regarding intent, fitting an ambiguous meaning shift without asserting a different material fact.",
+          "flagged": true,
+          "raw_judge_response": "Severity: 2\n\nJustification: The ASR output omits \"I'D\" at the beginning, leading to a slight ambiguity about who is performing the action of seeing episodes. This omission requires reconstruction for clarity and introduces some doubt regarding intent, fitting an ambiguous meaning shift without asserting a different material fact."
+        }
+      ]
+    },
+    {
+      "dataset_index": 101,
+      "ref": "YEAH",
+      "hyp": "Yeah.",
+      "raw_alignment_response": "[skipped: single-segment transcript, no alignment needed]",
+      "segments": [
+        {
+          "segment": "Yeah.",
+          "corresponding_span": "YEAH",
+          "severity": 0,
+          "justification": "The difference between \"YEAH\" and \"Yeah.\" is purely a matter of casing and punctuation, with no impact on the propositional content or meaning. This falls under surface form changes that do not alter the intended message.",
+          "flagged": false,
+          "raw_judge_response": "Severity: 0\n\nJustification: The difference between \"YEAH\" and \"Yeah.\" is purely a matter of casing and punctuation, with no impact on the propositional content or meaning. This falls under surface form changes that do not alter the intended message."
+        }
+      ]
+    },
+    {
+      "dataset_index": 113,
+      "ref": "ATE WORMS",
+      "hyp": "Eight words.",
+      "raw_alignment_response": "[skipped: single-segment transcript, no alignment needed]",
+      "segments": [
+        {
+          "segment": "Eight words.",
+          "corresponding_span": "ATE WORMS",
+          "severity": 3,
+          "justification": "The ASR output \"Eight words\" unambiguously asserts a different material fact compared to the reference span \"ATE WORMS,\" as it changes the entity from an action involving consuming worms to a numerical count of words, with no real ambiguity about this new claim. This constitutes a clear factual error by substituting one plausible content for another entirely different one.",
+          "flagged": true,
+          "raw_judge_response": "Severity: 3\n\nJustification: The ASR output \"Eight words\" unambiguously asserts a different material fact compared to the reference span \"ATE WORMS,\" as it changes the entity from an action involving consuming worms to a numerical count of words, with no real ambiguity about this new claim. This constitutes a clear factual error by substituting one plausible content for another entirely different one."
+        }
+      ]
+    },
+    {
+      "dataset_index": 114,
+      "ref": "OH WORMS THAT MAKES MORE SENSE STILL WEIRD BUT IT MAKES MORE SENSE",
+      "hyp": "Oh, worms, that makes more sense. It's still weird but it makes more sense.",
+      "raw_alignment_response": "[1] OH WORMS THAT MAKES MORE SENSE  \n[2] STILL WEIRD BUT IT MAKES MORE SENCE",
+      "segments": [
+        {
+          "segment": "Oh, worms, that makes more sense.",
+          "corresponding_span": "OH WORMS THAT MAKES MORE SENSE",
+          "severity": 1,
+          "justification": "The ASR output introduces punctuation and filler words (\"Oh, worms,\"), but these changes are superficial and do not alter the propositional content of the reference span. The meaning remains confidently recoverable without any material fact change.",
+          "flagged": false,
+          "raw_judge_response": "Severity: 1\n\nJustification: The ASR output introduces punctuation and filler words (\"Oh, worms,\"), but these changes are superficial and do not alter the propositional content of the reference span. The meaning remains confidently recoverable without any material fact change."
+        },
+        {
+          "segment": "It's still weird but it makes more sense.",
+          "corresponding_span": "STILL WEIRD BUT IT MAKES MORE SENCE",
+          "severity": 1,
+          "justification": "The ASR output corrects minor spelling errors (\"SENCE\" to \"sense\") and adds a contraction (\"It's\"), but the meaning remains confidently recoverable with no material fact changes. These are surface-level adjustments that do not alter the propositional content of the statement.",
+          "flagged": false,
+          "raw_judge_response": "Severity: 1\n\nJustification: The ASR output corrects minor spelling errors (\"SENCE\" to \"sense\") and adds a contraction (\"It's\"), but the meaning remains confidently recoverable with no material fact changes. These are surface-level adjustments that do not alter the propositional content of the statement."
+        }
+      ]
+    },
+    {
+      "dataset_index": 120,
+      "ref": "I'D ASK WHAT THAT'S ABOUT BUT I THINK IT'S PRETTY INTUITIVE",
+      "hyp": "I'd ask what that's about, but I think it's pretty intuitive.",
+      "raw_alignment_response": "[skipped: single-segment transcript, no alignment needed]",
+      "segments": [
+        {
+          "segment": "I'd ask what that's about, but I think it's pretty intuitive.",
+          "corresponding_span": "I'D ASK WHAT THAT'S ABOUT BUT I THINK IT'S PRETTY INTUITIVE",
+          "severity": 0,
+          "justification": "The predicted segment is identical to the reference span, with no changes in meaning or content. The only difference is the addition of a comma for clarity, which does not affect the propositional content.",
+          "flagged": false,
+          "raw_judge_response": "Severity: 0\n\nJustification: The predicted segment is identical to the reference span, with no changes in meaning or content. The only difference is the addition of a comma for clarity, which does not affect the propositional content."
+        }
+      ]
+    },
+    {
+      "dataset_index": 123,
+      "ref": "IT'S LITERALLY EVERYTHING YOU NEED TO KNOW ABOUT THE WEATHER IN ONE BOOK I CAN JUST LOOK OUTSIDE AND BE LIKE YEAH IT'S GONNA RAIN TWO HUNDRED MILLILITERS TODAY",
+      "hyp": "It's literally everything you need to know about the weather in one book. I can just look outside and be like, \"Yep, it's gonna rain 200 milliliters today.\"",
+      "raw_alignment_response": "[1] \"IT'S LITERALLY EVERYTHING YOU NEED TO KNOW ABOUT THE WEATHER IN ONE BOOK\"  \n[2] \"I CAN JUST LOOK OUTSIDE AND BE LIKE YEAH IT'S GONNA RAIN TWO HUNDRED MILLILITERS TODAY\"",
+      "segments": [
+        {
+          "segment": "It's literally everything you need to know about the weather in one book.",
+          "corresponding_span": "IT'S LITERALLY EVERYTHING YOU NEED TO KNOW ABOUT THE WEATHER IN ONE BOOK",
+          "severity": 0,
+          "justification": "The predicted segment is identical to the reference span, with no changes in meaning or content. There are only minor differences in capitalization and punctuation that do not affect the propositional content of the sentence.",
+          "flagged": false,
+          "raw_judge_response": "Severity: 0\n\nJustification: The predicted segment is identical to the reference span, with no changes in meaning or content. There are only minor differences in capitalization and punctuation that do not affect the propositional content of the sentence."
+        },
+        {
+          "segment": "I can just look outside and be like, \"Yep, it's gonna rain 200 milliliters today.\"",
+          "corresponding_span": "I CAN JUST LOOK OUTSIDE AND BE LIKE YEAH IT'S GONNA RAIN TWO HUNDRED MILLILITERS TODAY",
+          "severity": 3,
+          "justification": "The ASR output changes \"TWO HUNDRED\" to \"200,\" which is a clear factual error regarding the quantity of rain, altering the material fact without ambiguity. This change affects the precision of the statement but does not reverse or fundamentally alter the central assertion about it raining.",
+          "flagged": true,
+          "raw_judge_response": "Severity: 3\n\nJustification: The ASR output changes \"TWO HUNDRED\" to \"200,\" which is a clear factual error regarding the quantity of rain, altering the material fact without ambiguity. This change affects the precision of the statement but does not reverse or fundamentally alter the central assertion about it raining."
+        }
+      ]
+    },
+    {
+      "dataset_index": 135,
+      "ref": "OH MY GOD GRAPES ARE AMAZING MY MOM HAD TO ALWAYS BUY AN EXTRA PACK 'CAUSE I JUST MUNCH IT LIKE IN THE SHOPPING CENTER OR IN THE IN THE SHOP",
+      "hyp": "Oh my god, grapes are amazing. My mom had to always buy an extra pack because I just munch it like in the shopping center or in the in the shop.",
+      "raw_alignment_response": "[1] OH MY GOD GRAPES ARE AMAZING  \n[2] MY MOM HAD TO ALWAYS BUY AN EXTRA PACK 'CAUSE I JUST MUNCH IT LIKE IN THE SHOPPING CENTER OR IN THE IN THE SHOP",
+      "segments": [
+        {
+          "segment": "Oh my god, grapes are amazing.",
+          "corresponding_span": "OH MY GOD GRAPES ARE AMAZING",
+          "severity": 1,
+          "justification": "The predicted segment includes an additional comma after \"god,\" which is a surface-level change that does not alter the propositional content or meaning of the statement. This qualifies as a trivial/cosmetic error, where the meaning remains confidently and cleanly recoverable without any material fact changes.",
+          "flagged": false,
+          "raw_judge_response": "Severity: 1\n\nJustification: The predicted segment includes an additional comma after \"god,\" which is a surface-level change that does not alter the propositional content or meaning of the statement. This qualifies as a trivial/cosmetic error, where the meaning remains confidently and cleanly recoverable without any material fact changes."
+        },
+        {
+          "segment": "My mom had to always buy an extra pack because I just munch it like in the shopping center or in the in the shop.",
+          "corresponding_span": "MY MOM HAD TO ALWAYS BUY AN EXTRA PACK 'CAUSE I JUST MUNCH IT LIKE IN THE SHOPPING CENTER OR IN THE IN THE SHOP",
+          "severity": 1,
+          "justification": "The predicted segment has minor surface form differences, such as capitalization and punctuation, but the meaning remains confidently recoverable without any material fact changes. These are trivial/cosmetic errors that do not affect the propositional content of the sentence.",
+          "flagged": false,
+          "raw_judge_response": "Severity: 1\n\nJustification: The predicted segment has minor surface form differences, such as capitalization and punctuation, but the meaning remains confidently recoverable without any material fact changes. These are trivial/cosmetic errors that do not affect the propositional content of the sentence."
+        }
+      ]
+    },
+    {
+      "dataset_index": 144,
+      "ref": "YEAH AND THOSE THINGS YOU KNOW WHERE TO GET IT BUT LIKE YOU KNOW ONCE WE GET PAST THIS TOO SMALL <DTMF>",
+      "hyp": "Yeah, and also need to know where to get it. But like, you know, once we get past those two small...",
+      "raw_alignment_response": "To map each predicted segment to its corresponding portion of the reference transcript, we need to identify overlapping or similar phrases and ensure that all parts of the reference are covered without gaps or overlaps.\n\nReference transcript: \"YEAH AND THOSE THINGS YOU KNOW WHERE TO GET IT BUT LIKE YOU KNOW ONCE WE GET PAST THIS TOO SMALL <DTMF>\"\n\nPredicted segments:\n1. Yeah, and also need to know where to get it.\n2. But like, you know, once we get past those two small...\n\nMapping:\n\n[1] \"YEAH AND THOSE THINGS YOU KNOW WHERE TO GET IT\"\n- This segment corresponds to the beginning of the reference transcript up to \"WHERE TO GET IT\".\n\n[2] \"BUT LIKE YOU KNOW ONCE WE GET PAST THIS TOO SMALL <DTMF>\"\n- This segment covers the remaining part of the reference transcript starting from \"BUT LIKE\" to \"<DTMF>\".\n\nThus, the mapping is:\n\n[1] YEAH AND THOSE THINGS YOU KNOW WHERE TO GET IT  \n[2] BUT LIKE YOU KNOW ONCE WE GET PAST THIS TOO SMALL <DTMF>",
+      "segments": [
+        {
+          "segment": "Yeah, and also need to know where to get it.",
+          "corresponding_span": "YEAH AND THOSE THINGS YOU KNOW WHERE TO GET IT",
+          "severity": 3,
+          "justification": "The ASR output changes \"THOSE THINGS\" to \"also need,\" which introduces a different material fact by implying an additional requirement or action, rather than simply identifying items. This alteration unambiguously shifts the meaning from referencing specific things to suggesting a necessity for knowledge about obtaining them.",
+          "flagged": true,
+          "raw_judge_response": "Severity: 3\n\nJustification: The ASR output changes \"THOSE THINGS\" to \"also need,\" which introduces a different material fact by implying an additional requirement or action, rather than simply identifying items. This alteration unambiguously shifts the meaning from referencing specific things to suggesting a necessity for knowledge about obtaining them."
+        },
+        {
+          "segment": "But like, you know, once we get past those two small...",
+          "corresponding_span": "BUT LIKE YOU KNOW ONCE WE GET PAST THIS TOO SMALL <DTMF>",
+          "severity": 2,
+          "justification": "The ASR output changes \"THIS TOO SMALL\" to \"THOSE TWO SMALL,\" introducing ambiguity and requiring reconstruction of the intended meaning. While it's possible to infer that \"this too small\" refers to something specific, the substitution with \"those two small\" creates uncertainty about what exactly is being referred to, thus fitting an ambiguous meaning shift without asserting a different material fact.",
+          "flagged": true,
+          "raw_judge_response": "Severity: 2\n\nJustification: The ASR output changes \"THIS TOO SMALL\" to \"THOSE TWO SMALL,\" introducing ambiguity and requiring reconstruction of the intended meaning. While it's possible to infer that \"this too small\" refers to something specific, the substitution with \"those two small\" creates uncertainty about what exactly is being referred to, thus fitting an ambiguous meaning shift without asserting a different material fact."
+        }
+      ]
+    },
+    {
+      "dataset_index": 146,
+      "ref": "YEAH YOU SHOULD YEAH WHAT'S YOUR FAVORITE THING ABOUT EDINBURGH UH ARTHUR'S SEAT",
+      "hyp": "You should, yeah. What's your favorite thing about Edinburgh? Arthur's Seat.",
+      "raw_alignment_response": "[1] YEAH YOU SHOULD YEAH  \n[2] WHAT'S YOUR FAVORITE THING ABOUT EDINBURGH  \n[3] ARTHUR'S SEAT",
+      "segments": [
+        {
+          "segment": "You should, yeah.",
+          "corresponding_span": "YEAH YOU SHOULD YEAH",
+          "severity": 2,
+          "justification": "The ASR output introduces a comma and changes the order of words, which creates ambiguity regarding whether \"Yeah\" is an affirmation or part of the directive. This requires reconstruction to confidently recover the original meaning, indicating an ambiguous meaning shift rather than a trivial error.",
+          "flagged": true,
+          "raw_judge_response": "Severity: 2\n\nJustification: The ASR output introduces a comma and changes the order of words, which creates ambiguity regarding whether \"Yeah\" is an affirmation or part of the directive. This requires reconstruction to confidently recover the original meaning, indicating an ambiguous meaning shift rather than a trivial error."
+        },
+        {
+          "segment": "What's your favorite thing about Edinburgh?",
+          "corresponding_span": "WHAT'S YOUR FAVORITE THING ABOUT EDINBURGH",
+          "severity": 0,
+          "justification": "The predicted segment is identical to the reference span, with no changes in meaning or content. The only difference is the capitalization of the first letter, which does not affect the propositional content.",
+          "flagged": false,
+          "raw_judge_response": "Severity: 0\n\nJustification: The predicted segment is identical to the reference span, with no changes in meaning or content. The only difference is the capitalization of the first letter, which does not affect the propositional content."
+        },
+        {
+          "segment": "Arthur's Seat.",
+          "corresponding_span": "ARTHUR'S SEAT",
+          "severity": 0,
+          "justification": "The difference between \"ARTHUR'S SEAT\" and \"Arthur's Seat.\" is purely a matter of casing, which does not affect the propositional content or meaning. This falls under surface form changes with no impact on the intended message.",
+          "flagged": false,
+          "raw_judge_response": "Severity: 0\n\nJustification: The difference between \"ARTHUR'S SEAT\" and \"Arthur's Seat.\" is purely a matter of casing, which does not affect the propositional content or meaning. This falls under surface form changes with no impact on the intended message."
+        }
+      ]
+    },
+    {
+      "dataset_index": 150,
+      "ref": "YEAH",
+      "hyp": "Yeah.",
+      "raw_alignment_response": "[skipped: single-segment transcript, no alignment needed]",
+      "segments": [
+        {
+          "segment": "Yeah.",
+          "corresponding_span": "YEAH",
+          "severity": 0,
+          "justification": "The difference between \"YEAH\" and \"Yeah.\" is purely a matter of casing and punctuation, with no change to the propositional content or meaning. This falls under surface form variations that do not affect the underlying message.",
+          "flagged": false,
+          "raw_judge_response": "Severity: 0\n\nJustification: The difference between \"YEAH\" and \"Yeah.\" is purely a matter of casing and punctuation, with no change to the propositional content or meaning. This falls under surface form variations that do not affect the underlying message."
+        }
+      ]
+    },
+    {
+      "dataset_index": 152,
+      "ref": "YOU CAN GET ANYTHING REALLY",
+      "hyp": "You can get anything you really want.",
+      "raw_alignment_response": "[skipped: single-segment transcript, no alignment needed]",
+      "segments": [
+        {
+          "segment": "You can get anything you really want.",
+          "corresponding_span": "YOU CAN GET ANYTHING REALLY",
+          "severity": 2,
+          "justification": "The ASR output introduces an additional phrase \"you really want,\" which creates ambiguity and requires reconstruction of the original meaning. This alteration shifts the focus from a general statement about availability (\"YOU CAN GET ANYTHING REALLY\") to a more specific desire or intention, thus introducing potential doubt about the intent without asserting a completely different fact.",
+          "flagged": true,
+          "raw_judge_response": "Severity: 2\n\nJustification: The ASR output introduces an additional phrase \"you really want,\" which creates ambiguity and requires reconstruction of the original meaning. This alteration shifts the focus from a general statement about availability (\"YOU CAN GET ANYTHING REALLY\") to a more specific desire or intention, thus introducing potential doubt about the intent without asserting a completely different fact."
+        }
+      ]
+    },
+    {
+      "dataset_index": 157,
+      "ref": "UH HMM",
+      "hyp": "Bye.",
+      "raw_alignment_response": "[skipped: single-segment transcript, no alignment needed]",
+      "segments": [
+        {
+          "segment": "Bye.",
+          "corresponding_span": "UH HMM",
+          "severity": 4,
+          "justification": "The predicted segment \"Bye.\" fundamentally changes the meaning of the reference span \"UH HMM,\" which likely indicates hesitation or a pause, into a farewell statement. This alteration introduces new content that is not present in the original, thus reversing or fabricating the central assertion.",
+          "flagged": true,
+          "raw_judge_response": "Severity: 4\n\nJustification: The predicted segment \"Bye.\" fundamentally changes the meaning of the reference span \"UH HMM,\" which likely indicates hesitation or a pause, into a farewell statement. This alteration introduces new content that is not present in the original, thus reversing or fabricating the central assertion."
+        }
+      ]
+    },
+    {
+      "dataset_index": 158,
+      "ref": "FOR ME IT'S UM THE SCENT LIKE THE SMELLS",
+      "hyp": "For me, it's the scent, like the smells.",
+      "raw_alignment_response": "[1] FOR ME IT'S UM THE SCENT  \n[2] LIKE THE SMELLS",
+      "segments": [
+        {
+          "segment": "For me, it's the scent,",
+          "corresponding_span": "FOR ME IT'S UM THE SCENT",
+          "severity": 1,
+          "justification": "The ASR output omits \"um\" and adds a comma, which are surface-level changes that do not alter the propositional content or meaning of the sentence. The core message remains confidently and cleanly recoverable without any material fact change.",
+          "flagged": false,
+          "raw_judge_response": "Severity: 1\n\nJustification: The ASR output omits \"um\" and adds a comma, which are surface-level changes that do not alter the propositional content or meaning of the sentence. The core message remains confidently and cleanly recoverable without any material fact change."
+        },
+        {
+          "segment": "like the smells.",
+          "corresponding_span": "LIKE THE SMELLS",
+          "severity": 0,
+          "justification": "The difference between \"LIKE THE SMELLS\" and \"like the smells.\" is purely a matter of casing and punctuation, with no change in propositional content or meaning. These are surface-level variations that do not affect the semantic interpretation of the phrase.",
+          "flagged": false,
+          "raw_judge_response": "Severity: 0\n\nJustification: The difference between \"LIKE THE SMELLS\" and \"like the smells.\" is purely a matter of casing and punctuation, with no change in propositional content or meaning. These are surface-level variations that do not affect the semantic interpretation of the phrase."
+        }
+      ]
+    },
+    {
+      "dataset_index": 161,
+      "ref": "YEAH I GUESS THE YEAH THE NOT SO NICE CITY SMELLS THAT YOU GET",
+      "hyp": "the yeah, the not so nice city smells that you get.",
+      "raw_alignment_response": "[skipped: single-segment transcript, no alignment needed]",
+      "segments": [
+        {
+          "segment": "the yeah, the not so nice city smells that you get.",
+          "corresponding_span": "YEAH I GUESS THE YEAH THE NOT SO NICE CITY SMELLS THAT YOU GET",
+          "severity": 2,
+          "justification": "The ASR output omits \"YEAH I GUESS\" from the reference, resulting in a loss of detail that introduces ambiguity about the speaker's attitude or certainty. This omission requires reconstruction for full understanding and creates residual doubt regarding the intent behind the statement.",
+          "flagged": true,
+          "raw_judge_response": "Severity: 2\n\nJustification: The ASR output omits \"YEAH I GUESS\" from the reference, resulting in a loss of detail that introduces ambiguity about the speaker's attitude or certainty. This omission requires reconstruction for full understanding and creates residual doubt regarding the intent behind the statement."
+        }
+      ]
+    },
+    {
+      "dataset_index": 168,
+      "ref": "THAT IS TRUE",
+      "hyp": "Yeah, true.",
+      "raw_alignment_response": "[skipped: single-segment transcript, no alignment needed]",
+      "segments": [
+        {
+          "segment": "Yeah, true.",
+          "corresponding_span": "THAT IS TRUE",
+          "severity": 1,
+          "justification": "The predicted segment \"Yeah, true.\" retains the core meaning of the reference span \"THAT IS TRUE\" with only a minor alteration in wording. The addition of \"Yeah,\" is a filler word that does not change the propositional content or introduce ambiguity, making it a trivial/cosmetic error.",
+          "flagged": false,
+          "raw_judge_response": "Severity: 1\n\nJustification: The predicted segment \"Yeah, true.\" retains the core meaning of the reference span \"THAT IS TRUE\" with only a minor alteration in wording. The addition of \"Yeah,\" is a filler word that does not change the propositional content or introduce ambiguity, making it a trivial/cosmetic error."
+        }
+      ]
+    },
+    {
+      "dataset_index": 170,
+      "ref": "YEAH UM JUST A COUPLE OF MINUTES LEFT WHERE IS THE TOPICS",
+      "hyp": "Yeah, um, just a couple minutes left. Where are the topics?",
+      "raw_alignment_response": "[1] YEAH UM JUST A COUPLE OF MINUTES LEFT  \n[2] WHERE IS THE TOPICS",
+      "segments": [
+        {
+          "segment": "Yeah, um, just a couple minutes left.",
+          "corresponding_span": "YEAH UM JUST A COUPLE OF MINUTES LEFT",
+          "severity": 1,
+          "justification": "The ASR output omits the word \"of\" from the reference span, but the meaning remains confidently and cleanly recoverable without any material fact changes. This is a trivial/cosmetic error as it does not affect the propositional content of the sentence.",
+          "flagged": false,
+          "raw_judge_response": "Severity: 1\n\nJustification: The ASR output omits the word \"of\" from the reference span, but the meaning remains confidently and cleanly recoverable without any material fact changes. This is a trivial/cosmetic error as it does not affect the propositional content of the sentence."
+        },
+        {
+          "segment": "Where are the topics?",
+          "corresponding_span": "WHERE IS THE TOPICS",
+          "severity": 3,
+          "justification": "The ASR output changes \"WHERE IS THE TOPICS\" (a singular noun) to \"Where are the topics?\" (a plural noun), which unambiguously asserts a different material fact regarding the number of topics. This alteration is clear and factual, fitting the criteria for a severity level 3 error.",
+          "flagged": true,
+          "raw_judge_response": "Severity: 3\n\nJustification: The ASR output changes \"WHERE IS THE TOPICS\" (a singular noun) to \"Where are the topics?\" (a plural noun), which unambiguously asserts a different material fact regarding the number of topics. This alteration is clear and factual, fitting the criteria for a severity level 3 error."
+        }
+      ]
+    },
+    {
+      "dataset_index": 173,
+      "ref": "ALL RIGHT",
+      "hyp": "All right.",
+      "raw_alignment_response": "[skipped: single-segment transcript, no alignment needed]",
+      "segments": [
+        {
+          "segment": "All right.",
+          "corresponding_span": "ALL RIGHT",
+          "severity": 0,
+          "justification": "The predicted segment \"All right.\" differs from the reference span \"ALL RIGHT\" only in terms of casing and punctuation, which do not alter the propositional content or meaning. These are surface-level changes that fall under no meaning change according to the severity scale.",
+          "flagged": false,
+          "raw_judge_response": "Severity: 0\n\nJustification: The predicted segment \"All right.\" differs from the reference span \"ALL RIGHT\" only in terms of casing and punctuation, which do not alter the propositional content or meaning. These are surface-level changes that fall under no meaning change according to the severity scale."
+        }
+      ]
+    },
+    {
+      "dataset_index": 180,
+      "ref": "WHAT'S THE APPEAL IN ICELAND",
+      "hyp": "What's the appeal in Iceland?",
+      "raw_alignment_response": "[skipped: single-segment transcript, no alignment needed]",
+      "segments": [
+        {
+          "segment": "What's the appeal in Iceland?",
+          "corresponding_span": "WHAT'S THE APPEAL IN ICELAND",
+          "severity": 0,
+          "justification": "The predicted segment \"What's the appeal in Iceland?\" matches the reference span \"WHAT'S THE APPEAL IN ICELAND\" with only differences in capitalization and punctuation, which do not affect the propositional content or meaning of the sentence. These are surface form changes that fall under level 0 on the severity scale.",
+          "flagged": false,
+          "raw_judge_response": "Severity: 0\n\nJustification: The predicted segment \"What's the appeal in Iceland?\" matches the reference span \"WHAT'S THE APPEAL IN ICELAND\" with only differences in capitalization and punctuation, which do not affect the propositional content or meaning of the sentence. These are surface form changes that fall under level 0 on the severity scale."
+        }
+      ]
+    },
+    {
+      "dataset_index": 181,
+      "ref": "IT'S JUST COLD YOU KNOW",
+      "hyp": "It's just cool, you know.",
+      "raw_alignment_response": "[skipped: single-segment transcript, no alignment needed]",
+      "segments": [
+        {
+          "segment": "It's just cool, you know.",
+          "corresponding_span": "IT'S JUST COLD YOU KNOW",
+          "severity": 1,
+          "justification": "The transcription error changes \"COLD\" to \"COOL,\" which is a trivial/cosmetic error as the meaning can be confidently and cleanly recovered without any material fact changing. The overall intent of the statement remains clear, with no ambiguity or significant alteration in propositional content.",
+          "flagged": false,
+          "raw_judge_response": "Severity: 1\n\nJustification: The transcription error changes \"COLD\" to \"COOL,\" which is a trivial/cosmetic error as the meaning can be confidently and cleanly recovered without any material fact changing. The overall intent of the statement remains clear, with no ambiguity or significant alteration in propositional content."
+        }
+      ]
+    },
+    {
+      "dataset_index": 182,
+      "ref": "COLD",
+      "hyp": "Cold.",
+      "raw_alignment_response": "[skipped: single-segment transcript, no alignment needed]",
+      "segments": [
+        {
+          "segment": "Cold.",
+          "corresponding_span": "COLD",
+          "severity": 0,
+          "justification": "The difference between \"COLD\" and \"Cold.\" is purely a matter of casing and punctuation, with no change to the propositional content or meaning. This falls under surface form variations that do not affect the semantic level.",
+          "flagged": false,
+          "raw_judge_response": "Severity: 0\n\nJustification: The difference between \"COLD\" and \"Cold.\" is purely a matter of casing and punctuation, with no change to the propositional content or meaning. This falls under surface form variations that do not affect the semantic level."
+        }
+      ]
+    },
+    {
+      "dataset_index": 185,
+      "ref": "YEAH IT'S VERY SCENIC",
+      "hyp": "Yeah, it's very scenic.",
+      "raw_alignment_response": "[skipped: single-segment transcript, no alignment needed]",
+      "segments": [
+        {
+          "segment": "Yeah, it's very scenic.",
+          "corresponding_span": "YEAH IT'S VERY SCENIC",
+          "severity": 0,
+          "justification": "The predicted segment \"Yeah, it's very scenic.\" differs from the reference span \"YEAH IT'S VERY SCENIC\" only in terms of punctuation and capitalization. These are surface-level changes that do not affect the propositional content or meaning of the sentence.",
+          "flagged": false,
+          "raw_judge_response": "Severity: 0\n\nJustification: The predicted segment \"Yeah, it's very scenic.\" differs from the reference span \"YEAH IT'S VERY SCENIC\" only in terms of punctuation and capitalization. These are surface-level changes that do not affect the propositional content or meaning of the sentence."
+        }
+      ]
+    },
+    {
+      "dataset_index": 188,
+      "ref": "I'M SURE IT'S",
+      "hyp": "I'm pretty sure it's.",
+      "raw_alignment_response": "[skipped: single-segment transcript, no alignment needed]",
+      "segments": [
+        {
+          "segment": "I'm pretty sure it's.",
+          "corresponding_span": "I'M SURE IT'S",
+          "severity": 1,
+          "justification": "The predicted segment \"I'm pretty sure it's\" differs from the reference span \"I'M SURE IT'S\" by adding the word \"pretty,\" which slightly modifies the degree of certainty but does not change the core meaning or introduce ambiguity. The overall intent and propositional content remain confidently recoverable, making this a trivial/cosmetic error.",
+          "flagged": false,
+          "raw_judge_response": "Severity: 1\n\nJustification: The predicted segment \"I'm pretty sure it's\" differs from the reference span \"I'M SURE IT'S\" by adding the word \"pretty,\" which slightly modifies the degree of certainty but does not change the core meaning or introduce ambiguity. The overall intent and propositional content remain confidently recoverable, making this a trivial/cosmetic error."
+        }
+      ]
+    },
+    {
+      "dataset_index": 190,
+      "ref": "OH COSTS WOULD INSANE LIKE THROUGH THE ROOF",
+      "hyp": "the cost would be insane, like through the roof.",
+      "raw_alignment_response": "[skipped: single-segment transcript, no alignment needed]",
+      "segments": [
+        {
+          "segment": "the cost would be insane, like through the roof.",
+          "corresponding_span": "OH COSTS WOULD INSANE LIKE THROUGH THE ROOF",
+          "severity": 1,
+          "justification": "The ASR output introduces punctuation and slightly alters wording (\"the cost\" vs. \"OH costs\"), but the meaning remains confidently recoverable with no material fact changes, fitting a trivial/cosmetic error category. Despite minor surface differences, the core message about costs being extremely high is preserved without ambiguity or factual alteration.",
+          "flagged": false,
+          "raw_judge_response": "Severity: 1\n\nJustification: The ASR output introduces punctuation and slightly alters wording (\"the cost\" vs. \"OH costs\"), but the meaning remains confidently recoverable with no material fact changes, fitting a trivial/cosmetic error category. Despite minor surface differences, the core message about costs being extremely high is preserved without ambiguity or factual alteration."
+        }
+      ]
+    },
+    {
+      "dataset_index": 195,
+      "ref": "OR JUST COLD",
+      "hyp": "Or just.",
+      "raw_alignment_response": "[skipped: single-segment transcript, no alignment needed]",
+      "segments": [
+        {
+          "segment": "Or just.",
+          "corresponding_span": "OR JUST COLD",
+          "severity": 2,
+          "justification": "The predicted segment \"Or just.\" omits the word \"COLD,\" resulting in a loss of detail that introduces ambiguity regarding what is being described. This creates uncertainty about the intended meaning, requiring reconstruction or inference to recover the original intent.",
+          "flagged": true,
+          "raw_judge_response": "Severity: 2\n\nJustification: The predicted segment \"Or just.\" omits the word \"COLD,\" resulting in a loss of detail that introduces ambiguity regarding what is being described. This creates uncertainty about the intended meaning, requiring reconstruction or inference to recover the original intent."
+        }
+      ]
+    }
+  ]
+}

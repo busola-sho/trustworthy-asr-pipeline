@@ -1,0 +1,2006 @@
+{
+  "dataset": "edacc",
+  "split": "test",
+  "method": "cross_model_agreement",
+  "agreement_metric": "normalized_word_level_edit_distance",
+  "asr_models_used": [
+    "qwen",
+    "whisperx",
+    "parakeet",
+    "wav2vec2",
+    "whisper_ft_chunked"
+  ],
+  "num_transcripts": 58,
+  "num_segments": 80,
+  "num_segments_scored": 76,
+  "transcripts": [
+    {
+      "dataset_index": 1,
+      "segments": [
+        {
+          "segment": "I've got a notification.",
+          "severity": 3,
+          "flagged": true,
+          "n_models_reconstructed": 2,
+          "local_reconstructions": {
+            "qwen": "got a notification",
+            "whisperx": "i've got a notification"
+          },
+          "per_model_coverage": {
+            "qwen": 0.75,
+            "whisperx": 1.0,
+            "parakeet": 0.0,
+            "wav2vec2": 0.0,
+            "whisper_ft_chunked": 0.0
+          },
+          "crossmodel_mean": 0.75,
+          "crossmodel_min": 0.75
+        }
+      ]
+    },
+    {
+      "dataset_index": 6,
+      "segments": [
+        {
+          "segment": "Do you wanna explain?",
+          "severity": 0,
+          "flagged": false,
+          "n_models_reconstructed": 3,
+          "local_reconstructions": {
+            "qwen": "do you wanna explain",
+            "whisperx": "do you want to explain",
+            "whisper_ft_chunked": "do you wanna explain"
+          },
+          "per_model_coverage": {
+            "qwen": 1.0,
+            "whisperx": 0.75,
+            "parakeet": 0.0,
+            "wav2vec2": 0.0,
+            "whisper_ft_chunked": 1.0
+          },
+          "crossmodel_mean": 0.7333333333333334,
+          "crossmodel_min": 0.6
+        }
+      ]
+    },
+    {
+      "dataset_index": 7,
+      "segments": [
+        {
+          "segment": "Which is just basically you have two ends of a pitch, and your goal is to reach the other end of the pitch without being tagged by someone in the middle, and no rules apply.",
+          "severity": 1,
+          "flagged": false,
+          "n_models_reconstructed": 5,
+          "local_reconstructions": {
+            "qwen": "which is just a basically you have two ends of a pitch and your goal is to reach the other end of the pitch without being tagged by someone in the middle and no rules apply",
+            "whisperx": "which is just basically you have two ends of a pitch and your goal is to reach the other end of the pitch without being tagged by someone in the middle and no rules apply",
+            "parakeet": "which is just a basically you have two ends of a pitch and your goal is to reach the other end of the pitch without being tagged by someone in the middle and no rules apply",
+            "wav2vec2": "which is just a basey have two ends of a pitch and you ghost reach the other end of the pitch without being tagged by someone in the middle and no rules apply",
+            "whisper_ft_chunked": "which is just a uh basically you have two ends of a pitch and your goal is to reach the other ent of the pitch without being taked by someone in the middle and no rules apply"
+          },
+          "per_model_coverage": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 1.0,
+            "wav2vec2": 0.2857142857142857,
+            "whisper_ft_chunked": 0.9428571428571428
+          },
+          "crossmodel_mean": 0.8926169026169026,
+          "crossmodel_min": 0.7567567567567568
+        },
+        {
+          "segment": "People were beaten up, blood everywhere.",
+          "severity": 1,
+          "flagged": false,
+          "n_models_reconstructed": 5,
+          "local_reconstructions": {
+            "qwen": "people were beaten up blood everywhere",
+            "whisperx": "people were beaten up blood everywhere",
+            "parakeet": "people were beaten up blood everywhere",
+            "wav2vec2": "people were beaten up blood everywhere",
+            "whisper_ft_chunked": "people were beaten up blood everywhere"
+          },
+          "per_model_coverage": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 1.0,
+            "wav2vec2": 1.0,
+            "whisper_ft_chunked": 1.0
+          },
+          "crossmodel_mean": 1.0,
+          "crossmodel_min": 1.0
+        },
+        {
+          "segment": "Ah, good times.",
+          "severity": 0,
+          "flagged": false,
+          "n_models_reconstructed": 5,
+          "local_reconstructions": {
+            "qwen": "ah good times",
+            "whisperx": "good times",
+            "parakeet": "good",
+            "wav2vec2": "ah good",
+            "whisper_ft_chunked": "good times"
+          },
+          "per_model_coverage": {
+            "qwen": 1.0,
+            "whisperx": 0.6666666666666666,
+            "parakeet": 0.3333333333333333,
+            "wav2vec2": 0.6666666666666666,
+            "whisper_ft_chunked": 0.6666666666666666
+          },
+          "crossmodel_mean": 0.4833333333333334,
+          "crossmodel_min": 0.0
+        }
+      ]
+    },
+    {
+      "dataset_index": 8,
+      "segments": [
+        {
+          "segment": "Was it tagged or was it tackled?",
+          "severity": 0,
+          "flagged": false,
+          "n_models_reconstructed": 5,
+          "local_reconstructions": {
+            "qwen": "was it tagged or was it tackled",
+            "whisperx": "was it tagged or was it tackled",
+            "parakeet": "was it tagged or was it tackled",
+            "wav2vec2": "was it the tig was it tackled",
+            "whisper_ft_chunked": "was it tagged or was it tackled"
+          },
+          "per_model_coverage": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 1.0,
+            "wav2vec2": 0.7142857142857143,
+            "whisper_ft_chunked": 1.0
+          },
+          "crossmodel_mean": 0.8857142857142856,
+          "crossmodel_min": 0.7142857142857143
+        }
+      ]
+    },
+    {
+      "dataset_index": 11,
+      "segments": [
+        {
+          "segment": "Exactly.",
+          "severity": 4,
+          "flagged": true,
+          "n_models_reconstructed": 1,
+          "local_reconstructions": {
+            "qwen": "exactly"
+          },
+          "per_model_coverage": {
+            "qwen": 1.0,
+            "whisperx": 0.0,
+            "parakeet": 0.0,
+            "wav2vec2": 0.0,
+            "whisper_ft_chunked": 0.0
+          },
+          "crossmodel_mean": null,
+          "crossmodel_min": null
+        }
+      ]
+    },
+    {
+      "dataset_index": 17,
+      "segments": [
+        {
+          "segment": "Stone Playground.",
+          "severity": 2,
+          "flagged": true,
+          "n_models_reconstructed": 5,
+          "local_reconstructions": {
+            "qwen": "playground",
+            "whisperx": "stone playground",
+            "parakeet": "playground",
+            "wav2vec2": "stone",
+            "whisper_ft_chunked": "playground"
+          },
+          "per_model_coverage": {
+            "qwen": 0.5,
+            "whisperx": 1.0,
+            "parakeet": 0.5,
+            "wav2vec2": 0.5,
+            "whisper_ft_chunked": 0.5
+          },
+          "crossmodel_mean": 0.5,
+          "crossmodel_min": 0.0
+        }
+      ]
+    },
+    {
+      "dataset_index": 21,
+      "segments": [
+        {
+          "segment": "um,",
+          "severity": 4,
+          "flagged": true,
+          "n_models_reconstructed": 2,
+          "local_reconstructions": {
+            "qwen": "um",
+            "whisperx": "um"
+          },
+          "per_model_coverage": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 0.0,
+            "wav2vec2": 0.0,
+            "whisper_ft_chunked": 0.0
+          },
+          "crossmodel_mean": 1.0,
+          "crossmodel_min": 1.0
+        }
+      ]
+    },
+    {
+      "dataset_index": 23,
+      "segments": [
+        {
+          "segment": "we",
+          "severity": 4,
+          "flagged": true,
+          "n_models_reconstructed": 4,
+          "local_reconstructions": {
+            "qwen": "we",
+            "parakeet": "we",
+            "wav2vec2": "we",
+            "whisper_ft_chunked": "we"
+          },
+          "per_model_coverage": {
+            "qwen": 1.0,
+            "whisperx": 0.0,
+            "parakeet": 1.0,
+            "wav2vec2": 1.0,
+            "whisper_ft_chunked": 1.0
+          },
+          "crossmodel_mean": 1.0,
+          "crossmodel_min": 1.0
+        }
+      ]
+    },
+    {
+      "dataset_index": 24,
+      "segments": [
+        {
+          "segment": "The idea is it's essentially the same as bulldog.",
+          "severity": 2,
+          "flagged": true,
+          "n_models_reconstructed": 5,
+          "local_reconstructions": {
+            "qwen": "the idea is it's essentially the same as",
+            "whisperx": "the idea is it's essentially the same as bulldog",
+            "parakeet": "the idea is it's essentially the same as bulldog",
+            "wav2vec2": "the ideais it's essentially the same as",
+            "whisper_ft_chunked": "the idea is it's essentially the same as"
+          },
+          "per_model_coverage": {
+            "qwen": 0.8888888888888888,
+            "whisperx": 1.0,
+            "parakeet": 1.0,
+            "wav2vec2": 0.6666666666666666,
+            "whisper_ft_chunked": 0.8888888888888888
+          },
+          "crossmodel_mean": 0.8388888888888889,
+          "crossmodel_min": 0.6666666666666667
+        },
+        {
+          "segment": "You have to run on the end of the field.",
+          "severity": 2,
+          "flagged": true,
+          "n_models_reconstructed": 5,
+          "local_reconstructions": {
+            "qwen": "you have to run on the end of the field",
+            "whisperx": "you have to grind one day into the field there's one person who's the",
+            "parakeet": "you have to drown at the end of the field",
+            "wav2vec2": "you have to dride onthey into the field",
+            "whisper_ft_chunked": "you have to drine on to the end of the field"
+          },
+          "per_model_coverage": {
+            "qwen": 1.0,
+            "whisperx": 0.5,
+            "parakeet": 0.8,
+            "wav2vec2": 0.5,
+            "whisper_ft_chunked": 0.9
+          },
+          "crossmodel_mean": 0.5085714285714286,
+          "crossmodel_min": 0.2857142857142857
+        },
+        {
+          "segment": "There's one person who's the shark or maybe two people, and they can move any direction.",
+          "severity": 1,
+          "flagged": false,
+          "n_models_reconstructed": 5,
+          "local_reconstructions": {
+            "qwen": "there's one person who's the shark or maybe two people and they can move any direction",
+            "whisperx": "shark or maybe two people and they can move any direction",
+            "parakeet": "there's one person who's the shark or maybe two people and they can move any direction",
+            "wav2vec2": "one person who's thi shark or maybe two people and they can move any direction",
+            "whisper_ft_chunked": "there's one person who's the shark or maybe two people and they can move any direction"
+          },
+          "per_model_coverage": {
+            "qwen": 1.0,
+            "whisperx": 0.6875,
+            "parakeet": 1.0,
+            "wav2vec2": 0.875,
+            "whisper_ft_chunked": 1.0
+          },
+          "crossmodel_mean": 0.8420833333333334,
+          "crossmodel_min": 0.6875
+        },
+        {
+          "segment": "And if they take you, you become seaweed and you can't move your feet.",
+          "severity": 0,
+          "flagged": false,
+          "n_models_reconstructed": 5,
+          "local_reconstructions": {
+            "qwen": "and if they take you you become seaweed and you can't move your feet",
+            "whisperx": "and if they take you you become seaweed and you can't move your feet",
+            "parakeet": "and if they take you you become seaweed and you can't move your feet",
+            "wav2vec2": "and if they take you you become seaweed and you can't move your feet",
+            "whisper_ft_chunked": "and if they take you you'd become seaweed and you can't move your feet or you"
+          },
+          "per_model_coverage": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 1.0,
+            "wav2vec2": 1.0,
+            "whisper_ft_chunked": 0.5
+          },
+          "crossmodel_mean": 0.925,
+          "crossmodel_min": 0.8125
+        },
+        {
+          "segment": "You can like lean out to catch people.",
+          "severity": 3,
+          "flagged": true,
+          "n_models_reconstructed": 5,
+          "local_reconstructions": {
+            "qwen": "you can like lean out to catch people",
+            "whisperx": "you can like lean out to catch people",
+            "parakeet": "you can like lean out to catch people",
+            "wav2vec2": "you can let lean out to catch people",
+            "whisper_ft_chunked": "can like lean out to catch people"
+          },
+          "per_model_coverage": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 1.0,
+            "wav2vec2": 0.875,
+            "whisper_ft_chunked": 0.875
+          },
+          "crossmodel_mean": 0.9,
+          "crossmodel_min": 0.75
+        }
+      ]
+    },
+    {
+      "dataset_index": 25,
+      "segments": [
+        {
+          "segment": "THAT'S RIGHT",
+          "severity": 1,
+          "flagged": false,
+          "n_models_reconstructed": 2,
+          "local_reconstructions": {
+            "qwen": "right",
+            "whisper_ft_chunked": "that's right"
+          },
+          "per_model_coverage": {
+            "qwen": 0.5,
+            "whisperx": 0.0,
+            "parakeet": 0.0,
+            "wav2vec2": 0.0,
+            "whisper_ft_chunked": 1.0
+          },
+          "crossmodel_mean": 0.5,
+          "crossmodel_min": 0.5
+        }
+      ]
+    },
+    {
+      "dataset_index": 27,
+      "segments": [
+        {
+          "segment": "UM",
+          "severity": 1,
+          "flagged": false,
+          "n_models_reconstructed": 1,
+          "local_reconstructions": {
+            "whisper_ft_chunked": "um"
+          },
+          "per_model_coverage": {
+            "qwen": 0.0,
+            "whisperx": 0.0,
+            "parakeet": 0.0,
+            "wav2vec2": 0.0,
+            "whisper_ft_chunked": 1.0
+          },
+          "crossmodel_mean": null,
+          "crossmodel_min": null
+        }
+      ]
+    },
+    {
+      "dataset_index": 29,
+      "segments": [
+        {
+          "segment": "That's quite creative, actually.",
+          "severity": 2,
+          "flagged": true,
+          "n_models_reconstructed": 5,
+          "local_reconstructions": {
+            "qwen": "that's quite creative actually",
+            "whisperx": "quite creative actually",
+            "parakeet": "quite an of it actually",
+            "wav2vec2": "quite handsome actually",
+            "whisper_ft_chunked": "quite creative actually"
+          },
+          "per_model_coverage": {
+            "qwen": 1.0,
+            "whisperx": 0.75,
+            "parakeet": 0.5,
+            "wav2vec2": 0.5,
+            "whisper_ft_chunked": 0.75
+          },
+          "crossmodel_mean": 0.5733333333333335,
+          "crossmodel_min": 0.19999999999999996
+        },
+        {
+          "segment": "Yeah.",
+          "severity": 0,
+          "flagged": false,
+          "n_models_reconstructed": 4,
+          "local_reconstructions": {
+            "qwen": "yeah",
+            "whisperx": "yeah",
+            "parakeet": "yeah",
+            "whisper_ft_chunked": "yeah"
+          },
+          "per_model_coverage": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 1.0,
+            "wav2vec2": 0.0,
+            "whisper_ft_chunked": 1.0
+          },
+          "crossmodel_mean": 1.0,
+          "crossmodel_min": 1.0
+        }
+      ]
+    },
+    {
+      "dataset_index": 32,
+      "segments": [
+        {
+          "segment": "No, it's fully just tag.",
+          "severity": 1,
+          "flagged": false,
+          "n_models_reconstructed": 5,
+          "local_reconstructions": {
+            "qwen": "no no it's fully just tag",
+            "whisperx": "no it's fully just tag",
+            "parakeet": "no it's fully just tag",
+            "wav2vec2": "no it's fully just tag",
+            "whisper_ft_chunked": "no it was fully just tag"
+          },
+          "per_model_coverage": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 1.0,
+            "wav2vec2": 1.0,
+            "whisper_ft_chunked": 0.8
+          },
+          "crossmodel_mean": 0.8166666666666668,
+          "crossmodel_min": 0.6666666666666667
+        },
+        {
+          "segment": "Tags we'd call.",
+          "severity": 0,
+          "flagged": false,
+          "n_models_reconstructed": 3,
+          "local_reconstructions": {
+            "whisperx": "tags",
+            "wav2vec2": "tags",
+            "whisper_ft_chunked": "tags we'd call"
+          },
+          "per_model_coverage": {
+            "qwen": 0.0,
+            "whisperx": 0.3333333333333333,
+            "parakeet": 0.0,
+            "wav2vec2": 0.3333333333333333,
+            "whisper_ft_chunked": 1.0
+          },
+          "crossmodel_mean": 0.5555555555555557,
+          "crossmodel_min": 0.33333333333333337
+        }
+      ]
+    },
+    {
+      "dataset_index": 37,
+      "segments": [
+        {
+          "segment": "Yeah.",
+          "severity": 0,
+          "flagged": false,
+          "n_models_reconstructed": 4,
+          "local_reconstructions": {
+            "qwen": "yeah",
+            "whisperx": "yeah",
+            "parakeet": "yeah",
+            "whisper_ft_chunked": "yeah"
+          },
+          "per_model_coverage": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 1.0,
+            "wav2vec2": 0.0,
+            "whisper_ft_chunked": 1.0
+          },
+          "crossmodel_mean": 1.0,
+          "crossmodel_min": 1.0
+        }
+      ]
+    },
+    {
+      "dataset_index": 41,
+      "segments": [
+        {
+          "segment": "It's a lot safer.",
+          "severity": 0,
+          "flagged": false,
+          "n_models_reconstructed": 3,
+          "local_reconstructions": {
+            "qwen": "safer",
+            "whisperx": "it's a lot safer",
+            "whisper_ft_chunked": "it's a lot safer"
+          },
+          "per_model_coverage": {
+            "qwen": 0.25,
+            "whisperx": 1.0,
+            "parakeet": 0.0,
+            "wav2vec2": 0.0,
+            "whisper_ft_chunked": 1.0
+          },
+          "crossmodel_mean": 0.5,
+          "crossmodel_min": 0.25
+        }
+      ]
+    },
+    {
+      "dataset_index": 42,
+      "segments": [
+        {
+          "segment": "Do you do much dodgeball when you're in primary school?",
+          "severity": 2,
+          "flagged": true,
+          "n_models_reconstructed": 5,
+          "local_reconstructions": {
+            "qwen": "do you do much dodgeball when you're in primary school",
+            "whisperx": "do you do much dodgeball when you're in primary school",
+            "parakeet": "do you do much dodgeball when you're in primary school",
+            "wav2vec2": "much stoge fall when you're in primary",
+            "whisper_ft_chunked": "do much dodge ball when you were in primary school"
+          },
+          "per_model_coverage": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 1.0,
+            "wav2vec2": 0.5,
+            "whisper_ft_chunked": 0.5
+          },
+          "crossmodel_mean": 0.5800000000000002,
+          "crossmodel_min": 0.4
+        }
+      ]
+    },
+    {
+      "dataset_index": 51,
+      "segments": [
+        {
+          "segment": "Yeah.",
+          "severity": 0,
+          "flagged": false,
+          "n_models_reconstructed": 3,
+          "local_reconstructions": {
+            "qwen": "yeah",
+            "whisperx": "yeah",
+            "whisper_ft_chunked": "yeah"
+          },
+          "per_model_coverage": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 0.0,
+            "wav2vec2": 0.0,
+            "whisper_ft_chunked": 1.0
+          },
+          "crossmodel_mean": 1.0,
+          "crossmodel_min": 1.0
+        }
+      ]
+    },
+    {
+      "dataset_index": 52,
+      "segments": [
+        {
+          "segment": "And then there was like a Tig style where you like chase the person with the ball, and just throw it at them, which, like.",
+          "severity": 1,
+          "flagged": false,
+          "n_models_reconstructed": 5,
+          "local_reconstructions": {
+            "qwen": "and then there was like a tig style where you like chase the person with the ball and just throw it at them which like",
+            "whisperx": "and then there was like a tig style where you like chase the person with the ball and just throw it at them which like",
+            "parakeet": "and then there was like a tig style where you like chase a person with the ball and just throw it at them which like",
+            "wav2vec2": "and just throw it at them which like",
+            "whisper_ft_chunked": "and then there was like a tig style where you like chase the person with the ball and just throw it at them which like"
+          },
+          "per_model_coverage": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 0.88,
+            "wav2vec2": 0.08,
+            "whisper_ft_chunked": 1.0
+          },
+          "crossmodel_mean": 0.7160000000000001,
+          "crossmodel_min": 0.31999999999999995
+        }
+      ]
+    },
+    {
+      "dataset_index": 57,
+      "segments": [
+        {
+          "segment": "Yeah, was your primary school pretty big?",
+          "severity": 1,
+          "flagged": false,
+          "n_models_reconstructed": 5,
+          "local_reconstructions": {
+            "qwen": "yeah was your primary school pretty big",
+            "whisperx": "yeah was your primary school pretty big",
+            "parakeet": "yeah was your primary school pretty big",
+            "wav2vec2": "was your",
+            "whisper_ft_chunked": "yeah it was your promis cool pretty big"
+          },
+          "per_model_coverage": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 1.0,
+            "wav2vec2": 0.2857142857142857,
+            "whisper_ft_chunked": 0.7142857142857143
+          },
+          "crossmodel_mean": 0.5982142857142857,
+          "crossmodel_min": 0.25
+        }
+      ]
+    },
+    {
+      "dataset_index": 58,
+      "segments": [
+        {
+          "segment": "Yeah, big, big hall for the size.",
+          "severity": 1,
+          "flagged": false,
+          "n_models_reconstructed": 5,
+          "local_reconstructions": {
+            "qwen": "yeah big big hall for the size",
+            "whisperx": "yeah big big hall for the size",
+            "parakeet": "yeah big big hall for the size",
+            "wav2vec2": "big big hall for the size",
+            "whisper_ft_chunked": "yeah big big hall for the size"
+          },
+          "per_model_coverage": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 1.0,
+            "wav2vec2": 0.8571428571428571,
+            "whisper_ft_chunked": 1.0
+          },
+          "crossmodel_mean": 0.9428571428571431,
+          "crossmodel_min": 0.8571428571428572
+        },
+        {
+          "segment": "I remember going back there when I was a lot older and I remember seeing the basketball hoops in the hall and I could like dunk on them, which is so weird because basketball hoops are supposed to be like ten feet tall and at the",
+          "severity": 2,
+          "flagged": true,
+          "n_models_reconstructed": 5,
+          "local_reconstructions": {
+            "qwen": "i remember going back there when i was a lot older and i remember seeing the basketball hoops in the hall and i could like dunk on them which is so weird because basketball hoops are supposed to be like ten feet tall and at the",
+            "whisperx": "i remember going back there when i was a lot older and i remember seeing the basketball hoops in the hall and i could like dunk on them which is so weird because basketball hoops are supposed to be like 10 feet tall and at the",
+            "parakeet": "i remember going back there when i was a lot older and i remember seeing the basketball hoops in the hall and i could like dunk on them which was so weird because basketball hoops are supposed to be like ten feet tall and at the",
+            "wav2vec2": "i remember going back there when i was a lot older and i remember seeing the baske wall hoops in the hall and i could like donk on den which was so weird because pastful hoops sos to be like ten feet tall and at the",
+            "whisper_ft_chunked": "i remember going back there when i was a lot older and i remember seen the basketball hops in the hall and i could like dunk on them which was so weird because basketball hops was supposed to be like ten feet tall and at the"
+          },
+          "per_model_coverage": {
+            "qwen": 1.0,
+            "whisperx": 0.9782608695652174,
+            "parakeet": 0.9782608695652174,
+            "wav2vec2": 0.8478260869565217,
+            "whisper_ft_chunked": 0.8913043478260869
+          },
+          "crossmodel_mean": 0.8847826086956522,
+          "crossmodel_min": 0.782608695652174
+        }
+      ]
+    },
+    {
+      "dataset_index": 59,
+      "segments": [
+        {
+          "segment": "Yeah.",
+          "severity": 0,
+          "flagged": false,
+          "n_models_reconstructed": 3,
+          "local_reconstructions": {
+            "qwen": "yeah",
+            "whisperx": "yeah",
+            "whisper_ft_chunked": "yeah"
+          },
+          "per_model_coverage": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 0.0,
+            "wav2vec2": 0.0,
+            "whisper_ft_chunked": 1.0
+          },
+          "crossmodel_mean": 1.0,
+          "crossmodel_min": 1.0
+        }
+      ]
+    },
+    {
+      "dataset_index": 60,
+      "segments": [
+        {
+          "segment": "Primary school.",
+          "severity": 0,
+          "flagged": false,
+          "n_models_reconstructed": 5,
+          "local_reconstructions": {
+            "qwen": "primary school",
+            "whisperx": "primary school",
+            "parakeet": "primary school",
+            "wav2vec2": "school",
+            "whisper_ft_chunked": "primary school"
+          },
+          "per_model_coverage": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 1.0,
+            "wav2vec2": 0.5,
+            "whisper_ft_chunked": 1.0
+          },
+          "crossmodel_mean": 0.8,
+          "crossmodel_min": 0.5
+        },
+        {
+          "segment": "It wasn't even seven feet, so it was very fun to go back there and then mess about there.",
+          "severity": 1,
+          "flagged": false,
+          "n_models_reconstructed": 5,
+          "local_reconstructions": {
+            "qwen": "it wasn't even seven feet so it was very fun to go back there and then mess about there",
+            "whisperx": "it wasn't even seven feet so it was very fun to go back there and then mess about there",
+            "parakeet": "it wasn't even seven feet so it was very fun to go back there and then mess about",
+            "wav2vec2": "it wasn't even seven feets it was very fun to go back there and then mess about",
+            "whisper_ft_chunked": "it wasn't even seven feet so it was very fun to go back there and then mess about"
+          },
+          "per_model_coverage": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 0.9473684210526315,
+            "wav2vec2": 0.8421052631578947,
+            "whisper_ft_chunked": 0.9473684210526315
+          },
+          "crossmodel_mean": 0.9251461988304095,
+          "crossmodel_min": 0.8421052631578947
+        },
+        {
+          "segment": "After I did some coaching.",
+          "severity": 1,
+          "flagged": false,
+          "n_models_reconstructed": 5,
+          "local_reconstructions": {
+            "qwen": "after i did some coaching",
+            "whisperx": "after i did some coaching",
+            "parakeet": "did some coaching",
+            "wav2vec2": "some coaching",
+            "whisper_ft_chunked": "i did some eh coaching"
+          },
+          "per_model_coverage": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 0.6,
+            "wav2vec2": 0.4,
+            "whisper_ft_chunked": 0.8
+          },
+          "crossmodel_mean": 0.5866666666666667,
+          "crossmodel_min": 0.4
+        }
+      ]
+    },
+    {
+      "dataset_index": 61,
+      "segments": [
+        {
+          "segment": "Yeah.",
+          "severity": 0,
+          "flagged": false,
+          "n_models_reconstructed": 3,
+          "local_reconstructions": {
+            "qwen": "yeah",
+            "whisperx": "yeah",
+            "whisper_ft_chunked": "yeah"
+          },
+          "per_model_coverage": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 0.0,
+            "wav2vec2": 0.0,
+            "whisper_ft_chunked": 1.0
+          },
+          "crossmodel_mean": 1.0,
+          "crossmodel_min": 1.0
+        }
+      ]
+    },
+    {
+      "dataset_index": 64,
+      "segments": [
+        {
+          "segment": "Nothing.",
+          "severity": 0,
+          "flagged": false,
+          "n_models_reconstructed": 3,
+          "local_reconstructions": {
+            "qwen": "nothing",
+            "whisperx": "nothing",
+            "whisper_ft_chunked": "nothing"
+          },
+          "per_model_coverage": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 0.0,
+            "wav2vec2": 0.0,
+            "whisper_ft_chunked": 1.0
+          },
+          "crossmodel_mean": 1.0,
+          "crossmodel_min": 1.0
+        }
+      ]
+    },
+    {
+      "dataset_index": 69,
+      "segments": [
+        {
+          "segment": "Obviously,",
+          "severity": 0,
+          "flagged": false,
+          "n_models_reconstructed": 5,
+          "local_reconstructions": {
+            "qwen": "obviously",
+            "whisperx": "obviously",
+            "parakeet": "obviously",
+            "wav2vec2": "obviously",
+            "whisper_ft_chunked": "obviously"
+          },
+          "per_model_coverage": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 1.0,
+            "wav2vec2": 1.0,
+            "whisper_ft_chunked": 1.0
+          },
+          "crossmodel_mean": 1.0,
+          "crossmodel_min": 1.0
+        },
+        {
+          "segment": "Scooby-Doo.",
+          "severity": 0,
+          "flagged": false,
+          "n_models_reconstructed": 2,
+          "local_reconstructions": {
+            "qwen": "scooby doo",
+            "whisperx": "scooby doo"
+          },
+          "per_model_coverage": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 0.0,
+            "wav2vec2": 0.0,
+            "whisper_ft_chunked": 0.0
+          },
+          "crossmodel_mean": 1.0,
+          "crossmodel_min": 1.0
+        }
+      ]
+    },
+    {
+      "dataset_index": 72,
+      "segments": [
+        {
+          "segment": "Do you want to describe what Scooby-Doo was?",
+          "severity": 1,
+          "flagged": false,
+          "n_models_reconstructed": 5,
+          "local_reconstructions": {
+            "qwen": "do you wanna describe what scooby doo was",
+            "whisperx": "do you want to describe what scooby doo was",
+            "parakeet": "do you want to describe what scooby doo was",
+            "wav2vec2": "what skivyde was",
+            "whisper_ft_chunked": "do you want to describe what skimmy do was"
+          },
+          "per_model_coverage": {
+            "qwen": 0.7777777777777778,
+            "whisperx": 1.0,
+            "parakeet": 1.0,
+            "wav2vec2": 0.2222222222222222,
+            "whisper_ft_chunked": 0.7777777777777778
+          },
+          "crossmodel_mean": 0.5583333333333333,
+          "crossmodel_min": 0.2222222222222222
+        }
+      ]
+    },
+    {
+      "dataset_index": 73,
+      "segments": [
+        {
+          "segment": "Honestly, even now I can't describe it.",
+          "severity": 1,
+          "flagged": false,
+          "n_models_reconstructed": 5,
+          "local_reconstructions": {
+            "qwen": "honestly even now i can't describe it",
+            "whisperx": "honestly even though i can't describe it",
+            "parakeet": "honestly even now i can't describe it",
+            "wav2vec2": "honestly even now i can't describe it",
+            "whisper_ft_chunked": "honestly even now i can't describe it"
+          },
+          "per_model_coverage": {
+            "qwen": 1.0,
+            "whisperx": 0.8571428571428571,
+            "parakeet": 1.0,
+            "wav2vec2": 1.0,
+            "whisper_ft_chunked": 1.0
+          },
+          "crossmodel_mean": 0.9428571428571428,
+          "crossmodel_min": 0.8571428571428572
+        }
+      ]
+    },
+    {
+      "dataset_index": 76,
+      "segments": [
+        {
+          "segment": "It's really quite something.",
+          "severity": 1,
+          "flagged": false,
+          "n_models_reconstructed": 5,
+          "local_reconstructions": {
+            "qwen": "it's really quite something",
+            "whisperx": "it's really quite something",
+            "parakeet": "it's really quite something",
+            "wav2vec2": "it's really quite something",
+            "whisper_ft_chunked": "it's really quite something"
+          },
+          "per_model_coverage": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 1.0,
+            "wav2vec2": 1.0,
+            "whisper_ft_chunked": 1.0
+          },
+          "crossmodel_mean": 1.0,
+          "crossmodel_min": 1.0
+        }
+      ]
+    },
+    {
+      "dataset_index": 77,
+      "segments": [
+        {
+          "segment": "Okay.",
+          "severity": 3,
+          "flagged": true,
+          "n_models_reconstructed": 1,
+          "local_reconstructions": {
+            "qwen": "okay"
+          },
+          "per_model_coverage": {
+            "qwen": 1.0,
+            "whisperx": 0.0,
+            "parakeet": 0.0,
+            "wav2vec2": 0.0,
+            "whisper_ft_chunked": 0.0
+          },
+          "crossmodel_mean": null,
+          "crossmodel_min": null
+        }
+      ]
+    },
+    {
+      "dataset_index": 89,
+      "segments": [
+        {
+          "segment": "It just sounds awful.",
+          "severity": 0,
+          "flagged": false,
+          "n_models_reconstructed": 4,
+          "local_reconstructions": {
+            "qwen": "it just sounds awful",
+            "whisperx": "it just sounds awful",
+            "parakeet": "it just sounds",
+            "whisper_ft_chunked": "it just sounds awful"
+          },
+          "per_model_coverage": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 0.75,
+            "wav2vec2": 0.0,
+            "whisper_ft_chunked": 1.0
+          },
+          "crossmodel_mean": 0.875,
+          "crossmodel_min": 0.75
+        }
+      ]
+    },
+    {
+      "dataset_index": 90,
+      "segments": [
+        {
+          "segment": "It's so good.",
+          "severity": 0,
+          "flagged": false,
+          "n_models_reconstructed": 5,
+          "local_reconstructions": {
+            "qwen": "it's so good",
+            "whisperx": "it's so good",
+            "parakeet": "it's so good",
+            "wav2vec2": "it's so good",
+            "whisper_ft_chunked": "it's so good"
+          },
+          "per_model_coverage": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 1.0,
+            "wav2vec2": 1.0,
+            "whisper_ft_chunked": 1.0
+          },
+          "crossmodel_mean": 1.0,
+          "crossmodel_min": 1.0
+        },
+        {
+          "segment": "The kid can.",
+          "severity": 0,
+          "flagged": false,
+          "n_models_reconstructed": 5,
+          "local_reconstructions": {
+            "qwen": "the kid can",
+            "whisperx": "the kid can",
+            "parakeet": "the kid can",
+            "wav2vec2": "the kid",
+            "whisper_ft_chunked": "the kid can"
+          },
+          "per_model_coverage": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 1.0,
+            "wav2vec2": 0.6666666666666666,
+            "whisper_ft_chunked": 1.0
+          },
+          "crossmodel_mean": 0.8666666666666666,
+          "crossmodel_min": 0.6666666666666667
+        }
+      ]
+    },
+    {
+      "dataset_index": 91,
+      "segments": [
+        {
+          "segment": "It's got to work.",
+          "severity": 4,
+          "flagged": true,
+          "n_models_reconstructed": 4,
+          "local_reconstructions": {
+            "qwen": "it's got",
+            "whisperx": "it's got to work",
+            "parakeet": "got",
+            "whisper_ft_chunked": "it's"
+          },
+          "per_model_coverage": {
+            "qwen": 0.5,
+            "whisperx": 1.0,
+            "parakeet": 0.25,
+            "wav2vec2": 0.0,
+            "whisper_ft_chunked": 0.25
+          },
+          "crossmodel_mean": 0.3333333333333333,
+          "crossmodel_min": 0.0
+        }
+      ]
+    },
+    {
+      "dataset_index": 95,
+      "segments": [
+        {
+          "segment": "I think I've seen a bit of that.",
+          "severity": 1,
+          "flagged": false,
+          "n_models_reconstructed": 5,
+          "local_reconstructions": {
+            "qwen": "i think i've seen a bit of that",
+            "whisperx": "i think i've seen a bit of that",
+            "parakeet": "i think i've seen a bit of that",
+            "wav2vec2": "i think i've seen a bit of",
+            "whisper_ft_chunked": "i think i've seen a bit of that"
+          },
+          "per_model_coverage": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 1.0,
+            "wav2vec2": 0.875,
+            "whisper_ft_chunked": 1.0
+          },
+          "crossmodel_mean": 0.95,
+          "crossmodel_min": 0.875
+        },
+        {
+          "segment": "I think that was more of my sister's thing.",
+          "severity": 1,
+          "flagged": false,
+          "n_models_reconstructed": 5,
+          "local_reconstructions": {
+            "qwen": "i think that was more of my sister's thing",
+            "whisperx": "i think that was more of my sister's thing",
+            "parakeet": "i think that was more of my",
+            "wav2vec2": "think",
+            "whisper_ft_chunked": "i think that was more my sister's thing"
+          },
+          "per_model_coverage": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 0.7777777777777778,
+            "wav2vec2": 0.1111111111111111,
+            "whisper_ft_chunked": 0.8888888888888888
+          },
+          "crossmodel_mean": 0.5448412698412699,
+          "crossmodel_min": 0.11111111111111116
+        }
+      ]
+    },
+    {
+      "dataset_index": 96,
+      "segments": [
+        {
+          "segment": "I love the Peppa Pig.",
+          "severity": 3,
+          "flagged": true,
+          "n_models_reconstructed": 5,
+          "local_reconstructions": {
+            "qwen": "love the peppa pig",
+            "whisperx": "i love the peppa pig",
+            "parakeet": "i",
+            "wav2vec2": "pig",
+            "whisper_ft_chunked": "i love that paper pig"
+          },
+          "per_model_coverage": {
+            "qwen": 0.8,
+            "whisperx": 1.0,
+            "parakeet": 0.2,
+            "wav2vec2": 0.2,
+            "whisper_ft_chunked": 0.6
+          },
+          "crossmodel_mean": 0.28500000000000003,
+          "crossmodel_min": 0.0
+        }
+      ]
+    },
+    {
+      "dataset_index": 100,
+      "segments": [
+        {
+          "segment": "I saw like episodes because they'd be on after stuff I'd be watching, but would never be.",
+          "severity": 2,
+          "flagged": true,
+          "n_models_reconstructed": 5,
+          "local_reconstructions": {
+            "qwen": "i saw like episodes because they'd be on after stuff i'd be watching but would never be",
+            "whisperx": "like episodes because they'd be on after stuff i'd be watching but would never be",
+            "parakeet": "i saw like episodes because they'd be on after stuff i'd be watching but would never be",
+            "wav2vec2": "i like episodes cause they'd be on after stuff i'e be watching but would never be",
+            "whisper_ft_chunked": "i saw like episodes because it'd be on after stuff i'd be watching but would never be"
+          },
+          "per_model_coverage": {
+            "qwen": 1.0,
+            "whisperx": 0.8823529411764706,
+            "parakeet": 1.0,
+            "wav2vec2": 0.8235294117647058,
+            "whisper_ft_chunked": 0.9411764705882353
+          },
+          "crossmodel_mean": 0.8694852941176471,
+          "crossmodel_min": 0.7647058823529411
+        }
+      ]
+    },
+    {
+      "dataset_index": 101,
+      "segments": [
+        {
+          "segment": "Yeah.",
+          "severity": 0,
+          "flagged": false,
+          "n_models_reconstructed": 4,
+          "local_reconstructions": {
+            "qwen": "yeah",
+            "whisperx": "yeah",
+            "parakeet": "yeah",
+            "whisper_ft_chunked": "yeah"
+          },
+          "per_model_coverage": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 1.0,
+            "wav2vec2": 0.0,
+            "whisper_ft_chunked": 1.0
+          },
+          "crossmodel_mean": 1.0,
+          "crossmodel_min": 1.0
+        }
+      ]
+    },
+    {
+      "dataset_index": 113,
+      "segments": [
+        {
+          "segment": "Eight words.",
+          "severity": 3,
+          "flagged": true,
+          "n_models_reconstructed": 3,
+          "local_reconstructions": {
+            "qwen": "eight words",
+            "whisperx": "eight words",
+            "wav2vec2": "words"
+          },
+          "per_model_coverage": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 0.0,
+            "wav2vec2": 0.5,
+            "whisper_ft_chunked": 0.0
+          },
+          "crossmodel_mean": 0.6666666666666666,
+          "crossmodel_min": 0.5
+        }
+      ]
+    },
+    {
+      "dataset_index": 114,
+      "segments": [
+        {
+          "segment": "Oh, worms, that makes more sense.",
+          "severity": 1,
+          "flagged": false,
+          "n_models_reconstructed": 5,
+          "local_reconstructions": {
+            "qwen": "oh worms that makes more sense",
+            "whisperx": "oh worms that makes more sense",
+            "parakeet": "oh worms",
+            "wav2vec2": "oh worms",
+            "whisper_ft_chunked": "oh worms that makes more sense"
+          },
+          "per_model_coverage": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 0.3333333333333333,
+            "wav2vec2": 0.3333333333333333,
+            "whisper_ft_chunked": 1.0
+          },
+          "crossmodel_mean": 0.6,
+          "crossmodel_min": 0.33333333333333337
+        },
+        {
+          "segment": "It's still weird but it makes more sense.",
+          "severity": 1,
+          "flagged": false,
+          "n_models_reconstructed": 5,
+          "local_reconstructions": {
+            "qwen": "it's still weird but makes more sense",
+            "whisperx": "it's still weird but it makes more sense",
+            "parakeet": "still weird but",
+            "wav2vec2": "still weird but",
+            "whisper_ft_chunked": "still weird but that makes more sense"
+          },
+          "per_model_coverage": {
+            "qwen": 0.875,
+            "whisperx": 1.0,
+            "parakeet": 0.375,
+            "wav2vec2": 0.375,
+            "whisper_ft_chunked": 0.75
+          },
+          "crossmodel_mean": 0.5803571428571429,
+          "crossmodel_min": 0.375
+        }
+      ]
+    },
+    {
+      "dataset_index": 120,
+      "segments": [
+        {
+          "segment": "I'd ask what that's about, but I think it's pretty intuitive.",
+          "severity": 0,
+          "flagged": false,
+          "n_models_reconstructed": 5,
+          "local_reconstructions": {
+            "qwen": "ask what that's about but i think it's pretty intuitive",
+            "whisperx": "i'd ask what that's about but i think it's pretty intuitive",
+            "parakeet": "ask what that's about but i think it's pretty intuitive",
+            "wav2vec2": "i'd ask what that's about but i think",
+            "whisper_ft_chunked": "i'd ask what that's about but i think it's pretty intuitive"
+          },
+          "per_model_coverage": {
+            "qwen": 0.9090909090909091,
+            "whisperx": 1.0,
+            "parakeet": 0.9090909090909091,
+            "wav2vec2": 0.7272727272727273,
+            "whisper_ft_chunked": 1.0
+          },
+          "crossmodel_mean": 0.8290909090909091,
+          "crossmodel_min": 0.6
+        }
+      ]
+    },
+    {
+      "dataset_index": 123,
+      "segments": [
+        {
+          "segment": "It's literally everything you need to know about the weather in one book.",
+          "severity": 0,
+          "flagged": false,
+          "n_models_reconstructed": 5,
+          "local_reconstructions": {
+            "qwen": "it's literally everything you need to know about the weather in one book",
+            "whisperx": "it's literally everything you need to know about the weather in one book",
+            "parakeet": "it's literally everything you need to know about the weather in one book",
+            "wav2vec2": "it's literally everything you need to know about the weather in one book",
+            "whisper_ft_chunked": "it's literally everything you need to know about the weather in one book"
+          },
+          "per_model_coverage": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 1.0,
+            "wav2vec2": 1.0,
+            "whisper_ft_chunked": 1.0
+          },
+          "crossmodel_mean": 1.0,
+          "crossmodel_min": 1.0
+        },
+        {
+          "segment": "I can just look outside and be like, \"Yep, it's gonna rain 200 milliliters today.\"",
+          "severity": 3,
+          "flagged": true,
+          "n_models_reconstructed": 5,
+          "local_reconstructions": {
+            "qwen": "i can just look outside and be like yep it's gonna rain 200 milliliters today",
+            "whisperx": "i can just look outside and be like yep it's going to rain 200 milliliters today",
+            "parakeet": "i can just look outside and be like yep it's gonna to rain two hundred millilitres today",
+            "wav2vec2": "i can just look outside and be",
+            "whisper_ft_chunked": "i can just look outside and be like yup it's gonna rain two hundred milliliters today"
+          },
+          "per_model_coverage": {
+            "qwen": 1.0,
+            "whisperx": 0.9333333333333333,
+            "parakeet": 0.8666666666666667,
+            "wav2vec2": 0.4666666666666667,
+            "whisper_ft_chunked": 0.8666666666666667
+          },
+          "crossmodel_mean": 0.6481372549019608,
+          "crossmodel_min": 0.4117647058823529
+        }
+      ]
+    },
+    {
+      "dataset_index": 135,
+      "segments": [
+        {
+          "segment": "Oh my god, grapes are amazing.",
+          "severity": 1,
+          "flagged": false,
+          "n_models_reconstructed": 5,
+          "local_reconstructions": {
+            "qwen": "oh my god grapes are amazing",
+            "whisperx": "oh my god grapes are amazing",
+            "parakeet": "oh my god grapes are amazing",
+            "wav2vec2": "oh my god curos ore amazing",
+            "whisper_ft_chunked": "oh my god grapes are amazing"
+          },
+          "per_model_coverage": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 1.0,
+            "wav2vec2": 0.6666666666666666,
+            "whisper_ft_chunked": 1.0
+          },
+          "crossmodel_mean": 0.8666666666666666,
+          "crossmodel_min": 0.6666666666666667
+        },
+        {
+          "segment": "My mom had to always buy an extra pack because I just munch it like in the shopping center or in the in the shop.",
+          "severity": 1,
+          "flagged": false,
+          "n_models_reconstructed": 5,
+          "local_reconstructions": {
+            "qwen": "my mom had to always buy an extra pack because i just munching it like in the shopping center or in the in the shop",
+            "whisperx": "my little pets always buy an extra pack because i just munch on it in the shop",
+            "parakeet": "my mom pare to always buy an extra pack because i just munch it like in the shopping centre or in the in the",
+            "wav2vec2": "always py an extra pack as i just bunchit lik in the shopand sad eran ten in the",
+            "whisper_ft_chunked": "my mom had to always buy an extra pack because i just munch it like in the shopping center or in the in the shop"
+          },
+          "per_model_coverage": {
+            "qwen": 0.96,
+            "whisperx": 0.56,
+            "parakeet": 0.88,
+            "wav2vec2": 0.4,
+            "whisper_ft_chunked": 1.0
+          },
+          "crossmodel_mean": 0.5618888888888889,
+          "crossmodel_min": 0.2222222222222222
+        }
+      ]
+    },
+    {
+      "dataset_index": 144,
+      "segments": [
+        {
+          "segment": "Yeah, and also need to know where to get it.",
+          "severity": 3,
+          "flagged": true,
+          "n_models_reconstructed": 5,
+          "local_reconstructions": {
+            "qwen": "yeah and also need to know where to get it",
+            "whisperx": "yeah unless you need to know where to get it",
+            "parakeet": "yeah and they'll sing it in know where to get it but like you know once we get",
+            "wav2vec2": "and they'll sen no where to get it",
+            "whisper_ft_chunked": "yeah and those things you know where to get it but like you know once we get"
+          },
+          "per_model_coverage": {
+            "qwen": 1.0,
+            "whisperx": 0.8,
+            "parakeet": 0.5,
+            "wav2vec2": 0.4,
+            "whisper_ft_chunked": 0.5
+          },
+          "crossmodel_mean": 0.45921568627450987,
+          "crossmodel_min": 0.2941176470588235
+        },
+        {
+          "segment": "But like, you know, once we get past those two small...",
+          "severity": 2,
+          "flagged": true,
+          "n_models_reconstructed": 5,
+          "local_reconstructions": {
+            "qwen": "but like you know once we get past those two small",
+            "whisperx": "but like you know once we get past those two small",
+            "parakeet": "past those two small",
+            "wav2vec2": "but like o at once we get past thos two small",
+            "whisper_ft_chunked": "past those too small"
+          },
+          "per_model_coverage": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 0.36363636363636365,
+            "wav2vec2": 0.7272727272727273,
+            "whisper_ft_chunked": 0.2727272727272727
+          },
+          "crossmodel_mean": 0.49318181818181805,
+          "crossmodel_min": 0.18181818181818177
+        }
+      ]
+    },
+    {
+      "dataset_index": 146,
+      "segments": [
+        {
+          "segment": "You should, yeah.",
+          "severity": 2,
+          "flagged": true,
+          "n_models_reconstructed": 4,
+          "local_reconstructions": {
+            "qwen": "you should yeah",
+            "parakeet": "you should yeah",
+            "wav2vec2": "you should",
+            "whisper_ft_chunked": "you should yeah"
+          },
+          "per_model_coverage": {
+            "qwen": 1.0,
+            "whisperx": 0.0,
+            "parakeet": 1.0,
+            "wav2vec2": 0.6666666666666666,
+            "whisper_ft_chunked": 1.0
+          },
+          "crossmodel_mean": 0.8333333333333335,
+          "crossmodel_min": 0.6666666666666667
+        },
+        {
+          "segment": "What's your favorite thing about Edinburgh?",
+          "severity": 0,
+          "flagged": false,
+          "n_models_reconstructed": 5,
+          "local_reconstructions": {
+            "qwen": "what's your favorite thing about edinburgh",
+            "whisperx": "what's your favorite thing about edinburgh",
+            "parakeet": "what's your favorite thing about edinburgh",
+            "wav2vec2": "what's your favourite thing about edinburgh",
+            "whisper_ft_chunked": "what's your favorite thing about edinburgh"
+          },
+          "per_model_coverage": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 1.0,
+            "wav2vec2": 0.8333333333333334,
+            "whisper_ft_chunked": 1.0
+          },
+          "crossmodel_mean": 0.9333333333333333,
+          "crossmodel_min": 0.8333333333333334
+        },
+        {
+          "segment": "Arthur's Seat.",
+          "severity": 0,
+          "flagged": false,
+          "n_models_reconstructed": 5,
+          "local_reconstructions": {
+            "qwen": "seat",
+            "whisperx": "arthur's seat",
+            "parakeet": "arthur's seat",
+            "wav2vec2": "seat",
+            "whisper_ft_chunked": "arthur's seat"
+          },
+          "per_model_coverage": {
+            "qwen": 0.5,
+            "whisperx": 1.0,
+            "parakeet": 1.0,
+            "wav2vec2": 0.5,
+            "whisper_ft_chunked": 1.0
+          },
+          "crossmodel_mean": 0.7,
+          "crossmodel_min": 0.5
+        }
+      ]
+    },
+    {
+      "dataset_index": 150,
+      "segments": [
+        {
+          "segment": "Yeah.",
+          "severity": 0,
+          "flagged": false,
+          "n_models_reconstructed": 4,
+          "local_reconstructions": {
+            "qwen": "yeah",
+            "whisperx": "yeah",
+            "parakeet": "yeah",
+            "whisper_ft_chunked": "yeah"
+          },
+          "per_model_coverage": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 1.0,
+            "wav2vec2": 0.0,
+            "whisper_ft_chunked": 1.0
+          },
+          "crossmodel_mean": 1.0,
+          "crossmodel_min": 1.0
+        }
+      ]
+    },
+    {
+      "dataset_index": 152,
+      "segments": [
+        {
+          "segment": "You can get anything you really want.",
+          "severity": 2,
+          "flagged": true,
+          "n_models_reconstructed": 5,
+          "local_reconstructions": {
+            "qwen": "you can get anything you really",
+            "whisperx": "you can get anything you really want",
+            "parakeet": "you can get anything",
+            "wav2vec2": "you can get anything",
+            "whisper_ft_chunked": "you can get anything really"
+          },
+          "per_model_coverage": {
+            "qwen": 0.8571428571428571,
+            "whisperx": 1.0,
+            "parakeet": 0.5714285714285714,
+            "wav2vec2": 0.5714285714285714,
+            "whisper_ft_chunked": 0.7142857142857143
+          },
+          "crossmodel_mean": 0.7480952380952381,
+          "crossmodel_min": 0.5714285714285714
+        }
+      ]
+    },
+    {
+      "dataset_index": 157,
+      "segments": [
+        {
+          "segment": "Bye.",
+          "severity": 4,
+          "flagged": true,
+          "n_models_reconstructed": 1,
+          "local_reconstructions": {
+            "whisperx": "bye"
+          },
+          "per_model_coverage": {
+            "qwen": 0.0,
+            "whisperx": 1.0,
+            "parakeet": 0.0,
+            "wav2vec2": 0.0,
+            "whisper_ft_chunked": 0.0
+          },
+          "crossmodel_mean": null,
+          "crossmodel_min": null
+        }
+      ]
+    },
+    {
+      "dataset_index": 158,
+      "segments": [
+        {
+          "segment": "For me, it's the scent,",
+          "severity": 1,
+          "flagged": false,
+          "n_models_reconstructed": 5,
+          "local_reconstructions": {
+            "qwen": "for me it's um the scent",
+            "whisperx": "for me it's the scent",
+            "parakeet": "for me it's the",
+            "wav2vec2": "for me it's er the",
+            "whisper_ft_chunked": "for me it's um the"
+          },
+          "per_model_coverage": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 0.8,
+            "wav2vec2": 0.8,
+            "whisper_ft_chunked": 0.8
+          },
+          "crossmodel_mean": 0.74,
+          "crossmodel_min": 0.6
+        },
+        {
+          "segment": "like the smells.",
+          "severity": 0,
+          "flagged": false,
+          "n_models_reconstructed": 5,
+          "local_reconstructions": {
+            "qwen": "like the smells",
+            "whisperx": "like the smells",
+            "parakeet": "like the smells",
+            "wav2vec2": "like the smells",
+            "whisper_ft_chunked": "like the smells"
+          },
+          "per_model_coverage": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 1.0,
+            "wav2vec2": 1.0,
+            "whisper_ft_chunked": 1.0
+          },
+          "crossmodel_mean": 1.0,
+          "crossmodel_min": 1.0
+        }
+      ]
+    },
+    {
+      "dataset_index": 161,
+      "segments": [
+        {
+          "segment": "the yeah, the not so nice city smells that you get.",
+          "severity": 2,
+          "flagged": true,
+          "n_models_reconstructed": 5,
+          "local_reconstructions": {
+            "qwen": "the not so nice city smells that you get",
+            "whisperx": "the not so nice city smells that you get",
+            "parakeet": "the yeah the not so nice city smells that you get",
+            "wav2vec2": "the air there not so nice city",
+            "whisper_ft_chunked": "the yeah the not so nice city smells that you get"
+          },
+          "per_model_coverage": {
+            "qwen": 0.8181818181818182,
+            "whisperx": 0.8181818181818182,
+            "parakeet": 1.0,
+            "wav2vec2": 0.45454545454545453,
+            "whisper_ft_chunked": 1.0
+          },
+          "crossmodel_mean": 0.6848484848484849,
+          "crossmodel_min": 0.33333333333333337
+        }
+      ]
+    },
+    {
+      "dataset_index": 168,
+      "segments": [
+        {
+          "segment": "Yeah, true.",
+          "severity": 1,
+          "flagged": false,
+          "n_models_reconstructed": 2,
+          "local_reconstructions": {
+            "qwen": "yeah true",
+            "wav2vec2": "true"
+          },
+          "per_model_coverage": {
+            "qwen": 1.0,
+            "whisperx": 0.0,
+            "parakeet": 0.0,
+            "wav2vec2": 0.5,
+            "whisper_ft_chunked": 0.0
+          },
+          "crossmodel_mean": 0.5,
+          "crossmodel_min": 0.5
+        }
+      ]
+    },
+    {
+      "dataset_index": 170,
+      "segments": [
+        {
+          "segment": "Yeah, um, just a couple minutes left.",
+          "severity": 1,
+          "flagged": false,
+          "n_models_reconstructed": 5,
+          "local_reconstructions": {
+            "qwen": "yeah um just a couple minutes left",
+            "whisperx": "yeah just a couple minutes left",
+            "parakeet": "yeah and just a couple minutes left",
+            "wav2vec2": "just a couple o minutes left",
+            "whisper_ft_chunked": "yeah um just a couple minutes left"
+          },
+          "per_model_coverage": {
+            "qwen": 1.0,
+            "whisperx": 0.8571428571428571,
+            "parakeet": 0.8571428571428571,
+            "wav2vec2": 0.7142857142857143,
+            "whisper_ft_chunked": 1.0
+          },
+          "crossmodel_mean": 0.7666666666666666,
+          "crossmodel_min": 0.5714285714285714
+        },
+        {
+          "segment": "Where are the topics?",
+          "severity": 3,
+          "flagged": true,
+          "n_models_reconstructed": 5,
+          "local_reconstructions": {
+            "qwen": "where is the topics",
+            "whisperx": "where is the topics",
+            "parakeet": "where' the topics",
+            "wav2vec2": "topics",
+            "whisper_ft_chunked": "where is the topics"
+          },
+          "per_model_coverage": {
+            "qwen": 0.75,
+            "whisperx": 0.75,
+            "parakeet": 0.75,
+            "wav2vec2": 0.25,
+            "whisper_ft_chunked": 0.75
+          },
+          "crossmodel_mean": 0.5583333333333333,
+          "crossmodel_min": 0.25
+        }
+      ]
+    },
+    {
+      "dataset_index": 173,
+      "segments": [
+        {
+          "segment": "All right.",
+          "severity": 0,
+          "flagged": false,
+          "n_models_reconstructed": 3,
+          "local_reconstructions": {
+            "qwen": "all right",
+            "whisperx": "all right",
+            "parakeet": "right"
+          },
+          "per_model_coverage": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 0.5,
+            "wav2vec2": 0.0,
+            "whisper_ft_chunked": 0.0
+          },
+          "crossmodel_mean": 0.6666666666666666,
+          "crossmodel_min": 0.5
+        }
+      ]
+    },
+    {
+      "dataset_index": 180,
+      "segments": [
+        {
+          "segment": "What's the appeal in Iceland?",
+          "severity": 0,
+          "flagged": false,
+          "n_models_reconstructed": 5,
+          "local_reconstructions": {
+            "qwen": "what's the appeal in iceland",
+            "whisperx": "what's the appeal in iceland",
+            "parakeet": "what's the appeal in iceland",
+            "wav2vec2": "appeal in iceland",
+            "whisper_ft_chunked": "what's the appeal in iceland"
+          },
+          "per_model_coverage": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 1.0,
+            "wav2vec2": 0.6,
+            "whisper_ft_chunked": 1.0
+          },
+          "crossmodel_mean": 0.8399999999999999,
+          "crossmodel_min": 0.6
+        }
+      ]
+    },
+    {
+      "dataset_index": 181,
+      "segments": [
+        {
+          "segment": "It's just cool, you know.",
+          "severity": 1,
+          "flagged": false,
+          "n_models_reconstructed": 3,
+          "local_reconstructions": {
+            "qwen": "it's just cold you know",
+            "parakeet": "it's just cool you know",
+            "whisper_ft_chunked": "just cool"
+          },
+          "per_model_coverage": {
+            "qwen": 0.8,
+            "whisperx": 0.0,
+            "parakeet": 1.0,
+            "wav2vec2": 0.0,
+            "whisper_ft_chunked": 0.4
+          },
+          "crossmodel_mean": 0.4666666666666666,
+          "crossmodel_min": 0.19999999999999996
+        }
+      ]
+    },
+    {
+      "dataset_index": 182,
+      "segments": [
+        {
+          "segment": "Cold.",
+          "severity": 0,
+          "flagged": false,
+          "n_models_reconstructed": 5,
+          "local_reconstructions": {
+            "qwen": "cold",
+            "whisperx": "cold",
+            "parakeet": "cold",
+            "wav2vec2": "cold",
+            "whisper_ft_chunked": "cold"
+          },
+          "per_model_coverage": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 1.0,
+            "wav2vec2": 1.0,
+            "whisper_ft_chunked": 1.0
+          },
+          "crossmodel_mean": 1.0,
+          "crossmodel_min": 1.0
+        }
+      ]
+    },
+    {
+      "dataset_index": 185,
+      "segments": [
+        {
+          "segment": "Yeah, it's very scenic.",
+          "severity": 0,
+          "flagged": false,
+          "n_models_reconstructed": 4,
+          "local_reconstructions": {
+            "qwen": "yeah it's very scenic",
+            "whisperx": "yeah it's been very",
+            "parakeet": "yeah it's a pretty nice scenic",
+            "whisper_ft_chunked": "yeah it's very scenic"
+          },
+          "per_model_coverage": {
+            "qwen": 1.0,
+            "whisperx": 0.75,
+            "parakeet": 0.75,
+            "wav2vec2": 0.0,
+            "whisper_ft_chunked": 1.0
+          },
+          "crossmodel_mean": 0.5555555555555556,
+          "crossmodel_min": 0.33333333333333337
+        }
+      ]
+    },
+    {
+      "dataset_index": 188,
+      "segments": [
+        {
+          "segment": "I'm pretty sure it's.",
+          "severity": 1,
+          "flagged": false,
+          "n_models_reconstructed": 3,
+          "local_reconstructions": {
+            "qwen": "i'm pretty sure it's",
+            "whisperx": "sure it's",
+            "whisper_ft_chunked": "i'm sure"
+          },
+          "per_model_coverage": {
+            "qwen": 1.0,
+            "whisperx": 0.5,
+            "parakeet": 0.0,
+            "wav2vec2": 0.0,
+            "whisper_ft_chunked": 0.5
+          },
+          "crossmodel_mean": 0.3333333333333333,
+          "crossmodel_min": 0.0
+        }
+      ]
+    },
+    {
+      "dataset_index": 190,
+      "segments": [
+        {
+          "segment": "the cost would be insane, like through the roof.",
+          "severity": 1,
+          "flagged": false,
+          "n_models_reconstructed": 5,
+          "local_reconstructions": {
+            "qwen": "the roof",
+            "whisperx": "the cost would be insane like through the roof",
+            "parakeet": "the",
+            "wav2vec2": "the",
+            "whisper_ft_chunked": "the same like through the"
+          },
+          "per_model_coverage": {
+            "qwen": 0.2222222222222222,
+            "whisperx": 1.0,
+            "parakeet": 0.1111111111111111,
+            "wav2vec2": 0.1111111111111111,
+            "whisper_ft_chunked": 0.4444444444444444
+          },
+          "crossmodel_mean": 0.3488888888888889,
+          "crossmodel_min": 0.11111111111111116
+        }
+      ]
+    },
+    {
+      "dataset_index": 195,
+      "segments": [
+        {
+          "segment": "Or just.",
+          "severity": 2,
+          "flagged": true,
+          "n_models_reconstructed": 5,
+          "local_reconstructions": {
+            "qwen": "or just",
+            "whisperx": "or just",
+            "parakeet": "or just",
+            "wav2vec2": "or",
+            "whisper_ft_chunked": "or just"
+          },
+          "per_model_coverage": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 1.0,
+            "wav2vec2": 0.5,
+            "whisper_ft_chunked": 1.0
+          },
+          "crossmodel_mean": 0.8,
+          "crossmodel_min": 0.5
+        }
+      ]
+    }
+  ]
+}

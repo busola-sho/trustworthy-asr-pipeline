@@ -1,0 +1,868 @@
+{
+  "dataset": "edacc",
+  "split": "test",
+  "variant": "probscore",
+  "selector_model": "gemma4",
+  "confidence_type": "retrospective_verbalized_confidence",
+  "target": "meaning_preservation",
+  "prompt_variant": "probscore",
+  "score_scale": "0-1",
+  "temperature": 0,
+  "prompt_template": "The following transcripts were produced by different ASR systems\nfor the same spoken audio:\n\n{source_block}\n\nThe fused transcript contains this fixed segment:\n\n\"{segment}\"\n\nBased only on the evidence in the ASR transcripts, give {variant_phrasing}.\n\nRespond only:\nScore: <value>\n",
+  "num_transcripts": 58,
+  "num_segments": 80,
+  "num_segments_scored": 80,
+  "num_segments_failed": 0,
+  "transcripts": [
+    {
+      "dataset_index": 1,
+      "segments": [
+        {
+          "segment": "I've got a notification.",
+          "severity": 3,
+          "flagged": true,
+          "verbalized_score": 0.95,
+          "raw_response": "Score: 0.95"
+        }
+      ]
+    },
+    {
+      "dataset_index": 6,
+      "segments": [
+        {
+          "segment": "Do you wanna explain?",
+          "severity": 0,
+          "flagged": false,
+          "verbalized_score": 0.8,
+          "raw_response": "Score: 0.8"
+        }
+      ]
+    },
+    {
+      "dataset_index": 7,
+      "segments": [
+        {
+          "segment": "Which is just basically you have two ends of a pitch, and your goal is to reach the other end of the pitch without being tagged by someone in the middle, and no rules apply.",
+          "severity": 1,
+          "flagged": false,
+          "verbalized_score": 1.0,
+          "raw_response": "Score: 1.0"
+        },
+        {
+          "segment": "People were beaten up, blood everywhere.",
+          "severity": 1,
+          "flagged": false,
+          "verbalized_score": 1.0,
+          "raw_response": "Score: 1.0"
+        },
+        {
+          "segment": "Ah, good times.",
+          "severity": 0,
+          "flagged": false,
+          "verbalized_score": 0.95,
+          "raw_response": "Score: 0.95"
+        }
+      ]
+    },
+    {
+      "dataset_index": 8,
+      "segments": [
+        {
+          "segment": "Was it tagged or was it tackled?",
+          "severity": 0,
+          "flagged": false,
+          "verbalized_score": 1.0,
+          "raw_response": "Score: 1.0"
+        }
+      ]
+    },
+    {
+      "dataset_index": 11,
+      "segments": [
+        {
+          "segment": "Exactly.",
+          "severity": 4,
+          "flagged": true,
+          "verbalized_score": 0.8,
+          "raw_response": "Score: 0.8"
+        }
+      ]
+    },
+    {
+      "dataset_index": 17,
+      "segments": [
+        {
+          "segment": "Stone Playground.",
+          "severity": 2,
+          "flagged": true,
+          "verbalized_score": 0.8,
+          "raw_response": "Score: 0.8"
+        }
+      ]
+    },
+    {
+      "dataset_index": 21,
+      "segments": [
+        {
+          "segment": "um,",
+          "severity": 4,
+          "flagged": true,
+          "verbalized_score": 0.8,
+          "raw_response": "Score: 0.8"
+        }
+      ]
+    },
+    {
+      "dataset_index": 23,
+      "segments": [
+        {
+          "segment": "we",
+          "severity": 4,
+          "flagged": true,
+          "verbalized_score": 0.8,
+          "raw_response": "Score: 0.8"
+        }
+      ]
+    },
+    {
+      "dataset_index": 24,
+      "segments": [
+        {
+          "segment": "The idea is it's essentially the same as bulldog.",
+          "severity": 2,
+          "flagged": true,
+          "verbalized_score": 0.95,
+          "raw_response": "Score: 0.95"
+        },
+        {
+          "segment": "You have to run on the end of the field.",
+          "severity": 2,
+          "flagged": true,
+          "verbalized_score": 0.85,
+          "raw_response": "Score: 0.85"
+        },
+        {
+          "segment": "There's one person who's the shark or maybe two people, and they can move any direction.",
+          "severity": 1,
+          "flagged": false,
+          "verbalized_score": 1.0,
+          "raw_response": "Score: 1.0"
+        },
+        {
+          "segment": "And if they take you, you become seaweed and you can't move your feet.",
+          "severity": 0,
+          "flagged": false,
+          "verbalized_score": 1.0,
+          "raw_response": "Score: 1.0"
+        },
+        {
+          "segment": "You can like lean out to catch people.",
+          "severity": 3,
+          "flagged": true,
+          "verbalized_score": 1.0,
+          "raw_response": "Score: 1.0"
+        }
+      ]
+    },
+    {
+      "dataset_index": 25,
+      "segments": [
+        {
+          "segment": "THAT'S RIGHT",
+          "severity": 1,
+          "flagged": false,
+          "verbalized_score": 0.8,
+          "raw_response": "Score: 0.8"
+        }
+      ]
+    },
+    {
+      "dataset_index": 27,
+      "segments": [
+        {
+          "segment": "UM",
+          "severity": 1,
+          "flagged": false,
+          "verbalized_score": 0.2,
+          "raw_response": "Score: 0.2"
+        }
+      ]
+    },
+    {
+      "dataset_index": 29,
+      "segments": [
+        {
+          "segment": "That's quite creative, actually.",
+          "severity": 2,
+          "flagged": true,
+          "verbalized_score": 0.95,
+          "raw_response": "Score: 0.95"
+        },
+        {
+          "segment": "Yeah.",
+          "severity": 0,
+          "flagged": false,
+          "verbalized_score": 1.0,
+          "raw_response": "Score: 1.0"
+        }
+      ]
+    },
+    {
+      "dataset_index": 32,
+      "segments": [
+        {
+          "segment": "No, it's fully just tag.",
+          "severity": 1,
+          "flagged": false,
+          "verbalized_score": 0.95,
+          "raw_response": "Score: 0.95"
+        },
+        {
+          "segment": "Tags we'd call.",
+          "severity": 0,
+          "flagged": false,
+          "verbalized_score": 0.85,
+          "raw_response": "Score: 0.85"
+        }
+      ]
+    },
+    {
+      "dataset_index": 37,
+      "segments": [
+        {
+          "segment": "Yeah.",
+          "severity": 0,
+          "flagged": false,
+          "verbalized_score": 1.0,
+          "raw_response": "Score: 1.0"
+        }
+      ]
+    },
+    {
+      "dataset_index": 41,
+      "segments": [
+        {
+          "segment": "It's a lot safer.",
+          "severity": 0,
+          "flagged": false,
+          "verbalized_score": 0.833,
+          "raw_response": "Score: 0.833"
+        }
+      ]
+    },
+    {
+      "dataset_index": 42,
+      "segments": [
+        {
+          "segment": "Do you do much dodgeball when you're in primary school?",
+          "severity": 2,
+          "flagged": true,
+          "verbalized_score": 1.0,
+          "raw_response": "Score: 1.0"
+        }
+      ]
+    },
+    {
+      "dataset_index": 51,
+      "segments": [
+        {
+          "segment": "Yeah.",
+          "severity": 0,
+          "flagged": false,
+          "verbalized_score": 0.8,
+          "raw_response": "Score: 0.8"
+        }
+      ]
+    },
+    {
+      "dataset_index": 52,
+      "segments": [
+        {
+          "segment": "And then there was like a Tig style where you like chase the person with the ball, and just throw it at them, which, like.",
+          "severity": 1,
+          "flagged": false,
+          "verbalized_score": 1.0,
+          "raw_response": "Score: 1.0"
+        }
+      ]
+    },
+    {
+      "dataset_index": 57,
+      "segments": [
+        {
+          "segment": "Yeah, was your primary school pretty big?",
+          "severity": 1,
+          "flagged": false,
+          "verbalized_score": 0.95,
+          "raw_response": "Score: 0.95"
+        }
+      ]
+    },
+    {
+      "dataset_index": 58,
+      "segments": [
+        {
+          "segment": "Yeah, big, big hall for the size.",
+          "severity": 1,
+          "flagged": false,
+          "verbalized_score": 1.0,
+          "raw_response": "Score: 1.0"
+        },
+        {
+          "segment": "I remember going back there when I was a lot older and I remember seeing the basketball hoops in the hall and I could like dunk on them, which is so weird because basketball hoops are supposed to be like ten feet tall and at the",
+          "severity": 2,
+          "flagged": true,
+          "verbalized_score": 0.95,
+          "raw_response": "Score: 0.95"
+        }
+      ]
+    },
+    {
+      "dataset_index": 59,
+      "segments": [
+        {
+          "segment": "Yeah.",
+          "severity": 0,
+          "flagged": false,
+          "verbalized_score": 1.0,
+          "raw_response": "Score: 1.0"
+        }
+      ]
+    },
+    {
+      "dataset_index": 60,
+      "segments": [
+        {
+          "segment": "Primary school.",
+          "severity": 0,
+          "flagged": false,
+          "verbalized_score": 1.0,
+          "raw_response": "Score: 1.0"
+        },
+        {
+          "segment": "It wasn't even seven feet, so it was very fun to go back there and then mess about there.",
+          "severity": 1,
+          "flagged": false,
+          "verbalized_score": 1.0,
+          "raw_response": "Score: 1.0"
+        },
+        {
+          "segment": "After I did some coaching.",
+          "severity": 1,
+          "flagged": false,
+          "verbalized_score": 0.85,
+          "raw_response": "Score: 0.85"
+        }
+      ]
+    },
+    {
+      "dataset_index": 61,
+      "segments": [
+        {
+          "segment": "Yeah.",
+          "severity": 0,
+          "flagged": false,
+          "verbalized_score": 1.0,
+          "raw_response": "Score: 1.0"
+        }
+      ]
+    },
+    {
+      "dataset_index": 64,
+      "segments": [
+        {
+          "segment": "Nothing.",
+          "severity": 0,
+          "flagged": false,
+          "verbalized_score": 0.8,
+          "raw_response": "Score: 0.8"
+        }
+      ]
+    },
+    {
+      "dataset_index": 69,
+      "segments": [
+        {
+          "segment": "Obviously,",
+          "severity": 0,
+          "flagged": false,
+          "verbalized_score": 1.0,
+          "raw_response": "Score: 1.0"
+        },
+        {
+          "segment": "Scooby-Doo.",
+          "severity": 0,
+          "flagged": false,
+          "verbalized_score": 0.8,
+          "raw_response": "Score: 0.8"
+        }
+      ]
+    },
+    {
+      "dataset_index": 72,
+      "segments": [
+        {
+          "segment": "Do you want to describe what Scooby-Doo was?",
+          "severity": 1,
+          "flagged": false,
+          "verbalized_score": 0.95,
+          "raw_response": "Score: 0.95"
+        }
+      ]
+    },
+    {
+      "dataset_index": 73,
+      "segments": [
+        {
+          "segment": "Honestly, even now I can't describe it.",
+          "severity": 1,
+          "flagged": false,
+          "verbalized_score": 0.8,
+          "raw_response": "Score: 0.8"
+        }
+      ]
+    },
+    {
+      "dataset_index": 76,
+      "segments": [
+        {
+          "segment": "It's really quite something.",
+          "severity": 1,
+          "flagged": false,
+          "verbalized_score": 1.0,
+          "raw_response": "Score: 1.0"
+        }
+      ]
+    },
+    {
+      "dataset_index": 77,
+      "segments": [
+        {
+          "segment": "Okay.",
+          "severity": 3,
+          "flagged": true,
+          "verbalized_score": 0.8,
+          "raw_response": "Score: 0.8"
+        }
+      ]
+    },
+    {
+      "dataset_index": 89,
+      "segments": [
+        {
+          "segment": "It just sounds awful.",
+          "severity": 0,
+          "flagged": false,
+          "verbalized_score": 0.8,
+          "raw_response": "Score: 0.8"
+        }
+      ]
+    },
+    {
+      "dataset_index": 90,
+      "segments": [
+        {
+          "segment": "It's so good.",
+          "severity": 0,
+          "flagged": false,
+          "verbalized_score": 1.0,
+          "raw_response": "Score: 1.0"
+        },
+        {
+          "segment": "The kid can.",
+          "severity": 0,
+          "flagged": false,
+          "verbalized_score": 1.0,
+          "raw_response": "Score: 1.0"
+        }
+      ]
+    },
+    {
+      "dataset_index": 91,
+      "segments": [
+        {
+          "segment": "It's got to work.",
+          "severity": 4,
+          "flagged": true,
+          "verbalized_score": 0.8,
+          "raw_response": "Score: 0.8"
+        }
+      ]
+    },
+    {
+      "dataset_index": 95,
+      "segments": [
+        {
+          "segment": "I think I've seen a bit of that.",
+          "severity": 1,
+          "flagged": false,
+          "verbalized_score": 1.0,
+          "raw_response": "Score: 1.0"
+        },
+        {
+          "segment": "I think that was more of my sister's thing.",
+          "severity": 1,
+          "flagged": false,
+          "verbalized_score": 0.8,
+          "raw_response": "Score: 0.8"
+        }
+      ]
+    },
+    {
+      "dataset_index": 96,
+      "segments": [
+        {
+          "segment": "I love the Peppa Pig.",
+          "severity": 3,
+          "flagged": true,
+          "verbalized_score": 0.85,
+          "raw_response": "Score: 0.85"
+        }
+      ]
+    },
+    {
+      "dataset_index": 100,
+      "segments": [
+        {
+          "segment": "I saw like episodes because they'd be on after stuff I'd be watching, but would never be.",
+          "severity": 2,
+          "flagged": true,
+          "verbalized_score": 0.85,
+          "raw_response": "Score: 0.85"
+        }
+      ]
+    },
+    {
+      "dataset_index": 101,
+      "segments": [
+        {
+          "segment": "Yeah.",
+          "severity": 0,
+          "flagged": false,
+          "verbalized_score": 1.0,
+          "raw_response": "Score: 1.0"
+        }
+      ]
+    },
+    {
+      "dataset_index": 113,
+      "segments": [
+        {
+          "segment": "Eight words.",
+          "severity": 3,
+          "flagged": true,
+          "verbalized_score": 0.8,
+          "raw_response": "Score: 0.8"
+        }
+      ]
+    },
+    {
+      "dataset_index": 114,
+      "segments": [
+        {
+          "segment": "Oh, worms, that makes more sense.",
+          "severity": 1,
+          "flagged": false,
+          "verbalized_score": 0.95,
+          "raw_response": "Score: 0.95"
+        },
+        {
+          "segment": "It's still weird but it makes more sense.",
+          "severity": 1,
+          "flagged": false,
+          "verbalized_score": 0.95,
+          "raw_response": "Score: 0.95"
+        }
+      ]
+    },
+    {
+      "dataset_index": 120,
+      "segments": [
+        {
+          "segment": "I'd ask what that's about, but I think it's pretty intuitive.",
+          "severity": 0,
+          "flagged": false,
+          "verbalized_score": 0.95,
+          "raw_response": "Score: 0.95"
+        }
+      ]
+    },
+    {
+      "dataset_index": 123,
+      "segments": [
+        {
+          "segment": "It's literally everything you need to know about the weather in one book.",
+          "severity": 0,
+          "flagged": false,
+          "verbalized_score": 1.0,
+          "raw_response": "Score: 1.0"
+        },
+        {
+          "segment": "I can just look outside and be like, \"Yep, it's gonna rain 200 milliliters today.\"",
+          "severity": 3,
+          "flagged": true,
+          "verbalized_score": 1.0,
+          "raw_response": "Score: 1.0"
+        }
+      ]
+    },
+    {
+      "dataset_index": 135,
+      "segments": [
+        {
+          "segment": "Oh my god, grapes are amazing.",
+          "severity": 1,
+          "flagged": false,
+          "verbalized_score": 1.0,
+          "raw_response": "Score: 1.0"
+        },
+        {
+          "segment": "My mom had to always buy an extra pack because I just munch it like in the shopping center or in the in the shop.",
+          "severity": 1,
+          "flagged": false,
+          "verbalized_score": 0.95,
+          "raw_response": "Score: 0.95"
+        }
+      ]
+    },
+    {
+      "dataset_index": 144,
+      "segments": [
+        {
+          "segment": "Yeah, and also need to know where to get it.",
+          "severity": 3,
+          "flagged": true,
+          "verbalized_score": 0.95,
+          "raw_response": "Score: 0.95"
+        },
+        {
+          "segment": "But like, you know, once we get past those two small...",
+          "severity": 2,
+          "flagged": true,
+          "verbalized_score": 0.95,
+          "raw_response": "Score: 0.95"
+        }
+      ]
+    },
+    {
+      "dataset_index": 146,
+      "segments": [
+        {
+          "segment": "You should, yeah.",
+          "severity": 2,
+          "flagged": true,
+          "verbalized_score": 0.8,
+          "raw_response": "Score: 0.8"
+        },
+        {
+          "segment": "What's your favorite thing about Edinburgh?",
+          "severity": 0,
+          "flagged": false,
+          "verbalized_score": 1.0,
+          "raw_response": "Score: 1.0"
+        },
+        {
+          "segment": "Arthur's Seat.",
+          "severity": 0,
+          "flagged": false,
+          "verbalized_score": 1.0,
+          "raw_response": "Score: 1.0"
+        }
+      ]
+    },
+    {
+      "dataset_index": 150,
+      "segments": [
+        {
+          "segment": "Yeah.",
+          "severity": 0,
+          "flagged": false,
+          "verbalized_score": 1.0,
+          "raw_response": "Score: 1.0"
+        }
+      ]
+    },
+    {
+      "dataset_index": 152,
+      "segments": [
+        {
+          "segment": "You can get anything you really want.",
+          "severity": 2,
+          "flagged": true,
+          "verbalized_score": 0.85,
+          "raw_response": "Score: 0.85"
+        }
+      ]
+    },
+    {
+      "dataset_index": 157,
+      "segments": [
+        {
+          "segment": "Bye.",
+          "severity": 4,
+          "flagged": true,
+          "verbalized_score": 0.6,
+          "raw_response": "Score: 0.6"
+        }
+      ]
+    },
+    {
+      "dataset_index": 158,
+      "segments": [
+        {
+          "segment": "For me, it's the scent,",
+          "severity": 1,
+          "flagged": false,
+          "verbalized_score": 0.83,
+          "raw_response": "Score: 0.83"
+        },
+        {
+          "segment": "like the smells.",
+          "severity": 0,
+          "flagged": false,
+          "verbalized_score": 1.0,
+          "raw_response": "Score: 1.0"
+        }
+      ]
+    },
+    {
+      "dataset_index": 161,
+      "segments": [
+        {
+          "segment": "the yeah, the not so nice city smells that you get.",
+          "severity": 2,
+          "flagged": true,
+          "verbalized_score": 0.95,
+          "raw_response": "Score: 0.95"
+        }
+      ]
+    },
+    {
+      "dataset_index": 168,
+      "segments": [
+        {
+          "segment": "Yeah, true.",
+          "severity": 1,
+          "flagged": false,
+          "verbalized_score": 0.6,
+          "raw_response": "Score: 0.6"
+        }
+      ]
+    },
+    {
+      "dataset_index": 170,
+      "segments": [
+        {
+          "segment": "Yeah, um, just a couple minutes left.",
+          "severity": 1,
+          "flagged": false,
+          "verbalized_score": 1.0,
+          "raw_response": "Score: 1.0"
+        },
+        {
+          "segment": "Where are the topics?",
+          "severity": 3,
+          "flagged": true,
+          "verbalized_score": 0.95,
+          "raw_response": "Score: 0.95"
+        }
+      ]
+    },
+    {
+      "dataset_index": 173,
+      "segments": [
+        {
+          "segment": "All right.",
+          "severity": 0,
+          "flagged": false,
+          "verbalized_score": 0.8,
+          "raw_response": "Score: 0.8"
+        }
+      ]
+    },
+    {
+      "dataset_index": 180,
+      "segments": [
+        {
+          "segment": "What's the appeal in Iceland?",
+          "severity": 0,
+          "flagged": false,
+          "verbalized_score": 1.0,
+          "raw_response": "Score: 1.0"
+        }
+      ]
+    },
+    {
+      "dataset_index": 181,
+      "segments": [
+        {
+          "segment": "It's just cool, you know.",
+          "severity": 1,
+          "flagged": false,
+          "verbalized_score": 0.8,
+          "raw_response": "Score: 0.8"
+        }
+      ]
+    },
+    {
+      "dataset_index": 182,
+      "segments": [
+        {
+          "segment": "Cold.",
+          "severity": 0,
+          "flagged": false,
+          "verbalized_score": 1.0,
+          "raw_response": "Score: 1.0"
+        }
+      ]
+    },
+    {
+      "dataset_index": 185,
+      "segments": [
+        {
+          "segment": "Yeah, it's very scenic.",
+          "severity": 0,
+          "flagged": false,
+          "verbalized_score": 0.8,
+          "raw_response": "Score: 0.8"
+        }
+      ]
+    },
+    {
+      "dataset_index": 188,
+      "segments": [
+        {
+          "segment": "I'm pretty sure it's.",
+          "severity": 1,
+          "flagged": false,
+          "verbalized_score": 0.8,
+          "raw_response": "Score: 0.8"
+        }
+      ]
+    },
+    {
+      "dataset_index": 190,
+      "segments": [
+        {
+          "segment": "the cost would be insane, like through the roof.",
+          "severity": 1,
+          "flagged": false,
+          "verbalized_score": 0.95,
+          "raw_response": "Score: 0.95"
+        }
+      ]
+    },
+    {
+      "dataset_index": 195,
+      "segments": [
+        {
+          "segment": "Or just.",
+          "severity": 2,
+          "flagged": true,
+          "verbalized_score": 0.8,
+          "raw_response": "Score: 0.8"
+        }
+      ]
+    }
+  ]
+}
