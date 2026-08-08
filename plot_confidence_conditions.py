@@ -25,6 +25,12 @@ no _calib_fixed mirror needed for these specifically. The baseline
 (no confidence) condition uses the grid_calib_fixed mirror, same as
 plot_strategy_severity.py.
 
+FIX: labels are already multi-line wrapped (embedded \\n) - rotating
+them on top of that was redundant and made the chart less space-
+efficient (awkward diagonal multi-line stacking). Labels now sit
+horizontal (rotation=0, center-aligned), which is more compact and
+readable given they're already broken into short wrapped lines.
+
 Usage:
     python plot_confidence_conditions.py
 """
@@ -47,7 +53,6 @@ DATASET_DISPLAY = {
     "english_dialects": "English Dialects",
 }
 
-# ── enlarged text sizes throughout, matching plot_strategy_severity.py ──
 FONT_TITLE = 28
 FONT_SUPTITLE = 30
 FONT_AXIS_LABEL = 24
@@ -145,7 +150,7 @@ def round_percentages_to_100(values):
 
 def plot_severity_distribution():
     nrows = len(DATASETS)
-    fig, axes = plt.subplots(nrows, 1, figsize=(24, 10 * nrows))
+    fig, axes = plt.subplots(nrows, 1, figsize=(16, 10 * nrows))
     if nrows == 1:
         axes = [axes]
 
@@ -155,9 +160,6 @@ def plot_severity_distribution():
         labels = list(data.keys())
         x = np.arange(len(labels))
 
-        # round each bar's 5 severity percentages together so the
-        # printed labels always sum to exactly 100 (bar HEIGHTS still
-        # use the raw, unrounded values - only the text labels change)
         rounded_per_label = {l: round_percentages_to_100(data[l]["dist"]) for l in labels}
 
         bottoms = np.zeros(len(labels))
@@ -175,8 +177,9 @@ def plot_severity_distribution():
             bottoms += np.array(values)
 
         ax.set_xticks(x)
-        ax.set_xticklabels([l.replace("\n", " ") for l in labels], fontsize=FONT_TICK_LABEL,
-                           rotation=25, ha="right")
+        # labels already multi-line wrapped (embedded \n) - horizontal,
+        # center-aligned is more compact than rotating already-wrapped text
+        ax.set_xticklabels(labels, fontsize=FONT_TICK_LABEL, rotation=0, ha="center")
         ax.tick_params(axis="y", labelsize=FONT_TICK_LABEL)
         ax.set_ylabel("% of samples", fontsize=FONT_AXIS_LABEL)
         ax.set_title(DATASET_DISPLAY[dataset], fontsize=FONT_TITLE, fontweight="bold")
@@ -191,10 +194,10 @@ def plot_severity_distribution():
         handle.set_edgecolor("black")
         handle.set_linewidth(1.5)
 
-    fig.suptitle("Unanchored Fusion: Severity Distribution by Confidence Condition\n"
+    fig.suptitle("Unanchored Fusion: Severity Distribution\nby Confidence Condition\n"
                  "(lighter green = fully preserved, darker red = critical)",
-                 fontsize=FONT_SUPTITLE, fontweight="bold", y=1.01)
-    plt.tight_layout(rect=[0, 0, 0.85, 0.98])
+                 fontsize=FONT_SUPTITLE, fontweight="bold", y=1.03)
+    plt.tight_layout(rect=[0, 0, 0.85, 0.95])
 
     os.makedirs(FIGURES_DIR, exist_ok=True)
     path = os.path.join(FIGURES_DIR, "confidence_conditions_severity.png")

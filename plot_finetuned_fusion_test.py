@@ -70,17 +70,17 @@ LABEL_REPLACE = "Replace\nWhisperX\n(ft)"
 
 def condition_paths_in_domain(dataset):
     return {
-        LABEL_BASELINE: f"writeup_results/grid_calib_fixed/unanchored_fusion_naive/unanchored_fusion_naive_{dataset}_gemma4_test.json",
         LABEL_5MODEL:   f"writeup_results/grid/unanchored_fusion_naive_5model/unanchored_fusion_naive_5model_{dataset}_gemma4_test.json",
         LABEL_REPLACE:  f"writeup_results/grid/unanchored_fusion_naive_replace_whisperx/unanchored_fusion_naive_replace_whisperx_{dataset}_gemma4_test.json",
+        LABEL_BASELINE: f"writeup_results/grid_calib_fixed/unanchored_fusion_naive/unanchored_fusion_naive_{dataset}_gemma4_test.json",
     }
 
 
 def condition_paths_shetland():
     return {
-        LABEL_BASELINE: "writeup_results/ensembles/naive/gemma4/naive_shetland_gemma4sel_full.json",
         LABEL_5MODEL:   "writeup_results/grid/unanchored_fusion_naive_5model/unanchored_fusion_naive_5model_shetland_gemma4_full.json",
         LABEL_REPLACE:  "writeup_results/grid/unanchored_fusion_naive_replace_whisperx/unanchored_fusion_naive_replace_whisperx_shetland_gemma4_full.json",
+        LABEL_BASELINE: "writeup_results/ensembles/naive/gemma4/naive_shetland_gemma4sel_full.json",
     }
 
 
@@ -164,12 +164,12 @@ def collect_dataset_data(dataset):
 SEVERITY_STACK_COLOURS = ["#a8e6a3", "#4caf50", "#f4b942", "#e67e22", "#c0392b"]
 SEVERITY_STACK_LABELS = ["0 - no change", "1 - trivial", "2 - ambiguous", "3 - factual", "4 - critical"]
 
-FONT_TITLE = 20
-FONT_SUPTITLE = 22
-FONT_AXIS_LABEL = 16
-FONT_TICK_LABEL = 15
-FONT_LEGEND = 16
-FONT_BAR_LABEL = 12
+FONT_TITLE = 26
+FONT_SUPTITLE = 28
+FONT_AXIS_LABEL = 22
+FONT_TICK_LABEL = 20
+FONT_LEGEND = 22
+FONT_BAR_LABEL = 16
 
 
 def round_percentages_to_100(values):
@@ -184,7 +184,8 @@ def round_percentages_to_100(values):
 
 
 def _plot_severity_grid(datasets, filename, suptitle, nrows):
-    fig, axes = plt.subplots(nrows, 1, figsize=(12, 7 * nrows))
+    fig_width = 12 if nrows == 1 else 16
+    fig, axes = plt.subplots(nrows, 1, figsize=(fig_width, 9 * nrows))
     if nrows == 1:
         axes = [axes]
 
@@ -220,7 +221,7 @@ def _plot_severity_grid(datasets, filename, suptitle, nrows):
         ax.grid(axis="y", alpha=0.3)
 
     legend = fig.legend(loc="center left", bbox_to_anchor=(1.0, 0.5), fontsize=FONT_LEGEND,
-                        frameon=True, markerscale=2.2, handlelength=1.8, handleheight=1.8,
+                        frameon=True, markerscale=3.0, handlelength=2.2, handleheight=2.2,
                         borderpad=1.0, labelspacing=1.4, title="Severity",
                         title_fontsize=FONT_LEGEND + 1)
     for handle in legend.legend_handles:
@@ -238,7 +239,8 @@ def _plot_severity_grid(datasets, filename, suptitle, nrows):
 
 
 def _plot_binary_grid(datasets, filename, suptitle, nrows):
-    fig, axes = plt.subplots(nrows, 1, figsize=(10, 7 * nrows))
+    fig_width = 10 if nrows == 1 else 13
+    fig, axes = plt.subplots(nrows, 1, figsize=(fig_width, 9 * nrows))
     if nrows == 1:
         axes = [axes]
 
@@ -269,7 +271,7 @@ def _plot_binary_grid(datasets, filename, suptitle, nrows):
         ax.set_title(DATASET_DISPLAY[dataset], fontsize=FONT_TITLE, fontweight="bold")
         ax.set_ylim(0, 105)
         if i == 0:
-            ax.legend(fontsize=FONT_LEGEND, loc="upper right", markerscale=1.8)
+            ax.legend(fontsize=FONT_LEGEND, loc="upper right", markerscale=2.4)
 
     fig.suptitle(suptitle, fontsize=FONT_SUPTITLE, fontweight="bold")
     plt.tight_layout(rect=[0, 0, 1, 0.96])
@@ -284,22 +286,22 @@ def _plot_binary_grid(datasets, filename, suptitle, nrows):
 def main():
     _plot_severity_grid(
         IN_DOMAIN_DATASETS, "finetuned_fusion_test_severity.png",
-        "Unanchored Fusion: Fine-Tuned Model Integration - Severity (Held-Out Test)",
+        "Unanchored Fusion: Fine-Tuned Model Integration\nSeverity (Held-Out Test)",
         nrows=3,
     )
     _plot_severity_grid(
         ["shetland"], "finetuned_fusion_shetland_severity.png",
-        "Unanchored Fusion: Fine-Tuned Model Integration - Severity (Shetland, Out-of-Domain)",
+        "Unanchored Fusion: Fine-Tuned Model Integration\nSeverity (Shetland, Out-of-Domain)",
         nrows=1,
     )
     _plot_binary_grid(
         IN_DOMAIN_DATASETS, "finetuned_fusion_test_binary.png",
-        "Unanchored Fusion: Fine-Tuned Model Integration - Meaning Preservation (Held-Out Test)",
+        "Unanchored Fusion: Fine-Tuned Model Integration\nMeaning Preservation (Held-Out Test)",
         nrows=3,
     )
     _plot_binary_grid(
         ["shetland"], "finetuned_fusion_shetland_binary.png",
-        "Unanchored Fusion: Fine-Tuned Model Integration - Meaning Preservation (Shetland, Out-of-Domain)",
+        "Unanchored Fusion: Fine-Tuned Model Integration\nMeaning Preservation (Shetland, Out-of-Domain)",
         nrows=1,
     )
 
