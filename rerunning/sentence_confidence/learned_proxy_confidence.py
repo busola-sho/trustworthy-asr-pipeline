@@ -82,13 +82,13 @@ def build_feature_matrix(dataset, split, variant):
         missing = [name for name, d in [("verbalized", verbalized), ("model_internal", model_internal),
                                         ("crossmodel", crossmodel)] if d is None]
         print(f"  WARNING: missing method output(s) for {dataset}/{split}: {missing} - skipping")
-        return None, None, None
+        return None, None, None, None
 
     verbalized_by_idx = {t["dataset_index"]: t["segments"] for t in verbalized["transcripts"]}
     internal_by_idx = {t["dataset_index"]: t["segments"] for t in model_internal["transcripts"]}
     cross_by_idx = {t["dataset_index"]: t["segments"] for t in crossmodel["transcripts"]}
 
-    X_rows, y_rows, flagged_rows = [], [], []
+    X_rows, y_rows, flagged_rows, keys = [], [], [], []
 
     common_indices = set(verbalized_by_idx) & set(internal_by_idx) & set(cross_by_idx)
     for idx in common_indices:
@@ -119,11 +119,14 @@ def build_feature_matrix(dataset, split, variant):
             X_rows.append([verbalized_score, internal_score, cross_mean, cross_min])
             y_rows.append(severity)
             flagged_rows.append(i.get("flagged"))
+            keys.append([idx, pos])  # (dataset_index, position) - lets downstream analysis
+                                      # join proxy_model's predictions back to the exact
+                                      # segment they came from, same as the other 3 methods
 
     if not X_rows:
-        return None, None, None
+        return None, None, None, None
 
-    return np.array(X_rows), np.array(y_rows), np.array(flagged_rows)
+    return np.array(X_rows), np.array(y_rows), np.array(flagged_rows), keys
 
 
 def severity_to_confidence(y_pred):
@@ -143,13 +146,13 @@ def run_lodo(variant, train_split="dev", eval_split="test"):
     train_data = {}
     eval_data = {}
     for dataset in IN_DOMAIN_DATASETS:
-        X_tr, y_tr, _ = build_feature_matrix(dataset, train_split, variant)
-        X_ev, y_ev, flagged_ev = build_feature_matrix(dataset, eval_split, variant)
+        X_tr, y_tr, _, _ = build_feature_matrix(dataset, train_split, variant)
+        X_ev, y_ev, flagged_ev, keys_ev = build_feature_matrix(dataset, eval_split, variant)
         if X_tr is not None:
             train_data[dataset] = (X_tr, y_tr)
             print(f"  {dataset} [{train_split}]: {len(X_tr)} usable segments (training pool)")
         if X_ev is not None:
-            eval_data[dataset] = (X_ev, y_ev, flagged_ev)
+            eval_data[dataset] = (X_ev, y_ev, flagged_ev, keys_ev)
             print(f"  {dataset} [{eval_split}]: {len(X_ev)} usable segments (evaluation)")
 
     results = {"variant": variant, "train_split": train_split, "eval_split": eval_split,
@@ -166,7 +169,7 @@ def run_lodo(variant, train_split="dev", eval_split="test"):
 
         X_train = np.concatenate([train_data[d][0] for d in train_datasets])
         y_train = np.concatenate([train_data[d][1] for d in train_datasets])
-        X_test, y_test, flagged_test = eval_data[held_out]
+        X_test, y_test, flagged_test, keys_test = eval_data[held_out]
 
         model = make_pipeline(StandardScaler(), Ridge(alpha=1.0))
         model.fit(X_train, y_train)
@@ -176,6 +179,7 @@ def run_lodo(variant, train_split="dev", eval_split="test"):
         r, p_value = pearsonr(y_pred, y_test)
         ridge_step = model.named_steps["ridge"]
         coefs = dict(zip(FEATURE_NAMES, ridge_step.coef_.tolist()))
+        scaler = model.named_steps["standardscaler"]
 
         print(f"\n  Held out: {held_out}")
         print(f"    Trained on [{train_split}]: {train_datasets}  (N={len(X_train)})")
@@ -192,11 +196,16 @@ def run_lodo(variant, train_split="dev", eval_split="test"):
             "pearson_r": r,
             "p_value": p_value,
             "coefficients": coefs,
+            "scaler_mean": scaler.mean_.tolist(),
+            "scaler_scale": scaler.scale_.tolist(),
             "intercept": ridge_step.intercept_,
             "severity_predictions": y_pred.tolist(),
             "confidence_predictions": confidence_pred.tolist(),
             "actual_severity": y_test.tolist(),
             "actual_flagged": flagged_test.tolist(),
+            "keys": keys_test,  # [(dataset_index, position), ...] - same order as the
+                                 # predictions above, lets downstream analysis join proxy_model
+                                 # back to the exact segments it scored, same as the other 3 methods
         }
 
     # Final: train on ALL 3 in-domain TRAIN-split (dev) sets, evaluate
@@ -205,7 +214,7 @@ def run_lodo(variant, train_split="dev", eval_split="test"):
         X_all = np.concatenate([train_data[d][0] for d in IN_DOMAIN_DATASETS])
         y_all = np.concatenate([train_data[d][1] for d in IN_DOMAIN_DATASETS])
 
-        X_shetland, y_shetland, flagged_shetland = build_feature_matrix("shetland", "full", variant)
+        X_shetland, y_shetland, flagged_shetland, keys_shetland = build_feature_matrix("shetland", "full", variant)
         if X_shetland is not None:
             model_final = make_pipeline(StandardScaler(), Ridge(alpha=1.0))
             model_final.fit(X_all, y_all)
@@ -214,6 +223,7 @@ def run_lodo(variant, train_split="dev", eval_split="test"):
             r_shetland, p_shetland = pearsonr(y_pred_shetland, y_shetland)
             ridge_final = model_final.named_steps["ridge"]
             coefs_shetland = dict(zip(FEATURE_NAMES, ridge_final.coef_.tolist()))
+            scaler_final = model_final.named_steps["standardscaler"]
 
             print(f"\n  SHETLAND (true holdout, trained on all 3 in-domain [{train_split}] sets):")
             print(f"    N_train={len(X_all)}  N_shetland={len(X_shetland)}")
@@ -226,11 +236,14 @@ def run_lodo(variant, train_split="dev", eval_split="test"):
                 "pearson_r": r_shetland,
                 "p_value": p_shetland,
                 "coefficients": coefs_shetland,
+                "scaler_mean": scaler_final.mean_.tolist(),
+                "scaler_scale": scaler_final.scale_.tolist(),
                 "intercept": ridge_final.intercept_,
                 "severity_predictions": y_pred_shetland.tolist(),
                 "confidence_predictions": confidence_pred_shetland.tolist(),
                 "actual_severity": y_shetland.tolist(),
                 "actual_flagged": flagged_shetland.tolist(),
+                "keys": keys_shetland,
             }
         else:
             print("\n  SHETLAND: no usable data - skipping final holdout evaluation")

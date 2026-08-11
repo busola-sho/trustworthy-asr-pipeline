@@ -1,41 +1,36 @@
 """
 rerunning/sentence_confidence/cross_model_agreement.py
 
-Method 3: Cross-model agreement confidence. Measures how strongly the
-ASR hypotheses agree within a given fixed segment - higher agreement
-treated as greater confidence, disagreement as uncertainty. This is
-an ASR-specific disagreement-based heuristic (not a direct replication
-of a single paper).
+Method 3: Cross-model agreement confidence.
 
-METHODOLOGICAL FIX (caught by review before running the final
-experiments): an earlier version reconstructed each source model's
-"local region" by searching for words from the FIXED SEGMENT within
-that model's transcript - i.e. "which of the segment's words can I
-find in this model's output". This is CIRCULAR: a disagreeing word
-(segment says "didn't", model says "did") is never found by that
-search, so it silently disappears from the reconstruction instead of
-counting as a disagreement - meaning the old design measured "how
-much of the segment's own words can be recovered from this model",
-not "how much do the models actually agree with each other". It also
-used Jaccard word-set overlap, which discards word order and
-duplicates entirely (so "man bites dog" and "dog bites man" would
-score a perfect 1.0).
+THIRD FIX (review caught this before freezing): segments with
+severity=None (alignment_failed) were `continue`-ing BEFORE the cursor
+update, meaning the cursor never advanced past skipped segments - the
+next SCORED segment then had to search through that skipped content,
+reopening the exact drift risk the cursor fix was meant to close.
+FIXED: every segment (scored or not) now updates the cursor; only the
+save/evaluate step is conditional on having a severity label.
 
-FIXED DESIGN: for each source model, find the POSITIONAL RANGE (first
-matched word index to last matched word index) that the segment's
-words fall within, then extract the ENTIRE local substring across
-that range - including any words that did NOT match, which represent
-genuine disagreement/different wording, not just the matching subset.
-Pairwise agreement between two models' local reconstructions is then
-computed via NORMALIZED WORD-LEVEL EDIT DISTANCE:
-    agreement(A, B) = 1 - edit_distance(A, B) / max(len(A), len(B))
-This retains substitutions, deletions, and insertions, and is
-sensitive to word order (standard Levenshtein has no dedicated
-transposition/reordering operation - a reordering is scored via the
-substitutions/insertions/deletions needed to reach it, not as a
-single op - but it still correctly reduces the agreement score,
-unlike Jaccard, which ignores order and duplicates entirely). "didn't"
-vs "did" or a reordering both correctly reduce the agreement score.
+FOURTH FIX: the early-stop condition compared `start` against a fixed
+offset from the ORIGINAL cursor (`cursor + sent_len + 5`), not from
+where the best match was actually found - so even after finding a
+near-perfect match early, the search kept going for a while, risking a
+later coincidental repeat outscoring the correct nearby match. Now
+compares against `best_start + 5` instead, correctly tying the stop
+condition to "searched sufficiently past my best candidate."
+
+RENAMED: per_model_coverage -> per_model_alignment_score. The stored
+value is a SequenceMatcher similarity ratio, not a fraction-matched
+coverage metric - the old name was inaccurate for the methods section.
+
+METHODOLOGICAL FRAMING (still true, more precisely stated): the fused
+segment is used only to LOCATE the corresponding region within each
+source hypothesis - it still drives WHERE to look, so this isn't fully
+independent of the anchor. What removes the WORST circularity is that,
+once the region is chosen, the complete matched span is retained
+INCLUDING disagreeing words, rather than only the words matching the
+anchor - so agreement is calculated between source-model
+reconstructions directly, not filtered through anchor overlap.
 
 No LLM calls - pure text comparison, independent of anything using
 Ollama.
@@ -47,6 +42,7 @@ Usage:
 import json
 import os
 import re
+import difflib
 import argparse
 from itertools import combinations
 
@@ -56,6 +52,7 @@ SEGMENTS_DIR = "writeup_results/sentence_confidence/segments"
 OUTPUT_DIR = "writeup_results/sentence_confidence/cross_model_agreement"
 DATASETS = ["commonvoice", "edacc", "english_dialects", "shetland"]
 ASR_MODELS = ["qwen", "whisperx", "parakeet", "wav2vec2", "whisper_ft_chunked"]
+MAX_EXTRA = 10
 
 
 def load_segments(dataset, split):
@@ -65,7 +62,9 @@ def load_segments(dataset, split):
 
 def load_model_words(dataset, model):
     """Returns {dataset_index: [word, word, ...]} - plain word lists
-    from each source model's full hyp text (whitespace tokenized)."""
+    from each source model's full hyp text (lowercased + whitespace
+    tokenized at load time, so case is already normalized uniformly
+    before anything downstream touches it)."""
     path = find_canonical_file(model, dataset)
     samples = load_samples(path)
     result = {}
@@ -77,52 +76,43 @@ def load_model_words(dataset, model):
     return result
 
 
-def find_local_reconstruction(segment_text, word_list, used_positions):
-    """Finds the positional range in word_list that the segment's
-    words fall within (via sequential matching, same search pattern as
-    before), then returns the FULL substring across that range -
-    including any unmatched words within it, which represent genuine
-    disagreement rather than being silently dropped. Returns
-    (None, 0.0) if nothing in the segment matched at all (no valid
-    range to anchor). Marks every position within the returned range
-    as used, matched or not, so a later segment from the same
-    transcript can't reuse words this segment's range already claimed.
+def find_local_reconstruction(segment_text, word_list, cursor):
+    """Returns (local_words, alignment_score, new_cursor). Scores
+    candidate windows via difflib.SequenceMatcher whole-span
+    similarity. Cursor persists forward across sequential calls within
+    the same transcript - EVERY segment must call this and advance the
+    cursor, scored or not (see run_dataset), or the drift bug this
+    fixes reopens for the next scored segment.
 
-    Also returns match_coverage = n_matched / len(segment_words) - if
-    matching is sparse (e.g. only the first and last words of a long
-    segment happened to match), the resulting range can be wide and
-    pull in a large unrelated span that then reads as "disagreement"
-    when it's really just poor localization. Coverage is saved for
-    inspection, not filtered on automatically yet."""
-    segment_words = re.findall(r"[\w']+", segment_text.lower())
-    if not segment_words:
-        return None, 0.0
+    Early-stop now compares against best_start (where the best match
+    so far was actually found), not the original cursor - stops once
+    we've searched sufficiently past our best candidate, not just past
+    a fixed offset from where we started looking."""
+    anchor_tokens = re.findall(r"[\w']+", segment_text.lower())
+    if not anchor_tokens:
+        return None, 0.0, cursor
 
-    matched_positions = []
-    search_from = 0
-    for word in segment_words:
-        found_at = None
-        for i in range(search_from, len(word_list)):
-            if i in used_positions:
+    sent_len = len(anchor_tokens)
+    min_len, max_len = max(1, sent_len - MAX_EXTRA), sent_len + MAX_EXTRA
+    search_end = min(len(word_list), cursor + sent_len * 3 + MAX_EXTRA)
+
+    best_start, best_end, best_score = None, None, 0.0
+    for start in range(cursor, search_end):
+        for span_len in range(min_len, max_len + 1):
+            end = start + span_len
+            if end > len(word_list):
                 continue
-            if word_list[i].strip(".,!?;:\"'") == word:
-                found_at = i
-                break
-        if found_at is not None:
-            matched_positions.append(found_at)
-            search_from = found_at + 1
+            score = difflib.SequenceMatcher(None, anchor_tokens, word_list[start:end]).ratio()
+            if score > best_score:
+                best_score, best_start, best_end = score, start, end
+        if best_start is not None and best_score >= 0.88 and start > best_start + 5:
+            break
 
-    coverage = len(matched_positions) / len(segment_words)
+    if best_start is None:
+        return None, 0.0, cursor
 
-    if not matched_positions:
-        return None, coverage
-
-    range_start, range_end = min(matched_positions), max(matched_positions)
-    local_words = word_list[range_start:range_end + 1]
-    for i in range(range_start, range_end + 1):
-        used_positions.add(i)
-
-    return local_words, coverage
+    local_words = word_list[best_start:best_end]
+    return local_words, best_score, best_end
 
 
 def word_edit_distance(a, b):
@@ -154,7 +144,9 @@ def word_edit_distance(a, b):
 def edit_distance_agreement(words_a, words_b):
     """Normalized word-level edit-distance agreement: 1.0 = identical
     sequences, 0.0 = maximally different. Retains order, duplicates,
-    substitutions, deletions, and insertions - unlike Jaccard."""
+    substitutions, deletions, and insertions - unlike Jaccard. Words
+    are already lowercased at load time (load_model_words), so no
+    case-normalization needed here."""
     if not words_a and not words_b:
         return 1.0
     if not words_a or not words_b:
@@ -181,22 +173,28 @@ def run_dataset(dataset, split="test"):
     results = []
     for t in transcripts:
         idx = t["dataset_index"]
-        used_positions_by_model = {m: set() for m in model_words}
+        cursors_by_model = {m: 0 for m in model_words}
 
         out_segments = []
         for seg in t.get("segments", []):
-            if seg.get("severity") is None:
-                continue
-
+            # ALWAYS reconstruct/advance cursors for EVERY segment,
+            # scored or not - only the save step below is conditional
+            # on having a severity label. Skipping the cursor update
+            # for unscored segments reopens the drift bug for the next
+            # scored segment.
             per_model_reconstruction = {}
-            per_model_coverage = {}
+            per_model_alignment_score = {}
             for model, word_data in model_words.items():
                 word_list = word_data.get(idx, [])
-                local, coverage = find_local_reconstruction(seg["segment"], word_list,
-                                                             used_positions_by_model[model])
-                per_model_coverage[model] = coverage
+                cursor = cursors_by_model[model]
+                local, score, new_cursor = find_local_reconstruction(seg["segment"], word_list, cursor)
+                cursors_by_model[model] = new_cursor
+                per_model_alignment_score[model] = score
                 if local:
                     per_model_reconstruction[model] = local
+
+            if seg.get("severity") is None:
+                continue
 
             pairwise_scores = []
             for model_a, model_b in combinations(per_model_reconstruction.keys(), 2):
@@ -213,7 +211,7 @@ def run_dataset(dataset, split="test"):
                 "flagged": seg.get("flagged"),
                 "n_models_reconstructed": len(per_model_reconstruction),
                 "local_reconstructions": {m: " ".join(words) for m, words in per_model_reconstruction.items()},
-                "per_model_coverage": per_model_coverage,
+                "per_model_alignment_score": per_model_alignment_score,
                 "crossmodel_mean": crossmodel_mean,
                 "crossmodel_min": crossmodel_min,
             })
