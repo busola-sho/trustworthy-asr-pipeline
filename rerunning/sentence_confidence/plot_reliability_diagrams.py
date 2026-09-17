@@ -1,21 +1,42 @@
 """
 rerunning/sentence_confidence/plot_reliability_diagrams.py
 
-Reliability diagrams: bins predicted confidence into buckets, plots the
-ACTUAL observed fraction of severity=0 (no error) sentences in each bin
-against the diagonal (perfect calibration). Unlike Spearman correlation
-(which only cares about rank order), this shows whether the raw
-confidence VALUE itself means what it claims to mean - useful for
-deciding whether a signal is "real but needs calibrating" (points near
-but not on the diagonal, still monotonic) versus "not much real signal"
-(flat or non-monotonic, no calibration would fix this).
+Reliability diagrams for the CURRENT sentence-confidence pipeline.
 
-One figure per technique, all 4 datasets overlaid as separate lines.
+The target is meaning preservation:
+    y = 1  if severity < 2
+    y = 0  if severity >= 2
+
+This matches the project's locked binary convention:
+    severity >= 2 -> meaning-altering / flagged
+    severity < 2  -> meaning-preserved
+
+Important:
+- Reliability diagrams are only meaningful for scores naturally expressed
+  on a 0-1 confidence scale.
+- Therefore this script plots:
+    * verbalized confidence variants (confscore/confprobscore/probscore)
+    * cross-model agreement mean/min
+    * learned proxy's derived confidence score
+- Raw model-internal confidence is intentionally NOT plotted here because
+  it is a z-scored signal, not a calibrated probability. It remains useful
+  for ranking/discrimination analyses and is plotted by
+  plot_confidence_by_severity.py.
+
+Current input directories:
+    writeup_results/sentence_confidence/verbalized_confidence/
+    writeup_results/sentence_confidence/cross_model_agreement/
+    writeup_results/sentence_confidence/learned_proxy/
 
 Usage:
     python rerunning/sentence_confidence/plot_reliability_diagrams.py
+
+Optional:
+    python rerunning/sentence_confidence/plot_reliability_diagrams.py \
+        --variant confscore
 """
 
+import argparse
 import json
 import os
 from collections import defaultdict
@@ -25,152 +46,440 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 
-OUTPUT_DIR = "writeup_results/sentence_confidence/figures"
-DATASETS = ["commonvoice", "edacc", "english_dialects", "shetland"]
-N_BINS = 10
+
+VERBALIZED_DIR = "writeup_results/sentence_confidence/verbalized_confidence"
+CROSSMODEL_DIR = "writeup_results/sentence_confidence/cross_model_agreement"
+PROXY_DIR = "writeup_results/sentence_confidence/learned_proxy"
+
+OUTPUT_ROOT = "writeup_results/sentence_confidence"
+
+DATASETS = [
+    "commonvoice",
+    "edacc",
+    "english_dialects",
+    "shetland",
+]
+
+DATASET_DISPLAY = {
+    "commonvoice": "CommonVoice Scottish",
+    "edacc": "EdAcc",
+    "english_dialects": "English Dialects",
+    "shetland": "Shetland (held-out)",
+}
 
 DATASET_COLOURS = {
-    "commonvoice":      "#3498db",
-    "edacc":            "#e67e22",
+    "commonvoice": "#3498db",
+    "edacc": "#e67e22",
     "english_dialects": "#2ecc71",
-    "shetland":         "#9b59b6",
-}
-DATASET_DISPLAY = {
-    "commonvoice":      "CommonVoice Scottish",
-    "edacc":            "EdAcc",
-    "english_dialects": "English Dialects",
-    "shetland":         "Shetland (held-out)",
+    "shetland": "#9b59b6",
 }
 
-
-def _combo_path(dataset, variant):
-    split = "full" if dataset == "shetland" else "dev"
-    return f"writeup_results/ensembles/naive_{variant}/naive_{variant}_{dataset}_gemma4sel_{split}.json"
-
-
-def _label_path(dataset, variant):
-    return f"results/sentence_confidence/sentence_labels_{dataset}_{variant}.json"
+VARIANTS = ["confscore", "confprobscore", "probscore"]
+N_BINS = 10
+FLAG_THRESHOLD = 2
 
 
-TECHNIQUES = {
-    "confscore": {
-        "title": "Verbalized Confidence (confscore)",
-        "labels": lambda d: _label_path(d, "confscore"),
-        "conf": lambda d: _combo_path(d, "confscore"),
-        "field": "confidence",
-    },
-    "probscore": {
-        "title": "Verbalized Confidence (probscore)",
-        "labels": lambda d: _label_path(d, "probscore"),
-        "conf": lambda d: _combo_path(d, "probscore"),
-        "field": "confidence",
-    },
-    "crossmodel_mean": {
-        "title": "Cross-model Agreement (mean, probscore-anchored)",
-        "labels": lambda d: _label_path(d, "probscore"),
-        "conf": lambda d: f"results/sentence_confidence/crossmodel_agreement_probscore_{d}.json",
-        "field": "confidence",
-    },
-    "acoustic_mean": {
-        "title": "Acoustic Confidence (mean, probscore-anchored)",
-        "labels": lambda d: _label_path(d, "probscore"),
-        "conf": lambda d: f"results/sentence_confidence/acoustic_confidence_probscore_{d}.json",
-        "field": "confidence",
-    },
-}
+def split_for(dataset):
+    return "full" if dataset == "shetland" else "test"
 
 
-def load_labels(path):
+def load_json(path):
     if not os.path.exists(path):
-        return {}
-    with open(path) as f:
-        d = json.load(f)
-    return {(r["dataset_index"], r["sent_pos"]): r for r in d.get("rows", []) if r.get("severity") is not None}
+        return None
+    with open(path, encoding="utf-8") as f:
+        return json.load(f)
 
 
-def load_confidences(path, field):
-    if not os.path.exists(path):
+def normalize_verbalized_score(score, variant):
+    """
+    Convert verbalized scores to 0-1 where needed.
+
+    confscore historically uses a 0-100 scale.
+    confprobscore/probscore use 0-1.
+    """
+    if score is None:
+        return None
+
+    score = float(score)
+
+    if variant == "confscore":
+        score = score / 100.0
+
+    return min(1.0, max(0.0, score))
+
+
+def load_verbalized(dataset, variant):
+    split = split_for(dataset)
+    path = os.path.join(
+        VERBALIZED_DIR,
+        f"verbalized_{variant}_{dataset}_{split}.json",
+    )
+    data = load_json(path)
+    if data is None:
         return {}
-    with open(path) as f:
-        d = json.load(f)
-    conf_map = {}
-    for samp in d.get("samples", []):
-        if samp.get("skipped") or samp.get("error"):
+
+    pairs = {}
+    for transcript in data.get("transcripts", []):
+        idx = transcript.get("dataset_index")
+        if idx is None:
             continue
-        di = samp.get("dataset_index")
-        sent_list = samp.get("sentence_confidences") or samp.get("sentences", [])
-        for pos, sc in enumerate(sent_list):
-            sent_pos = sc.get("sent_pos", pos)
-            conf = sc.get(field)
-            if conf is not None:
-                conf_map[(di, sent_pos)] = conf
-    return conf_map
+
+        for pos, seg in enumerate(transcript.get("segments", [])):
+            severity = seg.get("severity")
+            score = normalize_verbalized_score(
+                seg.get("verbalized_score"),
+                variant,
+            )
+            if severity is None or score is None:
+                continue
+
+            pairs[(idx, pos)] = (score, severity)
+
+    return pairs
 
 
-def compute_reliability(technique_key, dataset):
-    tech = TECHNIQUES[technique_key]
-    labels = load_labels(tech["labels"](dataset))
-    conf_map = load_confidences(tech["conf"](dataset), tech["field"])
+def load_crossmodel(dataset, field):
+    split = split_for(dataset)
+    path = os.path.join(
+        CROSSMODEL_DIR,
+        f"cross_model_agreement_{dataset}_{split}.json",
+    )
+    data = load_json(path)
+    if data is None:
+        return {}
 
-    pairs = []
-    for key, label in labels.items():
-        conf = conf_map.get(key)
-        if conf is not None:
-            is_correct = 1.0 if label["severity"] == 0 else 0.0
-            pairs.append((conf, is_correct))
+    pairs = {}
+    for transcript in data.get("transcripts", []):
+        idx = transcript.get("dataset_index")
+        if idx is None:
+            continue
 
+        for pos, seg in enumerate(transcript.get("segments", [])):
+            severity = seg.get("severity")
+            score = seg.get(field)
+
+            if severity is None or score is None:
+                continue
+
+            score = min(1.0, max(0.0, float(score)))
+            pairs[(idx, pos)] = (score, severity)
+
+    return pairs
+
+
+def _proxy_key_to_tuple(key):
+    """
+    Supports both:
+      old/current key format: [dataset_index, position]
+      improved key format: {"dataset_index": ..., "segment_position": ...}
+    """
+    if isinstance(key, dict):
+        return (
+            key.get("dataset_index"),
+            key.get("segment_position"),
+        )
+
+    if isinstance(key, (list, tuple)) and len(key) >= 2:
+        return (key[0], key[1])
+
+    return (None, None)
+
+
+def load_proxy(dataset, variant):
+    path = os.path.join(
+        PROXY_DIR,
+        f"learned_severity_proxy_{variant}.json",
+    )
+    data = load_json(path)
+    if data is None:
+        return {}
+
+    if dataset == "shetland":
+        block = data.get("shetland")
+    else:
+        block = data.get("lodo_folds", {}).get(dataset)
+
+    if not block:
+        return {}
+
+    keys = block.get("keys", [])
+    confidences = block.get("confidence_predictions", [])
+    severities = block.get("actual_severity", [])
+
+    pairs = {}
+
+    for key, confidence, severity in zip(keys, confidences, severities):
+        idx, pos = _proxy_key_to_tuple(key)
+
+        if idx is None or pos is None:
+            continue
+
+        if confidence is None or severity is None:
+            continue
+
+        confidence = min(
+            1.0,
+            max(0.0, float(confidence)),
+        )
+
+        pairs[(idx, pos)] = (
+            confidence,
+            float(severity),
+        )
+
+    return pairs
+
+
+def get_method_pairs(method, dataset, variant):
+    if method == "verbalized":
+        return load_verbalized(dataset, variant)
+
+    if method == "crossmodel_mean":
+        return load_crossmodel(dataset, "crossmodel_mean")
+
+    if method == "crossmodel_min":
+        return load_crossmodel(dataset, "crossmodel_min")
+
+    if method == "proxy":
+        return load_proxy(dataset, variant)
+
+    raise ValueError(f"Unknown method: {method}")
+
+
+def compute_reliability(pairs, n_bins=N_BINS):
     if not pairs:
-        return None, None, None
+        return None
 
-    confs = np.array([p[0] for p in pairs])
-    correct = np.array([p[1] for p in pairs])
+    confidences = np.array(
+        [score for score, _ in pairs.values()],
+        dtype=float,
+    )
 
-    bin_edges = np.linspace(0.0, 1.0, N_BINS + 1)
-    bin_centers, observed, counts = [], [], []
-    for i in range(N_BINS):
-        lo, hi = bin_edges[i], bin_edges[i + 1]
-        mask = (confs >= lo) & (confs <= hi if i == N_BINS - 1 else confs < hi)
-        n = mask.sum()
-        if n > 0:
-            bin_centers.append(confs[mask].mean())
-            observed.append(correct[mask].mean())
-            counts.append(int(n))
+    preserved = np.array(
+        [
+            1.0 if severity < FLAG_THRESHOLD else 0.0
+            for _, severity in pairs.values()
+        ],
+        dtype=float,
+    )
 
-    return bin_centers, observed, counts
+    bin_edges = np.linspace(0.0, 1.0, n_bins + 1)
+
+    mean_confidences = []
+    observed_preservation = []
+    counts = []
+
+    for i in range(n_bins):
+        lo = bin_edges[i]
+        hi = bin_edges[i + 1]
+
+        if i == n_bins - 1:
+            mask = (
+                (confidences >= lo)
+                & (confidences <= hi)
+            )
+        else:
+            mask = (
+                (confidences >= lo)
+                & (confidences < hi)
+            )
+
+        count = int(mask.sum())
+
+        if count == 0:
+            continue
+
+        mean_confidences.append(
+            float(confidences[mask].mean())
+        )
+        observed_preservation.append(
+            float(preserved[mask].mean())
+        )
+        counts.append(count)
+
+    return {
+        "mean_confidence": mean_confidences,
+        "observed_preservation": observed_preservation,
+        "counts": counts,
+        "n": len(confidences),
+    }
 
 
-def plot_technique(technique_key, output_dir):
-    tech = TECHNIQUES[technique_key]
+def expected_calibration_error(pairs, n_bins=N_BINS):
+    reliability = compute_reliability(
+        pairs,
+        n_bins=n_bins,
+    )
+
+    if reliability is None:
+        return None
+
+    total = sum(reliability["counts"])
+    if total == 0:
+        return None
+
+    ece = 0.0
+
+    for conf, obs, count in zip(
+        reliability["mean_confidence"],
+        reliability["observed_preservation"],
+        reliability["counts"],
+    ):
+        ece += (
+            count / total
+        ) * abs(obs - conf)
+
+    return float(ece)
+
+
+def plot_method(method, title, variant, output_dir):
     fig, ax = plt.subplots(figsize=(7, 7))
 
-    ax.plot([0, 1], [0, 1], "k--", alpha=0.4, label="Perfect calibration")
+    ax.plot(
+        [0, 1],
+        [0, 1],
+        "k--",
+        alpha=0.4,
+        label="Perfect calibration",
+    )
+
+    any_data = False
 
     for dataset in DATASETS:
-        centers, observed, counts = compute_reliability(technique_key, dataset)
-        if centers is None:
+        pairs = get_method_pairs(
+            method,
+            dataset,
+            variant,
+        )
+
+        reliability = compute_reliability(pairs)
+
+        if reliability is None:
+            print(
+                f"  WARNING: no data for "
+                f"{method}/{variant}/{dataset}"
+            )
             continue
-        ax.plot(centers, observed, marker="o", markersize=5, linewidth=1.8,
-                color=DATASET_COLOURS[dataset], label=DATASET_DISPLAY[dataset])
+
+        any_data = True
+        ece = expected_calibration_error(pairs)
+
+        label = (
+            f"{DATASET_DISPLAY[dataset]} "
+            f"(ECE={ece:.3f}, n={reliability['n']})"
+        )
+
+        ax.plot(
+            reliability["mean_confidence"],
+            reliability["observed_preservation"],
+            marker="o",
+            markersize=5,
+            linewidth=1.8,
+            color=DATASET_COLOURS[dataset],
+            label=label,
+        )
+
+    if not any_data:
+        plt.close(fig)
+        return
 
     ax.set_xlim(0, 1)
     ax.set_ylim(0, 1)
-    ax.set_xlabel("Predicted confidence (binned)", fontsize=11)
-    ax.set_ylabel("Observed fraction with severity = 0 (no error)", fontsize=11)
-    ax.set_title(f"Reliability Diagram\n{tech['title']}", fontsize=12, fontweight="bold")
-    ax.legend(fontsize=9, loc="upper left")
+
+    ax.set_xlabel(
+        "Predicted confidence",
+        fontsize=11,
+    )
+    ax.set_ylabel(
+        "Observed fraction meaning-preserved (severity < 2)",
+        fontsize=11,
+    )
+
+    ax.set_title(
+        f"Reliability Diagram\n{title}",
+        fontsize=12,
+        fontweight="bold",
+    )
+
+    ax.legend(
+        fontsize=8,
+        loc="upper left",
+    )
     ax.grid(alpha=0.3)
 
-    os.makedirs(output_dir, exist_ok=True)
-    path = os.path.join(output_dir, f"reliability_{technique_key}.png")
+    os.makedirs(
+        output_dir,
+        exist_ok=True,
+    )
+
+    path = os.path.join(
+        output_dir,
+        f"reliability_{method}_{variant}.png",
+    )
+
     plt.tight_layout()
-    plt.savefig(path, dpi=150, bbox_inches="tight")
+    plt.savefig(
+        path,
+        dpi=150,
+        bbox_inches="tight",
+    )
     plt.close()
+
     print(f"Saved: {path}")
 
 
 def main():
-    for technique_key in TECHNIQUES:
-        plot_technique(technique_key, OUTPUT_DIR)
+    parser = argparse.ArgumentParser()
+
+    parser.add_argument(
+        "--variant",
+        default="all",
+        choices=VARIANTS + ["all"],
+    )
+
+    args = parser.parse_args()
+
+    variants = (
+        VARIANTS
+        if args.variant == "all"
+        else [args.variant]
+    )
+
+    for variant in variants:
+        output_dir = os.path.join(
+            OUTPUT_ROOT,
+            f"figures_{variant}",
+        )
+
+        print(f"\n-- Reliability diagrams: {variant} --")
+
+        plot_method(
+            "verbalized",
+            f"Verbalized confidence ({variant})",
+            variant,
+            output_dir,
+        )
+
+        plot_method(
+            "crossmodel_mean",
+            "Cross-model agreement (mean)",
+            variant,
+            output_dir,
+        )
+
+        plot_method(
+            "crossmodel_min",
+            "Cross-model agreement (minimum)",
+            variant,
+            output_dir,
+        )
+
+        plot_method(
+            "proxy",
+            f"Learned proxy confidence ({variant})",
+            variant,
+            output_dir,
+        )
 
 
 if __name__ == "__main__":

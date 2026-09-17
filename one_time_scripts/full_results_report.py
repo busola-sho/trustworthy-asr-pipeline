@@ -11,6 +11,37 @@ as a simple macro-average (mean of per-dataset means) since that's the
 standard, defensible way to report it - but pooled severity is also
 shown for reference, matching build_leaderboard.py's own convention.
 
+PER-DATASET WER: each individual dataset cell now also shows that
+dataset's OWN pooled WER (in brackets alongside severity/N), not just
+the single aggregate WER column at the end. This is a different
+calculation from the aggregate cross-dataset pooling the docstring
+above warns against - a single dataset's own refs/hyps are already one
+coherent group, so pooling WER within just that group has no
+distortion concern; it's the same math the aggregate Pooled WER column
+already uses, just applied to one dataset at a time instead of all
+three combined.
+
+ALT%: per-dataset cells and the aggregate column both show % of
+severity>=2 (meaning-altering) samples, matching the locked
+FLAG_THRESHOLD=2 convention used throughout this project. The
+aggregate is MACRO-averaged (mean of each dataset's own %), same
+convention as Avg Sev - not pooled, so a large dataset like English
+Dialects doesn't dominate the aggregate purely by sample count.
+
+GRID FOLDER WHITELIST BUG (fixed): compute_grid_index_intersection()
+previously globbed EVERY subfolder under scan_dir indiscriminately,
+including unrelated experiments that happen to live alongside the real
+9-cell grid (confidence-threshold ablations with p5/p10/p20 filenames,
+5-model variants, whisperx-replacement runs). Those experiments only
+score a filtered SUBSET of samples by design, so including them in the
+intersection was silently narrowing it far more than the "1-2 samples"
+the function's docstring assumed (confirmed on real data: a 456->315,
+31% drop for CommonVoice dev, traced to the confidence-threshold
+folders being swept in). Fixed by restricting to the same explicit
+GRID_FOLDERS whitelist load_grid_data() already used - now pulled out
+to a single shared module-level constant so the two functions can't
+drift out of sync with each other again.
+
 1. Baseline models - dev split
 2. Baseline models - test split
 3. Grid - severity (macro-avg) + pooled corpus WER
@@ -44,6 +75,23 @@ MODEL_NAME_ALIASES = {
     "whisperx": "whisperx", "parakeet": "parakeet", "wav2vec2": "wav2vec2",
 }
 
+# SINGLE SOURCE OF TRUTH for which folders count as "the real 9-cell
+# grid" - used by BOTH load_grid_data() and compute_grid_index_
+# intersection(), so they can never again disagree about which
+# folders belong to the grid vs. some other, unrelated experiment
+# sitting in a sibling folder under the same scan_dir.
+GRID_FOLDERS = {
+    "selection_naive":              ("selection", "naive"),
+    "selection_context_v1":         ("selection", "v1"),
+    "selection_context_v2":         ("selection", "v2"),
+    "unanchored_fusion_naive":      ("unanchored_fusion", "naive"),
+    "unanchored_fusion_context_v1": ("unanchored_fusion", "v1"),
+    "unanchored_fusion_context_v2": ("unanchored_fusion", "v2"),
+    "anchored_correction_naive":    ("anchored_correction", "naive"),
+    "anchored_correction_v1":       ("anchored_correction", "v1"),
+    "anchored_correction_v2":       ("anchored_correction", "v2"),
+}
+
 
 def normalize_dataset(name):
     if not name:
@@ -64,6 +112,26 @@ def normalize_model(name):
     return name
 
 
+def cell_wer_str(refs, hyps):
+    """Computes pooled WER for ONE dataset's own refs/hyps - safe to
+    call per-cell since it's not an average across datasets, just this
+    one dataset's own micro-averaged WER."""
+    if not refs:
+        return None
+    return compute_wer(refs, hyps)
+
+
+FLAG_THRESHOLD = 2  # locked convention: severity >= 2 -> meaning-altering
+
+
+def flag_rate(severities):
+    """% of severities >= 2 (meaning-altering), matching the locked
+    convention used throughout this project."""
+    if not severities:
+        return None
+    return sum(1 for s in severities if s >= FLAG_THRESHOLD) / len(severities)
+
+
 def find_baseline_path(model, dataset):
     if dataset == "shetland":
         return None
@@ -72,30 +140,36 @@ def find_baseline_path(model, dataset):
     return matches[-1] if matches else None
 
 
-def compute_grid_index_intersection(scan_dir, target_split):
+def compute_grid_index_intersection(scan_dir, target_split, grid_folders=None):
     """For each dataset, returns the SET of dataset_index values that
     were successfully scored (severity is not None) in EVERY grid
-    strategy file found for that dataset+split. Using the intersection
-    (not the union, and not just one file) means the resulting baseline
-    comparison is fair against every row in the grid table - not just
-    whichever strategy happened to be checked first - since different
-    grid strategies can each independently drop 1-2 samples (missing-
-    sample/tag-only-reference edge cases)."""
+    strategy file found for that dataset+split. Restricted to the
+    GRID_FOLDERS whitelist (same one load_grid_data() uses) - NOT a
+    blind glob of every subfolder under scan_dir, since that directory
+    also holds other, unrelated experiments (confidence-threshold
+    ablations, 5-model variants, whisperx-replacement) that only cover
+    a filtered subset of samples by design. Including those in the
+    intersection was silently narrowing it far more than the "1-2
+    samples" this docstring originally assumed - confirmed and fixed."""
+    if grid_folders is None:
+        grid_folders = GRID_FOLDERS.keys()
+
     accepted_splits = ("dev", "full") if target_split == "dev" else ("test",)
     per_dataset_per_file_indices = defaultdict(list)  # dataset -> list of sets (one per file found)
 
-    for path in glob.glob(f"{scan_dir}/*/*.json"):
-        try:
-            d = json.load(open(path))
-        except Exception:
-            continue
-        if d.get("split") not in accepted_splits:
-            continue
-        ds = normalize_dataset(d.get("dataset"))
-        samples = d.get("samples", [])
-        scored_indices = {s.get("dataset_index") for s in samples if s.get("severity") is not None}
-        if scored_indices:
-            per_dataset_per_file_indices[ds].append(scored_indices)
+    for folder in grid_folders:
+        for path in glob.glob(f"{scan_dir}/{folder}/*.json"):
+            try:
+                d = json.load(open(path))
+            except Exception:
+                continue
+            if d.get("split") not in accepted_splits:
+                continue
+            ds = normalize_dataset(d.get("dataset"))
+            samples = d.get("samples", [])
+            scored_indices = {s.get("dataset_index") for s in samples if s.get("severity") is not None}
+            if scored_indices:
+                per_dataset_per_file_indices[ds].append(scored_indices)
 
     intersection_by_dataset = {}
     for ds, index_sets in per_dataset_per_file_indices.items():
@@ -146,16 +220,16 @@ def print_baseline_table(split, grid_indices=None):
     print(f"\n{'='*100}")
     if grid_indices:
         print(f"  BASELINE MODELS - {split.upper()} SPLIT, RESTRICTED TO GRID'S EXACT SAMPLE SET")
-        print(f"  (mean severity (N), pooled corpus WER)")
+        print(f"  (mean severity (N, WER%), pooled corpus WER)")
         print(f"  Each dataset restricted to the INTERSECTION of sample indices actually")
         print(f"  scored across every grid strategy for that dataset+split - so these numbers")
         print(f"  are directly, exactly comparable to every row in the grid table below.")
     else:
-        print(f"  BASELINE MODELS - {split.upper()} SPLIT (mean severity (N), pooled corpus WER)")
+        print(f"  BASELINE MODELS - {split.upper()} SPLIT (mean severity (N, WER%), pooled corpus WER)")
         print(f"  Calibration pool exclusion: ALWAYS applied here - get_indices_for_split()")
         print(f"  is called fresh each time, using the corrected candidate_pool.json.")
     print(f"{'='*100}")
-    header = f"{'Model':<12}" + "".join(f"{d:>24}" for d in DATASETS) + f"{'Avg Sev':>10}{'Pooled WER':>12}{'Total N':>10}"
+    header = f"{'Model':<12}" + "".join(f"{d:>44}" for d in DATASETS) + f"{'Avg Sev':>10}{'Pooled WER':>12}{'Alt%':>10}{'Total N':>10}"
     print(header)
     print("-" * len(header))
 
@@ -174,21 +248,29 @@ def print_baseline_table(split, grid_indices=None):
 
         row = f"{model:<12}"
         dataset_sevs = []
+        dataset_flags = []
         for d in DATASETS:
             loaded = per_dataset.get(d)
             if loaded and loaded["severities"]:
                 sev = sum(loaded["severities"]) / len(loaded["severities"])
                 n = len(loaded["severities"])
                 dataset_sevs.append(sev)
-                row += f"{f'{sev:.3f} (N={n})':>24}"
+                cell_wer = cell_wer_str(loaded["refs"], loaded["hyps"])
+                cell_flag = flag_rate(loaded["severities"])
+                dataset_flags.append(cell_flag)
+                wer_part = f", WER={cell_wer*100:.2f}%" if cell_wer is not None else ""
+                flag_part = f", Alt={cell_flag*100:.1f}%" if cell_flag is not None else ""
+                row += f"{f'{sev:.3f} (N={n}{wer_part}{flag_part})':>44}"
             else:
-                row += f"{'-':>24}"
+                row += f"{'-':>44}"
 
         avg_sev = sum(dataset_sevs) / len(dataset_sevs) if dataset_sevs else None
         pooled_wer = compute_wer(all_refs, all_hyps) if all_refs else None
+        overall_flag = sum(dataset_flags) / len(dataset_flags) if dataset_flags else None
 
         row += f"{(f'{avg_sev:.3f}' if avg_sev is not None else '-'):>10}"
         row += f"{(f'{pooled_wer*100:.2f}%' if pooled_wer is not None else '-'):>12}"
+        row += f"{(f'{overall_flag*100:.1f}%' if overall_flag is not None else '-'):>10}"
         row += f"{len(all_sevs):>10}"
         print(row)
 
@@ -201,18 +283,6 @@ def load_grid_data(scan_dir, target_split="dev"):
     or "test". Folders/files with no data for the requested split are
     simply absent from the result - most grid cells only have dev so
     far, only your confirmed top strategies have test."""
-    GRID_FOLDERS = {
-        "selection_naive":              ("selection", "naive"),
-        "selection_context_v1":         ("selection", "v1"),
-        "selection_context_v2":         ("selection", "v2"),
-        "unanchored_fusion_naive":      ("unanchored_fusion", "naive"),
-        "unanchored_fusion_context_v1": ("unanchored_fusion", "v1"),
-        "unanchored_fusion_context_v2": ("unanchored_fusion", "v2"),
-        "anchored_correction_naive":    ("anchored_correction", "naive"),
-        "anchored_correction_v1":       ("anchored_correction", "v1"),
-        "anchored_correction_v2":       ("anchored_correction", "v2"),
-    }
-
     accepted_splits = ("dev", "full") if target_split == "dev" else ("test",)
 
     data = {}
@@ -243,7 +313,7 @@ def load_grid_data(scan_dir, target_split="dev"):
 
 def print_grid_tables(grid_data, scan_dir, label="DEV"):
     print(f"\n{'='*100}")
-    print(f"  9-CELL GRID - {label} SPLIT (mean severity (N) per dataset, pooled corpus WER across all 3)")
+    print(f"  9-CELL GRID - {label} SPLIT (mean severity (N, WER%) per dataset, pooled corpus WER across all 3)")
     if label == "TEST":
         print(f"  NOTE: only strategies you've explicitly run on test will show rows here -")
         print(f"  most grid cells only have dev results so far.")
@@ -253,7 +323,7 @@ def print_grid_tables(grid_data, scan_dir, label="DEV"):
                           "--grid-dir writeup_results/grid_calib_fixed for the corrected version)")
     print(f"  Calibration pool exclusion status for '{scan_dir}': {calib_status}")
     print(f"{'='*100}")
-    header = f"{'Strategy':<22}{'Context':<10}" + "".join(f"{d:>22}" for d in DATASETS) + f"{'Avg Sev':>10}{'Pooled WER':>12}{'Total N':>10}"
+    header = f"{'Strategy':<22}{'Context':<10}" + "".join(f"{d:>42}" for d in DATASETS) + f"{'Avg Sev':>10}{'Pooled WER':>12}{'Alt%':>10}{'Total N':>10}"
     print(header)
     print("-" * len(header))
 
@@ -267,6 +337,7 @@ def print_grid_tables(grid_data, scan_dir, label="DEV"):
         any_rows = True
         row = f"{info['strategy']:<22}{info['context']:<10}"
         sevs = []
+        flags = []
         all_refs, all_hyps, all_sevs_flat = [], [], []
         for d in DATASETS:
             entry = by_dataset.get(d)
@@ -274,18 +345,25 @@ def print_grid_tables(grid_data, scan_dir, label="DEV"):
                 sev = sum(entry["severities"]) / len(entry["severities"])
                 n = len(entry["severities"])
                 sevs.append(sev)
-                row += f"{f'{sev:.3f} (N={n})':>22}"
+                cell_wer = cell_wer_str(entry["refs"], entry["hyps"])
+                cell_flag = flag_rate(entry["severities"])
+                flags.append(cell_flag)
+                wer_part = f", WER={cell_wer*100:.2f}%" if cell_wer is not None else ""
+                flag_part = f", Alt={cell_flag*100:.1f}%" if cell_flag is not None else ""
+                row += f"{f'{sev:.3f} (N={n}{wer_part}{flag_part})':>42}"
                 all_refs.extend(entry["refs"])
                 all_hyps.extend(entry["hyps"])
                 all_sevs_flat.extend(entry["severities"])
             else:
-                row += f"{'-':>22}"
+                row += f"{'-':>42}"
 
         avg_sev = sum(sevs) / len(sevs) if len(sevs) == len(DATASETS) else None
         pooled_wer = compute_wer(all_refs, all_hyps) if all_refs else None
+        overall_flag = sum(flags) / len(flags) if len(flags) == len(DATASETS) else None
 
         row += f"{(f'{avg_sev:.3f}' if avg_sev is not None else '-'):>10}"
         row += f"{(f'{pooled_wer*100:.2f}%' if pooled_wer is not None else '-'):>12}"
+        row += f"{(f'{overall_flag*100:.1f}%' if overall_flag is not None else '-'):>10}"
         row += f"{len(all_sevs_flat):>10}"
         print(row)
 
@@ -362,7 +440,7 @@ def print_mechanical_table(split, grid_indices, grid_data):
     print(f"  Both restricted to the same grid-intersection indices as the baseline comparison above,")
     print(f"  so this is a fair, apples-to-apples check against the grid's winning strategies.")
     print(f"{'='*100}")
-    header = f"{'Technique':<26}" + "".join(f"{d:>24}" for d in DATASETS) + f"{'Avg Sev':>10}{'Pooled WER':>12}{'Total N':>10}"
+    header = f"{'Technique':<26}" + "".join(f"{d:>44}" for d in DATASETS) + f"{'Avg Sev':>10}{'Pooled WER':>12}{'Alt%':>10}{'Total N':>10}"
     print(header)
     print("-" * len(header))
 
@@ -370,6 +448,7 @@ def print_mechanical_table(split, grid_indices, grid_data):
 
     for technique in ["rover", "mbr_consensus"]:
         dataset_sevs = []
+        dataset_flags = []
         all_refs, all_hyps, all_sevs = [], [], []
         row = f"{technique:<26}"
         for d in DATASETS:
@@ -379,17 +458,24 @@ def print_mechanical_table(split, grid_indices, grid_data):
                 sev = sum(loaded["severities"]) / len(loaded["severities"])
                 n = len(loaded["severities"])
                 dataset_sevs.append(sev)
-                row += f"{f'{sev:.3f} (N={n})':>24}"
+                cell_wer = cell_wer_str(loaded["refs"], loaded["hyps"])
+                cell_flag = flag_rate(loaded["severities"])
+                dataset_flags.append(cell_flag)
+                wer_part = f", WER={cell_wer*100:.2f}%" if cell_wer is not None else ""
+                flag_part = f", Alt={cell_flag*100:.1f}%" if cell_flag is not None else ""
+                row += f"{f'{sev:.3f} (N={n}{wer_part}{flag_part})':>44}"
                 all_refs.extend(loaded["refs"])
                 all_hyps.extend(loaded["hyps"])
                 all_sevs.extend(loaded["severities"])
             else:
-                row += f"{'-':>24}"
+                row += f"{'-':>44}"
 
         avg_sev = sum(dataset_sevs) / len(dataset_sevs) if dataset_sevs else None
         pooled_wer = compute_wer(all_refs, all_hyps) if all_refs else None
+        overall_flag = sum(dataset_flags) / len(dataset_flags) if dataset_flags else None
         row += f"{(f'{avg_sev:.3f}' if avg_sev is not None else '-'):>10}"
         row += f"{(f'{pooled_wer*100:.2f}%' if pooled_wer is not None else '-'):>12}"
+        row += f"{(f'{overall_flag*100:.1f}%' if overall_flag is not None else '-'):>10}"
         row += f"{len(all_sevs):>10}"
         print(row)
         if avg_sev is not None:

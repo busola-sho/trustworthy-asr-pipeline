@@ -76,6 +76,7 @@ def condition_file_paths(dataset):
     available via the printed summary table for anyone who wants the
     detail."""
     paths = {
+        # TODO: swap grid_calib_fixed -> clean_grid once unanchored_fusion_naive job finishes
         "Baseline\n(no confidence)": f"writeup_results/grid_calib_fixed/unanchored_fusion_naive/unanchored_fusion_naive_{dataset}_gemma4_dev.json",
         "List\n(best: p5)": f"writeup_results/grid/unanchored_fusion_naive_confidence_list/unanchored_fusion_naive_confidence_list_{dataset}_gemma4_p5_thr-dev_dev.json",
         "Inline\n(best: p10)": f"writeup_results/grid/unanchored_fusion_naive_confidence_inline/unanchored_fusion_naive_confidence_inline_{dataset}_gemma4_p10_thr-dev_dev.json",

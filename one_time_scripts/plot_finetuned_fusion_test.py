@@ -53,7 +53,7 @@ DATASET_DISPLAY = {
     "commonvoice":      "CommonVoice Scottish",
     "edacc":            "EdAcc",
     "english_dialects": "English Dialects",
-    "shetland":         "Shetland (out-of-domain, held-out)",
+    "shetland":         "Shetland (Held-out transfer set)",
 }
 
 BEST_MODEL_PER_DATASET = {
@@ -72,7 +72,8 @@ def condition_paths_in_domain(dataset):
     return {
         LABEL_5MODEL:   f"writeup_results/grid/unanchored_fusion_naive_5model/unanchored_fusion_naive_5model_{dataset}_gemma4_test.json",
         LABEL_REPLACE:  f"writeup_results/grid/unanchored_fusion_naive_replace_whisperx/unanchored_fusion_naive_replace_whisperx_{dataset}_gemma4_test.json",
-        LABEL_BASELINE: f"writeup_results/grid_calib_fixed/unanchored_fusion_naive/unanchored_fusion_naive_{dataset}_gemma4_test.json",
+        # TODO: swap grid_calib_fixed -> clean_grid once unanchored_fusion_naive job finishes
+        LABEL_BASELINE: f"writeup_results/clean_grid/unanchored_fusion_naive/unanchored_fusion_naive_{dataset}_gemma4_test.json",
     }
 
 
@@ -291,17 +292,17 @@ def main():
     )
     _plot_severity_grid(
         ["shetland"], "finetuned_fusion_shetland_severity.png",
-        "Unanchored Fusion: Fine-Tuned Model Integration\nSeverity (Shetland, Out-of-Domain)",
+        "Unanchored Fusion: Fine-Tuned Model Integration\nSeverity (Shetland)",
         nrows=1,
     )
     _plot_binary_grid(
         IN_DOMAIN_DATASETS, "finetuned_fusion_test_binary.png",
-        "Unanchored Fusion: Fine-Tuned Model Integration\nMeaning Preservation (Held-Out Test)",
+        "Unanchored Fusion: Fine-Tuned Model Integration\nMeaning Alteration (Held-Out Test)",
         nrows=3,
     )
     _plot_binary_grid(
         ["shetland"], "finetuned_fusion_shetland_binary.png",
-        "Unanchored Fusion: Fine-Tuned Model Integration\nMeaning Preservation (Shetland, Out-of-Domain)",
+        "Unanchored Fusion: Fine-Tuned Model Integration\nMeaning Alteration (Shetland)",
         nrows=1,
     )
 
