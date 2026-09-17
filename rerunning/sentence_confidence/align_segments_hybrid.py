@@ -180,7 +180,10 @@ def _call_llm_fallback(client, judge_model, segment_text, excerpt):
         r = client.chat(
             model=judge_model,
             messages=[{"role": "user", "content": prompt}],
-            options={"temperature": 0},
+            options={
+                "temperature": 0,
+                "num_predict": 256,
+            },
             think=False,
         )
 
