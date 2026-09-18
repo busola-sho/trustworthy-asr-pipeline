@@ -96,8 +96,9 @@
         "wav2vec2": 1.0
       },
       "sample_WER": 1.0,
-      "severity": null,
-      "dataset_index": 1
+      "severity": 4,
+      "dataset_index": 1,
+      "judge_raw_response": "Severity: 4\n\nJustification: The ASR output \"gotication\" is a nonsensical word with no clear meaning or relation to the reference, effectively fabricating content where there was none. This represents a critical alteration as it introduces entirely new and incoherent information, lacking any basis for comparison or recovery of the original intent."
     },
     {
       "ref": "DO YOU WANNA EXPLAIN",
@@ -116,8 +117,9 @@
         "wav2vec2": 1.0
       },
       "sample_WER": 1.0,
-      "severity": null,
-      "dataset_index": 6
+      "severity": 3,
+      "dataset_index": 6,
+      "judge_raw_response": "Severity: 3\n\nJustification: The hypothesis \"jonah explains\" unambiguously asserts a different material fact by introducing the entity \"Jonah,\" which is not present in the reference. This substitution changes the meaning from a question about willingness to explain into a statement that someone named Jonah is explaining, thus asserting a different factual scenario."
     },
     {
       "ref": "WHICH IS JUST THE WHICH IS JUST A UH BASICALLY YOU HAVE TWO ENDS OF A PITCH AND YOUR GOAL'S TO REACH THE OTHER END OF THE PITCH WITHOUT BEING TAGGED BY SOMEONE IN THE MIDDLE AND NO RULES APPLY PEOPLE WERE BEATEN UP BLOOD EVERYWHERE OH GOOD TIMES",
@@ -136,8 +138,9 @@
         "wav2vec2": 0.17447341633388147
       },
       "sample_WER": 0.16326530612244897,
-      "severity": null,
-      "dataset_index": 7
+      "severity": 1,
+      "dataset_index": 7,
+      "judge_raw_response": "Severity: 1\n\nJustification: The hypothesis retains the overall meaning of the reference with minor surface-level changes, such as punctuation and filler words (\"uh\" removed), which do not alter the propositional content. The core message about the game's objective and chaotic nature remains confidently recoverable without any material fact change."
     },
     {
       "ref": "WAS IT TAGGED OR WAS IT TACKLED",
@@ -156,8 +159,9 @@
         "wav2vec2": 0.2857142857142857
       },
       "sample_WER": 0.0,
-      "severity": null,
-      "dataset_index": 8
+      "severity": 0,
+      "dataset_index": 8,
+      "judge_raw_response": "Severity: 0\n\nJustification: The difference between the reference and hypothesis is purely a matter of capitalization, which does not affect the propositional content or meaning of the sentence. This falls under surface form changes with no impact on meaning."
     },
     {
       "ref": "OUR RULES WERE TACKLE",
@@ -176,8 +180,9 @@
         "wav2vec2": 2.3333333333333335
       },
       "sample_WER": 1.0,
-      "severity": null,
-      "dataset_index": 11
+      "severity": 4,
+      "dataset_index": 11,
+      "judge_raw_response": "Severity: 4\n\nJustification: The hypothesis \"that\" fundamentally changes the central assertion of the reference \"OUR RULES WERE TACKLE,\" resulting in a critical meaning alteration. The original statement implies specific rules related to tackling, while the output provides no meaningful content or context, effectively fabricating an entirely different and nonsensical claim."
     },
     {
       "ref": "STONE UH STONE PLAYGROUND",
@@ -196,8 +201,9 @@
         "wav2vec2": 2.5
       },
       "sample_WER": 0.5,
-      "severity": null,
-      "dataset_index": 17
+      "severity": 1,
+      "dataset_index": 17,
+      "judge_raw_response": "Severity: 1\n\nJustification: The hypothesis \"Stone Playground\" retains the core meaning of the reference \"STONE UH STONE PLAYGROUND,\" with only minor surface form differences such as casing and filler words (\"UH\"). These changes do not alter the propositional content, making any potential error trivial or cosmetic."
     },
     {
       "ref": "WHAT EVEN IS THAT",
@@ -216,8 +222,9 @@
         "wav2vec2": 3.0
       },
       "sample_WER": 1.0,
-      "severity": null,
-      "dataset_index": 21
+      "severity": 4,
+      "dataset_index": 21,
+      "judge_raw_response": "Severity: 4\n\nJustification: The hypothesis \"Um.\" fundamentally changes the central assertion of the reference \"WHAT EVEN IS THAT\" by replacing a question expressing confusion or disbelief with an inaudible or filler sound, which does not convey any meaningful content. This alteration effectively removes the original intent and meaning, qualifying as a critical meaning alteration."
     },
     {
       "ref": "ALL RIGHT",
@@ -236,8 +243,9 @@
         "wav2vec2": 0.3333333333333333
       },
       "sample_WER": 1.0,
-      "severity": null,
-      "dataset_index": 23
+      "severity": 4,
+      "dataset_index": 23,
+      "judge_raw_response": "Severity: 4\n\nJustification: The hypothesis \"We.\" fundamentally changes the central assertion of the reference \"ALL RIGHT,\" which is likely an acknowledgment or agreement, into a completely different statement with no clear connection. This represents a critical meaning alteration as it introduces entirely new content without any basis in the original phrase."
     },
     {
       "ref": "WE'D UH THE IDEA IT'S ESSENTIALLY THE SAME AS BULLDOG YOU HAVE TO TRY AND RUN TO THE END OF THE FIELD THERE'S ONE PERSON WHO'S THIS SHARK OR MAYBE TWO PEOPLE AND THEY CAN MOVE ANY DIRECTION AND IF THEY TAKE YOU YOU BECOME SEAWEED AND YOU CAN'T MOVE YOUR FEET BUT YOU CAN LIKE LEAN OUT TO CATCH PEOPLE",
@@ -256,8 +264,9 @@
         "wav2vec2": 0.1822263993316625
       },
       "sample_WER": 0.14754098360655737,
-      "severity": null,
-      "dataset_index": 24
+      "severity": 3,
+      "dataset_index": 24,
+      "judge_raw_response": "Severity: 3\n\nJustification: The hypothesis changes \"try and run\" to \"drown,\" which introduces a clear factual error by altering the intended action within the game, thus changing the material fact of what players are supposed to do. This substitution significantly impacts the understanding of the rules or actions described in the reference sentence."
     },
     {
       "ref": "RIGHT",
@@ -276,8 +285,9 @@
         "wav2vec2": 1.0
       },
       "sample_WER": 0.0,
-      "severity": null,
-      "dataset_index": 25
+      "severity": 0,
+      "dataset_index": 25,
+      "judge_raw_response": "Severity: 0  \nJustification: The difference between \"RIGHT\" and \"Right.\" is purely a matter of capitalization, which does not affect the propositional content or meaning. This falls under surface form changes with no impact on meaning."
     },
     {
       "ref": "MM HMM",
@@ -316,8 +326,9 @@
         "wav2vec2": 0.65
       },
       "sample_WER": 0.375,
-      "severity": null,
-      "dataset_index": 29
+      "severity": 1,
+      "dataset_index": 29,
+      "judge_raw_response": "Severity: 1\n\nJustification: The ASR output retains the core meaning of the reference, with minor surface-level changes such as punctuation and filler words. These alterations do not affect the propositional content or introduce any ambiguity, allowing for confident recovery of the original intent."
     },
     {
       "ref": "NO IT WAS FULLY JUST TAG TAGS WE'D CALL",
@@ -336,8 +347,9 @@
         "wav2vec2": 0.39814814814814814
       },
       "sample_WER": 0.4444444444444444,
-      "severity": null,
-      "dataset_index": 32
+      "severity": 2,
+      "dataset_index": 32,
+      "judge_raw_response": "Severity: 2\n\nJustification: The ASR output introduces ambiguity by changing \"WE'D CALL\" to \"we caught,\" which alters the meaning and requires reconstruction to understand the original intent. This shift creates uncertainty about the relationship between the actions described, fitting the criteria for an ambiguous meaning shift without asserting a different material fact unambiguously."
     },
     {
       "ref": "YEAH",
@@ -356,8 +368,9 @@
         "wav2vec2": 1.0
       },
       "sample_WER": 0.0,
-      "severity": null,
-      "dataset_index": 37
+      "severity": 0,
+      "dataset_index": 37,
+      "judge_raw_response": "Severity: 0  \nJustification: The difference between \"YEAH\" and \"Yeah.\" is purely a matter of casing and punctuation, with no change to the propositional content or meaning. This falls under surface form variations that do not affect the underlying message."
     },
     {
       "ref": "IT'S A LOT SAFER",
@@ -376,8 +389,9 @@
         "wav2vec2": 1.0
       },
       "sample_WER": 1.0,
-      "severity": null,
-      "dataset_index": 41
+      "severity": 2,
+      "dataset_index": 41,
+      "judge_raw_response": "Severity: 2\n\nJustification: The ASR output \"thought sefret\" introduces ambiguity and requires reconstruction to recover the intended meaning of \"IT'S A LOT SAFER.\" While it is possible to infer that the transcription error involves garbling, there remains some doubt about the exact intent or content due to the nonsensical nature of the output."
     },
     {
       "ref": "DID YOU DO MUCH DODGE BALL WHEN YOU WERE IN PRIMARY SCHOOL",
@@ -396,8 +410,9 @@
         "wav2vec2": 0.6
       },
       "sample_WER": 0.4166666666666667,
-      "severity": null,
-      "dataset_index": 42
+      "severity": 3,
+      "dataset_index": 42,
+      "judge_raw_response": "Severity: 3\n\nJustification: The hypothesis changes \"DID YOU DO MUCH DODGE BALL\" from past tense to present tense, unambiguously asserting a different material fact about the time frame of the activity. This shift alters the meaning by changing when the action occurred, which is a clear factual error according to the severity scale."
     },
     {
       "ref": "YEAH",
@@ -416,8 +431,9 @@
         "wav2vec2": 1.0
       },
       "sample_WER": 0.0,
-      "severity": null,
-      "dataset_index": 51
+      "severity": 0,
+      "dataset_index": 51,
+      "judge_raw_response": "Severity: 0  \nJustification: The difference between \"YEAH\" and \"Yeah.\" is purely a matter of casing and punctuation, with no change to the propositional content or meaning. This falls under surface form variations that do not affect the overall message."
     },
     {
       "ref": "AND THEN THERE WAS LIKE A PIG STYLE WHERE YOU LIKE CHASE THE PERSON WITH THE BALL AND JUST THROW IT AT THEM WHICH LIKE",
@@ -436,8 +452,9 @@
         "wav2vec2": 0.10666666666666667
       },
       "sample_WER": 0.08,
-      "severity": null,
-      "dataset_index": 52
+      "severity": 3,
+      "dataset_index": 52,
+      "judge_raw_response": "Severity: 3\n\nJustification: The hypothesis substitutes \"tig\" for \"pig,\" which unambiguously asserts a different material fact by changing the type of style being described, from \"pig style\" to \"tig style.\" This substitution introduces a clear factual error without ambiguity about the new claim."
     },
     {
       "ref": "YEAH WAS YOUR PRIMARY SCHOOL PRETTY BIG",
@@ -456,8 +473,9 @@
         "wav2vec2": 0.7142857142857143
       },
       "sample_WER": 0.0,
-      "severity": null,
-      "dataset_index": 57
+      "severity": 1,
+      "dataset_index": 57,
+      "judge_raw_response": "Severity: 1\n\nJustification: The hypothesis includes additional punctuation (a comma and a question mark) that are not present in the reference, but these changes do not alter the propositional content or meaning of the sentence. The core message remains confidently and cleanly recoverable without any material fact change."
     },
     {
       "ref": "YEAH BIG BIG HALL FOR THE SIZE I REMEMBER GOING BACK THERE WHEN I WAS A LOT OLDER AND I REMEMBER SEEING THE BASKETBALL HOOPS IN THE HALL AND I COULD LIKE DUNK ON THEM WHICH WAS SO WEIRD BECAUSE BASKETBALL HOOPS ARE SUPPOSED TO BE LIKE TEN FEET TALL AND AT THE",
@@ -476,8 +494,9 @@
         "wav2vec2": 0.16981132075471697
       },
       "sample_WER": 0.018867924528301886,
-      "severity": null,
-      "dataset_index": 58
+      "severity": 2,
+      "dataset_index": 58,
+      "judge_raw_response": "Severity: 2\n\nJustification: The hypothesis ends abruptly with \"and at the,\" which results in a loss of detail and leaves the sentence incomplete. This creates ambiguity about what was intended, requiring reconstruction or inference to understand the full meaning, thus fitting an ambiguous meaning shift."
     },
     {
       "ref": "YEAH",
@@ -496,8 +515,9 @@
         "wav2vec2": 1.0
       },
       "sample_WER": 0.0,
-      "severity": null,
-      "dataset_index": 59
+      "severity": 0,
+      "dataset_index": 59,
+      "judge_raw_response": "Severity: 0  \nJustification: The difference between \"YEAH\" and \"Yeah.\" is purely a matter of casing and punctuation, with no change to the propositional content or meaning. This falls under surface form variations that do not affect the underlying message."
     },
     {
       "ref": "PRIMARY SCHOOL IT WASN'T EVEN SEVEN FEET SO IT WAS VERY FUN TO GO BACK THERE THEN MESS ABOUT THEREAFTER I DID SOME UM COACHING",
@@ -516,8 +536,9 @@
         "wav2vec2": 0.26282051282051283
       },
       "sample_WER": 0.16,
-      "severity": null,
-      "dataset_index": 60
+      "severity": 1,
+      "dataset_index": 60,
+      "judge_raw_response": "Severity: 1\n\nJustification: The hypothesis retains the overall meaning of the reference, with minor surface-level changes such as punctuation and slight rephrasing. These alterations do not affect the propositional content or introduce any ambiguity, allowing for confident recovery of the original intent."
     },
     {
       "ref": "YEAH",
@@ -536,8 +557,9 @@
         "wav2vec2": 1.0
       },
       "sample_WER": 0.0,
-      "severity": null,
-      "dataset_index": 61
+      "severity": 0,
+      "dataset_index": 61,
+      "judge_raw_response": "Severity: 0  \nJustification: The difference between \"YEAH\" and \"Yeah.\" is purely a matter of casing and punctuation, with no change to the propositional content or meaning. This falls under surface form variations that do not affect the underlying message."
     },
     {
       "ref": "NOTHING",
@@ -556,8 +578,9 @@
         "wav2vec2": 1.0
       },
       "sample_WER": 0.0,
-      "severity": null,
-      "dataset_index": 64
+      "severity": 0,
+      "dataset_index": 64,
+      "judge_raw_response": "Severity: 0\n\nJustification: The difference between \"NOTHING\" and \"Nothing.\" is purely a matter of capitalization, which does not alter the propositional content or meaning. This falls under surface form changes with no impact on the intended message."
     },
     {
       "ref": "OBVIOUSLY SCOOBY DOO",
@@ -576,8 +599,9 @@
         "wav2vec2": 0.6666666666666666
       },
       "sample_WER": 0.6666666666666666,
-      "severity": null,
-      "dataset_index": 69
+      "severity": 1,
+      "dataset_index": 69,
+      "judge_raw_response": "Severity: 1\n\nJustification: The hypothesis includes a comma and hyphen that are absent in the reference, but these changes do not alter the propositional content or meaning of \"OBVIOUSLY SCOOBY DOO.\" The name \"Scooby-Doo\" is correctly identified despite minor surface form differences."
     },
     {
       "ref": "DO YOU WANNA DESCRIBE WHAT SCOOBY DOO WAS",
@@ -596,8 +620,9 @@
         "wav2vec2": 0.7592592592592592
       },
       "sample_WER": 0.25,
-      "severity": null,
-      "dataset_index": 72
+      "severity": 1,
+      "dataset_index": 72,
+      "judge_raw_response": "Severity: 1\n\nJustification: The transcription error involves a minor wording difference between \"WANNA\" and \"want to,\" which does not change the propositional content or meaning of the sentence. The intended meaning is confidently recoverable without any ambiguity, making it a trivial/cosmetic error."
     },
     {
       "ref": "HONESTLY EVEN NOW I CAN'T DESCRIBE IT",
@@ -616,8 +641,9 @@
         "wav2vec2": 0.047619047619047616
       },
       "sample_WER": 0.0,
-      "severity": null,
-      "dataset_index": 73
+      "severity": 0,
+      "dataset_index": 73,
+      "judge_raw_response": "Severity: 0\n\nJustification: The hypothesis includes additional punctuation (a comma) that is not present in the reference, but this does not alter the propositional content or meaning of the sentence. The core message remains unchanged, fitting the criteria for a surface form change with no impact on meaning."
     },
     {
       "ref": "YEAH IT'S REALLY QUITE SOMETHING",
@@ -636,8 +662,9 @@
         "wav2vec2": 0.0
       },
       "sample_WER": 0.2,
-      "severity": null,
-      "dataset_index": 76
+      "severity": 1,
+      "dataset_index": 76,
+      "judge_raw_response": "Severity: 1\n\nJustification: The hypothesis omits the initial \"YEAH\" from the reference, but the core meaning of the sentence remains unchanged. This is a trivial/cosmetic error as the propositional content and intent are confidently recoverable without any material fact changes."
     },
     {
       "ref": "YEAH",
@@ -676,8 +703,9 @@
         "wav2vec2": 1.0
       },
       "sample_WER": 0.0,
-      "severity": null,
-      "dataset_index": 89
+      "severity": 0,
+      "dataset_index": 89,
+      "judge_raw_response": "Severity: 0\n\nJustification: The difference between \"IT JUST SOUNDS AWFUL\" and \"It just sounds awful.\" is purely a matter of capitalization and punctuation, which do not alter the propositional content or meaning of the sentence. These are surface-level changes that fall under no meaning change according to the severity scale provided."
     },
     {
       "ref": "IT'S SO GOOD THE KID CAN",
@@ -696,8 +724,9 @@
         "wav2vec2": 0.16666666666666666
       },
       "sample_WER": 0.0,
-      "severity": null,
-      "dataset_index": 90
+      "severity": 2,
+      "dataset_index": 90,
+      "judge_raw_response": "Severity: 2\n\nJustification: The ASR output introduces a punctuation change that creates ambiguity by splitting the original sentence into two separate statements, which requires reconstruction to understand the intended meaning. This alteration could lead to different interpretations of the relationship between \"IT'S SO GOOD\" and \"THE KID CAN,\" thus fitting the criteria for an ambiguous meaning shift."
     },
     {
       "ref": "A LAD'S GOT A WATCH",
@@ -716,8 +745,9 @@
         "wav2vec2": 1.0
       },
       "sample_WER": 0.8,
-      "severity": null,
-      "dataset_index": 91
+      "severity": 4,
+      "dataset_index": 91,
+      "judge_raw_response": "Severity: 4\n\nJustification: The hypothesis \"got for\" significantly alters the meaning of the reference by removing key elements such as \"A LAD'S\" and \"WATCH,\" which are central to the original assertion. This results in a critical loss of content, effectively fabricating or omitting essential information without any basis from the reference."
     },
     {
       "ref": "PEPPA PIG UH I THINK I'VE SEEN A BIT OF THAT UH I THINK THAT WAS MORE MY SISTER'S THING",
@@ -736,8 +766,9 @@
         "wav2vec2": 0.46187363834422657
       },
       "sample_WER": 0.25,
-      "severity": null,
-      "dataset_index": 95
+      "severity": 1,
+      "dataset_index": 95,
+      "judge_raw_response": "Severity: 1\n\nJustification: The ASR output omits \"PEPPA PIG\" and some filler words (\"UH\"), but the core meaning of the sentence remains intact, with no material fact changes. The reconstruction of the intended message is confident and clean, fitting the criteria for a trivial/cosmetic error."
     },
     {
       "ref": "OH LOVE A BIT OF PEPPA PIG RIGHT",
@@ -756,8 +787,9 @@
         "wav2vec2": 0.8134920634920636
       },
       "sample_WER": 0.625,
-      "severity": null,
-      "dataset_index": 96
+      "severity": 1,
+      "dataset_index": 96,
+      "judge_raw_response": "Severity: 1\n\nJustification: The hypothesis \"Love the Peppa Pig\" retains the core meaning of expressing affection for \"Peppa Pig,\" despite omitting \"OH LOVE A BIT OF.\" The omission is a surface-level change that does not alter the propositional content or introduce ambiguity, making it a trivial/cosmetic error."
     },
     {
       "ref": "I'D SAW LIKE EPISODES BECAUSE THEY'D BE ON AFTER STUFF I'D BE WATCHING BUT WOULD NEVER BE",
@@ -776,8 +808,9 @@
         "wav2vec2": 0.19607843137254902
       },
       "sample_WER": 0.058823529411764705,
-      "severity": null,
-      "dataset_index": 100
+      "severity": 2,
+      "dataset_index": 100,
+      "judge_raw_response": "Severity: 2\n\nJustification: The transcription error involves a tense change from \"I'D SAW\" (incorrect contraction) to \"I saw,\" which is grammatically correct. This introduces ambiguity regarding the intended meaning of the original sentence, as it's unclear whether the speaker meant \"I would have seen\" or simply \"I saw.\" The reconstruction needed to understand the intent suggests an ambiguous meaning shift without asserting a different material fact."
     },
     {
       "ref": "YEAH",
@@ -796,8 +829,9 @@
         "wav2vec2": 1.0
       },
       "sample_WER": 0.0,
-      "severity": null,
-      "dataset_index": 101
+      "severity": 0,
+      "dataset_index": 101,
+      "judge_raw_response": "Severity: 0  \nJustification: The difference between \"YEAH\" and \"Yeah.\" is purely a matter of casing and punctuation, with no change to the propositional content or meaning. This falls under surface form variations that do not affect the underlying message."
     },
     {
       "ref": "ATE WORMS",
@@ -816,8 +850,9 @@
         "wav2vec2": 1.0
       },
       "sample_WER": 1.0,
-      "severity": null,
-      "dataset_index": 113
+      "severity": 3,
+      "dataset_index": 113,
+      "judge_raw_response": "Severity: 3\n\nJustification: The hypothesis \"Eight words\" unambiguously asserts a different material fact compared to the reference \"ATE WORMS,\" as it changes both the entity and the meaning entirely, with no real ambiguity about the new claim. This is a clear factual error involving substitution of content that alters the original statement's intent."
     },
     {
       "ref": "OH WORMS THAT MAKES MORE SENSE STILL WEIRD BUT IT MAKES MORE SENSE",
@@ -836,8 +871,9 @@
         "wav2vec2": 0.6277472527472527
       },
       "sample_WER": 0.6153846153846154,
-      "severity": null,
-      "dataset_index": 114
+      "severity": 3,
+      "dataset_index": 114,
+      "judge_raw_response": "Severity: 3\n\nJustification: The hypothesis introduces a different material fact by substituting \"worms\" with \"explore fs,\" which changes the entity being discussed. This substitution is unambiguous and results in a clear factual error, as it alters the original meaning without any real ambiguity about the new claim."
     },
     {
       "ref": "I'D ASK WHAT THAT'S ABOUT BUT I THINK IT'S PRETTY INTUITIVE",
@@ -856,8 +892,9 @@
         "wav2vec2": 0.3333333333333333
       },
       "sample_WER": 0.09090909090909091,
-      "severity": null,
-      "dataset_index": 120
+      "severity": 1,
+      "dataset_index": 120,
+      "judge_raw_response": "Severity: 1\n\nJustification: The hypothesis changes \"I'D\" to \"I ask,\" which is a minor wording difference that does not alter the propositional content or meaning of the sentence. The intent and overall message remain confidently and cleanly recoverable, making it a trivial/cosmetic error."
     },
     {
       "ref": "IT'S LITERALLY EVERYTHING YOU NEED TO KNOW ABOUT THE WEATHER IN ONE BOOK I CAN JUST LOOK OUTSIDE AND BE LIKE YEAH IT'S GONNA RAIN TWO HUNDRED MILLILITERS TODAY",
@@ -876,8 +913,9 @@
         "wav2vec2": 0.3573891625615764
       },
       "sample_WER": 0.10344827586206896,
-      "severity": null,
-      "dataset_index": 123
+      "severity": 3,
+      "dataset_index": 123,
+      "judge_raw_response": "Severity: 3\n\nJustification: The ASR output introduces a clear factual error by specifying \"200 milliliters\" of rain, which is an unambiguous assertion of a specific quantity that was not present in the reference. This change asserts a different material fact about the expected rainfall amount."
     },
     {
       "ref": "OH MY GOD GRAPES ARE AMAZING MY MOM HAD TO ALWAYS BUY AN EXTRA PACK 'CAUSE I JUST MUNCH IT LIKE IN THE SHOPPING CENTER OR IN THE IN THE SHOP",
@@ -896,8 +934,9 @@
         "wav2vec2": 0.5867227676484338
       },
       "sample_WER": 0.12903225806451613,
-      "severity": null,
-      "dataset_index": 135
+      "severity": 2,
+      "dataset_index": 135,
+      "judge_raw_response": "Severity: 2\n\nJustification: The transcription error changes \"had\" to \"pare,\" which introduces ambiguity and requires reconstruction to understand the intended meaning. Additionally, \"shopping center\" is altered to \"shopping centre,\" a dialectal variation that does not affect propositional content, but combined with other errors, it contributes to an ambiguous shift in meaning."
     },
     {
       "ref": "YEAH AND THOSE THINGS YOU KNOW WHERE TO GET IT BUT LIKE YOU KNOW ONCE WE GET PAST THIS TOO SMALL <DTMF>",
@@ -916,8 +955,9 @@
         "wav2vec2": 0.4306418219461698
       },
       "sample_WER": 0.23809523809523808,
-      "severity": null,
-      "dataset_index": 144
+      "severity": 3,
+      "dataset_index": 144,
+      "judge_raw_response": "Severity: 3\n\nJustification: The hypothesis introduces a clear factual error by changing \"THOSE THINGS\" to \"those two small,\" which alters the material fact about what is being referred to. This change results in an unambiguous assertion of different content, fitting the criteria for a severity level 3."
     },
     {
       "ref": "YEAH YOU SHOULD YEAH WHAT'S YOUR FAVORITE THING ABOUT EDINBURGH UH ARTHUR'S SEAT",
@@ -936,8 +976,9 @@
         "wav2vec2": 0.5946969696969697
       },
       "sample_WER": 0.15384615384615385,
-      "severity": null,
-      "dataset_index": 146
+      "severity": 1,
+      "dataset_index": 146,
+      "judge_raw_response": "Severity: 1\n\nJustification: The hypothesis omits \"YEAH\" at the beginning of the reference, which is a filler word and does not change the propositional content or meaning of the sentence. The core message remains confidently and cleanly recoverable without any material fact changes."
     },
     {
       "ref": "YEAH",
@@ -956,8 +997,9 @@
         "wav2vec2": 1.0
       },
       "sample_WER": 0.0,
-      "severity": null,
-      "dataset_index": 150
+      "severity": 0,
+      "dataset_index": 150,
+      "judge_raw_response": "Severity: 0  \nJustification: The difference between \"YEAH\" and \"Yeah.\" is purely a matter of casing and punctuation, with no change to the propositional content or meaning. This falls under surface form variations that do not affect the underlying message."
     },
     {
       "ref": "YOU CAN GET ANYTHING REALLY",
@@ -976,8 +1018,9 @@
         "wav2vec2": 0.38730158730158726
       },
       "sample_WER": 0.2,
-      "severity": null,
-      "dataset_index": 152
+      "severity": 2,
+      "dataset_index": 152,
+      "judge_raw_response": "Severity: 2\n\nJustification: The hypothesis introduces an ambiguous meaning shift by adding \"you\" after \"anything,\" which could alter the intended message and requires reconstruction for clarity. This change creates potential ambiguity in how the statement is understood, fitting the criteria for a level 2 severity due to genuine ambiguity and the need for real reconstruction of intent."
     },
     {
       "ref": "UH HMM",
@@ -996,8 +1039,9 @@
         "wav2vec2": 1.0
       },
       "sample_WER": 0.5,
-      "severity": null,
-      "dataset_index": 157
+      "severity": 0,
+      "dataset_index": 157,
+      "judge_raw_response": "Severity: 0\n\nJustification: The hypothesis \"Uh.\" retains the same surface form and meaning as the reference \"UH HMM,\" with only minor differences in casing and filler words, which do not alter the propositional content. Both expressions convey hesitation or a pause without changing any material fact."
     },
     {
       "ref": "FOR ME IT'S UM THE SCENT LIKE THE SMELLS",
@@ -1016,8 +1060,9 @@
         "wav2vec2": 0.19907407407407407
       },
       "sample_WER": 0.1111111111111111,
-      "severity": null,
-      "dataset_index": 158
+      "severity": 1,
+      "dataset_index": 158,
+      "judge_raw_response": "Severity: 1\n\nJustification: The hypothesis retains the core meaning of the reference, with minor surface-level differences such as punctuation and filler word omission. These changes do not alter the propositional content or introduce ambiguity, allowing for confident recovery of the original intent."
     },
     {
       "ref": "YEAH I GUESS THE YEAH THE NOT SO NICE CITY SMELLS THAT YOU GET",
@@ -1036,8 +1081,9 @@
         "wav2vec2": 0.6373737373737374
       },
       "sample_WER": 0.35714285714285715,
-      "severity": null,
-      "dataset_index": 161
+      "severity": 2,
+      "dataset_index": 161,
+      "judge_raw_response": "Severity: 2\n\nJustification: The hypothesis omits \"YEAH I GUESS THE YEAH\" from the reference, resulting in a loss of some content that could affect the nuance or emphasis intended by the speaker. This omission introduces ambiguity regarding the speaker's attitude and requires reconstruction to fully understand the original intent, fitting an ambiguous meaning shift."
     },
     {
       "ref": "THAT IS TRUE",
@@ -1056,8 +1102,9 @@
         "wav2vec2": 0.8333333333333334
       },
       "sample_WER": 0.6666666666666666,
-      "severity": null,
-      "dataset_index": 168
+      "severity": 1,
+      "dataset_index": 168,
+      "judge_raw_response": "Severity: 1\n\nJustification: The hypothesis \"Yeah, true.\" retains the core meaning of agreement present in the reference \"THAT IS TRUE,\" with only superficial changes such as filler words and a slight variation in phrasing. These differences do not alter the propositional content or introduce any ambiguity, making it a trivial/cosmetic error."
     },
     {
       "ref": "YEAH UM JUST A COUPLE OF MINUTES LEFT WHERE IS THE TOPICS",
@@ -1076,8 +1123,9 @@
         "wav2vec2": 0.5151515151515151
       },
       "sample_WER": 0.3333333333333333,
-      "severity": null,
-      "dataset_index": 170
+      "severity": 1,
+      "dataset_index": 170,
+      "judge_raw_response": "Severity: 1\n\nJustification: The transcription error involves minor surface form changes, such as \"UM\" being omitted and the contraction \"where's\" being split into \"where'\". These do not alter the propositional content or meaning of the sentence. The intended message remains confidently recoverable without any material fact change."
     },
     {
       "ref": "ALL RIGHT",
@@ -1096,8 +1144,9 @@
         "wav2vec2": 1.0
       },
       "sample_WER": 0.5,
-      "severity": null,
-      "dataset_index": 173
+      "severity": 1,
+      "dataset_index": 173,
+      "judge_raw_response": "Severity: 1\n\nJustification: The hypothesis \"right\" is a truncated version of the reference \"ALL RIGHT,\" but the meaning remains confidently and cleanly recoverable as an affirmation. There is no material fact change, making it a trivial/cosmetic error."
     },
     {
       "ref": "WHAT'S THE APPEAL IN ICELAND",
@@ -1116,8 +1165,9 @@
         "wav2vec2": 0.4000000000000001
       },
       "sample_WER": 0.0,
-      "severity": null,
-      "dataset_index": 180
+      "severity": 0,
+      "dataset_index": 180,
+      "judge_raw_response": "Severity: 0\n\nJustification: The difference between the reference and hypothesis is purely a matter of capitalization, which does not affect the propositional content or meaning of the sentence. This falls under surface form changes with no impact on meaning."
     },
     {
       "ref": "IT'S JUST COLD YOU KNOW",
@@ -1156,8 +1206,9 @@
         "wav2vec2": 0.0
       },
       "sample_WER": 0.0,
-      "severity": null,
-      "dataset_index": 182
+      "severity": 0,
+      "dataset_index": 182,
+      "judge_raw_response": "Severity: 0\n\nJustification: The difference between \"COLD\" and \"Cold.\" is purely a matter of casing and punctuation, with no change to the propositional content or meaning. This falls under surface form variations that do not affect the underlying message."
     },
     {
       "ref": "YEAH IT'S VERY SCENIC",
@@ -1176,8 +1227,9 @@
         "wav2vec2": 1.0
       },
       "sample_WER": 0.0,
-      "severity": null,
-      "dataset_index": 185
+      "severity": 0,
+      "dataset_index": 185,
+      "judge_raw_response": "Severity: 0\n\nJustification: The hypothesis includes an additional comma, which is a surface form difference that does not alter the propositional content or meaning of the sentence. There are no changes in entities, facts, or context, maintaining the original intent and message."
     },
     {
       "ref": "I'M SURE IT'S",
@@ -1196,8 +1248,9 @@
         "wav2vec2": 1.0
       },
       "sample_WER": 1.0,
-      "severity": null,
-      "dataset_index": 188
+      "severity": 4,
+      "dataset_index": 188,
+      "judge_raw_response": "Severity: 4\n\nJustification: The hypothesis \"countries\" fundamentally changes the central assertion of the reference \"I'M SURE IT'S,\" introducing a completely different and unrelated concept with no basis in the original statement, thus fabricating content. This alteration is critical as it reverses or replaces the intended meaning entirely without any context to correct or clarify it."
     },
     {
       "ref": "OH COSTS WOULD INSANE LIKE THROUGH THE ROOF",
@@ -1216,8 +1269,9 @@
         "wav2vec2": 0.6527777777777778
       },
       "sample_WER": 0.375,
-      "severity": null,
-      "dataset_index": 190
+      "severity": 2,
+      "dataset_index": 190,
+      "judge_raw_response": "Severity: 2\n\nJustification: The hypothesis introduces a connector change from \"OH\" to \"Of,\" which alters the structure and potentially the meaning of the sentence, requiring reconstruction for clarity. This results in an ambiguous meaning shift as it is not immediately clear how this affects the propositional content without additional context or interpretation."
     },
     {
       "ref": "OR JUST COLD",
@@ -1236,8 +1290,18 @@
         "wav2vec2": 0.611111111111111
       },
       "sample_WER": 0.3333333333333333,
-      "severity": null,
-      "dataset_index": 195
+      "severity": 2,
+      "dataset_index": 195,
+      "judge_raw_response": "Severity: 2\n\nJustification: The hypothesis \"Or just.\" omits the word \"COLD,\" resulting in an ambiguous meaning shift. While the core conjunction and adverb are retained, the loss of \"cold\" introduces uncertainty about what is being described or negated, requiring reconstruction to fully understand the intended meaning."
     }
-  ]
+  ],
+  "judge": "phi4:14b (direct prompt)",
+  "mean_severity": 1.527,
+  "severity_distribution": {
+    "0": 15,
+    "1": 16,
+    "2": 10,
+    "3": 8,
+    "4": 6
+  }
 }
