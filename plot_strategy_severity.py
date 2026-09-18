@@ -212,12 +212,14 @@ SEVERITY_STACK_COLOURS = ["#a8e6a3", "#4caf50", "#f4b942", "#e67e22", "#c0392b"]
 SEVERITY_STACK_LABELS = ["0 - no change", "1 - trivial", "2 - ambiguous", "3 - factual", "4 - critical"]
 
 # ── enlarged text sizes throughout, per supervisor feedback ──
-FONT_TITLE = 16
-FONT_SUPTITLE = 17
-FONT_AXIS_LABEL = 14
-FONT_TICK_LABEL = 13
-FONT_LEGEND = 14
-FONT_BAR_LABEL = 10
+FONT_TITLE = 21
+FONT_SUPTITLE = 22
+FONT_AXIS_LABEL = 17
+FONT_TICK_LABEL = 15
+FONT_LEGEND = 18
+FONT_BAR_LABEL = 18
+BAR_WIDTH = 0.62
+BAR_STEP = 0.78
 
 
 def round_percentages_to_100(values):
@@ -235,24 +237,10 @@ def round_percentages_to_100(values):
     return result
 
 
-def _make_panel_grid(datasets):
-    """Use a compact horizontal layout for multi-dataset paper figures."""
-    n_panels = len(datasets)
-    if n_panels == 1:
-        fig, ax = plt.subplots(1, 1, figsize=(10, 5.5))
-        return fig, [ax]
-
-    fig, axes = plt.subplots(
-        1,
-        n_panels,
-        figsize=(18, 5.4),
-        sharey=True,
-    )
-    return fig, np.atleast_1d(axes).ravel().tolist()
-
-
-def _plot_severity_grid(datasets, split, filename, suptitle, nrows=None):
-    fig, axes = _make_panel_grid(datasets)
+def _plot_severity_grid(datasets, split, filename, suptitle, nrows):
+    fig, axes = plt.subplots(nrows, 1, figsize=(9, 7 * nrows))
+    if nrows == 1:
+        axes = [axes]
 
     any_data = False
     for i, dataset in enumerate(datasets):
@@ -266,7 +254,7 @@ def _plot_severity_grid(datasets, split, filename, suptitle, nrows=None):
             continue
         any_data = True
 
-        x = np.arange(len(labels))
+        x = np.arange(len(labels)) * BAR_STEP
 
         # round each bar's 5 severity percentages together so the
         # printed labels always sum to exactly 100 (bar HEIGHTS still
@@ -276,25 +264,25 @@ def _plot_severity_grid(datasets, split, filename, suptitle, nrows=None):
         bottoms = np.zeros(len(labels))
         for level in range(5):
             values = [data[l]["dist"][level] for l in labels]
-            ax.bar(x, values, bottom=bottoms, color=SEVERITY_STACK_COLOURS[level],
+            ax.bar(x, values, bottom=bottoms, width=BAR_WIDTH,
+                   color=SEVERITY_STACK_COLOURS[level],
                    edgecolor="black", linewidth=0.6,
                    label=SEVERITY_STACK_LABELS[level] if i == 0 else None)
             for xi, (v, b) in enumerate(zip(values, bottoms)):
                 if v >= 4:
                     rounded_v = rounded_per_label[labels[xi]][level]
-                    ax.text(xi, b + v / 2, f"{rounded_v}%", ha="center", va="center",
+                    ax.text(x[xi], b + v / 2, f"{rounded_v}%", ha="center", va="center",
                             fontsize=FONT_BAR_LABEL, color="black" if level < 3 else "white",
                             fontweight="bold")
             bottoms += np.array(values)
 
         ax.set_xticks(x)
-        ax.set_xticklabels(labels, fontsize=FONT_TICK_LABEL - 1,
-                           rotation=25, ha="right", rotation_mode="anchor")
+        ax.set_xticklabels([l.replace("\n", " ") for l in labels], fontsize=FONT_TICK_LABEL,
+                           rotation=20, ha="right")
         ax.tick_params(axis="y", labelsize=FONT_TICK_LABEL)
-        if i == 0:
-            ax.set_ylabel("% of samples", fontsize=FONT_AXIS_LABEL)
+        ax.set_ylabel("% of samples", fontsize=FONT_AXIS_LABEL)
         ax.set_title(DATASET_DISPLAY[dataset], fontsize=FONT_TITLE, fontweight="bold")
-        ax.set_ylim(0, 100)
+        ax.set_ylim(0, 105)
         ax.grid(axis="y", alpha=0.3)
 
     if not any_data:
@@ -302,54 +290,51 @@ def _plot_severity_grid(datasets, split, filename, suptitle, nrows=None):
         plt.close()
         return
 
-    # One horizontal legend above all panels avoids reserving a large blank
-    # strip on the right-hand side of the exported figure.
-    legend = fig.legend(
-        loc="upper center",
-        bbox_to_anchor=(0.5, 1.02),
-        ncol=5,
-        fontsize=FONT_LEGEND - 1,
-        frameon=True,
-        handlelength=1.5,
-        columnspacing=1.4,
-        title="Severity",
-        title_fontsize=FONT_LEGEND,
-    )
+    # Place the legend above the axes so it does not widen the saved image.
+    legend = fig.legend(loc="upper center", bbox_to_anchor=(0.5, 0.98),
+                        ncol=5, fontsize=FONT_LEGEND,
+                        frameon=True, markerscale=2.2,
+                        handlelength=1.8, handleheight=1.8,
+                        borderpad=0.7, columnspacing=1.0, title="Severity",
+                        title_fontsize=FONT_LEGEND + 1)
     for handle in legend.legend_handles:
         handle.set_edgecolor("black")
         handle.set_linewidth(1.5)
 
-    # The paper caption supplies the overall description, so a suptitle would
-    # duplicate information and consume scarce vertical space.
-    fig.subplots_adjust(left=0.055, right=0.995, bottom=0.29, top=0.78, wspace=0.10)
+    fig.suptitle(suptitle, fontsize=FONT_SUPTITLE, fontweight="bold", y=0.80)
+    plt.tight_layout(rect=[0, 0, 1, 0.73])
 
-    os.makedirs(FIGURES_DIR, exist_ok=True)
     path = os.path.join(FIGURES_DIR, filename)
-    plt.savefig(path, dpi=300, bbox_inches="tight", pad_inches=0.04)
-    plt.savefig(os.path.splitext(path)[0] + ".pdf", bbox_inches="tight", pad_inches=0.04)
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    plt.savefig(path, dpi=150, bbox_inches="tight")
     plt.close()
     print(f"Saved: {path}")
 
 
 def plot_severity_distribution_dev():
-    _plot_severity_grid(
-        DEV_DATASETS, "dev", "severity_distribution_by_strategy_dev.png",
-        "Severity Distribution by Strategy, Development Datasets",
-        nrows=3,
-    )
+    for dataset in DEV_DATASETS:
+        _plot_severity_grid(
+            [dataset], "dev",
+            os.path.join("severity_distribution_dev", f"{dataset}.png"),
+            "Severity Distribution by Strategy, Development Set",
+            nrows=1,
+        )
 
 
 def plot_severity_distribution_test():
-    _plot_severity_grid(
-        DEV_DATASETS, "test", "severity_distribution_by_strategy_test.png",
-        "Severity Distribution by Strategy, Test Datasets",
-        nrows=3,
-    )
+    for dataset in DEV_DATASETS:
+        _plot_severity_grid(
+            [dataset], "test",
+            os.path.join("severity_distribution_test", f"{dataset}.png"),
+            "Severity Distribution by Strategy, Test Set",
+            nrows=1,
+        )
 
 
 def plot_severity_distribution_shetland():
     _plot_severity_grid(
-        ["shetland"], "full", "severity_distribution_shetland.png",
+        ["shetland"], "full",
+        os.path.join("severity_distribution_shetland", "shetland.png"),
         "Severity Distribution by Strategy, Shetland ",
         nrows=1,
     )
@@ -389,8 +374,10 @@ def print_summary_table():
         print(row)
 
 
-def _plot_binary_grid(datasets, split, filename, suptitle, nrows=None):
-    fig, axes = _make_panel_grid(datasets)
+def _plot_binary_grid(datasets, split, filename, suptitle, nrows):
+    fig, axes = plt.subplots(nrows, 1, figsize=(9, 7 * nrows))
+    if nrows == 1:
+        axes = [axes]
 
     any_data = False
     for i, dataset in enumerate(datasets):
@@ -407,76 +394,78 @@ def _plot_binary_grid(datasets, split, filename, suptitle, nrows=None):
         preserved = [sum(data[l]["dist"][0:2]) for l in labels]
         altered = [sum(data[l]["dist"][2:5]) for l in labels]
 
-        x = np.arange(len(labels))
-        ax.bar(x, preserved, color="#2ecc71", edgecolor="black", linewidth=0.6,
+        x = np.arange(len(labels)) * BAR_STEP
+        ax.bar(x, preserved, width=BAR_WIDTH,
+               color="#2ecc71", edgecolor="black", linewidth=0.6,
                label="Meaning preserved (0-1)" if i == 0 else None)
-        ax.bar(x, altered, bottom=preserved, color="#c0392b", edgecolor="black", linewidth=0.6,
+        ax.bar(x, altered, bottom=preserved, width=BAR_WIDTH,
+               color="#c0392b", edgecolor="black", linewidth=0.6,
                label="Meaning altered (2-4)" if i == 0 else None)
 
         for xi, (p, a) in enumerate(zip(preserved, altered)):
             p_rounded, a_rounded = round_percentages_to_100([p, a])
-            ax.text(xi, p / 2, f"{p_rounded}%", ha="center", va="center",
+            ax.text(x[xi], p / 2, f"{p_rounded}%", ha="center", va="center",
                     fontsize=FONT_BAR_LABEL + 2, color="white", fontweight="bold")
-            ax.text(xi, p + a / 2, f"{a_rounded}%", ha="center", va="center",
+            ax.text(x[xi], p + a / 2, f"{a_rounded}%", ha="center", va="center",
                     fontsize=FONT_BAR_LABEL + 2, color="white", fontweight="bold")
 
         ax.set_xticks(x)
-        ax.set_xticklabels(labels, fontsize=FONT_TICK_LABEL - 1,
-                           rotation=25, ha="right", rotation_mode="anchor")
+        ax.set_xticklabels([l.replace("\n", " ") for l in labels], fontsize=FONT_TICK_LABEL,
+                           rotation=20, ha="right")
         ax.tick_params(axis="y", labelsize=FONT_TICK_LABEL)
-        if i == 0:
-            ax.set_ylabel("% of samples", fontsize=FONT_AXIS_LABEL)
+        ax.set_ylabel("% of samples", fontsize=FONT_AXIS_LABEL)
         ax.set_title(DATASET_DISPLAY[dataset], fontsize=FONT_TITLE, fontweight="bold")
-        ax.set_ylim(0, 100)
-        ax.grid(axis="y", alpha=0.3)
+        ax.set_ylim(0, 105)
 
     if not any_data:
         print(f"  Skipped: {filename} (no {split} data available for any dataset)")
         plt.close()
         return
 
-    legend = fig.legend(
-        loc="upper center",
-        bbox_to_anchor=(0.5, 1.01),
-        ncol=2,
-        fontsize=FONT_LEGEND,
-        frameon=True,
-        handlelength=1.8,
-        columnspacing=2.0,
-    )
+    # Place the legend above the axes so it does not widen the saved image.
+    legend = fig.legend(loc="upper center", bbox_to_anchor=(0.5, 0.98),
+                        ncol=2, fontsize=FONT_LEGEND,
+                        frameon=True, markerscale=2.2,
+                        handlelength=1.8, handleheight=1.8,
+                        borderpad=0.7, columnspacing=1.2)
     for handle in legend.legend_handles:
         handle.set_edgecolor("black")
         handle.set_linewidth(1.5)
 
-    fig.subplots_adjust(left=0.055, right=0.995, bottom=0.29, top=0.80, wspace=0.10)
+    fig.suptitle(suptitle, fontsize=FONT_SUPTITLE, fontweight="bold", y=0.80)
+    plt.tight_layout(rect=[0, 0, 1, 0.73])
 
-    os.makedirs(FIGURES_DIR, exist_ok=True)
     path = os.path.join(FIGURES_DIR, filename)
-    plt.savefig(path, dpi=300, bbox_inches="tight", pad_inches=0.04)
-    plt.savefig(os.path.splitext(path)[0] + ".pdf", bbox_inches="tight", pad_inches=0.04)
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    plt.savefig(path, dpi=150, bbox_inches="tight")
     plt.close()
     print(f"Saved: {path}")
 
 
 def plot_binary_preserved_altered_dev():
-    _plot_binary_grid(
-        DEV_DATASETS, "dev", "meaning_preservation_binary_dev.png",
-        "Meaning Alteration Rate by Strategy, Development Datasets",
-        nrows=3,
-    )
+    for dataset in DEV_DATASETS:
+        _plot_binary_grid(
+            [dataset], "dev",
+            os.path.join("meaning_preservation_binary_dev", f"{dataset}.png"),
+            "Meaning Alteration Rate by Strategy, Development Set",
+            nrows=1,
+        )
 
 
 def plot_binary_preserved_altered_test():
-    _plot_binary_grid(
-        DEV_DATASETS, "test", "meaning_preservation_binary_test.png",
-        "Meaning Alteration Rate by Strategy, Test Datasets",
-        nrows=3,
-    )
+    for dataset in DEV_DATASETS:
+        _plot_binary_grid(
+            [dataset], "test",
+            os.path.join("meaning_preservation_binary_test", f"{dataset}.png"),
+            "Meaning Alteration Rate by Strategy, Test Set",
+            nrows=1,
+        )
 
 
 def plot_binary_preserved_altered_shetland():
     _plot_binary_grid(
-        ["shetland"], "full", "meaning_preservation_binary_shetland.png",
+        ["shetland"], "full",
+        os.path.join("meaning_preservation_binary_shetland", "shetland.png"),
         "Meaning Alteration Rate by Strategy, Shetland",
         nrows=1,
     )
@@ -494,4 +483,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

@@ -1,0 +1,2118 @@
+{
+  "dataset": "edacc",
+  "split": "test",
+  "method": "model_internal_asr_confidence",
+  "alignment": "local whole-span SequenceMatcher alignment with forward cursor",
+  "normalization": "per-model z-score fitted once on pooled CommonVoice + EdAcc + English Dialects dev data and frozen for all evaluation sets",
+  "aggregation": "alignment-score-weighted mean of normalized per-model sentence confidence",
+  "asr_models_used": [
+    "qwen",
+    "whisperx",
+    "parakeet",
+    "wav2vec2"
+  ],
+  "excluded_models": {
+    "whisper_ft_chunked": "no word-level confidence data available"
+  },
+  "num_transcripts": 58,
+  "num_segments": 80,
+  "num_segments_scored": 78,
+  "transcripts": [
+    {
+      "dataset_index": 1,
+      "segments": [
+        {
+          "segment": "I've got a notification.",
+          "severity": 3,
+          "flagged": true,
+          "per_model_confidence_raw": {
+            "qwen": 0.768765,
+            "whisperx": 0.32125000000000004
+          },
+          "per_model_confidence_normalized": {
+            "qwen": -4.044319696493364,
+            "whisperx": -3.239522937685018
+          },
+          "per_model_alignment_score": {
+            "qwen": 0.8571428571428571,
+            "whisperx": 1.0,
+            "parakeet": 0.0,
+            "wav2vec2": 0.0
+          },
+          "model_internal_confidence": -3.6109675955965623
+        }
+      ]
+    },
+    {
+      "dataset_index": 6,
+      "segments": [
+        {
+          "segment": "Do you wanna explain?",
+          "severity": 0,
+          "flagged": false,
+          "per_model_confidence_raw": {
+            "qwen": 0.9009265,
+            "whisperx": 0.398
+          },
+          "per_model_confidence_normalized": {
+            "qwen": -1.3037575896019293,
+            "whisperx": -2.6202128948902055
+          },
+          "per_model_alignment_score": {
+            "qwen": 1.0,
+            "whisperx": 0.6666666666666666,
+            "parakeet": 0.0,
+            "wav2vec2": 0.0
+          },
+          "model_internal_confidence": -1.8303397117172397
+        }
+      ]
+    },
+    {
+      "dataset_index": 7,
+      "segments": [
+        {
+          "segment": "Which is just basically you have two ends of a pitch, and your goal is to reach the other end of the pitch without being tagged by someone in the middle, and no rules apply.",
+          "severity": 1,
+          "flagged": false,
+          "per_model_confidence_raw": {
+            "qwen": 0.9681138333333335,
+            "whisperx": 0.7998857142857142,
+            "parakeet": 0.9509307500000003,
+            "wav2vec2": 0.8588020606060607
+          },
+          "per_model_confidence_normalized": {
+            "qwen": 0.08947008862824814,
+            "whisperx": 0.6226777749848386,
+            "parakeet": 0.5763895981573578,
+            "wav2vec2": -0.1030763474063834
+          },
+          "per_model_alignment_score": {
+            "qwen": 0.9859154929577465,
+            "whisperx": 1.0,
+            "parakeet": 0.9859154929577465,
+            "wav2vec2": 0.8529411764705882
+          },
+          "model_internal_confidence": 0.311454132357132
+        },
+        {
+          "segment": "People were beaten up, blood everywhere.",
+          "severity": 1,
+          "flagged": false,
+          "per_model_confidence_raw": {
+            "qwen": 0.991501,
+            "whisperx": 0.8701666666666666,
+            "parakeet": 0.9893573333333334,
+            "wav2vec2": 0.9268968333333333
+          },
+          "per_model_confidence_normalized": {
+            "qwen": 0.5744372141089724,
+            "whisperx": 1.189787867840967,
+            "parakeet": 1.0524263899238795,
+            "wav2vec2": 0.5650730343991384
+          },
+          "per_model_alignment_score": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 1.0,
+            "wav2vec2": 1.0
+          },
+          "model_internal_confidence": 0.8454311265682393
+        },
+        {
+          "segment": "Ah, good times.",
+          "severity": 0,
+          "flagged": false,
+          "per_model_confidence_raw": {
+            "qwen": 0.9325973333333333,
+            "whisperx": 0.808,
+            "parakeet": 0.989873,
+            "wav2vec2": 0.768348
+          },
+          "per_model_confidence_normalized": {
+            "qwen": -0.6470165135169315,
+            "whisperx": 0.6881534574990237,
+            "parakeet": 1.0588145796698036,
+            "wav2vec2": -0.9906162018647433
+          },
+          "per_model_alignment_score": {
+            "qwen": 1.0,
+            "whisperx": 0.8,
+            "parakeet": 0.5,
+            "wav2vec2": 0.8
+          },
+          "model_internal_confidence": -0.11599336102406625
+        }
+      ]
+    },
+    {
+      "dataset_index": 8,
+      "segments": [
+        {
+          "segment": "Was it tagged or was it tackled?",
+          "severity": 0,
+          "flagged": false,
+          "per_model_confidence_raw": {
+            "qwen": 0.9959214285714285,
+            "whisperx": 0.6747142857142857,
+            "parakeet": 0.8776047142857143,
+            "wav2vec2": 0.9157565714285715
+          },
+          "per_model_confidence_normalized": {
+            "qwen": 0.6661012693677075,
+            "whisperx": -0.3873537922498097,
+            "parakeet": -0.3319891273617273,
+            "wav2vec2": 0.45576421660441985
+          },
+          "per_model_alignment_score": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 1.0,
+            "wav2vec2": 0.7142857142857143
+          },
+          "model_internal_confidence": 0.0733126742813574
+        }
+      ]
+    },
+    {
+      "dataset_index": 11,
+      "segments": [
+        {
+          "segment": "Exactly.",
+          "severity": 4,
+          "flagged": true,
+          "per_model_confidence_raw": {
+            "qwen": 0.951726
+          },
+          "per_model_confidence_normalized": {
+            "qwen": -0.25035561740101253
+          },
+          "per_model_alignment_score": {
+            "qwen": 1.0,
+            "whisperx": 0.0,
+            "parakeet": 0.0,
+            "wav2vec2": 0.0
+          },
+          "model_internal_confidence": -0.25035561740101253
+        }
+      ]
+    },
+    {
+      "dataset_index": 17,
+      "segments": [
+        {
+          "segment": "Stone Playground.",
+          "severity": 2,
+          "flagged": true,
+          "per_model_confidence_raw": {
+            "qwen": 0.812011,
+            "whisperx": 0.6775,
+            "parakeet": 0.249781,
+            "wav2vec2": 0.841298
+          },
+          "per_model_confidence_normalized": {
+            "qwen": -3.147550600541615,
+            "whisperx": -0.36487534490779233,
+            "parakeet": -8.109604538832889,
+            "wav2vec2": -0.27482708251591914
+          },
+          "per_model_alignment_score": {
+            "qwen": 0.6666666666666666,
+            "whisperx": 1.0,
+            "parakeet": 0.6666666666666666,
+            "wav2vec2": 0.6666666666666666
+          },
+          "model_internal_confidence": -2.684287830944914
+        }
+      ]
+    },
+    {
+      "dataset_index": 21,
+      "segments": [
+        {
+          "segment": "um,",
+          "severity": 4,
+          "flagged": true,
+          "per_model_confidence_raw": {
+            "qwen": 0.691653,
+            "whisperx": 0.744
+          },
+          "per_model_confidence_normalized": {
+            "qwen": -5.643349861757927,
+            "whisperx": 0.1717255390772899
+          },
+          "per_model_alignment_score": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 0.0,
+            "wav2vec2": 0.0
+          },
+          "model_internal_confidence": -2.7358121613403186
+        }
+      ]
+    },
+    {
+      "dataset_index": 23,
+      "segments": [
+        {
+          "segment": "we",
+          "severity": 4,
+          "flagged": true,
+          "per_model_confidence_raw": {
+            "qwen": 0.774086,
+            "parakeet": 0.994144,
+            "wav2vec2": 0.530192
+          },
+          "per_model_confidence_normalized": {
+            "qwen": -3.9339809747720653,
+            "parakeet": 1.1117246476817875,
+            "wav2vec2": -3.3274150162257943
+          },
+          "per_model_alignment_score": {
+            "qwen": 1.0,
+            "whisperx": 0.0,
+            "parakeet": 1.0,
+            "wav2vec2": 1.0
+          },
+          "model_internal_confidence": -2.049890447772024
+        }
+      ]
+    },
+    {
+      "dataset_index": 24,
+      "segments": [
+        {
+          "segment": "The idea is it's essentially the same as bulldog.",
+          "severity": 2,
+          "flagged": true,
+          "per_model_confidence_raw": {
+            "qwen": 0.9686224999999999,
+            "whisperx": 0.7104444444444444,
+            "parakeet": 0.9207668888888888,
+            "wav2vec2": 0.8866120000000001
+          },
+          "per_model_confidence_normalized": {
+            "qwen": 0.1000180363415002,
+            "whisperx": -0.09904048759521611,
+            "parakeet": 0.20271318914472933,
+            "wav2vec2": 0.16979619581406974
+          },
+          "per_model_alignment_score": {
+            "qwen": 0.9411764705882353,
+            "whisperx": 1.0,
+            "parakeet": 1.0,
+            "wav2vec2": 0.75
+          },
+          "model_internal_confidence": 0.08808965744119708
+        },
+        {
+          "segment": "You have to run on the end of the field.",
+          "severity": 2,
+          "flagged": true,
+          "per_model_confidence_raw": {
+            "qwen": 0.8923308999999999,
+            "whisperx": 0.443,
+            "parakeet": 0.7722678000000001,
+            "wav2vec2": 0.8484922500000001
+          },
+          "per_model_confidence_normalized": {
+            "qwen": -1.481999934354343,
+            "whisperx": -2.257099514749924,
+            "parakeet": -1.636925512056092,
+            "wav2vec2": -0.2042367347177652
+          },
+          "per_model_alignment_score": {
+            "qwen": 1.0,
+            "whisperx": 0.5263157894736842,
+            "parakeet": 0.8,
+            "wav2vec2": 0.5555555555555556
+          },
+          "model_internal_confidence": -1.4202411626411264
+        },
+        {
+          "segment": "There's one person who's the shark or maybe two people, and they can move any direction.",
+          "severity": 1,
+          "flagged": false,
+          "per_model_confidence_raw": {
+            "qwen": 0.9693841875,
+            "whisperx": 0.8150625,
+            "parakeet": 0.9498468125000001,
+            "wav2vec2": 0.8980542
+          },
+          "per_model_confidence_normalized": {
+            "qwen": 0.11581274130317976,
+            "whisperx": 0.7451420852154842,
+            "parakeet": 0.5629615469174265,
+            "wav2vec2": 0.2820676455935501
+          },
+          "per_model_alignment_score": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 1.0,
+            "wav2vec2": 0.9032258064516129
+          },
+          "model_internal_confidence": 0.43007687316643145
+        },
+        {
+          "segment": "And if they take you, you become seaweed and you can't move your feet.",
+          "severity": 0,
+          "flagged": false,
+          "per_model_confidence_raw": {
+            "qwen": 0.9989375000000001,
+            "whisperx": 0.8119285714285714,
+            "parakeet": 0.9235783571428572,
+            "wav2vec2": 0.9400140000000002
+          },
+          "per_model_confidence_normalized": {
+            "qwen": 0.7286439241410063,
+            "whisperx": 0.7198538319557146,
+            "parakeet": 0.23754226349055,
+            "wav2vec2": 0.6937793425099718
+          },
+          "per_model_alignment_score": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 1.0,
+            "wav2vec2": 1.0
+          },
+          "model_internal_confidence": 0.5949548405243107
+        },
+        {
+          "segment": "You can like lean out to catch people.",
+          "severity": 3,
+          "flagged": true,
+          "per_model_confidence_raw": {
+            "qwen": 0.9971335000000001,
+            "whisperx": 0.771,
+            "parakeet": 0.8929993749999999,
+            "wav2vec2": 0.744070375
+          },
+          "per_model_confidence_normalized": {
+            "qwen": 0.6912353441776113,
+            "whisperx": 0.3895935671614588,
+            "parakeet": -0.1412767542841657,
+            "wav2vec2": -1.22882949615715
+          },
+          "per_model_alignment_score": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 1.0,
+            "wav2vec2": 0.875
+          },
+          "model_internal_confidence": -0.035012555376155316
+        }
+      ]
+    },
+    {
+      "dataset_index": 25,
+      "segments": [
+        {
+          "segment": "THAT'S RIGHT",
+          "severity": 1,
+          "flagged": false,
+          "per_model_confidence_raw": {
+            "qwen": 0.946641
+          },
+          "per_model_confidence_normalized": {
+            "qwen": -0.35580053376124576
+          },
+          "per_model_alignment_score": {
+            "qwen": 0.6666666666666666,
+            "whisperx": 0.0,
+            "parakeet": 0.0,
+            "wav2vec2": 0.0
+          },
+          "model_internal_confidence": -0.35580053376124576
+        }
+      ]
+    },
+    {
+      "dataset_index": 27,
+      "segments": [
+        {
+          "segment": "UM",
+          "severity": 1,
+          "flagged": false,
+          "per_model_confidence_raw": {},
+          "per_model_confidence_normalized": {},
+          "per_model_alignment_score": {
+            "qwen": 0.0,
+            "whisperx": 0.0,
+            "parakeet": 0.0,
+            "wav2vec2": 0.0
+          },
+          "model_internal_confidence": null
+        }
+      ]
+    },
+    {
+      "dataset_index": 29,
+      "segments": [
+        {
+          "segment": "That's quite creative, actually.",
+          "severity": 2,
+          "flagged": true,
+          "per_model_confidence_raw": {
+            "qwen": 0.96439775,
+            "whisperx": 0.7056666666666667,
+            "parakeet": 0.5808038,
+            "wav2vec2": 0.76106
+          },
+          "per_model_confidence_normalized": {
+            "qwen": 0.012411662616252775,
+            "whisperx": -0.13759326622739404,
+            "parakeet": -4.008822787131353,
+            "wav2vec2": -1.0621264294427322
+          },
+          "per_model_alignment_score": {
+            "qwen": 1.0,
+            "whisperx": 0.8571428571428571,
+            "parakeet": 0.4444444444444444,
+            "wav2vec2": 0.5714285714285714
+          },
+          "model_internal_confidence": -0.868130890226915
+        },
+        {
+          "segment": "Yeah.",
+          "severity": 0,
+          "flagged": false,
+          "per_model_confidence_raw": {
+            "qwen": 0.996519,
+            "whisperx": 0.453,
+            "parakeet": 0.956787
+          },
+          "per_model_confidence_normalized": {
+            "qwen": 0.6784927874217862,
+            "whisperx": -2.1764076524965286,
+            "parakeet": 0.6489380846465097
+          },
+          "per_model_alignment_score": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 1.0,
+            "wav2vec2": 0.0
+          },
+          "model_internal_confidence": -0.2829922601427442
+        }
+      ]
+    },
+    {
+      "dataset_index": 32,
+      "segments": [
+        {
+          "segment": "No, it's fully just tag.",
+          "severity": 1,
+          "flagged": false,
+          "per_model_confidence_raw": {
+            "qwen": 0.9451436,
+            "whisperx": 0.7609999999999999,
+            "parakeet": 0.9747625999999998,
+            "wav2vec2": 0.9198129999999999
+          },
+          "per_model_confidence_normalized": {
+            "qwen": -0.38685131404793427,
+            "whisperx": 0.30890170490806207,
+            "parakeet": 0.8716236895531358,
+            "wav2vec2": 0.495566100563901
+          },
+          "per_model_alignment_score": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 1.0,
+            "wav2vec2": 1.0
+          },
+          "model_internal_confidence": 0.32231004524429113
+        },
+        {
+          "segment": "Tags we'd call.",
+          "severity": 0,
+          "flagged": false,
+          "per_model_confidence_raw": {
+            "whisperx": 0.646,
+            "wav2vec2": 0.466067
+          },
+          "per_model_confidence_normalized": {
+            "whisperx": -0.619054711005989,
+            "wav2vec2": -3.9566127856328315
+          },
+          "per_model_alignment_score": {
+            "qwen": 0.0,
+            "whisperx": 0.5,
+            "parakeet": 0.0,
+            "wav2vec2": 0.5
+          },
+          "model_internal_confidence": -2.28783374831941
+        }
+      ]
+    },
+    {
+      "dataset_index": 37,
+      "segments": [
+        {
+          "segment": "Yeah.",
+          "severity": 0,
+          "flagged": false,
+          "per_model_confidence_raw": {
+            "qwen": 0.999773,
+            "whisperx": 0.43,
+            "parakeet": 0.998843
+          },
+          "per_model_confidence_normalized": {
+            "qwen": 0.7459692393069772,
+            "whisperx": -2.361998935679339,
+            "parakeet": 1.1699368718888377
+          },
+          "per_model_alignment_score": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 1.0,
+            "wav2vec2": 0.0
+          },
+          "model_internal_confidence": -0.14869760816117475
+        }
+      ]
+    },
+    {
+      "dataset_index": 41,
+      "segments": [
+        {
+          "segment": "It's a lot safer.",
+          "severity": 0,
+          "flagged": false,
+          "per_model_confidence_raw": {
+            "qwen": 0.761906,
+            "whisperx": 0.3365
+          },
+          "per_model_confidence_normalized": {
+            "qwen": -4.186551098915162,
+            "whisperx": -3.1164678477485896
+          },
+          "per_model_alignment_score": {
+            "qwen": 0.4,
+            "whisperx": 1.0,
+            "parakeet": 0.0,
+            "wav2vec2": 0.0
+          },
+          "model_internal_confidence": -3.4222059195104673
+        }
+      ]
+    },
+    {
+      "dataset_index": 42,
+      "segments": [
+        {
+          "segment": "Do you do much dodgeball when you're in primary school?",
+          "severity": 2,
+          "flagged": true,
+          "per_model_confidence_raw": {
+            "qwen": 0.951911,
+            "whisperx": 0.5532,
+            "parakeet": 0.9284058999999999,
+            "wav2vec2": 0.7498095714285714
+          },
+          "per_model_confidence_normalized": {
+            "qwen": -0.2465193716730593,
+            "whisperx": -1.3678751927175021,
+            "parakeet": 0.29734690430117666,
+            "wav2vec2": -1.1725162081876217
+          },
+          "per_model_alignment_score": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 1.0,
+            "wav2vec2": 0.5882352941176471
+          },
+          "model_internal_confidence": -0.5592618410392748
+        }
+      ]
+    },
+    {
+      "dataset_index": 51,
+      "segments": [
+        {
+          "segment": "Yeah.",
+          "severity": 0,
+          "flagged": false,
+          "per_model_confidence_raw": {
+            "qwen": 0.977746,
+            "whisperx": 0.032
+          },
+          "per_model_confidence_normalized": {
+            "qwen": 0.28920716011978803,
+            "whisperx": -5.573535053364493
+          },
+          "per_model_alignment_score": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 0.0,
+            "wav2vec2": 0.0
+          },
+          "model_internal_confidence": -2.6421639466223525
+        }
+      ]
+    },
+    {
+      "dataset_index": 52,
+      "segments": [
+        {
+          "segment": "And then there was like a Tig style where you like chase the person with the ball, and just throw it at them, which, like.",
+          "severity": 1,
+          "flagged": false,
+          "per_model_confidence_raw": {
+            "qwen": 0.9592240399999997,
+            "whisperx": 0.8340800000000003,
+            "parakeet": 0.92613,
+            "wav2vec2": 0.9075688749999999
+          },
+          "per_model_confidence_normalized": {
+            "qwen": -0.09487278541169937,
+            "whisperx": 0.8985978342558817,
+            "parakeet": 0.2691525648517579,
+            "wav2vec2": 0.3754261217983509
+          },
+          "per_model_alignment_score": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 0.96,
+            "wav2vec2": 0.8979591836734694
+          },
+          "model_internal_confidence": 0.36268627487896243
+        }
+      ]
+    },
+    {
+      "dataset_index": 57,
+      "segments": [
+        {
+          "segment": "Yeah, was your primary school pretty big?",
+          "severity": 1,
+          "flagged": false,
+          "per_model_confidence_raw": {
+            "qwen": 0.987527,
+            "whisperx": 0.5835714285714285,
+            "parakeet": 0.9790007142857142,
+            "wav2vec2": 0.5337305
+          },
+          "per_model_confidence_normalized": {
+            "qwen": 0.49203050857985575,
+            "whisperx": -1.1228024796450464,
+            "parakeet": 0.9241263622526696,
+            "wav2vec2": -3.292695073815708
+          },
+          "per_model_alignment_score": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 1.0,
+            "wav2vec2": 0.4444444444444444
+          },
+          "model_internal_confidence": -0.3396964765992103
+        }
+      ]
+    },
+    {
+      "dataset_index": 58,
+      "segments": [
+        {
+          "segment": "Yeah, big, big hall for the size.",
+          "severity": 1,
+          "flagged": false,
+          "per_model_confidence_raw": {
+            "qwen": 0.9753468571428571,
+            "whisperx": 0.7722857142857144,
+            "parakeet": 0.9504309999999999,
+            "wav2vec2": 0.9650318333333333
+          },
+          "per_model_confidence_normalized": {
+            "qwen": 0.23945742208484458,
+            "whisperx": 0.39996823516546726,
+            "parakeet": 0.5701985875066887,
+            "wav2vec2": 0.9392555987084933
+          },
+          "per_model_alignment_score": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 1.0,
+            "wav2vec2": 0.9230769230769231
+          },
+          "model_internal_confidence": 0.5293369091439789
+        },
+        {
+          "segment": "I remember going back there when I was a lot older and I remember seeing the basketball hoops in the hall and I could like dunk on them, which is so weird because basketball hoops are supposed to be like ten feet tall and at the",
+          "severity": 2,
+          "flagged": true,
+          "per_model_confidence_raw": {
+            "qwen": 0.9858129130434783,
+            "whisperx": 0.7834130434782608,
+            "parakeet": 0.9192245217391305,
+            "wav2vec2": 0.8396196304347828
+          },
+          "per_model_confidence_normalized": {
+            "qwen": 0.4564864071512219,
+            "whisperx": 0.489756726610782,
+            "parakeet": 0.18360601265370582,
+            "wav2vec2": -0.2912953302613429
+          },
+          "per_model_alignment_score": {
+            "qwen": 1.0,
+            "whisperx": 0.9782608695652174,
+            "parakeet": 0.9782608695652174,
+            "wav2vec2": 0.8478260869565217
+          },
+          "model_internal_confidence": 0.22822388637523305
+        }
+      ]
+    },
+    {
+      "dataset_index": 59,
+      "segments": [
+        {
+          "segment": "Yeah.",
+          "severity": 0,
+          "flagged": false,
+          "per_model_confidence_raw": {
+            "qwen": 0.999519,
+            "whisperx": 0.384
+          },
+          "per_model_confidence_normalized": {
+            "qwen": 0.7407021776048146,
+            "whisperx": -2.7331815020449595
+          },
+          "per_model_alignment_score": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 0.0,
+            "wav2vec2": 0.0
+          },
+          "model_internal_confidence": -0.9962396622200724
+        }
+      ]
+    },
+    {
+      "dataset_index": 60,
+      "segments": [
+        {
+          "segment": "Primary school.",
+          "severity": 0,
+          "flagged": false,
+          "per_model_confidence_raw": {
+            "qwen": 0.8494619999999999,
+            "whisperx": 0.5615,
+            "parakeet": 0.832523,
+            "wav2vec2": 0.711394
+          },
+          "per_model_confidence_normalized": {
+            "qwen": -2.3709493099600847,
+            "whisperx": -1.300900947047184,
+            "parakeet": -0.8904711149416751,
+            "wav2vec2": -1.549451753659027
+          },
+          "per_model_alignment_score": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 1.0,
+            "wav2vec2": 0.6666666666666666
+          },
+          "model_internal_confidence": -1.5259879657422621
+        },
+        {
+          "segment": "It wasn't even seven feet, so it was very fun to go back there and then mess about there.",
+          "severity": 1,
+          "flagged": false,
+          "per_model_confidence_raw": {
+            "qwen": 0.9568887368421052,
+            "whisperx": 0.7923157894736842,
+            "parakeet": 0.9171838888888888,
+            "wav2vec2": 0.9226695882352941
+          },
+          "per_model_confidence_normalized": {
+            "qwen": -0.14329871386007267,
+            "whisperx": 0.5615946419647496,
+            "parakeet": 0.15832621333416094,
+            "wav2vec2": 0.5235950899714878
+          },
+          "per_model_alignment_score": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 0.972972972972973,
+            "wav2vec2": 0.8888888888888888
+          },
+          "model_internal_confidence": 0.2687203606614976
+        },
+        {
+          "segment": "After I did some coaching.",
+          "severity": 1,
+          "flagged": false,
+          "per_model_confidence_raw": {
+            "qwen": 0.9939142000000001,
+            "whisperx": 0.6256,
+            "parakeet": 0.6692636666666667,
+            "wav2vec2": 0.8771955
+          },
+          "per_model_confidence_normalized": {
+            "qwen": 0.6244784475722028,
+            "whisperx": -0.7836661100029162,
+            "parakeet": -2.912962903810271,
+            "wav2vec2": 0.07740101771471071
+          },
+          "per_model_alignment_score": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 0.75,
+            "wav2vec2": 0.5714285714285714
+          },
+          "model_internal_confidence": -0.6923769811251645
+        }
+      ]
+    },
+    {
+      "dataset_index": 61,
+      "segments": [
+        {
+          "segment": "Yeah.",
+          "severity": 0,
+          "flagged": false,
+          "per_model_confidence_raw": {
+            "qwen": 0.999991,
+            "whisperx": 0.62
+          },
+          "per_model_confidence_normalized": {
+            "qwen": 0.7504897883269427,
+            "whisperx": -0.8288535528648183
+          },
+          "per_model_alignment_score": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 0.0,
+            "wav2vec2": 0.0
+          },
+          "model_internal_confidence": -0.03918188226893782
+        }
+      ]
+    },
+    {
+      "dataset_index": 64,
+      "segments": [
+        {
+          "segment": "Nothing.",
+          "severity": 0,
+          "flagged": false,
+          "per_model_confidence_raw": {
+            "qwen": 0.986766,
+            "whisperx": 0.588
+          },
+          "per_model_confidence_normalized": {
+            "qwen": 0.4762500599367606,
+            "whisperx": -1.0870675120756852
+          },
+          "per_model_alignment_score": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 0.0,
+            "wav2vec2": 0.0
+          },
+          "model_internal_confidence": -0.3054087260694623
+        }
+      ]
+    },
+    {
+      "dataset_index": 69,
+      "segments": [
+        {
+          "segment": "Obviously,",
+          "severity": 0,
+          "flagged": false,
+          "per_model_confidence_raw": {
+            "qwen": 0.997297,
+            "whisperx": 0.874,
+            "parakeet": 0.99974,
+            "wav2vec2": 0.722283
+          },
+          "per_model_confidence_normalized": {
+            "qwen": 0.6946257559425838,
+            "whisperx": 1.2207197483714356,
+            "parakeet": 1.1810491011107402,
+            "wav2vec2": -1.4426083304843953
+          },
+          "per_model_alignment_score": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 1.0,
+            "wav2vec2": 1.0
+          },
+          "model_internal_confidence": 0.413446568735091
+        },
+        {
+          "segment": "Scooby-Doo.",
+          "severity": 0,
+          "flagged": false,
+          "per_model_confidence_raw": {},
+          "per_model_confidence_normalized": {},
+          "per_model_alignment_score": {
+            "qwen": 0.0,
+            "whisperx": 0.0,
+            "parakeet": 0.0,
+            "wav2vec2": 0.0
+          },
+          "model_internal_confidence": null
+        }
+      ]
+    },
+    {
+      "dataset_index": 72,
+      "segments": [
+        {
+          "segment": "Do you want to describe what Scooby-Doo was?",
+          "severity": 1,
+          "flagged": false,
+          "per_model_confidence_raw": {
+            "qwen": 0.91764675,
+            "whisperx": 0.444125,
+            "parakeet": 0.8398178888888889,
+            "wav2vec2": 0.7559376666666667
+          },
+          "per_model_confidence_normalized": {
+            "qwen": -0.9570387375326694,
+            "whisperx": -2.2480216802464175,
+            "parakeet": -0.8001004600011523,
+            "wav2vec2": -1.1123870252710766
+          },
+          "per_model_alignment_score": {
+            "qwen": 0.8235294117647058,
+            "whisperx": 0.8235294117647058,
+            "parakeet": 1.0,
+            "wav2vec2": 0.3333333333333333
+          },
+          "model_internal_confidence": -1.278475266028873
+        }
+      ]
+    },
+    {
+      "dataset_index": 73,
+      "segments": [
+        {
+          "segment": "Honestly, even now I can't describe it.",
+          "severity": 1,
+          "flagged": false,
+          "per_model_confidence_raw": {
+            "qwen": 0.9296962857142856,
+            "whisperx": 0.65,
+            "parakeet": 0.9513617142857144,
+            "wav2vec2": 0.9984239999999999
+          },
+          "per_model_confidence_normalized": {
+            "qwen": -0.7071739812745581,
+            "whisperx": -0.5867779661046306,
+            "parakeet": 0.5817284765623845,
+            "wav2vec2": 1.266901240538273
+          },
+          "per_model_alignment_score": {
+            "qwen": 1.0,
+            "whisperx": 0.8571428571428571,
+            "parakeet": 1.0,
+            "wav2vec2": 1.0
+          },
+          "model_internal_confidence": 0.16553786496870043
+        }
+      ]
+    },
+    {
+      "dataset_index": 76,
+      "segments": [
+        {
+          "segment": "It's really quite something.",
+          "severity": 1,
+          "flagged": false,
+          "per_model_confidence_raw": {
+            "qwen": 0.99999875,
+            "whisperx": 0.8172499999999999,
+            "parakeet": 0.9528344999999999,
+            "wav2vec2": 0.9909819999999999
+          },
+          "per_model_confidence_normalized": {
+            "qwen": 0.7506504959182506,
+            "whisperx": 0.7627934300834137,
+            "parakeet": 0.5999736632423016,
+            "wav2vec2": 1.19387995710861
+          },
+          "per_model_alignment_score": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 1.0,
+            "wav2vec2": 1.0
+          },
+          "model_internal_confidence": 0.826824386588144
+        }
+      ]
+    },
+    {
+      "dataset_index": 77,
+      "segments": [
+        {
+          "segment": "Okay.",
+          "severity": 3,
+          "flagged": true,
+          "per_model_confidence_raw": {
+            "qwen": 0.473419
+          },
+          "per_model_confidence_normalized": {
+            "qwen": -10.168751214158933
+          },
+          "per_model_alignment_score": {
+            "qwen": 1.0,
+            "whisperx": 0.0,
+            "parakeet": 0.0,
+            "wav2vec2": 0.0
+          },
+          "model_internal_confidence": -10.168751214158933
+        }
+      ]
+    },
+    {
+      "dataset_index": 89,
+      "segments": [
+        {
+          "segment": "It just sounds awful.",
+          "severity": 0,
+          "flagged": false,
+          "per_model_confidence_raw": {
+            "qwen": 0.9999750000000001,
+            "whisperx": 0.55,
+            "parakeet": 0.848268
+          },
+          "per_model_confidence_normalized": {
+            "qwen": 0.7501580049126352,
+            "whisperx": -1.3936965886385886,
+            "parakeet": -0.6954186633264368
+          },
+          "per_model_alignment_score": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 0.8571428571428571,
+            "wav2vec2": 0.0
+          },
+          "model_internal_confidence": -0.43386410330201475
+        }
+      ]
+    },
+    {
+      "dataset_index": 90,
+      "segments": [
+        {
+          "segment": "It's so good.",
+          "severity": 0,
+          "flagged": false,
+          "per_model_confidence_raw": {
+            "qwen": 0.9516106666666667,
+            "whisperx": 0.7353333333333333,
+            "parakeet": 0.9511686666666668,
+            "wav2vec2": 0.8725146666666667
+          },
+          "per_model_confidence_normalized": {
+            "qwen": -0.2527472228458249,
+            "whisperx": 0.10179259179101317,
+            "parakeet": 0.5793369610734217,
+            "wav2vec2": 0.03147244239620069
+          },
+          "per_model_alignment_score": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 1.0,
+            "wav2vec2": 1.0
+          },
+          "model_internal_confidence": 0.11496369310370266
+        },
+        {
+          "segment": "The kid can.",
+          "severity": 0,
+          "flagged": false,
+          "per_model_confidence_raw": {
+            "qwen": 0.900422,
+            "whisperx": 0.6086666666666667,
+            "parakeet": 0.970066,
+            "wav2vec2": 0.9891715000000001
+          },
+          "per_model_confidence_normalized": {
+            "qwen": -1.3142191353843757,
+            "whisperx": -0.9203043300853333,
+            "parakeet": 0.8134411970630695,
+            "wav2vec2": 1.176115238800441
+          },
+          "per_model_alignment_score": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 1.0,
+            "wav2vec2": 0.8
+          },
+          "model_internal_confidence": -0.12636580983323342
+        }
+      ]
+    },
+    {
+      "dataset_index": 91,
+      "segments": [
+        {
+          "segment": "It's got to work.",
+          "severity": 4,
+          "flagged": true,
+          "per_model_confidence_raw": {
+            "qwen": 0.8165665,
+            "whisperx": 0.42200000000000004,
+            "parakeet": 0.374202
+          },
+          "per_model_confidence_normalized": {
+            "qwen": -3.053085641548688,
+            "whisperx": -2.4265524254820554,
+            "parakeet": -6.568250389425485
+          },
+          "per_model_alignment_score": {
+            "qwen": 0.6666666666666666,
+            "whisperx": 1.0,
+            "parakeet": 0.4,
+            "wav2vec2": 0.0
+          },
+          "model_internal_confidence": -3.4302788752990527
+        }
+      ]
+    },
+    {
+      "dataset_index": 95,
+      "segments": [
+        {
+          "segment": "I think I've seen a bit of that.",
+          "severity": 1,
+          "flagged": false,
+          "per_model_confidence_raw": {
+            "qwen": 0.987818125,
+            "whisperx": 0.9045000000000001,
+            "parakeet": 0.872835625,
+            "wav2vec2": 0.9452091428571429
+          },
+          "per_model_confidence_normalized": {
+            "qwen": 0.4980674114855327,
+            "whisperx": 1.4668299282442936,
+            "parakeet": -0.3910696327380714,
+            "wav2vec2": 0.7447543490981205
+          },
+          "per_model_alignment_score": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 1.0,
+            "wav2vec2": 0.9333333333333333
+          },
+          "model_internal_confidence": 0.5768470591906781
+        },
+        {
+          "segment": "I think that was more of my sister's thing.",
+          "severity": 1,
+          "flagged": false,
+          "per_model_confidence_raw": {
+            "qwen": 0.9604954444444446,
+            "whisperx": 0.7085555555555555,
+            "parakeet": 0.8116779999999999,
+            "wav2vec2": 0.8407065
+          },
+          "per_model_confidence_normalized": {
+            "qwen": -0.06850835369006408,
+            "whisperx": -0.11428228379863574,
+            "parakeet": -1.1487034651429875,
+            "wav2vec2": -0.28063091067349016
+          },
+          "per_model_alignment_score": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 0.875,
+            "wav2vec2": 0.36363636363636365
+          },
+          "model_internal_confidence": -0.3983015159879555
+        }
+      ]
+    },
+    {
+      "dataset_index": 96,
+      "segments": [
+        {
+          "segment": "I love the Peppa Pig.",
+          "severity": 3,
+          "flagged": true,
+          "per_model_confidence_raw": {
+            "qwen": 0.8678527500000001,
+            "whisperx": 0.6182000000000001,
+            "parakeet": 0.62903575,
+            "wav2vec2": 0.828432
+          },
+          "per_model_confidence_normalized": {
+            "qwen": -1.9895901957905726,
+            "whisperx": -0.8433780880704288,
+            "parakeet": -3.4113150009336017,
+            "wav2vec2": -0.40106893048770814
+          },
+          "per_model_alignment_score": {
+            "qwen": 0.8888888888888888,
+            "whisperx": 1.0,
+            "parakeet": 0.6666666666666666,
+            "wav2vec2": 0.3333333333333333
+          },
+          "model_internal_confidence": -1.7376238906162755
+        }
+      ]
+    },
+    {
+      "dataset_index": 100,
+      "segments": [
+        {
+          "segment": "I saw like episodes because they'd be on after stuff I'd be watching, but would never be.",
+          "severity": 2,
+          "flagged": true,
+          "per_model_confidence_raw": {
+            "qwen": 0.9435776470588235,
+            "whisperx": 0.713,
+            "parakeet": 0.9189596470588235,
+            "wav2vec2": 0.8559983124999999
+          },
+          "per_model_confidence_normalized": {
+            "qwen": -0.41932363988990323,
+            "whisperx": -0.07841923390823737,
+            "parakeet": 0.1803246880576637,
+            "wav2vec2": -0.13058686677188266
+          },
+          "per_model_alignment_score": {
+            "qwen": 1.0,
+            "whisperx": 0.9375,
+            "parakeet": 1.0,
+            "wav2vec2": 0.8484848484848485
+          },
+          "model_internal_confidence": -0.11181184775678009
+        }
+      ]
+    },
+    {
+      "dataset_index": 101,
+      "segments": [
+        {
+          "segment": "Yeah.",
+          "severity": 0,
+          "flagged": false,
+          "per_model_confidence_raw": {
+            "qwen": 0.998631,
+            "whisperx": 0.357,
+            "parakeet": 0.999192
+          },
+          "per_model_confidence_normalized": {
+            "qwen": 0.7222881981106383,
+            "whisperx": -2.9510495301291284,
+            "parakeet": 1.1742603590665897
+          },
+          "per_model_alignment_score": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 1.0,
+            "wav2vec2": 0.0
+          },
+          "model_internal_confidence": -0.3515003243173001
+        }
+      ]
+    },
+    {
+      "dataset_index": 113,
+      "segments": [
+        {
+          "segment": "Eight words.",
+          "severity": 3,
+          "flagged": true,
+          "per_model_confidence_raw": {
+            "qwen": 0.9642295000000001,
+            "whisperx": 0.358,
+            "wav2vec2": 0.56559
+          },
+          "per_model_confidence_normalized": {
+            "qwen": 0.008922752650154995,
+            "whisperx": -2.942980343903789,
+            "wav2vec2": -2.9800880354621246
+          },
+          "per_model_alignment_score": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 0.0,
+            "wav2vec2": 0.6666666666666666
+          },
+          "model_internal_confidence": -1.845293605585644
+        }
+      ]
+    },
+    {
+      "dataset_index": 114,
+      "segments": [
+        {
+          "segment": "Oh, worms, that makes more sense.",
+          "severity": 1,
+          "flagged": false,
+          "per_model_confidence_raw": {
+            "qwen": 0.9337288333333333,
+            "whisperx": 0.5908333333333333,
+            "parakeet": 0.9428479999999999,
+            "wav2vec2": 0.7235625
+          },
+          "per_model_confidence_normalized": {
+            "qwen": -0.6235532051862313,
+            "whisperx": -1.064204817770556,
+            "parakeet": 0.4762587500599848,
+            "wav2vec2": -1.4300538112492094
+          },
+          "per_model_alignment_score": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 0.5,
+            "wav2vec2": 0.5
+          },
+          "model_internal_confidence": -0.7215518511837998
+        },
+        {
+          "segment": "It's still weird but it makes more sense.",
+          "severity": 1,
+          "flagged": false,
+          "per_model_confidence_raw": {
+            "qwen": 0.9485658571428571,
+            "whisperx": 0.39224999999999993,
+            "parakeet": 0.7123476666666667,
+            "wav2vec2": 0.8469303333333333
+          },
+          "per_model_confidence_normalized": {
+            "qwen": -0.31588580407904876,
+            "whisperx": -2.6666107156859087,
+            "parakeet": -2.3792290311274558,
+            "wav2vec2": -0.21956234068527203
+          },
+          "per_model_alignment_score": {
+            "qwen": 0.9333333333333333,
+            "whisperx": 1.0,
+            "parakeet": 0.5454545454545454,
+            "wav2vec2": 0.5454545454545454
+          },
+          "model_internal_confidence": -1.4479527161913708
+        }
+      ]
+    },
+    {
+      "dataset_index": 120,
+      "segments": [
+        {
+          "segment": "I'd ask what that's about, but I think it's pretty intuitive.",
+          "severity": 0,
+          "flagged": false,
+          "per_model_confidence_raw": {
+            "qwen": 0.9615153000000001,
+            "whisperx": 0.6301818181818182,
+            "parakeet": 0.8348231,
+            "wav2vec2": 0.7818017500000001
+          },
+          "per_model_confidence_normalized": {
+            "qwen": -0.04736015629477023,
+            "whisperx": -0.746694565843179,
+            "parakeet": -0.8619769806793559,
+            "wav2vec2": -0.8586073209265763
+          },
+          "per_model_alignment_score": {
+            "qwen": 0.9523809523809523,
+            "whisperx": 1.0,
+            "parakeet": 0.9523809523809523,
+            "wav2vec2": 0.8421052631578947
+          },
+          "model_internal_confidence": -0.6233921763564723
+        }
+      ]
+    },
+    {
+      "dataset_index": 123,
+      "segments": [
+        {
+          "segment": "It's literally everything you need to know about the weather in one book.",
+          "severity": 0,
+          "flagged": false,
+          "per_model_confidence_raw": {
+            "qwen": 0.9998635384615384,
+            "whisperx": 0.801076923076923,
+            "parakeet": 0.9721402307692308,
+            "wav2vec2": 0.8659928461538461
+          },
+          "per_model_confidence_normalized": {
+            "qwen": 0.7478466868004482,
+            "whisperx": 0.6322898605543641,
+            "parakeet": 0.8391372146403474,
+            "wav2vec2": -0.0325199929899945
+          },
+          "per_model_alignment_score": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 1.0,
+            "wav2vec2": 1.0
+          },
+          "model_internal_confidence": 0.5466884422512913
+        },
+        {
+          "segment": "I can just look outside and be like, \"Yep, it's gonna rain 200 milliliters today.\"",
+          "severity": 3,
+          "flagged": true,
+          "per_model_confidence_raw": {
+            "qwen": 0.9636081333333334,
+            "whisperx": 0.6902500000000001,
+            "parakeet": 0.812286153846154,
+            "wav2vec2": 0.947412
+          },
+          "per_model_confidence_normalized": {
+            "qwen": -0.003962194487643386,
+            "whisperx": -0.26199322053471147,
+            "parakeet": -1.1411695242949982,
+            "wav2vec2": 0.7663688956962974
+          },
+          "per_model_alignment_score": {
+            "qwen": 1.0,
+            "whisperx": 0.9032258064516129,
+            "parakeet": 0.8571428571428571,
+            "wav2vec2": 0.6363636363636364
+          },
+          "model_internal_confidence": -0.21522368473849696
+        }
+      ]
+    },
+    {
+      "dataset_index": 135,
+      "segments": [
+        {
+          "segment": "Oh my god, grapes are amazing.",
+          "severity": 1,
+          "flagged": false,
+          "per_model_confidence_raw": {
+            "qwen": 0.9303343333333335,
+            "whisperx": 0.7756666666666666,
+            "parakeet": 0.9048083333333333,
+            "wav2vec2": 0.9663026666666666
+          },
+          "per_model_confidence_normalized": {
+            "qwen": -0.6939431301783249,
+            "whisperx": 0.42724976954637633,
+            "parakeet": 0.0050151653054739675,
+            "wav2vec2": 0.9517250801684768
+          },
+          "per_model_alignment_score": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 1.0,
+            "wav2vec2": 0.6666666666666666
+          },
+          "model_internal_confidence": 0.1016741431234118
+        },
+        {
+          "segment": "My mom had to always buy an extra pack because I just munch it like in the shopping center or in the in the shop.",
+          "severity": 1,
+          "flagged": false,
+          "per_model_confidence_raw": {
+            "qwen": 0.9562500399999996,
+            "whisperx": 0.6567647058823529,
+            "parakeet": 0.7943768750000001,
+            "wav2vec2": 0.7065398333333334
+          },
+          "per_model_confidence_normalized": {
+            "qwen": -0.15654302754647784,
+            "whisperx": -0.532192294580275,
+            "parakeet": -1.363033528461606,
+            "wav2vec2": -1.5970810844815864
+          },
+          "per_model_alignment_score": {
+            "qwen": 0.96,
+            "whisperx": 0.6666666666666666,
+            "parakeet": 0.8979591836734694,
+            "wav2vec2": 0.46511627906976744
+          },
+          "model_internal_confidence": -0.826778012426694
+        }
+      ]
+    },
+    {
+      "dataset_index": 144,
+      "segments": [
+        {
+          "segment": "Yeah, and also need to know where to get it.",
+          "severity": 3,
+          "flagged": true,
+          "per_model_confidence_raw": {
+            "qwen": 0.9399222999999999,
+            "whisperx": 0.49657142857142855,
+            "parakeet": 0.713566090909091,
+            "wav2vec2": 0.92193175
+          },
+          "per_model_confidence_normalized": {
+            "qwen": -0.49512261036881833,
+            "whisperx": -1.8248216812495897,
+            "parakeet": -2.3641349291527156,
+            "wav2vec2": 0.5163553835881702
+          },
+          "per_model_alignment_score": {
+            "qwen": 1.0,
+            "whisperx": 0.8235294117647058,
+            "parakeet": 0.6666666666666666,
+            "wav2vec2": 0.5714285714285714
+          },
+          "model_internal_confidence": -1.0709825810387987
+        },
+        {
+          "segment": "But like, you know, once we get past those two small...",
+          "severity": 2,
+          "flagged": true,
+          "per_model_confidence_raw": {
+            "qwen": 0.9749672727272728,
+            "whisperx": 0.6545454545454547,
+            "parakeet": 0.9082056363636363,
+            "wav2vec2": 0.7420468181818181
+          },
+          "per_model_confidence_normalized": {
+            "qwen": 0.2315861837460182,
+            "whisperx": -0.550099846898541,
+            "parakeet": 0.04710168705463036,
+            "wav2vec2": -1.248684738828003
+          },
+          "per_model_alignment_score": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 1.0,
+            "wav2vec2": 0.7272727272727273
+          },
+          "model_internal_confidence": -0.3164636499439229
+        }
+      ]
+    },
+    {
+      "dataset_index": 146,
+      "segments": [
+        {
+          "segment": "You should, yeah.",
+          "severity": 2,
+          "flagged": true,
+          "per_model_confidence_raw": {
+            "qwen": 0.9508296666666666,
+            "parakeet": 0.918221,
+            "wav2vec2": 0.661718
+          },
+          "per_model_confidence_normalized": {
+            "qwen": -0.2689424007568096,
+            "parakeet": 0.17117416918170839,
+            "wav2vec2": -2.0368751983851703
+          },
+          "per_model_alignment_score": {
+            "qwen": 1.0,
+            "whisperx": 0.0,
+            "parakeet": 1.0,
+            "wav2vec2": 0.8
+          },
+          "model_internal_confidence": -0.6168815679582992
+        },
+        {
+          "segment": "What's your favorite thing about Edinburgh?",
+          "severity": 0,
+          "flagged": false,
+          "per_model_confidence_raw": {
+            "qwen": 0.9456509999999999,
+            "whisperx": 0.8561666666666666,
+            "parakeet": 0.9375466666666666,
+            "wav2vec2": 0.9337998333333334
+          },
+          "per_model_confidence_normalized": {
+            "qwen": -0.3763296325216461,
+            "whisperx": 1.0768192606862128,
+            "parakeet": 0.41058469077156073,
+            "wav2vec2": 0.632805622347939
+          },
+          "per_model_alignment_score": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 1.0,
+            "wav2vec2": 0.8333333333333334
+          },
+          "model_internal_confidence": 0.427411914145933
+        },
+        {
+          "segment": "Arthur's Seat.",
+          "severity": 0,
+          "flagged": false,
+          "per_model_confidence_raw": {
+            "qwen": 0.687292,
+            "whisperx": 0.7835000000000001,
+            "parakeet": 0.788585,
+            "wav2vec2": 0.494547
+          },
+          "per_model_confidence_normalized": {
+            "qwen": -5.733781578620655,
+            "whisperx": 0.49045839497820415,
+            "parakeet": -1.4347845235838055,
+            "wav2vec2": -3.6771655735827355
+          },
+          "per_model_alignment_score": {
+            "qwen": 0.6666666666666666,
+            "whisperx": 1.0,
+            "parakeet": 1.0,
+            "wav2vec2": 0.6666666666666666
+          },
+          "model_internal_confidence": -2.1654872690223588
+        }
+      ]
+    },
+    {
+      "dataset_index": 150,
+      "segments": [
+        {
+          "segment": "Yeah.",
+          "severity": 0,
+          "flagged": false,
+          "per_model_confidence_raw": {
+            "qwen": 0.999004,
+            "whisperx": 0.574,
+            "parakeet": 0.999591
+          },
+          "per_model_confidence_normalized": {
+            "qwen": 0.7300228989567272,
+            "whisperx": -1.2000361192304394,
+            "parakeet": 1.1792032570147948
+          },
+          "per_model_alignment_score": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 1.0,
+            "wav2vec2": 0.0
+          },
+          "model_internal_confidence": 0.2363966789136942
+        }
+      ]
+    },
+    {
+      "dataset_index": 152,
+      "segments": [
+        {
+          "segment": "You can get anything you really want.",
+          "severity": 2,
+          "flagged": true,
+          "per_model_confidence_raw": {
+            "qwen": 0.9399786666666667,
+            "whisperx": 0.4987142857142857,
+            "parakeet": 0.96086825,
+            "wav2vec2": 0.9003585
+          },
+          "per_model_confidence_normalized": {
+            "qwen": -0.4939537650488198,
+            "whisperx": -1.8075305679095761,
+            "parakeet": 0.6994974887846283,
+            "wav2vec2": 0.30467755467806606
+          },
+          "per_model_alignment_score": {
+            "qwen": 0.9230769230769231,
+            "whisperx": 1.0,
+            "parakeet": 0.7272727272727273,
+            "wav2vec2": 0.7272727272727273
+          },
+          "model_internal_confidence": -0.4539224920857006
+        }
+      ]
+    },
+    {
+      "dataset_index": 157,
+      "segments": [
+        {
+          "segment": "Bye.",
+          "severity": 4,
+          "flagged": true,
+          "per_model_confidence_raw": {
+            "whisperx": 0.518
+          },
+          "per_model_confidence_normalized": {
+            "whisperx": -1.6519105478494556
+          },
+          "per_model_alignment_score": {
+            "qwen": 0.0,
+            "whisperx": 1.0,
+            "parakeet": 0.0,
+            "wav2vec2": 0.0
+          },
+          "model_internal_confidence": -1.6519105478494556
+        }
+      ]
+    },
+    {
+      "dataset_index": 158,
+      "segments": [
+        {
+          "segment": "For me, it's the scent,",
+          "severity": 1,
+          "flagged": false,
+          "per_model_confidence_raw": {
+            "qwen": 0.9233276666666668,
+            "whisperx": 0.6508,
+            "parakeet": 0.98547675,
+            "wav2vec2": 0.9044418000000001
+          },
+          "per_model_confidence_normalized": {
+            "qwen": -0.8392366170280211,
+            "whisperx": -0.5803226171243587,
+            "parakeet": 1.0043528876778385,
+            "wav2vec2": 0.34474310246473017
+          },
+          "per_model_alignment_score": {
+            "qwen": 0.9090909090909091,
+            "whisperx": 1.0,
+            "parakeet": 0.8888888888888888,
+            "wav2vec2": 0.8
+          },
+          "model_internal_confidence": -0.048558469390727096
+        },
+        {
+          "segment": "like the smells.",
+          "severity": 0,
+          "flagged": false,
+          "per_model_confidence_raw": {
+            "qwen": 0.9996973333333333,
+            "whisperx": 0.8526666666666666,
+            "parakeet": 0.960562,
+            "wav2vec2": 0.7873003333333334
+          },
+          "per_model_confidence_normalized": {
+            "qwen": 0.7444001802434713,
+            "whisperx": 1.0485771088975238,
+            "parakeet": 0.6957035978156122,
+            "wav2vec2": -0.8046549409151607
+          },
+          "per_model_alignment_score": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 1.0,
+            "wav2vec2": 1.0
+          },
+          "model_internal_confidence": 0.42100648651036165
+        }
+      ]
+    },
+    {
+      "dataset_index": 161,
+      "segments": [
+        {
+          "segment": "the yeah, the not so nice city smells that you get.",
+          "severity": 2,
+          "flagged": true,
+          "per_model_confidence_raw": {
+            "qwen": 0.9931233,
+            "whisperx": 0.6471111111111111,
+            "parakeet": 0.9356320000000001,
+            "wav2vec2": 0.8346117142857142
+          },
+          "per_model_confidence_normalized": {
+            "qwen": 0.6080779786736163,
+            "whisperx": -0.6100889485333898,
+            "parakeet": 0.38686538766839923,
+            "wav2vec2": -0.3404332588441334
+          },
+          "per_model_alignment_score": {
+            "qwen": 0.9523809523809523,
+            "whisperx": 0.9,
+            "parakeet": 1.0,
+            "wav2vec2": 0.5555555555555556
+          },
+          "model_internal_confidence": 0.06683740429500817
+        }
+      ]
+    },
+    {
+      "dataset_index": 168,
+      "segments": [
+        {
+          "segment": "Yeah, true.",
+          "severity": 1,
+          "flagged": false,
+          "per_model_confidence_raw": {
+            "qwen": 0.8110695,
+            "wav2vec2": 0.823601
+          },
+          "per_model_confidence_normalized": {
+            "qwen": -3.1670739808273893,
+            "wav2vec2": -0.44847094879578375
+          },
+          "per_model_alignment_score": {
+            "qwen": 1.0,
+            "whisperx": 0.0,
+            "parakeet": 0.0,
+            "wav2vec2": 0.6666666666666666
+          },
+          "model_internal_confidence": -2.079632768014747
+        }
+      ]
+    },
+    {
+      "dataset_index": 170,
+      "segments": [
+        {
+          "segment": "Yeah, um, just a couple minutes left.",
+          "severity": 1,
+          "flagged": false,
+          "per_model_confidence_raw": {
+            "qwen": 0.9704348571428572,
+            "whisperx": 0.6121666666666667,
+            "parakeet": 0.8118144285714285,
+            "wav2vec2": 0.8176006666666668
+          },
+          "per_model_confidence_normalized": {
+            "qwen": 0.13759991389183449,
+            "whisperx": -0.8920621782966444,
+            "parakeet": -1.1470133586121833,
+            "wav2vec2": -0.5073465253888751
+          },
+          "per_model_alignment_score": {
+            "qwen": 1.0,
+            "whisperx": 0.9230769230769231,
+            "parakeet": 0.8571428571428571,
+            "wav2vec2": 0.7692307692307693
+          },
+          "model_internal_confidence": -0.5801638686121757
+        },
+        {
+          "segment": "Where are the topics?",
+          "severity": 3,
+          "flagged": true,
+          "per_model_confidence_raw": {
+            "qwen": 0.911338,
+            "whisperx": 0.8304999999999999,
+            "parakeet": 0.6572135,
+            "wav2vec2": 0.926371
+          },
+          "per_model_confidence_normalized": {
+            "qwen": -1.0878599009717291,
+            "whisperx": 0.8697101475691631,
+            "parakeet": -3.0622429641916975,
+            "wav2vec2": 0.5599135309229102
+          },
+          "per_model_alignment_score": {
+            "qwen": 0.75,
+            "whisperx": 0.75,
+            "parakeet": 0.6666666666666666,
+            "wav2vec2": 0.4
+          },
+          "model_internal_confidence": -0.771873589146971
+        }
+      ]
+    },
+    {
+      "dataset_index": 173,
+      "segments": [
+        {
+          "segment": "All right.",
+          "severity": 0,
+          "flagged": false,
+          "per_model_confidence_raw": {
+            "qwen": 0.9979165,
+            "whisperx": 0.2385,
+            "parakeet": 0.593294
+          },
+          "per_model_confidence_normalized": {
+            "qwen": 0.707471995015379,
+            "whisperx": -3.907248097831869,
+            "parakeet": -3.854091499029438
+          },
+          "per_model_alignment_score": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 0.6666666666666666,
+            "wav2vec2": 0.0
+          },
+          "model_internal_confidence": -2.163438913313543
+        }
+      ]
+    },
+    {
+      "dataset_index": 180,
+      "segments": [
+        {
+          "segment": "What's the appeal in Iceland?",
+          "severity": 0,
+          "flagged": false,
+          "per_model_confidence_raw": {
+            "qwen": 0.9998999999999999,
+            "whisperx": 0.7608,
+            "parakeet": 0.9486832,
+            "wav2vec2": 0.7713463333333334
+          },
+          "per_model_confidence_normalized": {
+            "qwen": 0.7486027701580562,
+            "whisperx": 0.3072878676629952,
+            "parakeet": 0.5485464646147797,
+            "wav2vec2": -0.9611964023283364
+          },
+          "per_model_alignment_score": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 1.0,
+            "wav2vec2": 0.75
+          },
+          "model_internal_confidence": 0.23561061351722098
+        }
+      ]
+    },
+    {
+      "dataset_index": 181,
+      "segments": [
+        {
+          "segment": "It's just cool, you know.",
+          "severity": 1,
+          "flagged": false,
+          "per_model_confidence_raw": {
+            "qwen": 0.9546974,
+            "parakeet": 0.8433628000000001
+          },
+          "per_model_confidence_normalized": {
+            "qwen": -0.18873929007106088,
+            "parakeet": -0.756185337550829
+          },
+          "per_model_alignment_score": {
+            "qwen": 0.8,
+            "whisperx": 0.0,
+            "parakeet": 1.0,
+            "wav2vec2": 0.0
+          },
+          "model_internal_confidence": -0.5039870942264876
+        }
+      ]
+    },
+    {
+      "dataset_index": 182,
+      "segments": [
+        {
+          "segment": "Cold.",
+          "severity": 0,
+          "flagged": false,
+          "per_model_confidence_raw": {
+            "qwen": 0.938906,
+            "whisperx": 0.958,
+            "parakeet": 0.959065,
+            "wav2vec2": 0.99061
+          },
+          "per_model_confidence_normalized": {
+            "qwen": -0.516197078116486,
+            "whisperx": 1.8985313912999604,
+            "parakeet": 0.6771584393482875,
+            "wav2vec2": 1.190229874142226
+          },
+          "per_model_alignment_score": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 1.0,
+            "wav2vec2": 1.0
+          },
+          "model_internal_confidence": 0.8124306566684969
+        }
+      ]
+    },
+    {
+      "dataset_index": 185,
+      "segments": [
+        {
+          "segment": "Yeah, it's very scenic.",
+          "severity": 0,
+          "flagged": false,
+          "per_model_confidence_raw": {
+            "qwen": 0.94816175,
+            "whisperx": 0.29525,
+            "parakeet": 0.9376260000000001
+          },
+          "per_model_confidence_normalized": {
+            "qwen": -0.3242655570542975,
+            "whisperx": -3.4493217795438476,
+            "parakeet": 0.411567489194012
+          },
+          "per_model_alignment_score": {
+            "qwen": 1.0,
+            "whisperx": 0.75,
+            "parakeet": 0.6666666666666666,
+            "wav2vec2": 0.0
+          },
+          "model_internal_confidence": -1.0911221650687621
+        }
+      ]
+    },
+    {
+      "dataset_index": 188,
+      "segments": [
+        {
+          "segment": "I'm pretty sure it's.",
+          "severity": 1,
+          "flagged": false,
+          "per_model_confidence_raw": {
+            "qwen": 0.8446237499999999,
+            "whisperx": 0.5539999999999999
+          },
+          "per_model_confidence_normalized": {
+            "qwen": -2.471277503977765,
+            "whisperx": -1.3614198437372311
+          },
+          "per_model_alignment_score": {
+            "qwen": 1.0,
+            "whisperx": 0.6666666666666666,
+            "parakeet": 0.0,
+            "wav2vec2": 0.0
+          },
+          "model_internal_confidence": -2.027334439881552
+        }
+      ]
+    },
+    {
+      "dataset_index": 190,
+      "segments": [
+        {
+          "segment": "the cost would be insane, like through the roof.",
+          "severity": 1,
+          "flagged": false,
+          "per_model_confidence_raw": {
+            "qwen": 0.941678875,
+            "whisperx": 0.6852222222222223,
+            "parakeet": 0.811943142857143,
+            "wav2vec2": 0.9635984999999999
+          },
+          "per_model_confidence_normalized": {
+            "qwen": -0.4586974571818975,
+            "whisperx": -0.302563295723225,
+            "parakeet": -1.1454188183145324,
+            "wav2vec2": 0.9251916589634621
+          },
+          "per_model_alignment_score": {
+            "qwen": 0.9411764705882353,
+            "whisperx": 1.0,
+            "parakeet": 0.75,
+            "wav2vec2": 0.6153846153846154
+          },
+          "model_internal_confidence": -0.30968547788610373
+        }
+      ]
+    },
+    {
+      "dataset_index": 195,
+      "segments": [
+        {
+          "segment": "Or just.",
+          "severity": 2,
+          "flagged": true,
+          "per_model_confidence_raw": {
+            "qwen": 0.946189,
+            "whisperx": 0.51,
+            "parakeet": 0.8250615,
+            "wav2vec2": 0.999341
+          },
+          "per_model_confidence_normalized": {
+            "qwen": -0.36517341521548885,
+            "whisperx": -1.7164640376521723,
+            "parakeet": -0.9829057842161814,
+            "wav2vec2": 1.2758988912914326
+          },
+          "per_model_alignment_score": {
+            "qwen": 1.0,
+            "whisperx": 1.0,
+            "parakeet": 1.0,
+            "wav2vec2": 0.6666666666666666
+          },
+          "model_internal_confidence": -0.6038029026062421
+        }
+      ]
+    }
+  ]
+}
