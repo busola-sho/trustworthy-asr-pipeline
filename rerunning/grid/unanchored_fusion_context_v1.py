@@ -33,7 +33,7 @@ from src.selector import (
 )
 from src.splits import get_indices_for_split
 
-OUTPUT_DIR = "writeup_results/grid/unanchored_fusion_context_v1"
+OUTPUT_DIR = "writeup_results/clean_grid_guidance_rerun/unanchored_fusion_context_v1"
 OLLAMA_HOST = "http://localhost:11434"
 ASR_MODELS = ["qwen", "whisperx", "parakeet", "wav2vec2"]
 DATASETS = ["commonvoice", "english_dialects", "edacc", "shetland"]
@@ -49,14 +49,12 @@ You MUST NOT:
 - Add any words not present in any of the four transcripts
 - Change sentence structure or word order beyond individual word swaps
 
-MODEL-SPECIFIC RELIABILITY NOTES:
-- WhisperX is generally more reliable on named entities (people's names, place names, organisations). If transcripts disagree on a named entity, give extra weight to WhisperX's version - unless another transcript corroborates a different version instead, in which case treat it as genuinely disputed.
-- Qwen sometimes self-censors mild profanity (e.g. "shit-scared"->"scared", "bloody"->"body", "sweet F all"->"sweetie fall"). If another transcript preserves the original expression and this is corroborated elsewhere, use that version.
-
 GENERAL RULE - applies to all other disputed words:
 Only change a word if at least two of the other three transcripts disagree with it and agree with each other on the same alternative.
 
-ADDITIONAL KNOWN ERROR PATTERNS:
+HUMAN-WRITTEN ERROR GUIDANCE:
+- NAMED ENTITIES: names of people, places, and organisations are especially vulnerable to plausible substitutions. Use a named-entity form only when it is corroborated by another transcript; do not trust a source model automatically.
+- PROFANITY AND INFORMAL EXPRESSIONS: preserve the original expression when it is supported by another transcript; do not silently sanitise or normalise it.
 - NEGATIONS: if transcripts disagree on a negation, use whichever version at least two transcripts support - dropped or added negation is a critical, meaning-altering difference.
 - NUMBERS: use whichever number at least two transcripts agree on.
 - SCOTTISH DIALECT WORDS: if at least two transcripts preserve a Scottish dialect word (e.g. "wee", "wisnae", "dinnae", "cannae", "braw", "aboot", "carry-out", "noo") that another has normalised, preserve the dialect word.
@@ -198,6 +196,7 @@ def run_dataset(dataset, selector_key, client, max_samples=None, rerun=False, sp
         "approach": "unanchored_fusion_context_v1",
         "strategy": "unanchored_fusion",
         "context_condition": "v1",
+        "guidance_source": "human_written_linguistic_error_guidance",
         "asr_models": ASR_MODELS,
         "phase": "selector_only - severity not yet judged",
         "dataset": dataset,

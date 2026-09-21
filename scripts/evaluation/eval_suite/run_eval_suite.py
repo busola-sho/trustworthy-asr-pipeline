@@ -28,6 +28,7 @@ from collections import defaultdict
 
 import spacy
 from jiwer import process_words
+from src.splits import get_indices_for_split
 
 
 SUBSETS_DIR = "results/benchmarks/subsets"
@@ -307,20 +308,33 @@ def get_error_ref_words(ref: str, hyp: str):
 
 # ── Sampling helpers ─────────────────────────────────────────────────────────
 
-def _load_samples(model, dataset):
-    path = os.path.join(SUBSETS_DIR, SUBSET_FILES.get((model, dataset), ""))
-    if not os.path.exists(path):
+def _load_samples(model, dataset, split="all"):
+    filename = SUBSET_FILES.get((model, dataset))
+    if not filename:
+        print(f"No subset file found for model={model}, dataset={dataset}")
+        return []
+
+    path = os.path.join(SUBSETS_DIR, filename)
+    if not os.path.isfile(path):
         print(f"No subset file found for model={model}, dataset={dataset}")
         return []
 
     with open(path) as f:
         data = json.load(f)
 
-    return data.get("samples", [])
+    samples = data.get("samples", [])
+    if split == "all":
+        return samples
+
+    allowed = set(get_indices_for_split(dataset, split))
+    return [
+        sample for sample in samples
+        if sample.get("sample_index") in allowed
+    ]
 
 
-def sample_category_errors(model, dataset, category, nlp, glossary, n=5):
-    samples = _load_samples(model, dataset)
+def sample_category_errors(model, dataset, category, nlp, glossary, n=5, split="all"):
+    samples = _load_samples(model, dataset, split)
     shown = 0
 
     for s in samples:
@@ -360,8 +374,8 @@ def sample_category_errors(model, dataset, category, nlp, glossary, n=5):
             shown += 1
 
 
-def sample_category_total(model, dataset, category, nlp, glossary, n=5):
-    samples = _load_samples(model, dataset)
+def sample_category_total(model, dataset, category, nlp, glossary, n=5, split="all"):
+    samples = _load_samples(model, dataset, split)
     shown = 0
 
     for s in samples:
@@ -391,8 +405,8 @@ def sample_category_total(model, dataset, category, nlp, glossary, n=5):
 
 # ── Main evaluation ──────────────────────────────────────────────────────────
 
-def run_model_dataset(model, dataset, nlp, glossary):
-    samples = _load_samples(model, dataset)
+def run_model_dataset(model, dataset, nlp, glossary, split="all"):
+    samples = _load_samples(model, dataset, split)
     if not samples:
         return None
 
@@ -487,6 +501,12 @@ def main():
 
     parser.add_argument("--dataset", default="all")
     parser.add_argument(
+        "--split",
+        choices=["dev", "test", "all"],
+        default="all",
+        help="Restrict profiles to one split. Use dev when deriving prompt rules.",
+    )
+    parser.add_argument(
         "--sample",
         type=str,
         default=None,
@@ -545,9 +565,13 @@ def main():
         print(f"Sampling '{args.sample}' ({args.mode}) for {model}/{dataset}:")
 
         if args.mode == "errors":
-            sample_category_errors(model, dataset, args.sample, nlp, glossary, args.n)
+            sample_category_errors(
+                model, dataset, args.sample, nlp, glossary, args.n, args.split
+            )
         else:
-            sample_category_total(model, dataset, args.sample, nlp, glossary, args.n)
+            sample_category_total(
+                model, dataset, args.sample, nlp, glossary, args.n, args.split
+            )
 
         return
 
@@ -561,7 +585,7 @@ def main():
             continue
 
         for model in MODELS:
-            profile = run_model_dataset(model, dataset, nlp, glossary)
+            profile = run_model_dataset(model, dataset, nlp, glossary, args.split)
 
             if profile:
                 all_profiles[(model, dataset)] = profile
@@ -575,7 +599,8 @@ def main():
     }
 
     os.makedirs("results/eval_suite", exist_ok=True)
-    out_path = "results/eval_suite/error_profiles.json"
+    suffix = "" if args.split == "all" else f"_{args.split}"
+    out_path = f"results/eval_suite/error_profiles{suffix}.json"
 
     with open(out_path, "w") as f:
         json.dump(output, f, indent=2)

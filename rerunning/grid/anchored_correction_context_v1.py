@@ -43,8 +43,7 @@ from src.selector import (
 )
 from src.splits import get_indices_for_split
 
-NEW_OUTPUT_DIR = "writeup_results/grid/anchored_correction_v1"
-OLD_OUTPUT_DIR = "results/combinations_v2judge/context"
+NEW_OUTPUT_DIR = "writeup_results/clean_grid_guidance_rerun/anchored_correction_v1"
 OLLAMA_HOST    = "http://localhost:11434"
 DATASETS       = ["commonvoice", "english_dialects", "edacc", "shetland"]
 
@@ -68,11 +67,9 @@ Your task is to return Transcript A with targeted corrections where needed.
 GENERAL RULE — applies unless a specific rule below overrides it:
 Only change a word or short phrase in Transcript A when at least two of Transcripts B, C, and D disagree with A and agree with each other on the same alternative. If fewer than two supporting transcripts agree on an alternative, keep A unchanged. Ignore capitalisation and punctuation differences when checking agreement.
 
-NAMED ENTITY RULE — applies to people's names, place names, and organisations:
-WhisperX is more reliable on named entities. If Transcript B contains a different named entity from A, consider replacing A's version only when at least one of Transcripts C or D supports B. If both C and D agree with A, keep A.
-
-ADDITIONAL KNOWN ERROR PATTERNS:
-- PROFANITY AND INFORMAL EXPRESSIONS: A sometimes self-censors or alters mild profanity and informal expressions. If at least two of B, C, and D preserve the same original expression, use that expression.
+HUMAN-WRITTEN ERROR GUIDANCE:
+- NAMED ENTITIES: names of people, places, and organisations are especially vulnerable to plausible substitutions. Replace A's named-entity form only when at least two of B, C, and D agree on the same alternative; do not trust a source model automatically.
+- PROFANITY AND INFORMAL EXPRESSIONS: if at least two of B, C, and D preserve the same original expression, use that expression rather than silently sanitising or normalising it.
 - NEGATIONS: If A drops or changes a negation and at least two of B, C, and D preserve the same negation, correct A.
 - NUMBERS: If A contains a different number and at least two of B, C, and D agree on the same alternative, correct A.
 - SCOTTISH DIALECT WORDS: If A normalises a Scottish dialect word and at least two of B, C, and D preserve the same dialect form, use the dialect form.
@@ -135,16 +132,14 @@ def run_dataset(dataset, selector_key, client, max_samples=None, rerun=False, sp
         indices = indices[:max_samples]
 
     os.makedirs(NEW_OUTPUT_DIR, exist_ok=True)
-    os.makedirs(OLD_OUTPUT_DIR, exist_ok=True)
 
     # FIX: was "context_{dataset}_{selector_key}_{split}.json" - now
     # matches the approach name and folder name consistently.
     filename = f"anchored_correction_v1_{dataset}_{selector_key}_{split}.json"
     new_output_path = os.path.join(NEW_OUTPUT_DIR, filename)
-    old_output_path = os.path.join(OLD_OUTPUT_DIR, filename)
 
-    if os.path.exists(old_output_path) and not rerun:
-        with open(old_output_path) as f:
+    if os.path.exists(new_output_path) and not rerun:
+        with open(new_output_path) as f:
             existing = json.load(f)
         results    = existing.get("samples", [])
         start_from = len(results)
@@ -156,8 +151,6 @@ def run_dataset(dataset, selector_key, client, max_samples=None, rerun=False, sp
     def save_progress():
         payload = {"progress": len(results), "samples": results}
         with open(new_output_path, "w") as f:
-            json.dump(payload, f, indent=2, ensure_ascii=False)
-        with open(old_output_path, "w") as f:
             json.dump(payload, f, indent=2, ensure_ascii=False)
 
     for pos in range(start_from, len(indices)):
@@ -239,6 +232,7 @@ def run_dataset(dataset, selector_key, client, max_samples=None, rerun=False, sp
         "approach":       "anchored_correction_v1",
         "strategy":       "anchored_correction",
         "context_condition": "v1",
+        "guidance_source": "human_written_linguistic_error_guidance",
         "phase":          "selector_only - severity not yet judged",
         "dataset":        dataset,
         "split":          split,
@@ -250,13 +244,10 @@ def run_dataset(dataset, selector_key, client, max_samples=None, rerun=False, sp
 
     with open(new_output_path, "w") as f:
         json.dump(output, f, indent=2, ensure_ascii=False)
-    with open(old_output_path, "w") as f:
-        json.dump(output, f, indent=2, ensure_ascii=False)
 
     wer_str = f"{corpus_wer*100:.2f}%" if corpus_wer is not None else "—"
     print(f"\n  WER: {wer_str}  (N={len(valid)})")
     print(f"  Saved: {new_output_path}")
-    print(f"  Saved: {old_output_path}")
     print(f"\n  PHASE 1 done. Now run PHASE 2:")
     print(f"  python rerunning/add_severity_to_existing_concurrent.py --files {new_output_path}")
 

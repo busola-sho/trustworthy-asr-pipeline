@@ -31,11 +31,10 @@ from src.judge import normalise, is_tag_only
 from src.selector import (
     find_canonical_file, OLLAMA_MODELS, check_selector_available, load_samples,
 )
-from src.rules import build_rules_text
 from src.splits import get_indices_for_split
 
-NEW_OUTPUT_DIR = "writeup_results/grid/anchored_correction_v2"
-OLD_OUTPUT_DIR = "results/combinations_v2judge/context_v2"
+NEW_OUTPUT_DIR = "writeup_results/clean_grid_guidance_rerun/anchored_correction_v2"
+DEFAULT_RULES_FILE = "results/eval_suite/selector_rules_dev.txt"
 OLLAMA_HOST    = "http://localhost:11434"
 DATASETS       = ["commonvoice", "english_dialects", "edacc", "shetland"]
 
@@ -124,16 +123,14 @@ def run_dataset(dataset, selector_key, client, auto_rules, max_samples=None,
         indices = indices[:max_samples]
 
     os.makedirs(NEW_OUTPUT_DIR, exist_ok=True)
-    os.makedirs(OLD_OUTPUT_DIR, exist_ok=True)
 
     # FIX: was "context_v2_{dataset}_{selector_key}_{split}.json" - now
     # matches the approach name and folder name consistently.
     filename = f"anchored_correction_v2_{dataset}_{selector_key}_{split}.json"
     new_output_path = os.path.join(NEW_OUTPUT_DIR, filename)
-    old_output_path = os.path.join(OLD_OUTPUT_DIR, filename)
 
-    if os.path.exists(old_output_path) and not rerun:
-        with open(old_output_path) as f:
+    if os.path.exists(new_output_path) and not rerun:
+        with open(new_output_path) as f:
             existing = json.load(f)
         results    = existing.get("samples", [])
         start_from = len(results)
@@ -145,8 +142,6 @@ def run_dataset(dataset, selector_key, client, auto_rules, max_samples=None,
     def save_progress():
         payload = {"progress": len(results), "samples": results}
         with open(new_output_path, "w") as f:
-            json.dump(payload, f, indent=2, ensure_ascii=False)
-        with open(old_output_path, "w") as f:
             json.dump(payload, f, indent=2, ensure_ascii=False)
 
     for pos in range(start_from, len(indices)):
@@ -241,13 +236,10 @@ def run_dataset(dataset, selector_key, client, auto_rules, max_samples=None,
 
     with open(new_output_path, "w") as f:
         json.dump(output, f, indent=2, ensure_ascii=False)
-    with open(old_output_path, "w") as f:
-        json.dump(output, f, indent=2, ensure_ascii=False)
 
     wer_str = f"{corpus_wer*100:.2f}%" if corpus_wer is not None else "—"
     print(f"\n  WER: {wer_str}  (N={len(valid)})")
     print(f"  Saved: {new_output_path}")
-    print(f"  Saved: {old_output_path}")
     print(f"\n  PHASE 1 done. Now run PHASE 2:")
     print(f"  python rerunning/add_severity_to_existing_concurrent.py --files {new_output_path}")
 
@@ -256,15 +248,20 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--dataset",     default="commonvoice", choices=DATASETS)
     parser.add_argument("--selector",    default="gemma4",      choices=list(OLLAMA_MODELS.keys()))
-    parser.add_argument("--gap",         type=float, default=1.0,
-                        help="Min gap (pp) for eval-suite rule generation")
+    parser.add_argument("--rules-file", default=DEFAULT_RULES_FILE,
+                        help="Frozen dev-derived rules file")
     parser.add_argument("--max-samples", type=int, default=None)
     parser.add_argument("--split",       default="dev", choices=["dev", "test", "full"])
     parser.add_argument("--dry-run",     action="store_true")
     parser.add_argument("--rerun",       action="store_true")
     args = parser.parse_args()
 
-    auto_rules = build_rules_text(min_gap_pp=args.gap, save=False)
+    if not os.path.exists(args.rules_file):
+        raise SystemExit(f"Frozen rules file not found: {args.rules_file}")
+    with open(args.rules_file, encoding="utf-8") as file:
+        auto_rules = file.read().strip()
+    if not auto_rules:
+        raise SystemExit(f"Frozen rules file is empty: {args.rules_file}")
 
     if args.dry_run:
         print(f"[DRY RUN] dataset={args.dataset} selector={args.selector} split={args.split}")

@@ -19,6 +19,7 @@ Usage:
     rules_text = build_rules_text(min_gap_pp=1.0)
 """
 
+import argparse
 import json
 import os
 from collections import defaultdict
@@ -184,7 +185,10 @@ def generate_model_centred_rules(profiles, models, datasets,
     )
 
 
-def build_rules_text(min_gap_pp: float = DEFAULT_MIN_GAP_PP, save: bool = True) -> str:
+def build_rules_text(min_gap_pp: float = DEFAULT_MIN_GAP_PP, save: bool = True,
+                     profiles_path: str = PROFILES_PATH,
+                     output_path: str = RULES_OUTPUT_PATH,
+                     show_breakdown: bool = False) -> str:
     """
     Main importable entry point. Builds and optionally saves the rules text.
 
@@ -195,13 +199,45 @@ def build_rules_text(min_gap_pp: float = DEFAULT_MIN_GAP_PP, save: bool = True) 
     Returns:
         rules text string, ready to be inserted into a selector prompt
     """
-    profiles = load_profiles()
+    profiles = load_profiles(profiles_path)
     models, datasets, _ = discover_models_and_datasets(profiles)
     rules_text = generate_model_centred_rules(profiles, models, datasets,
-                                              min_gap_pp=min_gap_pp)
+                                              min_gap_pp=min_gap_pp,
+                                              show_breakdown=show_breakdown)
     if save:
-        os.makedirs(os.path.dirname(RULES_OUTPUT_PATH), exist_ok=True)
-        with open(RULES_OUTPUT_PATH, "w") as f:
+        os.makedirs(os.path.dirname(output_path), exist_ok=True)
+        with open(output_path, "w") as f:
             f.write(rules_text)
 
     return rules_text
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--profiles",
+        default="results/eval_suite/error_profiles_dev.json",
+        help="Error-profile JSON used to derive the rules.",
+    )
+    parser.add_argument(
+        "--output",
+        default="results/eval_suite/selector_rules_dev.txt",
+        help="Frozen rules text written for the grid reruns.",
+    )
+    parser.add_argument("--gap", type=float, default=DEFAULT_MIN_GAP_PP)
+    parser.add_argument("--show-breakdown", action="store_true")
+    args = parser.parse_args()
+
+    rules = build_rules_text(
+        min_gap_pp=args.gap,
+        save=True,
+        profiles_path=args.profiles,
+        output_path=args.output,
+        show_breakdown=args.show_breakdown,
+    )
+    print(f"\nFrozen rules:\n{rules}")
+    print(f"\nSaved: {args.output}")
+
+
+if __name__ == "__main__":
+    main()

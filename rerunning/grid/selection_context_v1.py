@@ -40,7 +40,7 @@ from src.selector import (
 )
 from src.splits import get_indices_for_split
 
-OUTPUT_DIR = "writeup_results/grid/selection_context_v1"
+OUTPUT_DIR = "writeup_results/clean_grid_guidance_rerun/selection_context_v1"
 OLLAMA_HOST = "http://localhost:11434"
 ASR_MODELS = ["qwen", "whisperx", "parakeet", "wav2vec2"]
 DATASETS = ["commonvoice", "english_dialects", "edacc", "shetland"]
@@ -50,14 +50,12 @@ SELECTOR_PROMPT = """You are given four candidate ASR transcripts produced from 
 
 Your task is to select the SINGLE candidate that is most likely to match what was spoken.
 
-MODEL-SPECIFIC RELIABILITY NOTES:
-- WhisperX is generally more reliable on named entities (people's names, place names, organisations). If candidates disagree on a named entity, give extra weight to whichever candidate matches WhisperX's version - unless a third candidate corroborates a different version instead, in which case treat it as genuinely disputed.
-- Qwen sometimes self-censors mild profanity (e.g. "shit-scared"->"scared", "bloody"->"body", "sweet F all"->"sweetie fall"). If another candidate preserves the original expression and this is corroborated elsewhere, prefer that candidate.
-
 GENERAL RULE - applies to all other disputed words:
 Give more weight to a candidate whose disputed words are corroborated by at least two of the other three candidates. If no other candidate matches a given disputed word, do not treat that alone as disqualifying.
 
-ADDITIONAL KNOWN ERROR PATTERNS - use these to weigh candidates:
+HUMAN-WRITTEN ERROR GUIDANCE - use these to weigh candidates:
+- NAMED ENTITIES: names of people, places, and organisations are especially vulnerable to plausible substitutions. Prefer a named-entity form only when another candidate corroborates it; do not trust a source model automatically.
+- PROFANITY AND INFORMAL EXPRESSIONS: preserve the original expression when it is supported by another candidate; do not silently sanitise or normalise it.
 - NEGATIONS: prefer whichever version most candidates support - dropped or added negation is a critical, meaning-altering difference.
 - NUMBERS: prefer whichever number is corroborated by other candidates.
 - SCOTTISH DIALECT WORDS: if a candidate preserves a Scottish dialect word (e.g. "wee", "wisnae", "dinnae", "cannae", "braw", "aboot", "carry-out", "noo") that another candidate has normalised, and this is corroborated by a third candidate, prefer the one preserving it.
@@ -244,6 +242,7 @@ def run_dataset(dataset, selector_key, client, max_samples=None, rerun=False, sp
         "approach": "selection_context_v1",
         "strategy": "selection",
         "context_condition": "v1",
+        "guidance_source": "human_written_linguistic_error_guidance",
         "asr_models": ASR_MODELS,
         "phase": "selector_only - severity not yet judged",
         "dataset": dataset,

@@ -38,10 +38,10 @@ from src.judge import normalise, is_tag_only
 from src.selector import (
     find_canonical_file, OLLAMA_MODELS, check_selector_available, load_samples,
 )
-from src.rules import build_rules_text
 from src.splits import get_indices_for_split
 
-OUTPUT_DIR = "writeup_results/grid/unanchored_fusion_context_v2"
+OUTPUT_DIR = "writeup_results/clean_grid_guidance_rerun/unanchored_fusion_context_v2"
+DEFAULT_RULES_FILE = "results/eval_suite/selector_rules_dev.txt"
 OLLAMA_HOST = "http://localhost:11434"
 ASR_MODELS = ["qwen", "whisperx", "parakeet", "wav2vec2"]
 DATASETS = ["commonvoice", "english_dialects", "edacc", "shetland"]
@@ -225,13 +225,19 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--dataset", default="commonvoice", choices=DATASETS)
     parser.add_argument("--selector", default="gemma4", choices=list(OLLAMA_MODELS.keys()))
-    parser.add_argument("--gap", type=float, default=1.0)
+    parser.add_argument("--rules-file", default=DEFAULT_RULES_FILE,
+                        help="Frozen dev-derived rules file")
     parser.add_argument("--max-samples", type=int, default=None)
     parser.add_argument("--split", default="dev", choices=["dev", "test", "full"])
     parser.add_argument("--rerun", action="store_true")
     args = parser.parse_args()
 
-    auto_rules = build_rules_text(min_gap_pp=args.gap, save=False)
+    if not os.path.exists(args.rules_file):
+        raise SystemExit(f"Frozen rules file not found: {args.rules_file}")
+    with open(args.rules_file, encoding="utf-8") as file:
+        auto_rules = file.read().strip()
+    if not auto_rules:
+        raise SystemExit(f"Frozen rules file is empty: {args.rules_file}")
 
     client = Client(host=OLLAMA_HOST)
     if not check_selector_available(client, args.selector):
