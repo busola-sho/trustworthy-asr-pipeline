@@ -714,8 +714,10 @@
       "raw_response": "Please provide the four candidate transcripts (A, B",
       "response_was_clean": false,
       "sample_WER": 1.0,
-      "severity": null,
-      "dataset_index": 49
+      "severity": 4,
+      "dataset_index": 49,
+      "severity_assignment": "deterministic_empty_hypothesis",
+      "judge_raw_response": "Deterministic evaluation rule: a non-empty scorable reference paired with an empty hypothesis is a complete transcription failure."
     },
     {
       "ref": "AND THEN WE PLAYED TWO VARIATIONS OF IT YOU KNOW THE AMERICAN STYLE WHERE YOU JUST THROW IT FROM THE SIDE OF THE PITCH",
@@ -2000,8 +2002,10 @@
       "raw_response": "Please provide the text for Candidate B, C,",
       "response_was_clean": false,
       "sample_WER": 1.0,
-      "severity": null,
-      "dataset_index": 155
+      "severity": 4,
+      "dataset_index": 155,
+      "severity_assignment": "deterministic_empty_hypothesis",
+      "judge_raw_response": "Deterministic evaluation rule: a non-empty scorable reference paired with an empty hypothesis is a complete transcription failure."
     },
     {
       "ref": "STRETCH BY ANY MEANS DEFINITELY DO UM LIKE ALL OF THAT WHAT'S YOUR LEAST FAVORITE THING ABOUT EDINBURG",
@@ -2526,13 +2530,17 @@
       "judge_raw_response": "Severity: 1\n\nJustification: The hypothesis omits \"COOL SO UM\" and removes filler words like \"UM,\" but the core meaning of the sentence remains unchanged. The transcription error is trivial/cosmetic, as it does not affect the propositional content or introduce any ambiguity in the message being conveyed."
     }
   ],
-  "judge": "phi4:14b (direct prompt)",
-  "mean_severity": 1.341,
+  "judge": "phi4:14b (direct prompt; empty hypotheses deterministically scored 4)",
+  "mean_severity": 1.382,
   "severity_distribution": {
     "0": 37,
     "1": 47,
     "2": 21,
     "3": 12,
-    "4": 12
+    "4": 14
+  },
+  "empty_hypothesis_policy": {
+    "severity": 4,
+    "description": "Deterministic evaluation rule: a non-empty scorable reference paired with an empty hypothesis is a complete transcription failure."
   }
 }

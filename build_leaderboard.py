@@ -1,13 +1,18 @@
 """
 build_leaderboard.py
 
-Prints only the baseline values needed for the paper's strategy-comparison
-table: Qwen3-ASR, WhisperX, Parakeet, Wav2Vec2.0, ROVER, and MBR Consensus.
+Print the baseline values needed for the paper's strategy-comparison table:
+Qwen3-ASR, WhisperX, Parakeet, Wav2Vec2.0, ROVER, and MBR Consensus.
 
-Individual-model benchmark files are restricted to the requested dev/test
-indices before severity and WER are recomputed. ROVER and MBR files are
-filtered directly by their stored split. Final columns are macro-averages,
-so every dataset receives equal weight.
+Individual-model files are restricted to the requested dev/test indices before
+severity and WER are recomputed. Empty hypotheses remain in the evaluation:
+they contribute their normal WER and receive severity 4 when no stored severity
+is available. Tag-only references and explicitly skipped/error samples are
+excluded.
+
+Canonical ensemble sources:
+  * ROVER: writeup_results/voting/rover/
+  * MBR:   writeup_results/clean_mbr_consensus/
 
 Usage:
     python build_leaderboard.py --split dev
@@ -21,6 +26,7 @@ from pathlib import Path
 
 from jiwer import wer as compute_wer
 
+from src.judge import is_tag_only
 from src.splits import get_indices_for_split
 from src.text_normalise import normalise
 
@@ -28,9 +34,14 @@ from src.text_normalise import normalise
 DEFAULT_ROOTS = [
     "writeup_results/voting",
     "writeup_results/benchmarks/main",
+    "writeup_results/clean_mbr_consensus",
 ]
 
+CANONICAL_ROVER_DIR = "writeup_results/voting/rover/"
+CANONICAL_MBR_DIR = "writeup_results/clean_mbr_consensus/"
+
 DATASETS = ["commonvoice", "edacc", "english_dialects"]
+
 SYSTEM_ORDER = [
     "Qwen3-ASR",
     "WhisperX",
@@ -96,39 +107,68 @@ def split_baseline_samples(data, dataset, split, path):
     if not samples:
         raise ValueError(
             f"Baseline file has no per-sample data and cannot be restricted "
-            f"to split='{split}': {path}"
+            f"to split={split!r}: {path}"
         )
 
     split_indices = set(get_indices_for_split(dataset, split))
     subset = []
+
     for position, sample in enumerate(samples):
         sample_index = sample.get("sample_index")
         if sample_index is None:
+            sample_index = sample.get("dataset_index")
+        if sample_index is None:
             sample_index = position
+
         if sample_index in split_indices:
             subset.append(sample)
+
     return subset
 
 
 def calculate_metrics(samples):
     refs, hyps, severities = [], [], []
+
     for sample in samples:
         if sample.get("skipped") or sample.get("error"):
             continue
 
-        reference = sample.get("ref")
-        hypothesis = sample.get("hyp")
-        if reference and hypothesis:
-            refs.append(normalise(reference))
-            hyps.append(normalise(hypothesis))
+        reference = (sample.get("ref") or "").strip()
+        if not reference or is_tag_only(reference):
+            continue
+
+        hypothesis = (sample.get("hyp") or "").strip()
+
+        # Empty hypotheses are genuine system outputs and must remain in WER.
+        refs.append(normalise(reference))
+        hyps.append(normalise(hypothesis))
 
         severity = sample.get("severity")
+
+        # Complete transcription failure: preserve the global empty-output rule
+        # even if a result file has not yet been backfilled.
+        if severity is None and not hypothesis:
+            severity = 4
+
         if severity is not None:
             severities.append(severity)
 
     corpus_wer = compute_wer(refs, hyps) if refs else None
     mean_severity = sum(severities) / len(severities) if severities else None
+
     return mean_severity, corpus_wer
+
+
+def is_canonical_ensemble_path(system, path):
+    path_string = path.as_posix()
+
+    if system == "ROVER":
+        return CANONICAL_ROVER_DIR in path_string
+
+    if system == "MBR Consensus":
+        return CANONICAL_MBR_DIR in path_string
+
+    return False
 
 
 def collect_results(roots, split):
@@ -144,20 +184,28 @@ def collect_results(roots, split):
             system = normalize_model(data.get("model", ""))
             if system is None:
                 continue
+
             samples = split_baseline_samples(data, dataset, split, path)
             mean_severity, corpus_wer = calculate_metrics(samples)
 
         elif "approach" in data:
             system = normalize_approach(data.get("approach", ""))
-            if system is None or data.get("split") != split:
+            if system is None:
                 continue
 
-            # Keep only the standard ROVER and MBR configurations.
+            if not is_canonical_ensemble_path(system, path):
+                continue
+
+            if data.get("split") != split:
+                continue
+
+            # Exclude non-standard percentile/configuration variants.
             if data.get("percentile") is not None:
                 continue
 
             mean_severity = data.get("mean_severity")
             corpus_wer = data.get("corpus_wer")
+
         else:
             continue
 
@@ -170,6 +218,7 @@ def collect_results(roots, split):
         )
 
     results = {}
+
     for key, matches in candidates.items():
         if len(matches) > 1:
             paths = "\n".join(f"  - {match['path']}" for match in matches)
@@ -178,7 +227,9 @@ def collect_results(roots, split):
                 f"Multiple files found for {system}/{dataset}/{split}. "
                 f"Refusing to choose silently:\n{paths}"
             )
+
         results[key] = matches[0]
+
     return results
 
 
@@ -205,14 +256,17 @@ def print_results(results, split):
         "Avg Sev",
         "Avg WER",
     ]
+
     rows = []
 
     for system in SYSTEM_ORDER:
         severities, wers, dataset_cells = [], [], []
+
         for dataset in DATASETS:
             result = results.get((system, dataset))
             severity = result.get("mean_severity") if result else None
             wer = result.get("corpus_wer") if result else None
+
             severities.append(severity)
             wers.append(wer)
             dataset_cells.append(
@@ -235,7 +289,8 @@ def print_results(results, split):
 
     def render(row):
         return "  ".join(
-            f"{cell:<{widths[index]}}" if index == 0
+            f"{cell:<{widths[index]}}"
+            if index == 0
             else f"{cell:>{widths[index]}}"
             for index, cell in enumerate(row)
         )
@@ -243,6 +298,7 @@ def print_results(results, split):
     print(f"\nSTRATEGY-COMPARISON BASELINES - {split.upper()} SPLIT")
     print(render(headers))
     print("-" * len(render(headers)))
+
     for row in rows:
         print(render(row))
 
@@ -252,6 +308,7 @@ def print_results(results, split):
         for dataset in DATASETS
         if (system, dataset) not in results
     ]
+
     if missing:
         print("\nWARNING: missing result cells:")
         for item in missing:
@@ -259,7 +316,7 @@ def print_results(results, split):
 
 
 def main():
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
         "--split",
         choices=("dev", "test"),
@@ -271,8 +328,8 @@ def main():
         nargs="+",
         default=DEFAULT_ROOTS,
         help=(
-            "Result roots to scan (default: writeup_results/voting and "
-            "writeup_results/benchmarks/main)."
+            "Result roots to scan (default: voting, benchmarks/main, and "
+            "clean_mbr_consensus)."
         ),
     )
     args = parser.parse_args()

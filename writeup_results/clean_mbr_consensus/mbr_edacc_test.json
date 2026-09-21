@@ -306,8 +306,10 @@
         "wav2vec2": 0.6666666666666666
       },
       "sample_WER": 1.0,
-      "severity": null,
-      "dataset_index": 27
+      "severity": 4,
+      "dataset_index": 27,
+      "severity_assignment": "deterministic_empty_hypothesis",
+      "judge_raw_response": "Deterministic evaluation rule: a non-empty scorable reference paired with an empty hypothesis is a complete transcription failure."
     },
     {
       "ref": "THAT'S A BIT THAT'S QUITE CREATIVE ACTUALLY YEAH",
@@ -683,8 +685,10 @@
         "wav2vec2": 0.3333333333333333
       },
       "sample_WER": 1.0,
-      "severity": null,
-      "dataset_index": 77
+      "severity": 4,
+      "dataset_index": 77,
+      "severity_assignment": "deterministic_empty_hypothesis",
+      "judge_raw_response": "Deterministic evaluation rule: a non-empty scorable reference paired with an empty hypothesis is a complete transcription failure."
     },
     {
       "ref": "IT JUST SOUNDS AWFUL",
@@ -1186,8 +1190,10 @@
         "wav2vec2": 1.3333333333333333
       },
       "sample_WER": 1.0,
-      "severity": null,
-      "dataset_index": 181
+      "severity": 4,
+      "dataset_index": 181,
+      "severity_assignment": "deterministic_empty_hypothesis",
+      "judge_raw_response": "Deterministic evaluation rule: a non-empty scorable reference paired with an empty hypothesis is a complete transcription failure."
     },
     {
       "ref": "COLD",
@@ -1295,13 +1301,17 @@
       "judge_raw_response": "Severity: 2\n\nJustification: The hypothesis \"Or just.\" omits the word \"COLD,\" resulting in an ambiguous meaning shift. While the core conjunction and adverb are retained, the loss of \"cold\" introduces uncertainty about what is being described or negated, requiring reconstruction to fully understand the intended meaning."
     }
   ],
-  "judge": "phi4:14b (direct prompt)",
-  "mean_severity": 1.527,
+  "judge": "phi4:14b (direct prompt; empty hypotheses deterministically scored 4)",
+  "mean_severity": 1.655,
   "severity_distribution": {
     "0": 15,
     "1": 16,
     "2": 10,
     "3": 8,
-    "4": 6
+    "4": 9
+  },
+  "empty_hypothesis_policy": {
+    "severity": 4,
+    "description": "Deterministic evaluation rule: a non-empty scorable reference paired with an empty hypothesis is a complete transcription failure."
   }
 }

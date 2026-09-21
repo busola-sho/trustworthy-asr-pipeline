@@ -15197,7 +15197,7 @@
       "judge_raw_response": "Severity: 1\n\nJustification: The hypothesis omits \"COOL SO UM\" and \"UH,\" which are filler words, but the core propositional content remains unchanged. The meaning is confidently recoverable without any material fact alteration."
     }
   ],
-  "judge": "phi4:14b (direct prompt)",
+  "judge": "phi4:14b (direct prompt; empty hypotheses deterministically scored 4)",
   "mean_severity": 1.602,
   "severity_distribution": {
     "0": 46,
@@ -15214,5 +15214,9 @@
     "empty_hypotheses_scored_this_run": 11,
     "intentionally_skipped_this_run": 2,
     "judge_failures_this_run": 0
+  },
+  "empty_hypothesis_policy": {
+    "severity": 4,
+    "description": "Deterministic evaluation rule: a non-empty scorable reference paired with an empty hypothesis is a complete transcription failure."
   }
 }

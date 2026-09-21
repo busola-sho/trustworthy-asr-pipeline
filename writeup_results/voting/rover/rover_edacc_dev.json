@@ -312,8 +312,10 @@
         "wav2vec2": ""
       },
       "sample_WER": 1.0,
-      "severity": null,
-      "dataset_index": 16
+      "severity": 4,
+      "dataset_index": 16,
+      "severity_assignment": "deterministic_empty_hypothesis",
+      "judge_raw_response": "Deterministic evaluation rule: a non-empty scorable reference paired with an empty hypothesis is a complete transcription failure."
     },
     {
       "ref": "<OVERLAP> PLAYGROUND IT DOES HURT",
@@ -586,8 +588,10 @@
         "wav2vec2": ""
       },
       "sample_WER": 1.0,
-      "severity": null,
-      "dataset_index": 49
+      "severity": 4,
+      "dataset_index": 49,
+      "severity_assignment": "deterministic_empty_hypothesis",
+      "judge_raw_response": "Deterministic evaluation rule: a non-empty scorable reference paired with an empty hypothesis is a complete transcription failure."
     },
     {
       "ref": "AND THEN WE PLAYED TWO VARIATIONS OF IT YOU KNOW THE AMERICAN STYLE WHERE YOU JUST THROW IT FROM THE SIDE OF THE PITCH",
@@ -697,8 +701,10 @@
         "wav2vec2": ""
       },
       "sample_WER": 1.0,
-      "severity": null,
-      "dataset_index": 65
+      "severity": 4,
+      "dataset_index": 65,
+      "severity_assignment": "deterministic_empty_hypothesis",
+      "judge_raw_response": "Deterministic evaluation rule: a non-empty scorable reference paired with an empty hypothesis is a complete transcription failure."
     },
     {
       "ref": "WHAT WERE LIKE GO TO TV SHOWS BACK IN YOUR CHILDHOOD",
@@ -775,8 +781,10 @@
         "wav2vec2": ""
       },
       "sample_WER": 1.0,
-      "severity": null,
-      "dataset_index": 74
+      "severity": 4,
+      "dataset_index": 74,
+      "severity_assignment": "deterministic_empty_hypothesis",
+      "judge_raw_response": "Deterministic evaluation rule: a non-empty scorable reference paired with an empty hypothesis is a complete transcription failure."
     },
     {
       "ref": "IT'S A FORCE OF NATURE",
@@ -1068,8 +1076,10 @@
         "wav2vec2": ""
       },
       "sample_WER": 1.0,
-      "severity": null,
-      "dataset_index": 107
+      "severity": 4,
+      "dataset_index": 107,
+      "severity_assignment": "deterministic_empty_hypothesis",
+      "judge_raw_response": "Deterministic evaluation rule: a non-empty scorable reference paired with an empty hypothesis is a complete transcription failure."
     },
     {
       "ref": "YOU'RE GONNA LOOK LIKE SUCH A WEIRD PERSON IN THIS VIDEO",
@@ -1333,8 +1343,10 @@
         "wav2vec2": ""
       },
       "sample_WER": 1.0,
-      "severity": null,
-      "dataset_index": 131
+      "severity": 4,
+      "dataset_index": 131,
+      "severity_assignment": "deterministic_empty_hypothesis",
+      "judge_raw_response": "Deterministic evaluation rule: a non-empty scorable reference paired with an empty hypothesis is a complete transcription failure."
     },
     {
       "ref": "PRIVACY REASONS UM IS THERE A PARTICULAR FOOD YOU USED TO LIKE AS A CHILD DO YOU LIKE MAKING IT DEFINITELY ROAST DINNERS",
@@ -1584,8 +1596,10 @@
         "wav2vec2": ""
       },
       "sample_WER": 1.0,
-      "severity": null,
-      "dataset_index": 155
+      "severity": 4,
+      "dataset_index": 155,
+      "severity_assignment": "deterministic_empty_hypothesis",
+      "judge_raw_response": "Deterministic evaluation rule: a non-empty scorable reference paired with an empty hypothesis is a complete transcription failure."
     },
     {
       "ref": "STRETCH BY ANY MEANS DEFINITELY DO UM LIKE ALL OF THAT WHAT'S YOUR LEAST FAVORITE THING ABOUT EDINBURG",
@@ -1779,8 +1793,10 @@
         "wav2vec2": ""
       },
       "sample_WER": 1.0,
-      "severity": null,
-      "dataset_index": 175
+      "severity": 4,
+      "dataset_index": 175,
+      "severity_assignment": "deterministic_empty_hypothesis",
+      "judge_raw_response": "Deterministic evaluation rule: a non-empty scorable reference paired with an empty hypothesis is a complete transcription failure."
     },
     {
       "ref": "IT WOULD BE DEFINITELY ONE OF THOSE THINGS I'VE ONLY LIKE SEEN OR HEARD OF PROBABLY OR AMERICA BUT AMERICA'S QUITE YOU KNOW I COULDN'T SEE THAT BEING INCREDIBLY DIFFERENT I COULD SEE JAPAN AND A LOT OF STUFF I WOULD NOT BE USED TO STUFF THAT I'D BE LIKE OH THIS IS INTERESTING AND NEW WHERE IT'D BE COMPLETELY NORMAL TO PEOPLE WHO LIVE THERE",
@@ -1993,13 +2009,17 @@
       "judge_raw_response": "Severity: 1\n\nJustification: The ASR output omits \"COOL SO UM\" and adds a period after \"files,\" which are surface-level changes that do not alter the propositional content or meaning of the sentence. The core message remains confidently recoverable without any material fact change, fitting the criteria for a trivial/cosmetic error."
     }
   ],
-  "judge": "phi4:14b (direct prompt)",
-  "mean_severity": 1.407,
+  "judge": "phi4:14b (direct prompt; empty hypotheses deterministically scored 4)",
+  "mean_severity": 1.565,
   "severity_distribution": {
     "0": 35,
     "1": 37,
     "2": 23,
     "3": 22,
-    "4": 6
+    "4": 14
+  },
+  "empty_hypothesis_policy": {
+    "severity": 4,
+    "description": "Deterministic evaluation rule: a non-empty scorable reference paired with an empty hypothesis is a complete transcription failure."
   }
 }

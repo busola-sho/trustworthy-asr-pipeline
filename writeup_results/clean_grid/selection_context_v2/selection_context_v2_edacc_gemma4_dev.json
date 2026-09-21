@@ -897,9 +897,11 @@
       "raw_response": "Please provide the text for Candidate B, C,",
       "response_was_clean": false,
       "sample_WER": 1.0,
-      "severity": null,
+      "severity": 4,
       "auto_rules_used": "- NEGATIONS: the qwen3asr transcript is empirically more reliable on negations (12.6% pooled error rate across all datasets, n=420, vs 16.2% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it. Note: in some cases parakeet, qwen3asr perform near-identically on negations with no clear winner — in those cases, do not default to qwen3asr automatically; use contextual judgement instead.\n- SCOTTISH DIALECT WORDS: the qwen3asr transcript is empirically more reliable on Scottish dialect words (31.8% pooled error rate across all datasets, n=2440, vs 33.3% for the next best model). If the qwen3asr transcript disagrees with the others here, lean toward trusting it.",
-      "dataset_index": 65
+      "dataset_index": 65,
+      "severity_assignment": "deterministic_empty_hypothesis",
+      "judge_raw_response": "Deterministic evaluation rule: a non-empty scorable reference paired with an empty hypothesis is a complete transcription failure."
     },
     {
       "ref": "WHAT WERE LIKE GO TO TV SHOWS BACK IN YOUR CHILDHOOD",
@@ -2659,13 +2661,17 @@
       "judge_raw_response": "Severity: 1\n\nJustification: The hypothesis omits \"COOL SO UM\" and removes filler words like \"uh,\" but the core meaning of the sentence remains unchanged. These are surface-level differences that do not affect the propositional content or introduce any ambiguity, making it a trivial/cosmetic error."
     }
   ],
-  "judge": "phi4:14b (direct prompt)",
-  "mean_severity": 1.323,
+  "judge": "phi4:14b (direct prompt; empty hypotheses deterministically scored 4)",
+  "mean_severity": 1.344,
   "severity_distribution": {
     "0": 39,
     "1": 45,
     "2": 24,
     "3": 9,
-    "4": 13
+    "4": 14
+  },
+  "empty_hypothesis_policy": {
+    "severity": 4,
+    "description": "Deterministic evaluation rule: a non-empty scorable reference paired with an empty hypothesis is a complete transcription failure."
   }
 }

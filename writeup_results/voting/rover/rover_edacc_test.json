@@ -223,8 +223,10 @@
         "wav2vec2": ""
       },
       "sample_WER": 1.0,
-      "severity": null,
-      "dataset_index": 27
+      "severity": 4,
+      "dataset_index": 27,
+      "severity_assignment": "deterministic_empty_hypothesis",
+      "judge_raw_response": "Deterministic evaluation rule: a non-empty scorable reference paired with an empty hypothesis is a complete transcription failure."
     },
     {
       "ref": "THAT'S A BIT THAT'S QUITE CREATIVE ACTUALLY YEAH",
@@ -474,8 +476,10 @@
         "wav2vec2": ""
       },
       "sample_WER": 1.0,
-      "severity": null,
-      "dataset_index": 77
+      "severity": 4,
+      "dataset_index": 77,
+      "severity_assignment": "deterministic_empty_hypothesis",
+      "judge_raw_response": "Deterministic evaluation rule: a non-empty scorable reference paired with an empty hypothesis is a complete transcription failure."
     },
     {
       "ref": "IT JUST SOUNDS AWFUL",
@@ -884,13 +888,17 @@
       "judge_raw_response": "Severity: 1\n\nJustification: The hypothesis \"or just just\" introduces a repetition error but retains the original meaning of \"OR JUST COLD.\" The intended propositional content remains unchanged, and any confusion is trivial as it does not alter the factual or semantic content. The error is surface-level and can be confidently corrected without ambiguity."
     }
   ],
-  "judge": "phi4:14b (direct prompt)",
-  "mean_severity": 1.429,
+  "judge": "phi4:14b (direct prompt; empty hypotheses deterministically scored 4)",
+  "mean_severity": 1.517,
   "severity_distribution": {
     "0": 15,
     "1": 19,
     "2": 9,
     "3": 9,
-    "4": 4
+    "4": 6
+  },
+  "empty_hypothesis_policy": {
+    "severity": 4,
+    "description": "Deterministic evaluation rule: a non-empty scorable reference paired with an empty hypothesis is a complete transcription failure."
   }
 }
