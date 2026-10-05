@@ -1,0 +1,55 @@
+{
+  "seed": 20260928,
+  "total_items": 200,
+  "unique_utterances": 200,
+  "counts_by_system": {
+    "Parakeet": 25,
+    "Qwen3-ASR": 25,
+    "Unanchored Fusion": 100,
+    "Wav2Vec2.0": 25,
+    "WhisperX": 25
+  },
+  "counts_by_dataset": {
+    "commonvoice": 71,
+    "edacc": 58,
+    "english_dialects": 71
+  },
+  "counts_by_severity": {
+    "0": 47,
+    "1": 46,
+    "2": 46,
+    "3": 46,
+    "4": 15
+  },
+  "counts_by_system_and_dataset": {
+    "Unanchored Fusion": {
+      "commonvoice": 35,
+      "edacc": 30,
+      "english_dialects": 35
+    },
+    "Qwen3-ASR": {
+      "commonvoice": 9,
+      "edacc": 7,
+      "english_dialects": 9
+    },
+    "WhisperX": {
+      "commonvoice": 9,
+      "edacc": 7,
+      "english_dialects": 9
+    },
+    "Parakeet": {
+      "commonvoice": 9,
+      "edacc": 7,
+      "english_dialects": 9
+    },
+    "Wav2Vec2.0": {
+      "commonvoice": 9,
+      "edacc": 7,
+      "english_dialects": 9
+    }
+  },
+  "files": {
+    "manifest": "prolific_study/pool_200_manifest.csv",
+    "qualtrics": "prolific_study/pool_200_qualtrics.csv"
+  }
+}
