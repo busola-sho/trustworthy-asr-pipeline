@@ -1,0 +1,25 @@
+SINGLE-HYPOTHESIS POST-EDITING COMPARISON
+
+Dataset           Split  System                  Severity       WER       MAR
+-----------------------------------------------------------------------------
+Common Voice      dev    Raw Qwen                   1.904    18.84%    74.34%
+Common Voice      dev    Post-edit                  1.803    19.35%    68.20%
+Common Voice      dev    Unanchored Fusion          1.704    16.89%    59.65%
+EdAcc             dev    Raw Qwen                   1.321    15.64%    35.11%
+EdAcc             dev    Post-edit                  1.351    16.48%    35.11%
+EdAcc             dev    Unanchored Fusion          1.305    17.19%    34.35%
+English Dialects  dev    Raw Qwen                   0.498     4.42%    12.17%
+English Dialects  dev    Post-edit                  0.502     4.48%    12.98%
+English Dialects  dev    Unanchored Fusion          0.430     4.13%    10.50%
+Common Voice      test   Raw Qwen                   1.929    19.29%    76.02%
+Common Voice      test   Post-edit                  1.801    19.93%    66.33%
+Common Voice      test   Unanchored Fusion          1.694    17.13%    57.14%
+EdAcc             test   Raw Qwen                   1.328    18.67%    36.21%
+EdAcc             test   Post-edit                  1.241    19.72%    31.03%
+EdAcc             test   Unanchored Fusion          1.466    19.72%    39.66%
+English Dialects  test   Raw Qwen                   0.539     4.57%    13.58%
+English Dialects  test   Post-edit                  0.511     4.61%    12.77%
+English Dialects  test   Unanchored Fusion          0.411     4.24%     9.54%
+Shetland          full   Raw Qwen                   2.420    12.26%    91.00%
+Shetland          full   Post-edit                  2.390    12.16%    89.00%
+Shetland          full   Unanchored Fusion          2.230     9.23%    85.00%

@@ -1,0 +1,15 @@
+SENTENCE-LEVEL CONFIDENCE SUMMARY
+
+Method                          Mono.   Public AUC   Public ECE   Police AUC   Police ECE
+-----------------------------------------------------------------------------------------
+Verbalised (confscore)            3/4        0.681        0.210        0.617        0.421
+Verbalised (probscore)            3/4        0.679        0.197        0.587        0.424
+Learned proxy (confscore)         3/4        0.677        0.087        0.594        0.140
+Learned proxy (probscore)         2/4        0.679        0.087        0.590        0.142
+Cross-model mean                  0/4        0.649        0.096        0.588        0.177
+Cross-model minimum               0/4        0.635        0.166        0.566        0.309
+Model-internal                    2/4        0.624        0.114        0.545        0.169
+
+Public results are averaged across Common Voice, EdAcc, English Dialects and Shetland.
+All methods are evaluated on their common set of scorable segments within each comparison.
+Police Scotland common-intersection N = 3363.

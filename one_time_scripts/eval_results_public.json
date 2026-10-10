@@ -1,0 +1,1013 @@
+{
+  "timestamp": "2026-08-07T12:35:00.200991",
+  "pipeline": "naive (4-model fusion, gemma4 selector)",
+  "judge": "phi4:14b (direct prompt)",
+  "flag_threshold": 2,
+  "evaluated": 109,
+  "summary": {
+    "mean_wer": 0.3587,
+    "mean_severity": 2.165,
+    "severity_distribution": {
+      "0": 0,
+      "1": 14,
+      "2": 63,
+      "3": 32,
+      "4": 0
+    },
+    "flag_rate": 0.8716,
+    "n_flagged": 95,
+    "n_clean": 14
+  },
+  "samples": [
+    {
+      "id": "Row 203 - 290424 - CLS 107536902",
+      "wer": 0.9247,
+      "severity": 3,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 2,
+      "error": null
+    },
+    {
+      "id": "Row 204 - 290424 - CLS 107537309",
+      "wer": 0.7682,
+      "severity": 3,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 2,
+      "error": null
+    },
+    {
+      "id": "Row 205 - 290424 - CLS 107542585",
+      "wer": 0.2573,
+      "severity": 2,
+      "flagged": true,
+      "n_low_confidence_sentences": 1,
+      "n_speakers": 2,
+      "error": null
+    },
+    {
+      "id": "Row 206 - 290424 - CLS 107543231",
+      "wer": 0.1941,
+      "severity": 2,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 3,
+      "error": null
+    },
+    {
+      "id": "Row 207 - 300424 - CLS 107552042",
+      "wer": 0.5132,
+      "severity": 2,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 2,
+      "error": null
+    },
+    {
+      "id": "Row 208 - 300424 - CLS 107552142",
+      "wer": 0.287,
+      "severity": 1,
+      "flagged": false,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 2,
+      "error": null
+    },
+    {
+      "id": "Row 209 - 300424 - CLS 107556205",
+      "wer": 0.2927,
+      "severity": 3,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 2,
+      "error": null
+    },
+    {
+      "id": "Row 210 - 300424 - CLS 107556489",
+      "wer": 0.2226,
+      "severity": 2,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 2,
+      "error": null
+    },
+    {
+      "id": "Row 211 - 080524 - CLS 107668691",
+      "wer": 0.319,
+      "severity": 2,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 3,
+      "error": null
+    },
+    {
+      "id": "Row 212 - 080524 - CLS 107669031",
+      "wer": 0.6242,
+      "severity": 2,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 2,
+      "error": null
+    },
+    {
+      "id": "Row 214 - 080524 - CLS 107671067",
+      "wer": 0.2155,
+      "severity": 2,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 2,
+      "error": null
+    },
+    {
+      "id": "Row 215 - 080524 - CLS 107673759",
+      "wer": 0.9415,
+      "severity": 3,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 3,
+      "error": null
+    },
+    {
+      "id": "Row 218 - 090524 - CLS 107687216",
+      "wer": 0.2298,
+      "severity": 3,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 2,
+      "error": null
+    },
+    {
+      "id": "Row 219 - 100524 - CLS 107706109",
+      "wer": 0.3848,
+      "severity": 2,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 2,
+      "error": null
+    },
+    {
+      "id": "Row 220 - 100524 - CLS 107706143",
+      "wer": 0.9479,
+      "severity": 2,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 3,
+      "error": null
+    },
+    {
+      "id": "Row 222 - 130524 - CLS 107746238",
+      "wer": 0.3667,
+      "severity": 3,
+      "flagged": true,
+      "n_low_confidence_sentences": 6,
+      "n_speakers": 2,
+      "error": null
+    },
+    {
+      "id": "Row 225 - 130524 - CLS 107749108",
+      "wer": 0.9031,
+      "severity": 2,
+      "flagged": true,
+      "n_low_confidence_sentences": 1,
+      "n_speakers": 4,
+      "error": null
+    },
+    {
+      "id": "Row 226 - 140524 - CLS 107755279",
+      "wer": 0.4564,
+      "severity": 2,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 3,
+      "error": null
+    },
+    {
+      "id": "Row 229 - 140524 - CLS 107757418",
+      "wer": 0.355,
+      "severity": 1,
+      "flagged": false,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 2,
+      "error": null
+    },
+    {
+      "id": "Row 230 - 140524 - CLS 107757643",
+      "wer": 0.8782,
+      "severity": 3,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 2,
+      "error": null
+    },
+    {
+      "id": "Row 233 - 230524 - CLS 107891497",
+      "wer": 0.327,
+      "severity": 2,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 3,
+      "error": null
+    },
+    {
+      "id": "Row 234 - 230524 - CLS 107892567",
+      "wer": 0.1754,
+      "severity": 1,
+      "flagged": false,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 2,
+      "error": null
+    },
+    {
+      "id": "Row 246 - 220524 - CLS 107881119",
+      "wer": 0.2743,
+      "severity": 1,
+      "flagged": false,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 2,
+      "error": null
+    },
+    {
+      "id": "Row 252 - 080524 - CLS 107673342",
+      "wer": 0.3934,
+      "severity": 2,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 2,
+      "error": null
+    },
+    {
+      "id": "Row 253 - 300424 - CLS 107554166",
+      "wer": 0.3665,
+      "severity": 2,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 3,
+      "error": null
+    },
+    {
+      "id": "Row 255 - 100524 - CLS 107702722",
+      "wer": 0.3723,
+      "severity": 2,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 2,
+      "error": null
+    },
+    {
+      "id": "Row 258 - 230524 - CLS 107890840",
+      "wer": 0.1376,
+      "severity": 1,
+      "flagged": false,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 2,
+      "error": null
+    },
+    {
+      "id": "Row 268 - 130524 - CLS 107742115",
+      "wer": 0.3113,
+      "severity": 3,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 3,
+      "error": null
+    },
+    {
+      "id": "Row 269 - 290424 - CLS 107537418",
+      "wer": 0.3108,
+      "severity": 2,
+      "flagged": true,
+      "n_low_confidence_sentences": 1,
+      "n_speakers": 2,
+      "error": null
+    },
+    {
+      "id": "Row 270 - 290424 - CLS 107538601",
+      "wer": 0.263,
+      "severity": 2,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 3,
+      "error": null
+    },
+    {
+      "id": "Row 279 - 070524 - CLS 107655072",
+      "wer": 0.3089,
+      "severity": 2,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 2,
+      "error": null
+    },
+    {
+      "id": "Row 282 - 090524 - CLS 107684532",
+      "wer": 0.293,
+      "severity": 2,
+      "flagged": true,
+      "n_low_confidence_sentences": 2,
+      "n_speakers": 2,
+      "error": null
+    },
+    {
+      "id": "Row 291 - 230524 - CLS 107891119",
+      "wer": 0.227,
+      "severity": 2,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 1,
+      "error": null
+    },
+    {
+      "id": "Row 299 - 210524 - CLS 107862771",
+      "wer": 0.2466,
+      "severity": 2,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 2,
+      "error": null
+    },
+    {
+      "id": "Row 305 - 070524 - CLS 107655135",
+      "wer": 0.3399,
+      "severity": 2,
+      "flagged": true,
+      "n_low_confidence_sentences": 2,
+      "n_speakers": 2,
+      "error": null
+    },
+    {
+      "id": "Row 306 - 070524 - CLS 107659393",
+      "wer": 0.8162,
+      "severity": 3,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 2,
+      "error": null
+    },
+    {
+      "id": "Row 310 - 290424 - CLS 107536863",
+      "wer": 0.2308,
+      "severity": 2,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 2,
+      "error": null
+    },
+    {
+      "id": "Row 311 - 290424 - CLS 107537119",
+      "wer": 0.4816,
+      "severity": 2,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 2,
+      "error": null
+    },
+    {
+      "id": "Row 312 - 290424 - CLS 107539545",
+      "wer": 0.2625,
+      "severity": 2,
+      "flagged": true,
+      "n_low_confidence_sentences": 1,
+      "n_speakers": 2,
+      "error": null
+    },
+    {
+      "id": "Row 313 - 290424 - CLS 107540948",
+      "wer": 0.2894,
+      "severity": 2,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 3,
+      "error": null
+    },
+    {
+      "id": "Row 314 - 290424 - CLS 107541762",
+      "wer": 0.1631,
+      "severity": 1,
+      "flagged": false,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 2,
+      "error": null
+    },
+    {
+      "id": "Row 315 - 290424 - CLS 107542052",
+      "wer": 0.159,
+      "severity": 2,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 3,
+      "error": null
+    },
+    {
+      "id": "Row 316 - 290424 - CLS 107542792",
+      "wer": 0.4795,
+      "severity": 2,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 2,
+      "error": null
+    },
+    {
+      "id": "Row 319 - 300424 - CLS 107552425",
+      "wer": 0.8503,
+      "severity": 3,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 2,
+      "error": null
+    },
+    {
+      "id": "Row 323 - 300424 - CLS 107555011",
+      "wer": 0.2086,
+      "severity": 3,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 2,
+      "error": null
+    },
+    {
+      "id": "Row 324 - 300424 - CLS 107555078",
+      "wer": 0.3309,
+      "severity": 3,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 2,
+      "error": null
+    },
+    {
+      "id": "Row 326 - 300424 - CLS 107556378",
+      "wer": 0.2582,
+      "severity": 2,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 3,
+      "error": null
+    },
+    {
+      "id": "Row 327 - 080524 - CLS 107668028",
+      "wer": 0.3052,
+      "severity": 3,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 2,
+      "error": null
+    },
+    {
+      "id": "Row 328 - 080524 - CLS 107668269",
+      "wer": 0.25,
+      "severity": 3,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 3,
+      "error": null
+    },
+    {
+      "id": "Row 329 - 080524 - CLS 107668581",
+      "wer": 0.1982,
+      "severity": 2,
+      "flagged": true,
+      "n_low_confidence_sentences": 1,
+      "n_speakers": 2,
+      "error": null
+    },
+    {
+      "id": "Row 330 - 080524 - CLS 107668957",
+      "wer": 0.1473,
+      "severity": 2,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 1,
+      "error": null
+    },
+    {
+      "id": "Row 331 - 080524 - CLS 107669315",
+      "wer": 0.3228,
+      "severity": 2,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 3,
+      "error": null
+    },
+    {
+      "id": "Row 332 - 080524 - CLS 107669533",
+      "wer": 0.1831,
+      "severity": 3,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 1,
+      "error": null
+    },
+    {
+      "id": "Row 334 - 080524 - CLS 107670939",
+      "wer": 0.3624,
+      "severity": 3,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 2,
+      "error": null
+    },
+    {
+      "id": "Row 336 - 080524 - CLS 107673638",
+      "wer": 0.3344,
+      "severity": 3,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 2,
+      "error": null
+    },
+    {
+      "id": "Row 338 - 090524 - CLS 107683356",
+      "wer": 0.2693,
+      "severity": 2,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 3,
+      "error": null
+    },
+    {
+      "id": "Row 341 - 090524 - CLS 107683833",
+      "wer": 0.2929,
+      "severity": 2,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 1,
+      "error": null
+    },
+    {
+      "id": "Row 343 - 090524 - CLS 107687297",
+      "wer": 0.25,
+      "severity": 2,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 2,
+      "error": null
+    },
+    {
+      "id": "Row 344 - 100524 - CLS 107703286",
+      "wer": 0.3406,
+      "severity": 2,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 2,
+      "error": null
+    },
+    {
+      "id": "Row 345 - 100524 - CLS 107703465",
+      "wer": 0.1884,
+      "severity": 1,
+      "flagged": false,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 2,
+      "error": null
+    },
+    {
+      "id": "Row 346 - 100524 - CLS 107705049",
+      "wer": 0.3055,
+      "severity": 3,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 2,
+      "error": null
+    },
+    {
+      "id": "Row 347 - 100524 - CLS 107708216",
+      "wer": 0.4193,
+      "severity": 3,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 4,
+      "error": null
+    },
+    {
+      "id": "Row 348 - 100524 - Call ID 154854777",
+      "wer": 0.3646,
+      "severity": 2,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 2,
+      "error": null
+    },
+    {
+      "id": "Row 350 - 130524 - CLS 107747524",
+      "wer": 0.8842,
+      "severity": 3,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 3,
+      "error": null
+    },
+    {
+      "id": "Row 351 - 130524 - CLS 107751080",
+      "wer": 0.2535,
+      "severity": 1,
+      "flagged": false,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 2,
+      "error": null
+    },
+    {
+      "id": "Row 354 - 140524 - Call ID 154934839",
+      "wer": 0.197,
+      "severity": 1,
+      "flagged": false,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 2,
+      "error": null
+    },
+    {
+      "id": "Row 355 - 140524 - CLS 107756770",
+      "wer": 0.1881,
+      "severity": 2,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 2,
+      "error": null
+    },
+    {
+      "id": "Row 357 - 140524 - CLS 107757069",
+      "wer": 0.2113,
+      "severity": 2,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 3,
+      "error": null
+    },
+    {
+      "id": "Row 358 - 140524 - CLS 107757338",
+      "wer": 0.3238,
+      "severity": 2,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 2,
+      "error": null
+    },
+    {
+      "id": "Row 362 - 230524 - CLS 107890658",
+      "wer": 0.1934,
+      "severity": 2,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 4,
+      "error": null
+    },
+    {
+      "id": "Row 363 - 230524 - CLS 107891629",
+      "wer": 0.2204,
+      "severity": 2,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 2,
+      "error": null
+    },
+    {
+      "id": "Row 364 - 230524 - CLS 107891799",
+      "wer": 0.2351,
+      "severity": 3,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 2,
+      "error": null
+    },
+    {
+      "id": "Row 388 - 220524 - Call ID 155132271",
+      "wer": 0.2663,
+      "severity": 2,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 2,
+      "error": null
+    },
+    {
+      "id": "Row 389 - 220524 - CLS 107878641",
+      "wer": 0.321,
+      "severity": 2,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 2,
+      "error": null
+    },
+    {
+      "id": "Row 391 - 280524 - CLS 107967325",
+      "wer": 0.3006,
+      "severity": 3,
+      "flagged": true,
+      "n_low_confidence_sentences": 1,
+      "n_speakers": 2,
+      "error": null
+    },
+    {
+      "id": "Row 395 - 070524 - CLS 107654129",
+      "wer": 0.2286,
+      "severity": 2,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 2,
+      "error": null
+    },
+    {
+      "id": "Row 396 - 070524 - CLS 107655304",
+      "wer": 0.3511,
+      "severity": 2,
+      "flagged": true,
+      "n_low_confidence_sentences": 1,
+      "n_speakers": 2,
+      "error": null
+    },
+    {
+      "id": "Row 397 - 070524 - CLS 107657359",
+      "wer": 0.2859,
+      "severity": 2,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 2,
+      "error": null
+    },
+    {
+      "id": "Row 398 - 090524 - CLS 107683657",
+      "wer": 0.1994,
+      "severity": 2,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 2,
+      "error": null
+    },
+    {
+      "id": "Row 399 - 090524 - CLS 107684088",
+      "wer": 0.2597,
+      "severity": 2,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 2,
+      "error": null
+    },
+    {
+      "id": "Row 402 - 090524 - CLS 107684910",
+      "wer": 0.1614,
+      "severity": 2,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 2,
+      "error": null
+    },
+    {
+      "id": "Row 403 - 090524 - CLS 107685308",
+      "wer": 0.2926,
+      "severity": 3,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 3,
+      "error": null
+    },
+    {
+      "id": "Row 404 - 090524 - CLS 107686411",
+      "wer": 0.3129,
+      "severity": 3,
+      "flagged": true,
+      "n_low_confidence_sentences": 1,
+      "n_speakers": 3,
+      "error": null
+    },
+    {
+      "id": "Row 405 - 090524 - CLS 107688058",
+      "wer": 0.3153,
+      "severity": 2,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 3,
+      "error": null
+    },
+    {
+      "id": "Row 406 - 090524 - CLS 107688277",
+      "wer": 0.1824,
+      "severity": 3,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 3,
+      "error": null
+    },
+    {
+      "id": "Row 409 - 100524 - CLS 107698963",
+      "wer": 0.7055,
+      "severity": 2,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 2,
+      "error": null
+    },
+    {
+      "id": "Row 414 - 130524 - CLS 107742850",
+      "wer": 0.3463,
+      "severity": 2,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 2,
+      "error": null
+    },
+    {
+      "id": "Row 416 - 290424 - CLS 107539396",
+      "wer": 0.192,
+      "severity": 2,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 1,
+      "error": null
+    },
+    {
+      "id": "Row 417 - 290424 - CLS 107540903",
+      "wer": 0.2441,
+      "severity": null,
+      "flagged": false,
+      "n_low_confidence_sentences": 2,
+      "n_speakers": 3,
+      "error": null
+    },
+    {
+      "id": "Row 418 - 080524 - CLS 107668157",
+      "wer": 0.1818,
+      "severity": 2,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 1,
+      "error": null
+    },
+    {
+      "id": "Row 419 - 080524 - CLS 107668635",
+      "wer": 0.2074,
+      "severity": 1,
+      "flagged": false,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 2,
+      "error": null
+    },
+    {
+      "id": "Row 424 - 100524 - CLS 107700826",
+      "wer": 0.241,
+      "severity": 3,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 2,
+      "error": null
+    },
+    {
+      "id": "Row 425 - 290424 - CLS 107537508",
+      "wer": 0.9395,
+      "severity": 3,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 3,
+      "error": null
+    },
+    {
+      "id": "Row 426 - 230524 - CLS 107891883",
+      "wer": 0.2667,
+      "severity": 2,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 3,
+      "error": null
+    },
+    {
+      "id": "Row 427 - 130524 - CLS 107742515",
+      "wer": 0.2488,
+      "severity": 3,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 2,
+      "error": null
+    },
+    {
+      "id": "Row 428 - 290424 - CLS 107536311",
+      "wer": 0.2663,
+      "severity": 2,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 2,
+      "error": null
+    },
+    {
+      "id": "Row 429 - 290424 - CLS 107542671",
+      "wer": 0.2241,
+      "severity": 3,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 2,
+      "error": null
+    },
+    {
+      "id": "Row 433 - 090524 - CLS 107682986",
+      "wer": 0.2226,
+      "severity": 2,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 3,
+      "error": null
+    },
+    {
+      "id": "Row 435 - 130524 - CLS 107746186",
+      "wer": 0.3392,
+      "severity": 2,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 3,
+      "error": null
+    },
+    {
+      "id": "Row 440 - 090524 - CLS 107687138",
+      "wer": 0.3549,
+      "severity": 2,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 2,
+      "error": null
+    },
+    {
+      "id": "Row 455 - 080524 - CLS 107670253",
+      "wer": 0.2466,
+      "severity": 2,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 2,
+      "error": null
+    },
+    {
+      "id": "Row 464 - 210524 - CLS 107865518",
+      "wer": 0.2727,
+      "severity": 3,
+      "flagged": true,
+      "n_low_confidence_sentences": 1,
+      "n_speakers": 1,
+      "error": null
+    },
+    {
+      "id": "Row 475 - 070524 - CLS 107657281",
+      "wer": 0.1667,
+      "severity": 1,
+      "flagged": false,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 1,
+      "error": null
+    },
+    {
+      "id": "Row 477 - 290424 - CLS 107538218",
+      "wer": 0.9494,
+      "severity": 1,
+      "flagged": false,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 4,
+      "error": null
+    },
+    {
+      "id": "Row 482 - 100524 - CLS 107707583",
+      "wer": 0.2406,
+      "severity": 1,
+      "flagged": false,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 2,
+      "error": null
+    },
+    {
+      "id": "Row 485 - 140524 - CLS 107761294",
+      "wer": 0.4162,
+      "severity": 3,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 2,
+      "error": null
+    },
+    {
+      "id": "Row 499 - 060524 - CLS 107646057",
+      "wer": 0.2812,
+      "severity": 2,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 2,
+      "error": null
+    },
+    {
+      "id": "Row 500 - 070524 - CLS 107653900",
+      "wer": 0.9403,
+      "severity": 3,
+      "flagged": true,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 2,
+      "error": null
+    },
+    {
+      "id": "Row 502 - 070524 - CLS 107656323",
+      "wer": 0.2481,
+      "severity": 1,
+      "flagged": false,
+      "n_low_confidence_sentences": 0,
+      "n_speakers": 2,
+      "error": null
+    },
+    {
+      "id": "Row 505 - 090524 - CLS 107689626",
+      "wer": 0.9243,
+      "severity": 2,
+      "flagged": true,
+      "n_low_confidence_sentences": 2,
+      "n_speakers": 2,
+      "error": null
+    }
+  ]
+}
