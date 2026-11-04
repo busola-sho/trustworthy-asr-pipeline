@@ -1,0 +1,772 @@
+{
+  "files": [
+    {
+      "path": "paper_results/01_model_combination/data/baselines/mbr_commonvoice_dev.json",
+      "role": "curated_input",
+      "sha256": "874be24aec0cddd2b95356acad2c3ce91833789f76cc9bdd570be91cc03b9244",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/baselines/mbr_commonvoice_test.json",
+      "role": "curated_input",
+      "sha256": "93601e17fdf63b5ef811686b003c6f3f99c9f5d1cd8d8433f3615e0c2981ebb1",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/baselines/mbr_edacc_dev.json",
+      "role": "curated_input",
+      "sha256": "3d3275cefd3f2045144639d23251fff8052d7beec120be3048b6e545c2596745",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/baselines/mbr_edacc_test.json",
+      "role": "curated_input",
+      "sha256": "ba3b0ba2f6c2ef7e3b56a83b7f683c6e7709db01ac2303c6ba1dd89990dded25",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/baselines/mbr_english_dialects_dev.json",
+      "role": "curated_input",
+      "sha256": "ee22494ba4e5737832ed075b8f1e1b4680477f4b13a3648c4c3cbca583f65966",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/baselines/mbr_english_dialects_test.json",
+      "role": "curated_input",
+      "sha256": "aa8a237149673a367cf58f75b288202ea427af138358a8461bda12cea8180c04",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/baselines/parakeet_commonvoice_merged.json",
+      "role": "curated_input",
+      "sha256": "51fa8a32061391d6476503bd7115b755b202124256d3219b315fa06578a8bdf8",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/baselines/parakeet_edacc_20260719_033319.json",
+      "role": "curated_input",
+      "sha256": "435a29b507eccc6a1cedb3b597ca073c121f2497e0bca381ebc7c825a406b24d",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/baselines/parakeet_english_dialects_merged.json",
+      "role": "curated_input",
+      "sha256": "dad50385ce506d30e03aefda239a2cdb5c7fc0b10a2e723c95ff805a3712eea9",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/baselines/qwen_commonvoice_20260722_merged.json",
+      "role": "curated_input",
+      "sha256": "edd68a2a1dc3fa2a094f50bb67dfb4b436fcc65a76fbb27e07f07a7aa639d4d3",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/baselines/qwen_edacc_20260722_merged.json",
+      "role": "curated_input",
+      "sha256": "89e859cf16382b77bfae63f4a1a7ba68792ae384d894c574393a700e022e9084",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/baselines/qwen_english_dialects_20260722_merged.json",
+      "role": "curated_input",
+      "sha256": "5144b5eca7a8aa19ca57939affd156225f9b51dec6a7f4374762f58fcf85f1b3",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/baselines/rover_commonvoice_dev.json",
+      "role": "curated_input",
+      "sha256": "8564e32f289d7a63503375b25d47496d9c54d559ed1e0a26072fb853c46d77ef",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/baselines/rover_commonvoice_test.json",
+      "role": "curated_input",
+      "sha256": "1aad8bc7eeab3bb03301d8b61378df2e8ab2fcba72403f6399545cd4b8ea682a",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/baselines/rover_edacc_dev.json",
+      "role": "curated_input",
+      "sha256": "ae937a5211220ba87db35b17f9c5658fc4fb9f8277b2b08ce3ada4195fe96d36",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/baselines/rover_edacc_test.json",
+      "role": "curated_input",
+      "sha256": "5bfaa6df8edfc369b8d48079d6b40aae10acd93ea9d631846817e3c28bd73cc2",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/baselines/rover_english_dialects_dev.json",
+      "role": "curated_input",
+      "sha256": "5383bd9f6cea2516b895230c82ab1644aed3dbfc0dbcbdb197854c2f2d1684ba",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/baselines/rover_english_dialects_test.json",
+      "role": "curated_input",
+      "sha256": "1df9763e094d572514123d406962f45fae0e0561f598d2674b845352ef986160",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/baselines/wav2vec2_commonvoice_merged.json",
+      "role": "curated_input",
+      "sha256": "9867839a1d2597d256962e9876d76e1007f4fcbab4e231250a29181aedfb7f53",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/baselines/wav2vec2_edacc_20260719_033606.json",
+      "role": "curated_input",
+      "sha256": "7d4f15405d2f23cc0601f38202b17d2a61ec82ed4e0e1c0f563b0477c3c5a6b6",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/baselines/wav2vec2_english_dialects_merged.json",
+      "role": "curated_input",
+      "sha256": "b6166a5479fa3bbae341fe5ae21e454e26016dc3aa2b67aa88184730e7db9c4b",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/baselines/whisperx_commonvoice_20260720_162322.json",
+      "role": "curated_input",
+      "sha256": "33644b73b114c6a78e6373d5f33456d4c1e834dfc79100ed3e5ea2bc8256af87",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/baselines/whisperx_edacc_20260719_025227.json",
+      "role": "curated_input",
+      "sha256": "1f66b979dc22c46e2befd7db4d72b711632d65995d8a940c90171e0b385ca530",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/baselines/whisperx_english_dialects_20260720_234027.json",
+      "role": "curated_input",
+      "sha256": "203e021e16145105d5ff5af6304100bafd9c1db65fd2478ef6e045cbb5cea5af",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/grid/anchored_correction_naive/anchored_correction_naive_commonvoice_gemma4_dev.json",
+      "role": "curated_input",
+      "sha256": "eae3f86f6292119ffc0221530bdf4df8287012daf3d0989a3183bc9c49abd7af",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/grid/anchored_correction_naive/anchored_correction_naive_commonvoice_gemma4_test.json",
+      "role": "curated_input",
+      "sha256": "96bca54ab7e5c3027db93b1611d0f7c87f375358d3599acf9bfacba084bf2d38",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/grid/anchored_correction_naive/anchored_correction_naive_edacc_gemma4_dev.json",
+      "role": "curated_input",
+      "sha256": "26bbcbb3a12d6307f20804c6778595d431766d331569ebfea5e5e1b4ecf89e06",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/grid/anchored_correction_naive/anchored_correction_naive_edacc_gemma4_test.json",
+      "role": "curated_input",
+      "sha256": "d6ef021ecf5d204302eceab3df51bee4c0ef374f1bcf59e2d72d18ec35d107d9",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/grid/anchored_correction_naive/anchored_correction_naive_english_dialects_gemma4_dev.json",
+      "role": "curated_input",
+      "sha256": "2c2772d934cb9f6188045bf105ac5c4bc01772389ca7f43abc6d44af29e4f1fc",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/grid/anchored_correction_naive/anchored_correction_naive_english_dialects_gemma4_test.json",
+      "role": "curated_input",
+      "sha256": "93ff5510fc0187410e15800e2f757bc62668309a9ba2e0d64ed991d76eed9d5c",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/grid/anchored_correction_v1/anchored_correction_v1_commonvoice_gemma4_dev.json",
+      "role": "curated_input",
+      "sha256": "0e6a9c6ef493c68bf8948fe8409e789463ec79c691b00900ce4ce7e260f80261",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/grid/anchored_correction_v1/anchored_correction_v1_commonvoice_gemma4_test.json",
+      "role": "curated_input",
+      "sha256": "ae172f8b6f3bab3836f51fa9840a6ed5512ff729e684786deadd7617a3e0060b",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/grid/anchored_correction_v1/anchored_correction_v1_edacc_gemma4_dev.json",
+      "role": "curated_input",
+      "sha256": "4dffce76aa5877c80708ec35cdfc92b54e3a8a4d6672c5f8c9daddc881cbe3cc",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/grid/anchored_correction_v1/anchored_correction_v1_edacc_gemma4_test.json",
+      "role": "curated_input",
+      "sha256": "450e3d89293c92624c7d233e2cae0f13815ef030cde436390c4a4cf4f23a831a",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/grid/anchored_correction_v1/anchored_correction_v1_english_dialects_gemma4_dev.json",
+      "role": "curated_input",
+      "sha256": "128942bd39866898838324361954269b63d0744428b5494b2008e46b41962545",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/grid/anchored_correction_v1/anchored_correction_v1_english_dialects_gemma4_test.json",
+      "role": "curated_input",
+      "sha256": "a1b575acbfc4b605d9c47703aed6109be987e6b19bbc13e87f5643cd061b9971",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/grid/anchored_correction_v2/anchored_correction_v2_commonvoice_gemma4_dev.json",
+      "role": "curated_input",
+      "sha256": "af601872589987356c9f1f4df6d93c93155e195c2a55f3101e89c517af64894c",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/grid/anchored_correction_v2/anchored_correction_v2_commonvoice_gemma4_test.json",
+      "role": "curated_input",
+      "sha256": "4ef658e6694f862ca23f2a686f57cdd5fe1559dc3113d6df27d6e469442da738",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/grid/anchored_correction_v2/anchored_correction_v2_edacc_gemma4_dev.json",
+      "role": "curated_input",
+      "sha256": "4137b8e01096138a1d0b55692dacf9f41b42043290c6acecb746bc0b1345b452",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/grid/anchored_correction_v2/anchored_correction_v2_edacc_gemma4_test.json",
+      "role": "curated_input",
+      "sha256": "0bb0fa2c7e687be0a43e3b7b13d82a1078c74ade61289f9f4552b9c8167a9ae5",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/grid/anchored_correction_v2/anchored_correction_v2_english_dialects_gemma4_dev.json",
+      "role": "curated_input",
+      "sha256": "1e09c84652b0c33fc3db03a0904ccf869e2fbcafe7a95b2fd437ee8e8ac2f54c",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/grid/anchored_correction_v2/anchored_correction_v2_english_dialects_gemma4_test.json",
+      "role": "curated_input",
+      "sha256": "79854cdbbb35069f4cd4d3b25777b6258d56795d6d9f1eb94c5a5b44172677cc",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/grid/selection_context_v1/selection_context_v1_commonvoice_gemma4_dev.json",
+      "role": "curated_input",
+      "sha256": "9a8f557c637bf1f506f46f1859f0597d9eb1b4a3ef555d6dcec003887434f156",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/grid/selection_context_v1/selection_context_v1_commonvoice_gemma4_test.json",
+      "role": "curated_input",
+      "sha256": "680e8015f38707c2a12badcd055b5a61146301bac6c92bd620f83feb87abd622",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/grid/selection_context_v1/selection_context_v1_edacc_gemma4_dev.json",
+      "role": "curated_input",
+      "sha256": "ed8b9da71f88cc4b2bb77804bf17e3089784d1aeeae0940fbc2a8199f5fbfe78",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/grid/selection_context_v1/selection_context_v1_edacc_gemma4_test.json",
+      "role": "curated_input",
+      "sha256": "10c38b13915848d81661979472a7571d04ee1fc3b2ec80fef83057ce7fac65dd",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/grid/selection_context_v1/selection_context_v1_english_dialects_gemma4_dev.json",
+      "role": "curated_input",
+      "sha256": "d25ff9aa813f7c885126b081844a437fb0ab1b5ace3c2944453accd5a451dc2c",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/grid/selection_context_v1/selection_context_v1_english_dialects_gemma4_test.json",
+      "role": "curated_input",
+      "sha256": "c318a52607486d62a0a23ca93d030be39b38771b310e3f2b15391b4b9cfecd7e",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/grid/selection_context_v2/selection_context_v2_commonvoice_gemma4_dev.json",
+      "role": "curated_input",
+      "sha256": "3ccdb1dbbdf50f7de4ee810eb0d77d30f953b7b4df603cc8772abe781145fbf6",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/grid/selection_context_v2/selection_context_v2_commonvoice_gemma4_test.json",
+      "role": "curated_input",
+      "sha256": "6a42cb1d767dcd12292a106117e0fe666f52a59b190ee500c749cd693a61a6ce",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/grid/selection_context_v2/selection_context_v2_edacc_gemma4_dev.json",
+      "role": "curated_input",
+      "sha256": "12a96d3a835d8892aa77d4628525b4b4d8c9108464774f774ca78a77dba6064f",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/grid/selection_context_v2/selection_context_v2_edacc_gemma4_test.json",
+      "role": "curated_input",
+      "sha256": "3fc7a8993c28261ad156506f48d79ae59fb34f37f9844bf9043909f311ad8292",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/grid/selection_context_v2/selection_context_v2_english_dialects_gemma4_dev.json",
+      "role": "curated_input",
+      "sha256": "c01bd3c61f1c0e0f34b30d26cbf55f5f7250551f73df1c4111cb70e3961785dd",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/grid/selection_context_v2/selection_context_v2_english_dialects_gemma4_test.json",
+      "role": "curated_input",
+      "sha256": "41dcc26a0bc7bdb1de70741286442d47f6908ddfb7f713a444b47d6e31ffda6e",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/grid/selection_naive/selection_naive_commonvoice_gemma4_dev.json",
+      "role": "curated_input",
+      "sha256": "3798cf1dc58aff657048b2473078b219640ae103ee8030342680baae64c88655",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/grid/selection_naive/selection_naive_commonvoice_gemma4_test.json",
+      "role": "curated_input",
+      "sha256": "fded10a90dc729e6bb86fecda0d980778e3b4d6095e5125b7c2c0fdc522046db",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/grid/selection_naive/selection_naive_edacc_gemma4_dev.json",
+      "role": "curated_input",
+      "sha256": "a65707755e6d99ec151f5352aa122ba9eea6dd38e265fe07a12992b59949965b",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/grid/selection_naive/selection_naive_edacc_gemma4_test.json",
+      "role": "curated_input",
+      "sha256": "2b971aa48f95cf7e3655832e81c9cc7be0a3b31a9f8ec7c4d6722dd8484858ca",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/grid/selection_naive/selection_naive_english_dialects_gemma4_dev.json",
+      "role": "curated_input",
+      "sha256": "3e10dab868e68bcc9c8dcc48e06e081242e91110aa34cce2f2906949688ce1f3",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/grid/selection_naive/selection_naive_english_dialects_gemma4_test.json",
+      "role": "curated_input",
+      "sha256": "beec06de2f63b9b1cf2bd660494f3c31a54418e4df89cccb30d223e9bf164899",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/grid/unanchored_fusion_context_v1/unanchored_fusion_context_v1_commonvoice_gemma4_dev.json",
+      "role": "curated_input",
+      "sha256": "dcb43f93ee2dbf322024d77c51111d34207a9ee93c28361aedf41e87ebc1ea0a",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/grid/unanchored_fusion_context_v1/unanchored_fusion_context_v1_commonvoice_gemma4_test.json",
+      "role": "curated_input",
+      "sha256": "fb9097be58a7687939dcd982690d9a83e6868ee9b5d39983f0ff26316b62f02c",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/grid/unanchored_fusion_context_v1/unanchored_fusion_context_v1_edacc_gemma4_dev.json",
+      "role": "curated_input",
+      "sha256": "46f7587a321183be2f650998fbd69b17619242d8e15c9d2645ac76c04f84de74",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/grid/unanchored_fusion_context_v1/unanchored_fusion_context_v1_edacc_gemma4_test.json",
+      "role": "curated_input",
+      "sha256": "42f12bfe265d6f8d1aa1e0c39b77d1c46f214df0e34438d2d606d495c1c9aea5",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/grid/unanchored_fusion_context_v1/unanchored_fusion_context_v1_english_dialects_gemma4_dev.json",
+      "role": "curated_input",
+      "sha256": "4e9bff73cd8e68ad1d6a63d8613afc98d129cd3c58ed1f6eb66f4ce045bf8353",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/grid/unanchored_fusion_context_v1/unanchored_fusion_context_v1_english_dialects_gemma4_test.json",
+      "role": "curated_input",
+      "sha256": "757ec8a27e73631697439c06c75de9b565bf8fe19bf10cc4542416eb5d6606b3",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/grid/unanchored_fusion_context_v2/unanchored_fusion_context_v2_commonvoice_gemma4_dev.json",
+      "role": "curated_input",
+      "sha256": "14c9c8bf250a027f1f60b7bfb2f1b04b81dc1113892994fff9af7ea49d5a7545",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/grid/unanchored_fusion_context_v2/unanchored_fusion_context_v2_commonvoice_gemma4_test.json",
+      "role": "curated_input",
+      "sha256": "c341a542ce896565e50695cca0f980f3c67872831f939708fd1bd28a8aff71f1",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/grid/unanchored_fusion_context_v2/unanchored_fusion_context_v2_edacc_gemma4_dev.json",
+      "role": "curated_input",
+      "sha256": "d8dd31ebbac1d96ce11e858e43bed665038208e9a715def6fc11677d45b93652",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/grid/unanchored_fusion_context_v2/unanchored_fusion_context_v2_edacc_gemma4_test.json",
+      "role": "curated_input",
+      "sha256": "36319aeab25f4343e269c4c5065219499c0b9639203c8074c02724c0ae12577e",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/grid/unanchored_fusion_context_v2/unanchored_fusion_context_v2_english_dialects_gemma4_dev.json",
+      "role": "curated_input",
+      "sha256": "6aeb3c7867c7b74656253f3fc75319a01f9b27eec28bdacc96cefd47265f168b",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/grid/unanchored_fusion_context_v2/unanchored_fusion_context_v2_english_dialects_gemma4_test.json",
+      "role": "curated_input",
+      "sha256": "3457f47d155cacd521934b1c641df15b5f9091a8242a064ea0b07c6ca35809fa",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/grid/unanchored_fusion_naive/unanchored_fusion_naive_commonvoice_gemma4_dev.json",
+      "role": "curated_input",
+      "sha256": "50347b8226850cb503d609334a1edea2f739de80843b2c9c2ca42e452721b3d2",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/grid/unanchored_fusion_naive/unanchored_fusion_naive_commonvoice_gemma4_test.json",
+      "role": "curated_input",
+      "sha256": "cc29b83a074fca3d351246ec9802c58f33adff5e377ee91d49c760db02ad4be2",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/grid/unanchored_fusion_naive/unanchored_fusion_naive_edacc_gemma4_dev.json",
+      "role": "curated_input",
+      "sha256": "b89f4ca3d74b6b4bbe0464569b83ce805dd12db7df98ac21dde72a24b3875f92",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/grid/unanchored_fusion_naive/unanchored_fusion_naive_edacc_gemma4_test.json",
+      "role": "curated_input",
+      "sha256": "c322058750e259e5b73ff466fe7f6489cf9ea6258a2fb8a4ec0805839233822d",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/grid/unanchored_fusion_naive/unanchored_fusion_naive_english_dialects_gemma4_dev.json",
+      "role": "curated_input",
+      "sha256": "82eede3077265b075e49ea7a12e1ed3b3d1597c13fb2425ed726c36b050726a7",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/grid/unanchored_fusion_naive/unanchored_fusion_naive_english_dialects_gemma4_test.json",
+      "role": "curated_input",
+      "sha256": "00d37a0dadc13246a3bea37e6ca74c14275364e78fe87223a545bb2da44bfe44",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/shetland/mbr_shetland_full.json",
+      "role": "curated_input",
+      "sha256": "acbc771ad129004e7dd56d6a0b07b9b7e83afb965f1eb39485e6a99c9423cf5d",
+      "release_disposition": "shetland_text_hold"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/shetland/naive_shetland_gemma4sel_full.json",
+      "role": "curated_input",
+      "sha256": "f789fed1c772e85093873faee490b6ab018bfaa108f199891634822b12139d01",
+      "release_disposition": "shetland_text_hold"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/shetland/rover_shetland_full.json",
+      "role": "curated_input",
+      "sha256": "622d89b32917ec500eec832bb8ffa8257d043c503dc9bcbc63f63f627bdd9ea4",
+      "release_disposition": "shetland_text_hold"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/shetland/shetland_qwen3asr_20260603_150124.json",
+      "role": "curated_input",
+      "sha256": "23e5c7b420dcbb7c708b172b1e000d52ef7c75f7998672c0a6e2eea144da6ffd",
+      "release_disposition": "shetland_text_hold"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/single_hypothesis_postedit/single_hypothesis_postedit_qwen_commonvoice_gemma4_dev.json",
+      "role": "curated_input",
+      "sha256": "9e8086e5107b0eeb81400aa8ac5ecf881eb3b03bd9699e84aa87041203786dac",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/single_hypothesis_postedit/single_hypothesis_postedit_qwen_commonvoice_gemma4_test.json",
+      "role": "curated_input",
+      "sha256": "603b3784d8f27f2fb44c993714caf34aae8c0db9d372c75255dbc20c592a5c41",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/single_hypothesis_postedit/single_hypothesis_postedit_qwen_edacc_gemma4_dev.json",
+      "role": "curated_input",
+      "sha256": "339d8c15224c10a74f4eb28689f1cc389d8e81c6e27fd5d9859c8938efe0957e",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/single_hypothesis_postedit/single_hypothesis_postedit_qwen_edacc_gemma4_test.json",
+      "role": "curated_input",
+      "sha256": "cf0419aa5a2bcb59c52c05f09fe2616fe4380c4ffb06b1c66011df82638a85db",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/single_hypothesis_postedit/single_hypothesis_postedit_qwen_english_dialects_gemma4_dev.json",
+      "role": "curated_input",
+      "sha256": "85131e3253052ad3e01418f7e32109d613d3f1f8124ce104c216f1ddc14ca268",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/single_hypothesis_postedit/single_hypothesis_postedit_qwen_english_dialects_gemma4_test.json",
+      "role": "curated_input",
+      "sha256": "a5b9d49244306e7c9a1516665e0ffc67bfa914d36f868d86c1769df3e0ef4ef5",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/single_hypothesis_postedit/single_hypothesis_postedit_qwen_shetland_gemma4_full.json",
+      "role": "curated_input",
+      "sha256": "b5a503164355568a7f68b91059f5922a09b473bff3d1ba04bdbbcddac3c78d74",
+      "release_disposition": "shetland_text_hold"
+    },
+    {
+      "path": "paper_results/02_sentence_confidence/data/cross_model/cross_model_agreement_commonvoice_test.json",
+      "role": "curated_input",
+      "sha256": "99ab44c4e0cd19ed2e56e620f8d1daa2abb805769d66f54068ba7243c9f876c6",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/02_sentence_confidence/data/cross_model/cross_model_agreement_edacc_test.json",
+      "role": "curated_input",
+      "sha256": "10c9b1e6d0b822487279859a47cba9f8ebc943a636b3d639b083ec9dabb82471",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/02_sentence_confidence/data/cross_model/cross_model_agreement_english_dialects_test.json",
+      "role": "curated_input",
+      "sha256": "1d8eb883136f7c92780a918f11391bf7e58722a34e0b4972bfbfe1803596c3f3",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/02_sentence_confidence/data/cross_model/cross_model_agreement_shetland_full.json",
+      "role": "curated_input",
+      "sha256": "410b18b75b6520997ec025c898249721197c83ecbf60550a6fce6d9a377a4ea1",
+      "release_disposition": "shetland_text_hold"
+    },
+    {
+      "path": "paper_results/02_sentence_confidence/data/learned_proxy/learned_severity_proxy_confscore.json",
+      "role": "curated_input",
+      "sha256": "95e3a32d8af63e6df3a56665f501b897cb07ccd0d9a9db4c13c89f084e2d1e3b",
+      "release_disposition": "derived_numeric_candidate"
+    },
+    {
+      "path": "paper_results/02_sentence_confidence/data/learned_proxy/learned_severity_proxy_probscore.json",
+      "role": "curated_input",
+      "sha256": "df8eed977f52815679c999fe70c39155b986bbe489f789354a6f6b5b188fa684",
+      "release_disposition": "derived_numeric_candidate"
+    },
+    {
+      "path": "paper_results/02_sentence_confidence/data/model_internal/model_internal_commonvoice_dev.json",
+      "role": "curated_input",
+      "sha256": "9ee929b8f5df2a6414d5b0131bdece7616b2e76363f7a2a735b66194419ea8fd",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/02_sentence_confidence/data/model_internal/model_internal_commonvoice_test.json",
+      "role": "curated_input",
+      "sha256": "744b22184ac80700c0b636c9297c9b343d1abb20596945fb7811ae780fd1fe13",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/02_sentence_confidence/data/model_internal/model_internal_edacc_dev.json",
+      "role": "curated_input",
+      "sha256": "20f18c3da62ef69caabf4939fc92e1bf65b54d8611afc116f0404d01e6e66df7",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/02_sentence_confidence/data/model_internal/model_internal_edacc_test.json",
+      "role": "curated_input",
+      "sha256": "9150347b44b05f9b88d7909c4c1a982fdd7bc71b6add6c42b3efa3d3bfa7bf89",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/02_sentence_confidence/data/model_internal/model_internal_english_dialects_dev.json",
+      "role": "curated_input",
+      "sha256": "411b574fe1b386f1f147060686b2149bbc5d4d91f0bf613f6542cbf07428b0de",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/02_sentence_confidence/data/model_internal/model_internal_english_dialects_test.json",
+      "role": "curated_input",
+      "sha256": "83ceb87d52348bf6a8f77e4a0f6e049837f6b11e11d6a0d943b5a5110037d5e4",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/02_sentence_confidence/data/model_internal/model_internal_platt_params.json",
+      "role": "curated_input",
+      "sha256": "476100f1dad0a6694966f5e9c1ec1757e66b02cfca52673b532db9ae0b055a8f",
+      "release_disposition": "derived_numeric_candidate"
+    },
+    {
+      "path": "paper_results/02_sentence_confidence/data/model_internal/model_internal_shetland_full.json",
+      "role": "curated_input",
+      "sha256": "2bac858111ac7396a150ae35da93941103aa47df10b095a963603f7598263bd3",
+      "release_disposition": "shetland_text_hold"
+    },
+    {
+      "path": "paper_results/02_sentence_confidence/data/model_internal/norm_stats_pooled.json",
+      "role": "curated_input",
+      "sha256": "de78507398f1761686cf355b40edc83152fb08ba7d31a569778433d3ed25b83a",
+      "release_disposition": "derived_numeric_candidate"
+    },
+    {
+      "path": "paper_results/02_sentence_confidence/data/police_scotland/method_confscore_ps.json",
+      "role": "curated_input",
+      "sha256": "9b74576765bb76f360c904a8d408540cf5bf3494882bf75753e3c3b5a3b1073a",
+      "release_disposition": "operational_rows_hold"
+    },
+    {
+      "path": "paper_results/02_sentence_confidence/data/police_scotland/method_crossmodel_mean_ps.json",
+      "role": "curated_input",
+      "sha256": "18fb5e66d869d07e4a8a9b616daa274874baf96adec12d8c974fdc2f2581029d",
+      "release_disposition": "operational_rows_hold"
+    },
+    {
+      "path": "paper_results/02_sentence_confidence/data/police_scotland/method_crossmodel_min_ps.json",
+      "role": "curated_input",
+      "sha256": "025ca1ff35a1684297da3ca218140776a1cc6881797af2cbbf2492bb4e4e5849",
+      "release_disposition": "operational_rows_hold"
+    },
+    {
+      "path": "paper_results/02_sentence_confidence/data/police_scotland/method_model_internal_ps.json",
+      "role": "curated_input",
+      "sha256": "a3a09f4556cf8af8a91453a66fbacee95f579bddf482351397c025b708c84545",
+      "release_disposition": "operational_rows_hold"
+    },
+    {
+      "path": "paper_results/02_sentence_confidence/data/police_scotland/method_probscore_ps.json",
+      "role": "curated_input",
+      "sha256": "734dcbf5c9a433e65702f92078ecdb4fbb1e03fd77e559bd67c6cc7f9fc74628",
+      "release_disposition": "operational_rows_hold"
+    },
+    {
+      "path": "paper_results/02_sentence_confidence/data/police_scotland/method_proxy_confscore_ps.json",
+      "role": "curated_input",
+      "sha256": "50b6d316be80cf0a2ad27557f41ffc255c88f5ec04c06708cbdc94f82a46fbd6",
+      "release_disposition": "operational_rows_hold"
+    },
+    {
+      "path": "paper_results/02_sentence_confidence/data/police_scotland/method_proxy_probscore_ps.json",
+      "role": "curated_input",
+      "sha256": "a8919b84e4925a666fbf6cd249bae3833b77bd41171ffae09e6e40dd89810ae9",
+      "release_disposition": "operational_rows_hold"
+    },
+    {
+      "path": "paper_results/02_sentence_confidence/data/verbalized/verbalized_confscore_commonvoice_dev.json",
+      "role": "curated_input",
+      "sha256": "47ea50aaab44758645800332370d828e7b3dd22406ef61fcab93f9b597867605",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/02_sentence_confidence/data/verbalized/verbalized_confscore_commonvoice_test.json",
+      "role": "curated_input",
+      "sha256": "2a385acbc5dba58627aac431f0741cf8bbc869bece7b0c4c663c7f4e5e25eea2",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/02_sentence_confidence/data/verbalized/verbalized_confscore_edacc_dev.json",
+      "role": "curated_input",
+      "sha256": "13781320fa98f7cbf68499d4a8a11264486992bf618e6bd56266a27fdb8cd920",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/02_sentence_confidence/data/verbalized/verbalized_confscore_edacc_test.json",
+      "role": "curated_input",
+      "sha256": "32bad411c0ca7c42dc70bf63e0cd025f7b46b51f076e4feeb0a11394e3f396f9",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/02_sentence_confidence/data/verbalized/verbalized_confscore_english_dialects_dev.json",
+      "role": "curated_input",
+      "sha256": "2c0017b6e40890d667479180b8c638cc4b651e0f2bbe7a3e5404da599b37e3c4",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/02_sentence_confidence/data/verbalized/verbalized_confscore_english_dialects_test.json",
+      "role": "curated_input",
+      "sha256": "2bcf873a95f535506eb17ac8b5ecb5345afae79946950f4cfd44f93f2faca3ed",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/02_sentence_confidence/data/verbalized/verbalized_confscore_shetland_full.json",
+      "role": "curated_input",
+      "sha256": "34140ae73c416c692799883697183a8eac835096826e8cade7ede3c1f3e1aa59",
+      "release_disposition": "shetland_text_hold"
+    },
+    {
+      "path": "paper_results/02_sentence_confidence/data/verbalized/verbalized_probscore_commonvoice_test.json",
+      "role": "curated_input",
+      "sha256": "840c8119d176b65dc9719973a47bfca288d64780a36f5d3bc0352e5d70af24d5",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/02_sentence_confidence/data/verbalized/verbalized_probscore_edacc_test.json",
+      "role": "curated_input",
+      "sha256": "c423728a6d54de889ea10967dbbd077a2b5be8ffe462301e4119362f06600b15",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/02_sentence_confidence/data/verbalized/verbalized_probscore_english_dialects_test.json",
+      "role": "curated_input",
+      "sha256": "8296a6dc90a043cda41e2c6cc3f8d1086186bbf2b0bca49793397bc8797f2981",
+      "release_disposition": "public_corpus_text_review"
+    },
+    {
+      "path": "paper_results/02_sentence_confidence/data/verbalized/verbalized_probscore_shetland_full.json",
+      "role": "curated_input",
+      "sha256": "37289ca07a59d2349b01671fe075cedd49790ee3c06bfc3e2939128b99a01c2a",
+      "release_disposition": "shetland_text_hold"
+    },
+    {
+      "path": "paper_results/supplemental/data/police_individual.json",
+      "role": "supplemental_input",
+      "sha256": "8768bf7c958d338863b825ee62454e2c75c43c0e356166cffa96ee79313d038e",
+      "release_disposition": "operational_rows_hold"
+    },
+    {
+      "path": "paper_results/supplemental/data/police_fusion.json",
+      "role": "supplemental_input",
+      "sha256": "00ada911a327e9e271d3ec770e51ebbd470a96f4512b0cc9af4aaa541629d03a",
+      "release_disposition": "operational_rows_hold"
+    },
+    {
+      "path": "paper_results/supplemental/data/shetland_anchored.json",
+      "role": "supplemental_input",
+      "sha256": "e4228b6c96b31bd9c0ce9616049d6aab7b2a5a9e162db29b9ce3cf185dcc2ef3",
+      "release_disposition": "shetland_text_hold"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/shetland/shetland_whisper_20260603_123115.json",
+      "role": "confidence_source",
+      "sha256": "291d1f252fef16d2782c6fe4c6961f6ed8e9e6c99b96dcb323feaa18c76943c3",
+      "release_disposition": "shetland_text_hold"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/shetland/shetland_parakeet_20260606_134131.json",
+      "role": "confidence_source",
+      "sha256": "7319ca4da2d0dfb155ea2c2d9473b054f445268a3f57d00b90cfab62b3255e9a",
+      "release_disposition": "shetland_text_hold"
+    },
+    {
+      "path": "paper_results/01_model_combination/data/shetland/shetland_wav2vec2_20260606_134507.json",
+      "role": "confidence_source",
+      "sha256": "0c1a23aaf9194ef369f9d5ddef195b4fa92af0e4a544ee06a40473b7accdf24a",
+      "release_disposition": "shetland_text_hold"
+    }
+  ]
+}

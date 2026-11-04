@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "trustworthy-asr-pipeline"
+version = "0.1.0"
+description = "Four-model ASR fusion, meaning-sensitive evaluation and sentence confidence"
+requires-python = ">=3.11"
+dependencies = ["jiwer==4.0.0", "ollama==0.6.2", "wtpsplit==2.2.2"]
+
+[project.optional-dependencies]
+llm = ["ollama==0.6.2"]
+asr = ["torch", "transformers", "librosa", "soundfile", "qwen-asr", "whisperx"]
+confidence = ["ollama==0.6.2", "wtpsplit", "numpy==2.4.6", "scipy==1.17.1", "scikit-learn==1.8.0", "matplotlib==3.10.9"]
+reporting = ["numpy==2.4.6", "scipy==1.17.1", "scikit-learn==1.8.0", "matplotlib==3.10.9"]
+
+[project.scripts]
+asr-pipeline = "asr_pipeline.__main__:main"
+
+[tool.setuptools.packages.find]
+include = ["asr_pipeline*", "paper_results.reporting*"]
