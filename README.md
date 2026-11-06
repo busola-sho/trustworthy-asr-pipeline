@@ -1,4 +1,4 @@
-# Scottish speech: ASR, fusion and sentence confidence
+# Beyond WER for Scottish speech: ASR, fusion and sentence confidence
 
 This repo brings together Qwen3-ASR, WhisperX, Parakeet and Wav2Vec2 to transcribe
 Scottish speech. You can combine their transcripts, estimate sentence confidence,
